@@ -377,6 +377,137 @@
 
   
   
+    <h3 class="article-title"><a href="/database/mysql/emoji表情支持/"><span>MySQL emoji表情支持</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/database/mysql/emoji表情支持/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>###1、数据库需要5.5.3+的支持</p>
+<p>###2、修改database、table和column字符集<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> guitargg <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">2000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%char%'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>###3、修改配置文件<br>etc/mysql/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-client-handshake = FALSE character-set-server = utf8mb4</span><br><span class="line">collation-server = utf8mb4_unicode_ci init_connect=&apos;SET NAMES utf8mb4&apos;</span><br></pre></td></tr></table></figure></p>
+<p>###4、重启MySQL Server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart</span><br></pre></td></tr></table></figure></p>
+<p>###5、升级JDBC驱动<br>确保mysql connector版本高于5.1.13</p>
+<p>###6、检查应用的数据库连接配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/database?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE jdbc.username=root</span><br><span class="line">jdbc.password=password</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><a href="http://segmentfault.com/blog/ilikewhite/1190000000616820" title="mysql/Java服务端对emoji的支持" target="_blank" rel="external">mysql/Java服务端对emoji的支持</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Database/">Database</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/MySQL/">MySQL</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/database/mysql/mysql/"><span>MySQL 安装问题</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/database/mysql/mysql/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>批量插入：</p>
+<blockquote>
+<p><a href="http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html</a></p>
+</blockquote>
+<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac下新安装的MySQL无法登陆root用户解决方法</a></p>
+<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac下安装MySQL5.7遇到默认密码的大坑</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Database/">Database</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/MySQL/">MySQL</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
     <h3 class="article-title"><a href="/database/mysql/海量数据架构/"><span>MySQL 海量数据架构</span></a></h3>
   
 
@@ -428,158 +559,6 @@
   <span class="post-tags">
     <i class="icon-tags"></i>
     <a href="/tags/MySQL/">MySQL</a>, <a href="/tags/高并发/">高并发</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/HTTP协议/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/HTTP协议/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>##HTTP协议返回码，301,302</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/jsoup/2014020301_项目总体结构/"><span>jsoup项目总体结构</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/jsoup/2014020301_项目总体结构/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>#项目结构如下<br>先来介绍下整体的项目结构和每个类的作用</p>
-<p>##1、org.jsoup.helper<br>这个包里面包含了jsoup的辅助类</p>
-<p>###1.1、DataUtils<br>处理数据的静态辅助类，主要用来把输入流转换为Document对象。</p>
-<p>###1.2、DescendableLinkedList<br>实现一个从后往前遍历的迭代器，并兼容一些JDK 1.5中不支持的JDK 1.6提供的LinkedList方法。里面主要实现一个DescendingIterator继承了Iterator实现倒序遍历的功能的。</p>
-<p>通过使用DescendableLinkedList执行如下的代码，将会输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
-<p>与默认实现的迭代器输出相反的顺序了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DescendableLinkedList&lt;String&gt; list = <span class="keyword">new</span> DescendableLinkedList&lt;String&gt;();</span><br><span class="line">list.add(<span class="string">"a"</span>);</span><br><span class="line">list.add(<span class="string">"b"</span>);</span><br><span class="line">Iterator&lt;String&gt; iterator =list.descendingIterator();</span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">	System.out.println(iterator.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>###1.3、HttpConnection<br>Connection的实现类，Connection提供了方便的接口，用于从网络抓取内容，并解析成Document对象。可以这样获取到一个Connection对象：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.jsoup.Jsoup.connect(String)</span><br></pre></td></tr></table></figure></p>
-<p>Connections包含了Connection.Request和Connection.Response，请求的配置可以通过userAgent(String)方法进行，或者在Connection.Request里面进行配置。</p>
-<p>###1.4、StringUtil<br>功能很少的String辅助类，专门为jsoup设计的</p>
-<p>###1.5、Validate<br>为jsoup而设计的简单的验证方法类，里面校验参数的时候使用了IllegalArgumentException（RuntimeException），不需要强制捕获，表示该错误为不可预知的异常，无需捕获，抛出该异常后，后面的代码不会继续执行，如下面的asdf不会打印出来：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringUtil.padding(-<span class="number">1</span>);  <span class="comment">// 抛出IllegalArgumentException</span></span><br><span class="line">System.out.println(<span class="string">"asdf"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>##2、org.jsoup.nodes<br>HTML元素节点的相关类</p>
-<p>###2.1、Attribute<br>HTML元素的一个属性对象，包括属性名和属性值。</p>
-<p>###2.2、Attributes<br>一个HTML元素的属性集合</p>
-<p>###2.3、Comment<br>注释元素，如 <!-- -->，继承自Node</p>
-<p>###2.4、DataNode<br>一个数据节点，用于style，script标签，因为包含了css和js脚本，这些标签中的内容不能转换为文本显示，继承自Node。</p>
-<p>###2.5、Document<br>一个HTML的文档对象Document，继承自Element。</p>
-<p>###2.6、DocumentType<br>&lt;!DOCTYPE&gt; 节点</p>
-<p>###2.7、Element<br>继承自Node，一个HTML元素，包含标签名称，属性集合，和子节点（包括文本节点和其他节点）。</p>
-<p>###2.8、Entities<br>HTML实体和转义规则，这些转义对应的规则，存储在该包目录下的entities-base.properties和entities-full.properties文件里面。</p>
-<p>###2.9、FormElement<br>表单元素</p>
-<p>###2.10、Node<br>基本的抽象节点模型，Document，Comment等都是Node的子类。</p>
-<p>###2.11、TextNode<br>一个文本节点，继承自Node。</p>
-<p>###2.12、XmlDeclaration<br>一个XML声明</p>
-<p>##3、org.jsoup.parser</p>
-<p>###3.1、CharacterReader</p>
-<p>###3.2、HtmlTreeBuilder</p>
-<p>###3.3、HtmlTreeBuilderState</p>
-<p>###3.4、ParseError</p>
-<p>###3.5、ParseErrorList</p>
-<p>###3.6、Parser</p>
-<p>###3.7、Tag</p>
-<p>###3.8、Token</p>
-<p>###3.9、Tokeniser</p>
-<p>###3.10、TokeniserState</p>
-<p>###3.11、TokenQueue</p>
-<p>###3.12、TreeBuilder</p>
-<p>###3.13、XmlTreeBuilder</p>
-<p>##4、org.jsoup.safety</p>
-<p>###4.1、Cleaner</p>
-<p>###4.2、Whitelist</p>
-<p>##5、org.jsoup.select</p>
-<p>###5.1、Collector</p>
-<p>###5.2、CombiningEvaluator</p>
-<p>###5.3、Elements</p>
-<p>###5.4、Evaluator</p>
-<p>###5.5、NodeTraversor</p>
-<p>###5.6、NodeVisitor</p>
-<p>###5.7、QueryParser</p>
-<p>###5.8、Selector</p>
-<p>###5.9、StructuralEvaluator</p>
-<p>##Connection</p>
-<p>##HttpStatusException</p>
-<p>##Jsoup</p>
-<p>##UnsupportedMimeTypeException</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/jsoup/">jsoup</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a>, <a href="/tags/MAC/">MAC</a>
   </span>
 
 
@@ -728,13 +707,13 @@
 
   
   
-    <h3 class="article-title"><a href="/log/Log4J系能/"><span>日志框架性能比较</span></a></h3>
+    <h3 class="article-title"><a href="/javascript/seajs/"><span></span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/log/Log4J系能/" rel="bookmark">
+      <a href="/javascript/seajs/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -748,40 +727,59 @@
   <div class="article-content">
     <div class="entry">
       
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>#性能问题</p>
-<p>关于Log4j的性能问题，可以先阅读以下官方文档的一点说明：<a href="http://logging.apache.org/log4j/1.2/manual.html" title="Performance" target="_blank" rel="external">Performance</a></p>
-<p><a href="http://www.reader8.cn/jiaocheng/20130810/2235056.html" title="Log4J 2" target="_blank" rel="external">Log4J 2</a></p>
-<p>在<a href="http://www.infoq.com/cn/news/2014/08/apache-log4j2" title="Apache Log4j 2.0值得升级吗" target="_blank" rel="external">Apache Log4j 2.0值得升级吗</a>这篇文章中阐述了Log4j 2.0的高性能。而<a href="http://www.infoq.com/cn/news/2014/07/apache-log4j2.0-publish" title="Log4j 2.0" target="_blank" rel="external">Log4j 2.0</a>的API是和Log4j 1.x系列的API不兼容的</p>
-<p>在一个项目中如果需要在不同的模块设置不同的日志级别，并且输出到不同的日志文件中，可以这样设置不同的logger：</p>
-<blockquote>
-<p><a href="http://www.theserverside.com/news/thread.tss?thread_id=31659" target="_blank" rel="external">http://www.theserverside.com/news/thread.tss?thread_id=31659</a></p>
-</blockquote>
+        <p>在使用spm之前，首先得安装nodejs，因为spm是nodejs的一个package。<a href="http://qianduanblog.com/post/js-learning-42-using-spm-3-build-seajs-project.html" title="使用spm@3构建seajs项目" target="_blank" rel="external">使用spm@3构建seajs项目</a></p>
+<p><a href="http://spmjs.io/documentation" title="spm 3官方教程" target="_blank" rel="external">spm 3官方教程</a></p>
+<p>构建目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dist  构建目标文件夹</span><br><span class="line">examples  相关使用文档</span><br><span class="line">spm_modules   依赖的js文件仓库，spm install的时候下载到里面</span><br><span class="line">tests  测试案例</span><br><span class="line">xx.js  </span><br><span class="line">package.json  spm维护的依赖配置文件，用于生产dist目录的相关配置</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://spmjs.io/package/expect.js" title="expectjs" target="_blank" rel="external">expectjs</a></p>
+<p><a href="http://chaoskeh.com/blog/why-its-hard-to-combo-seajs-modules.html" title="为什么 SeaJS 模块的合并这么麻烦" target="_blank" rel="external">为什么 SeaJS 模块的合并这么麻烦</a></p>
+<p>###安装nodejs</p>
+<p><a href="http://seajs.org/docs/#docs" title="seajs" target="_blank" rel="external">seajs</a></p>
+<p>配置NODE_PATH</p>
+<p><a href="http://segmentfault.com/blog/yinchangsheng/1190000002478924" title="nodejs 中的 NODE_PATH" target="_blank" rel="external">nodejs 中的 NODE_PATH</a></p>
+<p>windows下需要安装<a href="http://gnuwin32.sourceforge.net/packages/make.htm" title="make" target="_blank" rel="external">make</a></p>
+<p>下载<a href="https://github.com/seajs/examples" title="demo" target="_blank" rel="external">demo</a>编译执行</p>
+<p>SeaJS遵循<a href="https://github.com/cmdjs/specification/blob/master/draft/module.md" title="CMD" target="_blank" rel="external">CMD</a>规范，一个模块就是一个文件，通过<code>require</code> 关键词引入外部模块，每次加载需要直接使用到的模块的时候，模块内部 <code>require</code> 进来的js也会一并加载，为了让SeaJS在加载之前把所有相关联的JS都能够通过一个JS文件一次性加载进来，就需要用到SeaJS的<a href="http://www.zhihu.com/question/20789867/answer/16187950" title="Transport" target="_blank" rel="external">Transport</a>格式<br>没转换前Modules/Wrappingsgui规范格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, exports, module) &#123;</span><br><span class="line">   var a = require(&quot;a&quot;)</span><br><span class="line">   exports.foo = ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>CMD模块在正式上线前，通过构建工具（如SPM）先转换为Modules/Transport格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define(&quot;id&quot;, [&quot;dep-1&quot;, &quot;dep-2&quot;], function(require, exports, module) &#123;</span><br><span class="line">   // source code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>进一步通过构建工具，就可以一并吧 <code>require</code> 引入进来的模块一起压缩合并到同一个文件中了。</p>
+<p>##说明<br>简单来说，通过使用SeaJS，我们可以把JS代码模块化，在上线之前，通过spm这样的构建工具，把自己开发的模块压缩合并，当成SeaJS的一个模块来使用。</p>
+<p>##Step by step</p>
+<p>下面一步一步来实现这个过程：</p>
+<p>##正面项目接口</p>
+<p>整体目录结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">project   // 项目跟目录 </span><br><span class="line">|</span><br><span class="line">|-assets  // web资源文件</span><br><span class="line">  |</span><br><span class="line">  |- sea-modules  // SeaJS相关模块</span><br><span class="line">  |  </span><br><span class="line">  |- static  // 模块开发路径</span><br><span class="line">  |   |</span><br><span class="line">  |   |- first-module</span><br><span class="line">  |       |- dist  // 我的模块构建目标文件夹</span><br><span class="line">  |       |- src  // 我的模块开发文件夹</span><br><span class="line">  |       |- package.json  // spm编译配置</span><br><span class="line">  |</span><br><span class="line">  |- app  // 我的模块使用例子</span><br><span class="line">  |</span><br></pre></td></tr></table></figure></p>
+<p>##创建目录结构</p>
+<p>###step1、创建项目 project</p>
+<p>###step2、创建web资源文件夹<br>在project里面新建一个assetsweb资源文件夹，专门用来存放JS，CSS等资源，我们的模块开发就在这个目录下面进行</p>
+<p>###step3、在assets下面创建sea-modules文件夹<br>这个文件夹是用来存放SeaJS模块的，我们需要用到的模块，包括自己实现的模块最终都要存放到这里</p>
+<p>###step4、在assets目录下创建 static 文件夹<br>这个文件夹用于模块开发</p>
+<p>###step5、在 static 目录下创建 first-module 文件夹<br>这个文件夹用于存储我的第一个模块的开发代码</p>
+<p>###step6、在 first-module 目录下创建 src 目录，这个目录用于存放我们模块开发的代码</p>
+<p>###step7、在assets下面创建 app 文件夹<br>这个文件夹存放我们演示调用模块代码的HTML文件</p>
+<p>##使用spm初始化构建</p>
+<p>###首先你需要通过npm安装spm，而npm是Node.js里面的一个工具，所以你需要先这样搭建环境：</p>
+<ul>
+<li>安装<a href="http://nodejs.org/" title="Node.js" target="_blank" rel="external">Node.js</a></li>
+<li>安装spm<br>目前最新的是3版本的，建议安装最新的，详细可以参考官方文档：<br><a href="http://spmjs.io/documentation/getting-started" title="spmjs.io" target="_blank" rel="external">http://spmjs.io/</a><br>这里只要在cmd里面执行以下一句就可以了</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install spm -g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用spm初始化项目目录</li>
+</ul>
+<p>在first-module目录下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spm init</span><br></pre></td></tr></table></figure>
+<p>接下来按照提示分表填写 Package name, Version, Description, Author即可。</p>
+<p>执行完之后生成如下目录：<br><img src="" alt=""></p>
+<p>接下来就可以开始开发自己的模块了。</p>
+<p>##模块开发</p>
+<p>###编辑我们自己的模块代码<br>在src目录下创建我们的模块代码 index.js</p>
+<p><a href="http://blog.csdn.net/huyoo/article/details/21703701" target="_blank" rel="external">http://blog.csdn.net/huyoo/article/details/21703701</a></p>
 
       
     </div>
     <footer class="article-footer">
         <div class="article-meta pull-left">
           
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/日志/">日志</a>
-  </span>
-
-
           
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Log4J/">Log4J</a>
-  </span>
-
-
         </div>
         
     </footer>
