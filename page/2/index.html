@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Page 2 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <title>第 2 页 | arthinking | ChinSyun Pang&#39;s blog</title>
   <meta name="author" content="arthinking">
   
   <meta name="description" content="Struggle for HighPay zoom.">
@@ -40,9 +40,9 @@
 <nav id="site-navigation" class="main-navigation" role="navigation">
   <ul>
     
-      <li><a href="/">Home</a></li>
+      <li><a href="/">主页</a></li>
     
-      <li><a href="/archives">Archives</a></li>
+      <li><a href="/archives">归档</a></li>
     
   </ul>
 </nav></header>
@@ -538,73 +538,6 @@
 
   
   
-    <h3 class="article-title"><a href="/cache/memcached/20141211_Memcached缓存时间比实际过期时间长的问题/"><span>Memcached缓存时间比实际过期时间长的问题</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/cache/memcached/20141211_Memcached缓存时间比实际过期时间长的问题/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
-</blockquote>
-<p>查看<a href="https://github.com/memcached/memcached/blob/master/memcached.c" title="Memcached服务器端源码" target="_blank" rel="external">Memcached服务器端源码</a>，发现MC服务器端判断缓存的有效时间是按照如下方法的：    </p>
-<p>##计算服务器启动后多少秒该key会失效</p>
-<p>###1、如果是一个超过30天的时间，则认为是一个Unix时间戳：<br>失效时间 = 设置的过期时间- 设置的过期时间距离memcached服务器启动时间的秒数;</p>
-<p>###2、如果是一个30天内的有效时间，则认为是一个时间长度：<br>失效时间 = 设置的过期时间长度 + current_time</p>
-<blockquote>
-<p>具体可以参考<a href="http://my.oschina.net/u/1255608/blog/163342" title="这里" target="_blank" rel="external">这里</a>     </p>
-</blockquote>
-<p>如果MC服务器启动之后，对系统时间进行了调整，那么第一种情况就会得到不准确的有效时间了</p>
-<p><a href="http://www.couchbase.com/issues/browse/MB-11548" title="相关bug" target="_blank" rel="external">相关bug</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
     <h3 class="article-title"><a href="/2015/03/17/Spring源码解读笔记/"><span>Spring源码解读笔记</span></a></h3>
   
 
@@ -672,13 +605,80 @@
 
 
 
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/cache/memcached/20141211_Memcached缓存时间比实际过期时间长的问题/"><span>Memcached缓存时间比实际过期时间长的问题</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/cache/memcached/20141211_Memcached缓存时间比实际过期时间长的问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
+</blockquote>
+<p>查看<a href="https://github.com/memcached/memcached/blob/master/memcached.c" title="Memcached服务器端源码" target="_blank" rel="external">Memcached服务器端源码</a>，发现MC服务器端判断缓存的有效时间是按照如下方法的：    </p>
+<p>##计算服务器启动后多少秒该key会失效</p>
+<p>###1、如果是一个超过30天的时间，则认为是一个Unix时间戳：<br>失效时间 = 设置的过期时间- 设置的过期时间距离memcached服务器启动时间的秒数;</p>
+<p>###2、如果是一个30天内的有效时间，则认为是一个时间长度：<br>失效时间 = 设置的过期时间长度 + current_time</p>
+<blockquote>
+<p>具体可以参考<a href="http://my.oschina.net/u/1255608/blog/163342" title="这里" target="_blank" rel="external">这里</a>     </p>
+</blockquote>
+<p>如果MC服务器启动之后，对系统时间进行了调整，那么第一种情况就会得到不准确的有效时间了</p>
+<p><a href="http://www.couchbase.com/issues/browse/MB-11548" title="相关bug" target="_blank" rel="external">相关bug</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Cache/">Cache</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Memcached/">Memcached</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
 
 <nav class="pagination">
   
-  <a href="/" class="pagination-prev">Prev</a>
+  <a href="/" class="pagination-prev">上一页</a>
   
   
-  <a href="/page/3/" class="pagination-next">Next</a>
+  <a href="/page/3/" class="pagination-next">下一页</a>
   
 </nav>
       </main>
