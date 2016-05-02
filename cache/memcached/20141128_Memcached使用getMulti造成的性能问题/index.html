@@ -40,9 +40,9 @@
 <nav id="site-navigation" class="main-navigation" role="navigation">
   <ul>
     
-      <li><a href="/">主页</a></li>
+      <li><a href="/">Home</a></li>
     
-      <li><a href="/archives">归档</a></li>
+      <li><a href="/archives">Archives</a></li>
     
   </ul>
 </nav></header>
@@ -74,7 +74,7 @@
     <div class="entry">
       
         <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
 <p>有这样一个场景：使用<code>getMulti</code>一次性读取一个系列的所有手机100个key，请求了100万次，系统最初只有一个MC服务器，随着访问量的增加，负载加大了，于是增加了几个MC服务器，但结果负载反而更加大了。</p>
 <p>原因是开始那100个key在一台服务器上获取，现在分不到了几MC服务器，需要访问的服务器增多了，而关键性的因素是我们用到的MC客户端memcached-client，其中的AscIIClient如下：    </p>

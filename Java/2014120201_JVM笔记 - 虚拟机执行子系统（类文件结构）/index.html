@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JVM笔记 - 虚拟机执行子系统（类文件结构） | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="JVM笔记 - 虚拟机执行子系统（类文件结构）"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>JVM笔记 - 虚拟机执行子系统（类文件结构）</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/2014120201_JVM笔记 - 虚拟机执行子系统（类文件结构）/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+<p>《深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）》笔记    </p>
+</blockquote>
+<p>#1、概述</p>
+<p>#2、无关性的基石<br>JVM 设计者通过 JSR- 292 基本兑现了对 Java 虚拟机进行适当的扩展，以便更好地支持其他语言运行于 JVM 之上这个承诺。</p>
+<p>Java 虚拟机不和包括 Java 在内的任何语言绑定，它只与“ Class 文件”这种特定的二进制文件格式所关联</p>
+<p>#3、Class类文件的结构<br>任何一个 Class 文件都对应着唯一一个类或接口的定义信息，但反过来说，类或接口并不一定都得定义在文件里（譬如类或接口也可以通过类加载器直接生成）。</p>
+<p>Class 文件是一组以 8 位字节为基础单位的二进制流。</p>
+<p>根据 Java 虚拟机规范的规定， Class 文件格式采用一种类似于 C 语言结构体的伪结构来存储数据，这种伪结构中只有两种数据类型：无符号数和表，后面的解析都要以这两种数据类型为基础。</p>
+<p>#4、字节码指令简介</p>
+<p>#5、共有设计和私有设计<br>只要优化后 Class 文件依然可以被正确读取，并且包含在其中的语义能得到完整的保持，那实现者就可以选择任何方式去实现这些语义，虚拟机后台如何处理 Class 文件完全是实现者自己的事情，只要它在外部接口上看起来与规范描述的一致即可[ 1]。</p>
+<p>#6、Class文件结构的发展<br>相对于语言、 API 以及 Java 技术体系中其他方面的变化， Class 文件结构一直处于比较稳定的状态， Class 文件的主体结构、字节码指令的语义和数量几乎没有出现过变动[ 1]， 所有对 Class 文件格式的改进，都集中在向访问标志、属性表这些在设计上就可扩展的数据结构中添加内容。</p>
+<p>#7、本章小结</p>
+<blockquote>
+<p>发表于：<a href="http://www.itzhai.com/jvm-executive-subsystem-class-structure.html" title="JVM笔记 - 虚拟机执行子系统（类文件结构）" target="_blank" rel="external">JVM笔记 - 虚拟机执行子系统（类文件结构）</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/JVM/">JVM</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

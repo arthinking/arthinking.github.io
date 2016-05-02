@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jsoup项目总体结构 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="jsoup项目总体结构"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>jsoup项目总体结构</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/jsoup/2014020301_项目总体结构/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#项目结构如下<br>先来介绍下整体的项目结构和每个类的作用</p>
+<p>##1、org.jsoup.helper<br>这个包里面包含了jsoup的辅助类</p>
+<p>###1.1、DataUtils<br>处理数据的静态辅助类，主要用来把输入流转换为Document对象。</p>
+<p>###1.2、DescendableLinkedList<br>实现一个从后往前遍历的迭代器，并兼容一些JDK 1.5中不支持的JDK 1.6提供的LinkedList方法。里面主要实现一个DescendingIterator继承了Iterator实现倒序遍历的功能的。</p>
+<p>通过使用DescendableLinkedList执行如下的代码，将会输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
+<p>与默认实现的迭代器输出相反的顺序了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DescendableLinkedList&lt;String&gt; list = <span class="keyword">new</span> DescendableLinkedList&lt;String&gt;();</span><br><span class="line">list.add(<span class="string">"a"</span>);</span><br><span class="line">list.add(<span class="string">"b"</span>);</span><br><span class="line">Iterator&lt;String&gt; iterator =list.descendingIterator();</span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">	System.out.println(iterator.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>###1.3、HttpConnection<br>Connection的实现类，Connection提供了方便的接口，用于从网络抓取内容，并解析成Document对象。可以这样获取到一个Connection对象：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.jsoup.Jsoup.connect(String)</span><br></pre></td></tr></table></figure></p>
+<p>Connections包含了Connection.Request和Connection.Response，请求的配置可以通过userAgent(String)方法进行，或者在Connection.Request里面进行配置。</p>
+<p>###1.4、StringUtil<br>功能很少的String辅助类，专门为jsoup设计的</p>
+<p>###1.5、Validate<br>为jsoup而设计的简单的验证方法类，里面校验参数的时候使用了IllegalArgumentException（RuntimeException），不需要强制捕获，表示该错误为不可预知的异常，无需捕获，抛出该异常后，后面的代码不会继续执行，如下面的asdf不会打印出来：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringUtil.padding(-<span class="number">1</span>);  <span class="comment">// 抛出IllegalArgumentException</span></span><br><span class="line">System.out.println(<span class="string">"asdf"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>##2、org.jsoup.nodes<br>HTML元素节点的相关类</p>
+<p>###2.1、Attribute<br>HTML元素的一个属性对象，包括属性名和属性值。</p>
+<p>###2.2、Attributes<br>一个HTML元素的属性集合</p>
+<p>###2.3、Comment<br>注释元素，如 <!-- -->，继承自Node</p>
+<p>###2.4、DataNode<br>一个数据节点，用于style，script标签，因为包含了css和js脚本，这些标签中的内容不能转换为文本显示，继承自Node。</p>
+<p>###2.5、Document<br>一个HTML的文档对象Document，继承自Element。</p>
+<p>###2.6、DocumentType<br>&lt;!DOCTYPE&gt; 节点</p>
+<p>###2.7、Element<br>继承自Node，一个HTML元素，包含标签名称，属性集合，和子节点（包括文本节点和其他节点）。</p>
+<p>###2.8、Entities<br>HTML实体和转义规则，这些转义对应的规则，存储在该包目录下的entities-base.properties和entities-full.properties文件里面。</p>
+<p>###2.9、FormElement<br>表单元素</p>
+<p>###2.10、Node<br>基本的抽象节点模型，Document，Comment等都是Node的子类。</p>
+<p>###2.11、TextNode<br>一个文本节点，继承自Node。</p>
+<p>###2.12、XmlDeclaration<br>一个XML声明</p>
+<p>##3、org.jsoup.parser</p>
+<p>###3.1、CharacterReader</p>
+<p>###3.2、HtmlTreeBuilder</p>
+<p>###3.3、HtmlTreeBuilderState</p>
+<p>###3.4、ParseError</p>
+<p>###3.5、ParseErrorList</p>
+<p>###3.6、Parser</p>
+<p>###3.7、Tag</p>
+<p>###3.8、Token</p>
+<p>###3.9、Tokeniser</p>
+<p>###3.10、TokeniserState</p>
+<p>###3.11、TokenQueue</p>
+<p>###3.12、TreeBuilder</p>
+<p>###3.13、XmlTreeBuilder</p>
+<p>##4、org.jsoup.safety</p>
+<p>###4.1、Cleaner</p>
+<p>###4.2、Whitelist</p>
+<p>##5、org.jsoup.select</p>
+<p>###5.1、Collector</p>
+<p>###5.2、CombiningEvaluator</p>
+<p>###5.3、Elements</p>
+<p>###5.4、Evaluator</p>
+<p>###5.5、NodeTraversor</p>
+<p>###5.6、NodeVisitor</p>
+<p>###5.7、QueryParser</p>
+<p>###5.8、Selector</p>
+<p>###5.9、StructuralEvaluator</p>
+<p>##Connection</p>
+<p>##HttpStatusException</p>
+<p>##Jsoup</p>
+<p>##UnsupportedMimeTypeException</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/jsoup/">jsoup</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a>, <a href="/tags/MAC/">MAC</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

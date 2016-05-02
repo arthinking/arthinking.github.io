@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JDK配置与JVM监控 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="JDK配置与JVM监控"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>JDK配置与JVM监控</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/JDK配置与JVM监控/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#安装JDK</p>
+<blockquote>
+<p><a href="http://jingyan.baidu.com/article/b0b63dbfd5db8b4a48307027.html" title="ubuntu 12.04 LTS 安装配置JDK" target="_blank" rel="external">ubuntu 12.04 LTS 安装配置JDK</a>    </p>
+</blockquote>
+<p>下载jdk-xxx.bin</p>
+<p>解压文件<br>chmod u+x jdk-xxx.bin<br>./jdk-xxx.bin    </p>
+<p>复制解压出jdk-xxx文件夹到/usr/lib下<br>sudo mkdir -p /usr/lib/jvm/<br>cp -r jdk-xxx /usr/lib/jvm/jdkxxx</p>
+<p>#配置JDK</p>
+<blockquote>
+<p><a href="http://blog.chinaunix.net/uid-26404477-id-3471246.html" title="ubuntu 12.04安装jdk" target="_blank" rel="external">ubuntu 12.04安装jdk</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gedit</span><br><span class="line">sudo gedit /etc/profile</span><br></pre></td></tr></table></figure>
+<p>or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/</span><br><span class="line">vim profile</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_10</span><br><span class="line">export JRE_HOME=/usr/lib/jvm/jdk1.7.0_10/jre </span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line"></span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>关闭，保存，使用source更新一下profile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br></pre></td></tr></table></figure></p>
+<p>如果之前系统里面已经安装了openjdk，可以使用如下方法将默认jdk更改过来：</p>
+<p>将系统默认的jdk修改过来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_10/bin/java 300</span><br></pre></td></tr></table></figure></p>
+<p>输入sun jdk前的数字就好了    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_10/bin/javac 300</span><br><span class="line">$ sudo update-alternatives --config java </span><br><span class="line">$ sudo update-alternatives --config javac</span><br></pre></td></tr></table></figure>
+<p>#使用VisualVM监控远程主机JVM</p>
+<blockquote>
+<p><a href="http://www.blogjava.net/titanaly/archive/2012/03/20/372318.html" title="visualvm监控jvm及远程jvm监控方法" target="_blank" rel="external">visualvm监控jvm及远程jvm监控方法</a></p>
+</blockquote>
+<p>##直接使用JDK<br>如果是直接监控JVM，则在 <code>/etc/profile</code> 文件里面添加如下配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_OPTS="-Dcom.sun.management.jmxremote.port=<span class="tag">&lt;<span class="name">port</span>&gt;</span> -Dcom.sun.management.jmxremote.ssl=false</span><br><span class="line">-Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=<span class="tag">&lt;<span class="name">hostname</span>&gt;</span>  </span><br><span class="line">-Dcom.sun.management.jmxremote.ssl=false"</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">详细参考：</span><br><span class="line">&gt; [使用Java自带的VisualVM监控远程主机JVM内存使用情况](http://www.cnblogs.com/chenying99/archive/2012/06/21/2557208.html "使用Java自带的VisualVM监控远程主机JVM内存使用情况")</span><br><span class="line"></span><br><span class="line">##使用resin</span><br><span class="line">在resin.conf配置文件中添加如下配置：</span><br><span class="line">```xml</span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Djava.rmi.server.hostname=192.168.75.34<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.port=9934<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.ssl=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.authenticate=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在客户端使用JMX连接即可</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/JVM/">JVM</a>, <a href="/tags/JDK/">JDK</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span></span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/seajs/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>在使用spm之前，首先得安装nodejs，因为spm是nodejs的一个package。<a href="http://qianduanblog.com/post/js-learning-42-using-spm-3-build-seajs-project.html" title="使用spm@3构建seajs项目" target="_blank" rel="external">使用spm@3构建seajs项目</a></p>
+<p><a href="http://spmjs.io/documentation" title="spm 3官方教程" target="_blank" rel="external">spm 3官方教程</a></p>
+<p>构建目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dist  构建目标文件夹</span><br><span class="line">examples  相关使用文档</span><br><span class="line">spm_modules   依赖的js文件仓库，spm install的时候下载到里面</span><br><span class="line">tests  测试案例</span><br><span class="line">xx.js  </span><br><span class="line">package.json  spm维护的依赖配置文件，用于生产dist目录的相关配置</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://spmjs.io/package/expect.js" title="expectjs" target="_blank" rel="external">expectjs</a></p>
+<p><a href="http://chaoskeh.com/blog/why-its-hard-to-combo-seajs-modules.html" title="为什么 SeaJS 模块的合并这么麻烦" target="_blank" rel="external">为什么 SeaJS 模块的合并这么麻烦</a></p>
+<p>###安装nodejs</p>
+<p><a href="http://seajs.org/docs/#docs" title="seajs" target="_blank" rel="external">seajs</a></p>
+<p>配置NODE_PATH</p>
+<p><a href="http://segmentfault.com/blog/yinchangsheng/1190000002478924" title="nodejs 中的 NODE_PATH" target="_blank" rel="external">nodejs 中的 NODE_PATH</a></p>
+<p>windows下需要安装<a href="http://gnuwin32.sourceforge.net/packages/make.htm" title="make" target="_blank" rel="external">make</a></p>
+<p>下载<a href="https://github.com/seajs/examples" title="demo" target="_blank" rel="external">demo</a>编译执行</p>
+<p>SeaJS遵循<a href="https://github.com/cmdjs/specification/blob/master/draft/module.md" title="CMD" target="_blank" rel="external">CMD</a>规范，一个模块就是一个文件，通过<code>require</code> 关键词引入外部模块，每次加载需要直接使用到的模块的时候，模块内部 <code>require</code> 进来的js也会一并加载，为了让SeaJS在加载之前把所有相关联的JS都能够通过一个JS文件一次性加载进来，就需要用到SeaJS的<a href="http://www.zhihu.com/question/20789867/answer/16187950" title="Transport" target="_blank" rel="external">Transport</a>格式<br>没转换前Modules/Wrappingsgui规范格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, exports, module) &#123;</span><br><span class="line">   var a = require(&quot;a&quot;)</span><br><span class="line">   exports.foo = ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>CMD模块在正式上线前，通过构建工具（如SPM）先转换为Modules/Transport格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define(&quot;id&quot;, [&quot;dep-1&quot;, &quot;dep-2&quot;], function(require, exports, module) &#123;</span><br><span class="line">   // source code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>进一步通过构建工具，就可以一并吧 <code>require</code> 引入进来的模块一起压缩合并到同一个文件中了。</p>
+<p>##说明<br>简单来说，通过使用SeaJS，我们可以把JS代码模块化，在上线之前，通过spm这样的构建工具，把自己开发的模块压缩合并，当成SeaJS的一个模块来使用。</p>
+<p>##Step by step</p>
+<p>下面一步一步来实现这个过程：</p>
+<p>##正面项目接口</p>
+<p>整体目录结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">project   // 项目跟目录 </span><br><span class="line">|</span><br><span class="line">|-assets  // web资源文件</span><br><span class="line">  |</span><br><span class="line">  |- sea-modules  // SeaJS相关模块</span><br><span class="line">  |  </span><br><span class="line">  |- static  // 模块开发路径</span><br><span class="line">  |   |</span><br><span class="line">  |   |- first-module</span><br><span class="line">  |       |- dist  // 我的模块构建目标文件夹</span><br><span class="line">  |       |- src  // 我的模块开发文件夹</span><br><span class="line">  |       |- package.json  // spm编译配置</span><br><span class="line">  |</span><br><span class="line">  |- app  // 我的模块使用例子</span><br><span class="line">  |</span><br></pre></td></tr></table></figure></p>
+<p>##创建目录结构</p>
+<p>###step1、创建项目 project</p>
+<p>###step2、创建web资源文件夹<br>在project里面新建一个assetsweb资源文件夹，专门用来存放JS，CSS等资源，我们的模块开发就在这个目录下面进行</p>
+<p>###step3、在assets下面创建sea-modules文件夹<br>这个文件夹是用来存放SeaJS模块的，我们需要用到的模块，包括自己实现的模块最终都要存放到这里</p>
+<p>###step4、在assets目录下创建 static 文件夹<br>这个文件夹用于模块开发</p>
+<p>###step5、在 static 目录下创建 first-module 文件夹<br>这个文件夹用于存储我的第一个模块的开发代码</p>
+<p>###step6、在 first-module 目录下创建 src 目录，这个目录用于存放我们模块开发的代码</p>
+<p>###step7、在assets下面创建 app 文件夹<br>这个文件夹存放我们演示调用模块代码的HTML文件</p>
+<p>##使用spm初始化构建</p>
+<p>###首先你需要通过npm安装spm，而npm是Node.js里面的一个工具，所以你需要先这样搭建环境：</p>
+<ul>
+<li>安装<a href="http://nodejs.org/" title="Node.js" target="_blank" rel="external">Node.js</a></li>
+<li>安装spm<br>目前最新的是3版本的，建议安装最新的，详细可以参考官方文档：<br><a href="http://spmjs.io/documentation/getting-started" title="spmjs.io" target="_blank" rel="external">http://spmjs.io/</a><br>这里只要在cmd里面执行以下一句就可以了</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install spm -g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用spm初始化项目目录</li>
+</ul>
+<p>在first-module目录下执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spm init</span><br></pre></td></tr></table></figure>
+<p>接下来按照提示分表填写 Package name, Version, Description, Author即可。</p>
+<p>执行完之后生成如下目录：<br><img src="" alt=""></p>
+<p>接下来就可以开始开发自己的模块了。</p>
+<p>##模块开发</p>
+<p>###编辑我们自己的模块代码<br>在src目录下创建我们的模块代码 index.js</p>
+<p><a href="http://blog.csdn.net/huyoo/article/details/21703701" target="_blank" rel="external">http://blog.csdn.net/huyoo/article/details/21703701</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

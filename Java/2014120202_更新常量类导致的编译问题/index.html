@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>更新常量类导致的编译问题 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="更新常量类导致的编译问题"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>更新常量类导致的编译问题</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/2014120202_更新常量类导致的编译问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+<p>类从被加载到JVM内存开始，到卸载出内存，整个周期包括：加载、验证、准备、解析、初始化、使用和卸载。而虚拟机规范严格规定了有且只有五种情况必须对类进行初始化（link），这几种情况被称为对类的主动引用，其他的情况被称为被动引用（link），其中就包括调用一个类的常量，不会触发定义常量的类的初始化，这是因为常量（字符串类型或基本数据类型）在编译阶段会存入调用类的常量池中。</p>
+</blockquote>
+<p><strong>问题描述如下：</strong><br>更新一个常量类class到服务器之后，其他引用这个常量的地方并没有做出改动，导致问题的出现。</p>
+<p>对常量问题的思考：<br>一般在系统运行事情不会发生变化的东西才可以定义为常量，常量可以硬编码写到代码里面。</p>
+<p>对于可能做出调整的常量需要考虑：为了方便编译，不用全局编译一次，哪里用到的常量就定义在哪个类中，或者使用枚举类型替换。<br>参考代码：<br><a href="https://github.com/arthinking/java-code/blob/master/src/me/arthinking/code4jvmnote/C7_4_RoleEnum.java" title="常量编译处理方式" target="_blank" rel="external">常量编译处理方式</a><br>可以发现，数组常量会从所在的类加载元素，而字符串和整型的常量会直接在常量池中保存一份数据，不会除非常量所在类的初始化。</p>
+<blockquote>
+<p>发表于：<a href="更新常量类导致的编译问题" title="http://www.itzhai.com/the-compilation-problems-caused-by-constant.html">更新常量类导致的编译问题</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/JVM/">JVM</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

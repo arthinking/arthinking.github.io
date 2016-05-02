@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>VIM常用命令 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="VIM常用命令"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>VIM常用命令</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/IDE/vim/2016-03-19 常用命令/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-03-19T11:00:53.000Z">
+          2016-03-19
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="复制粘贴"><a href="#复制粘贴" class="headerlink" title="复制粘贴"></a>复制粘贴</h1><p>vi编辑器中的整行（多行）复制与粘贴就非常必要了。</p>
+<h2 id="1、复制"><a href="#1、复制" class="headerlink" title="1、复制"></a>1、复制</h2><blockquote>
+<ul>
+<li><p>1）单行复制<br>在命令模式下，将光标移动到将要复制的行处，按<code>yy</code>进行复制；</p>
+</li>
+<li><p>2）多行复制<br>在命令模式下，将光标移动到将要复制的首行处，按<code>nyy</code>复制n行；其中n为1、2、3……</p>
+</li>
+</ul>
+<p>按y复制选中区域</p>
+</blockquote>
+<h2 id="2、粘贴"><a href="#2、粘贴" class="headerlink" title="2、粘贴"></a>2、粘贴</h2><p>在命令模式下，将光标移动到将要粘贴的行处，按<code>p</code>进行粘贴。</p>
+<h2 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h2><p>命令模式：</p>
+<blockquote>
+<p>命令行模式下输入<br><code>6,9 co 12</code><br>复制第6行到第9行之间的内容到第12行后面。</p>
+</blockquote>
+<p>使用标签法：</p>
+<blockquote>
+<p>光标移到起始行，输入<code>ma</code><br>光标移到结束行，输入<code>mb</code><br>光标移到粘贴行，输入<code>mc</code><br>然后 :<code>&#39;a,&#39;b co &#39;c</code> 把 co 改成 m 就成剪切了<br>要删除多行的话，可以用 ：<code>5, 9 de</code></p>
+</blockquote>
+<h1 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h1><p>v：按字符选择。经常使用的模式，所以亲自尝试一下它。</p>
+<p>V：按行选择。这在你想拷贝或者移动很多行的文本的时候特别有用。</p>
+<p>CTRL＋v：按块选择。</p>
+<h1 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h1><p>u 撤销<br>ctrl + r  重做</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/IDE/">IDE</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/VIM/">VIM</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

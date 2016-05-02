@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>INtelliJ IDEA系列1 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="INtelliJ IDEA系列1"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>INtelliJ IDEA系列1</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/IDE/IntelliJ IDEA/2016-02-03 IntelliJ IDEA系列1/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-03T04:35:11.000Z">
+          2016-02-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>IntelliJ IDEA对目录做了调整，把偏好设置调整到了如下目录：</p>
+<p>IntelliJ IDEA –&gt; preferences(快捷键：⌘,) –&gt; Appearance &amp; Behavior –&gt; Appearance –&gt; UI Options –&gt; Theme</p>
+<p>旧版本的可以在<code>file --&gt; Settings中找到</code>。</p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>有如下三种编译：</p>
+<ul>
+<li>Compile</li>
+</ul>
+<p>对特定的代码文件进行强制编译；</p>
+<ul>
+<li>Rebuild</li>
+</ul>
+<p>对选择的project进行强制编译；</p>
+<ul>
+<li>Make</li>
+</ul>
+<p>对选定的Project或者Module进行编译，只编译改动过的文件；</p>
+<p><code>shift + command + F9</code>  compile one class.</p>
+<h3 id="Run配置"><a href="#Run配置" class="headerlink" title="Run配置"></a>Run配置</h3><p>Run –&gt; Edit Configurations</p>
+<h2 id="项目结构设置"><a href="#项目结构设置" class="headerlink" title="项目结构设置"></a>项目结构设置</h2><p>file –&gt; project structrue(快捷键：⌘;)<br>可以在这里管理SDK版本(Platform Settings –&gt; SDKs)，设置项目SDK(Project Settings –&gt; Project)。</p>
+<h3 id="language-level"><a href="#language-level" class="headerlink" title="language level"></a>language level</h3><p>对于大型项目，各个 Module 用到的 SDK 和 language level 很有可能是各不一样的，IntelliJ IDEA 对此也进行了支持。(Project Settings –&gt; Modules –&gt; Sources –&gt; Lauguage Level…)</p>
+<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><h3 id="实时代码模板"><a href="#实时代码模板" class="headerlink" title="实时代码模板"></a>实时代码模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IntelliJ IDEA --&gt; Editor --&gt; Live Template</span><br></pre></td></tr></table></figure>
+<p>提示快捷键：<code>Tab</code> 和 <code>Ctrl + J</code></p>
+<h3 id="文件代码模板"><a href="#文件代码模板" class="headerlink" title="文件代码模板"></a>文件代码模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Prefrences --&gt; Editor --&gt; File and code Template</span><br></pre></td></tr></table></figure>
+<p>IntelliJ IDEA 的文件代码模板是可以用Velocity Template Language进行书写的；</p>
+<h3 id="Emmet的使用"><a href="#Emmet的使用" class="headerlink" title="Emmet的使用"></a>Emmet的使用</h3><p>该工具常用于前端代码的自动生成；</p>
+<h3 id="Postfix-Completion的使用"><a href="#Postfix-Completion的使用" class="headerlink" title="Postfix Completion的使用"></a>Postfix Completion的使用</h3><p>代码模板的自动补全功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences --&gt; Editor --&gt; General --&gt; Postfix Completion</span><br></pre></td></tr></table></figure>
+<h2 id="插件讲解"><a href="#插件讲解" class="headerlink" title="插件讲解"></a>插件讲解</h2><p><a href="https://plugins.jetbrains.com/" target="_blank" rel="external">官方插件库</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences --&gt; Plugins</span><br></pre></td></tr></table></figure></p>
+<h2 id="Eclipse的Java-Web项目环境搭建"><a href="#Eclipse的Java-Web项目环境搭建" class="headerlink" title="Eclipse的Java Web项目环境搭建"></a>Eclipse的Java Web项目环境搭建</h2><h2 id="Maven项目介绍"><a href="#Maven项目介绍" class="headerlink" title="Maven项目介绍"></a>Maven项目介绍</h2><h2 id="Debug讲解"><a href="#Debug讲解" class="headerlink" title="Debug讲解"></a>Debug讲解</h2><h2 id="重构讲解"><a href="#重构讲解" class="headerlink" title="重构讲解"></a>重构讲解</h2><h2 id="数据库管理工具"><a href="#数据库管理工具" class="headerlink" title="数据库管理工具"></a>数据库管理工具</h2><h2 id="IntelliJ-IDEA常用设置"><a href="#IntelliJ-IDEA常用设置" class="headerlink" title="IntelliJ IDEA常用设置"></a>IntelliJ IDEA常用设置</h2><h2 id="IntelliJ-IDEA常用快捷键讲解（Win-Linux）"><a href="#IntelliJ-IDEA常用快捷键讲解（Win-Linux）" class="headerlink" title="IntelliJ IDEA常用快捷键讲解（Win + Linux）"></a>IntelliJ IDEA常用快捷键讲解（Win + Linux）</h2><h2 id="IntelliJ-IDEA常用快捷键讲解（Mac）"><a href="#IntelliJ-IDEA常用快捷键讲解（Mac）" class="headerlink" title="IntelliJ IDEA常用快捷键讲解（Mac）"></a>IntelliJ IDEA常用快捷键讲解（Mac）</h2><h2 id="IntelliJ-IDEA的Java热部署插件JRebel安装及使用"><a href="#IntelliJ-IDEA的Java热部署插件JRebel安装及使用" class="headerlink" title="IntelliJ IDEA的Java热部署插件JRebel安装及使用"></a>IntelliJ IDEA的Java热部署插件JRebel安装及使用</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://github.com/judasn/IntelliJ-IDEA-Tutorial" target="_blank" rel="external">https://github.com/judasn/IntelliJ-IDEA-Tutorial</a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/" target="_blank" rel="external">IntelliJ IDEA使用教程</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/IDE/">IDE</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

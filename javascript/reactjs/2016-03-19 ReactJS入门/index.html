@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>arthinking | ChinSyun Pang&#39;s blog</title>
+  <title>ReactJS入门 | arthinking | ChinSyun Pang&#39;s blog</title>
   <meta name="author" content="arthinking">
   
   <meta name="description" content="Struggle for HighPay zoom.">
@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="ReactJS入门"/>
   <meta property="og:site_name" content="arthinking"/>
 
   
@@ -40,9 +40,9 @@
 <nav id="site-navigation" class="main-navigation" role="navigation">
   <ul>
     
-      <li><a href="/">主页</a></li>
+      <li><a href="/">Home</a></li>
     
-      <li><a href="/archives">归档</a></li>
+      <li><a href="/archives">Archives</a></li>
     
   </ul>
 </nav></header>
@@ -53,7 +53,7 @@
 
   
   
-    <h3 class="article-title"><span></span></h3>
+    <h3 class="article-title"><span>ReactJS入门</span></h3>
   
 
 
@@ -73,25 +73,28 @@
   <div class="article-content">
     <div class="entry">
       
-        <h1 id="1、数据呈现"><a href="#1、数据呈现" class="headerlink" title="1、数据呈现"></a>1、数据呈现</h1><h3 id="响应式更新（Reactive-Updates）"><a href="#响应式更新（Reactive-Updates）" class="headerlink" title="响应式更新（Reactive Updates）"></a>响应式更新（Reactive Updates）</h3><p><code>this.props</code>是只读的。</p>
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="1、数据呈现"><a href="#1、数据呈现" class="headerlink" title="1、数据呈现"></a>1、数据呈现</h1><h3 id="响应式更新（Reactive-Updates）"><a href="#响应式更新（Reactive-Updates）" class="headerlink" title="响应式更新（Reactive Updates）"></a>响应式更新（Reactive Updates）</h3><p><code>this.props</code>是只读的。</p>
 <h3 id="组件就像是函数"><a href="#组件就像是函数" class="headerlink" title="组件就像是函数"></a>组件就像是函数</h3><p>React组件非常像函数，接收<code>props</code>和<code>status</code>作为参数，然后渲染出HTML。</p>
 <h3 id="JSX语法"><a href="#JSX语法" class="headerlink" title="JSX语法"></a>JSX语法</h3><p>ReactJS中相信：标签与生成它的代码是紧密相连的，所以不做<code>模板引擎</code>和<code>展示逻辑</code>的分离。最好的方法是通过Javascript直接生成模板，为此JSX派上用场了：一个非常简单、可选类似 HTML 语法 ，通过函数调用即可生成模板的编译器。</p>
 <blockquote>
 <p>JSX 让你可以用 HTML 语法去写 JavaScript 函数调用。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(<span class="string">'a'</span>, &#123;href: <span class="string">'http://facebook.github.io/react/'</span>&#125;, <span class="string">'Hello React!'</span>)。</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>JSX语法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"http://facebook.github.io/react/"</span>&gt;Hello React!&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>JSX语法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"http://facebook.github.io/react/"</span>&gt;Hello React!<span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <h2 id="1-1、深入理解JSX"><a href="#1-1、深入理解JSX" class="headerlink" title="1.1、深入理解JSX"></a>1.1、深入理解JSX</h2><p>JSX是一个看起来像XML的JavaScript语法扩展。React可以用来做简单的JSX句法转换。</p>
 <h3 id="1-1-1、为什么要使用JSX"><a href="#1-1-1、为什么要使用JSX" class="headerlink" title="1.1.1、为什么要使用JSX"></a>1.1.1、为什么要使用JSX</h3><p>能够定义简洁且我们熟知的包含属性的树状结构语法。</p>
 <h3 id="1-1-2、HTML标签与React组件对比"><a href="#1-1-2、HTML标签与React组件对比" class="headerlink" title="1.1.2、HTML标签与React组件对比"></a>1.1.2、HTML标签与React组件对比</h3><p>React 的 JSX 里约定分别使用首字母大、小写来区分本地组件的类和 HTML 标签。</p>
-<h3 id="1-1-3、转换"><a href="#1-1-3、转换" class="headerlink" title="1.1.3、转换"></a>1.1.3、转换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> app = &lt;Nav color="blue" /&gt;;</span><br><span class="line">// 等价于</span><br><span class="line">var app = React.createElement(Nav, &#123;color:"blue"&#125;);</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Nav, Profile;</span><br><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> app = &lt;Nav color="blue"&gt;&lt;Profile&gt;click&lt;/Profile&gt;&lt;/Nav&gt;;</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">var</span> app = React.createElement(</span><br><span class="line">  Nav,</span><br><span class="line">  &#123;color:<span class="string">"blue"</span>&#125;,</span><br><span class="line">  React.createElement(Profile, <span class="literal">null</span>, <span class="string">"click"</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-4、JavaScript表达式"><a href="#1-1-4、JavaScript表达式" class="headerlink" title="1.1.4、JavaScript表达式"></a>1.1.4、JavaScript表达式</h3><h4 id="属性表达式"><a href="#属性表达式" class="headerlink" title="属性表达式"></a>属性表达式</h4><p>使用JavaScript表达式作为属性值，使用{}<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> person = &lt;Person name=&#123;window.isLoggedIn ? window.name : ''&#125; /&gt;;</span><br><span class="line">// 等价于</span><br><span class="line">var person = React.createElement(</span><br><span class="line">  Person,</span><br><span class="line">  &#123;name: window.isLoggedIn ? window.name : ''&#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<h4 id="子节点表达式"><a href="#子节点表达式" class="headerlink" title="子节点表达式"></a>子节点表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> content = &lt;Container&gt;&#123;window.isLoggedIn ? &lt;Nav /&gt; : &lt;Login /&gt;&#125;&lt;/Container&gt;;</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">var</span> content = React.createElement(</span><br><span class="line">  Container,</span><br><span class="line">  <span class="literal">null</span>,</span><br><span class="line">  <span class="built_in">window</span>.isLoggedIn ? React.createElement(Nav) : React.createElement(Login)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-3、转换"><a href="#1-1-3、转换" class="headerlink" title="1.1.3、转换"></a>1.1.3、转换</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="xml"><span class="tag">&lt;<span class="name">Nav</span> <span class="attr">color</span>=<span class="string">"blue"</span> /&gt;</span>;</span><br><span class="line">// 等价于</span><br><span class="line">var app = React.createElement(Nav, &#123;color:"blue"&#125;);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Nav, Profile;</span><br><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="xml"><span class="tag">&lt;<span class="name">Nav</span> <span class="attr">color</span>=<span class="string">"blue"</span>&gt;</span><span class="tag">&lt;<span class="name">Profile</span>&gt;</span>click<span class="tag">&lt;/<span class="name">Profile</span>&gt;</span><span class="tag">&lt;/<span class="name">Nav</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">var</span> app = React.createElement(</span><br><span class="line">  Nav,</span><br><span class="line">  &#123;color:<span class="string">"blue"</span>&#125;,</span><br><span class="line">  React.createElement(Profile, <span class="literal">null</span>, <span class="string">"click"</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-4、JavaScript表达式"><a href="#1-1-4、JavaScript表达式" class="headerlink" title="1.1.4、JavaScript表达式"></a>1.1.4、JavaScript表达式</h3><h4 id="属性表达式"><a href="#属性表达式" class="headerlink" title="属性表达式"></a>属性表达式</h4><p>使用JavaScript表达式作为属性值，使用{}<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="xml"><span class="tag">&lt;<span class="name">Person</span> <span class="attr">name</span>=<span class="string">&#123;window.isLoggedIn</span> ? <span class="attr">window.name</span> <span class="attr">:</span> ''&#125; /&gt;</span>;</span><br><span class="line">// 等价于</span><br><span class="line">var person = React.createElement(</span><br><span class="line">  Person,</span><br><span class="line">  &#123;name: window.isLoggedIn ? window.name : ''&#125;</span><br><span class="line">);</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="子节点表达式"><a href="#子节点表达式" class="headerlink" title="子节点表达式"></a>子节点表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> content = <span class="xml"><span class="tag">&lt;<span class="name">Container</span>&gt;</span>&#123;window.isLoggedIn ? <span class="tag">&lt;<span class="name">Nav</span> /&gt;</span> : <span class="tag">&lt;<span class="name">Login</span> /&gt;</span>&#125;<span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// 等价于</span></span><br><span class="line"><span class="keyword">var</span> content = React.createElement(</span><br><span class="line">  Container,</span><br><span class="line">  <span class="literal">null</span>,</span><br><span class="line">  <span class="built_in">window</span>.isLoggedIn ? React.createElement(Nav) : React.createElement(Login)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><p>JSX 里添加注释很容易；它们只是 JS 表达式而已。你只需要在一个标签的子节点内(非最外层)小心地用 {} 包围要注释的部分。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> content = (</span><br><span class="line">  &lt;Nav&gt;</span><br><span class="line">    &#123;/* 一般注释, 用 &#123;&#125; 包围 */&#125;</span><br><span class="line">    &lt;Person</span><br><span class="line">      /* 多</span><br><span class="line">         行</span><br><span class="line">         注释 */</span><br><span class="line">      name=&#123;window.isLoggedIn ? window.name : ''&#125; // 行尾注释</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/Nav&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> content = (</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Nav</span>&gt;</span></span><br><span class="line">    &#123;/* 一般注释, 用 &#123;&#125; 包围 */&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">Person</span></span><br><span class="line">      /* 多</span><br><span class="line">         行</span><br><span class="line">         注释 */</span><br><span class="line">      <span class="attr">name</span>=<span class="string">&#123;window.isLoggedIn</span> ? <span class="attr">window.name</span> <span class="attr">:</span> ''&#125; // 行尾注释</span><br><span class="line">    /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">Nav</span>&gt;</span></span><br><span class="line">);</span></span><br></pre></td></tr></table></figure>
 <h2 id="1-2、JSX的延展属性"><a href="#1-2、JSX的延展属性" class="headerlink" title="1.2、JSX的延展属性"></a>1.2、JSX的延展属性</h2><p>Props 应该被当作禁止修改的。修改 props 对象可能会导致预料之外的结果，所以最好不要去修改 props 对象。</p>
 <h3 id="延展属性（Spread-Attributes）"><a href="#延展属性（Spread-Attributes）" class="headerlink" title="延展属性（Spread Attributes）"></a>延展属性（Spread Attributes）</h3><p>这个<code>...</code>操作符（也被叫做延展操作符 － spread operator）已经被 ES6 数组 支持。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> props = &#123; foo: <span class="string">'default'</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> component = &lt;Component &#123;...props&#125; foo=&#123;'override'&#125; /&gt;;</span><br><span class="line">console.log(component.props.foo); // 'override'</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> props = &#123; foo: <span class="string">'default'</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> component = <span class="xml"><span class="tag">&lt;<span class="name">Component</span> &#123;<span class="attr">...props</span>&#125; <span class="attr">foo</span>=<span class="string">&#123;</span>'<span class="attr">override</span>'&#125; /&gt;</span>;</span><br><span class="line">console.log(component.props.foo); // 'override'</span></span><br></pre></td></tr></table></figure>
 <h2 id="1-3、JSX的陷阱"><a href="#1-3、JSX的陷阱" class="headerlink" title="1.3、JSX的陷阱"></a>1.3、JSX的陷阱</h2><h3 id="HTML实体"><a href="#HTML实体" class="headerlink" title="HTML实体"></a>HTML实体</h3><p>如果想在 JSX 表达式中显示 HTML 实体，可以会遇到二次转义的问题，因为 React 默认会转义所有字符串，为了防止各种 XSS 攻击。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误: 会显示 “First &amp;middot; Second”</span></span><br><span class="line">&lt;div&gt;&#123;<span class="string">'First &amp;middot; Second'</span>&#125;&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
 <p>解决方法：</p>
@@ -106,7 +109,7 @@
 <ul>
 <li>在数组里面使用字符串和JSX元素</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;[<span class="string">'First '</span>, &lt;span&gt;&amp;middot;&lt;/span&gt;, <span class="string">' Second'</span>]&#125;&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;[<span class="string">'First '</span>, <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&amp;middot;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>, <span class="string">' Second'</span>]&#125;&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>使用原始HTML</li>
 </ul>
@@ -250,7 +253,23 @@
     <footer class="article-footer">
         <div class="article-meta pull-left">
           
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
+  </span>
+
+
           
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/ReactJS/">ReactJS</a>
+  </span>
+
+
         </div>
         
     </footer>

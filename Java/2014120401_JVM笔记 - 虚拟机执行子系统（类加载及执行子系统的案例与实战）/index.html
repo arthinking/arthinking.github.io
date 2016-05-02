@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JVM笔记 - 虚拟机执行子系统（类加载及执行子系统的案例与实战） | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="JVM笔记 - 虚拟机执行子系统（类加载及执行子系统的案例与实战）"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>JVM笔记 - 虚拟机执行子系统（类加载及执行子系统的案例与实战）</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/2014120401_JVM笔记 - 虚拟机执行子系统（类加载及执行子系统的案例与实战）/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#1、概述<br>能通过程序进行操作的，主要是字节码生成与类加载器这两部分的功能。</p>
+<p>#2、案例分析</p>
+<p>##2.1、Tomcat：正统的类加载器架构<br>主流的 Java   Web 服务器，如 Tomcat、 Jetty、 WebLogic、 WebSphere 或其他笔者没有列举的服务器，都实现了自己定义的类加载器（一般都不止一个）。因为一个功能健全的 Web 服务器，要解决如下几个问题：    </p>
+<blockquote>
+<p>部署在同一个服务器上的两个 Web 应用程序所使用的 Java 类库可以实现相互隔离。</p>
+<p>部署在同一个服务器上的两个 Web 应用程序所使用的 Java 类库可以互相共享。</p>
+<p>服务器需要尽可能地保证自身的安全不受部署的 Web 应用程序影响。</p>
+<p>支持 JSP 应用的 Web 服务器，大多数都需要支持 HotSwap 功能。</p>
+</blockquote>
+<p>在部署 Web 应用时，单独的一个 ClassPath 就无法满足需求了，所以各种 Web 服务器都“不约而同”地提供了好几个 ClassPath 路径供用户存放第三方类库。</p>
+<p>在 Tomcat 目录结构中，有 3 组目录（”<code>/common/*</code>“、”<code>/server/*</code>“ 和”<code>/shared/*</code>“） 可以存放 Java 类库，另外还可以加上 Web 应用程序自身的目录”/ WEB- INF/*”， 一共 4 组。</p>
+<p><code>CommonClassLoader</code>、 <code>CatalinaClassLoader</code>、 <code>SharedClassLoader</code> 和 <code>WebappClassLoader</code> 则是 Tomcat 自己定义的类加载器，</p>
+<p>###Tomcat热部署原理<br>JasperLoader 的加载范围仅仅是这个 JSP 文件所编译出来的那一个 Class， 它出现的目的就是为了被丢弃：当服务器检测到 JSP 文件被修改时，会替换掉目前的 JasperLoader 的实例，并通过再建立一个新的 Jsp 类加载器来实现 JSP 文件的 HotSwap 功能。</p>
+<p>对于 Tomcat 的 6. x 版本，只有指定了 tomcat/conf/ catalina. properties 配置文件的 server.loader 和 share.loader 项后才会真正建立 CatalinaClassLoader 和 SharedClassLoader 的实例，否则会用到这两个类加载器的地方都会用 CommonClassLoader 的实例代替，而默认的配置文件中没有设置这两个 loader 项，所以 Tomcat 6.x 顺理成章地把/common、/server 和/shared 三个目录默认合并到一起变成一个/ lib 目录。</p>
+<p>##2.2、OSGi：灵活的类加载器架构<br>“学习 JEE 规范，去看 JBoss 源码；学习类加载器，就去看 OSGi 源码”。</p>
+<p>OSGi 在 Java 程序员中最著名的应用案例就是Eclipse IDE。</p>
+<p>一个 Bundle 可以声明它所依赖的 Java   Package（ 通过 Import- Package 描述），也可以声明它允许导出发布的 Java   Package（ 通过 Export- Package 描述）。</p>
+<p>一个模块里只有被 Export 过的 Package 才可能由外界访问。</p>
+<p>基于 OSGi 的程序很可能（只是很可能，并不是一定会）可以实现模块级的热插拔功能，当程序升级更新或调试除错时，可以只停用、重新安装然后启用程序的其中一部分。</p>
+<p>OSGi 的 Bundle 类加载器之间只有规则，没有固定的委派关系。</p>
+<p>只有具体使用某个 Package 和 Class 的时候，才会根据 Package 导入导出定义来构造 Bundle 间的委派和依赖。</p>
+<p>如果一个类存在于 Bundle 的类库中但是没有被 Export， 那么这个 Bundle 的类加载器能找到这个类，但不会提供给其他 Bundle 使用</p>
+<p>并非所有的应用都适合采用 OSGi 作为基础架构， OSGi 在提供强大功能的同时，也引入了额外的复杂度，带来了线程死锁和内存泄漏的风险。</p>
+<p>##2.3、字节码生成技术与动态代理的实现<br>javac 也是一个由 Java 语言写成的程序，它的代码存放在 OpenJDK 的 langtools/src/share/classes/com/ sun/tools/javac 目录中[ 1]。 要深入了解字节码生成，阅读 javac 的源码是个很好的途径。</p>
+<p>动态代理实现了可以在原始类和接口还未知的时候，就确定代理类的代理行为，当代理类与原始类脱离直接联系后，就可以很灵活地重用于不同的应用场景之中。调用了 sun.misc.ProxyGenerator.generateProxyClass() 方法来完成生成字节码的动作，这个方法可以在运行时产生一个描述代理类的字节码 byte[] 数组。</p>
+<p>##2.4、Retrotranslator：跨越JDK版本<br>一种名为“ Java 逆向移植”的工具（ Java Backporting Tools）应运而生， Retrotranslator[1] 是这类工具中较出色的一个。</p>
+<p>编译器在程序中使用到<code>包装对象</code>的地方自动插入了很多 Integer.valueOf()、 Float.valueOf() 之类的代码；<code>变长参数</code>在编译之后就自动转化成了一个数组来完成参数传递；<code>泛型</code>的信息则在编译阶段就已经擦除掉了（但是在元数据中还保留着），相应的地方被编译器自动插入了类型转换代码[ 2]。</p>
+<p>从字节码的角度来看，<code>枚举</code>仅仅是一个继承于 java. lang. Enum、 自动生成了 values() 和 valueOf() 方法的普通 Java 类而已。</p>
+<p>#3、实战：自己动手实现远程执行功能</p>
+<p>##3.1、目标</p>
+<p>##3.2、思路</p>
+<p>##3.3、实现<br>构造函数中指定为加载 HotSwapClassLoader 类的类加载器作为父类加载器，这一步是实现提交的执行代码可以访问服务端引用类库的关键。</p>
+<p>##3.4、验证</p>
+<p>#4、本章小结</p>
+<blockquote>
+<p>《深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）》笔记</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/JVM/">JVM</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

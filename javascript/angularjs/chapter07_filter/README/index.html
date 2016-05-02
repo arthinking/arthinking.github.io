@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>filter | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="filter"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>filter</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/angularjs/chapter07_filter/README/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-02T15:15:43.000Z">
+          2016-05-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p><strong>1、HTML模板中的过滤器：</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; name | uppercase &#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>使用:传递参数给过滤器：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 显示：123.46 --&gt;</span></span><br><span class="line">&#123;&#123; 123.456789 | number:2 &#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以用|符号作为分割符来同时使用多个过滤器。</p>
+</blockquote>
+<p><strong>2、在JavaScript代码中可以通过<code>$filter</code>来调用过滤器:</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.controller(<span class="string">'DemoController'</span>, [<span class="string">'$scope'</span>, <span class="string">'$filter'</span>,</span><br><span class="line">	<span class="function"><span class="keyword">function</span>(<span class="params">$scope, $filter</span>) </span>&#123;</span><br><span class="line">		$scope.name = $filter(<span class="string">'lowercase'</span>)(<span class="string">'Ari'</span>);</span><br><span class="line">	&#125;]);</span><br></pre></td></tr></table></figure></p>
+<p><strong>3、AngularJS提供的内置过滤器：</strong></p>
+<p><em>1. currency</em><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; 123 | currency &#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p><em>2. date</em><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; today | date:'medium' &#125;&#125; <span class="comment">&lt;!-- Aug 09, 2013 12:09:02 PM --&gt;</span></span><br><span class="line">&#123;&#123; today | date:'short' &#125;&#125; <span class="comment">&lt;!-- 8/9/1312:09PM --&gt;</span></span><br><span class="line">&#123;&#123; today | date:'fullDate' &#125;&#125; <span class="comment">&lt;!-- Thursday, August 09, 2013 --&gt;</span></span><br><span class="line">&#123;&#123; today | date:'longDate' &#125;&#125; <span class="comment">&lt;!-- August 09, 2013 --&gt;</span></span><br><span class="line">&#123;&#123; today | date:'mediumDate' &#125;&#125;<span class="comment">&lt;!-- Aug 09, 2013 --&gt;</span></span><br><span class="line">&#123;&#123; today | date:'shortDate' &#125;&#125; <span class="comment">&lt;!-- 8/9/13 --&gt;</span></span><br><span class="line">&#123;&#123; today | date:'mediumTime' &#125;&#125;<span class="comment">&lt;!-- 12:09:02 PM --&gt;</span></span><br><span class="line">&#123;&#123; today | date:'shortTime' &#125;&#125; <span class="comment">&lt;!-- 12:09 PM --&gt;</span></span><br><span class="line"></span><br><span class="line">年份格式化</span><br><span class="line">四位年份：&#123;&#123; today | date:'yyyy' &#125;&#125; <span class="comment">&lt;!-- 2013 --&gt;</span></span><br><span class="line">两位年份：&#123;&#123; today | date:'yy' &#125;&#125; <span class="comment">&lt;!-- 13 --&gt;</span></span><br><span class="line">一位年份：&#123;&#123; today | date:'y' &#125;&#125; <span class="comment">&lt;!-- 2013 --&gt;</span></span><br><span class="line"></span><br><span class="line">月份格式化</span><br><span class="line">英文月份：&#123;&#123; today | date:'MMMM' &#125;&#125; <span class="comment">&lt;!-- August --&gt;</span></span><br><span class="line">英文月份简写：&#123;&#123; today | date:'MMM' &#125;&#125; <span class="comment">&lt;!-- Aug --&gt;</span></span><br><span class="line">数字月份：&#123;&#123; today |date:'MM' &#125;&#125; <span class="comment">&lt;!-- 08 --&gt;</span></span><br><span class="line">一年中的第几个月份：&#123;&#123; today |date:'M' &#125;&#125; <span class="comment">&lt;!-- 8 --&gt;</span></span><br><span class="line"></span><br><span class="line">日期格式化</span><br><span class="line">数字日期：&#123;&#123; today|date:'dd' &#125;&#125; <span class="comment">&lt;!-- 09 --&gt;</span></span><br><span class="line">一个月中的第几天：&#123;&#123; today | date:'d' &#125;&#125; <span class="comment">&lt;!-- 9 --&gt;</span></span><br><span class="line">英文星期：&#123;&#123; today | date:'EEEE' &#125;&#125; <span class="comment">&lt;!-- Thursday --&gt;</span></span><br><span class="line">英文星期简写：&#123;&#123; today | date:'EEE' &#125;&#125; <span class="comment">&lt;!-- Thu --&gt;</span></span><br><span class="line"></span><br><span class="line">小时格式化</span><br><span class="line">24小时制数字小时：&#123;&#123;today|date:'HH'&#125;&#125; <span class="comment">&lt;!--00--&gt;</span></span><br><span class="line">一天中的第几个小时：&#123;&#123;today|date:'H'&#125;&#125; <span class="comment">&lt;!--0--&gt;</span></span><br><span class="line">12小时制数字小时：&#123;&#123;today|date:'hh'&#125;&#125; <span class="comment">&lt;!--12--&gt;</span></span><br><span class="line">上午或下午的第几个小时：&#123;&#123;today|date:'h'&#125;&#125; <span class="comment">&lt;!--12--&gt;</span></span><br><span class="line"></span><br><span class="line">分钟格式化</span><br><span class="line">数字分钟数：&#123;&#123; today | date:'mm' &#125;&#125; <span class="comment">&lt;!-- 09 --&gt;</span></span><br><span class="line">一个小时中的第几分钟：&#123;&#123; today | date:'m' &#125;&#125; <span class="comment">&lt;!-- 9 --&gt;</span></span><br><span class="line"></span><br><span class="line">秒数格式化</span><br><span class="line">数字秒数：&#123;&#123; today | date:'ss' &#125;&#125; <span class="comment">&lt;!-- 02 --&gt;</span></span><br><span class="line">一分钟内的第几秒：&#123;&#123; today | date:'s' &#125;&#125; <span class="comment">&lt;!-- 2 --&gt;</span></span><br><span class="line">毫秒数：&#123;&#123; today | date:'.sss' &#125;&#125; <span class="comment">&lt;!-- .995 --&gt;</span></span><br><span class="line"></span><br><span class="line">字符格式化</span><br><span class="line">上下午标识：&#123;&#123; today | date:'a' &#125;&#125; <span class="comment">&lt;!-- AM --&gt;</span></span><br><span class="line">四位时区标识：&#123;&#123; today | date:'Z' &#125;&#125; <span class="comment">&lt;!--- 0700 --&gt;</span></span><br><span class="line"></span><br><span class="line">下面是一些自定义日期格式的示例：</span><br><span class="line">&#123;&#123; today | date:'MMMd, y' &#125;&#125; <span class="comment">&lt;!-- Aug9, 2013 --&gt;</span></span><br><span class="line">&#123;&#123; today | date:'EEEE, d, M' &#125;&#125; <span class="comment">&lt;!-- Thursday, 9, 8--&gt;</span></span><br><span class="line">&#123;&#123; today | date:'hh:mm:ss.sss' &#125;&#125; <span class="comment">&lt;!-- 12:09:02.995 --&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><em>3. filter</em><br>这个过滤器的第一个参数可以是字符串、对象或是一个用来从数组中选择元素的函数。</p>
+<p><em>4. json</em><br>son过滤器可以将一个JSON或JavaScript对象转换成字符串。</p>
+<p><em>5. limitTo</em><br>limitTo过滤器会根据传入的参数生成一个新的数组或字符串，新的数组或字符串的长度取决于传入的参数，通过传入参数的正负值来控制从前面还是从后面开始截取。</p>
+<p><em>6. lowercase</em></p>
+<p><em>7. number</em><br>number过滤器将数字格式化成文本。它的第二个参数是可选的，用来控制小数点后截取的位数。</p>
+<p><em>8. orderBy</em><br>orderBy可以接受两个参数，第一个是必需的，第二个是可选的。<br>第一个参数是用来确定数组排序方向的谓词。第二个参数用来控制排序的方向（是否逆向）。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orderBy:'name':true</span><br></pre></td></tr></table></figure></p>
+<p><em>9. uppercase</em><br>uppercase过滤器可以将字符串转换为大写形式。</p>
+<p>##7.1、自定义过滤器</p>
+<p>###创建一个过滤器：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">'myApp.filters'</span>, [])</span><br><span class="line">	.filter(<span class="string">'capitalize'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">input</span>) </span>&#123;</span><br><span class="line">		<span class="comment">// input是我们传入的字符串</span></span><br><span class="line">		<span class="keyword">if</span> (input) &#123;</span><br><span class="line">			<span class="keyword">return</span> input[<span class="number">0</span>].toUpperCase() + input.slice(<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>###使用：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Ginger loves dog treats --&gt;</span></span><br><span class="line">&#123;&#123; 'ginger loves dog treats' | lowercase | capitalize &#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>##7.2、表单验证<br>AngularJS提供了很多表单验证指令。</p>
+<p>###input元素上使用的所有验证选项：</p>
+<ol>
+<li><p>必填项</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">required</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最小长度</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-minlength</span>=<span class="string">"5"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最大长度</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-maxlength</span>=<span class="string">"20"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模式匹配</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">ng-pattern</span>=<span class="string">"[a-zA-Z]"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>电子邮件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">ng-model</span>=<span class="string">"user.email"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">ng-model</span>=<span class="string">"user.age"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>URL</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"url"</span> <span class="attr">name</span>=<span class="string">"homepage"</span> <span class="attr">ng-model</span>=<span class="string">"user.facebook_url"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义验证<br>需要使用到指令的相关内容，第10章再深入研究如何创建自定义验证。</p>
+</li>
+<li><p>在表单中控制变量</p>
+</li>
+<li><p>一些有用的CSS样式<br><em>$parsers：</em><br>使用$parsers数组是实现自定义验证的途径之一。</p>
+</li>
+</ol>
+<p><em>$formatters：</em></p>
+<ol>
+<li>组合实例</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/AngularJS/">AngularJS</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

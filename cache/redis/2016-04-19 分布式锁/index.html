@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>分布式锁 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="分布式锁"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>分布式锁</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/cache/redis/2016-04-19 分布式锁/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-04-19T01:06:34.000Z">
+          2016-04-19
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="设计要点："><a href="#设计要点：" class="headerlink" title="设计要点："></a>设计要点：</h1><ul>
+<li>锁的实效，避免被强制解锁，或者单点故障影响其他客户端获取锁；</li>
+<li>可重入锁和吞吐量的权衡；</li>
+<li>减少redis压力（减少获取锁的操作）；</li>
+<li>加锁的事务尽量细粒度；</li>
+<li>同步锁状态给其他客户端（分布式消息：类似线程的notifyAll）；</li>
+<li>考虑执行句柄中的异常，状态的正确流转和状态。</li>
+</ul>
+<h1 id="设计细节"><a href="#设计细节" class="headerlink" title="设计细节"></a>设计细节</h1><p>时间戳的设计有很多问题</p>
+<h2 id="通过一些java-util-concurrent的API来处理一些本地队列的同步以及等待信号量的处理"><a href="#通过一些java-util-concurrent的API来处理一些本地队列的同步以及等待信号量的处理" class="headerlink" title="通过一些java.util.concurrent的API来处理一些本地队列的同步以及等待信号量的处理"></a>通过一些java.util.concurrent的API来处理一些本地队列的同步以及等待信号量的处理</h2><ul>
+<li><p>Semaphore</p>
+</li>
+<li><p>ConcurrentHashMap</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Cache/">Cache</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Redis/">Redis</a>, <a href="/tags/分布式锁/">分布式锁</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

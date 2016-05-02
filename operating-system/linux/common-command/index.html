@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux common command | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Linux common command"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>Linux common command</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/operating-system/linux/common-command/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="common-linux-command"><a href="#common-linux-command" class="headerlink" title="common linux command"></a>common linux command</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="_">-l</span> -r <span class="_">-e</span> <span class="string">'arthinking.github.io'</span> /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i <span class="string">""</span> <span class="string">"s/arthinking.github.io/informal-essay/g"</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://www.th7.cn/system.mac/201411/77742.shtml
+http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="external">sed在mac下使用差异</a></p>
+<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>Linux的scp命令可以在Linux之间复制文件和目录：</p>
+<blockquote>
+<p>scp [可选参数] file_source file_target</p>
+</blockquote>
+<p>可选参数：</p>
+<ul>
+<li><code>-v</code>和大多数 linux 命令中的 -v 意思一样 , 用来显示进度 . 可以用来查看连接 , 认证 , 或是配置错误；</li>
+<li><code>-C</code>使能压缩选项；</li>
+<li><code>-P</code>选择端口 . 注意 -p 已经被 rcp 使用；</li>
+<li><code>-4</code>强行使用<code>IPV4</code>地址；</li>
+<li><code>-6</code>强行使用<code>IPV6</code>地址。</li>
+</ul>
+<h2 id="从本地复制到远程"><a href="#从本地复制到远程" class="headerlink" title="从本地复制到远程"></a>从本地复制到远程</h2><h3 id="复制文件："><a href="#复制文件：" class="headerlink" title="复制文件："></a>复制文件：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定上传文件夹</span></span><br><span class="line">scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_folder <span class="comment"># 指定上传后的文件名</span>scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_file </span><br><span class="line"><span class="comment"># 以下两个不指定远程服务器的登录名</span>scp <span class="built_in">local</span>_file remote_ip:remote_folder scp <span class="built_in">local</span>_file remote_ip:remote_file</span><br></pre></td></tr></table></figure>
+<h3 id="复制目录"><a href="#复制目录" class="headerlink" title="复制目录"></a>复制目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r <span class="built_in">local</span>_folder remote_username@remote_ip:remote_folder scp -r <span class="built_in">local</span>_folder remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
+<p>会在<code>remote_folder</code>下面创建<code>local_folder</code>文件夹</p>
+<h2 id="从远程复制到本地"><a href="#从远程复制到本地" class="headerlink" title="从远程复制到本地"></a>从远程复制到本地</h2><p>只要将从本地复制到远程的命令的后2个参数调换顺序即可。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>从远程下载文件到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp root@182.92.6.82:/home/guitargg.gz ~/Downloads/</span><br></pre></td></tr></table></figure>
+<p>把本金文件传递到另一台主机上面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/Downloads/guitargg.gz root@182.92.6.82:/home/</span><br></pre></td></tr></table></figure>
+<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p>解压：<br>tar -zxvf /usr/local/test.tar.gz<br>tar -zxvf 压缩文件名.tar.gz -C /usr/local/maven</p>
+<p>01-.tar格式<br>解包：[＊＊＊＊＊＊＊]$ tar xvf FileName.tar<br>打包：[＊＊＊＊＊＊＊]$ tar cvf FileName.tar DirName（注：tar是打包，不是压缩！）</p>
+<p>02-.gz格式<br>解压1：[＊＊＊＊＊＊＊]$ gunzip FileName.gz<br>解压2：[＊＊＊＊＊＊＊]$ gzip -d FileName.gz<br>压 缩：[＊＊＊＊＊＊＊]$ gzip FileName</p>
+<p>03-.tar.gz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.gz<br>压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.gz DirName</p>
+<p>04-.bz2格式<br>解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz2<br>解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz2<br>压 缩： [＊＊＊＊＊＊＊]$ bzip2 -z FileName</p>
+<p>05-.tar.bz2格式<br>解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz2<br>压缩：[＊＊＊＊＊＊＊]$ tar jcvf FileName.tar.bz2 DirName</p>
+<p>06-.bz格式<br>解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz<br>解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz</p>
+<p>07-.tar.bz格式<br>解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz</p>
+<p>08-.Z格式<br>解压：[＊＊＊＊＊＊＊]$ uncompress FileName.Z<br>压缩：[＊＊＊＊＊＊＊]$ compress FileName</p>
+<p>09-.tar.Z格式<br>解压：[＊＊＊＊＊＊＊]$ tar Zxvf FileName.tar.Z<br>压缩：[＊＊＊＊＊＊＊]$ tar Zcvf FileName.tar.Z DirName</p>
+<p>10-.tgz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tgz</p>
+<p>11-.tar.tgz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.tgz<br>压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.tgz FileName</p>
+<p>12-.zip格式<br>解压：[＊＊＊＊＊＊＊]$ unzip FileName.zip<br>压缩：[＊＊＊＊＊＊＊]$ zip FileName.zip DirName</p>
+<p>13-.lha格式<br>解压：[＊＊＊＊＊＊＊]$ lha -e FileName.lha<br>压缩：[＊＊＊＊＊＊＊]$ lha -a FileName.lha FileName</p>
+<p>14-.rar格式<br>解压：[＊＊＊＊＊＊＊]$ rar a FileName.rar<br>压缩：[＊＊＊＊＊＊＊]$ rar e FileName.rar<br>rar请到：<a href="http://www.rarsoft.com/download.htm" target="_blank" rel="external">http://www.rarsoft.com/download.htm</a> 下载！<br>解压后请将rar_static拷贝到/usr/bin目录（其他由$PATH环境变量<br>指定的目录也行）：[＊＊＊＊＊＊＊]$ cp rar_static /usr/bin/rar</p>
+<h1 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h1><p>复制并且覆盖目标文件的文件<br>cp -r -f /webapp/* /dist/</p>
+<h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h1><p>查看端口占用</p>
+<p>lsof -i tcp:port</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Linux/">Linux</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

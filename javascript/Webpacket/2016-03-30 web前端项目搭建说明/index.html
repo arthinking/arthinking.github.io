@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>web前端项目搭建说明 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="web前端项目搭建说明"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>web前端项目搭建说明</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/Webpacket/2016-03-30 web前端项目搭建说明/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-03-30T04:09:13.000Z">
+          2016-03-30
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com/web-project-setup-introduction-html.html" target="_blank" rel="external">web前端项目搭建说明</a><br>项目地址：<a href="https://github.com/highpay-zoom/app-mis" target="_blank" rel="external">app-mis</a></p>
+</blockquote>
+<h2 id="安装webpack："><a href="#安装webpack：" class="headerlink" title="安装webpack："></a>安装webpack：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack -g</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关于<a href="https://docs.npmjs.com/" target="_blank" rel="external">npm install</a></p>
+</blockquote>
+<h3 id="初始化项目："><a href="#初始化项目：" class="headerlink" title="初始化项目："></a>初始化项目：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br></pre></td></tr></table></figure>
+<p>执行完这步会在目录下生成<code>package.json</code>文件</p>
+<h3 id="为项目安装webpack："><a href="#为项目安装webpack：" class="headerlink" title="为项目安装webpack："></a>为项目安装webpack：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack --save-dev</span><br></pre></td></tr></table></figure>
+<p>或者安装特定的版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack@1.2.x --save-dev</span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.github.io/" target="_blank" rel="external">webpack</a>是一款模块加载器兼打包工具，它能把各种资源，例如JS（含JSX）、coffee、样式（含less/sass）、图片等都作为模块来使用和处理。</p>
+<p><strong>–save-dev 与 –save的区别</strong></p>
+<blockquote>
+<p>–save-dev: Package will appear in your devDependencies.<br>see<a href="http://stackoverflow.com/questions/19223051/grunt-js-what-does-save-dev-mean-in-npm-install-grunt-save-dev" target="_blank" rel="external">Grunt.js: What does -save-dev mean in npm install grunt –save-dev</a></p>
+</blockquote>
+<h3 id="安装webpack调试工具："><a href="#安装webpack调试工具：" class="headerlink" title="安装webpack调试工具："></a>安装webpack调试工具：</h3><blockquote>
+<p>$ npm install webpack-dev-server –save-dev</p>
+</blockquote>
+<h4 id="启动webpack-dev-server："><a href="#启动webpack-dev-server：" class="headerlink" title="启动webpack-dev-server："></a>启动webpack-dev-server：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack-dev-server --inline --hot</span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a>webpack-dev-server是一个小型的node.js Express服务器,它使用webpack-dev-middleware中间件来为通过webpack打包生成的资源文件提供Web服务。它还有一个通过Socket.IO连接着webpack-dev-server服务器的小型运行时程序。webpack-dev-server发送关于编译状态的消息到客户端，客户端根据消息作出响应。</p>
+<h3 id="webpack构建命令："><a href="#webpack构建命令：" class="headerlink" title="webpack构建命令："></a>webpack构建命令：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ webpack --display-modules</span><br><span class="line">$ webpack --display-modules --display-chunks</span><br></pre></td></tr></table></figure>
+<p><strong>–display-modules 和 –display-chunks的作用</strong></p>
+<p>by default Webpack hides modules that are not yours. To see all the modules compiled by Webpack, we can pass the –display-modules flag.</p>
+<p>run webpack with the –display-chunks flag to see what modules are in which chunks.</p>
+<h2 id="安装需要的模块："><a href="#安装需要的模块：" class="headerlink" title="安装需要的模块："></a>安装需要的模块：</h2><h3 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save lodash</span><br></pre></td></tr></table></figure>
+<p><a href="https://lodash.com/" target="_blank" rel="external">lodash</a>是一个Javascript工具库。</p>
+<h3 id="安装babel："><a href="#安装babel：" class="headerlink" title="安装babel："></a>安装babel：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-2 --save-dev</span><br></pre></td></tr></table></figure>
+<p>然后在文件目录下创建 <code>.babelrc</code> 文件。详细配置参考：<a href="https://babeljs.io/" target="_blank" rel="external">babel</a></p>
+<ul>
+<li><a href="https://babeljs.io/" target="_blank" rel="external">babel</a>是一个Javascript代码转换器，可以把你写的符合 ECMAScript 6 标准的代码完美地转换为 ECMAScript 5 标准的代码，并且可以确保良好地运行在所有主流 JavaScript 引擎中。</li>
+</ul>
+<h3 id="安装eslint："><a href="#安装eslint：" class="headerlink" title="安装eslint："></a>安装eslint：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install eslint eslint-loader babel-eslint eslint-plugin-react --save-dev</span><br></pre></td></tr></table></figure>
+<p>在团队协作中，为避免低级 Bug、产出风格统一的代码，会预先制定编码规范。使用 Lint 工具和代码风格检测工具，则可以辅助编码规范执行，有效控制代码质量。在以前的项目中，我们选择 JSHint 和 JSCS 结合使用，使用 React JSX 语法时，却遇到了问题：JSHint 不支持 JSX 语法，以有了 ESLint。<br><a href="http://eslint.org/" target="_blank" rel="external">eslint</a></p>
+<h3 id="安装react："><a href="#安装react：" class="headerlink" title="安装react："></a>安装react：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react react-dom react-router --save</span><br></pre></td></tr></table></figure>
+<h3 id="安装antd"><a href="#安装antd" class="headerlink" title="安装antd"></a>安装antd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install antd --save</span><br></pre></td></tr></table></figure>
+<h2 id="安装需要的webpack-loader："><a href="#安装需要的webpack-loader：" class="headerlink" title="安装需要的webpack loader："></a>安装需要的webpack loader：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install css-loader postcss-loader less-loader style-loader html-loader sass-loader node-sass --save-dev</span><br><span class="line">$ npm install url-loader file-loader --save-dev</span><br><span class="line">$ npm install baggage-loader --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="loader配置说明："><a href="#loader配置说明：" class="headerlink" title="loader配置说明："></a>loader配置说明：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">"./loader!./dir/file.txt"</span>);</span><br><span class="line"><span class="comment">// =&gt; uses the file "loader.js" in the current directory to transform</span></span><br><span class="line"><span class="comment">//    "file.txt" in the folder "dir".</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"jade!./template.jade"</span>);</span><br><span class="line"><span class="comment">// =&gt; uses the "jade-loader" (that is installed from npm to "node_modules")</span></span><br><span class="line"><span class="comment">//    to transform the file "template.jade"</span></span><br><span class="line"><span class="comment">//    If configuration has some transforms bound to the file, they will still be applied.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">"!style!css!less!bootstrap/less/bootstrap.less"</span>);</span><br><span class="line"><span class="comment">// =&gt; the file "bootstrap.less" in the folder "less" in the "bootstrap"</span></span><br><span class="line"><span class="comment">//    module (that is installed from github to "node_modules") is</span></span><br><span class="line"><span class="comment">//    transformed by the "less-loader". The result is transformed by the</span></span><br><span class="line"><span class="comment">//    "css-loader" and then by the "style-loader".</span></span><br><span class="line"><span class="comment">//    If configuration has some transforms bound to the file, they will not be applied.</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装需要的webpack-plugin："><a href="#安装需要的webpack-plugin：" class="headerlink" title="安装需要的webpack plugin："></a>安装需要的webpack plugin：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install clean-webpack-plugin --save-dev</span><br><span class="line">$ npm install extract-text-webpack-plugin --save-dev</span><br><span class="line">$ npm install html-webpack-plugin</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/johnagan/clean-webpack-plugin" target="_blank" rel="external">clean-webpack-plugin</a>: A webpack plugin to remove/clean your build folder(s) before building.</li>
+<li><a href="https://github.com/webpack/extract-text-webpack-plugin" target="_blank" rel="external">extract-text-webpack-plugin</a>: It moves every require(“style.css”) in entry chunks into a separate css output file. So your styles are no longer inlined into the javascript, but separate in a css bundle file (styles.css).</li>
+<li><a href="https://github.com/ampedandwired/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a>: Simplifies creation of HTML files to serve your webpack bundles</li>
+</ul>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><ul>
+<li><a href="http://www.cnblogs.com/vajoy/p/4650467.html" target="_blank" rel="external">webpack 入门指南</a></li>
+<li><a href="https://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a></li>
+<li><a href="http://www.jianshu.com/p/8adf4c2bfa51" target="_blank" rel="external">Webpack-dev-server结合后端分缶的热替换配置</a></li>
+<li><a href="http://www.jianshu.com/p/941bfaf13be1" target="_blank" rel="external">WEBPACK DEV SERVER</a></li>
+<li><a href="http://blog.madewithlove.be/post/webpack-your-bags/" target="_blank" rel="external">webpack your bags</a></li>
+<li><a href="https://lodash.com/" target="_blank" rel="external">lodash</a></li>
+<li><a href="https://babeljs.io/" target="_blank" rel="external">babel</a></li>
+<li><a href="http://www.cnblogs.com/whitewolf/p/4357916.html" target="_blank" rel="external">Babel-现在开始使用 ES6</a></li>
+<li><a href="http://eslint.org/" target="_blank" rel="external">eslint</a></li>
+<li><a href="http://www.tuicool.com/articles/7JZZJzn" target="_blank" rel="external">ESLint 使用入门</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Webpack/">Webpack</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

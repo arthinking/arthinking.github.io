@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>设计模式笔记 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="设计模式笔记"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>设计模式笔记</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/design-pattern/20150209_设计模式笔记/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>##职责链模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-01.png" alt=""> </p>
+<p>###说明：<br>通过把对象链接起来，给更多的对象处理请求的机会。</p>
+<p>###使用场景：</p>
+<ul>
+<li>多个对象需要处理一个请求，并且处理请求的对象不是特定的；</li>
+<li>运行期才能决定哪些对象需要处理这个请求；</li>
+<li>允许出现一个请求可能不被其中一个对象处理的情况；</li>
+</ul>
+<p>###实例：<br>Java语言的异常处理实现使用了职责链模式；</p>
+<p>##命令模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-02.png" alt=""></p>
+<p>###说明：<br>把一个请求封装成一个对象，让请求被当成基于对象的形式进行处理，如回调。</p>
+<p>###使用场景：</p>
+<ul>
+<li>你需要回调函数的时候；</li>
+<li>请求需要在不同的时间或者通过不同的顺序进行处理；</li>
+<li>需要请求的历史记录；</li>
+<li>调用者需要和执行者解耦的时候</li>
+</ul>
+<p>###实例：<br>任务队列</p>
+<p>##解析器模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-03.png" alt="">  </p>
+<p>###说明：<br>为文法提供一个解析的机制。</p>
+<p>###使用场景：</p>
+<ul>
+<li>需要把文法解析成一个大的语法树；</li>
+<li>文法比较简单；</li>
+<li>解析的过程中性能并不是很重要；</li>
+<li>需要把文法和解析式进行解耦；</li>
+</ul>
+<p>###实例<br>上个世纪80年代流行的基于文字的冒险游戏。</p>
+<p>##迭代器模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-04.png" alt=""></p>
+<p>###说明：<br>在不知道集合类实现的情况下，实现访问集合元素的功能。</p>
+<p>###使用场景：</p>
+<ul>
+<li>不访问对象的情况下，需要访问到对象里面的元素</li>
+<li>需要支持多线程或者并发遍历集合</li>
+<li>需要一个同一个遍历接口</li>
+<li>不同的迭代器实现由细微的差别</li>
+</ul>
+<p>###实例：<br>Java的集合类就很好的用到了迭代器模式，允许用户在不知道集合的实现的情况下遍历各种类型的数据集合。</p>
+<p>##中介者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-05.png" alt=""></p>
+<p>###说明：<br>通过封装不同对象集的交互来达到解耦这些对象。</p>
+<p>###使用场景：</p>
+<ul>
+<li>对象间的交流动作有明确的定义，并且很复杂；</li>
+<li>对象间存在复杂的交互关系，并且需要一个中央的控制节点来转发这些交互。</li>
+</ul>
+<p>###实例：<br>邮件群发系统，通过中介者模式，发送者无需记录哪些邮件地址是否注册了，把邮件发给中介者，中介者把邮件转发给有效的接收者。</p>
+<p>##备忘录模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-06.png" alt=""></p>
+<p>###说明：<br>在不违反封装性的前提下，允许捕获并且外化一个对象的内部状态，以便存储下来。</p>
+<p>###使用场景：</p>
+<ul>
+<li>一个对象的内部状态需要存储下来；</li>
+<li>一个对象的内部状态没有提供对外暴露的接口；</li>
+<li>封装的边界必须被保存</li>
+</ul>
+<p>###实例：<br>撤销动作，通过建立对象的一个快照实现。</p>
+<p>##观察者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-07.png" alt=""></p>
+<p>###说明：<br>在一个系统中，当一个对象的状态改变的时候，通知其他对象。</p>
+<p>###使用场景：</p>
+<ul>
+<li>一个或多个对象状态的改变触发其他对象的处理事件</li>
+<li>需要广播的能力</li>
+<li></li>
+</ul>
+<p>###实例：<br>在大部分的GUI环境中都有用到这个设计模式，通过把按钮，文本区等注册为观察者，当一个用户触发一个事件，就发送一个通知到所有的观察者。</p>
+<p>##状态模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-08.png" alt=""></p>
+<p>###说明：</p>
+<p>###使用场景：</p>
+<p>###实例：</p>
+<p>##策略模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-09.png" alt=""></p>
+<p>##模板模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-10.png" alt=""></p>
+<p>##访问者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-11.png" alt="">     </p>
+<p>##适配器模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-12.png" alt="">    </p>
+<p>##桥接模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-13.png" alt=""></p>
+<p>##组合模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-14.png" alt=""></p>
+<p>##装饰者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-15.png" alt=""></p>
+<p>##门面模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-16.png" alt=""></p>
+<p>##享元模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-17.png" alt=""></p>
+<p>##代理模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-18.png" alt=""></p>
+<p>##抽象工厂模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-19.png" alt=""></p>
+<p>##构建者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-20.png" alt=""></p>
+<p>##工厂方法模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-21.png" alt=""></p>
+<p>##原型模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-22.png" alt=""></p>
+<p>##单例模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-23.png" alt="">           </p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/设计模式/">设计模式</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/职责链模式/">职责链模式</a>, <a href="/tags/命令模式/">命令模式</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

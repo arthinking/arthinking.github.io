@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>参数验证问题  AOP or  过滤器 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="参数验证问题  AOP or  过滤器"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>参数验证问题  AOP or  过滤器</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/2014120303_参数验证问题  AOP or  过滤器/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>使用Spring的AOP，之恩能够操作Spring上下文里面的对象。   </p>
+<p>JSP编译成的Class文件，是切入不了的，JSP编译为Servlet，JSP编译后的类的实例又servlet容器进行管理，对应的，可以通过Servlet的过滤器进行扩展。    </p>
+<p>##下面使用过滤器过滤验证参数：    </p>
+<p>如页面大小，页数这些通用的参数验证，可以抽取出通用的逻辑放入到Filter中处理。    </p>
+<p>对于使用Controller实现的接口，我们可以使用AOP进行拦截验证参数，而对于JSP页面，我们就只能使用Filter进行过滤验证了。    </p>
+<p>##JSP请求整个处理流程如下：</p>
+<ul>
+<li>客户端发起HTTP请求</li>
+<li>服务器端Web Server接受到请求，把请求转交给容器</li>
+<li>容器获取到请求的url</li>
+<li>容器根据web.xml中配置的filter，判断请求url是否需要执行filter</li>
+<li>容器根据web.xml中的配置，找到URL对应的Servlet（如果没有找到该Servlet，直接返回404错误码到客户端，表示访问的资源不存在）</li>
+<li>调用servlet的service方法处理请求（如果servlet还未装载入虚拟机，则进行加载，连接，并实例化，整个时候会调用servlet的init()方法，该方法只调用一次），分配一个线程去执行</li>
+<li>如果Servlet实例需要在容器中移除的时候，则调用servlet实例的destroy方法，以便释放实例所使用的资源，并持久化数据，之后等待GC回收。</li>
+</ul>
+<p>##Spring Controller请求整个处理流程如下：</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/AOP/">AOP</a>, <a href="/tags/Filter/">Filter</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

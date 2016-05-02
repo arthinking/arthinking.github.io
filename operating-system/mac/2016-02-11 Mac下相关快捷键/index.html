@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mac实用快捷键 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Mac实用快捷键"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>Mac实用快捷键</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/operating-system/mac/2016-02-11 Mac下相关快捷键/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:10:44.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="Mac下相关快捷键"><a href="#Mac下相关快捷键" class="headerlink" title="Mac下相关快捷键"></a>Mac下相关快捷键</h1><p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2016/02/20160212-mac-shotcut-01.png" alt=""></p>
+<p><a href="https://www.zhihu.com/question/20021861" target="_blank" rel="external">常用快捷键</a></p>
+<p><a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">官方快捷键说明</a></p>
+<p>Mac 菜单和键盘通常使用某些按键的符号，其中包括以下修饰键：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Command ⌘</span><br><span class="line">Shift ⇧</span><br><span class="line">Option ⌥</span><br><span class="line">Control ⌃</span><br><span class="line">Caps Lock ⇪</span><br><span class="line">Fn</span><br></pre></td></tr></table></figure></p>
+<h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><p>快速切换中英文：<code>caps lock</code>，按了之后<code>caps lock</code>键会亮起绿灯。</p>
+<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><ul>
+<li>command＋shift＋3是全屏截图</li>
+<li>command＋shift＋4是局部截图</li>
+</ul>
+<p>图片默认存储在桌面。</p>
+<h4 id="设置截图保存路径"><a href="#设置截图保存路径" class="headerlink" title="设置截图保存路径"></a>设置截图保存路径</h4><p>打开<code>Terminal</code>并输入如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture location /path/</span><br></pre></td></tr></table></figure></p>
+<p>/path/即你想要设置的保存路径，比如将截图文件存储在用户目录的图片（Pictures）文件夹，命令则为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture location ~/Pictures/</span><br></pre></td></tr></table></figure></p>
+<p>接下来，为了使得修改生效，输入下面这条命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall SystemUIServer</span><br></pre></td></tr></table></figure></p>
+<p>当然，如果你习惯将截图保存在桌面的话，/path/ 对应的路径为 ~/Desktop/。</p>
+<h4 id="设置截图文件格式"><a href="#设置截图文件格式" class="headerlink" title="设置截图文件格式"></a>设置截图文件格式</h4><p>OS X 系统默认截图文件格式为 png，通过下面的终端（Terminal）命令可以修改截图文件格式为 jpg ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture type jpg</span><br></pre></td></tr></table></figure></p>
+<p>另外，还可以将命令中的 jpg 修改为 gif 或 pdf，以及改回默认的 png 格式。同样别忘了输入上面那条使得修改生效的命令。</p>
+<p>⌘ t: 新建一个tab页</p>
+<p>⌘ shift []: 切换tab页</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Mac/">Mac</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/快捷键/">快捷键</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

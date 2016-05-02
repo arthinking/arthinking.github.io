@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Webpack Introduction | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Webpack Introduction"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>Webpack Introduction</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/Webpacket/2016-03-27 Introduction/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-03-27T14:44:39.000Z">
+          2016-03-27
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>I also recommend you add node_modules/.bin to your PATH variable to avoid having to type node_modules/.bin/webpack every time. </p>
+<h2 id="创建项目并使用webpack"><a href="#创建项目并使用webpack" class="headerlink" title="创建项目并使用webpack"></a>创建项目并使用webpack</h2><p>初始化项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br><span class="line">$ npm install jquery --save</span><br><span class="line">$ npm install webpack --save-dev</span><br></pre></td></tr></table></figure>
+<p>webpack.config.js 配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:  <span class="string">'./src'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path:     <span class="string">'builds'</span>,</span><br><span class="line">        filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>页面引入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>My title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span>&gt;</span>Click me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"builds/bundle.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>by default Webpack hides modules that are not yours. To see all the modules compiled by Webpack, we can pass the –display-modules flag:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ webpack --display-modules</span><br><span class="line">bundle.js  257 kB       0  [emitted]  main</span><br><span class="line">   [0] ./src/index.js 53 bytes &#123;0&#125; [built]</span><br><span class="line">   [1] ./~/jquery/dist/jquery.js 248 kB &#123;0&#125; [built]</span><br></pre></td></tr></table></figure>
+<h2 id="设置你的第一个loader"><a href="#设置你的第一个loader" class="headerlink" title="设置你的第一个loader"></a>设置你的第一个loader</h2><p>我们的期望是这样的：当我们引入一个按钮组件的时候，我们希望能够自动引入相关的图片，样式资源。</p>
+<h3 id="安装loader"><a href="#安装loader" class="headerlink" title="安装loader"></a>安装loader</h3><p>To install a loader in Webpack you do two things: npm install {whatever}-loader, and add it to the module.loaders part of your Webpack configuration</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install babel-loader --save-dev</span><br></pre></td></tr></table></figure>
+<p>我们希望babel处理所有以js作为后缀的文件，但是我不希望babel去处理第三方的类库，如jQuery，所以我们可以设置一些过滤规则。（Loaders can have both an include or an exclude rule. It can be a string, a regex, a callback, whatever you want.）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:  <span class="string">'./src'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path:     <span class="string">'builds'</span>,</span><br><span class="line">        filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        loaders: [</span><br><span class="line">            &#123;</span><br><span class="line">                test:   <span class="regexp">/\.js/</span>,</span><br><span class="line">                loader: <span class="string">'babel'</span>,</span><br><span class="line">                include: __dirname + <span class="string">'/src'</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>接下来可以使用ES6的语法编写一个Button组件了。我们会使用到Mustache，我们也需要Sass and HTML files的loader：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install mustache --save</span><br><span class="line">$ npm install css-loader style-loader html-loader sass-loader node-sass --save-dev</span><br></pre></td></tr></table></figure>
+<p>Now in order to tell Webpack to “pipe” things from one loader to another we simply pass a series of loaders, from right to left, separated by a !. Alternatively you can use an array by using the loaders attribute instead of loader:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test:    <span class="regexp">/\.js/</span>,</span><br><span class="line">    loader:  <span class="string">'babel'</span>,</span><br><span class="line">    include: __dirname + <span class="string">'/src'</span>,</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">    test:   <span class="regexp">/\.scss/</span>,</span><br><span class="line">    loader: <span class="string">'style!css!sass'</span>,</span><br><span class="line">    <span class="comment">// Or</span></span><br><span class="line">    loaders: [<span class="string">'style'</span>, <span class="string">'css'</span>, <span class="string">'sass'</span>],</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">    test:   <span class="regexp">/\.html/</span>,</span><br><span class="line">    loader: <span class="string">'html'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You’ve now learned how to setup loaders and how to define the dependencies of each part of your app. This may look like it doesn’t matter much now, but let’s push our example further.</p>
+<h2 id="Code-splitting"><a href="#Code-splitting" class="headerlink" title="Code splitting"></a>Code splitting</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> $ <span class="keyword">from</span> <span class="string">'jquery'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This is a split point</span></span><br><span class="line"><span class="built_in">require</span>.ensure([], () =&gt; &#123;</span><br><span class="line">  <span class="comment">// All the code in here, and everything that is imported</span></span><br><span class="line">  <span class="comment">// will be in a separate file</span></span><br><span class="line">  <span class="keyword">const</span> library = <span class="built_in">require</span>(<span class="string">'some-big-library'</span>);</span><br><span class="line">  $(<span class="string">'foo'</span>).click(() =&gt; library.doSomething());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Everything in the require.ensure callback would be split into a chunk – a separate bundle that Webpack will load only when needed, through an AJAX request.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="built_in">document</span>.querySelectorAll(<span class="string">'a'</span>).length) &#123;</span><br><span class="line">    <span class="built_in">require</span>.ensure([], () =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> Button = <span class="built_in">require</span>(<span class="string">'./Components/Button'</span>);</span><br><span class="line">        <span class="keyword">const</span> button = <span class="keyword">new</span> Button(<span class="string">'google.com'</span>);</span><br><span class="line"></span><br><span class="line">        button.render(<span class="string">'a'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会生成 builds/1.bundle.js 文件</p>
+<p>add configuration:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">path:       <span class="string">'builds'</span>,</span><br><span class="line">filename:   <span class="string">'bundle.js'</span>,</span><br><span class="line">publicPath: <span class="string">'builds/'</span>,</span><br></pre></td></tr></table></figure>
+<p>The output.publicPath option tells Webpack where to find built assets from the point of view of the page (so in our case in /builds/). </p>
+<p>重命名bundle：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.ensure([], () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> Button = <span class="built_in">require</span>(<span class="string">'./Components/Button'</span>);</span><br><span class="line">    <span class="keyword">const</span> button = <span class="keyword">new</span> Button(<span class="string">'google.com'</span>);</span><br><span class="line"></span><br><span class="line">    button.render(<span class="string">'a'</span>);</span><br><span class="line">&#125;, <span class="string">'button'</span>);</span><br></pre></td></tr></table></figure>
+<p>添加第二个组件之后重复引入jQuery的问题。这个时候需要使用到组件：</p>
+<p>Webpack comes will a handful of plugins to perform all various kinds of optimizations. The one that interests us in this case is the CommonChunksPlugin: it analyzes your chunks for recurring dependencies, and extracts them somewhere else. It can be a completely separate file (like vendor.js) or it can be your main file.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:   <span class="string">'./src'</span>,</span><br><span class="line">    output:  &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">            name:      <span class="string">'main'</span>, <span class="comment">// Move dependencies to our main file</span></span><br><span class="line">            children:  <span class="literal">true</span>, <span class="comment">// Look for common dependencies in all children,</span></span><br><span class="line">            minChunks: <span class="number">2</span>, <span class="comment">// How many times a dependency must come up before being extracted</span></span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">    <span class="built_in">module</span>:  &#123;</span><br><span class="line">      <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>If we specified per example name: ‘vendor’:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">    name:      <span class="string">'vendor'</span>,</span><br><span class="line">    children:  <span class="literal">true</span>,</span><br><span class="line">    minChunks: <span class="number">2</span>,</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+<p>Since that chunk doesn’t exist yet, Webpack would have created a builds/vendor.js</p>
+<h2 id="To-production-and-beyond"><a href="#To-production-and-beyond" class="headerlink" title="To production and beyond"></a>To production and beyond</h2><p>Ok first of all, we’re going to add several plugins to our configuration, but we only want to load them when NODE_ENV equals production so let’s add some logic for that in our configuration. Since it’s just a JS file, that’s easy to do:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (production) &#123;</span><br><span class="line">    plugins = plugins.concat([</span><br><span class="line">       <span class="comment">// Production plugins go here</span></span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="http://blog.madewithlove.be/post/webpack-your-bags/" target="_blank" rel="external">webpack your bags</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Webpack/">Webpack</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
