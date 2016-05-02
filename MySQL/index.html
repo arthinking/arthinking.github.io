@@ -49,7 +49,7 @@
 
     <article id="content" class="site-content">
       <main id="main" class="site-main posts-loop" role="main">
-        <!-- toc -->
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#sql语句优化"><span class="post-toc-number">1.</span> <span class="post-toc-text">SQL语句优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#in语句的优化"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">IN语句的优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#demo-1"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">demo 1</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大表查询优化"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">大表查询优化</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库中主键设计原则"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">数据库中主键设计原则</span></a></li></ol></li></ol>
 <article class="post article">
 
   
@@ -74,7 +74,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <h1 id="SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;"><a href="#SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;" class="headerlink" title="SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;"></a>SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;</h1><h2 id="IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;"><a href="#IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;" class="headerlink" title="IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;"></a>IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;</h2><h3 id="demo 1"><a href="#demo-1" class="headerlink" title="demo 1"></a>demo 1</h3><p>&#x6162;&#x8BED;&#x53E5;  </p>
+        <h1 id="sql&#x8BED;&#x53E5;&#x4F18;&#x5316;"><a href="#SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;" class="headerlink" title="SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;"></a>SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;</h1><h2 id="in&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;"><a href="#IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;" class="headerlink" title="IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;"></a>IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;</h2><h3 id="demo-1"><a href="#demo-1" class="headerlink" title="demo 1"></a>demo 1</h3><p>&#x6162;&#x8BED;&#x53E5;  </p>
 <pre><code class="SQL"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t_user <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span>(<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> t_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> country)
 </code></pre>
 <p>&#x4F18;&#x5316;</p>
