@@ -83,9 +83,9 @@
 <li>不允许使用任何流程控制功能（条件控制，例如if/eles）；</li>
 <li>可以接受过滤器和过滤器链。</li>
 </ul>
-<p>##6.1、解析AngularJS表达式<br><code>$parse</code>: AngularJS通过<code>$parse</code>这个内部服务来进行表达式的运算，这个服务能够访问当前所处的作用域。</p>
+<h2 id="6-1、解析AngularJS表达式"><a href="#6-1、解析AngularJS表达式" class="headerlink" title="6.1、解析AngularJS表达式"></a>6.1、解析AngularJS表达式</h2><p><code>$parse</code>: AngularJS通过<code>$parse</code>这个内部服务来进行表达式的运算，这个服务能够访问当前所处的作用域。</p>
 <p><a href="http://www.ngnice.com/posts/2314014da4eea8" title="$parse/$eval和$observe/$watch如何区分" target="_blank" rel="external">$parse/$eval和$observe/$watch如何区分</a></p>
-<p>##6.2、插值表达式<br><code>$interpolate服务</code>: 插值允许基于作用域上的某个条件实时更新文本字符串，可接收三个参数：</p>
+<h2 id="6-2、插值表达式"><a href="#6-2、插值表达式" class="headerlink" title="6.2、插值表达式"></a>6.2、插值表达式</h2><p><code>$interpolate服务</code>: 插值允许基于作用域上的某个条件实时更新文本字符串，可接收三个参数：</p>
 <ul>
 <li>text（字符串）：一个包含<code>字符插值标记</code>的字符串。</li>
 <li>mustHaveExpression（布尔型）：如果将这个参数设为true，当传入的字符串中不含有表达式时会返回null。</li>

@@ -54,13 +54,13 @@
 
   
   
-    <h3 class="article-title"><a href="/document/20150210_API文档编辑工具/"><span>API文档编辑工具</span></a></h3>
+    <h3 class="article-title"><a href="/Java/spring/2015010601-接口设计原则/"><span>接口设计原则</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/document/20150210_API文档编辑工具/" rel="bookmark">
+      <a href="/Java/spring/2015010601-接口设计原则/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -76,8 +76,66 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p><a href="http://turnapi.com/" target="_blank" rel="external">http://turnapi.com/</a><br>这是基于一款markdown语法的文档生成器，没有提供实体和返回值的统一管理。</p>
-<p><a href="http://symfony.com/doc/current/components/yaml/yaml_format.html" target="_blank" rel="external">http://symfony.com/doc/current/components/yaml/yaml_format.html</a></p>
+</blockquote>
+<p>接口尽量设计的单一职责，会方便代码的扩展和维护。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/设计模式/">设计模式</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/database/mysql/emoji表情支持/"><span>MySQL emoji表情支持</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/database/mysql/emoji表情支持/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>###1、数据库需要5.5.3+的支持</p>
+<p>###2、修改database、table和column字符集<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> guitargg <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">2000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%char%'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>###3、修改配置文件<br>etc/mysql/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-client-handshake = FALSE character-set-server = utf8mb4</span><br><span class="line">collation-server = utf8mb4_unicode_ci init_connect=&apos;SET NAMES utf8mb4&apos;</span><br></pre></td></tr></table></figure></p>
+<p>###4、重启MySQL Server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart</span><br></pre></td></tr></table></figure></p>
+<p>###5、升级JDBC驱动<br>确保mysql connector版本高于5.1.13</p>
+<p>###6、检查应用的数据库连接配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/database?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE jdbc.username=root</span><br><span class="line">jdbc.password=password</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><a href="http://segmentfault.com/blog/ilikewhite/1190000000616820" title="mysql/Java服务端对emoji的支持" target="_blank" rel="external">mysql/Java服务端对emoji的支持</a></p>
 </blockquote>
 
       
@@ -89,7 +147,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/工具/">工具</a>
+    <a href="/categories/Database/">Database</a>
   </span>
 
 
@@ -98,7 +156,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/API/">API</a>
+    <a href="/tags/MySQL/">MySQL</a>
   </span>
 
 
@@ -114,13 +172,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/2014120301_JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）/"><span>JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）</span></a></h3>
+    <h3 class="article-title"><a href="/Java/2014120701_JVM笔记 - 高效并发（Java内存模型与线程）/"><span>JVM笔记 - 高效并发（Java内存模型与线程）</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/2014120301_JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）/" rel="bookmark">
+      <a href="/Java/2014120701_JVM笔记 - 高效并发（Java内存模型与线程）/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -136,79 +194,78 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>《深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）》笔记</p>
 </blockquote>
-<p>#1、概述<br>虚拟机把描述类的数据从 Class 文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的 Java 类型，这就是虚拟机的类加载机制。</p>
-<p>Java 里天生可以动态扩展的语言特性就是依赖运行期动态加载和动态连接这个特点实现的。</p>
-<p>#2、类加载的时机<br>加载（ Loading）、 验证（ Verification）、 准备（ Preparation）、 解析（ Resolution）、 初始化（ Initialization）、 使用（ Using） 和卸载（ Unloading） 7 个阶段。</p>
-<p>其中验证、准备、解析 3 个部分统称为连接（ Linking）。</p>
-<p>加载、验证、准备、初始化和卸载这 5 个阶段的顺序是确定的，类的加载过程必须按照这种顺序按部就班地开始，而解析阶段则不一定：它在某些情况下可以在初始化阶段之后再开始，这是为了支持 Java 语言的运行时绑定（也称为动态绑定或晚期绑定）。</p>
-<p>虚拟机规范则是严格规定了有且只有 5 种情况必须立即对类进行“初始化”（而加载、验证、准备自然需要在此之前开始）： </p>
+<p>#1、概述</p>
+<p>#2、硬件的效率与一致性<br>基于告诉缓存的存储交互很好地解决了处理器与内存的速度矛盾，但是也为计算机系统带来了更高的复杂度，因为它引入了一个新的问题：缓存一致性。</p>
+<p>处理器可能会对输入代码进行乱序执行优化，处理器会在计算之后将乱序执行的结果重组，保证该结果与顺序执行的结果是一致的。</p>
+<p>#3、Java内存模型<br>线程的工作内存中保存了被该线程使用到的变量的主内存副本拷贝，线程对变量的所有操作（读取、赋值等）都必须在工作内存中进行。</p>
+<p>##3.1、主内存与工作内存</p>
+<p>##3.2、内存间交互操作</p>
+<p>##3.3、对于volatile型变量的特殊规则</p>
+<p>当一个变量定义为volitile之后，它将具备两种特性，第一是保证此变量对所有线程的可见性。</p>
+<hr>
+<p>volitile变量在各个线程中是一致的，并不能得出基于volitile变量的运算在并发下是安全的这个结论。</p>
+<p>volatile变量的运算在并发下一样是不安全的。</p>
+<p>当getstatic指令把变量的值取到操作栈顶时，volatile关键字保证了race的值在此时是正确的，但是在执行iconst_1、iadd这些指令的时候，其他线程可能已经把变量的值加大了。</p>
+<p>由于volatile变量只能保证可见性，在不符合以下两条规则的运算场景中，我们仍然要通过加锁（使用synchronized或java.util.concurrent中的原子类）来保证原子性：</p>
+<ul>
+<li><p>运算结果并不依赖变量的当前值，或者能够确保只有单一的线程变量的值。</p>
+</li>
+<li><p>变量不需要与其他的状态变量共同参与不变约束。</p>
+</li>
+</ul>
+<p>使用volatile变量的第二个语义是禁止指令重排优化。</p>
+<hr>
+<p>普通的变量仅仅会保证在该方法的执行过程中所有依赖赋值结果的地方都能获取到正确的结果而不能保证变量赋值操作的顺序与程序代码中的执行顺序一致。</p>
+<p>指令重排是并发编程中最容易让开发人员产生疑惑的地方，volitile关键字可以禁止指令重排序优化。</p>
+<p>volatile变量读取操作的性能消耗与普通变量几乎没有什么差别，但是写操作则可能会慢一些，因为它需要再笨的代码中插入许多内存屏障指令来保证处理器不发生乱序执行。不过即便如此，大多数场景下volatile的总开销仍然要比锁第，我们在volatile与锁之中选择的唯一依据仅仅是volatile的语义能否满足使用场景的需求。</p>
 <blockquote>
-<p>1） 遇到 new、 getstatic、 putstatic 或 invokestatic 这 4 条字节码指令时，如果类没有进行过初始化，则需要先触发其初始化。 </p>
-<p>2） 使用 java. lang. reflect 包的方法对类进行反射调用的时候，如果类没有进行过初始化，则需要先触发其初始化。    </p>
-<p>3） 当初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。    </p>
-<p>4） 当虚拟机启动时，用户需要指定一个要执行的主类（包含 main() 方法的那个类），虚拟机会先初始化这个主类。    </p>
-<p>5） 当使用 JDK   1. 7 的动态语言支持时，如果一个 java. lang. invoke. MethodHandle 实例最后的解析结果 REF<em> getStatic、 REF</em> putStatic、 REF_ invokeStatic 的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需要先触发其初始化。    </p>
+<p>如一个变量的修改不依赖与原值，则这个时候可以使用volatile关键字实现先行发生关系。</p>
 </blockquote>
-<p>通过 子类引用父类的静态字段，不会导致子类初始化。是否要触发子类的加载和验证，在虚拟机规范中并未明确规定，这点取决于虚拟机的具体实现。</p>
-<p>通过 数组定义来引用类，不会触发此类的初始化。</p>
-<p>#3、类加载的过程</p>
-<p>##3.1、加载<br>在加载阶段，虚拟机需要完成以下 3 件事情：<br>&gt;<br>1） 通过一个类的全限定名来获取定义此类的二进制字节流。<br>&gt;<br>2） 将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。<br>&gt;<br>3） 在内存中生成一个代表这个类的 java. lang. Class 对象，作为方法区这个类的各种数据的访问入口。</p>
-<p>Class文件的获取方式：<br>&gt;<br>从 ZIP 包中读取，这很常见，最终成为日后 JAR、 EAR、 WAR 格式的基础。<br>&gt;<br>从网络中获取，这种场景最典型的应用就是 Applet。<br>&gt;<br>运行时计算生成，这种场景使用得最多的就是动态代理技术，在 java. lang. reflect. Proxy 中，就是用了 ProxyGenerator. </p>
-<blockquote>
-<p>generateProxyClass 来为特定接口生成形式为”*$ Proxy” 的代理类的二进制字节流。<br>由其他文件生成，典型场景是 JSP 应用，即由 JSP 文件生成对应的 Class 类。</p>
-<p>从数据库中读取。</p>
-</blockquote>
-<p>一个非数组类的加载阶段（准确地说，是加载阶段中获取类的二进制字节流的动作）是开发人员可控性最强的。</p>
-<p>对于数组类而言，情况就有所不同，数组类本身不通过类加载器创建，它是由 Java 虚拟机直接创建的。但数组类与类加载器仍然有很密切的关系，因为数组类的元素类型（ Element   Type， 指的是数组去掉所有维度的类型）最终是要靠类加载器去创建，一个数组类（下面简称为 C） 创建过程就遵循以下规则：</p>
-<p>如果数组的组件类型（ Component   Type， 指的是数组去掉一个维度的类型）是引用类型，那就递归采用本节中定义的加载过程去加载这个组件类型，数组 C 将在加载该组件类型的类加载器的类名称空间上被标识（这点很重要，在 7. 4 节会介绍到，一个类必须与类加载器一起确定唯一性）。如果数组的组件类型不是引用类型（例如 int[] 数组）， Java 虚拟机将会把数组 C 标记为与引导类加载器关联。</p>
-<p>加载阶段完成后，虚拟机外部的二进制字节流就按照虚拟机所需的格式存储在方法区之中。</p>
-<p>Class类对象并没有明确规定是在 Java 堆中，对于 HotSpot 虚拟机而言， Class 对象比较特殊，它虽然是对象，但是存放在方法区里面。</p>
-<p>##3.2、验证<br>验证是连接阶段的第一步，这一阶段的目的是为了确保 Class 文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
-<p>在字节码语言层面上，上述 Java 代码无法做到的事情都是可以实现的，至少语义上是可以表达出来的。虚拟机如果不检查输入的字节流，对其完全信任的话，很可能会因为载入了有害的字节流而导致系统崩溃，所以验证是虚拟机对自身保护的一项重要工作。</p>
-<p>验证阶段大致上会完成下面 4 个阶段的检验动作：</p>
-<p>###文件格式验证：<br>第一阶段要验证字节流是否符合 Class 文件格式的规范。</p>
-<p>###元数据验证：<br>第二阶段是对字节码描述的信息进行语义分析，以保证其描述的信息符合 Java 语言规范的要求。</p>
-<p>###字节码验证：<br>主要目的是通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。<br>由于数据流验证的高复杂性，虚拟机设计团队为了避免过多的时间消耗在字节码验证阶段，在 JDK 1. 6 之后的 Javac 编译器和 Java 虚拟机中进行了一项优化，给方法体的 Code 属性的属性表中增加了一项名为” StackMapTable” 的属性</p>
-<p>###符号引用验证：<br>最后一个阶段的校验发生在虚拟机将符号引用转化为直接引用的时候，这个转化动作将在连接的第三阶段——解析阶段中发生。<br>如果所运行的全部代码（包括自己编写的及第三方包中的代码）都已经被反复使用和验证过，那么在实施阶段就可以考虑使用- Xverify: none 参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
-<p>##3.3、准备<br>这个阶段进行内存分配的仅包括类变量（被 static 修饰的变量），而不包括实例变量，实例变量将会在对象实例化时随着对象一起分配在 Java 堆中。其次，这里所说的初始值“通常情况”下是数据类型的零值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> value= <span class="number">123</span>;</span><br></pre></td></tr></table></figure></p>
-<p>把 value 赋值为 123 的动作将在初始化阶段才会执行。</p>
-<p>特殊情况：如果类字段的字段属性表中存在 ConstantValue 属性，那在准备阶段变量 value 就会被初始化为 ConstantValue 属性所指定的值，假设上面类变量 value 的定义变为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> value= <span class="number">123</span>；</span><br></pre></td></tr></table></figure></p>
-<p>编译时 Javac 将会为 value 生成 ConstantValue 属性，在准备阶段虚拟机就会根据 ConstantValue 的设置将 value 赋值为 123。</p>
-<p>##3.4、解析<br>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。</p>
-<p>除 invokedynamic 指令以外，虚拟机实现可以对第一次解析的结果进行缓存。</p>
-<p>解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符 7 类符号引用进行。</p>
-<p>##3.5、初始化<br>在准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则根据程序员通过程序制定的主观计划去初始化类变量和其他资源，或者可以从另外一个角度来表达：初始化阶段是执行类构造器＜ clinit ＞()方法的过程。</p>
-<p>静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块可以赋值，但是不能访问。</p>
-<p>虚拟机会保证在子类的＜ clinit ＞()方法执行之前，父类的＜ clinit ＞()方法已经执行完毕。因此在虚拟机中第一个被执行的＜ clinit ＞()方法的类肯定是 java. lang. Object。</p>
-<p>父类中定义的静态语句块要优先于子类的变量赋值操作。</p>
-<p>接口中不能使用静态语句块，但仍然有变量初始化的赋值操作，因此接口与类一样都会生成＜ clinit ＞()方法。但接口与类不同的是，执行接口的＜ clinit ＞()方法不需要先执行父接口的＜ clinit ＞()方法。只有当父接口中定义的变量使用时，父接口才会初始化。另外，接口的实现类在初始化时也一样不会执行接口的＜ clinit ＞()方法。</p>
-<p>虚拟机会保证一个类的＜ clinit ＞()方法在多线程环境中被正确地加锁、同步。</p>
-<p>如果在一个类的＜ clinit ＞()方法中有耗时很长的操作，就可能造成多个进程阻塞</p>
-<p>#4、类加载器<br>让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。</p>
-<p>类加载器却在类层次划分、 OSGi、 热部署、代码加密等领域大放异彩。</p>
-<p>##4.1、类与类加载器<br>即使这两个类来源于同一个 Class 文件，被同一个虚拟机加载，只要加载它们的类加载器不同，那这两个类就必定不相等。</p>
-<p>不同的类加载器对 instanceof 关键字运算的结果的影响  link<br>虚拟机中存在了两个 ClassLoaderTest 类，一个是由系统应用程序类加载器加载的，另外一个是由我们自定义的类加载器加载的</p>
-<p>##4.2、双亲委派模型<br>从 Java 虚拟机的角度来讲，只存在两种不同的类加载器：一种是<code>启动类加载器</code>（ Bootstrap ClassLoader）， 这个类加载器使用 C++ 语言实现[ 1]， 是虚拟机自身的一部分；另一种就是<code>所有其他的类加载器</code>，这些类加载器都由 Java 语言实现，独立于虚拟机外部，并且全都继承自抽象类 java. lang. ClassLoader。</p>
-<p>绝大部分 Java 程序都会使用到以下 3 种系统提供的类加载器：</p>
-<p>####启动类加载器（ Bootstrap   ClassLoader）：<br>这个类将器负责将存放在＜ JAVA_ HOME ＞\ lib 目录中的，或者被- Xbootclasspath 参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如 rt. jar， 名字不符合的类库即使放在 lib 目录中也不会被加载）类库加载到虚拟机内存中。<br>用户在编写自定义类加载器时，如果需要把加载请求委派给引导类加载器，那直接使用 null 代替即可。</p>
-<p>####扩展类加载器（ Extension   ClassLoader）：<br>它负责加载＜ JAVA_ HOME ＞\ lib\ ext 目录中的，或者被 java. ext. dirs 系统变量所指定的路径中的所有类库。    </p>
-<p>####应用程序类加载器（ Application   ClassLoader）：<br>由于这个类加载器是 ClassLoader 中的 getSystemClassLoader() 方法的返回值，所以一般也称它为系统类加载器。它负责加载用户类路径（ ClassPath） 上所指定的类库。</p>
-<p>如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
-<p>双亲委派模型要求除了顶层的启动类加载器外，其余的类加载器都应当有自己的父类加载器。这里类加载器之间的父子关系一般不会以继承（ Inheritance） 的关系来实现，而是都使用组合（ Composition） 关系来复用父加载器的代码。</p>
-<p>如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成。</p>
-<p>类 java. lang. Object， 它存放在 rt. jar 之中，无论哪一个类加载器要加载这个类，最终都是委派给处于模型最顶端的启动类加载器进行加载，因此 Object 类在程序的各种类加载器环境中都是同一个类。<br>可以尝试去编写一个与 rt. jar 类库中已有类重名的 Java 类，将会发现可以正常编译，但永远无法被加载运行。</p>
-<p>##4.3、破坏双亲委派模型<br>双亲委派模型的<code>第一次</code>“被破坏”其实发生在双亲委派模型出现之前——即 JDK 1.2 发布之前。    </p>
-<p>JDK 1.2 之后已不提倡用户再去覆盖 loadClass() 方法，而应当把自己的类加载逻辑写到 findClass() 方法中，在 loadClass() 方法的逻辑里如果父类加载失败，则会调用自己的 findClass() 方法来完成加载，这样就可以保证新写出来的类加载器是符合双亲委派规则的。    </p>
-<p>双亲委派模型的<code>第二次</code>“被破坏”是由这个模型自身的缺陷所导致的。如果基础类又要调用回用户的代码，那该怎么办？    </p>
-<p>为了解决这个问题， Java 设计团队只好引入了一个不太优雅的设计：<code>线程上下文类加载器</code>（ Thread Context   ClassLoader）。</p>
-<p>双亲委派模型的<code>第三次</code>“被破坏”是由于用户对程序动态性的追求而导致的。<br>OSGi 实现模块化热部署的关键则是它自定义的类加载器机制的实现。每一个程序模块（ OSGi 中称为 Bundle） 都有一个自己的类加载器，当需要更换一个 Bundle 时，就把 Bundle 连同类加载器一起换掉以实现代码的热替换。在 OSGi 环境下，类加载器不再是双亲委派模型中的树状结构，而是进一步发展为更加复杂的网状结构。    </p>
-<p>在 Java 程序员中基本有一个共识： OSGi 中对类加载器的使用是很值得学习的，弄懂了 OSGi 的实现，就可以算是掌握了类加载器的精髓。</p>
+<p>##3.4、对于long和double型变量的特殊规则<br>在实际开发中，目前各种平台下的商用虚拟机几乎都选择把64位数据的读写操作作为原子操作来对待，因此我们在编码时一般不需要把用到的long和double变量专门声明为volatile。</p>
+<p>##3.5、原子性、可见性与有序性</p>
+<p>###原子性<br>由Java内存模型来直接保证的原子性变量操作包括：read、load、assign、use、store和write。</p>
+<p>###可见性<br>Java内存模型是通过在变量修改后将新值同步回主内存，在变量读取前从主内存刷新变量值这种依赖主内存作为传递媒介的方式来实现可见性的，无论是普通变量还是volatile变量都是如此，普通变量与volatile变量的区别是，volatile的特殊规则保证了新值能立即同步到主内存，以及每次使用前立即从主内存刷新。因此可以说volatile保证了多线程操作时变量的可见性，而普通变量则不能保证这一点。</p>
+<p>除了volatile之外，Java还有两个关键字能实现可见性，即synchronized和final。</p>
+<p>###有序性<br>Java语言提供了volatile和synchronized两个关键字来保证线程之间操作的有序性，volatile关键字本身就包含了禁止指令重排序的语义，而synchronized则是由“一个变量在同一个时刻只允许一条线程对其进行lock操作”这条规则获得的，这条规则决定了持有同一个锁的两个同步块只能串行地进入。</p>
+<p>大部分并发控制都能使用synchronized来完成。synchronized的“万能”也间接早就了它被程序员滥用的局面，越“万能”的并发控制，通常会伴随着越大的性能影响。</p>
+<p>##3.6、先行发生原则<br>依靠这个原则，我们可以通过几条规则一揽子地解决并发环境下两个操作之间是否可能存在冲突的所有问题。</p>
+<p>下面是Java内存模型下一些“天然的”先行发生关系：</p>
+<ul>
+<li>程序次序规则</li>
+<li>管程锁定规则</li>
+<li>volatile变量规则</li>
+<li>线程启动规则</li>
+<li>线程终止规则</li>
+<li>线程中断规则</li>
+<li>对象终结规则</li>
+<li>传递性</li>
+</ul>
+<p>#4、Java与线程</p>
+<p>##4.1、线程的实现<br>Thread类与大部分的Java API有显著的差别，它的所有关键方法都是声明为Native的。</p>
+<p>实现线程主要有3种方式：使用内核线程实现、使用用户线程实现和使用用户线程加轻量级进程混合实现。</p>
+<p>###使用内核线程实现<br>由于是基于内核线程实现的，所以各种线程操作，如创建、析构及同步，都需要进行系统调用。而系统调用的代价相对较高，需要再用户态和内核态中来回切换。</p>
+<p>###使用用户线程实现</p>
+<p>###使用用户线程加轻量级进程混合实现</p>
+<p>###Java线程的实现</p>
+<p>##4.2、Java线程调度<br>分为协同式线程调度和抢占式线程调度。Java使用的线程调度方式就是抢占式调度。</p>
+<p>线程优先级并不是太靠谱，原因是Java的线程是通过映射到系统的原生线程上来实现的，所以线程调度最终还是取决于操作系统。</p>
+<p>##4.3、状态转换</p>
+<p>###以下方法会让线程陷入无限期的等待状态：</p>
+<ul>
+<li>没有设置Timeout参数的Object.wait()方法</li>
+<li>没有设置Timeout参数的Thread.join()方法</li>
+<li>LockSupport.park()方法</li>
+</ul>
+<p>以下方法会让线程进入限期等待状体：</p>
+<ul>
+<li>Thread.sleep()</li>
+<li>设置了Timeout参数的Object.wait()方法</li>
+<li>设置了Timeout参数的Thread.join()方法</li>
+<li>LockSupport.parkNanos()方法</li>
+<li>LockSupport.parkUntil()方法</li>
+</ul>
 <p>#5、本章小结</p>
-<blockquote>
-<p>发表于：<a href="http://www.itzhai.com/jvm-executive-subsystem-class-loading-mechanism.html" title="JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）" target="_blank" rel="external">JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）</a></p>
-</blockquote>
 
       
     </div>
@@ -317,13 +374,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/2014120202_更新常量类导致的编译问题/"><span>更新常量类导致的编译问题</span></a></h3>
+    <h3 class="article-title"><a href="/Java/2014120601_JVM笔记 - 程序编译与代码优化（晚期（运行期）优化）/"><span>JVM笔记 - 程序编译与代码优化（晚期（运行期）优化）</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/2014120202_更新常量类导致的编译问题/" rel="bookmark">
+      <a href="/Java/2014120601_JVM笔记 - 程序编译与代码优化（晚期（运行期）优化）/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -339,13 +396,164 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>类从被加载到JVM内存开始，到卸载出内存，整个周期包括：加载、验证、准备、解析、初始化、使用和卸载。而虚拟机规范严格规定了有且只有五种情况必须对类进行初始化（link），这几种情况被称为对类的主动引用，其他的情况被称为被动引用（link），其中就包括调用一个类的常量，不会触发定义常量的类的初始化，这是因为常量（字符串类型或基本数据类型）在编译阶段会存入调用类的常量池中。</p>
 </blockquote>
-<p><strong>问题描述如下：</strong><br>更新一个常量类class到服务器之后，其他引用这个常量的地方并没有做出改动，导致问题的出现。</p>
-<p>对常量问题的思考：<br>一般在系统运行事情不会发生变化的东西才可以定义为常量，常量可以硬编码写到代码里面。</p>
-<p>对于可能做出调整的常量需要考虑：为了方便编译，不用全局编译一次，哪里用到的常量就定义在哪个类中，或者使用枚举类型替换。<br>参考代码：<br><a href="https://github.com/arthinking/java-code/blob/master/src/me/arthinking/code4jvmnote/C7_4_RoleEnum.java" title="常量编译处理方式" target="_blank" rel="external">常量编译处理方式</a><br>可以发现，数组常量会从所在的类加载元素，而字符串和整型的常量会直接在常量池中保存一份数据，不会除非常量所在类的初始化。</p>
+<p>#1、概述<br>即时编译器并不是虚拟机必需的部分。</p>
+<p>本章提及的编译器、即时编译器都是指 HotSpot 虚拟机内的即时编译器，虚拟机也是特指 HotSpot 虚拟机。</p>
+<p>#2、HotSpot虚拟机内的即时编译器</p>
+<p>##2.1、解释器与编译器<br>HotSpot 虚拟机中内置了两个即时编译器，分别称为 Client Compiler 和 Server   Compiler。</p>
+<p>HotSpot 虚拟机会根据自身版本与宿主机器的硬件性能自动选择运行模式，用户也可以使用”- client” 或”- server” 参数去强制指定虚拟机运行在 Client 模式或 Server 模式。</p>
+<p>参数”- Xint” 强制虚拟机运行于“解释模式”（ Interpreted   Mode）。</p>
+<p>参数”- Xcomp” 强制虚拟机运行于“编译模式”（ Compiled   Mode），这时将优先采用编译方式执行程序，但是解释器仍然要在编译无法进行的情况下介入执行过程。</p>
+<p>为了在程序启动响应速度与运行效率之间达到最佳平衡， HotSpot 虚拟机还会逐渐启用分层编译（ Tiered Compilation）[ 4] 的策略。</p>
+<p>实施分层编译后， Client   Compiler 和 Server   Compiler 将会同时工作，许多代码都可能会被多次编译，用 Client   Compiler 获取更高的编译速度，用 Server   Compiler 来获取更好的编译质量，在解释执行的时候也无须再承担收集性能监控信息的任务。</p>
+<p>##2.2、编译对象与触发条件<br>“热点代码”有两类，即：被多次调用的方法。被多次执行的循环体。</p>
+<p>这种编译方式因为编译发生在方法执行过程之中，因此形象地称之为栈上替换（ On   Stack   Replacement， 简称为 OSR 编译，即方法栈帧还在栈上，方法就被替换了）。</p>
+<p>判断一段代码是不是热点代码，是不是需要触发即时编译，这样的行为称为热点探测。</p>
+<p>目前主要的热点探测判定方式有两种：基于采样的热点探测，基于计数器的热点探测。</p>
+<p>在 HotSpot 虚拟机中使用的是第二种——基于计数器的热点探测方法，因此它为每个方法准备了两类计数器：方法调用计数器（ Invocation   Counter） 和回边计数器（ Back   Edge   Counter）。</p>
+<p>当计数器超过阈值溢出了，就会触发 JIT 编译。</p>
+<p>当编译工作完成之后，这个方法的调用入口地址就会被系统自动改写成新的。</p>
+<p>使用虚拟机参数- XX:- UseCounterDecay 来关闭热度衰减，让方法计数器统计方法调用的绝对次数。</p>
+<p>使用- XX: CounterHalfLifeTime 参数设置半衰周期的时间，单位是秒。</p>
+<p>回边计数器，它的作用是统计一个方法中循环体代码执行的次数。<br>建立回边计数器统计的目的就是为了触发 OSR 编译。<br>参数- XX: OnStackReplacePercentage 来间接调整回边计数器的阈值。</p>
+<p>##2.3、编译过程<br>在默认设置下，无论是方法调用产生的即时编译请求，还是 OSR 编译请求，虚拟机在代码编译器还未完成之前，都仍然将按照解释方式继续执行，而编译动作则在后台的编译线程中进行。</p>
+<p>用户可以通过参数- XX:- BackgroundCompilation 来禁止后台编译。</p>
+<p>对于 Client   Compiler 来说，它是一个简单快速的三段式编译器，主要的关注点在于局部性的优化，而放弃了许多耗时较长的全局优化手段。</p>
+<p>而 Server Compiler 则是专门面向服务端的典型应用并为服务端的性能配置特别调整过的编译器,也是一个充分优化过的高级编译器,几乎能达到 GNU C++编译器使用-O2参数时的优化强度。</p>
+<p>##2.4、查看及分析即时编译结果</p>
+<p>#3、编译优化技术</p>
+<p>##3.1、优化技术概览<br>这些代码优化变换是建立在代码的某种中间表示或机器码之上，绝不是建立在Java源码之上的。</p>
+<p>##3.2、公共子表达式消除</p>
+<p>##3.3、数组边界检查消除<br>除了如数组边界检查优化这种尽可能把运行期检查提到编译器完成的思路之外，另外还有一种避免思路：隐式异常处理。</p>
+<p>当 foo 不为空的时候,对 value 的访问是不会额外消耗一次对 foo 判空的开销的。代价就是当 foo 真的为空时,必须转入到异常处理器中恢复并抛出 NullPointException异常，这个过程必须从用户态转动内核态中处理，结束后再回到用户态，速度远比一次判空检查慢。</p>
+<p>##3.4、方法内联<br>只有使用invokespecial指令调用的私有方法、实例构造器、父类方法以及使用invokestatic指令进行调用的静态方法才是在编译期进行解析的。</p>
+<p>##3.5、逃逸分析<br>逃逸分析的基本行为就是分析对象动态作用域。</p>
+<p>如果确定一个方法不会逃逸出方法之外，那让整个对象在栈上分配内存将会是一个很不错的主意，对象所占用的内存空间就可以随栈帧而销毁。在一般应用中，不会逃逸的局部对象所占用的比例很大，如果能使用栈上分配，那大量的对象就会随着方法结束而自动销毁了，垃圾手机系统的压力将会小很多。</p>
+<p>同步消除</p>
+<p>标量替换</p>
+<p>#4、Java与C/C++的编译器对比<br>除了它们自身的API库实现得好坏之外，其余的比较就成了一场“拼编译器”和“拼输出代码质量”的游戏。</p>
+<p>Java虚拟机的即时编译器与C/C++的静态优化编译器相比，可能会由于下列这些原因导致输出的本地代码有一些劣势：<br>即时编译器运行占用的是用户程序的运行时间<br>Java语言是动态的类型安全语言<br>Java语言中虽然没有virtual关键字，但是使用虚方法的频率却远远大于C/C++语言<br>Java语言是可以动态扩展的语言<br>Java语言中对象的内存分配都是在堆上进行的，只有方法中的局部变量才能在堆上分配</p>
+<p>#5、本章小结</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/JVM/">JVM</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/2014120501_JVM笔记 - 程序编译与代码优化（早期（编译器）优化）/"><span>JVM笔记 - 程序编译与代码优化（早期（编译器）优化）</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/2014120501_JVM笔记 - 程序编译与代码优化（早期（编译器）优化）/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#1、概述<br>Java语言的“编译期”是一段不确定的操作过程，可能是：    </p>
+<ul>
+<li>前端编译器（编译器的前端）把Java文件转换为class文件；Sun 的 Javac、 Eclipse   JDT 中的增量式编译器（ ECJ）[ 1]。</li>
+<li>后端编译器（JIT编译期 Just in time compiler）把字节码变成机器码；JIT 编译器： HotSpot   VM 的 C1、 C2 编译器。</li>
+<li>静态编译器（AOT编译器 ahead of time compiler）直接把Java编译成本地机器代码；</li>
+<li>AOT 编译器： GNU   Compiler   for   the   Java（ GCJ）[ 2]、 Excelsior JET[ 3]。</li>
+</ul>
+<p>本章讨论第一类编译过程。</p>
+<p>Javac 这类编译器对代码的运行效率几乎没有任何优化措施（在 JDK   1. 3 之后， Javac 的- O 优化参数就不再有意义）。虚拟机设计团队把对性能的优化集中到了后端的即时编译器中。</p>
+<p>#2、Javac编译器<br>它本身就是一个由 Java 语言编写的程序，这为纯 Java 的程序员了解它的编译过程带来了很大的便利。</p>
+<p>##2.1、Javac的源码与调试</p>
+<p>##2.2、解析与填充符号表</p>
+<p>##2.3、注解处理器<br>提供了一组插入式注解处理器的标准 API 在编译期间对注解进行处理。</p>
+<p>有了编译器注解处理的标准 API 后，我们的代码才有可能干涉编译器的行为，由于语法树中的任意元素，甚至包括代码注释都可以在插件之中访问到，所以通过插入式注解处理器实现的插件在功能上有很大的发挥空间。</p>
+<p>在 Javac 源码中，插入式注解处理器的初始化过程是在 initPorcessAnnotations() 方法中完成的，而它的执行过程则是在processAnnotations() 方法中完成的。</p>
+<p>##2.4、语义分析与字节码生成<br>编译器获得了程序代码的抽象语法树表示，语法树能表示一个结构正确的源程序的抽象，但无法保证源程序是符合逻辑的。而语义分析的主要任务是对结构上正确的源程序进行上下文有关性质的审查，如进行类型审查。</p>
+<p>是否合乎语义逻辑必须限定在具体的语言与具体的上下文环境之中才有意义。</p>
 <blockquote>
-<p>发表于：<a href="更新常量类导致的编译问题" title="http://www.itzhai.com/the-compilation-problems-caused-by-constant.html">更新常量类导致的编译问题</a></p>
+<p>标注检查 Javac 的编译过程中，语义分析过程分为标注检查以及数据及控制流分析两个步骤。</p>
+</blockquote>
+<p>标注检查步骤检查的内容包括诸如变量使用前是否已被声明、变量与赋值之间的数据类型是否能够匹配等。在标注检查步骤中，还有一个重要的动作称为常量折叠。</p>
+<p>由于编译期间进行了常量折叠，所以在代码里面定义” a= 1+ 2” 比起直接定义” a= 3”， 并不会增加程序运行期哪怕仅仅一个 CPU 指令的运算量。</p>
+<blockquote>
+<p>数据及控制流分析</p>
+</blockquote>
+<p>数据及控制流分析是对程序上下文逻辑更进一步的验证，它可以检查出诸如程序局部变量在使用前是否有赋值、方法的每条路径是否都有返回值、是否所有的受查异常都被正确处理了等问题。</p>
+<p>将局部变量声明为 final， 对运行期是没有影响的，变量的不变性仅仅由编译器在编译期间保障。局部变量与字段（实例变量、类变量）是有区别的，它在常量池中没有 CONSTANT<em> Fieldref</em> info 的符号引用，自然就没有访问标志（ Access_ Flags） 的信息。</p>
+<blockquote>
+<p>解语法糖</p>
+</blockquote>
+<p>在编译阶段还原回简单的基础语法结构，这个过程称为解语法糖。</p>
+<p>解语法糖的过程由 desugar() 方法触发。</p>
+<blockquote>
+<p>字节码生成</p>
+</blockquote>
+<p>字节码生成是 Javac 编译过程的最后一个阶段</p>
+<p>把前面各个步骤所生成的信息（语法树、符号表）转化成字节码写到磁盘中，编译器还进行了少量的代码添加和转换工作。例如，前面章节中多次提到的实例构造器＜ init ＞()方法和类构造器＜ clinit ＞()方法就是在这个阶段添加到语法树之中的</p>
+<p>还有其他的一些代码替换工作用于优化程序的实现逻辑，如把字符串的加操作替换为 StringBuffer 或 StringBuilder。</p>
+<p>完成了对语法树的遍历和调整之后，就会把填充了所有所需信息的符号表交给 com. sun. tools. javac. jvm. ClassWriter 类，由这个类的 writeClass() 方法输出字节码，生成最终的 Class 文件，到此为止整个编译过程宣告结束。</p>
+<p>#3、Java语法糖的味道</p>
+<p>##3.1、泛型与类型擦除<br>Java 语言中的泛型则不一样，它只在程序源码中存在，在编译后的字节码文件中，就已经替换为原来的原生类型（ Raw   Type， 也称为裸类型）了，并且在相应的地方插入了强制转型代码。</p>
+<p>泛型擦除成相同的原生类型只是无法重载的其中一部分原因。</p>
+<p>方法重载要求方法具备不同的特征签名，返回值并不包含在方法的特征签名之中，所以返回值不参与重载选择，但是在 Class 文件格式之中，只要描述符不是完全一致的两个方法就可以共存。也就是说，两个方法如果有相同的名称和特征签名，但返回值不同，那它们也是可以合法地共存于一个 Class 文件中的。</p>
+<p>link</p>
+<p>Signature、 LocalVariableTypeTable 等新的属性用于解决伴随泛型而来的参数类型的识别问题， Signature 是其中最重要的一项属性，它的作用就是存储一个方法在字节码层面的特征签名[ 3]， 这个属性中保存的参数类型并不是原生类型，而是包括了参数化类型的信息。</p>
+<p>由于 List ＜ String ＞和 List ＜ Integer ＞擦除后是同一个类型，我们只能添加两个并不需要实际使用到的返回值才能完成重载。</p>
+<p>擦除法所谓的擦除，仅仅是对方法的 Code 属性中的字节码进行擦除，实际上元数据中还是保留了泛型信息，这也是我们能通过反射手段取得参数化类型的根本依据。</p>
+<p>##3.2、自动装箱、拆箱与遍历循环<br>遍历循环则把代码还原成了迭代器的实现，这也是为何遍历循环需要被遍历的类实现 Iterable 接口的原因。</p>
+<p>包装类的“==”运算在不遇到算术运算的情况下不会自动拆箱，以及它们 equals() 方法不处理数据转型的关系，笔者建议在实际编码中尽量避免这样使用自动装箱与拆箱。</p>
+<p>##3.3、条件编译<br>Java 语言当然也可以进行条件编译，方法就是使用条件为常量的 if 语句。</p>
+<p>#4、实战：插入式注解处理器</p>
+<p>##4.1、实战目标</p>
+<p>##4.2、代码实现<br>要通过注解处理器 API 实现一个编译器插件，首先需要了解这组 API 的一些基本知识。</p>
+<p>在 JDK   1. 6 新增的 javax. lang. model 包中定义了 16 类 Element， 包括了 Java 代码中最常用的元素，如：“包（ PACKAGE）、 枚举（ ENUM）、 类（ CLASS）、 注解（ ANNOTATION<em> TYPE）、 接口（ INTERFACE）、 枚举值（ ENUM</em> CONSTANT）、 字段（ FIELD）、 参数（ PARAMETER）、 本地变量（ LOCAL<em> VARIABLE）、 异常（ EXCEPTION</em> PARAMETER）、 方法（ METHOD）、 构造函数（ CONSTRUCTOR）、 静态语句块（ STATIC<em> INIT， 即 static{} 块）、实例语句块（ INSTANCE</em> INIT， 即{}块）、参数化类型（ TYPE_ PARAMETER， 既泛型尖括号内的类型）和未定义的其他语法树节点（ OTHER）”。</p>
+<p>##4.3、运行与测试</p>
+<p>##4.4、其他应用案例<br>NameCheckProcessor 的实战例子只演示了 JSR- 269 嵌入式注解处理器 API 中的一部分功能，基于这组 API 支持的项目还有用于校验 Hibernate 标签使用正确性的 Hibernate   Validator   Annotation Processor[ 1]（ 本质上与 NameCheckProcessor 所做的事情差不多）、自动为字段生成 getter 和 setter 方法的 Project   Lombok[ 2]（ 根据已有元素生成新的语法树元素）等。</p>
+<p>#5、本章小结<br>之所以把 Javac 这类将 Java 代码转变为字节码的编译器称做“前端编译器”，是因为它只完成了从程序到抽象语法树或中间字节码的生成，而在此之后，还有一组内置于虚拟机内部的“后端编译器”完成了从字节码生成本地机器码的过程，即前面多次提到的即时编译器或 JIT 编译器，这个编译器的编译速度及编译结果的优劣，是衡量虚拟机性能一个很重要的指标。</p>
+<blockquote>
+<p>Javac(Java在编译时)做了哪些事情</p>
+<pre><code>1、解析与填充符号表；    
+2、注解处理器；    
+3、语义分析与字节码生成：    
+    3.1、标注检查    
+    3.2、数据及控制流分析    
+    3.3、解语法糖    
+        3.3.1、泛型与类型擦除    
+        3.3.2、自动装箱、拆箱与遍历循环    
+        3.3.3、条件编译    
+    3.4、字节码生成
+</code></pre><p>后端编译器把字节码转换成本地机器码    </p>
 </blockquote>
 
       
@@ -403,128 +611,6 @@
 </blockquote>
 <p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac下新安装的MySQL无法登陆root用户解决方法</a></p>
 <p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac下安装MySQL5.7遇到默认密码的大坑</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Database/">Database</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/MySQL/">MySQL</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/"><span>给一个多处使用到的类中的某些方法添加额外的处理动作</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>现有如下程序：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Searcher</span> </span>&#123;</span><br><span class="line">	<span class="function">List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		result.add(<span class="string">"Wings you are the hero"</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>LuceneSearcher在项目中的很多地方都用到了，现在想在LuceneSearcher的searchSong()方法添加一个处理逻辑，为了进行全局的改动，避免在多处地方分别改动，现在使用代理模式，创建一个Searcher的代理：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Searcher searcher;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CustomSearcher</span><span class="params">(Searcher searcher)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.searcher = searcher;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>&#123;</span><br><span class="line">		List&lt;String&gt; result = searcher.searchSong(songType);</span><br><span class="line">		result.add(<span class="string">"big blue ocean"</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以只在对象的声明创建语句改动下，程序中调用的地方就可以保持原样了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);  <span class="comment">// 调用的语句保持原样</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果Searcher接口有其他的实现，也可以很方便的使用这个代理方法改写方法了。另外，如果确定需要为接口的所有方法都使用代理进行改写，可以使用动态代理实现，而且通过使用动态代理（<a href="http://www.itzhai.com/java-notes-reflection-dynamic-proxies.html#动态代理：" title="JDK动态代理" target="_blank" rel="external">JDK动态代理</a>也可以通过invoke方法判断当前是否想要改写的方法而进行处理，<a href="http://www.itzhai.com/java-dong-tai-dai-li-zhi-jdk-dong-tai-dai-li-he-cglib-dong-tai-dai-li-mian-xiang-qie-mian-bian-cheng-aop-yuan-li.html#CGLib动态代理" title="CGLib动态代理" target="_blank" rel="external">CGLib动态代理</a>]对应为intercept方法），可以通过写一个代理处理类，就同时可以代理其他的类了，使用起来更灵活。</p>
-<p>如果LuceneSearcher并不是通过实现接口的方式编写的，那么我们可以继承这个LuceneSearcher接口，并覆盖searchSong方法加入处理逻辑，这样也通过改动创建语句就可以很方便的对代码进行了调整。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/设计模式/">设计模式</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/database/mysql/emoji表情支持/"><span>MySQL emoji表情支持</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/database/mysql/emoji表情支持/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>###1、数据库需要5.5.3+的支持</p>
-<p>###2、修改database、table和column字符集<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> guitargg <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">2000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%char%'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>###3、修改配置文件<br>etc/mysql/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-client-handshake = FALSE character-set-server = utf8mb4</span><br><span class="line">collation-server = utf8mb4_unicode_ci init_connect=&apos;SET NAMES utf8mb4&apos;</span><br></pre></td></tr></table></figure></p>
-<p>###4、重启MySQL Server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart</span><br></pre></td></tr></table></figure></p>
-<p>###5、升级JDBC驱动<br>确保mysql connector版本高于5.1.13</p>
-<p>###6、检查应用的数据库连接配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/database?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE jdbc.username=root</span><br><span class="line">jdbc.password=password</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p><a href="http://segmentfault.com/blog/ilikewhite/1190000000616820" title="mysql/Java服务端对emoji的支持" target="_blank" rel="external">mysql/Java服务端对emoji的支持</a></p>
-</blockquote>
 
       
     </div>
@@ -631,13 +717,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/2014120302_JVM笔记 - 虚拟机执行子系统（虚拟机字节码执行引擎）/"><span>JVM笔记 - 虚拟机执行子系统（虚拟机字节码执行引擎）</span></a></h3>
+    <h3 class="article-title"><a href="/Java/2014120401_JVM笔记 - 虚拟机执行子系统（类加载及执行子系统的案例与实战）/"><span>JVM笔记 - 虚拟机执行子系统（类加载及执行子系统的案例与实战）</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/2014120302_JVM笔记 - 虚拟机执行子系统（虚拟机字节码执行引擎）/" rel="bookmark">
+      <a href="/Java/2014120401_JVM笔记 - 虚拟机执行子系统（类加载及执行子系统的案例与实战）/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -653,85 +739,43 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#1、概述<br>能通过程序进行操作的，主要是字节码生成与类加载器这两部分的功能。</p>
+<p>#2、案例分析</p>
+<p>##2.1、Tomcat：正统的类加载器架构<br>主流的 Java   Web 服务器，如 Tomcat、 Jetty、 WebLogic、 WebSphere 或其他笔者没有列举的服务器，都实现了自己定义的类加载器（一般都不止一个）。因为一个功能健全的 Web 服务器，要解决如下几个问题：    </p>
+<blockquote>
+<p>部署在同一个服务器上的两个 Web 应用程序所使用的 Java 类库可以实现相互隔离。</p>
+<p>部署在同一个服务器上的两个 Web 应用程序所使用的 Java 类库可以互相共享。</p>
+<p>服务器需要尽可能地保证自身的安全不受部署的 Web 应用程序影响。</p>
+<p>支持 JSP 应用的 Web 服务器，大多数都需要支持 HotSwap 功能。</p>
+</blockquote>
+<p>在部署 Web 应用时，单独的一个 ClassPath 就无法满足需求了，所以各种 Web 服务器都“不约而同”地提供了好几个 ClassPath 路径供用户存放第三方类库。</p>
+<p>在 Tomcat 目录结构中，有 3 组目录（”<code>/common/*</code>“、”<code>/server/*</code>“ 和”<code>/shared/*</code>“） 可以存放 Java 类库，另外还可以加上 Web 应用程序自身的目录”/ WEB- INF/*”， 一共 4 组。</p>
+<p><code>CommonClassLoader</code>、 <code>CatalinaClassLoader</code>、 <code>SharedClassLoader</code> 和 <code>WebappClassLoader</code> 则是 Tomcat 自己定义的类加载器，</p>
+<p>###Tomcat热部署原理<br>JasperLoader 的加载范围仅仅是这个 JSP 文件所编译出来的那一个 Class， 它出现的目的就是为了被丢弃：当服务器检测到 JSP 文件被修改时，会替换掉目前的 JasperLoader 的实例，并通过再建立一个新的 Jsp 类加载器来实现 JSP 文件的 HotSwap 功能。</p>
+<p>对于 Tomcat 的 6. x 版本，只有指定了 tomcat/conf/ catalina. properties 配置文件的 server.loader 和 share.loader 项后才会真正建立 CatalinaClassLoader 和 SharedClassLoader 的实例，否则会用到这两个类加载器的地方都会用 CommonClassLoader 的实例代替，而默认的配置文件中没有设置这两个 loader 项，所以 Tomcat 6.x 顺理成章地把/common、/server 和/shared 三个目录默认合并到一起变成一个/ lib 目录。</p>
+<p>##2.2、OSGi：灵活的类加载器架构<br>“学习 JEE 规范，去看 JBoss 源码；学习类加载器，就去看 OSGi 源码”。</p>
+<p>OSGi 在 Java 程序员中最著名的应用案例就是Eclipse IDE。</p>
+<p>一个 Bundle 可以声明它所依赖的 Java   Package（ 通过 Import- Package 描述），也可以声明它允许导出发布的 Java   Package（ 通过 Export- Package 描述）。</p>
+<p>一个模块里只有被 Export 过的 Package 才可能由外界访问。</p>
+<p>基于 OSGi 的程序很可能（只是很可能，并不是一定会）可以实现模块级的热插拔功能，当程序升级更新或调试除错时，可以只停用、重新安装然后启用程序的其中一部分。</p>
+<p>OSGi 的 Bundle 类加载器之间只有规则，没有固定的委派关系。</p>
+<p>只有具体使用某个 Package 和 Class 的时候，才会根据 Package 导入导出定义来构造 Bundle 间的委派和依赖。</p>
+<p>如果一个类存在于 Bundle 的类库中但是没有被 Export， 那么这个 Bundle 的类加载器能找到这个类，但不会提供给其他 Bundle 使用</p>
+<p>并非所有的应用都适合采用 OSGi 作为基础架构， OSGi 在提供强大功能的同时，也引入了额外的复杂度，带来了线程死锁和内存泄漏的风险。</p>
+<p>##2.3、字节码生成技术与动态代理的实现<br>javac 也是一个由 Java 语言写成的程序，它的代码存放在 OpenJDK 的 langtools/src/share/classes/com/ sun/tools/javac 目录中[ 1]。 要深入了解字节码生成，阅读 javac 的源码是个很好的途径。</p>
+<p>动态代理实现了可以在原始类和接口还未知的时候，就确定代理类的代理行为，当代理类与原始类脱离直接联系后，就可以很灵活地重用于不同的应用场景之中。调用了 sun.misc.ProxyGenerator.generateProxyClass() 方法来完成生成字节码的动作，这个方法可以在运行时产生一个描述代理类的字节码 byte[] 数组。</p>
+<p>##2.4、Retrotranslator：跨越JDK版本<br>一种名为“ Java 逆向移植”的工具（ Java Backporting Tools）应运而生， Retrotranslator[1] 是这类工具中较出色的一个。</p>
+<p>编译器在程序中使用到<code>包装对象</code>的地方自动插入了很多 Integer.valueOf()、 Float.valueOf() 之类的代码；<code>变长参数</code>在编译之后就自动转化成了一个数组来完成参数传递；<code>泛型</code>的信息则在编译阶段就已经擦除掉了（但是在元数据中还保留着），相应的地方被编译器自动插入了类型转换代码[ 2]。</p>
+<p>从字节码的角度来看，<code>枚举</code>仅仅是一个继承于 java. lang. Enum、 自动生成了 values() 和 valueOf() 方法的普通 Java 类而已。</p>
+<p>#3、实战：自己动手实现远程执行功能</p>
+<p>##3.1、目标</p>
+<p>##3.2、思路</p>
+<p>##3.3、实现<br>构造函数中指定为加载 HotSwapClassLoader 类的类加载器作为父类加载器，这一步是实现提交的执行代码可以访问服务端引用类库的关键。</p>
+<p>##3.4、验证</p>
+<p>#4、本章小结</p>
+<blockquote>
 <p>《深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）》笔记</p>
-</blockquote>
-<p>#1、概述<br>物理机的执行引擎是直接建立在处理器、硬件、指令集和操作系统层面上的，而虚拟机的执行引擎则是由自己实现的，因此可以自行制定指令集与执行引擎的结构体系，并且能够执行那些不被硬件直接支持的指令集格式。</p>
-<p>#2、运行时栈帧结构<br>栈帧存储了方法的局部变量表、操作数栈、动态连接和方法返回地址等信息。每一个方法从调用开始至执行完成的过程，都对应着一个栈帧在虚拟机栈里面从入栈到出栈的过程。</p>
-<p>每一个栈帧都包括了局部变量表、操作数栈、动态连接、方法返回地址和一些额外的附加信息。</p>
-<p>对于执行引擎来说，在活动线程中，只有位于栈顶的栈帧才是有效的，称为当前栈帧。</p>
-<p>##2.1、局部变量表<br>Java 语言中明确的（ reference 类型则可能是 32 位也可能是 64 位） 64 位的数据类型只有 long 和 double 两种。</p>
-<p>为了尽可能节省栈帧空间，局部变量表中的 Slot 是可以重用的，方法体中定义的变量，其作用域并不一定会覆盖整个方法体。</p>
-<p>局部变量表复用对垃圾收集的影响 link<br>placeholder 原本所占用的 Slot 还没有被其他变量所复用，所以作为 GC Roots 一部分的局部变量表仍然保持着对它的关联。</p>
-<p>书籍《 Practical Java》 中把“不使用的对象应手动赋值为 null” 作为一条推荐的编码规则，，赋 null 值的操作在经过 JIT 编译优化后就会被消除掉，这时候将变量设置为 null 就是没有意义的。</p>
-<p>代码清单 8- 2 在经过 JIT 编译后， System.gc() 执行时就可以正确地回收掉内存，无须写成代码清单 8- 3 的样子。</p>
-<p>局部变量不像前面介绍的类变量那样存在“准备阶段”。如果一个局部变量定义了但没有赋初始值是不能使用的。</p>
-<p>##2.2、操作数栈</p>
-<p>##2.3、动态连接<br>Class 文件的常量池中存有大量的符号引用。</p>
-<p>这些符号引用一部分会在类加载阶段或者第一次使用的时候就转化为直接引用，这种转化称为<code>静态解析</code>。另外一部分将在每一次运行期间转化为直接引用，这部分称为<code>动态连接</code>。</p>
-<p>##2.4、方法返回地址<br>方法退出时可能执行的操作有：恢复上层方法的局部变量表和操作数栈，把返回值（如果有的话）压入调用者栈帧的操作数栈中，调整 PC 计数器的值以指向方法调用指令后面的一条指令等。</p>
-<p>##2.5、附加信息</p>
-<p>#3、方法调用</p>
-<p>##3.1、解析<br>调用目标在程序代码写好、编译器进行编译时就必须确定下来。这类方法的调用称为解析（ Resolution）。</p>
-<p>在 Java 语言中符合“编译期可知，运行期不可变”这个要求的方法，主要包括静态方法和私有方法两大类，因此它们都适合在类加载阶段进行解析。</p>
-<p>在 Java 虚拟机里面提供了 5 条方法调用字节码指令，分别如下。<br>&gt;</p>
-<blockquote>
-<p>invokestatic： 调用静态方法。</p>
-<p>invokespecial： 调用实例构造器＜ init ＞方法、私有方法和父类方法。</p>
-<p>invokevirtual： 调用所有的虚方法。</p>
-<p>invokeinterface： 调用接口方法，会在运行时再确定一个实现此接口的对象。</p>
-<p>只要能被 invokestatic 和 invokespecial 指令调用的方法，都可以在解析阶段中确定唯一的调用版本，符合这个条件的有静态方法、私有方法、实例构造器、父类方法 4 类，它们在类加载的时候就会把符号引用解析为该方法的直接引用。    </p>
-</blockquote>
-<p>这些方法可以称为<code>非虚方法</code>，与之相反，其他方法称为<code>虚方法</code>（除去 final 方法）    </p>
-<p>Java 中的非虚方法除了使用 invokestatic、 invokespecial 调用的方法之外还有一种，就是被 <code>final</code> 修饰的方法。</p>
-<p><code>解析调用</code>一定是个静态的过程，在编译期间就完全确定，在类装载的解析阶段就会把涉及的符号引用全部转变为可确定的直接引用，不会延迟到运行期再去完成。而<code>分派（ Dispatch） 调用</code>则可能是静态的也可能是动态的，根据分派依据的宗量数[ 1] 可分为单分派和多分派。</p>
-<p>##3.2、分派</p>
-<p>###静态分派：    </p>
-<p>例子：link</p>
-<p>“ Human” 称为变量的静态类型（ Static   Type）， 或者叫做的外观类型（ Apparent   Type）， 后面的” Man” 则称为变量的实际类型（ Actual   Type）。    </p>
-<p>虚拟机（准确地说是编译器）在重载时是通过参数的静态类型而不是实际类型作为判定依据的。    </p>
-<p>所有依赖静态类型来定位方法执行版本的分派动作称为<code>静态分派</code>。</p>
-<p>重载方法匹配优先级 link    </p>
-<p>如果同时出现两个参数分别为 Serializable 和 Comparable ＜ Character ＞的重载方法，那它们在此时的优先级是一样的。编译器无法确定要自动转型为哪种类型，会提示类型模糊，拒绝编译。程序必须在调用时显式地指定字面量的静态类型，如： sayHello（（ Comparable ＜ Character ＞）’ a’）。    </p>
-<p>###动态分派：</p>
-<p>它和多态性的另外一个重要体现[ 3]—— <code>重写</code>（ Override） 有着很密切的关联。</p>
-<p>方法动态分派演示 link    </p>
-<p>Java 虚拟机是如何根据实际类型来分派方法执行版本的呢？    </p>
-<p>原因就需要从 invokevirtual 指令的多态查找过程开始说起，由于 invokevirtual 指令执行的第一步就是在运行期确定接收者的实际类型，所以两次调用中的 invokevirtual 指令把常量池中的类方法符号引用解析到了不同的直接引用上，这个过程就是 Java 语言中方法重写的本质。我们把这种在运行期根据实际类型确定方法执行版本的分派过程称为<code>动态分派</code>。</p>
-<p>###单分派与多分派：</p>
-<p>单分派与多分派 link    </p>
-<p>Java 语言的<code>静态分派</code>属于<code>多分派类型</code>。    </p>
-<p>Java 语言的<code>动态分派</code>属于<code>单分派类型</code>。    </p>
-<p>今天（直至还未发布的 Java   1. 8） 的 Java 语言是一门静态多分派、动态单分派的语言。    </p>
-<p>###虚拟机动态分派的实现：</p>
-<p>##3.3、动态类型语言支持<br>随着 JDK   7 的发布，字节码指令集终于迎来了第一位新成员—— <code>invokedynamic</code>指令。这条新增加的指令是 JDK   7 实现“动态类型语言”（ Dynamically   Typed Language） 支持而进行的改进之一。</p>
-<p>###1. 动态类型语言<br>动态类型语言的关键特征是它的类型检查的主体过程是在运行期而不是编译期。</p>
-<p>“变量无类型而变量值才有类型”这个特点也是动态类型语言的一个重要特征。</p>
-<p>###2. JDK   1. 7 与动态类型</p>
-<p>###3. java. lang. invoke 包    </p>
-<p>JDK   1. 7 实现了 JSR- 292， 新加入的 java. lang. invoke 包[ 2] 就是 JSR- 292 的一个重要组成部分。    </p>
-<p>MethodHandle演示 link    </p>
-<p>MethodHandle 的使用方法和效果与 Reflection 有众多相似之处，不过，它们还是有以下这些区别：    </p>
-<blockquote>
-<p>Reflection 是在模拟 Java 代码层次的方法调用，而 MethodHandle 是在模拟字节码层次的方法调用。    </p>
-<p>Reflection 是重量级，而 MethodHandle 是轻量级。    </p>
-<p>Reflection   API 的设计目标是只为 Java 语言服务的，而 MethodHandle 则设计成可服务于所有 Java 虚拟机之上的语言，其中也包括 Java 语言。    </p>
-</blockquote>
-<p>###4. invokedynamic 指令</p>
-<p>在某种程度上， invokedynamic 指令与 MethodHandle 机制的作用是一样的，都是为了解决原有 4 条” invoke*” 指令方法分派规则固化在虚拟机之中的问题，把如何查找目标方法的决定权从虚拟机转嫁到具体用户代码之中。</p>
-<p>###5. 掌控方法分派规则</p>
-<p>invokedynamic 指令与前面 4 条” invoke*” 指令的最大差别就是它的分派逻辑不是由虚拟机决定的，而是由程序员决定。</p>
-<p>可以通过” super” 关键字很方便地调用到父类中的方法，但如果要访问祖类的方法呢？</p>
-<p>使用 MethodHandle 来解决相关问题 link</p>
-<p>#4、基于栈的字节码解析执行引擎</p>
-<p>##4.1、解析执行<br>Java 语言中， Javac 编译器完成了程序代码经过词法分析、语法分析到抽象语法树，再遍历语法树生成线性的字节码指令流的过程。因为这一部分动作是在 Java 虚拟机之外进行的，而解释器在虚拟机的内部，所以 Java 程序的编译就是半独立的实现。</p>
-<p>##4.2、基于栈的指令集与基于寄存器的指令集<br>Java 编译器输出的指令流，基本上[ 1] 是一种基于栈的指令集架构。    </p>
-<p>基于栈的指令集主要的优点就是可移植，寄存器由硬件直接提供[ 2]， 程序直接依赖这些硬件寄存器则不可避免地要受到硬件的约束。    </p>
-<p>栈架构指令集的主要缺点是执行速度相对来说会稍慢一些。    </p>
-<p>虽然栈架构指令集的代码非常紧凑，但是完成相同功能所需的指令数量一般会比寄存器架构多，因为出栈、入栈操作本身就产生了相当多的指令数量。更重要的是，栈实现在内存之中，频繁的栈访问也就意味着频繁的内存访问，相对于处理器来说，内存始终是执行速度的瓶颈。尽管虚拟机可以采取栈顶缓存的手段，把最常用的操作映射到寄存器中避免直接内存访问，但这也只能是优化措施而不是解决本质问题的方法。由于指令数量和内存访问的原因，所以导致了栈架构指令集的执行速度会相对较慢。</p>
-<p>##4.3、基于栈的解析执行过程<br>一段简单的算术代码的字节码表示  link    </p>
-<p>在 HotSpot 虚拟机中，有很多以” fast_” 开头的非标准字节码指令用于合并、替换输入的字节码以提升解释执行性能，而即时编译器的优化手段更加花样繁多[ 1]。    </p>
-<blockquote>
-<p>发表于：<a href="http://www.itzhai.com/jvm-executive-subsystem-bytecode-interpreter.html" title="虚拟机执行子系统（虚拟机字节码执行引擎）" target="_blank" rel="external">虚拟机执行子系统（虚拟机字节码执行引擎）</a></p>
 </blockquote>
 
       
@@ -760,13 +804,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/2014120201_JVM笔记 - 虚拟机执行子系统（类文件结构）/"><span>JVM笔记 - 虚拟机执行子系统（类文件结构）</span></a></h3>
+    <h3 class="article-title"><a href="/Java/2014120303_参数验证问题  AOP or  过滤器/"><span>参数验证问题  AOP or  过滤器</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/2014120201_JVM笔记 - 虚拟机执行子系统（类文件结构）/" rel="bookmark">
+      <a href="/Java/2014120303_参数验证问题  AOP or  过滤器/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -782,21 +826,23 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>《深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）》笔记    </p>
 </blockquote>
-<p>#1、概述</p>
-<p>#2、无关性的基石<br>JVM 设计者通过 JSR- 292 基本兑现了对 Java 虚拟机进行适当的扩展，以便更好地支持其他语言运行于 JVM 之上这个承诺。</p>
-<p>Java 虚拟机不和包括 Java 在内的任何语言绑定，它只与“ Class 文件”这种特定的二进制文件格式所关联</p>
-<p>#3、Class类文件的结构<br>任何一个 Class 文件都对应着唯一一个类或接口的定义信息，但反过来说，类或接口并不一定都得定义在文件里（譬如类或接口也可以通过类加载器直接生成）。</p>
-<p>Class 文件是一组以 8 位字节为基础单位的二进制流。</p>
-<p>根据 Java 虚拟机规范的规定， Class 文件格式采用一种类似于 C 语言结构体的伪结构来存储数据，这种伪结构中只有两种数据类型：无符号数和表，后面的解析都要以这两种数据类型为基础。</p>
-<p>#4、字节码指令简介</p>
-<p>#5、共有设计和私有设计<br>只要优化后 Class 文件依然可以被正确读取，并且包含在其中的语义能得到完整的保持，那实现者就可以选择任何方式去实现这些语义，虚拟机后台如何处理 Class 文件完全是实现者自己的事情，只要它在外部接口上看起来与规范描述的一致即可[ 1]。</p>
-<p>#6、Class文件结构的发展<br>相对于语言、 API 以及 Java 技术体系中其他方面的变化， Class 文件结构一直处于比较稳定的状态， Class 文件的主体结构、字节码指令的语义和数量几乎没有出现过变动[ 1]， 所有对 Class 文件格式的改进，都集中在向访问标志、属性表这些在设计上就可扩展的数据结构中添加内容。</p>
-<p>#7、本章小结</p>
-<blockquote>
-<p>发表于：<a href="http://www.itzhai.com/jvm-executive-subsystem-class-structure.html" title="JVM笔记 - 虚拟机执行子系统（类文件结构）" target="_blank" rel="external">JVM笔记 - 虚拟机执行子系统（类文件结构）</a></p>
-</blockquote>
+<p>使用Spring的AOP，之恩能够操作Spring上下文里面的对象。   </p>
+<p>JSP编译成的Class文件，是切入不了的，JSP编译为Servlet，JSP编译后的类的实例又servlet容器进行管理，对应的，可以通过Servlet的过滤器进行扩展。    </p>
+<p>##下面使用过滤器过滤验证参数：    </p>
+<p>如页面大小，页数这些通用的参数验证，可以抽取出通用的逻辑放入到Filter中处理。    </p>
+<p>对于使用Controller实现的接口，我们可以使用AOP进行拦截验证参数，而对于JSP页面，我们就只能使用Filter进行过滤验证了。    </p>
+<p>##JSP请求整个处理流程如下：</p>
+<ul>
+<li>客户端发起HTTP请求</li>
+<li>服务器端Web Server接受到请求，把请求转交给容器</li>
+<li>容器获取到请求的url</li>
+<li>容器根据web.xml中配置的filter，判断请求url是否需要执行filter</li>
+<li>容器根据web.xml中的配置，找到URL对应的Servlet（如果没有找到该Servlet，直接返回404错误码到客户端，表示访问的资源不存在）</li>
+<li>调用servlet的service方法处理请求（如果servlet还未装载入虚拟机，则进行加载，连接，并实例化，整个时候会调用servlet的init()方法，该方法只调用一次），分配一个线程去执行</li>
+<li>如果Servlet实例需要在容器中移除的时候，则调用servlet实例的destroy方法，以便释放实例所使用的资源，并持久化数据，之后等待GC回收。</li>
+</ul>
+<p>##Spring Controller请求整个处理流程如下：</p>
 
       
     </div>
@@ -807,11 +853,19 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/JVM/">JVM</a>
+    <a href="/categories/Java/">Java</a>
   </span>
 
 
           
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/AOP/">AOP</a>, <a href="/tags/Filter/">Filter</a>
+  </span>
+
+
         </div>
         
     </footer>

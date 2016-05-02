@@ -54,6 +54,346 @@
 
   
   
+    <h3 class="article-title"><a href="/operating-system/linux/common-command/"><span>Linux common command</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/operating-system/linux/common-command/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="common-linux-command"><a href="#common-linux-command" class="headerlink" title="common linux command"></a>common linux command</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="_">-l</span> -r <span class="_">-e</span> <span class="string">'arthinking.github.io'</span> /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i <span class="string">""</span> <span class="string">"s/arthinking.github.io/informal-essay/g"</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://www.th7.cn/system.mac/201411/77742.shtml
+http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="external">sed在mac下使用差异</a></p>
+<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>Linux的scp命令可以在Linux之间复制文件和目录：</p>
+<blockquote>
+<p>scp [可选参数] file_source file_target</p>
+</blockquote>
+<p>可选参数：</p>
+<ul>
+<li><code>-v</code>和大多数 linux 命令中的 -v 意思一样 , 用来显示进度 . 可以用来查看连接 , 认证 , 或是配置错误；</li>
+<li><code>-C</code>使能压缩选项；</li>
+<li><code>-P</code>选择端口 . 注意 -p 已经被 rcp 使用；</li>
+<li><code>-4</code>强行使用<code>IPV4</code>地址；</li>
+<li><code>-6</code>强行使用<code>IPV6</code>地址。</li>
+</ul>
+<h2 id="从本地复制到远程"><a href="#从本地复制到远程" class="headerlink" title="从本地复制到远程"></a>从本地复制到远程</h2><h3 id="复制文件："><a href="#复制文件：" class="headerlink" title="复制文件："></a>复制文件：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定上传文件夹</span></span><br><span class="line">scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_folder <span class="comment"># 指定上传后的文件名</span>scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_file </span><br><span class="line"><span class="comment"># 以下两个不指定远程服务器的登录名</span>scp <span class="built_in">local</span>_file remote_ip:remote_folder scp <span class="built_in">local</span>_file remote_ip:remote_file</span><br></pre></td></tr></table></figure>
+<h3 id="复制目录"><a href="#复制目录" class="headerlink" title="复制目录"></a>复制目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r <span class="built_in">local</span>_folder remote_username@remote_ip:remote_folder scp -r <span class="built_in">local</span>_folder remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
+<p>会在<code>remote_folder</code>下面创建<code>local_folder</code>文件夹</p>
+<h2 id="从远程复制到本地"><a href="#从远程复制到本地" class="headerlink" title="从远程复制到本地"></a>从远程复制到本地</h2><p>只要将从本地复制到远程的命令的后2个参数调换顺序即可。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>从远程下载文件到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp root@182.92.6.82:/home/guitargg.gz ~/Downloads/</span><br></pre></td></tr></table></figure>
+<p>把本金文件传递到另一台主机上面：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/Downloads/guitargg.gz root@182.92.6.82:/home/</span><br></pre></td></tr></table></figure>
+<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p>解压：<br>tar -zxvf /usr/local/test.tar.gz<br>tar -zxvf 压缩文件名.tar.gz -C /usr/local/maven</p>
+<p>01-.tar格式<br>解包：[＊＊＊＊＊＊＊]$ tar xvf FileName.tar<br>打包：[＊＊＊＊＊＊＊]$ tar cvf FileName.tar DirName（注：tar是打包，不是压缩！）</p>
+<p>02-.gz格式<br>解压1：[＊＊＊＊＊＊＊]$ gunzip FileName.gz<br>解压2：[＊＊＊＊＊＊＊]$ gzip -d FileName.gz<br>压 缩：[＊＊＊＊＊＊＊]$ gzip FileName</p>
+<p>03-.tar.gz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.gz<br>压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.gz DirName</p>
+<p>04-.bz2格式<br>解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz2<br>解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz2<br>压 缩： [＊＊＊＊＊＊＊]$ bzip2 -z FileName</p>
+<p>05-.tar.bz2格式<br>解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz2<br>压缩：[＊＊＊＊＊＊＊]$ tar jcvf FileName.tar.bz2 DirName</p>
+<p>06-.bz格式<br>解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz<br>解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz</p>
+<p>07-.tar.bz格式<br>解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz</p>
+<p>08-.Z格式<br>解压：[＊＊＊＊＊＊＊]$ uncompress FileName.Z<br>压缩：[＊＊＊＊＊＊＊]$ compress FileName</p>
+<p>09-.tar.Z格式<br>解压：[＊＊＊＊＊＊＊]$ tar Zxvf FileName.tar.Z<br>压缩：[＊＊＊＊＊＊＊]$ tar Zcvf FileName.tar.Z DirName</p>
+<p>10-.tgz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tgz</p>
+<p>11-.tar.tgz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.tgz<br>压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.tgz FileName</p>
+<p>12-.zip格式<br>解压：[＊＊＊＊＊＊＊]$ unzip FileName.zip<br>压缩：[＊＊＊＊＊＊＊]$ zip FileName.zip DirName</p>
+<p>13-.lha格式<br>解压：[＊＊＊＊＊＊＊]$ lha -e FileName.lha<br>压缩：[＊＊＊＊＊＊＊]$ lha -a FileName.lha FileName</p>
+<p>14-.rar格式<br>解压：[＊＊＊＊＊＊＊]$ rar a FileName.rar<br>压缩：[＊＊＊＊＊＊＊]$ rar e FileName.rar<br>rar请到：<a href="http://www.rarsoft.com/download.htm" target="_blank" rel="external">http://www.rarsoft.com/download.htm</a> 下载！<br>解压后请将rar_static拷贝到/usr/bin目录（其他由$PATH环境变量<br>指定的目录也行）：[＊＊＊＊＊＊＊]$ cp rar_static /usr/bin/rar</p>
+<h1 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h1><p>复制并且覆盖目标文件的文件<br>cp -r -f /webapp/* /dist/</p>
+<h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h1><p>查看端口占用</p>
+<p>lsof -i tcp:port</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Linux/">Linux</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/spring/2014122401-Spring架构设计/"><span>Spring架构设计</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/spring/2014122401-Spring架构设计/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>Spring框架的7个模块：<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring001.png" alt=""> </p>
+<p>#Spring Core：<br>核心容器提供 Spring 框架的基本功能。核心容器的主要组件是 BeanFactory，它是工厂模式的实现。BeanFactory 使用控制反转 （IOC） 模式将应用程序的配置和依赖性规范与实际的应用程序代码分开。</p>
+<p>#Spring Context:<br>Spring 上下文是一个配置文件，向 Spring 框架提供上下文信息。Spring 上下文包括企业服务，例如 JNDI、EJB、电子邮件、国际化、校验和调度功能。</p>
+<p>#Spring AOP:<br>通过配置管理特性，Spring AOP 模块直接将面向方面的编程功能集成到了 Spring 框架中。所以，可以很容易地使 Spring 框架管理的任何对象支持 AOP。Spring AOP 模块为基于 Spring 的应用程序中的对象提供了事务管理服务。通过使用 Spring AOP，不用依赖 EJB 组件，就可以将声明性事务管理集成到应用程序中。</p>
+<p>#Spring DAO:<br>JDBC DAO 抽象层提供了有意义的异常层次结构，可用该结构来管理异常处理和不同数据库供应商抛出的错误消息。异常层次结构简化了错误处理，并且极大地降低了需要编写的异常代码数量（例如打开和关闭连接）。Spring DAO 的面向 JDBC 的异常遵从通用的 DAO 异常层次结构。</p>
+<p>#Spring ORM:<br>Spring 框架插入了若干个 ORM 框架，从而提供了 ORM 的对象关系工具，其中包括 JDO、Hibernate 和 iBatis SQL Map。所有这些都遵从 Spring 的通用事务和 DAO 异常层次结构。</p>
+<p>#Spring Web模块：<br>Web 上下文模块建立在应用程序上下文模块之上，为基于 Web 的应用程序提供了上下文。所以，Spring 框架支持与 Jakarta Struts 的集成。Web 模块还简化了处理多部分请求以及将请求参数绑定到域对象的工作。</p>
+<p>#Spring MVC框架：<br>MVC 框架是一个全功能的构建 Web 应用程序的 MVC 实现。通过策略接口，MVC 框架变成为高度可配置的，MVC 容纳了大量视图技术，其中包括 JSP、Velocity、Tiles、iText 和 POI。</p>
+<blockquote>
+<p><a href="http://blog.javachen.com/2014/09/29/spring-source-codes/" title="Spring源码整体架构" target="_blank" rel="external">Spring源码整体架构</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/源码/">源码</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/README/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/README/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="arthinking的技术总结"><a href="#arthinking的技术总结" class="headerlink" title="arthinking的技术总结"></a>arthinking的技术总结</h2><blockquote>
+<p>Author: arthinking<br>E-mail: 1225538383@qq.com</p>
+</blockquote>
+<hr>
+<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a><a href="https://github.com/arthinking/arthinking/blob/master/Java.md" title="Java" target="_blank" rel="external">Java</a></h1><h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><hr>
+<p>#GitHub相关资源<br>markdown语法：<a href="https://github.com/guodongxiaren/test" target="_blank" rel="external">https://github.com/guodongxiaren/test</a><br>GitHub上README写法暨GFM语法解读：<a href="http://blog.csdn.net/wqvbjhc/article/details/27349209" target="_blank" rel="external">http://blog.csdn.net/wqvbjhc/article/details/27349209</a></p>
+<p>图片格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-02.png</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/spring/2014122402-spring-beans/"><span>Spring beans</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/spring/2014122402-spring-beans/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>Bean 组件在 Spring 的 org.springframework.beans 包下。这个包下的所有类主要解决了三件事：Bean 的定义、Bean 的创建以及对 Bean 的解析。对 Spring 的使用者来说唯一需要关心的就是 Bean 的创建，其他两个由 Spring 在内部帮你完成了，对你来说是透明的。</p>
+<p>Spring Bean 的创建是典型的工厂模式，他的顶级接口是 BeanFactory，下图是这个工厂的继承层次关系：    </p>
+<p><strong>Bean工厂的继承关系</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring002.png" alt=""></p>
+<p>BeanFactory 有三个子类：ListableBeanFactory、HierarchicalBeanFactory 和 AutowireCapableBeanFactory。但是从上图中我们可以发现最终的默认实现类是 DefaultListableBeanFactory，他实现了所有的接口。那为何要定义这么多层次的接口呢？查阅这些接口的源码和说明发现，每个接口都有他使用的场合，它主要是为了区分在 Spring 内部在操作过程中对象的传递和转化过程中，对对象的数据访问所做的限制。例如 ListableBeanFactory 接口表示这些 Bean 是可列表的，而 HierarchicalBeanFactory 表示的是这些 Bean 是有继承关系的，也就是每个 Bean 有可能有父 Bean。AutowireCapableBeanFactory 接口定义 Bean 的自动装配规则。这四个接口共同定义了 Bean 的集合、Bean 之间的关系、以及 Bean 行为。    </p>
+<p><strong>Bean定义的类层次关系图</strong>    </p>
+<p>Bean 的定义主要由 BeanDefinition 描述，如下图说明了这些类的层次关系：<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring003.png" alt=""><br>Bean 的定义就是完整的描述了在 Spring 的配置文件中你定义的 <bean> 节点中所有的信息，包括各种子节点。当 Spring 成功解析你定义的一个 <bean> 节点后，在 Spring 的内部他就被转化成 BeanDefinition 对象。以后所有的操作都是对这个对象完成的。</bean></bean></p>
+<p>Bean 的解析过程非常复杂，功能被分的很细，因为这里需要被扩展的地方很多，必须保证有足够的灵活性，以应对可能的变化。Bean 的解析主要就是对 Spring 配置文件的解析。这个解析过程主要通过下图中的类完成：    </p>
+<p><strong>Bean的解析类</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring004.png" alt=""></p>
+<p><a href="https://github.com/arthinking/java-code/blob/master/src/main/java/me/arthinking/spring/ioc/BeanFactoryTest.java" title="通过XmlBeanFactory实现启动Spring IoC容器" target="_blank" rel="external">通过XmlBeanFactory实现启动Spring IoC容器</a></p>
+<blockquote>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring 框架的设计理念与设计模式分析" target="_blank" rel="external">Spring 框架的设计理念与设计模式分析</a> </p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/spring/2014122403-spring-context/"><span>Spring context</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/spring/2014122403-spring-context/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>Context 在 Spring 的 org.springframework.context 包下，前面已经讲解了 Context 组件在 Spring 中的作用，他实际上就是给 Spring 提供一个运行时的环境，用以保存各个对象的状态。下面看一下这个环境是如何构建的。</p>
+<p>ApplicationContext 是 Context 的顶级父类，他除了能标识一个应用环境的基本信息外，他还继承了五个接口，这五个接口主要是扩展了 Context 的功能。下面是 Context 的类结构图：</p>
+<p><strong>Context相关的类结构图</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring005.png" alt="">    </p>
+<p>从上图中可以看出 ApplicationContext 继承了 BeanFactory，这也说明了 Spring 容器中运行的主体对象是 Bean，另外 ApplicationContext 继承了 ResourceLoader 接口，使得 ApplicationContext 可以访问到任何外部资源，这将在 Core 中详细说明。</p>
+<p>###ApplicationContext 的子类主要包含两个方面：</p>
+<ul>
+<li>ConfigurableApplicationContext 表示该 Context 是可修改的，也就是在构建 Context 中用户可以动态添加或修改已有的配置信息，它下面又有多个子类，其中最经常使用的是可更新的 Context，即 AbstractRefreshableApplicationContext 类。</li>
+<li>WebApplicationContext 顾名思义，就是为 web 准备的 Context 他可以直接访问到 ServletContext，通常情况下，这个接口使用的少。<br>再往下分就是按照构建 Context 的文件类型，接着就是访问 Context 的方式。这样一级一级构成了完整的 Context 等级层次。</li>
+</ul>
+<p>###总体来说 ApplicationContext 必须要完成以下几件事：    </p>
+<ul>
+<li>标识一个应用环境</li>
+<li>利用 BeanFactory 创建 Bean 对象</li>
+<li>保存对象关系表</li>
+<li>能够捕获各种事件</li>
+<li>Context 作为 Spring 的 Ioc 容器，基本上整合了 Spring 的大部分功能，或者说是大部分功能的基础。</li>
+</ul>
+<blockquote>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring 框架的设计理念与设计模式分析" target="_blank" rel="external">Spring 框架的设计理念与设计模式分析</a> </p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
     <h3 class="article-title"><a href="/Java/spring/2014122404-spring-core/"><span>Spring core</span></a></h3>
   
 
@@ -106,6 +446,149 @@
   <span class="post-categories">
     <i class="icon-categories"></i>
     <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/cache/memcached/Memcached配置使用与监控/"><span>Memcached配置使用与监控</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/cache/memcached/Memcached配置使用与监控/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#1、配置</p>
+<p>##1.1、安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install memcached</span><br></pre></td></tr></table></figure></p>
+<p>##1.2、启动</p>
+<blockquote>
+<p>Memcached的基本设置：</p>
+<p>-p 监听的端口<br>-l 连接的IP地址, 默认是本机<br>-d start 启动memcached服务<br>-d restart 重起memcached服务<br>-d stop|shutdown 关闭正在运行的memcached服务<br>-d install 安装memcached服务<br>-d uninstall 卸载memcached服务<br>-u 以的身份运行 (仅在以root运行的时候有效)<br>-m 最大内存使用，单位MB。默认64MB<br>-M 内存耗尽时返回错误，而不是删除项<br>-c 最大同时连接数，默认是1024<br>-f 块大小增长因子，默认是1.25<br>-n 最小分配空间，key+value+flags默认是48<br>-h 显示帮助<br>mixi的设置,单台:    </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 每台mc服务器仅启动一个mc进程，分配1G内存</span><br><span class="line">/usr/bin/memcached -p 11211 -u nobody -m 1000 -c 512</span><br><span class="line"></span><br><span class="line"># 启动mc</span><br><span class="line">/usr/share/memcached/scripts/start-memcached</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">注意：32位的操作系统中，每个进程最多只能够使用**2G**的内存，所以需要更大的内存的时候就只能进行集群了。（用同一台服务器进行集群，TCP连接数就会成倍增加，x86_64的操作系统可以分配超过2G的内存）；</span><br><span class="line"></span><br><span class="line">mc进程的实际内存分配量要比置顶的内存要大一些，所以如果置顶分配的内存太大了，有可能导致内存交换（swap）。</span><br><span class="line"></span><br><span class="line">#2、集群配置</span><br><span class="line">通过magent能够让缓存写入到多个不同的memcached里面</span><br><span class="line"></span><br><span class="line">##2.1、安装使用magent</span><br><span class="line">###2.1.1、编译安装libevent</span><br><span class="line">```shell</span><br><span class="line">wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz</span><br><span class="line">tar zxvf libevent-1.4.9-stable.tar.gz</span><br><span class="line">cd libevent-1.4.9-stable/</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
+<p>###2.1.2、编译安装Memcached：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz</span><br><span class="line">tar zxvf memcached-1.2.6.tar.gz</span><br><span class="line">cd memcached-1.2.6/</span><br><span class="line">./configure --with-libevent=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure></p>
+<p>###2.1.3、编译安装magent：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir magent</span><br><span class="line">cd magent/</span><br><span class="line">wget http://memagent.googlecode.com/files/magent-0.5.tar.gz</span><br><span class="line">tar zxvf magent-0.5.tar.gz</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">sed -i &quot;s#LIBS = -levent#LIBS = -levent -lm#g&quot; Makefile</span><br><span class="line">make</span><br><span class="line">cp magent /usr/bin/magent</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure></p>
+<p>###2.1.4、集群配置<br>集群两台服务器，实现缓存备份。<br>高可用网络架构：<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png" alt=""></p>
+<p><strong>启动两个mc进程，端口分别为11211,11212</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11211</span><br><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11212</span><br></pre></td></tr></table></figure></p>
+<p><strong>启动两个magent进程，端口分别为10000,10001</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10000 -s 127.0.0.1:11211 -b 127.0.0.1:11212</span><br><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
+<p>-s为要写入的memcached，-b为备份用的memcached    </p>
+<p>#3、使用</p>
+<p>##3.1、清空缓存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">flush_all</span><br><span class="line">quit</span><br></pre></td></tr></table></figure></p>
+<p>#4、监控</p>
+<p>##4.1、stats<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">stats</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>相关资源：</p>
+<p><a href="http://www.cnblogs.com/happyday56/p/3461113.html" title="memcached+magent实现memcached集群" target="_blank" rel="external">memcached+magent实现memcached集群</a>     </p>
+<p><a href="http://zhumeng8337797.blog.163.com/blog/static/10076891420113431424757/" title="memcache集群服务：memagent配置使用  " target="_blank" rel="external">memcache集群服务：memagent配置使用  </a></p>
+<p>发表于：<a href="http://www.itzhai.com/mc-config-and-monitoring.html" target="_blank" rel="external">http://www.itzhai.com/mc-config-and-monitoring.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Cache/">Cache</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Memcached/">Memcached</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/server/服务器监控/"><span>服务器监控</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/server/服务器监控/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#缓存<br><a href="https://github.com/arthinking/informal-essay/blob/master/memcached/Memcached%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%9B%91%E6%8E%A7.md" title="memcached的配置与监控" target="_blank" rel="external">memcached的配置与监控</a><br>通过查看占用内存，决定需不需要进行扩容</p>
+<p>#JDK监控</p>
+<p>#应用服务器监控</p>
+<p>#数据库监控</p>
+<p>##数据库内存监控</p>
+<p>##数据库访问监控</p>
+<p>##数据库并发测试</p>
+<p>#nginx并发访问监控</p>
+<p>#Lucene服务监控</p>
+<p>##占用内存</p>
+<p>##查询效率</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/监控/">监控</a>
   </span>
 
 
@@ -252,489 +735,6 @@
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/cache/memcached/Memcached配置使用与监控/"><span>Memcached配置使用与监控</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/cache/memcached/Memcached配置使用与监控/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>#1、配置</p>
-<p>##1.1、安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install memcached</span><br></pre></td></tr></table></figure></p>
-<p>##1.2、启动</p>
-<blockquote>
-<p>Memcached的基本设置：</p>
-<p>-p 监听的端口<br>-l 连接的IP地址, 默认是本机<br>-d start 启动memcached服务<br>-d restart 重起memcached服务<br>-d stop|shutdown 关闭正在运行的memcached服务<br>-d install 安装memcached服务<br>-d uninstall 卸载memcached服务<br>-u 以的身份运行 (仅在以root运行的时候有效)<br>-m 最大内存使用，单位MB。默认64MB<br>-M 内存耗尽时返回错误，而不是删除项<br>-c 最大同时连接数，默认是1024<br>-f 块大小增长因子，默认是1.25<br>-n 最小分配空间，key+value+flags默认是48<br>-h 显示帮助<br>mixi的设置,单台:    </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 每台mc服务器仅启动一个mc进程，分配1G内存</span><br><span class="line">/usr/bin/memcached -p 11211 -u nobody -m 1000 -c 512</span><br><span class="line"></span><br><span class="line"># 启动mc</span><br><span class="line">/usr/share/memcached/scripts/start-memcached</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">注意：32位的操作系统中，每个进程最多只能够使用**2G**的内存，所以需要更大的内存的时候就只能进行集群了。（用同一台服务器进行集群，TCP连接数就会成倍增加，x86_64的操作系统可以分配超过2G的内存）；</span><br><span class="line"></span><br><span class="line">mc进程的实际内存分配量要比置顶的内存要大一些，所以如果置顶分配的内存太大了，有可能导致内存交换（swap）。</span><br><span class="line"></span><br><span class="line">#2、集群配置</span><br><span class="line">通过magent能够让缓存写入到多个不同的memcached里面</span><br><span class="line"></span><br><span class="line">##2.1、安装使用magent</span><br><span class="line">###2.1.1、编译安装libevent</span><br><span class="line">```shell</span><br><span class="line">wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz</span><br><span class="line">tar zxvf libevent-1.4.9-stable.tar.gz</span><br><span class="line">cd libevent-1.4.9-stable/</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
-<p>###2.1.2、编译安装Memcached：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz</span><br><span class="line">tar zxvf memcached-1.2.6.tar.gz</span><br><span class="line">cd memcached-1.2.6/</span><br><span class="line">./configure --with-libevent=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure></p>
-<p>###2.1.3、编译安装magent：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir magent</span><br><span class="line">cd magent/</span><br><span class="line">wget http://memagent.googlecode.com/files/magent-0.5.tar.gz</span><br><span class="line">tar zxvf magent-0.5.tar.gz</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">sed -i &quot;s#LIBS = -levent#LIBS = -levent -lm#g&quot; Makefile</span><br><span class="line">make</span><br><span class="line">cp magent /usr/bin/magent</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure></p>
-<p>###2.1.4、集群配置<br>集群两台服务器，实现缓存备份。<br>高可用网络架构：<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png" alt=""></p>
-<p><strong>启动两个mc进程，端口分别为11211,11212</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11211</span><br><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11212</span><br></pre></td></tr></table></figure></p>
-<p><strong>启动两个magent进程，端口分别为10000,10001</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10000 -s 127.0.0.1:11211 -b 127.0.0.1:11212</span><br><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
-<p>-s为要写入的memcached，-b为备份用的memcached    </p>
-<p>#3、使用</p>
-<p>##3.1、清空缓存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">flush_all</span><br><span class="line">quit</span><br></pre></td></tr></table></figure></p>
-<p>#4、监控</p>
-<p>##4.1、stats<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">stats</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>相关资源：</p>
-<p><a href="http://www.cnblogs.com/happyday56/p/3461113.html" title="memcached+magent实现memcached集群" target="_blank" rel="external">memcached+magent实现memcached集群</a>     </p>
-<p><a href="http://zhumeng8337797.blog.163.com/blog/static/10076891420113431424757/" title="memcache集群服务：memagent配置使用  " target="_blank" rel="external">memcache集群服务：memagent配置使用  </a></p>
-<p>发表于：<a href="http://www.itzhai.com/mc-config-and-monitoring.html" target="_blank" rel="external">http://www.itzhai.com/mc-config-and-monitoring.html</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/spring/2014122401-Spring架构设计/"><span>Spring架构设计</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/spring/2014122401-Spring架构设计/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>Spring框架的7个模块：<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring001.png" alt=""> </p>
-<p>#Spring Core：<br>核心容器提供 Spring 框架的基本功能。核心容器的主要组件是 BeanFactory，它是工厂模式的实现。BeanFactory 使用控制反转 （IOC） 模式将应用程序的配置和依赖性规范与实际的应用程序代码分开。</p>
-<p>#Spring Context:<br>Spring 上下文是一个配置文件，向 Spring 框架提供上下文信息。Spring 上下文包括企业服务，例如 JNDI、EJB、电子邮件、国际化、校验和调度功能。</p>
-<p>#Spring AOP:<br>通过配置管理特性，Spring AOP 模块直接将面向方面的编程功能集成到了 Spring 框架中。所以，可以很容易地使 Spring 框架管理的任何对象支持 AOP。Spring AOP 模块为基于 Spring 的应用程序中的对象提供了事务管理服务。通过使用 Spring AOP，不用依赖 EJB 组件，就可以将声明性事务管理集成到应用程序中。</p>
-<p>#Spring DAO:<br>JDBC DAO 抽象层提供了有意义的异常层次结构，可用该结构来管理异常处理和不同数据库供应商抛出的错误消息。异常层次结构简化了错误处理，并且极大地降低了需要编写的异常代码数量（例如打开和关闭连接）。Spring DAO 的面向 JDBC 的异常遵从通用的 DAO 异常层次结构。</p>
-<p>#Spring ORM:<br>Spring 框架插入了若干个 ORM 框架，从而提供了 ORM 的对象关系工具，其中包括 JDO、Hibernate 和 iBatis SQL Map。所有这些都遵从 Spring 的通用事务和 DAO 异常层次结构。</p>
-<p>#Spring Web模块：<br>Web 上下文模块建立在应用程序上下文模块之上，为基于 Web 的应用程序提供了上下文。所以，Spring 框架支持与 Jakarta Struts 的集成。Web 模块还简化了处理多部分请求以及将请求参数绑定到域对象的工作。</p>
-<p>#Spring MVC框架：<br>MVC 框架是一个全功能的构建 Web 应用程序的 MVC 实现。通过策略接口，MVC 框架变成为高度可配置的，MVC 容纳了大量视图技术，其中包括 JSP、Velocity、Tiles、iText 和 POI。</p>
-<blockquote>
-<p><a href="http://blog.javachen.com/2014/09/29/spring-source-codes/" title="Spring源码整体架构" target="_blank" rel="external">Spring源码整体架构</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/源码/">源码</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/server/服务器监控/"><span>服务器监控</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/server/服务器监控/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>#缓存<br><a href="https://github.com/arthinking/informal-essay/blob/master/memcached/Memcached%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%9B%91%E6%8E%A7.md" title="memcached的配置与监控" target="_blank" rel="external">memcached的配置与监控</a><br>通过查看占用内存，决定需不需要进行扩容</p>
-<p>#JDK监控</p>
-<p>#应用服务器监控</p>
-<p>#数据库监控</p>
-<p>##数据库内存监控</p>
-<p>##数据库访问监控</p>
-<p>##数据库并发测试</p>
-<p>#nginx并发访问监控</p>
-<p>#Lucene服务监控</p>
-<p>##占用内存</p>
-<p>##查询效率</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/监控/">监控</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/operating-system/linux/common-command/"><span>Linux common command</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/operating-system/linux/common-command/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h1 id="common-linux-command"><a href="#common-linux-command" class="headerlink" title="common linux command"></a>common linux command</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="_">-l</span> -r <span class="_">-e</span> <span class="string">'arthinking.github.io'</span> /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i <span class="string">""</span> <span class="string">"s/arthinking.github.io/informal-essay/g"</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://www.th7.cn/system.mac/201411/77742.shtml
-http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="external">sed在mac下使用差异</a></p>
-<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>Linux的scp命令可以在Linux之间复制文件和目录：</p>
-<blockquote>
-<p>scp [可选参数] file_source file_target</p>
-</blockquote>
-<p>可选参数：</p>
-<ul>
-<li><code>-v</code>和大多数 linux 命令中的 -v 意思一样 , 用来显示进度 . 可以用来查看连接 , 认证 , 或是配置错误；</li>
-<li><code>-C</code>使能压缩选项；</li>
-<li><code>-P</code>选择端口 . 注意 -p 已经被 rcp 使用；</li>
-<li><code>-4</code>强行使用<code>IPV4</code>地址；</li>
-<li><code>-6</code>强行使用<code>IPV6</code>地址。</li>
-</ul>
-<h2 id="从本地复制到远程"><a href="#从本地复制到远程" class="headerlink" title="从本地复制到远程"></a>从本地复制到远程</h2><h3 id="复制文件："><a href="#复制文件：" class="headerlink" title="复制文件："></a>复制文件：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定上传文件夹</span></span><br><span class="line">scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_folder <span class="comment"># 指定上传后的文件名</span>scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_file </span><br><span class="line"><span class="comment"># 以下两个不指定远程服务器的登录名</span>scp <span class="built_in">local</span>_file remote_ip:remote_folder scp <span class="built_in">local</span>_file remote_ip:remote_file</span><br></pre></td></tr></table></figure>
-<h3 id="复制目录"><a href="#复制目录" class="headerlink" title="复制目录"></a>复制目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r <span class="built_in">local</span>_folder remote_username@remote_ip:remote_folder scp -r <span class="built_in">local</span>_folder remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
-<p>会在<code>remote_folder</code>下面创建<code>local_folder</code>文件夹</p>
-<h2 id="从远程复制到本地"><a href="#从远程复制到本地" class="headerlink" title="从远程复制到本地"></a>从远程复制到本地</h2><p>只要将从本地复制到远程的命令的后2个参数调换顺序即可。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>从远程下载文件到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp root@182.92.6.82:/home/guitargg.gz ~/Downloads/</span><br></pre></td></tr></table></figure>
-<p>把本金文件传递到另一台主机上面：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/Downloads/guitargg.gz root@182.92.6.82:/home/</span><br></pre></td></tr></table></figure>
-<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p>解压：<br>tar -zxvf /usr/local/test.tar.gz<br>tar -zxvf 压缩文件名.tar.gz -C /usr/local/maven</p>
-<p>01-.tar格式<br>解包：[＊＊＊＊＊＊＊]$ tar xvf FileName.tar<br>打包：[＊＊＊＊＊＊＊]$ tar cvf FileName.tar DirName（注：tar是打包，不是压缩！）</p>
-<p>02-.gz格式<br>解压1：[＊＊＊＊＊＊＊]$ gunzip FileName.gz<br>解压2：[＊＊＊＊＊＊＊]$ gzip -d FileName.gz<br>压 缩：[＊＊＊＊＊＊＊]$ gzip FileName</p>
-<p>03-.tar.gz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.gz<br>压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.gz DirName</p>
-<p>04-.bz2格式<br>解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz2<br>解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz2<br>压 缩： [＊＊＊＊＊＊＊]$ bzip2 -z FileName</p>
-<p>05-.tar.bz2格式<br>解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz2<br>压缩：[＊＊＊＊＊＊＊]$ tar jcvf FileName.tar.bz2 DirName</p>
-<p>06-.bz格式<br>解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz<br>解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz</p>
-<p>07-.tar.bz格式<br>解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz</p>
-<p>08-.Z格式<br>解压：[＊＊＊＊＊＊＊]$ uncompress FileName.Z<br>压缩：[＊＊＊＊＊＊＊]$ compress FileName</p>
-<p>09-.tar.Z格式<br>解压：[＊＊＊＊＊＊＊]$ tar Zxvf FileName.tar.Z<br>压缩：[＊＊＊＊＊＊＊]$ tar Zcvf FileName.tar.Z DirName</p>
-<p>10-.tgz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tgz</p>
-<p>11-.tar.tgz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.tgz<br>压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.tgz FileName</p>
-<p>12-.zip格式<br>解压：[＊＊＊＊＊＊＊]$ unzip FileName.zip<br>压缩：[＊＊＊＊＊＊＊]$ zip FileName.zip DirName</p>
-<p>13-.lha格式<br>解压：[＊＊＊＊＊＊＊]$ lha -e FileName.lha<br>压缩：[＊＊＊＊＊＊＊]$ lha -a FileName.lha FileName</p>
-<p>14-.rar格式<br>解压：[＊＊＊＊＊＊＊]$ rar a FileName.rar<br>压缩：[＊＊＊＊＊＊＊]$ rar e FileName.rar<br>rar请到：<a href="http://www.rarsoft.com/download.htm" target="_blank" rel="external">http://www.rarsoft.com/download.htm</a> 下载！<br>解压后请将rar_static拷贝到/usr/bin目录（其他由$PATH环境变量<br>指定的目录也行）：[＊＊＊＊＊＊＊]$ cp rar_static /usr/bin/rar</p>
-<h1 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h1><p>复制并且覆盖目标文件的文件<br>cp -r -f /webapp/* /dist/</p>
-<h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h1><p>查看端口占用</p>
-<p>lsof -i tcp:port</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Linux/">Linux</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/spring/2014122403-spring-context/"><span>Spring context</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/spring/2014122403-spring-context/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>Context 在 Spring 的 org.springframework.context 包下，前面已经讲解了 Context 组件在 Spring 中的作用，他实际上就是给 Spring 提供一个运行时的环境，用以保存各个对象的状态。下面看一下这个环境是如何构建的。</p>
-<p>ApplicationContext 是 Context 的顶级父类，他除了能标识一个应用环境的基本信息外，他还继承了五个接口，这五个接口主要是扩展了 Context 的功能。下面是 Context 的类结构图：</p>
-<p><strong>Context相关的类结构图</strong></p>
-<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring005.png" alt="">    </p>
-<p>从上图中可以看出 ApplicationContext 继承了 BeanFactory，这也说明了 Spring 容器中运行的主体对象是 Bean，另外 ApplicationContext 继承了 ResourceLoader 接口，使得 ApplicationContext 可以访问到任何外部资源，这将在 Core 中详细说明。</p>
-<p>###ApplicationContext 的子类主要包含两个方面：</p>
-<ul>
-<li>ConfigurableApplicationContext 表示该 Context 是可修改的，也就是在构建 Context 中用户可以动态添加或修改已有的配置信息，它下面又有多个子类，其中最经常使用的是可更新的 Context，即 AbstractRefreshableApplicationContext 类。</li>
-<li>WebApplicationContext 顾名思义，就是为 web 准备的 Context 他可以直接访问到 ServletContext，通常情况下，这个接口使用的少。<br>再往下分就是按照构建 Context 的文件类型，接着就是访问 Context 的方式。这样一级一级构成了完整的 Context 等级层次。</li>
-</ul>
-<p>###总体来说 ApplicationContext 必须要完成以下几件事：    </p>
-<ul>
-<li>标识一个应用环境</li>
-<li>利用 BeanFactory 创建 Bean 对象</li>
-<li>保存对象关系表</li>
-<li>能够捕获各种事件</li>
-<li>Context 作为 Spring 的 Ioc 容器，基本上整合了 Spring 的大部分功能，或者说是大部分功能的基础。</li>
-</ul>
-<blockquote>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring 框架的设计理念与设计模式分析" target="_blank" rel="external">Spring 框架的设计理念与设计模式分析</a> </p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/README/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/README/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="arthinking的技术总结"><a href="#arthinking的技术总结" class="headerlink" title="arthinking的技术总结"></a>arthinking的技术总结</h2><blockquote>
-<p>Author: arthinking<br>E-mail: 1225538383@qq.com</p>
-</blockquote>
-<hr>
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a><a href="https://github.com/arthinking/arthinking/blob/master/Java.md" title="Java" target="_blank" rel="external">Java</a></h1><h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><hr>
-<p>#GitHub相关资源<br>markdown语法：<a href="https://github.com/guodongxiaren/test" target="_blank" rel="external">https://github.com/guodongxiaren/test</a><br>GitHub上README写法暨GFM语法解读：<a href="http://blog.csdn.net/wqvbjhc/article/details/27349209" target="_blank" rel="external">http://blog.csdn.net/wqvbjhc/article/details/27349209</a></p>
-<p>图片格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-02.png</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/spring/2014122402-spring-beans/"><span>Spring beans</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/spring/2014122402-spring-beans/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>Bean 组件在 Spring 的 org.springframework.beans 包下。这个包下的所有类主要解决了三件事：Bean 的定义、Bean 的创建以及对 Bean 的解析。对 Spring 的使用者来说唯一需要关心的就是 Bean 的创建，其他两个由 Spring 在内部帮你完成了，对你来说是透明的。</p>
-<p>Spring Bean 的创建是典型的工厂模式，他的顶级接口是 BeanFactory，下图是这个工厂的继承层次关系：    </p>
-<p><strong>Bean工厂的继承关系</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring002.png" alt=""></p>
-<p>BeanFactory 有三个子类：ListableBeanFactory、HierarchicalBeanFactory 和 AutowireCapableBeanFactory。但是从上图中我们可以发现最终的默认实现类是 DefaultListableBeanFactory，他实现了所有的接口。那为何要定义这么多层次的接口呢？查阅这些接口的源码和说明发现，每个接口都有他使用的场合，它主要是为了区分在 Spring 内部在操作过程中对象的传递和转化过程中，对对象的数据访问所做的限制。例如 ListableBeanFactory 接口表示这些 Bean 是可列表的，而 HierarchicalBeanFactory 表示的是这些 Bean 是有继承关系的，也就是每个 Bean 有可能有父 Bean。AutowireCapableBeanFactory 接口定义 Bean 的自动装配规则。这四个接口共同定义了 Bean 的集合、Bean 之间的关系、以及 Bean 行为。    </p>
-<p><strong>Bean定义的类层次关系图</strong>    </p>
-<p>Bean 的定义主要由 BeanDefinition 描述，如下图说明了这些类的层次关系：<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring003.png" alt=""><br>Bean 的定义就是完整的描述了在 Spring 的配置文件中你定义的 <bean> 节点中所有的信息，包括各种子节点。当 Spring 成功解析你定义的一个 <bean> 节点后，在 Spring 的内部他就被转化成 BeanDefinition 对象。以后所有的操作都是对这个对象完成的。</bean></bean></p>
-<p>Bean 的解析过程非常复杂，功能被分的很细，因为这里需要被扩展的地方很多，必须保证有足够的灵活性，以应对可能的变化。Bean 的解析主要就是对 Spring 配置文件的解析。这个解析过程主要通过下图中的类完成：    </p>
-<p><strong>Bean的解析类</strong></p>
-<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring004.png" alt=""></p>
-<p><a href="https://github.com/arthinking/java-code/blob/master/src/main/java/me/arthinking/spring/ioc/BeanFactoryTest.java" title="通过XmlBeanFactory实现启动Spring IoC容器" target="_blank" rel="external">通过XmlBeanFactory实现启动Spring IoC容器</a></p>
-<blockquote>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring 框架的设计理念与设计模式分析" target="_blank" rel="external">Spring 框架的设计理念与设计模式分析</a> </p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
-  </span>
-
-
-          
         </div>
         
     </footer>

@@ -307,13 +307,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/2014120801_JVM笔记 - 高效并发（线程安全与锁优化）/"><span>JVM笔记 - 高效并发（线程安全与锁优化）</span></a></h3>
+    <h3 class="article-title"><a href="/operating-system/linux/vim/"><span>VIM常用命令</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/2014120801_JVM笔记 - 高效并发（线程安全与锁优化）/" rel="bookmark">
+      <a href="/operating-system/linux/vim/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -330,34 +330,18 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>#1、概述</p>
-<p>#2、线程安全</p>
-<p>##2.1、Java语言中的线程安全<br>按照线程安全的“安全程度”由强至弱来排序，我们可以将Java语言中各种操作共享的数据分为以下5类：不可变、绝对线程安全、相对线程安全、线程建荣和线程对立。</p>
-<p>###不可变</p>
-<p>不可变的对象一定是线程安全的。</p>
-<p>保证对象行为不影响自己状态的途径有很多种，其中最简单的就是把对象中带有状态的变量都声明为final。</p>
-<p>Java API中符合不可变要求的类型：String，java.lang.Number的部分子类（如Long和Double的数值包装类，BigInteger和BigDecimal等大数据类型但<code>AtomicInteger</code>和<code>AtomicLong</code>则并非不可变的）。</p>
-<p>###绝对线程安全<br>Java API中标注自己是线程安全的类，大多数都不是绝对线程安全的。</p>
-<p>###相对线程安全<br>Java语言中，大部分的线程安全都属于这种类型，例如Vector，HashTable，Collections的synchronizedCollection()方法包装的集合等。</p>
-<p>###线程兼容<br>指通过使用同步手段来保证对象在并发环境中可以安全的使用。Java API中大部分的类都是属于线程兼容的，如ArrayList和HashMap。</p>
-<p>###线程对立<br>指无论调用端是否采取了同步措施，都无法在多线程环境中并发使用的代码。</p>
-<p>一个线程对立的例子就是Thread类的suspend()和resumn()方法（已被JDK声明废弃了）。</p>
-<p>常见的线程对立操作还有System.setIn(), System.setOut(), System.runFinalizersOnExit()…</p>
-<p>##2.2、线程安全的实现方法</p>
-<p>###互斥同步<br>Java中，最基本的互斥同步手段就是synchronized关键字。</p>
-<p>synchronized是一个重量级的操作，因为：Java的线程是映射到操作系统的原生线程之上的，如果要阻塞或唤醒一个线程，都需要操作系统来帮忙完成，这就需要从用户态转换到核心态中，因此状态转换需要消耗很多的处理器时间。对于代码简单的同步块（如synchronized修饰的getter()和setter方法），状态转换消耗的时间有可能比用户代码执行的时间还要长。</p>
-<p>还可以使用java.util.concurrent包中的<code>ReentrantLock(重入锁)</code>来实现同步：JDK1.5多线程环境下synchronized的吞吐量下降的很严重，而ReentrantLock则基本保持在同一个比较稳定的水平上。JDK 1.6之后两者性能基本持平。</p>
-<p>虚拟机在未来的性能改进中还会更偏向于原生的synchronize的，所以还是<br>提倡在synchronized能实现需求的情况下，优先考虑使用synchronized来进行同步。</p>
-<p>###非阻塞同步<br>非阻塞同步：从处理问题的方式上说，互斥同步属于一种悲观的并发策略。随着硬件指令集的发展，我们可以采用基于冲突检查的乐观并发策略，通俗地说，就是先行操作，如果没有其他线程争用共享数据，那操作就成功了；如果共享数据有争用，产生了冲突，那就再采取其他的补偿措施（最常见的补偿措施就是不断地重试，直到成功为止），这种乐观的并发策略的许多实现偶读不需要把线程挂起，因此这话总同步操作称为非阻塞同步。</p>
-<p>###无同步方案<br>如果一个方法本来就不设计共享数据，那它自然就无须任何同步措施去保证正确性，因此会有一些代码天生就是线程安全的。这类代码包括：可重入代码和线程本地存储。</p>
-<p>#3、锁优化<br>为了进一步改进高效并发，HotSpot虚拟机开发团队在JDK1.6版本上花费了大量精力实现各种锁优化。</p>
-<p>##3.1、自旋锁与自适应自旋<br>为了让线程等待，我们只需要让线程执行一个忙循环（自旋），这项技术就是所谓的自旋锁。引入自旋锁的原因是互斥同步对性能最大的影响是阻塞的实现，管钱线程和恢复线程的操作都需要转入内核态中完成，给并发带来很大压力。自旋锁让物理机器有一个以上的处理器的时候，能让两个或以上的线程同时并行执行。</p>
-<p>##3.2、锁消除<br>消除锁是指虚拟机即时编译器在运行时，对一些代码上要求同步，但是被检测到不可能存在共享数据竞争的锁进行消除。</p>
-<p>##3.3、锁粗化<br>如果一系列的连续操作都对同一个对象反复加锁和解锁，甚至加锁操作是出现在循环体中的，则可以进行锁粗化的优化。</p>
-<p>##3.4、轻量级锁<br>它的本意是在没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量产生的性能消耗。</p>
-<p>但是如果存在锁竞争，除了互斥量的开销，还发生了CAS操作，因此在有竞争的情况下，轻量级锁会比传统的重量级锁更慢。</p>
-<p>##3.5、偏向锁<br>如果说轻量级锁是在无竞争的情况下使用了CAS操作去消除同步使用的互斥量，那偏向锁就是在无竞争的情况下把整个同步都消除掉了，连CAS操作都不做了。</p>
-<p>#4、本章小结</p>
+<p>##选择<br>选中： v<br>取消选择：再按一下v    </p>
+<p>矩形选区：ctrl + v</p>
+<p>全选：ggVG</p>
+<p>###选中后的操作<br>d  删除<br>y  复制<br>p  粘贴<br>“+y<br>“+p</p>
+<p>##复制<br>single line：yy<br>muitl line:nyy<br>copy block to destination:6,9 co 12    </p>
+<p>##粘贴<br>paste：p    </p>
+<p>##删除<br>x  删除一个字符<br>dd  删除一整行</p>
+<p>##撤销<br>u</p>
+<p>##重做<br>ctrl + r</p>
+<p>##合并<br>J  合并两行    </p>
+<p>##退出保存<br>ZZ    </p>
+<p><a href="http://blog.csdn.net/ithomer/article/details/5929428" title="more" target="_blank" rel="external">more</a></p>
 
       
     </div>
@@ -368,71 +352,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/JVM/">JVM</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/"><span>Memcached使用getMulti造成的性能问题</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>有这样一个场景：使用<code>getMulti</code>一次性读取一个系列的所有手机100个key，请求了100万次，系统最初只有一个MC服务器，随着访问量的增加，负载加大了，于是增加了几个MC服务器，但结果负载反而更加大了。</p>
-<p>原因是开始那100个key在一台服务器上获取，现在分不到了几MC服务器，需要访问的服务器增多了，而关键性的因素是我们用到的MC客户端memcached-client，其中的AscIIClient如下：    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMulti</span><span class="params">(String[] keys, Integer[] hashCodes, <span class="keyword">boolean</span> asString)</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((keys == <span class="keyword">null</span>) || (keys.length == <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">        log.error(<span class="string">"missing keys for getMulti()"</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Map cmdMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    String[] cleanKeys = <span class="keyword">new</span> String[keys.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">      String key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">          log.error(<span class="string">"null key, so skipping"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        Integer hash = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ((hashCodes != <span class="keyword">null</span>) &amp;&amp; (hashCodes.length &gt; i)) &#123;</span><br><span class="line">          hash = hashCodes[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cleanKeys[i] = key;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          cleanKeys[i] = sanitizeKey(key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, e, key);</span><br><span class="line">          <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">            log.error(<span class="string">"failed to sanitize your key!"</span>, e);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        SchoonerSockIO sock = <span class="keyword">this</span>.pool.getSock(cleanKeys[i], hash);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sock == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, <span class="keyword">new</span> IOException(<span class="string">"no socket to server available"</span>), key);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> (!cmdMap.containsKey(sock.getHost())) &#123;</span><br><span class="line">            cmdMap.put(sock.getHost(), <span class="keyword">new</span> StringBuilder(<span class="string">"get"</span>));</span><br><span class="line">          &#125;</span><br><span class="line">          ((StringBuilder)cmdMap.get(sock.getHost())).append(<span class="keyword">new</span> StringBuilder().append(<span class="string">" "</span>).append(cleanKeys[i]).toString());</span><br><span class="line"></span><br><span class="line">          sock.close();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">"multi get socket count : "</span>).append(cmdMap.size()).toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Map ret = <span class="keyword">new</span> HashMap(keys.length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> NIOLoader(<span class="keyword">this</span>).doMulti(asString, cmdMap, keys, ret);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ((!keys[i].equals(cleanKeys[i])) &amp;&amp; (ret.containsKey(cleanKeys[i]))) &#123;</span><br><span class="line">        ret.put(keys[i], ret.get(cleanKeys[i]));</span><br><span class="line">        ret.remove(cleanKeys[i]);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">"++++ memcache: got back "</span>).append(ret.size()).append(<span class="string">" results"</span>).toString());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>请求多台服务器是串行的，结果导致客户端操作时间累加，请求堆积，最终导致性能下降。</p>
-<h2 id="解决方法有两个："><a href="#解决方法有两个：" class="headerlink" title="解决方法有两个："></a>解决方法有两个：</h2><p>一是把串行请求改为并行请求，可以参考spymemcached的并行实现：    </p>
-<ul>
-<li>第一步，将本次操作构造成一个针对每个 node 的 Operation 对象，加入连接对象中；    </li>
-<li>第二步，在连接对象中，将所有的 node 操作放入 addedQueue 队列，然后触发 Selector 方式异步非阻塞的执行；</li>
-</ul>
-<p>一是把key根据一个系列的手机散列不同的MC服务器上，这样就达到请求一台服务器获取所有的内容了，不过根据就不同的业务场景散列方法也不同，比较不好处理。</p>
-<p>或者不使用getMulti这个方法了</p>
-<p>必须使用getMulti方法的时候可以把缓存数据复制到另一个memcache集群上，一个集群负责读取一半的keys，但是又会引发需要更多的CPU的问题。</p>
-<p><a href="http://www.cnblogs.com/zhengyun_ustc/p/multigethole.html" title="旁观者的博客" target="_blank" rel="external">旁观者的博客</a>也分析了这类分析，很透彻，提供给大家参考下</p>
-<p>该博文发表于：<a href="http://www.itzhai.com/mc-use-getmulti-problem.html" target="_blank" rel="external">http://www.itzhai.com/mc-use-getmulti-problem.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
+    <a href="/categories/IDE/">IDE</a>
   </span>
 
 
@@ -441,7 +361,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
+    <a href="/tags/VIM/">VIM</a>
   </span>
 
 
@@ -457,13 +377,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/spring/2015010601-接口设计原则/"><span>接口设计原则</span></a></h3>
+    <h3 class="article-title"><a href="/database/mysql/海量数据架构/"><span>MySQL 海量数据架构</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/spring/2015010601-接口设计原则/" rel="bookmark">
+      <a href="/database/mysql/海量数据架构/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -480,7 +400,14 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>接口尽量设计的单一职责，会方便代码的扩展和维护。</p>
+<p>MySQL要存储大数据，一般都是按照分库分表的方式进行的，类似的<a href="http://www.lanceyan.com/category/tech/mongodb" title="MongoDB" target="_blank" rel="external">MongoDB</a>也是一样的。    </p>
+<p>而淘宝版开源了一个数据库访问组件<a href="http://www.open-open.com/lib/view/open1393247567490.html" title="TDDL" target="_blank" rel="external">TDDL</a>，主要解决了分库分表对应用的透明化以及异构数据库之间的数据复制，它是一个基于集中式配置的JDBC datasource实现，具有主备份，读写分离，动态数据库配置等功能。</p>
+<p>Cobar</p>
+<p>MyCat</p>
+<p><a href="http://my.oschina.net/tinyframework/blog/186583" title="数据库分区分片框架" target="_blank" rel="external">数据库分区分片框架</a></p>
+<p>Github上看到了<a href="https://github.com/arthinking/kamike.divide" title="这个" target="_blank" rel="external">这个</a>开源的也不错。</p>
+<p>Cobar</p>
+<p>MyCat</p>
 
       
     </div>
@@ -491,115 +418,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/设计模式/">设计模式</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/blog/20150131_2015年技术学习规划/"><span>2015年技术学习规划</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blog/20150131_2015年技术学习规划/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>##软件架构：</p>
-<p>###设计模式 </p>
-<ul>
-<li>《head first 设计模式》</li>
-<li>《设计模式之禅》</li>
-<li>《Effective Java》</li>
-</ul>
-<p>###项目经验总结<br>总结项目中的技术，所做的内容和技术上的改进。</p>
-<p>###框架源码解读<br>通过阅读优秀的开源框架，学习Java面向对象的设计原理。</p>
-<p>##工作相关技术研究</p>
-<p>###Nginx<br>Nginx使用   </p>
-<ul>
-<li>《深入理解Nginx : 模块开发与架构解析》</li>
-</ul>
-<p>###Jsoup<br>Jsoup源码解读    </p>
-<p>###Spring<br>Spring源码解读    </p>
-<p>###MySQL<br>MySQL架构与设计  </p>
-<p>SQL语句优化    </p>
-<p>###JDBC</p>
-<p>数据库连接池实现</p>
-<p>###Tomcat<br>Tomcat源码解析</p>
-<p>##操作系统：</p>
-<p>###Linux &amp; Unix</p>
-<ul>
-<li>《UNIX编程艺术》</li>
-<li>《鸟哥的Linux私房菜》</li>
-</ul>
-<p>##网络</p>
-<p>###HTTP</p>
-<ul>
-<li>《http权威指南》</li>
-</ul>
-<p>##数据库</p>
-<p>###MySQL优化</p>
-<ul>
-<li>《高性能MySQL》</li>
-</ul>
-<p>##JVM</p>
-<ul>
-<li>《深入理解Java虚拟机》</li>
-</ul>
-<p>##数据结构与算法<br>尽量通过C语言学习或复习数据结构和算法知识，同时通过开源框架和Java源码学习数据结构与算法的运用，多对比现有开源框架的效率，思考改进的空间。</p>
-<ul>
-<li>《数据结构与算法分析》</li>
-<li>《算法导论》</li>
-<li>《算法引轮 – 一种创造性方法》</li>
-<li></li>
-</ul>
-<p>###程序员基本修养</p>
-<ul>
-<li>《编程之美》</li>
-<li>《编程珠玑》</li>
-<li>《更多的编程珠玑》</li>
-<li>《代码大全》</li>
-<li>《Elements of Programming》</li>
-<li>《C Interfaces and Implementations》</li>
-<li>《writing efficient programs》</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/杂谈/">杂谈</a>
+    <a href="/categories/Database/">Database</a>
   </span>
 
 
@@ -608,10 +427,50 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/Hexo/">Hexo</a>
+    <a href="/tags/MySQL/">MySQL</a>, <a href="/tags/高并发/">高并发</a>
   </span>
 
 
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/HTTP协议/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/HTTP协议/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>##HTTP协议返回码，301,302</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
         </div>
         
     </footer>
@@ -736,13 +595,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/热部署/"><span>Resin中的热部署</span></a></h3>
+    <h3 class="article-title"><a href="/Java/jdbc/20150116_数据库连接池/"><span>数据库连接池</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/热部署/" rel="bookmark">
+      <a href="/Java/jdbc/20150116_数据库连接池/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -759,12 +618,9 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>###Resin中的热部署<br>在resin.conf中添加如下的JVM启动参数：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>表示启动debug模式，当更新了类中的方法的时候，控制台会提示reloading class，这是通过JVM的HotSwap功能动态更新的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">由于JVM的HotSwap不支持新增属性，方法和类的修改，所以进行了这些操作之后，是无法实现热部署的，Resin会自动改用Hot deploy的方式进行应用更新。</span><br><span class="line"></span><br><span class="line">当去掉该启动参数的时候，修改一个类，控制台会提示如下的内容：</span><br></pre></td></tr></table></figure>
-<p>… WebApp[…] stopping<br>… WebApp[…] active<br>```</p>
-<p>###远程调试相关参数<br><a href="http://itindex.net/detail/46971-java-%E8%B0%83%E8%AF%95" title="Xdebug" target="_blank" rel="external">-Xdebug</a> -Xrunjdwp,transport=dt_socket,server=y,address=5432,suspend=n,onthrow=java.io.IOException,launch=/sbin/echo</p>
+<p>###数据库连接池工具：<br>common-pool工具库是对池化技术原理的一种具体实现。    </p>
+<p>apache的连接池工具库common-dbcp是common-pool在数据库访问方面的一个具体应用。</p>
+<p><a href="http://macrochen.iteye.com/blog/320077" title="common-dbcp" target="_blank" rel="external">common-dbcp</a></p>
 
       
     </div>
@@ -775,7 +631,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/Java/">Java</a>
+    <a href="/categories/JDBC/">JDBC</a>
   </span>
 
 
@@ -784,7 +640,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/热部署/">热部署</a>
+    <a href="/tags/数据库连接池/">数据库连接池</a>
   </span>
 
 
@@ -800,13 +656,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/JDK配置与JVM监控/"><span>JDK配置与JVM监控</span></a></h3>
+    <h3 class="article-title"><a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/"><span>Memcached使用getMulti造成的性能问题</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/JDK配置与JVM监控/" rel="bookmark">
+      <a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -823,31 +679,20 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>#安装JDK</p>
-<blockquote>
-<p><a href="http://jingyan.baidu.com/article/b0b63dbfd5db8b4a48307027.html" title="ubuntu 12.04 LTS 安装配置JDK" target="_blank" rel="external">ubuntu 12.04 LTS 安装配置JDK</a>    </p>
-</blockquote>
-<p>下载jdk-xxx.bin</p>
-<p>解压文件<br>chmod u+x jdk-xxx.bin<br>./jdk-xxx.bin    </p>
-<p>复制解压出jdk-xxx文件夹到/usr/lib下<br>sudo mkdir -p /usr/lib/jvm/<br>cp -r jdk-xxx /usr/lib/jvm/jdkxxx</p>
-<p>#配置JDK</p>
-<blockquote>
-<p><a href="http://blog.chinaunix.net/uid-26404477-id-3471246.html" title="ubuntu 12.04安装jdk" target="_blank" rel="external">ubuntu 12.04安装jdk</a></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gedit</span><br><span class="line">sudo gedit /etc/profile</span><br></pre></td></tr></table></figure>
-<p>or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/</span><br><span class="line">vim profile</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_10</span><br><span class="line">export JRE_HOME=/usr/lib/jvm/jdk1.7.0_10/jre </span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line"></span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
-<p>关闭，保存，使用source更新一下profile文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br></pre></td></tr></table></figure></p>
-<p>如果之前系统里面已经安装了openjdk，可以使用如下方法将默认jdk更改过来：</p>
-<p>将系统默认的jdk修改过来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_10/bin/java 300</span><br></pre></td></tr></table></figure></p>
-<p>输入sun jdk前的数字就好了    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_10/bin/javac 300</span><br><span class="line">$ sudo update-alternatives --config java </span><br><span class="line">$ sudo update-alternatives --config javac</span><br></pre></td></tr></table></figure>
-<p>#使用VisualVM监控远程主机JVM</p>
-<blockquote>
-<p><a href="http://www.blogjava.net/titanaly/archive/2012/03/20/372318.html" title="visualvm监控jvm及远程jvm监控方法" target="_blank" rel="external">visualvm监控jvm及远程jvm监控方法</a></p>
-</blockquote>
-<p>##直接使用JDK<br>如果是直接监控JVM，则在 <code>/etc/profile</code> 文件里面添加如下配置：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_OPTS="-Dcom.sun.management.jmxremote.port=<span class="tag">&lt;<span class="name">port</span>&gt;</span> -Dcom.sun.management.jmxremote.ssl=false</span><br><span class="line">-Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=<span class="tag">&lt;<span class="name">hostname</span>&gt;</span>  </span><br><span class="line">-Dcom.sun.management.jmxremote.ssl=false"</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">详细参考：</span><br><span class="line">&gt; [使用Java自带的VisualVM监控远程主机JVM内存使用情况](http://www.cnblogs.com/chenying99/archive/2012/06/21/2557208.html "使用Java自带的VisualVM监控远程主机JVM内存使用情况")</span><br><span class="line"></span><br><span class="line">##使用resin</span><br><span class="line">在resin.conf配置文件中添加如下配置：</span><br><span class="line">```xml</span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Djava.rmi.server.hostname=192.168.75.34<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.port=9934<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.ssl=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.authenticate=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>在客户端使用JMX连接即可</p>
+<p>有这样一个场景：使用<code>getMulti</code>一次性读取一个系列的所有手机100个key，请求了100万次，系统最初只有一个MC服务器，随着访问量的增加，负载加大了，于是增加了几个MC服务器，但结果负载反而更加大了。</p>
+<p>原因是开始那100个key在一台服务器上获取，现在分不到了几MC服务器，需要访问的服务器增多了，而关键性的因素是我们用到的MC客户端memcached-client，其中的AscIIClient如下：    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMulti</span><span class="params">(String[] keys, Integer[] hashCodes, <span class="keyword">boolean</span> asString)</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((keys == <span class="keyword">null</span>) || (keys.length == <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">        log.error(<span class="string">"missing keys for getMulti()"</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Map cmdMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    String[] cleanKeys = <span class="keyword">new</span> String[keys.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">      String key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">          log.error(<span class="string">"null key, so skipping"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        Integer hash = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ((hashCodes != <span class="keyword">null</span>) &amp;&amp; (hashCodes.length &gt; i)) &#123;</span><br><span class="line">          hash = hashCodes[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cleanKeys[i] = key;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          cleanKeys[i] = sanitizeKey(key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, e, key);</span><br><span class="line">          <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">            log.error(<span class="string">"failed to sanitize your key!"</span>, e);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        SchoonerSockIO sock = <span class="keyword">this</span>.pool.getSock(cleanKeys[i], hash);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sock == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, <span class="keyword">new</span> IOException(<span class="string">"no socket to server available"</span>), key);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> (!cmdMap.containsKey(sock.getHost())) &#123;</span><br><span class="line">            cmdMap.put(sock.getHost(), <span class="keyword">new</span> StringBuilder(<span class="string">"get"</span>));</span><br><span class="line">          &#125;</span><br><span class="line">          ((StringBuilder)cmdMap.get(sock.getHost())).append(<span class="keyword">new</span> StringBuilder().append(<span class="string">" "</span>).append(cleanKeys[i]).toString());</span><br><span class="line"></span><br><span class="line">          sock.close();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">"multi get socket count : "</span>).append(cmdMap.size()).toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Map ret = <span class="keyword">new</span> HashMap(keys.length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> NIOLoader(<span class="keyword">this</span>).doMulti(asString, cmdMap, keys, ret);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ((!keys[i].equals(cleanKeys[i])) &amp;&amp; (ret.containsKey(cleanKeys[i]))) &#123;</span><br><span class="line">        ret.put(keys[i], ret.get(cleanKeys[i]));</span><br><span class="line">        ret.remove(cleanKeys[i]);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">"++++ memcache: got back "</span>).append(ret.size()).append(<span class="string">" results"</span>).toString());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>请求多台服务器是串行的，结果导致客户端操作时间累加，请求堆积，最终导致性能下降。</p>
+<h2 id="解决方法有两个："><a href="#解决方法有两个：" class="headerlink" title="解决方法有两个："></a>解决方法有两个：</h2><p>一是把串行请求改为并行请求，可以参考spymemcached的并行实现：    </p>
+<ul>
+<li>第一步，将本次操作构造成一个针对每个 node 的 Operation 对象，加入连接对象中；    </li>
+<li>第二步，在连接对象中，将所有的 node 操作放入 addedQueue 队列，然后触发 Selector 方式异步非阻塞的执行；</li>
+</ul>
+<p>一是把key根据一个系列的手机散列不同的MC服务器上，这样就达到请求一台服务器获取所有的内容了，不过根据就不同的业务场景散列方法也不同，比较不好处理。</p>
+<p>或者不使用getMulti这个方法了</p>
+<p>必须使用getMulti方法的时候可以把缓存数据复制到另一个memcache集群上，一个集群负责读取一半的keys，但是又会引发需要更多的CPU的问题。</p>
+<p><a href="http://www.cnblogs.com/zhengyun_ustc/p/multigethole.html" title="旁观者的博客" target="_blank" rel="external">旁观者的博客</a>也分析了这类分析，很透彻，提供给大家参考下</p>
+<p>该博文发表于：<a href="http://www.itzhai.com/mc-use-getmulti-problem.html" target="_blank" rel="external">http://www.itzhai.com/mc-use-getmulti-problem.html</a></p>
 
       
     </div>
@@ -858,7 +703,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/Java/">Java</a>
+    <a href="/categories/Cache/">Cache</a>
   </span>
 
 
@@ -867,7 +712,73 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/JVM/">JVM</a>, <a href="/tags/JDK/">JDK</a>
+    <a href="/tags/Memcached/">Memcached</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/log/Log4J系能/"><span>日志框架性能比较</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/log/Log4J系能/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#性能问题</p>
+<p>关于Log4j的性能问题，可以先阅读以下官方文档的一点说明：<a href="http://logging.apache.org/log4j/1.2/manual.html" title="Performance" target="_blank" rel="external">Performance</a></p>
+<p><a href="http://www.reader8.cn/jiaocheng/20130810/2235056.html" title="Log4J 2" target="_blank" rel="external">Log4J 2</a></p>
+<p>在<a href="http://www.infoq.com/cn/news/2014/08/apache-log4j2" title="Apache Log4j 2.0值得升级吗" target="_blank" rel="external">Apache Log4j 2.0值得升级吗</a>这篇文章中阐述了Log4j 2.0的高性能。而<a href="http://www.infoq.com/cn/news/2014/07/apache-log4j2.0-publish" title="Log4j 2.0" target="_blank" rel="external">Log4j 2.0</a>的API是和Log4j 1.x系列的API不兼容的</p>
+<p>在一个项目中如果需要在不同的模块设置不同的日志级别，并且输出到不同的日志文件中，可以这样设置不同的logger：</p>
+<blockquote>
+<p><a href="http://www.theserverside.com/news/thread.tss?thread_id=31659" target="_blank" rel="external">http://www.theserverside.com/news/thread.tss?thread_id=31659</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/日志/">日志</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Log4J/">Log4J</a>
   </span>
 
 

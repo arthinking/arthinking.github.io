@@ -85,22 +85,21 @@
 <blockquote>
 <p>将应用的业务逻辑都放在控制器中，而将相关的数据都放在控制器的作用域中，这是非常完美的架构。</p>
 </blockquote>
-<p>##4.1、视图和$scope的世界<br>ng-app元素同$rootScope进行绑定，$rootScope是所有$scope对象的最上次。</p>
-<p>##4.2、就是HTML而已</p>
-<p>在AngularJS应用的模板中使用多种标记，包括下面这些:</p>
+<h2 id="4-1、视图和-scope的世界"><a href="#4-1、视图和-scope的世界" class="headerlink" title="4.1、视图和$scope的世界"></a>4.1、视图和$scope的世界</h2><p>ng-app元素同$rootScope进行绑定，$rootScope是所有$scope对象的最上次。</p>
+<h2 id="4-2、就是HTML而已"><a href="#4-2、就是HTML而已" class="headerlink" title="4.2、就是HTML而已"></a>4.2、就是HTML而已</h2><p>在AngularJS应用的模板中使用多种标记，包括下面这些:</p>
 <blockquote>
 <p>指令：将DOM元素增强为可复用的DOM组件的属性或元素。<br>值绑定：模板语法{{ }}可以将表达式绑定到视图上。<br>过滤器：可以在视图中使用的函数，用来进行格式化。<br>表单控件：用来检验用户输入的控件。</p>
 </blockquote>
-<p>##4.3、作用于能做什么<br>作用域有以下的基本功能：</p>
+<h2 id="4-3、作用于能做什么"><a href="#4-3、作用于能做什么" class="headerlink" title="4.3、作用于能做什么"></a>4.3、作用于能做什么</h2><p>作用域有以下的基本功能：</p>
 <blockquote>
 <p>提供观察者以监视数据模型的变化；<br>可以将数据模型的变化通知给整个应用，甚至是系统外的组件；<br>可以进行嵌套，隔离业务功能和数据；<br>给表达式提供运算时所需的执行环境。</p>
 </blockquote>
-<p>##4.4、$scope的生命周期<br>$scope对象的生命周期处理有四个不同阶段：</p>
-<p>###4.4.1、创建<br>在创建控制器或指令时，AngularJS会用<code>$injector</code>创建一个新的作用域，并在这个新建的控制器或指令运行时将作用域传递进去。</p>
-<p>###4.4.2、链接<br>当Angular开始运行时，所有的$scope对象都会附加或者链接到视图中。这些作用域将会注册当Angular应用上下文中发生变化时需要运行的函数。(<code>$watch函数</code>)</p>
-<p>###4.4.3、更新<br>通常事件循环运行在$rootScope，每个子域都会进行脏值检查，如果检测到变化，$scope对象就会触发指定的回调函数。</p>
-<p>###4.4.4、销毁<br>当一个$scope在视图中不再需要时，这个作用域将会清理和销毁自己。</p>
-<p>##4.5、指令和作用域<br>指令在AngularJS中被广泛使用，指令<em>通常不会创建自己的$scope</em>，但也有例外。比如<code>ng-controller</code>和<code>ng-repeat</code>指令会创建自己的子作用域并将它们附加到DOM元素上。</p>
+<h2 id="4-4、-scope的生命周期"><a href="#4-4、-scope的生命周期" class="headerlink" title="4.4、$scope的生命周期"></a>4.4、$scope的生命周期</h2><p>$scope对象的生命周期处理有四个不同阶段：</p>
+<h3 id="4-4-1、创建"><a href="#4-4-1、创建" class="headerlink" title="4.4.1、创建"></a>4.4.1、创建</h3><p>在创建控制器或指令时，AngularJS会用<code>$injector</code>创建一个新的作用域，并在这个新建的控制器或指令运行时将作用域传递进去。</p>
+<h3 id="4-4-2、链接"><a href="#4-4-2、链接" class="headerlink" title="4.4.2、链接"></a>4.4.2、链接</h3><p>当Angular开始运行时，所有的$scope对象都会附加或者链接到视图中。这些作用域将会注册当Angular应用上下文中发生变化时需要运行的函数。(<code>$watch函数</code>)</p>
+<h3 id="4-4-3、更新"><a href="#4-4-3、更新" class="headerlink" title="4.4.3、更新"></a>4.4.3、更新</h3><p>通常事件循环运行在$rootScope，每个子域都会进行脏值检查，如果检测到变化，$scope对象就会触发指定的回调函数。</p>
+<h3 id="4-4-4、销毁"><a href="#4-4-4、销毁" class="headerlink" title="4.4.4、销毁"></a>4.4.4、销毁</h3><p>当一个$scope在视图中不再需要时，这个作用域将会清理和销毁自己。</p>
+<h2 id="4-5、指令和作用域"><a href="#4-5、指令和作用域" class="headerlink" title="4.5、指令和作用域"></a>4.5、指令和作用域</h2><p>指令在AngularJS中被广泛使用，指令<em>通常不会创建自己的$scope</em>，但也有例外。比如<code>ng-controller</code>和<code>ng-repeat</code>指令会创建自己的子作用域并将它们附加到DOM元素上。</p>
 
       
     </div>
