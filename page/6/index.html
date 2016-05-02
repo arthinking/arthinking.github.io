@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Page 6 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <title>第 6 页 | arthinking | ChinSyun Pang&#39;s blog</title>
   <meta name="author" content="arthinking">
   
   <meta name="description" content="Struggle for HighPay zoom.">
@@ -40,9 +40,9 @@
 <nav id="site-navigation" class="main-navigation" role="navigation">
   <ul>
     
-      <li><a href="/">Home</a></li>
+      <li><a href="/">主页</a></li>
     
-      <li><a href="/archives">Archives</a></li>
+      <li><a href="/archives">归档</a></li>
     
   </ul>
 </nav></header>
@@ -307,13 +307,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/jdbc/20150116_数据库连接池/"><span>数据库连接池</span></a></h3>
+    <h3 class="article-title"><a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/"><span>Memcached使用getMulti造成的性能问题</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/jdbc/20150116_数据库连接池/" rel="bookmark">
+      <a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -330,9 +330,20 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>###&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;&#x5DE5;&#x5177;&#xFF1A;<br>common-pool&#x5DE5;&#x5177;&#x5E93;&#x662F;&#x5BF9;&#x6C60;&#x5316;&#x6280;&#x672F;&#x539F;&#x7406;&#x7684;&#x4E00;&#x79CD;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x3002;    </p>
-<p>apache&#x7684;&#x8FDE;&#x63A5;&#x6C60;&#x5DE5;&#x5177;&#x5E93;common-dbcp&#x662F;common-pool&#x5728;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x65B9;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x5E94;&#x7528;&#x3002;</p>
-<p><a href="http://macrochen.iteye.com/blog/320077" title="common-dbcp" target="_blank" rel="external">common-dbcp</a></p>
+<p>&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#xFF1A;&#x4F7F;&#x7528;<code>getMulti</code>&#x4E00;&#x6B21;&#x6027;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x6240;&#x6709;&#x624B;&#x673A;100&#x4E2A;key&#xFF0C;&#x8BF7;&#x6C42;&#x4E86;100&#x4E07;&#x6B21;&#xFF0C;&#x7CFB;&#x7EDF;&#x6700;&#x521D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x968F;&#x7740;&#x8BBF;&#x95EE;&#x91CF;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x8D1F;&#x8F7D;&#x52A0;&#x5927;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x589E;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4F46;&#x7ED3;&#x679C;&#x8D1F;&#x8F7D;&#x53CD;&#x800C;&#x66F4;&#x52A0;&#x5927;&#x4E86;&#x3002;</p>
+<p>&#x539F;&#x56E0;&#x662F;&#x5F00;&#x59CB;&#x90A3;100&#x4E2A;key&#x5728;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x83B7;&#x53D6;&#xFF0C;&#x73B0;&#x5728;&#x5206;&#x4E0D;&#x5230;&#x4E86;&#x51E0;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x589E;&#x591A;&#x4E86;&#xFF0C;&#x800C;&#x5173;&#x952E;&#x6027;&#x7684;&#x56E0;&#x7D20;&#x662F;&#x6211;&#x4EEC;&#x7528;&#x5230;&#x7684;MC&#x5BA2;&#x6237;&#x7AEF;memcached-client&#xFF0C;&#x5176;&#x4E2D;&#x7684;AscIIClient&#x5982;&#x4E0B;&#xFF1A;    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMulti</span><span class="params">(String[] keys, Integer[] hashCodes, <span class="keyword">boolean</span> asString)</span></span><br><span class="line">  </span>{</span><br><span class="line">    <span class="keyword">if</span> ((keys == <span class="keyword">null</span>) || (keys.length == <span class="number">0</span>)) {</span><br><span class="line">      <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">        log.error(<span class="string">&quot;missing keys for getMulti()&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map cmdMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    String[] cleanKeys = <span class="keyword">new</span> String[keys.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++) {</span><br><span class="line">      String key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>) {</span><br><span class="line">        <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">          log.error(<span class="string">&quot;null key, so skipping&quot;</span>);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      {</span><br><span class="line">        Integer hash = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ((hashCodes != <span class="keyword">null</span>) &amp;&amp; (hashCodes.length &gt; i)) {</span><br><span class="line">          hash = hashCodes[i];</span><br><span class="line">        }</span><br><span class="line">        cleanKeys[i] = key;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">          cleanKeys[i] = sanitizeKey(key);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, e, key);</span><br><span class="line">          <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">            log.error(<span class="string">&quot;failed to sanitize your key!&quot;</span>, e);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        SchoonerSockIO sock = <span class="keyword">this</span>.pool.getSock(cleanKeys[i], hash);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sock == <span class="keyword">null</span>) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, <span class="keyword">new</span> IOException(<span class="string">&quot;no socket to server available&quot;</span>), key);</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">          <span class="keyword">if</span> (!cmdMap.containsKey(sock.getHost())) {</span><br><span class="line">            cmdMap.put(sock.getHost(), <span class="keyword">new</span> StringBuilder(<span class="string">&quot;get&quot;</span>));</span><br><span class="line">          }</span><br><span class="line">          ((StringBuilder)cmdMap.get(sock.getHost())).append(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot; &quot;</span>).append(cleanKeys[i]).toString());</span><br><span class="line"></span><br><span class="line">          sock.close();</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) {</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;multi get socket count : &quot;</span>).append(cmdMap.size()).toString());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map ret = <span class="keyword">new</span> HashMap(keys.length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> NIOLoader(<span class="keyword">this</span>).doMulti(asString, cmdMap, keys, ret);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++)</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">if</span> ((!keys[i].equals(cleanKeys[i])) &amp;&amp; (ret.containsKey(cleanKeys[i]))) {</span><br><span class="line">        ret.put(keys[i], ret.get(cleanKeys[i]));</span><br><span class="line">        ret.remove(cleanKeys[i]);</span><br><span class="line">      }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;++++ memcache: got back &quot;</span>).append(ret.size()).append(<span class="string">&quot; results&quot;</span>).toString());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure>
+<p>&#x8BF7;&#x6C42;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x662F;&#x4E32;&#x884C;&#x7684;&#xFF0C;&#x7ED3;&#x679C;&#x5BFC;&#x81F4;&#x5BA2;&#x6237;&#x7AEF;&#x64CD;&#x4F5C;&#x65F6;&#x95F4;&#x7D2F;&#x52A0;&#xFF0C;&#x8BF7;&#x6C42;&#x5806;&#x79EF;&#xFF0C;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;</p>
+<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</h2><p>&#x4E00;&#x662F;&#x628A;&#x4E32;&#x884C;&#x8BF7;&#x6C42;&#x6539;&#x4E3A;&#x5E76;&#x884C;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;spymemcached&#x7684;&#x5E76;&#x884C;&#x5B9E;&#x73B0;&#xFF1A;    </p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x5C06;&#x672C;&#x6B21;&#x64CD;&#x4F5C;&#x6784;&#x9020;&#x6210;&#x4E00;&#x4E2A;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A; node &#x7684; Operation &#x5BF9;&#x8C61;&#xFF0C;&#x52A0;&#x5165;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF1B;    </li>
+<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF0C;&#x5728;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x7684; node &#x64CD;&#x4F5C;&#x653E;&#x5165; addedQueue &#x961F;&#x5217;&#xFF0C;&#x7136;&#x540E;&#x89E6;&#x53D1; Selector &#x65B9;&#x5F0F;&#x5F02;&#x6B65;&#x975E;&#x963B;&#x585E;&#x7684;&#x6267;&#x884C;&#xFF1B;</li>
+</ul>
+<p>&#x4E00;&#x662F;&#x628A;key&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x624B;&#x673A;&#x6563;&#x5217;&#x4E0D;&#x540C;&#x7684;MC&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x8FBE;&#x5230;&#x8BF7;&#x6C42;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6839;&#x636E;&#x5C31;&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x6563;&#x5217;&#x65B9;&#x6CD5;&#x4E5F;&#x4E0D;&#x540C;&#xFF0C;&#x6BD4;&#x8F83;&#x4E0D;&#x597D;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x6216;&#x8005;&#x4E0D;&#x4F7F;&#x7528;getMulti&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E86;</p>
+<p>&#x5FC5;&#x987B;&#x4F7F;&#x7528;getMulti&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x628A;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x4E2A;memcache&#x96C6;&#x7FA4;&#x4E0A;&#xFF0C;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x8D1F;&#x8D23;&#x8BFB;&#x53D6;&#x4E00;&#x534A;&#x7684;keys&#xFF0C;&#x4F46;&#x662F;&#x53C8;&#x4F1A;&#x5F15;&#x53D1;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;CPU&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p><a href="http://www.cnblogs.com/zhengyun_ustc/p/multigethole.html" title="&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;" target="_blank" rel="external">&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;</a>&#x4E5F;&#x5206;&#x6790;&#x4E86;&#x8FD9;&#x7C7B;&#x5206;&#x6790;&#xFF0C;&#x5F88;&#x900F;&#x5F7B;&#xFF0C;&#x63D0;&#x4F9B;&#x7ED9;&#x5927;&#x5BB6;&#x53C2;&#x8003;&#x4E0B;</p>
+<p>&#x8BE5;&#x535A;&#x6587;&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-use-getmulti-problem.html" target="_blank" rel="external">http://www.itzhai.com/mc-use-getmulti-problem.html</a></p>
 
       
     </div>
@@ -343,7 +354,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/JDBC/">JDBC</a>
+    <a href="/categories/Cache/">Cache</a>
   </span>
 
 
@@ -352,7 +363,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/数据库连接池/">数据库连接池</a>
+    <a href="/tags/Memcached/">Memcached</a>
   </span>
 
 
@@ -368,13 +379,52 @@
 
   
   
-    <h3 class="article-title"><a href="/database/mysql/emoji表情支持/"><span>MySQL emoji表情支持</span></a></h3>
+    <h3 class="article-title"><a href="/params/"><span></span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/database/mysql/emoji表情支持/" rel="bookmark">
+      <a href="/params/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        {&quot;name&quot;:&quot;Arthinking.GitHub.io&quot;,&quot;tagline&quot;:&quot;&quot;,&quot;body&quot;:&quot;arthinking&#x7684;&#x6280;&#x672F;&#x603B;&#x7ED3;\r\n----------\r\n&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6280;&#x672F;&#x603B;&#x7ED3;&#x5BF9;&#x6BD4;&#x7684;&#x601D;&#x8003;&#x533A;\r\n\r\n&gt; Author: arthinking  \r\n&gt; E-mail: 1225538383@qq.com\r\n\r\n****\r\n\r\n# [Java](https://github.com/arthinking/arthinking/blob/master/Java.md \&quot;Java\&quot;)\r\n\r\n# Mysql\r\n\r\n\r\n----------\r\n\r\n#GitHub&#x76F8;&#x5173;&#x8D44;&#x6E90;\r\nmarkdown&#x8BED;&#x6CD5;&#xFF1A;https://github.com/guodongxiaren/test  \r\nGitHub&#x4E0A;README&#x5199;&#x6CD5;&#x66A8;GFM&#x8BED;&#x6CD5;&#x89E3;&#x8BFB;&#xFF1A;http://blog.csdn.net/wqvbjhc/article/details/27349209&quot;,&quot;google&quot;:&quot;&quot;,&quot;note&quot;:&quot;Don&apos;t delete this file! It&apos;s used internally to help with page regeneration.&quot;}
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/热部署/"><span>Resin中的热部署</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/热部署/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -391,15 +441,12 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>###1&#x3001;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;5.5.3+&#x7684;&#x652F;&#x6301;</p>
-<p>###2&#x3001;&#x4FEE;&#x6539;database&#x3001;table&#x548C;column&#x5B57;&#x7B26;&#x96C6;<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> guitargg <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">2000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">&apos;%char%&apos;</span>;</span><br></pre></td></tr></table></figure></p>
-<p>###3&#x3001;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<br>etc/mysql/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-client-handshake = FALSE character-set-server = utf8mb4</span><br><span class="line">collation-server = utf8mb4_unicode_ci init_connect=&apos;SET NAMES utf8mb4&apos;</span><br></pre></td></tr></table></figure></p>
-<p>###4&#x3001;&#x91CD;&#x542F;MySQL Server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart</span><br></pre></td></tr></table></figure></p>
-<p>###5&#x3001;&#x5347;&#x7EA7;JDBC&#x9A71;&#x52A8;<br>&#x786E;&#x4FDD;mysql connector&#x7248;&#x672C;&#x9AD8;&#x4E8E;5.1.13</p>
-<p>###6&#x3001;&#x68C0;&#x67E5;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/database?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE jdbc.username=root</span><br><span class="line">jdbc.password=password</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p><a href="http://segmentfault.com/blog/ilikewhite/1190000000616820" title="mysql/Java&#x670D;&#x52A1;&#x7AEF;&#x5BF9;emoji&#x7684;&#x652F;&#x6301;" target="_blank" rel="external">mysql/Java&#x670D;&#x52A1;&#x7AEF;&#x5BF9;emoji&#x7684;&#x652F;&#x6301;</a></p>
-</blockquote>
+<p>###Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;<br>&#x5728;resin.conf&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;JVM&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF1A;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x8868;&#x793A;&#x542F;&#x52A8;debug&#x6A21;&#x5F0F;&#xFF0C;&#x5F53;&#x66F4;&#x65B0;&#x4E86;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;reloading class&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7;JVM&#x7684;HotSwap&#x529F;&#x80FD;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x7684;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">&#x7531;&#x4E8E;JVM&#x7684;HotSwap&#x4E0D;&#x652F;&#x6301;&#x65B0;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x7684;&#xFF0C;Resin&#x4F1A;&#x81EA;&#x52A8;&#x6539;&#x7528;Hot deploy&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x3002;</span><br><span class="line"></span><br><span class="line">&#x5F53;&#x53BB;&#x6389;&#x8BE5;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</span><br></pre></td></tr></table></figure>
+<p>&#x2026; WebApp[&#x2026;] stopping<br>&#x2026; WebApp[&#x2026;] active<br>```</p>
+<p>###&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;<br><a href="http://itindex.net/detail/46971-java-%E8%B0%83%E8%AF%95" title="Xdebug" target="_blank" rel="external">-Xdebug</a> -Xrunjdwp,transport=dt_socket,server=y,address=5432,suspend=n,onthrow=java.io.IOException,launch=/sbin/echo</p>
 
       
     </div>
@@ -410,7 +457,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/Database/">Database</a>
+    <a href="/categories/Java/">Java</a>
   </span>
 
 
@@ -419,7 +466,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/MySQL/">MySQL</a>
+    <a href="/tags/热部署/">热部署</a>
   </span>
 
 
@@ -435,13 +482,13 @@
 
   
   
-    <h3 class="article-title"><a href="/database/mysql/mysql/"><span>MySQL 安装问题</span></a></h3>
+    <h3 class="article-title"><a href="/blog/20150131_2015年技术学习规划/"><span>2015年技术学习规划</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/database/mysql/mysql/" rel="bookmark">
+      <a href="/blog/20150131_2015年技术学习规划/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -458,12 +505,64 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>&#x6279;&#x91CF;&#x63D2;&#x5165;&#xFF1A;</p>
-<blockquote>
-<p><a href="http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html</a></p>
-</blockquote>
-<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac&#x4E0B;&#x65B0;&#x5B89;&#x88C5;&#x7684;MySQL&#x65E0;&#x6CD5;&#x767B;&#x9646;root&#x7528;&#x6237;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</a></p>
-<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac&#x4E0B;&#x5B89;&#x88C5;MySQL5.7&#x9047;&#x5230;&#x9ED8;&#x8BA4;&#x5BC6;&#x7801;&#x7684;&#x5927;&#x5751;</a></p>
+<p>##&#x8F6F;&#x4EF6;&#x67B6;&#x6784;&#xFF1A;</p>
+<p>###&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F; </p>
+<ul>
+<li>&#x300A;head first &#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x300B;</li>
+<li>&#x300A;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x4E4B;&#x7985;&#x300B;</li>
+<li>&#x300A;Effective Java&#x300B;</li>
+</ul>
+<p>###&#x9879;&#x76EE;&#x7ECF;&#x9A8C;&#x603B;&#x7ED3;<br>&#x603B;&#x7ED3;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x6240;&#x505A;&#x7684;&#x5185;&#x5BB9;&#x548C;&#x6280;&#x672F;&#x4E0A;&#x7684;&#x6539;&#x8FDB;&#x3002;</p>
+<p>###&#x6846;&#x67B6;&#x6E90;&#x7801;&#x89E3;&#x8BFB;<br>&#x901A;&#x8FC7;&#x9605;&#x8BFB;&#x4F18;&#x79C0;&#x7684;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#xFF0C;&#x5B66;&#x4E60;Java&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x8BBE;&#x8BA1;&#x539F;&#x7406;&#x3002;</p>
+<p>##&#x5DE5;&#x4F5C;&#x76F8;&#x5173;&#x6280;&#x672F;&#x7814;&#x7A76;</p>
+<p>###Nginx<br>Nginx&#x4F7F;&#x7528;   </p>
+<ul>
+<li>&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3;Nginx : &#x6A21;&#x5757;&#x5F00;&#x53D1;&#x4E0E;&#x67B6;&#x6784;&#x89E3;&#x6790;&#x300B;</li>
+</ul>
+<p>###Jsoup<br>Jsoup&#x6E90;&#x7801;&#x89E3;&#x8BFB;    </p>
+<p>###Spring<br>Spring&#x6E90;&#x7801;&#x89E3;&#x8BFB;    </p>
+<p>###MySQL<br>MySQL&#x67B6;&#x6784;&#x4E0E;&#x8BBE;&#x8BA1;  </p>
+<p>SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;    </p>
+<p>###JDBC</p>
+<p>&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;&#x5B9E;&#x73B0;</p>
+<p>###Tomcat<br>Tomcat&#x6E90;&#x7801;&#x89E3;&#x6790;</p>
+<p>##&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF1A;</p>
+<p>###Linux &amp; Unix</p>
+<ul>
+<li>&#x300A;UNIX&#x7F16;&#x7A0B;&#x827A;&#x672F;&#x300B;</li>
+<li>&#x300A;&#x9E1F;&#x54E5;&#x7684;Linux&#x79C1;&#x623F;&#x83DC;&#x300B;</li>
+</ul>
+<p>##&#x7F51;&#x7EDC;</p>
+<p>###HTTP</p>
+<ul>
+<li>&#x300A;http&#x6743;&#x5A01;&#x6307;&#x5357;&#x300B;</li>
+</ul>
+<p>##&#x6570;&#x636E;&#x5E93;</p>
+<p>###MySQL&#x4F18;&#x5316;</p>
+<ul>
+<li>&#x300A;&#x9AD8;&#x6027;&#x80FD;MySQL&#x300B;</li>
+</ul>
+<p>##JVM</p>
+<ul>
+<li>&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x300B;</li>
+</ul>
+<p>##&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;<br>&#x5C3D;&#x91CF;&#x901A;&#x8FC7;C&#x8BED;&#x8A00;&#x5B66;&#x4E60;&#x6216;&#x590D;&#x4E60;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x548C;&#x7B97;&#x6CD5;&#x77E5;&#x8BC6;&#xFF0C;&#x540C;&#x65F6;&#x901A;&#x8FC7;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x548C;Java&#x6E90;&#x7801;&#x5B66;&#x4E60;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;&#xFF0C;&#x591A;&#x5BF9;&#x6BD4;&#x73B0;&#x6709;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x7684;&#x6548;&#x7387;&#xFF0C;&#x601D;&#x8003;&#x6539;&#x8FDB;&#x7684;&#x7A7A;&#x95F4;&#x3002;</p>
+<ul>
+<li>&#x300A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x300B;</li>
+<li>&#x300A;&#x7B97;&#x6CD5;&#x5BFC;&#x8BBA;&#x300B;</li>
+<li>&#x300A;&#x7B97;&#x6CD5;&#x5F15;&#x8F6E; &#x2013; &#x4E00;&#x79CD;&#x521B;&#x9020;&#x6027;&#x65B9;&#x6CD5;&#x300B;</li>
+<li></li>
+</ul>
+<p>###&#x7A0B;&#x5E8F;&#x5458;&#x57FA;&#x672C;&#x4FEE;&#x517B;</p>
+<ul>
+<li>&#x300A;&#x7F16;&#x7A0B;&#x4E4B;&#x7F8E;&#x300B;</li>
+<li>&#x300A;&#x7F16;&#x7A0B;&#x73E0;&#x7391;&#x300B;</li>
+<li>&#x300A;&#x66F4;&#x591A;&#x7684;&#x7F16;&#x7A0B;&#x73E0;&#x7391;&#x300B;</li>
+<li>&#x300A;&#x4EE3;&#x7801;&#x5927;&#x5168;&#x300B;</li>
+<li>&#x300A;Elements of Programming&#x300B;</li>
+<li>&#x300A;C Interfaces and Implementations&#x300B;</li>
+<li>&#x300A;writing efficient programs&#x300B;</li>
+</ul>
 
       
     </div>
@@ -474,7 +573,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/Database/">Database</a>
+    <a href="/categories/杂谈/">杂谈</a>
   </span>
 
 
@@ -483,7 +582,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/MySQL/">MySQL</a>
+    <a href="/tags/Hexo/">Hexo</a>
   </span>
 
 
@@ -499,13 +598,13 @@
 
   
   
-    <h3 class="article-title"><a href="/database/mysql/海量数据架构/"><span>MySQL 海量数据架构</span></a></h3>
+    <h3 class="article-title"><a href="/设计模式/"><span></span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/database/mysql/海量数据架构/" rel="bookmark">
+      <a href="/设计模式/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -519,40 +618,18 @@
   <div class="article-content">
     <div class="entry">
       
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>MySQL&#x8981;&#x5B58;&#x50A8;&#x5927;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x6309;&#x7167;&#x5206;&#x5E93;&#x5206;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x7C7B;&#x4F3C;&#x7684;<a href="http://www.lanceyan.com/category/tech/mongodb" title="MongoDB" target="_blank" rel="external">MongoDB</a>&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;    </p>
-<p>&#x800C;&#x6DD8;&#x5B9D;&#x7248;&#x5F00;&#x6E90;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;<a href="http://www.open-open.com/lib/view/open1393247567490.html" title="TDDL" target="_blank" rel="external">TDDL</a>&#xFF0C;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x4E86;&#x5206;&#x5E93;&#x5206;&#x8868;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x900F;&#x660E;&#x5316;&#x4EE5;&#x53CA;&#x5F02;&#x6784;&#x6570;&#x636E;&#x5E93;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x96C6;&#x4E2D;&#x5F0F;&#x914D;&#x7F6E;&#x7684;JDBC datasource&#x5B9E;&#x73B0;&#xFF0C;&#x5177;&#x6709;&#x4E3B;&#x5907;&#x4EFD;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF0C;&#x52A8;&#x6001;&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<p>Cobar</p>
-<p>MyCat</p>
-<p><a href="http://my.oschina.net/tinyframework/blog/186583" title="&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;" target="_blank" rel="external">&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;</a></p>
-<p>Github&#x4E0A;&#x770B;&#x5230;&#x4E86;<a href="https://github.com/arthinking/kamike.divide" title="&#x8FD9;&#x4E2A;" target="_blank" rel="external">&#x8FD9;&#x4E2A;</a>&#x5F00;&#x6E90;&#x7684;&#x4E5F;&#x4E0D;&#x9519;&#x3002;</p>
-<p>Cobar</p>
-<p>MyCat</p>
+        <p>##&#x95EE;&#x9898;</p>
+<p>###&#x4E86;&#x89E3;&#x54EA;&#x4E9B;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;6&#x4E2A;&#x8BBE;&#x8BA1;&#x539F;&#x5219;&#x5206;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x6BCF;&#x79CD;&#x8BBE;&#x8BA1;&#x539F;&#x5219;&#x4F53;&#x73B0;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x662F;&#x54EA;&#x4E2A;&#xFF1F;</p>
+<p>###&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x4E66;&#x7C4D;&#xFF0C;&#x7B80;&#x8FF0;&#x3002;</p>
+<p>###&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x7ED3;&#x6784;&#x56FE;&#x548C;&#x4F7F;&#x7528;&#x573A;&#x666F;</p>
+<p>###Spring AOP&#x7528;&#x4E86;&#x4EC0;&#x4E48;&#x8BBE;&#x8BA1;&#x539F;&#x5219;</p>
 
       
     </div>
     <footer class="article-footer">
         <div class="article-meta pull-left">
           
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Database/">Database</a>
-  </span>
-
-
           
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/MySQL/">MySQL</a>, <a href="/tags/高并发/">高并发</a>
-  </span>
-
-
         </div>
         
     </footer>
@@ -565,13 +642,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/jsoup/2014020301_项目总体结构/"><span>jsoup项目总体结构</span></a></h3>
+    <h3 class="article-title"><a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/"><span>给一个多处使用到的类中的某些方法添加额外的处理动作</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/jsoup/2014020301_项目总体结构/" rel="bookmark">
+      <a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -588,119 +665,11 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>#&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x5982;&#x4E0B;<br>&#x5148;&#x6765;&#x4ECB;&#x7ECD;&#x4E0B;&#x6574;&#x4F53;&#x7684;&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x548C;&#x6BCF;&#x4E2A;&#x7C7B;&#x7684;&#x4F5C;&#x7528;</p>
-<p>##1&#x3001;org.jsoup.helper<br>&#x8FD9;&#x4E2A;&#x5305;&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;jsoup&#x7684;&#x8F85;&#x52A9;&#x7C7B;</p>
-<p>###1.1&#x3001;DataUtils<br>&#x5904;&#x7406;&#x6570;&#x636E;&#x7684;&#x9759;&#x6001;&#x8F85;&#x52A9;&#x7C7B;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x628A;&#x8F93;&#x5165;&#x6D41;&#x8F6C;&#x6362;&#x4E3A;Document&#x5BF9;&#x8C61;&#x3002;</p>
-<p>###1.2&#x3001;DescendableLinkedList<br>&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x904D;&#x5386;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#xFF0C;&#x5E76;&#x517C;&#x5BB9;&#x4E00;&#x4E9B;JDK 1.5&#x4E2D;&#x4E0D;&#x652F;&#x6301;&#x7684;JDK 1.6&#x63D0;&#x4F9B;&#x7684;LinkedList&#x65B9;&#x6CD5;&#x3002;&#x91CC;&#x9762;&#x4E3B;&#x8981;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;DescendingIterator&#x7EE7;&#x627F;&#x4E86;Iterator&#x5B9E;&#x73B0;&#x5012;&#x5E8F;&#x904D;&#x5386;&#x7684;&#x529F;&#x80FD;&#x7684;&#x3002;</p>
-<p>&#x901A;&#x8FC7;&#x4F7F;&#x7528;DescendableLinkedList&#x6267;&#x884C;&#x5982;&#x4E0B;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5C06;&#x4F1A;&#x8F93;&#x51FA;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
-<p>&#x4E0E;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x8F93;&#x51FA;&#x76F8;&#x53CD;&#x7684;&#x987A;&#x5E8F;&#x4E86;&#x3002;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DescendableLinkedList&lt;String&gt; list = <span class="keyword">new</span> DescendableLinkedList&lt;String&gt;();</span><br><span class="line">list.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">Iterator&lt;String&gt; iterator =list.descendingIterator();</span><br><span class="line"><span class="keyword">while</span>(iterator.hasNext()){</span><br><span class="line">	System.out.println(iterator.next());</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>###1.3&#x3001;HttpConnection<br>Connection&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;Connection&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x4FBF;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x7528;&#x4E8E;&#x4ECE;&#x7F51;&#x7EDC;&#x6293;&#x53D6;&#x5185;&#x5BB9;&#xFF0C;&#x5E76;&#x89E3;&#x6790;&#x6210;Document&#x5BF9;&#x8C61;&#x3002;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x83B7;&#x53D6;&#x5230;&#x4E00;&#x4E2A;Connection&#x5BF9;&#x8C61;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.jsoup.Jsoup.connect(String)</span><br></pre></td></tr></table></figure></p>
-<p>Connections&#x5305;&#x542B;&#x4E86;Connection.Request&#x548C;Connection.Response&#xFF0C;&#x8BF7;&#x6C42;&#x7684;&#x914D;&#x7F6E;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;userAgent(String)&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#xFF0C;&#x6216;&#x8005;&#x5728;Connection.Request&#x91CC;&#x9762;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3002;</p>
-<p>###1.4&#x3001;StringUtil<br>&#x529F;&#x80FD;&#x5F88;&#x5C11;&#x7684;String&#x8F85;&#x52A9;&#x7C7B;&#xFF0C;&#x4E13;&#x95E8;&#x4E3A;jsoup&#x8BBE;&#x8BA1;&#x7684;</p>
-<p>###1.5&#x3001;Validate<br>&#x4E3A;jsoup&#x800C;&#x8BBE;&#x8BA1;&#x7684;&#x7B80;&#x5355;&#x7684;&#x9A8C;&#x8BC1;&#x65B9;&#x6CD5;&#x7C7B;&#xFF0C;&#x91CC;&#x9762;&#x6821;&#x9A8C;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#x4F7F;&#x7528;&#x4E86;IllegalArgumentException&#xFF08;RuntimeException&#xFF09;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5F3A;&#x5236;&#x6355;&#x83B7;&#xFF0C;&#x8868;&#x793A;&#x8BE5;&#x9519;&#x8BEF;&#x4E3A;&#x4E0D;&#x53EF;&#x9884;&#x77E5;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x65E0;&#x9700;&#x6355;&#x83B7;&#xFF0C;&#x629B;&#x51FA;&#x8BE5;&#x5F02;&#x5E38;&#x540E;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E0D;&#x4F1A;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x5982;&#x4E0B;&#x9762;&#x7684;asdf&#x4E0D;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x6765;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringUtil.padding(-<span class="number">1</span>);  <span class="comment">// &#x629B;&#x51FA;IllegalArgumentException</span></span><br><span class="line">System.out.println(<span class="string">&quot;asdf&quot;</span>);</span><br></pre></td></tr></table></figure></p>
-<p>##2&#x3001;org.jsoup.nodes<br>HTML&#x5143;&#x7D20;&#x8282;&#x70B9;&#x7684;&#x76F8;&#x5173;&#x7C7B;</p>
-<p>###2.1&#x3001;Attribute<br>HTML&#x5143;&#x7D20;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x5BF9;&#x8C61;&#xFF0C;&#x5305;&#x62EC;&#x5C5E;&#x6027;&#x540D;&#x548C;&#x5C5E;&#x6027;&#x503C;&#x3002;</p>
-<p>###2.2&#x3001;Attributes<br>&#x4E00;&#x4E2A;HTML&#x5143;&#x7D20;&#x7684;&#x5C5E;&#x6027;&#x96C6;&#x5408;</p>
-<p>###2.3&#x3001;Comment<br>&#x6CE8;&#x91CA;&#x5143;&#x7D20;&#xFF0C;&#x5982; <!-- -->&#xFF0C;&#x7EE7;&#x627F;&#x81EA;Node</p>
-<p>###2.4&#x3001;DataNode<br>&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x8282;&#x70B9;&#xFF0C;&#x7528;&#x4E8E;style&#xFF0C;script&#x6807;&#x7B7E;&#xFF0C;&#x56E0;&#x4E3A;&#x5305;&#x542B;&#x4E86;css&#x548C;js&#x811A;&#x672C;&#xFF0C;&#x8FD9;&#x4E9B;&#x6807;&#x7B7E;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x4E0D;&#x80FD;&#x8F6C;&#x6362;&#x4E3A;&#x6587;&#x672C;&#x663E;&#x793A;&#xFF0C;&#x7EE7;&#x627F;&#x81EA;Node&#x3002;</p>
-<p>###2.5&#x3001;Document<br>&#x4E00;&#x4E2A;HTML&#x7684;&#x6587;&#x6863;&#x5BF9;&#x8C61;Document&#xFF0C;&#x7EE7;&#x627F;&#x81EA;Element&#x3002;</p>
-<p>###2.6&#x3001;DocumentType<br>&lt;!DOCTYPE&gt; &#x8282;&#x70B9;</p>
-<p>###2.7&#x3001;Element<br>&#x7EE7;&#x627F;&#x81EA;Node&#xFF0C;&#x4E00;&#x4E2A;HTML&#x5143;&#x7D20;&#xFF0C;&#x5305;&#x542B;&#x6807;&#x7B7E;&#x540D;&#x79F0;&#xFF0C;&#x5C5E;&#x6027;&#x96C6;&#x5408;&#xFF0C;&#x548C;&#x5B50;&#x8282;&#x70B9;&#xFF08;&#x5305;&#x62EC;&#x6587;&#x672C;&#x8282;&#x70B9;&#x548C;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#xFF09;&#x3002;</p>
-<p>###2.8&#x3001;Entities<br>HTML&#x5B9E;&#x4F53;&#x548C;&#x8F6C;&#x4E49;&#x89C4;&#x5219;&#xFF0C;&#x8FD9;&#x4E9B;&#x8F6C;&#x4E49;&#x5BF9;&#x5E94;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x5B58;&#x50A8;&#x5728;&#x8BE5;&#x5305;&#x76EE;&#x5F55;&#x4E0B;&#x7684;entities-base.properties&#x548C;entities-full.properties&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x3002;</p>
-<p>###2.9&#x3001;FormElement<br>&#x8868;&#x5355;&#x5143;&#x7D20;</p>
-<p>###2.10&#x3001;Node<br>&#x57FA;&#x672C;&#x7684;&#x62BD;&#x8C61;&#x8282;&#x70B9;&#x6A21;&#x578B;&#xFF0C;Document&#xFF0C;Comment&#x7B49;&#x90FD;&#x662F;Node&#x7684;&#x5B50;&#x7C7B;&#x3002;</p>
-<p>###2.11&#x3001;TextNode<br>&#x4E00;&#x4E2A;&#x6587;&#x672C;&#x8282;&#x70B9;&#xFF0C;&#x7EE7;&#x627F;&#x81EA;Node&#x3002;</p>
-<p>###2.12&#x3001;XmlDeclaration<br>&#x4E00;&#x4E2A;XML&#x58F0;&#x660E;</p>
-<p>##3&#x3001;org.jsoup.parser</p>
-<p>###3.1&#x3001;CharacterReader</p>
-<p>###3.2&#x3001;HtmlTreeBuilder</p>
-<p>###3.3&#x3001;HtmlTreeBuilderState</p>
-<p>###3.4&#x3001;ParseError</p>
-<p>###3.5&#x3001;ParseErrorList</p>
-<p>###3.6&#x3001;Parser</p>
-<p>###3.7&#x3001;Tag</p>
-<p>###3.8&#x3001;Token</p>
-<p>###3.9&#x3001;Tokeniser</p>
-<p>###3.10&#x3001;TokeniserState</p>
-<p>###3.11&#x3001;TokenQueue</p>
-<p>###3.12&#x3001;TreeBuilder</p>
-<p>###3.13&#x3001;XmlTreeBuilder</p>
-<p>##4&#x3001;org.jsoup.safety</p>
-<p>###4.1&#x3001;Cleaner</p>
-<p>###4.2&#x3001;Whitelist</p>
-<p>##5&#x3001;org.jsoup.select</p>
-<p>###5.1&#x3001;Collector</p>
-<p>###5.2&#x3001;CombiningEvaluator</p>
-<p>###5.3&#x3001;Elements</p>
-<p>###5.4&#x3001;Evaluator</p>
-<p>###5.5&#x3001;NodeTraversor</p>
-<p>###5.6&#x3001;NodeVisitor</p>
-<p>###5.7&#x3001;QueryParser</p>
-<p>###5.8&#x3001;Selector</p>
-<p>###5.9&#x3001;StructuralEvaluator</p>
-<p>##Connection</p>
-<p>##HttpStatusException</p>
-<p>##Jsoup</p>
-<p>##UnsupportedMimeTypeException</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/jsoup/">jsoup</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a>, <a href="/tags/MAC/">MAC</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/spring/2015010601-接口设计原则/"><span>接口设计原则</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/spring/2015010601-接口设计原则/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>&#x63A5;&#x53E3;&#x5C3D;&#x91CF;&#x8BBE;&#x8BA1;&#x7684;&#x5355;&#x4E00;&#x804C;&#x8D23;&#xFF0C;&#x4F1A;&#x65B9;&#x4FBF;&#x4EE3;&#x7801;&#x7684;&#x6269;&#x5C55;&#x548C;&#x7EF4;&#x62A4;&#x3002;</p>
+<p>&#x73B0;&#x6709;&#x5982;&#x4E0B;&#x7A0B;&#x5E8F;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Searcher</span> </span>{</span><br><span class="line">	<span class="function">List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		result.add(<span class="string">&quot;Wings you are the hero&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>LuceneSearcher&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x90FD;&#x7528;&#x5230;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x60F3;&#x5728;LuceneSearcher&#x7684;searchSong()&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x4E3A;&#x4E86;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x7684;&#x6539;&#x52A8;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x591A;&#x5904;&#x5730;&#x65B9;&#x5206;&#x522B;&#x6539;&#x52A8;&#xFF0C;&#x73B0;&#x5728;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Searcher&#x7684;&#x4EE3;&#x7406;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Searcher searcher;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CustomSearcher</span><span class="params">(Searcher searcher)</span></span>{</span><br><span class="line">		<span class="keyword">this</span>.searcher = searcher;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = searcher.searchSong(songType);</span><br><span class="line">		result.add(<span class="string">&quot;big blue ocean&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x53EA;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x58F0;&#x660E;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x6539;&#x52A8;&#x4E0B;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x539F;&#x6837;&#x4E86;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);  <span class="comment">// &#x8C03;&#x7528;&#x7684;&#x8BED;&#x53E5;&#x4FDD;&#x6301;&#x539F;&#x6837;</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;Searcher&#x63A5;&#x53E3;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x6539;&#x5199;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x786E;&#x5B9A;&#x9700;&#x8981;&#x4E3A;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x90FD;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x8FDB;&#x884C;&#x6539;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E14;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF08;<a href="http://www.itzhai.com/java-notes-reflection-dynamic-proxies.html#&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF1A;" title="JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;invoke&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x662F;&#x5426;&#x60F3;&#x8981;&#x6539;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;<a href="http://www.itzhai.com/java-dong-tai-dai-li-zhi-jdk-dong-tai-dai-li-he-cglib-dong-tai-dai-li-mian-xiang-qie-mian-bian-cheng-aop-yuan-li.html#CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" title="CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>]&#x5BF9;&#x5E94;&#x4E3A;intercept&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5199;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5904;&#x7406;&#x7C7B;&#xFF0C;&#x5C31;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x4EE3;&#x7406;&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x66F4;&#x7075;&#x6D3B;&#x3002;</p>
+<p>&#x5982;&#x679C;LuceneSearcher&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x5F0F;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;LuceneSearcher&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x8986;&#x76D6;searchSong&#x65B9;&#x6CD5;&#x52A0;&#x5165;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x901A;&#x8FC7;&#x6539;&#x52A8;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#x3002;</p>
 
       
     </div>
@@ -728,13 +697,13 @@
 
   
   
-    <h3 class="article-title"><a href="/log/Log4J系能/"><span>日志框架性能比较</span></a></h3>
+    <h3 class="article-title"><a href="/document/20150210_API文档编辑工具/"><span>API文档编辑工具</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/log/Log4J系能/" rel="bookmark">
+      <a href="/document/20150210_API文档编辑工具/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -750,14 +719,8 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>#&#x6027;&#x80FD;&#x95EE;&#x9898;</p>
-<p>&#x5173;&#x4E8E;Log4j&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x9605;&#x8BFB;&#x4EE5;&#x4E0B;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x7684;&#x4E00;&#x70B9;&#x8BF4;&#x660E;&#xFF1A;<a href="http://logging.apache.org/log4j/1.2/manual.html" title="Performance" target="_blank" rel="external">Performance</a></p>
-<p><a href="http://www.reader8.cn/jiaocheng/20130810/2235056.html" title="Log4J 2" target="_blank" rel="external">Log4J 2</a></p>
-<p>&#x5728;<a href="http://www.infoq.com/cn/news/2014/08/apache-log4j2" title="Apache Log4j 2.0&#x503C;&#x5F97;&#x5347;&#x7EA7;&#x5417;" target="_blank" rel="external">Apache Log4j 2.0&#x503C;&#x5F97;&#x5347;&#x7EA7;&#x5417;</a>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x9610;&#x8FF0;&#x4E86;Log4j 2.0&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x3002;&#x800C;<a href="http://www.infoq.com/cn/news/2014/07/apache-log4j2.0-publish" title="Log4j 2.0" target="_blank" rel="external">Log4j 2.0</a>&#x7684;API&#x662F;&#x548C;Log4j 1.x&#x7CFB;&#x5217;&#x7684;API&#x4E0D;&#x517C;&#x5BB9;&#x7684;</p>
-<p>&#x5728;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x4E2D;&#x5982;&#x679C;&#x9700;&#x8981;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6A21;&#x5757;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;&#x65E5;&#x5FD7;&#x7EA7;&#x522B;&#xFF0C;&#x5E76;&#x4E14;&#x8F93;&#x51FA;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x8BBE;&#x7F6E;&#x4E0D;&#x540C;&#x7684;logger&#xFF1A;</p>
-<blockquote>
-<p><a href="http://www.theserverside.com/news/thread.tss?thread_id=31659" target="_blank" rel="external">http://www.theserverside.com/news/thread.tss?thread_id=31659</a></p>
+<p><a href="http://turnapi.com/" target="_blank" rel="external">http://turnapi.com/</a><br>&#x8FD9;&#x662F;&#x57FA;&#x4E8E;&#x4E00;&#x6B3E;markdown&#x8BED;&#x6CD5;&#x7684;&#x6587;&#x6863;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x5B9E;&#x4F53;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#x3002;</p>
+<p><a href="http://symfony.com/doc/current/components/yaml/yaml_format.html" target="_blank" rel="external">http://symfony.com/doc/current/components/yaml/yaml_format.html</a></p>
 </blockquote>
 
       
@@ -769,7 +732,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/日志/">日志</a>
+    <a href="/categories/工具/">工具</a>
   </span>
 
 
@@ -778,7 +741,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/Log4J/">Log4J</a>
+    <a href="/tags/API/">API</a>
   </span>
 
 
@@ -793,10 +756,10 @@
 
 <nav class="pagination">
   
-  <a href="/page/5/" class="pagination-prev">Prev</a>
+  <a href="/page/5/" class="pagination-prev">上一页</a>
   
   
-  <a href="/page/7/" class="pagination-next">Next</a>
+  <a href="/page/7/" class="pagination-next">下一页</a>
   
 </nav>
       </main>
