@@ -76,20 +76,20 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>表达式和eval(javascript)非常相似，但是由于表达式由AngularJS来处理，它们有以下显著不同的特性：</p>
+<p>&#x8868;&#x8FBE;&#x5F0F;&#x548C;eval(javascript)&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x8868;&#x8FBE;&#x5F0F;&#x7531;AngularJS&#x6765;&#x5904;&#x7406;&#xFF0C;&#x5B83;&#x4EEC;&#x6709;&#x4EE5;&#x4E0B;&#x663E;&#x8457;&#x4E0D;&#x540C;&#x7684;&#x7279;&#x6027;&#xFF1A;</p>
 <ul>
-<li>所有的表达式都在其所属的作用域内部执行，并有访问本地$scope的权限；</li>
-<li>如果表达式发生了TypeError和ReferenceError并不会抛出异常；</li>
-<li>不允许使用任何流程控制功能（条件控制，例如if/eles）；</li>
-<li>可以接受过滤器和过滤器链。</li>
+<li>&#x6240;&#x6709;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x5728;&#x5176;&#x6240;&#x5C5E;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x5185;&#x90E8;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x6709;&#x8BBF;&#x95EE;&#x672C;&#x5730;$scope&#x7684;&#x6743;&#x9650;&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x8868;&#x8FBE;&#x5F0F;&#x53D1;&#x751F;&#x4E86;TypeError&#x548C;ReferenceError&#x5E76;&#x4E0D;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF1B;</li>
+<li>&#x4E0D;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#x529F;&#x80FD;&#xFF08;&#x6761;&#x4EF6;&#x63A7;&#x5236;&#xFF0C;&#x4F8B;&#x5982;if/eles&#xFF09;&#xFF1B;</li>
+<li>&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x8FC7;&#x6EE4;&#x5668;&#x548C;&#x8FC7;&#x6EE4;&#x5668;&#x94FE;&#x3002;</li>
 </ul>
-<h2 id="6-1、解析AngularJS表达式"><a href="#6-1、解析AngularJS表达式" class="headerlink" title="6.1、解析AngularJS表达式"></a>6.1、解析AngularJS表达式</h2><p><code>$parse</code>: AngularJS通过<code>$parse</code>这个内部服务来进行表达式的运算，这个服务能够访问当前所处的作用域。</p>
-<p><a href="http://www.ngnice.com/posts/2314014da4eea8" title="$parse/$eval和$observe/$watch如何区分" target="_blank" rel="external">$parse/$eval和$observe/$watch如何区分</a></p>
-<h2 id="6-2、插值表达式"><a href="#6-2、插值表达式" class="headerlink" title="6.2、插值表达式"></a>6.2、插值表达式</h2><p><code>$interpolate服务</code>: 插值允许基于作用域上的某个条件实时更新文本字符串，可接收三个参数：</p>
+<h2 id="61-&#x89E3;&#x6790;angularjs&#x8868;&#x8FBE;&#x5F0F;"><a href="#6-1&#x3001;&#x89E3;&#x6790;AngularJS&#x8868;&#x8FBE;&#x5F0F;" class="headerlink" title="6.1&#x3001;&#x89E3;&#x6790;AngularJS&#x8868;&#x8FBE;&#x5F0F;"></a>6.1&#x3001;&#x89E3;&#x6790;AngularJS&#x8868;&#x8FBE;&#x5F0F;</h2><p><code>$parse</code>: AngularJS&#x901A;&#x8FC7;<code>$parse</code>&#x8FD9;&#x4E2A;&#x5185;&#x90E8;&#x670D;&#x52A1;&#x6765;&#x8FDB;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8FD0;&#x7B97;&#xFF0C;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x5F53;&#x524D;&#x6240;&#x5904;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x3002;</p>
+<p><a href="http://www.ngnice.com/posts/2314014da4eea8" title="$parse/$eval&#x548C;$observe/$watch&#x5982;&#x4F55;&#x533A;&#x5206;" target="_blank" rel="external">$parse/$eval&#x548C;$observe/$watch&#x5982;&#x4F55;&#x533A;&#x5206;</a></p>
+<h2 id="62-&#x63D2;&#x503C;&#x8868;&#x8FBE;&#x5F0F;"><a href="#6-2&#x3001;&#x63D2;&#x503C;&#x8868;&#x8FBE;&#x5F0F;" class="headerlink" title="6.2&#x3001;&#x63D2;&#x503C;&#x8868;&#x8FBE;&#x5F0F;"></a>6.2&#x3001;&#x63D2;&#x503C;&#x8868;&#x8FBE;&#x5F0F;</h2><p><code>$interpolate&#x670D;&#x52A1;</code>: &#x63D2;&#x503C;&#x5141;&#x8BB8;&#x57FA;&#x4E8E;&#x4F5C;&#x7528;&#x57DF;&#x4E0A;&#x7684;&#x67D0;&#x4E2A;&#x6761;&#x4EF6;&#x5B9E;&#x65F6;&#x66F4;&#x65B0;&#x6587;&#x672C;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x53EF;&#x63A5;&#x6536;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;</p>
 <ul>
-<li>text（字符串）：一个包含<code>字符插值标记</code>的字符串。</li>
-<li>mustHaveExpression（布尔型）：如果将这个参数设为true，当传入的字符串中不含有表达式时会返回null。</li>
-<li>trustedContext（字符串）：AngularJS会对已经进行过字符插值操作的字符串通过$sec.getTrusted()方法进行严格的上下文转义。</li>
+<li>text&#xFF08;&#x5B57;&#x7B26;&#x4E32;&#xFF09;&#xFF1A;&#x4E00;&#x4E2A;&#x5305;&#x542B;<code>&#x5B57;&#x7B26;&#x63D2;&#x503C;&#x6807;&#x8BB0;</code>&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</li>
+<li>mustHaveExpression&#xFF08;&#x5E03;&#x5C14;&#x578B;&#xFF09;&#xFF1A;&#x5982;&#x679C;&#x5C06;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x8BBE;&#x4E3A;true&#xFF0C;&#x5F53;&#x4F20;&#x5165;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x4E0D;&#x542B;&#x6709;&#x8868;&#x8FBE;&#x5F0F;&#x65F6;&#x4F1A;&#x8FD4;&#x56DE;null&#x3002;</li>
+<li>trustedContext&#xFF08;&#x5B57;&#x7B26;&#x4E32;&#xFF09;&#xFF1A;AngularJS&#x4F1A;&#x5BF9;&#x5DF2;&#x7ECF;&#x8FDB;&#x884C;&#x8FC7;&#x5B57;&#x7B26;&#x63D2;&#x503C;&#x64CD;&#x4F5C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x901A;&#x8FC7;$sec.getTrusted()&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E25;&#x683C;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x8F6C;&#x4E49;&#x3002;</li>
 </ul>
 
       

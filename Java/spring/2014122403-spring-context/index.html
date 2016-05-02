@@ -76,26 +76,26 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>Context 在 Spring 的 org.springframework.context 包下，前面已经讲解了 Context 组件在 Spring 中的作用，他实际上就是给 Spring 提供一个运行时的环境，用以保存各个对象的状态。下面看一下这个环境是如何构建的。</p>
-<p>ApplicationContext 是 Context 的顶级父类，他除了能标识一个应用环境的基本信息外，他还继承了五个接口，这五个接口主要是扩展了 Context 的功能。下面是 Context 的类结构图：</p>
-<p><strong>Context相关的类结构图</strong></p>
+<p>Context &#x5728; Spring &#x7684; org.springframework.context &#x5305;&#x4E0B;&#xFF0C;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x8BB2;&#x89E3;&#x4E86; Context &#x7EC4;&#x4EF6;&#x5728; Spring &#x4E2D;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x4ED6;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x7ED9; Spring &#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x7528;&#x4EE5;&#x4FDD;&#x5B58;&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x3002;&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x73AF;&#x5883;&#x662F;&#x5982;&#x4F55;&#x6784;&#x5EFA;&#x7684;&#x3002;</p>
+<p>ApplicationContext &#x662F; Context &#x7684;&#x9876;&#x7EA7;&#x7236;&#x7C7B;&#xFF0C;&#x4ED6;&#x9664;&#x4E86;&#x80FD;&#x6807;&#x8BC6;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x73AF;&#x5883;&#x7684;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x5916;&#xFF0C;&#x4ED6;&#x8FD8;&#x7EE7;&#x627F;&#x4E86;&#x4E94;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x4E94;&#x4E2A;&#x63A5;&#x53E3;&#x4E3B;&#x8981;&#x662F;&#x6269;&#x5C55;&#x4E86; Context &#x7684;&#x529F;&#x80FD;&#x3002;&#x4E0B;&#x9762;&#x662F; Context &#x7684;&#x7C7B;&#x7ED3;&#x6784;&#x56FE;&#xFF1A;</p>
+<p><strong>Context&#x76F8;&#x5173;&#x7684;&#x7C7B;&#x7ED3;&#x6784;&#x56FE;</strong></p>
 <p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring005.png" alt="">    </p>
-<p>从上图中可以看出 ApplicationContext 继承了 BeanFactory，这也说明了 Spring 容器中运行的主体对象是 Bean，另外 ApplicationContext 继承了 ResourceLoader 接口，使得 ApplicationContext 可以访问到任何外部资源，这将在 Core 中详细说明。</p>
-<p>###ApplicationContext 的子类主要包含两个方面：</p>
+<p>&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA; ApplicationContext &#x7EE7;&#x627F;&#x4E86; BeanFactory&#xFF0C;&#x8FD9;&#x4E5F;&#x8BF4;&#x660E;&#x4E86; Spring &#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x4E3B;&#x4F53;&#x5BF9;&#x8C61;&#x662F; Bean&#xFF0C;&#x53E6;&#x5916; ApplicationContext &#x7EE7;&#x627F;&#x4E86; ResourceLoader &#x63A5;&#x53E3;&#xFF0C;&#x4F7F;&#x5F97; ApplicationContext &#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5230;&#x4EFB;&#x4F55;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#xFF0C;&#x8FD9;&#x5C06;&#x5728; Core &#x4E2D;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x3002;</p>
+<p>###ApplicationContext &#x7684;&#x5B50;&#x7C7B;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
 <ul>
-<li>ConfigurableApplicationContext 表示该 Context 是可修改的，也就是在构建 Context 中用户可以动态添加或修改已有的配置信息，它下面又有多个子类，其中最经常使用的是可更新的 Context，即 AbstractRefreshableApplicationContext 类。</li>
-<li>WebApplicationContext 顾名思义，就是为 web 准备的 Context 他可以直接访问到 ServletContext，通常情况下，这个接口使用的少。<br>再往下分就是按照构建 Context 的文件类型，接着就是访问 Context 的方式。这样一级一级构成了完整的 Context 等级层次。</li>
+<li>ConfigurableApplicationContext &#x8868;&#x793A;&#x8BE5; Context &#x662F;&#x53EF;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x6784;&#x5EFA; Context &#x4E2D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x6DFB;&#x52A0;&#x6216;&#x4FEE;&#x6539;&#x5DF2;&#x6709;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5B83;&#x4E0B;&#x9762;&#x53C8;&#x6709;&#x591A;&#x4E2A;&#x5B50;&#x7C7B;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x53EF;&#x66F4;&#x65B0;&#x7684; Context&#xFF0C;&#x5373; AbstractRefreshableApplicationContext &#x7C7B;&#x3002;</li>
+<li>WebApplicationContext &#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5C31;&#x662F;&#x4E3A; web &#x51C6;&#x5907;&#x7684; Context &#x4ED6;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5230; ServletContext&#xFF0C;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x4F7F;&#x7528;&#x7684;&#x5C11;&#x3002;<br>&#x518D;&#x5F80;&#x4E0B;&#x5206;&#x5C31;&#x662F;&#x6309;&#x7167;&#x6784;&#x5EFA; Context &#x7684;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x8BBF;&#x95EE; Context &#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x7EA7;&#x4E00;&#x7EA7;&#x6784;&#x6210;&#x4E86;&#x5B8C;&#x6574;&#x7684; Context &#x7B49;&#x7EA7;&#x5C42;&#x6B21;&#x3002;</li>
 </ul>
-<p>###总体来说 ApplicationContext 必须要完成以下几件事：    </p>
+<p>###&#x603B;&#x4F53;&#x6765;&#x8BF4; ApplicationContext &#x5FC5;&#x987B;&#x8981;&#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;    </p>
 <ul>
-<li>标识一个应用环境</li>
-<li>利用 BeanFactory 创建 Bean 对象</li>
-<li>保存对象关系表</li>
-<li>能够捕获各种事件</li>
-<li>Context 作为 Spring 的 Ioc 容器，基本上整合了 Spring 的大部分功能，或者说是大部分功能的基础。</li>
+<li>&#x6807;&#x8BC6;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x73AF;&#x5883;</li>
+<li>&#x5229;&#x7528; BeanFactory &#x521B;&#x5EFA; Bean &#x5BF9;&#x8C61;</li>
+<li>&#x4FDD;&#x5B58;&#x5BF9;&#x8C61;&#x5173;&#x7CFB;&#x8868;</li>
+<li>&#x80FD;&#x591F;&#x6355;&#x83B7;&#x5404;&#x79CD;&#x4E8B;&#x4EF6;</li>
+<li>Context &#x4F5C;&#x4E3A; Spring &#x7684; Ioc &#x5BB9;&#x5668;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x6574;&#x5408;&#x4E86; Spring &#x7684;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x7684;&#x57FA;&#x7840;&#x3002;</li>
 </ul>
 <blockquote>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring 框架的设计理念与设计模式分析" target="_blank" rel="external">Spring 框架的设计理念与设计模式分析</a> </p>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;" target="_blank" rel="external">Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;</a></p>
 </blockquote>
 
       

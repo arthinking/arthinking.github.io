@@ -77,18 +77,18 @@
 <p>Author: arthinking<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
 </blockquote>
 <p>#Spring-core</p>
-<p>##org/springframework/core/io/相关内容</p>
+<p>##org/springframework/core/io/&#x76F8;&#x5173;&#x5185;&#x5BB9;</p>
 <p>###UrlResource.getInputStream()  #166<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResourceUtils.useCachesIfNecessary(con);</span><br></pre></td></tr></table></figure></p>
-<p>设置<code>URLConnection</code>的<code>UseCaches</code>为false，主要是为了防止在Windows下jar包被锁住。</p>
-<p>###AbstractFileResolvingResource<br>里面包含了JBoss vfs协议URL文件的获取。通过静态内部类 VfsResourceDelegate 进行处理的</p>
-<p>###ResourceLoader<br>是一个策略接口，其 getResource(String location)方法根据传入不同的location，返回不同的Resource。其实现类是一个可以单独使用的ResourceLoader实现类，ResourceEditor也使用了这个类</p>
-<p>###DefaultResourceLoader<br>ResourceLoader的默认实现，可以单独使用，ResourceEditor使用了该类，是AbstractApplicationContext的基类。</p>
-<p>##说说Spring容器的加载过程<br>XmlBeanFactory通过Resource装载Spring配置信息并启动IoC容器；<br>然后通过BeanFactory#getBean(beanName)方法从IoC容器获取Bean；<br>通过BeanFactory启动IoC容器时，并不会初始化配置文件中定义的Bean，初始化动作发生在第一个调用时；<br>对于单实例的Bean来说，BeanFactory会缓存Bean实例，所以第二次使用getBean()获取Bean的时候将直接从IoC容器的缓存中获取Bean实例。</p>
-<p>##Spring MVC一次执行的原理</p>
-<p>##列举出5种常用的SQL语句优化方式</p>
-<p>##说说两种数据库引擎的区别</p>
-<p>##猿题库</p>
-<p>问题<br>描述<br>回答<br>参考网址<br>举报test</p>
+<p>&#x8BBE;&#x7F6E;<code>URLConnection</code>&#x7684;<code>UseCaches</code>&#x4E3A;false&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5728;Windows&#x4E0B;jar&#x5305;&#x88AB;&#x9501;&#x4F4F;&#x3002;</p>
+<p>###AbstractFileResolvingResource<br>&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;JBoss vfs&#x534F;&#x8BAE;URL&#x6587;&#x4EF6;&#x7684;&#x83B7;&#x53D6;&#x3002;&#x901A;&#x8FC7;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B; VfsResourceDelegate &#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;</p>
+<p>###ResourceLoader<br>&#x662F;&#x4E00;&#x4E2A;&#x7B56;&#x7565;&#x63A5;&#x53E3;&#xFF0C;&#x5176; getResource(String location)&#x65B9;&#x6CD5;&#x6839;&#x636E;&#x4F20;&#x5165;&#x4E0D;&#x540C;&#x7684;location&#xFF0C;&#x8FD4;&#x56DE;&#x4E0D;&#x540C;&#x7684;Resource&#x3002;&#x5176;&#x5B9E;&#x73B0;&#x7C7B;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#x7684;ResourceLoader&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;ResourceEditor&#x4E5F;&#x4F7F;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x7C7B;</p>
+<p>###DefaultResourceLoader<br>ResourceLoader&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#xFF0C;ResourceEditor&#x4F7F;&#x7528;&#x4E86;&#x8BE5;&#x7C7B;&#xFF0C;&#x662F;AbstractApplicationContext&#x7684;&#x57FA;&#x7C7B;&#x3002;</p>
+<p>##&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;<br>XmlBeanFactory&#x901A;&#x8FC7;Resource&#x88C5;&#x8F7D;Spring&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x5E76;&#x542F;&#x52A8;IoC&#x5BB9;&#x5668;&#xFF1B;<br>&#x7136;&#x540E;&#x901A;&#x8FC7;BeanFactory#getBean(beanName)&#x65B9;&#x6CD5;&#x4ECE;IoC&#x5BB9;&#x5668;&#x83B7;&#x53D6;Bean&#xFF1B;<br>&#x901A;&#x8FC7;BeanFactory&#x542F;&#x52A8;IoC&#x5BB9;&#x5668;&#x65F6;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;Bean&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x52A8;&#x4F5C;&#x53D1;&#x751F;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x65F6;&#xFF1B;<br>&#x5BF9;&#x4E8E;&#x5355;&#x5B9E;&#x4F8B;&#x7684;Bean&#x6765;&#x8BF4;&#xFF0C;BeanFactory&#x4F1A;&#x7F13;&#x5B58;Bean&#x5B9E;&#x4F8B;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E8C;&#x6B21;&#x4F7F;&#x7528;getBean()&#x83B7;&#x53D6;Bean&#x7684;&#x65F6;&#x5019;&#x5C06;&#x76F4;&#x63A5;&#x4ECE;IoC&#x5BB9;&#x5668;&#x7684;&#x7F13;&#x5B58;&#x4E2D;&#x83B7;&#x53D6;Bean&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>##Spring MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;</p>
+<p>##&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;</p>
+<p>##&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;</p>
+<p>##&#x733F;&#x9898;&#x5E93;</p>
+<p>&#x95EE;&#x9898;<br>&#x63CF;&#x8FF0;<br>&#x56DE;&#x7B54;<br>&#x53C2;&#x8003;&#x7F51;&#x5740;<br>&#x4E3E;&#x62A5;test</p>
 
       
     </div>

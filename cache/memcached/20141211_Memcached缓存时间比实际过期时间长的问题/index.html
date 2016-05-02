@@ -76,15 +76,15 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>查看<a href="https://github.com/memcached/memcached/blob/master/memcached.c" title="Memcached服务器端源码" target="_blank" rel="external">Memcached服务器端源码</a>，发现MC服务器端判断缓存的有效时间是按照如下方法的：    </p>
-<p>##计算服务器启动后多少秒该key会失效</p>
-<p>###1、如果是一个超过30天的时间，则认为是一个Unix时间戳：<br>失效时间 = 设置的过期时间- 设置的过期时间距离memcached服务器启动时间的秒数;</p>
-<p>###2、如果是一个30天内的有效时间，则认为是一个时间长度：<br>失效时间 = 设置的过期时间长度 + current_time</p>
+<p>&#x67E5;&#x770B;<a href="https://github.com/memcached/memcached/blob/master/memcached.c" title="Memcached&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E90;&#x7801;" target="_blank" rel="external">Memcached&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E90;&#x7801;</a>&#xFF0C;&#x53D1;&#x73B0;MC&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5224;&#x65AD;&#x7F13;&#x5B58;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x662F;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#x7684;&#xFF1A;    </p>
+<p>##&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;</p>
+<p>###1&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;Unix&#x65F6;&#x95F4;&#x6233;&#xFF1A;<br>&#x5931;&#x6548;&#x65F6;&#x95F4; = &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;- &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x8DDD;&#x79BB;memcached&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x7684;&#x79D2;&#x6570;;</p>
+<p>###2&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF1A;<br>&#x5931;&#x6548;&#x65F6;&#x95F4; = &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x957F;&#x5EA6; + current_time</p>
 <blockquote>
-<p>具体可以参考<a href="http://my.oschina.net/u/1255608/blog/163342" title="这里" target="_blank" rel="external">这里</a>     </p>
+<p>&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://my.oschina.net/u/1255608/blog/163342" title="&#x8FD9;&#x91CC;" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>     </p>
 </blockquote>
-<p>如果MC服务器启动之后，对系统时间进行了调整，那么第一种情况就会得到不准确的有效时间了</p>
-<p><a href="http://www.couchbase.com/issues/browse/MB-11548" title="相关bug" target="_blank" rel="external">相关bug</a></p>
+<p>&#x5982;&#x679C;MC&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x5BF9;&#x7CFB;&#x7EDF;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#xFF0C;&#x90A3;&#x4E48;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x4E0D;&#x51C6;&#x786E;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x4E86;</p>
+<p><a href="http://www.couchbase.com/issues/browse/MB-11548" title="&#x76F8;&#x5173;bug" target="_blank" rel="external">&#x76F8;&#x5173;bug</a></p>
 
       
     </div>

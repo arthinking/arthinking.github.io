@@ -54,13 +54,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/2014120302_JVM笔记 - 虚拟机执行子系统（虚拟机字节码执行引擎）/"><span>JVM笔记 - 虚拟机执行子系统（虚拟机字节码执行引擎）</span></a></h3>
+    <h3 class="article-title"><a href="/blog/20150131_2015年技术学习规划/"><span>2015年技术学习规划</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/2014120302_JVM笔记 - 虚拟机执行子系统（虚拟机字节码执行引擎）/" rel="bookmark">
+      <a href="/blog/20150131_2015年技术学习规划/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -76,86 +76,65 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>《深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）》笔记</p>
 </blockquote>
-<p>#1、概述<br>物理机的执行引擎是直接建立在处理器、硬件、指令集和操作系统层面上的，而虚拟机的执行引擎则是由自己实现的，因此可以自行制定指令集与执行引擎的结构体系，并且能够执行那些不被硬件直接支持的指令集格式。</p>
-<p>#2、运行时栈帧结构<br>栈帧存储了方法的局部变量表、操作数栈、动态连接和方法返回地址等信息。每一个方法从调用开始至执行完成的过程，都对应着一个栈帧在虚拟机栈里面从入栈到出栈的过程。</p>
-<p>每一个栈帧都包括了局部变量表、操作数栈、动态连接、方法返回地址和一些额外的附加信息。</p>
-<p>对于执行引擎来说，在活动线程中，只有位于栈顶的栈帧才是有效的，称为当前栈帧。</p>
-<p>##2.1、局部变量表<br>Java 语言中明确的（ reference 类型则可能是 32 位也可能是 64 位） 64 位的数据类型只有 long 和 double 两种。</p>
-<p>为了尽可能节省栈帧空间，局部变量表中的 Slot 是可以重用的，方法体中定义的变量，其作用域并不一定会覆盖整个方法体。</p>
-<p>局部变量表复用对垃圾收集的影响 link<br>placeholder 原本所占用的 Slot 还没有被其他变量所复用，所以作为 GC Roots 一部分的局部变量表仍然保持着对它的关联。</p>
-<p>书籍《 Practical Java》 中把“不使用的对象应手动赋值为 null” 作为一条推荐的编码规则，，赋 null 值的操作在经过 JIT 编译优化后就会被消除掉，这时候将变量设置为 null 就是没有意义的。</p>
-<p>代码清单 8- 2 在经过 JIT 编译后， System.gc() 执行时就可以正确地回收掉内存，无须写成代码清单 8- 3 的样子。</p>
-<p>局部变量不像前面介绍的类变量那样存在“准备阶段”。如果一个局部变量定义了但没有赋初始值是不能使用的。</p>
-<p>##2.2、操作数栈</p>
-<p>##2.3、动态连接<br>Class 文件的常量池中存有大量的符号引用。</p>
-<p>这些符号引用一部分会在类加载阶段或者第一次使用的时候就转化为直接引用，这种转化称为<code>静态解析</code>。另外一部分将在每一次运行期间转化为直接引用，这部分称为<code>动态连接</code>。</p>
-<p>##2.4、方法返回地址<br>方法退出时可能执行的操作有：恢复上层方法的局部变量表和操作数栈，把返回值（如果有的话）压入调用者栈帧的操作数栈中，调整 PC 计数器的值以指向方法调用指令后面的一条指令等。</p>
-<p>##2.5、附加信息</p>
-<p>#3、方法调用</p>
-<p>##3.1、解析<br>调用目标在程序代码写好、编译器进行编译时就必须确定下来。这类方法的调用称为解析（ Resolution）。</p>
-<p>在 Java 语言中符合“编译期可知，运行期不可变”这个要求的方法，主要包括静态方法和私有方法两大类，因此它们都适合在类加载阶段进行解析。</p>
-<p>在 Java 虚拟机里面提供了 5 条方法调用字节码指令，分别如下。<br>&gt;</p>
-<blockquote>
-<p>invokestatic： 调用静态方法。</p>
-<p>invokespecial： 调用实例构造器＜ init ＞方法、私有方法和父类方法。</p>
-<p>invokevirtual： 调用所有的虚方法。</p>
-<p>invokeinterface： 调用接口方法，会在运行时再确定一个实现此接口的对象。</p>
-<p>只要能被 invokestatic 和 invokespecial 指令调用的方法，都可以在解析阶段中确定唯一的调用版本，符合这个条件的有静态方法、私有方法、实例构造器、父类方法 4 类，它们在类加载的时候就会把符号引用解析为该方法的直接引用。    </p>
-</blockquote>
-<p>这些方法可以称为<code>非虚方法</code>，与之相反，其他方法称为<code>虚方法</code>（除去 final 方法）    </p>
-<p>Java 中的非虚方法除了使用 invokestatic、 invokespecial 调用的方法之外还有一种，就是被 <code>final</code> 修饰的方法。</p>
-<p><code>解析调用</code>一定是个静态的过程，在编译期间就完全确定，在类装载的解析阶段就会把涉及的符号引用全部转变为可确定的直接引用，不会延迟到运行期再去完成。而<code>分派（ Dispatch） 调用</code>则可能是静态的也可能是动态的，根据分派依据的宗量数[ 1] 可分为单分派和多分派。</p>
-<p>##3.2、分派</p>
-<p>###静态分派：    </p>
-<p>例子：link</p>
-<p>“ Human” 称为变量的静态类型（ Static   Type）， 或者叫做的外观类型（ Apparent   Type）， 后面的” Man” 则称为变量的实际类型（ Actual   Type）。    </p>
-<p>虚拟机（准确地说是编译器）在重载时是通过参数的静态类型而不是实际类型作为判定依据的。    </p>
-<p>所有依赖静态类型来定位方法执行版本的分派动作称为<code>静态分派</code>。</p>
-<p>重载方法匹配优先级 link    </p>
-<p>如果同时出现两个参数分别为 Serializable 和 Comparable ＜ Character ＞的重载方法，那它们在此时的优先级是一样的。编译器无法确定要自动转型为哪种类型，会提示类型模糊，拒绝编译。程序必须在调用时显式地指定字面量的静态类型，如： sayHello（（ Comparable ＜ Character ＞）’ a’）。    </p>
-<p>###动态分派：</p>
-<p>它和多态性的另外一个重要体现[ 3]—— <code>重写</code>（ Override） 有着很密切的关联。</p>
-<p>方法动态分派演示 link    </p>
-<p>Java 虚拟机是如何根据实际类型来分派方法执行版本的呢？    </p>
-<p>原因就需要从 invokevirtual 指令的多态查找过程开始说起，由于 invokevirtual 指令执行的第一步就是在运行期确定接收者的实际类型，所以两次调用中的 invokevirtual 指令把常量池中的类方法符号引用解析到了不同的直接引用上，这个过程就是 Java 语言中方法重写的本质。我们把这种在运行期根据实际类型确定方法执行版本的分派过程称为<code>动态分派</code>。</p>
-<p>###单分派与多分派：</p>
-<p>单分派与多分派 link    </p>
-<p>Java 语言的<code>静态分派</code>属于<code>多分派类型</code>。    </p>
-<p>Java 语言的<code>动态分派</code>属于<code>单分派类型</code>。    </p>
-<p>今天（直至还未发布的 Java   1. 8） 的 Java 语言是一门静态多分派、动态单分派的语言。    </p>
-<p>###虚拟机动态分派的实现：</p>
-<p>##3.3、动态类型语言支持<br>随着 JDK   7 的发布，字节码指令集终于迎来了第一位新成员—— <code>invokedynamic</code>指令。这条新增加的指令是 JDK   7 实现“动态类型语言”（ Dynamically   Typed Language） 支持而进行的改进之一。</p>
-<p>###1. 动态类型语言<br>动态类型语言的关键特征是它的类型检查的主体过程是在运行期而不是编译期。</p>
-<p>“变量无类型而变量值才有类型”这个特点也是动态类型语言的一个重要特征。</p>
-<p>###2. JDK   1. 7 与动态类型</p>
-<p>###3. java. lang. invoke 包    </p>
-<p>JDK   1. 7 实现了 JSR- 292， 新加入的 java. lang. invoke 包[ 2] 就是 JSR- 292 的一个重要组成部分。    </p>
-<p>MethodHandle演示 link    </p>
-<p>MethodHandle 的使用方法和效果与 Reflection 有众多相似之处，不过，它们还是有以下这些区别：    </p>
-<blockquote>
-<p>Reflection 是在模拟 Java 代码层次的方法调用，而 MethodHandle 是在模拟字节码层次的方法调用。    </p>
-<p>Reflection 是重量级，而 MethodHandle 是轻量级。    </p>
-<p>Reflection   API 的设计目标是只为 Java 语言服务的，而 MethodHandle 则设计成可服务于所有 Java 虚拟机之上的语言，其中也包括 Java 语言。    </p>
-</blockquote>
-<p>###4. invokedynamic 指令</p>
-<p>在某种程度上， invokedynamic 指令与 MethodHandle 机制的作用是一样的，都是为了解决原有 4 条” invoke*” 指令方法分派规则固化在虚拟机之中的问题，把如何查找目标方法的决定权从虚拟机转嫁到具体用户代码之中。</p>
-<p>###5. 掌控方法分派规则</p>
-<p>invokedynamic 指令与前面 4 条” invoke*” 指令的最大差别就是它的分派逻辑不是由虚拟机决定的，而是由程序员决定。</p>
-<p>可以通过” super” 关键字很方便地调用到父类中的方法，但如果要访问祖类的方法呢？</p>
-<p>使用 MethodHandle 来解决相关问题 link</p>
-<p>#4、基于栈的字节码解析执行引擎</p>
-<p>##4.1、解析执行<br>Java 语言中， Javac 编译器完成了程序代码经过词法分析、语法分析到抽象语法树，再遍历语法树生成线性的字节码指令流的过程。因为这一部分动作是在 Java 虚拟机之外进行的，而解释器在虚拟机的内部，所以 Java 程序的编译就是半独立的实现。</p>
-<p>##4.2、基于栈的指令集与基于寄存器的指令集<br>Java 编译器输出的指令流，基本上[ 1] 是一种基于栈的指令集架构。    </p>
-<p>基于栈的指令集主要的优点就是可移植，寄存器由硬件直接提供[ 2]， 程序直接依赖这些硬件寄存器则不可避免地要受到硬件的约束。    </p>
-<p>栈架构指令集的主要缺点是执行速度相对来说会稍慢一些。    </p>
-<p>虽然栈架构指令集的代码非常紧凑，但是完成相同功能所需的指令数量一般会比寄存器架构多，因为出栈、入栈操作本身就产生了相当多的指令数量。更重要的是，栈实现在内存之中，频繁的栈访问也就意味着频繁的内存访问，相对于处理器来说，内存始终是执行速度的瓶颈。尽管虚拟机可以采取栈顶缓存的手段，把最常用的操作映射到寄存器中避免直接内存访问，但这也只能是优化措施而不是解决本质问题的方法。由于指令数量和内存访问的原因，所以导致了栈架构指令集的执行速度会相对较慢。</p>
-<p>##4.3、基于栈的解析执行过程<br>一段简单的算术代码的字节码表示  link    </p>
-<p>在 HotSpot 虚拟机中，有很多以” fast_” 开头的非标准字节码指令用于合并、替换输入的字节码以提升解释执行性能，而即时编译器的优化手段更加花样繁多[ 1]。    </p>
-<blockquote>
-<p>发表于：<a href="http://www.itzhai.com/jvm-executive-subsystem-bytecode-interpreter.html" title="虚拟机执行子系统（虚拟机字节码执行引擎）" target="_blank" rel="external">虚拟机执行子系统（虚拟机字节码执行引擎）</a></p>
-</blockquote>
+<p>##&#x8F6F;&#x4EF6;&#x67B6;&#x6784;&#xFF1A;</p>
+<p>###&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F; </p>
+<ul>
+<li>&#x300A;head first &#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x300B;</li>
+<li>&#x300A;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x4E4B;&#x7985;&#x300B;</li>
+<li>&#x300A;Effective Java&#x300B;</li>
+</ul>
+<p>###&#x9879;&#x76EE;&#x7ECF;&#x9A8C;&#x603B;&#x7ED3;<br>&#x603B;&#x7ED3;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x6240;&#x505A;&#x7684;&#x5185;&#x5BB9;&#x548C;&#x6280;&#x672F;&#x4E0A;&#x7684;&#x6539;&#x8FDB;&#x3002;</p>
+<p>###&#x6846;&#x67B6;&#x6E90;&#x7801;&#x89E3;&#x8BFB;<br>&#x901A;&#x8FC7;&#x9605;&#x8BFB;&#x4F18;&#x79C0;&#x7684;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#xFF0C;&#x5B66;&#x4E60;Java&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x8BBE;&#x8BA1;&#x539F;&#x7406;&#x3002;</p>
+<p>##&#x5DE5;&#x4F5C;&#x76F8;&#x5173;&#x6280;&#x672F;&#x7814;&#x7A76;</p>
+<p>###Nginx<br>Nginx&#x4F7F;&#x7528;   </p>
+<ul>
+<li>&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3;Nginx : &#x6A21;&#x5757;&#x5F00;&#x53D1;&#x4E0E;&#x67B6;&#x6784;&#x89E3;&#x6790;&#x300B;</li>
+</ul>
+<p>###Jsoup<br>Jsoup&#x6E90;&#x7801;&#x89E3;&#x8BFB;    </p>
+<p>###Spring<br>Spring&#x6E90;&#x7801;&#x89E3;&#x8BFB;    </p>
+<p>###MySQL<br>MySQL&#x67B6;&#x6784;&#x4E0E;&#x8BBE;&#x8BA1;  </p>
+<p>SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;    </p>
+<p>###JDBC</p>
+<p>&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;&#x5B9E;&#x73B0;</p>
+<p>###Tomcat<br>Tomcat&#x6E90;&#x7801;&#x89E3;&#x6790;</p>
+<p>##&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#xFF1A;</p>
+<p>###Linux &amp; Unix</p>
+<ul>
+<li>&#x300A;UNIX&#x7F16;&#x7A0B;&#x827A;&#x672F;&#x300B;</li>
+<li>&#x300A;&#x9E1F;&#x54E5;&#x7684;Linux&#x79C1;&#x623F;&#x83DC;&#x300B;</li>
+</ul>
+<p>##&#x7F51;&#x7EDC;</p>
+<p>###HTTP</p>
+<ul>
+<li>&#x300A;http&#x6743;&#x5A01;&#x6307;&#x5357;&#x300B;</li>
+</ul>
+<p>##&#x6570;&#x636E;&#x5E93;</p>
+<p>###MySQL&#x4F18;&#x5316;</p>
+<ul>
+<li>&#x300A;&#x9AD8;&#x6027;&#x80FD;MySQL&#x300B;</li>
+</ul>
+<p>##JVM</p>
+<ul>
+<li>&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x300B;</li>
+</ul>
+<p>##&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;<br>&#x5C3D;&#x91CF;&#x901A;&#x8FC7;C&#x8BED;&#x8A00;&#x5B66;&#x4E60;&#x6216;&#x590D;&#x4E60;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x548C;&#x7B97;&#x6CD5;&#x77E5;&#x8BC6;&#xFF0C;&#x540C;&#x65F6;&#x901A;&#x8FC7;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x548C;Java&#x6E90;&#x7801;&#x5B66;&#x4E60;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x7684;&#x8FD0;&#x7528;&#xFF0C;&#x591A;&#x5BF9;&#x6BD4;&#x73B0;&#x6709;&#x5F00;&#x6E90;&#x6846;&#x67B6;&#x7684;&#x6548;&#x7387;&#xFF0C;&#x601D;&#x8003;&#x6539;&#x8FDB;&#x7684;&#x7A7A;&#x95F4;&#x3002;</p>
+<ul>
+<li>&#x300A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x5206;&#x6790;&#x300B;</li>
+<li>&#x300A;&#x7B97;&#x6CD5;&#x5BFC;&#x8BBA;&#x300B;</li>
+<li>&#x300A;&#x7B97;&#x6CD5;&#x5F15;&#x8F6E; &#x2013; &#x4E00;&#x79CD;&#x521B;&#x9020;&#x6027;&#x65B9;&#x6CD5;&#x300B;</li>
+<li></li>
+</ul>
+<p>###&#x7A0B;&#x5E8F;&#x5458;&#x57FA;&#x672C;&#x4FEE;&#x517B;</p>
+<ul>
+<li>&#x300A;&#x7F16;&#x7A0B;&#x4E4B;&#x7F8E;&#x300B;</li>
+<li>&#x300A;&#x7F16;&#x7A0B;&#x73E0;&#x7391;&#x300B;</li>
+<li>&#x300A;&#x66F4;&#x591A;&#x7684;&#x7F16;&#x7A0B;&#x73E0;&#x7391;&#x300B;</li>
+<li>&#x300A;&#x4EE3;&#x7801;&#x5927;&#x5168;&#x300B;</li>
+<li>&#x300A;Elements of Programming&#x300B;</li>
+<li>&#x300A;C Interfaces and Implementations&#x300B;</li>
+<li>&#x300A;writing efficient programs&#x300B;</li>
+</ul>
 
       
     </div>
@@ -166,11 +145,19 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/JVM/">JVM</a>
+    <a href="/categories/杂谈/">杂谈</a>
   </span>
 
 
           
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Hexo/">Hexo</a>
+  </span>
+
+
         </div>
         
     </footer>
@@ -183,13 +170,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/2014120301_JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）/"><span>JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）</span></a></h3>
+    <h3 class="article-title"><a href="/Java/热部署/"><span>Resin中的热部署</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/2014120301_JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）/" rel="bookmark">
+      <a href="/Java/热部署/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -205,79 +192,13 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>《深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）》笔记</p>
 </blockquote>
-<p>#1、概述<br>虚拟机把描述类的数据从 Class 文件加载到内存，并对数据进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的 Java 类型，这就是虚拟机的类加载机制。</p>
-<p>Java 里天生可以动态扩展的语言特性就是依赖运行期动态加载和动态连接这个特点实现的。</p>
-<p>#2、类加载的时机<br>加载（ Loading）、 验证（ Verification）、 准备（ Preparation）、 解析（ Resolution）、 初始化（ Initialization）、 使用（ Using） 和卸载（ Unloading） 7 个阶段。</p>
-<p>其中验证、准备、解析 3 个部分统称为连接（ Linking）。</p>
-<p>加载、验证、准备、初始化和卸载这 5 个阶段的顺序是确定的，类的加载过程必须按照这种顺序按部就班地开始，而解析阶段则不一定：它在某些情况下可以在初始化阶段之后再开始，这是为了支持 Java 语言的运行时绑定（也称为动态绑定或晚期绑定）。</p>
-<p>虚拟机规范则是严格规定了有且只有 5 种情况必须立即对类进行“初始化”（而加载、验证、准备自然需要在此之前开始）： </p>
-<blockquote>
-<p>1） 遇到 new、 getstatic、 putstatic 或 invokestatic 这 4 条字节码指令时，如果类没有进行过初始化，则需要先触发其初始化。 </p>
-<p>2） 使用 java. lang. reflect 包的方法对类进行反射调用的时候，如果类没有进行过初始化，则需要先触发其初始化。    </p>
-<p>3） 当初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父类的初始化。    </p>
-<p>4） 当虚拟机启动时，用户需要指定一个要执行的主类（包含 main() 方法的那个类），虚拟机会先初始化这个主类。    </p>
-<p>5） 当使用 JDK   1. 7 的动态语言支持时，如果一个 java. lang. invoke. MethodHandle 实例最后的解析结果 REF<em> getStatic、 REF</em> putStatic、 REF_ invokeStatic 的方法句柄，并且这个方法句柄所对应的类没有进行过初始化，则需要先触发其初始化。    </p>
-</blockquote>
-<p>通过 子类引用父类的静态字段，不会导致子类初始化。是否要触发子类的加载和验证，在虚拟机规范中并未明确规定，这点取决于虚拟机的具体实现。</p>
-<p>通过 数组定义来引用类，不会触发此类的初始化。</p>
-<p>#3、类加载的过程</p>
-<p>##3.1、加载<br>在加载阶段，虚拟机需要完成以下 3 件事情：<br>&gt;<br>1） 通过一个类的全限定名来获取定义此类的二进制字节流。<br>&gt;<br>2） 将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构。<br>&gt;<br>3） 在内存中生成一个代表这个类的 java. lang. Class 对象，作为方法区这个类的各种数据的访问入口。</p>
-<p>Class文件的获取方式：<br>&gt;<br>从 ZIP 包中读取，这很常见，最终成为日后 JAR、 EAR、 WAR 格式的基础。<br>&gt;<br>从网络中获取，这种场景最典型的应用就是 Applet。<br>&gt;<br>运行时计算生成，这种场景使用得最多的就是动态代理技术，在 java. lang. reflect. Proxy 中，就是用了 ProxyGenerator. </p>
-<blockquote>
-<p>generateProxyClass 来为特定接口生成形式为”*$ Proxy” 的代理类的二进制字节流。<br>由其他文件生成，典型场景是 JSP 应用，即由 JSP 文件生成对应的 Class 类。</p>
-<p>从数据库中读取。</p>
-</blockquote>
-<p>一个非数组类的加载阶段（准确地说，是加载阶段中获取类的二进制字节流的动作）是开发人员可控性最强的。</p>
-<p>对于数组类而言，情况就有所不同，数组类本身不通过类加载器创建，它是由 Java 虚拟机直接创建的。但数组类与类加载器仍然有很密切的关系，因为数组类的元素类型（ Element   Type， 指的是数组去掉所有维度的类型）最终是要靠类加载器去创建，一个数组类（下面简称为 C） 创建过程就遵循以下规则：</p>
-<p>如果数组的组件类型（ Component   Type， 指的是数组去掉一个维度的类型）是引用类型，那就递归采用本节中定义的加载过程去加载这个组件类型，数组 C 将在加载该组件类型的类加载器的类名称空间上被标识（这点很重要，在 7. 4 节会介绍到，一个类必须与类加载器一起确定唯一性）。如果数组的组件类型不是引用类型（例如 int[] 数组）， Java 虚拟机将会把数组 C 标记为与引导类加载器关联。</p>
-<p>加载阶段完成后，虚拟机外部的二进制字节流就按照虚拟机所需的格式存储在方法区之中。</p>
-<p>Class类对象并没有明确规定是在 Java 堆中，对于 HotSpot 虚拟机而言， Class 对象比较特殊，它虽然是对象，但是存放在方法区里面。</p>
-<p>##3.2、验证<br>验证是连接阶段的第一步，这一阶段的目的是为了确保 Class 文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
-<p>在字节码语言层面上，上述 Java 代码无法做到的事情都是可以实现的，至少语义上是可以表达出来的。虚拟机如果不检查输入的字节流，对其完全信任的话，很可能会因为载入了有害的字节流而导致系统崩溃，所以验证是虚拟机对自身保护的一项重要工作。</p>
-<p>验证阶段大致上会完成下面 4 个阶段的检验动作：</p>
-<p>###文件格式验证：<br>第一阶段要验证字节流是否符合 Class 文件格式的规范。</p>
-<p>###元数据验证：<br>第二阶段是对字节码描述的信息进行语义分析，以保证其描述的信息符合 Java 语言规范的要求。</p>
-<p>###字节码验证：<br>主要目的是通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。<br>由于数据流验证的高复杂性，虚拟机设计团队为了避免过多的时间消耗在字节码验证阶段，在 JDK 1. 6 之后的 Javac 编译器和 Java 虚拟机中进行了一项优化，给方法体的 Code 属性的属性表中增加了一项名为” StackMapTable” 的属性</p>
-<p>###符号引用验证：<br>最后一个阶段的校验发生在虚拟机将符号引用转化为直接引用的时候，这个转化动作将在连接的第三阶段——解析阶段中发生。<br>如果所运行的全部代码（包括自己编写的及第三方包中的代码）都已经被反复使用和验证过，那么在实施阶段就可以考虑使用- Xverify: none 参数来关闭大部分的类验证措施，以缩短虚拟机类加载的时间。</p>
-<p>##3.3、准备<br>这个阶段进行内存分配的仅包括类变量（被 static 修饰的变量），而不包括实例变量，实例变量将会在对象实例化时随着对象一起分配在 Java 堆中。其次，这里所说的初始值“通常情况”下是数据类型的零值。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> value= <span class="number">123</span>;</span><br></pre></td></tr></table></figure></p>
-<p>把 value 赋值为 123 的动作将在初始化阶段才会执行。</p>
-<p>特殊情况：如果类字段的字段属性表中存在 ConstantValue 属性，那在准备阶段变量 value 就会被初始化为 ConstantValue 属性所指定的值，假设上面类变量 value 的定义变为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> value= <span class="number">123</span>；</span><br></pre></td></tr></table></figure></p>
-<p>编译时 Javac 将会为 value 生成 ConstantValue 属性，在准备阶段虚拟机就会根据 ConstantValue 的设置将 value 赋值为 123。</p>
-<p>##3.4、解析<br>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。</p>
-<p>除 invokedynamic 指令以外，虚拟机实现可以对第一次解析的结果进行缓存。</p>
-<p>解析动作主要针对类或接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符 7 类符号引用进行。</p>
-<p>##3.5、初始化<br>在准备阶段，变量已经赋过一次系统要求的初始值，而在初始化阶段，则根据程序员通过程序制定的主观计划去初始化类变量和其他资源，或者可以从另外一个角度来表达：初始化阶段是执行类构造器＜ clinit ＞()方法的过程。</p>
-<p>静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块可以赋值，但是不能访问。</p>
-<p>虚拟机会保证在子类的＜ clinit ＞()方法执行之前，父类的＜ clinit ＞()方法已经执行完毕。因此在虚拟机中第一个被执行的＜ clinit ＞()方法的类肯定是 java. lang. Object。</p>
-<p>父类中定义的静态语句块要优先于子类的变量赋值操作。</p>
-<p>接口中不能使用静态语句块，但仍然有变量初始化的赋值操作，因此接口与类一样都会生成＜ clinit ＞()方法。但接口与类不同的是，执行接口的＜ clinit ＞()方法不需要先执行父接口的＜ clinit ＞()方法。只有当父接口中定义的变量使用时，父接口才会初始化。另外，接口的实现类在初始化时也一样不会执行接口的＜ clinit ＞()方法。</p>
-<p>虚拟机会保证一个类的＜ clinit ＞()方法在多线程环境中被正确地加锁、同步。</p>
-<p>如果在一个类的＜ clinit ＞()方法中有耗时很长的操作，就可能造成多个进程阻塞</p>
-<p>#4、类加载器<br>让应用程序自己决定如何去获取所需要的类。实现这个动作的代码模块称为“类加载器”。</p>
-<p>类加载器却在类层次划分、 OSGi、 热部署、代码加密等领域大放异彩。</p>
-<p>##4.1、类与类加载器<br>即使这两个类来源于同一个 Class 文件，被同一个虚拟机加载，只要加载它们的类加载器不同，那这两个类就必定不相等。</p>
-<p>不同的类加载器对 instanceof 关键字运算的结果的影响  link<br>虚拟机中存在了两个 ClassLoaderTest 类，一个是由系统应用程序类加载器加载的，另外一个是由我们自定义的类加载器加载的</p>
-<p>##4.2、双亲委派模型<br>从 Java 虚拟机的角度来讲，只存在两种不同的类加载器：一种是<code>启动类加载器</code>（ Bootstrap ClassLoader）， 这个类加载器使用 C++ 语言实现[ 1]， 是虚拟机自身的一部分；另一种就是<code>所有其他的类加载器</code>，这些类加载器都由 Java 语言实现，独立于虚拟机外部，并且全都继承自抽象类 java. lang. ClassLoader。</p>
-<p>绝大部分 Java 程序都会使用到以下 3 种系统提供的类加载器：</p>
-<p>####启动类加载器（ Bootstrap   ClassLoader）：<br>这个类将器负责将存放在＜ JAVA_ HOME ＞\ lib 目录中的，或者被- Xbootclasspath 参数所指定的路径中的，并且是虚拟机识别的（仅按照文件名识别，如 rt. jar， 名字不符合的类库即使放在 lib 目录中也不会被加载）类库加载到虚拟机内存中。<br>用户在编写自定义类加载器时，如果需要把加载请求委派给引导类加载器，那直接使用 null 代替即可。</p>
-<p>####扩展类加载器（ Extension   ClassLoader）：<br>它负责加载＜ JAVA_ HOME ＞\ lib\ ext 目录中的，或者被 java. ext. dirs 系统变量所指定的路径中的所有类库。    </p>
-<p>####应用程序类加载器（ Application   ClassLoader）：<br>由于这个类加载器是 ClassLoader 中的 getSystemClassLoader() 方法的返回值，所以一般也称它为系统类加载器。它负责加载用户类路径（ ClassPath） 上所指定的类库。</p>
-<p>如果应用程序中没有自定义过自己的类加载器，一般情况下这个就是程序中默认的类加载器。</p>
-<p>双亲委派模型要求除了顶层的启动类加载器外，其余的类加载器都应当有自己的父类加载器。这里类加载器之间的父子关系一般不会以继承（ Inheritance） 的关系来实现，而是都使用组合（ Composition） 关系来复用父加载器的代码。</p>
-<p>如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成。</p>
-<p>类 java. lang. Object， 它存放在 rt. jar 之中，无论哪一个类加载器要加载这个类，最终都是委派给处于模型最顶端的启动类加载器进行加载，因此 Object 类在程序的各种类加载器环境中都是同一个类。<br>可以尝试去编写一个与 rt. jar 类库中已有类重名的 Java 类，将会发现可以正常编译，但永远无法被加载运行。</p>
-<p>##4.3、破坏双亲委派模型<br>双亲委派模型的<code>第一次</code>“被破坏”其实发生在双亲委派模型出现之前——即 JDK 1.2 发布之前。    </p>
-<p>JDK 1.2 之后已不提倡用户再去覆盖 loadClass() 方法，而应当把自己的类加载逻辑写到 findClass() 方法中，在 loadClass() 方法的逻辑里如果父类加载失败，则会调用自己的 findClass() 方法来完成加载，这样就可以保证新写出来的类加载器是符合双亲委派规则的。    </p>
-<p>双亲委派模型的<code>第二次</code>“被破坏”是由这个模型自身的缺陷所导致的。如果基础类又要调用回用户的代码，那该怎么办？    </p>
-<p>为了解决这个问题， Java 设计团队只好引入了一个不太优雅的设计：<code>线程上下文类加载器</code>（ Thread Context   ClassLoader）。</p>
-<p>双亲委派模型的<code>第三次</code>“被破坏”是由于用户对程序动态性的追求而导致的。<br>OSGi 实现模块化热部署的关键则是它自定义的类加载器机制的实现。每一个程序模块（ OSGi 中称为 Bundle） 都有一个自己的类加载器，当需要更换一个 Bundle 时，就把 Bundle 连同类加载器一起换掉以实现代码的热替换。在 OSGi 环境下，类加载器不再是双亲委派模型中的树状结构，而是进一步发展为更加复杂的网状结构。    </p>
-<p>在 Java 程序员中基本有一个共识： OSGi 中对类加载器的使用是很值得学习的，弄懂了 OSGi 的实现，就可以算是掌握了类加载器的精髓。</p>
-<p>#5、本章小结</p>
-<blockquote>
-<p>发表于：<a href="http://www.itzhai.com/jvm-executive-subsystem-class-loading-mechanism.html" title="JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）" target="_blank" rel="external">JVM笔记 - 虚拟机执行子系统（虚拟机类加载机制）</a></p>
-</blockquote>
+<p>###Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;<br>&#x5728;resin.conf&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;JVM&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF1A;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x8868;&#x793A;&#x542F;&#x52A8;debug&#x6A21;&#x5F0F;&#xFF0C;&#x5F53;&#x66F4;&#x65B0;&#x4E86;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;reloading class&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7;JVM&#x7684;HotSwap&#x529F;&#x80FD;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x7684;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">&#x7531;&#x4E8E;JVM&#x7684;HotSwap&#x4E0D;&#x652F;&#x6301;&#x65B0;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x7684;&#xFF0C;Resin&#x4F1A;&#x81EA;&#x52A8;&#x6539;&#x7528;Hot deploy&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x3002;</span><br><span class="line"></span><br><span class="line">&#x5F53;&#x53BB;&#x6389;&#x8BE5;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</span><br></pre></td></tr></table></figure>
+<p>&#x2026; WebApp[&#x2026;] stopping<br>&#x2026; WebApp[&#x2026;] active<br>```</p>
+<p>###&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;<br><a href="http://itindex.net/detail/46971-java-%E8%B0%83%E8%AF%95" title="Xdebug" target="_blank" rel="external">-Xdebug</a> -Xrunjdwp,transport=dt_socket,server=y,address=5432,suspend=n,onthrow=java.io.IOException,launch=/sbin/echo</p>
 
       
     </div>
@@ -288,11 +209,19 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/JVM/">JVM</a>
+    <a href="/categories/Java/">Java</a>
   </span>
 
 
           
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/热部署/">热部署</a>
+  </span>
+
+
         </div>
         
     </footer>
@@ -305,13 +234,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/2014120201_JVM笔记 - 虚拟机执行子系统（类文件结构）/"><span>JVM笔记 - 虚拟机执行子系统（类文件结构）</span></a></h3>
+    <h3 class="article-title"><a href="/Java/jdbc/20150116_数据库连接池/"><span>数据库连接池</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/2014120201_JVM笔记 - 虚拟机执行子系统（类文件结构）/" rel="bookmark">
+      <a href="/Java/jdbc/20150116_数据库连接池/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -327,21 +256,10 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>《深入理解Java虚拟机：JVM高级特性与最佳实践（第2版）》笔记    </p>
 </blockquote>
-<p>#1、概述</p>
-<p>#2、无关性的基石<br>JVM 设计者通过 JSR- 292 基本兑现了对 Java 虚拟机进行适当的扩展，以便更好地支持其他语言运行于 JVM 之上这个承诺。</p>
-<p>Java 虚拟机不和包括 Java 在内的任何语言绑定，它只与“ Class 文件”这种特定的二进制文件格式所关联</p>
-<p>#3、Class类文件的结构<br>任何一个 Class 文件都对应着唯一一个类或接口的定义信息，但反过来说，类或接口并不一定都得定义在文件里（譬如类或接口也可以通过类加载器直接生成）。</p>
-<p>Class 文件是一组以 8 位字节为基础单位的二进制流。</p>
-<p>根据 Java 虚拟机规范的规定， Class 文件格式采用一种类似于 C 语言结构体的伪结构来存储数据，这种伪结构中只有两种数据类型：无符号数和表，后面的解析都要以这两种数据类型为基础。</p>
-<p>#4、字节码指令简介</p>
-<p>#5、共有设计和私有设计<br>只要优化后 Class 文件依然可以被正确读取，并且包含在其中的语义能得到完整的保持，那实现者就可以选择任何方式去实现这些语义，虚拟机后台如何处理 Class 文件完全是实现者自己的事情，只要它在外部接口上看起来与规范描述的一致即可[ 1]。</p>
-<p>#6、Class文件结构的发展<br>相对于语言、 API 以及 Java 技术体系中其他方面的变化， Class 文件结构一直处于比较稳定的状态， Class 文件的主体结构、字节码指令的语义和数量几乎没有出现过变动[ 1]， 所有对 Class 文件格式的改进，都集中在向访问标志、属性表这些在设计上就可扩展的数据结构中添加内容。</p>
-<p>#7、本章小结</p>
-<blockquote>
-<p>发表于：<a href="http://www.itzhai.com/jvm-executive-subsystem-class-structure.html" title="JVM笔记 - 虚拟机执行子系统（类文件结构）" target="_blank" rel="external">JVM笔记 - 虚拟机执行子系统（类文件结构）</a></p>
-</blockquote>
+<p>###&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;&#x5DE5;&#x5177;&#xFF1A;<br>common-pool&#x5DE5;&#x5177;&#x5E93;&#x662F;&#x5BF9;&#x6C60;&#x5316;&#x6280;&#x672F;&#x539F;&#x7406;&#x7684;&#x4E00;&#x79CD;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x3002;    </p>
+<p>apache&#x7684;&#x8FDE;&#x63A5;&#x6C60;&#x5DE5;&#x5177;&#x5E93;common-dbcp&#x662F;common-pool&#x5728;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x65B9;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5177;&#x4F53;&#x5E94;&#x7528;&#x3002;</p>
+<p><a href="http://macrochen.iteye.com/blog/320077" title="common-dbcp" target="_blank" rel="external">common-dbcp</a></p>
 
       
     </div>
@@ -352,68 +270,19 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/JVM/">JVM</a>
+    <a href="/categories/JDBC/">JDBC</a>
   </span>
 
 
           
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/2014120202_更新常量类导致的编译问题/"><span>更新常量类导致的编译问题</span></a></h3>
   
 
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/2014120202_更新常量类导致的编译问题/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>类从被加载到JVM内存开始，到卸载出内存，整个周期包括：加载、验证、准备、解析、初始化、使用和卸载。而虚拟机规范严格规定了有且只有五种情况必须对类进行初始化（link），这几种情况被称为对类的主动引用，其他的情况被称为被动引用（link），其中就包括调用一个类的常量，不会触发定义常量的类的初始化，这是因为常量（字符串类型或基本数据类型）在编译阶段会存入调用类的常量池中。</p>
-</blockquote>
-<p><strong>问题描述如下：</strong><br>更新一个常量类class到服务器之后，其他引用这个常量的地方并没有做出改动，导致问题的出现。</p>
-<p>对常量问题的思考：<br>一般在系统运行事情不会发生变化的东西才可以定义为常量，常量可以硬编码写到代码里面。</p>
-<p>对于可能做出调整的常量需要考虑：为了方便编译，不用全局编译一次，哪里用到的常量就定义在哪个类中，或者使用枚举类型替换。<br>参考代码：<br><a href="https://github.com/arthinking/java-code/blob/master/src/me/arthinking/code4jvmnote/C7_4_RoleEnum.java" title="常量编译处理方式" target="_blank" rel="external">常量编译处理方式</a><br>可以发现，数组常量会从所在的类加载元素，而字符串和整型的常量会直接在常量池中保存一份数据，不会除非常量所在类的初始化。</p>
-<blockquote>
-<p>发表于：<a href="更新常量类导致的编译问题" title="http://www.itzhai.com/the-compilation-problems-caused-by-constant.html">更新常量类导致的编译问题</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/JVM/">JVM</a>
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/数据库连接池/">数据库连接池</a>
   </span>
 
 
-          
         </div>
         
     </footer>
@@ -446,11 +315,91 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>##问题</p>
-<p>###了解哪些设计模式，6个设计原则分别是什么？每种设计原则体现的设计模式是哪个？</p>
-<p>###设计模式书籍，简述。</p>
-<p>###设计模式结构图和使用场景</p>
-<p>###Spring AOP用了什么设计原则</p>
+        <p>##&#x95EE;&#x9898;</p>
+<p>###&#x4E86;&#x89E3;&#x54EA;&#x4E9B;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;6&#x4E2A;&#x8BBE;&#x8BA1;&#x539F;&#x5219;&#x5206;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x6BCF;&#x79CD;&#x8BBE;&#x8BA1;&#x539F;&#x5219;&#x4F53;&#x73B0;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x662F;&#x54EA;&#x4E2A;&#xFF1F;</p>
+<p>###&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x4E66;&#x7C4D;&#xFF0C;&#x7B80;&#x8FF0;&#x3002;</p>
+<p>###&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x7ED3;&#x6784;&#x56FE;&#x548C;&#x4F7F;&#x7528;&#x573A;&#x666F;</p>
+<p>###Spring AOP&#x7528;&#x4E86;&#x4EC0;&#x4E48;&#x8BBE;&#x8BA1;&#x539F;&#x5219;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/params/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/params/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        {&quot;name&quot;:&quot;Arthinking.GitHub.io&quot;,&quot;tagline&quot;:&quot;&quot;,&quot;body&quot;:&quot;arthinking&#x7684;&#x6280;&#x672F;&#x603B;&#x7ED3;\r\n----------\r\n&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x6280;&#x672F;&#x603B;&#x7ED3;&#x5BF9;&#x6BD4;&#x7684;&#x601D;&#x8003;&#x533A;\r\n\r\n&gt; Author: arthinking  \r\n&gt; E-mail: 1225538383@qq.com\r\n\r\n****\r\n\r\n# [Java](https://github.com/arthinking/arthinking/blob/master/Java.md \&quot;Java\&quot;)\r\n\r\n# Mysql\r\n\r\n\r\n----------\r\n\r\n#GitHub&#x76F8;&#x5173;&#x8D44;&#x6E90;\r\nmarkdown&#x8BED;&#x6CD5;&#xFF1A;https://github.com/guodongxiaren/test  \r\nGitHub&#x4E0A;README&#x5199;&#x6CD5;&#x66A8;GFM&#x8BED;&#x6CD5;&#x89E3;&#x8BFB;&#xFF1A;http://blog.csdn.net/wqvbjhc/article/details/27349209&quot;,&quot;google&quot;:&quot;&quot;,&quot;note&quot;:&quot;Don&apos;t delete this file! It&apos;s used internally to help with page regeneration.&quot;}
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/library/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/library/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="library"><a href="#Library" class="headerlink" title="Library"></a>Library</h1><h2 id="github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p><a href="http://gitbook.liuhui998.com/index.html" title="Git Community Book &#x4E2D;&#x6587;&#x7248;" target="_blank" rel="external">Git Community Book &#x4E2D;&#x6587;&#x7248;</a></p>
+<p><a href="https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.zh-cn.md" title="Git Hub&#x79D8;&#x7C4D;" target="_blank" rel="external">Git Hub&#x79D8;&#x7C4D;</a></p>
 
       
     </div>
@@ -492,9 +441,9 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>AngularJS允许我们使用angular.module()方法来声明模块，这个方法能够接受两个参数，第一个是模块的名称，第二个是依赖列表，也就是可以被注入到模块中的对象列表。</p>
+<p>AngularJS&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x4F7F;&#x7528;angular.module()&#x65B9;&#x6CD5;&#x6765;&#x58F0;&#x660E;&#x6A21;&#x5757;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x6A21;&#x5757;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x4F9D;&#x8D56;&#x5217;&#x8868;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x88AB;&#x6CE8;&#x5165;&#x5230;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x5217;&#x8868;&#x3002;</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个方法相当于AngularJS模块的setter方法，是用来定义模块的。</span></span><br><span class="line">angular.module(<span class="string">'myApp'</span>, []);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个方法用于获取应用，相当于AngularJS模块的getter方法</span></span><br><span class="line">angular.module(<span class="string">'myApp'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x76F8;&#x5F53;&#x4E8E;AngularJS&#x6A21;&#x5757;&#x7684;setter&#x65B9;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x5B9A;&#x4E49;&#x6A21;&#x5757;&#x7684;&#x3002;</span></span><br><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>, []);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x83B7;&#x53D6;&#x5E94;&#x7528;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;AngularJS&#x6A21;&#x5757;&#x7684;getter&#x65B9;&#x6CD5;</span></span><br><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -530,86 +479,6 @@
 
   
   
-    <h3 class="article-title"><a href="/params/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/params/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        {"name":"Arthinking.GitHub.io","tagline":"","body":"arthinking的技术总结\r\n----------\r\n这是一个技术总结对比的思考区\r\n\r\n> Author: arthinking  \r\n> E-mail: 1225538383@qq.com\r\n\r\n****\r\n\r\n# [Java](https://github.com/arthinking/arthinking/blob/master/Java.md \"Java\")\r\n\r\n# Mysql\r\n\r\n\r\n----------\r\n\r\n#GitHub相关资源\r\nmarkdown语法：https://github.com/guodongxiaren/test  \r\nGitHub上README写法暨GFM语法解读：http://blog.csdn.net/wqvbjhc/article/details/27349209","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/library/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/library/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
-          2016-02-02
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h1 id="Library"><a href="#Library" class="headerlink" title="Library"></a>Library</h1><h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><p><a href="http://gitbook.liuhui998.com/index.html" title="Git Community Book 中文版" target="_blank" rel="external">Git Community Book 中文版</a></p>
-<p><a href="https://github.com/tiimgreen/github-cheat-sheet/blob/master/README.zh-cn.md" title="Git Hub秘籍" target="_blank" rel="external">Git Hub秘籍</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
     <h3 class="article-title"><a href="/MySQL/"><span></span></a></h3>
   
 
@@ -630,14 +499,14 @@
   <div class="article-content">
     <div class="entry">
       
-        <h1 id="SQL语句优化"><a href="#SQL语句优化" class="headerlink" title="SQL语句优化"></a>SQL语句优化</h1><h2 id="IN语句的优化"><a href="#IN语句的优化" class="headerlink" title="IN语句的优化"></a>IN语句的优化</h2><h3 id="demo-1"><a href="#demo-1" class="headerlink" title="demo 1"></a>demo 1</h3><p>慢语句  </p>
+        <h1 id="sql&#x8BED;&#x53E5;&#x4F18;&#x5316;"><a href="#SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;" class="headerlink" title="SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;"></a>SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;</h1><h2 id="in&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;"><a href="#IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;" class="headerlink" title="IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;"></a>IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;</h2><h3 id="demo-1"><a href="#demo-1" class="headerlink" title="demo 1"></a>demo 1</h3><p>&#x6162;&#x8BED;&#x53E5;  </p>
 <pre><code class="SQL"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t_user <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span>(<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> t_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> country)
 </code></pre>
-<p>优化</p>
+<p>&#x4F18;&#x5316;</p>
 <pre><code class="SQL"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t_user t1, (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">AS</span> <span class="keyword">id</span> <span class="keyword">FROM</span> t_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> country) t2 <span class="keyword">WHERE</span> t1.id = t2.id
 </code></pre>
-<h2 id="大表查询优化"><a href="#大表查询优化" class="headerlink" title="大表查询优化"></a>大表查询优化</h2><p>随着数据库数据的增加，查询速度会越来越慢，可以开启log_slow_queries慢查询日志，通过查看<a href="http://www.itzhai.com/access-speed-too-slow-mysql-statement-analysis.html" title="慢查询日志" target="_blank" rel="external">慢查询日志</a>找到慢语句，进行优化。  </p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="数据库中主键设计原则"><a href="#数据库中主键设计原则" class="headerlink" title="数据库中主键设计原则"></a>数据库中主键设计原则</h2>
+<h2 id="&#x5927;&#x8868;&#x67E5;&#x8BE2;&#x4F18;&#x5316;"><a href="#&#x5927;&#x8868;&#x67E5;&#x8BE2;&#x4F18;&#x5316;" class="headerlink" title="&#x5927;&#x8868;&#x67E5;&#x8BE2;&#x4F18;&#x5316;"></a>&#x5927;&#x8868;&#x67E5;&#x8BE2;&#x4F18;&#x5316;</h2><p>&#x968F;&#x7740;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x67E5;&#x8BE2;&#x901F;&#x5EA6;&#x4F1A;&#x8D8A;&#x6765;&#x8D8A;&#x6162;&#xFF0C;&#x53EF;&#x4EE5;&#x5F00;&#x542F;log_slow_queries&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;&#xFF0C;&#x901A;&#x8FC7;&#x67E5;&#x770B;<a href="http://www.itzhai.com/access-speed-too-slow-mysql-statement-analysis.html" title="&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;" target="_blank" rel="external">&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;</a>&#x627E;&#x5230;&#x6162;&#x8BED;&#x53E5;&#xFF0C;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#x3002;  </p>
+<h1 id="&#x95EE;&#x9898;"><a href="#&#x95EE;&#x9898;" class="headerlink" title="&#x95EE;&#x9898;"></a>&#x95EE;&#x9898;</h1><h2 id="&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E3B;&#x952E;&#x8BBE;&#x8BA1;&#x539F;&#x5219;"><a href="#&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E3B;&#x952E;&#x8BBE;&#x8BA1;&#x539F;&#x5219;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E3B;&#x952E;&#x8BBE;&#x8BA1;&#x539F;&#x5219;"></a>&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E3B;&#x952E;&#x8BBE;&#x8BA1;&#x539F;&#x5219;</h2>
       
     </div>
     <footer class="article-footer">
@@ -656,13 +525,13 @@
 
   
   
-    <h3 class="article-title"><a href="/HTTP协议/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/"><span>Memcached使用getMulti造成的性能问题</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/HTTP协议/" rel="bookmark">
+      <a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -676,13 +545,166 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>##HTTP协议返回码，301,302</p>
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#xFF1A;&#x4F7F;&#x7528;<code>getMulti</code>&#x4E00;&#x6B21;&#x6027;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x6240;&#x6709;&#x624B;&#x673A;100&#x4E2A;key&#xFF0C;&#x8BF7;&#x6C42;&#x4E86;100&#x4E07;&#x6B21;&#xFF0C;&#x7CFB;&#x7EDF;&#x6700;&#x521D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x968F;&#x7740;&#x8BBF;&#x95EE;&#x91CF;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x8D1F;&#x8F7D;&#x52A0;&#x5927;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x589E;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4F46;&#x7ED3;&#x679C;&#x8D1F;&#x8F7D;&#x53CD;&#x800C;&#x66F4;&#x52A0;&#x5927;&#x4E86;&#x3002;</p>
+<p>&#x539F;&#x56E0;&#x662F;&#x5F00;&#x59CB;&#x90A3;100&#x4E2A;key&#x5728;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x83B7;&#x53D6;&#xFF0C;&#x73B0;&#x5728;&#x5206;&#x4E0D;&#x5230;&#x4E86;&#x51E0;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x589E;&#x591A;&#x4E86;&#xFF0C;&#x800C;&#x5173;&#x952E;&#x6027;&#x7684;&#x56E0;&#x7D20;&#x662F;&#x6211;&#x4EEC;&#x7528;&#x5230;&#x7684;MC&#x5BA2;&#x6237;&#x7AEF;memcached-client&#xFF0C;&#x5176;&#x4E2D;&#x7684;AscIIClient&#x5982;&#x4E0B;&#xFF1A;    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMulti</span><span class="params">(String[] keys, Integer[] hashCodes, <span class="keyword">boolean</span> asString)</span></span><br><span class="line">  </span>{</span><br><span class="line">    <span class="keyword">if</span> ((keys == <span class="keyword">null</span>) || (keys.length == <span class="number">0</span>)) {</span><br><span class="line">      <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">        log.error(<span class="string">&quot;missing keys for getMulti()&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map cmdMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    String[] cleanKeys = <span class="keyword">new</span> String[keys.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++) {</span><br><span class="line">      String key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>) {</span><br><span class="line">        <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">          log.error(<span class="string">&quot;null key, so skipping&quot;</span>);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      {</span><br><span class="line">        Integer hash = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ((hashCodes != <span class="keyword">null</span>) &amp;&amp; (hashCodes.length &gt; i)) {</span><br><span class="line">          hash = hashCodes[i];</span><br><span class="line">        }</span><br><span class="line">        cleanKeys[i] = key;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">          cleanKeys[i] = sanitizeKey(key);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, e, key);</span><br><span class="line">          <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">            log.error(<span class="string">&quot;failed to sanitize your key!&quot;</span>, e);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        SchoonerSockIO sock = <span class="keyword">this</span>.pool.getSock(cleanKeys[i], hash);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sock == <span class="keyword">null</span>) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, <span class="keyword">new</span> IOException(<span class="string">&quot;no socket to server available&quot;</span>), key);</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">          <span class="keyword">if</span> (!cmdMap.containsKey(sock.getHost())) {</span><br><span class="line">            cmdMap.put(sock.getHost(), <span class="keyword">new</span> StringBuilder(<span class="string">&quot;get&quot;</span>));</span><br><span class="line">          }</span><br><span class="line">          ((StringBuilder)cmdMap.get(sock.getHost())).append(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot; &quot;</span>).append(cleanKeys[i]).toString());</span><br><span class="line"></span><br><span class="line">          sock.close();</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) {</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;multi get socket count : &quot;</span>).append(cmdMap.size()).toString());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map ret = <span class="keyword">new</span> HashMap(keys.length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> NIOLoader(<span class="keyword">this</span>).doMulti(asString, cmdMap, keys, ret);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++)</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">if</span> ((!keys[i].equals(cleanKeys[i])) &amp;&amp; (ret.containsKey(cleanKeys[i]))) {</span><br><span class="line">        ret.put(keys[i], ret.get(cleanKeys[i]));</span><br><span class="line">        ret.remove(cleanKeys[i]);</span><br><span class="line">      }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;++++ memcache: got back &quot;</span>).append(ret.size()).append(<span class="string">&quot; results&quot;</span>).toString());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure>
+<p>&#x8BF7;&#x6C42;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x662F;&#x4E32;&#x884C;&#x7684;&#xFF0C;&#x7ED3;&#x679C;&#x5BFC;&#x81F4;&#x5BA2;&#x6237;&#x7AEF;&#x64CD;&#x4F5C;&#x65F6;&#x95F4;&#x7D2F;&#x52A0;&#xFF0C;&#x8BF7;&#x6C42;&#x5806;&#x79EF;&#xFF0C;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;</p>
+<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</h2><p>&#x4E00;&#x662F;&#x628A;&#x4E32;&#x884C;&#x8BF7;&#x6C42;&#x6539;&#x4E3A;&#x5E76;&#x884C;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;spymemcached&#x7684;&#x5E76;&#x884C;&#x5B9E;&#x73B0;&#xFF1A;    </p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x5C06;&#x672C;&#x6B21;&#x64CD;&#x4F5C;&#x6784;&#x9020;&#x6210;&#x4E00;&#x4E2A;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A; node &#x7684; Operation &#x5BF9;&#x8C61;&#xFF0C;&#x52A0;&#x5165;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF1B;    </li>
+<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF0C;&#x5728;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x7684; node &#x64CD;&#x4F5C;&#x653E;&#x5165; addedQueue &#x961F;&#x5217;&#xFF0C;&#x7136;&#x540E;&#x89E6;&#x53D1; Selector &#x65B9;&#x5F0F;&#x5F02;&#x6B65;&#x975E;&#x963B;&#x585E;&#x7684;&#x6267;&#x884C;&#xFF1B;</li>
+</ul>
+<p>&#x4E00;&#x662F;&#x628A;key&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x624B;&#x673A;&#x6563;&#x5217;&#x4E0D;&#x540C;&#x7684;MC&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x8FBE;&#x5230;&#x8BF7;&#x6C42;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6839;&#x636E;&#x5C31;&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x6563;&#x5217;&#x65B9;&#x6CD5;&#x4E5F;&#x4E0D;&#x540C;&#xFF0C;&#x6BD4;&#x8F83;&#x4E0D;&#x597D;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x6216;&#x8005;&#x4E0D;&#x4F7F;&#x7528;getMulti&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E86;</p>
+<p>&#x5FC5;&#x987B;&#x4F7F;&#x7528;getMulti&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x628A;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x4E2A;memcache&#x96C6;&#x7FA4;&#x4E0A;&#xFF0C;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x8D1F;&#x8D23;&#x8BFB;&#x53D6;&#x4E00;&#x534A;&#x7684;keys&#xFF0C;&#x4F46;&#x662F;&#x53C8;&#x4F1A;&#x5F15;&#x53D1;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;CPU&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p><a href="http://www.cnblogs.com/zhengyun_ustc/p/multigethole.html" title="&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;" target="_blank" rel="external">&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;</a>&#x4E5F;&#x5206;&#x6790;&#x4E86;&#x8FD9;&#x7C7B;&#x5206;&#x6790;&#xFF0C;&#x5F88;&#x900F;&#x5F7B;&#xFF0C;&#x63D0;&#x4F9B;&#x7ED9;&#x5927;&#x5BB6;&#x53C2;&#x8003;&#x4E0B;</p>
+<p>&#x8BE5;&#x535A;&#x6587;&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-use-getmulti-problem.html" target="_blank" rel="external">http://www.itzhai.com/mc-use-getmulti-problem.html</a></p>
 
       
     </div>
     <footer class="article-footer">
         <div class="article-meta pull-left">
           
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Cache/">Cache</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Memcached/">Memcached</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/2014120701_JVM笔记 - 高效并发（Java内存模型与线程）/"><span>JVM笔记 - 高效并发（Java内存模型与线程）</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/2014120701_JVM笔记 - 高效并发（Java内存模型与线程）/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#1&#x3001;&#x6982;&#x8FF0;</p>
+<p>#2&#x3001;&#x786C;&#x4EF6;&#x7684;&#x6548;&#x7387;&#x4E0E;&#x4E00;&#x81F4;&#x6027;<br>&#x57FA;&#x4E8E;&#x544A;&#x8BC9;&#x7F13;&#x5B58;&#x7684;&#x5B58;&#x50A8;&#x4EA4;&#x4E92;&#x5F88;&#x597D;&#x5730;&#x89E3;&#x51B3;&#x4E86;&#x5904;&#x7406;&#x5668;&#x4E0E;&#x5185;&#x5B58;&#x7684;&#x901F;&#x5EA6;&#x77DB;&#x76FE;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x4E3A;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x5E26;&#x6765;&#x4E86;&#x66F4;&#x9AD8;&#x7684;&#x590D;&#x6742;&#x5EA6;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x95EE;&#x9898;&#xFF1A;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x3002;</p>
+<p>&#x5904;&#x7406;&#x5668;&#x53EF;&#x80FD;&#x4F1A;&#x5BF9;&#x8F93;&#x5165;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E71;&#x5E8F;&#x6267;&#x884C;&#x4F18;&#x5316;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x4F1A;&#x5728;&#x8BA1;&#x7B97;&#x4E4B;&#x540E;&#x5C06;&#x4E71;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x91CD;&#x7EC4;&#xFF0C;&#x4FDD;&#x8BC1;&#x8BE5;&#x7ED3;&#x679C;&#x4E0E;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;</p>
+<p>#3&#x3001;Java&#x5185;&#x5B58;&#x6A21;&#x578B;<br>&#x7EBF;&#x7A0B;&#x7684;&#x5DE5;&#x4F5C;&#x5185;&#x5B58;&#x4E2D;&#x4FDD;&#x5B58;&#x4E86;&#x88AB;&#x8BE5;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x4E3B;&#x5185;&#x5B58;&#x526F;&#x672C;&#x62F7;&#x8D1D;&#xFF0C;&#x7EBF;&#x7A0B;&#x5BF9;&#x53D8;&#x91CF;&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#xFF08;&#x8BFB;&#x53D6;&#x3001;&#x8D4B;&#x503C;&#x7B49;&#xFF09;&#x90FD;&#x5FC5;&#x987B;&#x5728;&#x5DE5;&#x4F5C;&#x5185;&#x5B58;&#x4E2D;&#x8FDB;&#x884C;&#x3002;</p>
+<p>##3.1&#x3001;&#x4E3B;&#x5185;&#x5B58;&#x4E0E;&#x5DE5;&#x4F5C;&#x5185;&#x5B58;</p>
+<p>##3.2&#x3001;&#x5185;&#x5B58;&#x95F4;&#x4EA4;&#x4E92;&#x64CD;&#x4F5C;</p>
+<p>##3.3&#x3001;&#x5BF9;&#x4E8E;volatile&#x578B;&#x53D8;&#x91CF;&#x7684;&#x7279;&#x6B8A;&#x89C4;&#x5219;</p>
+<p>&#x5F53;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x4E3A;volitile&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x5C06;&#x5177;&#x5907;&#x4E24;&#x79CD;&#x7279;&#x6027;&#xFF0C;&#x7B2C;&#x4E00;&#x662F;&#x4FDD;&#x8BC1;&#x6B64;&#x53D8;&#x91CF;&#x5BF9;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x7684;&#x53EF;&#x89C1;&#x6027;&#x3002;</p>
+<hr>
+<p>volitile&#x53D8;&#x91CF;&#x5728;&#x5404;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E2D;&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x5E76;&#x4E0D;&#x80FD;&#x5F97;&#x51FA;&#x57FA;&#x4E8E;volitile&#x53D8;&#x91CF;&#x7684;&#x8FD0;&#x7B97;&#x5728;&#x5E76;&#x53D1;&#x4E0B;&#x662F;&#x5B89;&#x5168;&#x7684;&#x8FD9;&#x4E2A;&#x7ED3;&#x8BBA;&#x3002;</p>
+<p>volatile&#x53D8;&#x91CF;&#x7684;&#x8FD0;&#x7B97;&#x5728;&#x5E76;&#x53D1;&#x4E0B;&#x4E00;&#x6837;&#x662F;&#x4E0D;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
+<p>&#x5F53;getstatic&#x6307;&#x4EE4;&#x628A;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x53D6;&#x5230;&#x64CD;&#x4F5C;&#x6808;&#x9876;&#x65F6;&#xFF0C;volatile&#x5173;&#x952E;&#x5B57;&#x4FDD;&#x8BC1;&#x4E86;race&#x7684;&#x503C;&#x5728;&#x6B64;&#x65F6;&#x662F;&#x6B63;&#x786E;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x6267;&#x884C;iconst_1&#x3001;iadd&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x628A;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x52A0;&#x5927;&#x4E86;&#x3002;</p>
+<p>&#x7531;&#x4E8E;volatile&#x53D8;&#x91CF;&#x53EA;&#x80FD;&#x4FDD;&#x8BC1;&#x53EF;&#x89C1;&#x6027;&#xFF0C;&#x5728;&#x4E0D;&#x7B26;&#x5408;&#x4EE5;&#x4E0B;&#x4E24;&#x6761;&#x89C4;&#x5219;&#x7684;&#x8FD0;&#x7B97;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x8981;&#x901A;&#x8FC7;&#x52A0;&#x9501;&#xFF08;&#x4F7F;&#x7528;synchronized&#x6216;java.util.concurrent&#x4E2D;&#x7684;&#x539F;&#x5B50;&#x7C7B;&#xFF09;&#x6765;&#x4FDD;&#x8BC1;&#x539F;&#x5B50;&#x6027;&#xFF1A;</p>
+<ul>
+<li><p>&#x8FD0;&#x7B97;&#x7ED3;&#x679C;&#x5E76;&#x4E0D;&#x4F9D;&#x8D56;&#x53D8;&#x91CF;&#x7684;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x6216;&#x8005;&#x80FD;&#x591F;&#x786E;&#x4FDD;&#x53EA;&#x6709;&#x5355;&#x4E00;&#x7684;&#x7EBF;&#x7A0B;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;</p>
+</li>
+<li><p>&#x53D8;&#x91CF;&#x4E0D;&#x9700;&#x8981;&#x4E0E;&#x5176;&#x4ED6;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x91CF;&#x5171;&#x540C;&#x53C2;&#x4E0E;&#x4E0D;&#x53D8;&#x7EA6;&#x675F;&#x3002;</p>
+</li>
+</ul>
+<p>&#x4F7F;&#x7528;volatile&#x53D8;&#x91CF;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x8BED;&#x4E49;&#x662F;&#x7981;&#x6B62;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x4F18;&#x5316;&#x3002;</p>
+<hr>
+<p>&#x666E;&#x901A;&#x7684;&#x53D8;&#x91CF;&#x4EC5;&#x4EC5;&#x4F1A;&#x4FDD;&#x8BC1;&#x5728;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x6240;&#x6709;&#x4F9D;&#x8D56;&#x8D4B;&#x503C;&#x7ED3;&#x679C;&#x7684;&#x5730;&#x65B9;&#x90FD;&#x80FD;&#x83B7;&#x53D6;&#x5230;&#x6B63;&#x786E;&#x7684;&#x7ED3;&#x679C;&#x800C;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#x64CD;&#x4F5C;&#x7684;&#x987A;&#x5E8F;&#x4E0E;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x662F;&#x5E76;&#x53D1;&#x7F16;&#x7A0B;&#x4E2D;&#x6700;&#x5BB9;&#x6613;&#x8BA9;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x4EA7;&#x751F;&#x7591;&#x60D1;&#x7684;&#x5730;&#x65B9;&#xFF0C;volitile&#x5173;&#x952E;&#x5B57;&#x53EF;&#x4EE5;&#x7981;&#x6B62;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;&#x4F18;&#x5316;&#x3002;</p>
+<p>volatile&#x53D8;&#x91CF;&#x8BFB;&#x53D6;&#x64CD;&#x4F5C;&#x7684;&#x6027;&#x80FD;&#x6D88;&#x8017;&#x4E0E;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x51E0;&#x4E4E;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5DEE;&#x522B;&#xFF0C;&#x4F46;&#x662F;&#x5199;&#x64CD;&#x4F5C;&#x5219;&#x53EF;&#x80FD;&#x4F1A;&#x6162;&#x4E00;&#x4E9B;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x9700;&#x8981;&#x518D;&#x7B28;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#x63D2;&#x5165;&#x8BB8;&#x591A;&#x5185;&#x5B58;&#x5C4F;&#x969C;&#x6307;&#x4EE4;&#x6765;&#x4FDD;&#x8BC1;&#x5904;&#x7406;&#x5668;&#x4E0D;&#x53D1;&#x751F;&#x4E71;&#x5E8F;&#x6267;&#x884C;&#x3002;&#x4E0D;&#x8FC7;&#x5373;&#x4FBF;&#x5982;&#x6B64;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x573A;&#x666F;&#x4E0B;volatile&#x7684;&#x603B;&#x5F00;&#x9500;&#x4ECD;&#x7136;&#x8981;&#x6BD4;&#x9501;&#x7B2C;&#xFF0C;&#x6211;&#x4EEC;&#x5728;volatile&#x4E0E;&#x9501;&#x4E4B;&#x4E2D;&#x9009;&#x62E9;&#x7684;&#x552F;&#x4E00;&#x4F9D;&#x636E;&#x4EC5;&#x4EC5;&#x662F;volatile&#x7684;&#x8BED;&#x4E49;&#x80FD;&#x5426;&#x6EE1;&#x8DB3;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x7684;&#x9700;&#x6C42;&#x3002;</p>
+<blockquote>
+<p>&#x5982;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x7684;&#x4FEE;&#x6539;&#x4E0D;&#x4F9D;&#x8D56;&#x4E0E;&#x539F;&#x503C;&#xFF0C;&#x5219;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;volatile&#x5173;&#x952E;&#x5B57;&#x5B9E;&#x73B0;&#x5148;&#x884C;&#x53D1;&#x751F;&#x5173;&#x7CFB;&#x3002;</p>
+</blockquote>
+<p>##3.4&#x3001;&#x5BF9;&#x4E8E;long&#x548C;double&#x578B;&#x53D8;&#x91CF;&#x7684;&#x7279;&#x6B8A;&#x89C4;&#x5219;<br>&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x76EE;&#x524D;&#x5404;&#x79CD;&#x5E73;&#x53F0;&#x4E0B;&#x7684;&#x5546;&#x7528;&#x865A;&#x62DF;&#x673A;&#x51E0;&#x4E4E;&#x90FD;&#x9009;&#x62E9;&#x628A;64&#x4F4D;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#x4F5C;&#x4E3A;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x6765;&#x5BF9;&#x5F85;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x5728;&#x7F16;&#x7801;&#x65F6;&#x4E00;&#x822C;&#x4E0D;&#x9700;&#x8981;&#x628A;&#x7528;&#x5230;&#x7684;long&#x548C;double&#x53D8;&#x91CF;&#x4E13;&#x95E8;&#x58F0;&#x660E;&#x4E3A;volatile&#x3002;</p>
+<p>##3.5&#x3001;&#x539F;&#x5B50;&#x6027;&#x3001;&#x53EF;&#x89C1;&#x6027;&#x4E0E;&#x6709;&#x5E8F;&#x6027;</p>
+<p>###&#x539F;&#x5B50;&#x6027;<br>&#x7531;Java&#x5185;&#x5B58;&#x6A21;&#x578B;&#x6765;&#x76F4;&#x63A5;&#x4FDD;&#x8BC1;&#x7684;&#x539F;&#x5B50;&#x6027;&#x53D8;&#x91CF;&#x64CD;&#x4F5C;&#x5305;&#x62EC;&#xFF1A;read&#x3001;load&#x3001;assign&#x3001;use&#x3001;store&#x548C;write&#x3002;</p>
+<p>###&#x53EF;&#x89C1;&#x6027;<br>Java&#x5185;&#x5B58;&#x6A21;&#x578B;&#x662F;&#x901A;&#x8FC7;&#x5728;&#x53D8;&#x91CF;&#x4FEE;&#x6539;&#x540E;&#x5C06;&#x65B0;&#x503C;&#x540C;&#x6B65;&#x56DE;&#x4E3B;&#x5185;&#x5B58;&#xFF0C;&#x5728;&#x53D8;&#x91CF;&#x8BFB;&#x53D6;&#x524D;&#x4ECE;&#x4E3B;&#x5185;&#x5B58;&#x5237;&#x65B0;&#x53D8;&#x91CF;&#x503C;&#x8FD9;&#x79CD;&#x4F9D;&#x8D56;&#x4E3B;&#x5185;&#x5B58;&#x4F5C;&#x4E3A;&#x4F20;&#x9012;&#x5A92;&#x4ECB;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x53EF;&#x89C1;&#x6027;&#x7684;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x8FD8;&#x662F;volatile&#x53D8;&#x91CF;&#x90FD;&#x662F;&#x5982;&#x6B64;&#xFF0C;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x4E0E;volatile&#x53D8;&#x91CF;&#x7684;&#x533A;&#x522B;&#x662F;&#xFF0C;volatile&#x7684;&#x7279;&#x6B8A;&#x89C4;&#x5219;&#x4FDD;&#x8BC1;&#x4E86;&#x65B0;&#x503C;&#x80FD;&#x7ACB;&#x5373;&#x540C;&#x6B65;&#x5230;&#x4E3B;&#x5185;&#x5B58;&#xFF0C;&#x4EE5;&#x53CA;&#x6BCF;&#x6B21;&#x4F7F;&#x7528;&#x524D;&#x7ACB;&#x5373;&#x4ECE;&#x4E3B;&#x5185;&#x5B58;&#x5237;&#x65B0;&#x3002;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x8BF4;volatile&#x4FDD;&#x8BC1;&#x4E86;&#x591A;&#x7EBF;&#x7A0B;&#x64CD;&#x4F5C;&#x65F6;&#x53D8;&#x91CF;&#x7684;&#x53EF;&#x89C1;&#x6027;&#xFF0C;&#x800C;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x5219;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x8FD9;&#x4E00;&#x70B9;&#x3002;</p>
+<p>&#x9664;&#x4E86;volatile&#x4E4B;&#x5916;&#xFF0C;Java&#x8FD8;&#x6709;&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#x80FD;&#x5B9E;&#x73B0;&#x53EF;&#x89C1;&#x6027;&#xFF0C;&#x5373;synchronized&#x548C;final&#x3002;</p>
+<p>###&#x6709;&#x5E8F;&#x6027;<br>Java&#x8BED;&#x8A00;&#x63D0;&#x4F9B;&#x4E86;volatile&#x548C;synchronized&#x4E24;&#x4E2A;&#x5173;&#x952E;&#x5B57;&#x6765;&#x4FDD;&#x8BC1;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x64CD;&#x4F5C;&#x7684;&#x6709;&#x5E8F;&#x6027;&#xFF0C;volatile&#x5173;&#x952E;&#x5B57;&#x672C;&#x8EAB;&#x5C31;&#x5305;&#x542B;&#x4E86;&#x7981;&#x6B62;&#x6307;&#x4EE4;&#x91CD;&#x6392;&#x5E8F;&#x7684;&#x8BED;&#x4E49;&#xFF0C;&#x800C;synchronized&#x5219;&#x662F;&#x7531;&#x201C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x65F6;&#x523B;&#x53EA;&#x5141;&#x8BB8;&#x4E00;&#x6761;&#x7EBF;&#x7A0B;&#x5BF9;&#x5176;&#x8FDB;&#x884C;lock&#x64CD;&#x4F5C;&#x201D;&#x8FD9;&#x6761;&#x89C4;&#x5219;&#x83B7;&#x5F97;&#x7684;&#xFF0C;&#x8FD9;&#x6761;&#x89C4;&#x5219;&#x51B3;&#x5B9A;&#x4E86;&#x6301;&#x6709;&#x540C;&#x4E00;&#x4E2A;&#x9501;&#x7684;&#x4E24;&#x4E2A;&#x540C;&#x6B65;&#x5757;&#x53EA;&#x80FD;&#x4E32;&#x884C;&#x5730;&#x8FDB;&#x5165;&#x3002;</p>
+<p>&#x5927;&#x90E8;&#x5206;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x90FD;&#x80FD;&#x4F7F;&#x7528;synchronized&#x6765;&#x5B8C;&#x6210;&#x3002;synchronized&#x7684;&#x201C;&#x4E07;&#x80FD;&#x201D;&#x4E5F;&#x95F4;&#x63A5;&#x65E9;&#x5C31;&#x4E86;&#x5B83;&#x88AB;&#x7A0B;&#x5E8F;&#x5458;&#x6EE5;&#x7528;&#x7684;&#x5C40;&#x9762;&#xFF0C;&#x8D8A;&#x201C;&#x4E07;&#x80FD;&#x201D;&#x7684;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x4F34;&#x968F;&#x7740;&#x8D8A;&#x5927;&#x7684;&#x6027;&#x80FD;&#x5F71;&#x54CD;&#x3002;</p>
+<p>##3.6&#x3001;&#x5148;&#x884C;&#x53D1;&#x751F;&#x539F;&#x5219;<br>&#x4F9D;&#x9760;&#x8FD9;&#x4E2A;&#x539F;&#x5219;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x51E0;&#x6761;&#x89C4;&#x5219;&#x4E00;&#x63FD;&#x5B50;&#x5730;&#x89E3;&#x51B3;&#x5E76;&#x53D1;&#x73AF;&#x5883;&#x4E0B;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x4E4B;&#x95F4;&#x662F;&#x5426;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x51B2;&#x7A81;&#x7684;&#x6240;&#x6709;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;Java&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0B;&#x4E00;&#x4E9B;&#x201C;&#x5929;&#x7136;&#x7684;&#x201D;&#x5148;&#x884C;&#x53D1;&#x751F;&#x5173;&#x7CFB;&#xFF1A;</p>
+<ul>
+<li>&#x7A0B;&#x5E8F;&#x6B21;&#x5E8F;&#x89C4;&#x5219;</li>
+<li>&#x7BA1;&#x7A0B;&#x9501;&#x5B9A;&#x89C4;&#x5219;</li>
+<li>volatile&#x53D8;&#x91CF;&#x89C4;&#x5219;</li>
+<li>&#x7EBF;&#x7A0B;&#x542F;&#x52A8;&#x89C4;&#x5219;</li>
+<li>&#x7EBF;&#x7A0B;&#x7EC8;&#x6B62;&#x89C4;&#x5219;</li>
+<li>&#x7EBF;&#x7A0B;&#x4E2D;&#x65AD;&#x89C4;&#x5219;</li>
+<li>&#x5BF9;&#x8C61;&#x7EC8;&#x7ED3;&#x89C4;&#x5219;</li>
+<li>&#x4F20;&#x9012;&#x6027;</li>
+</ul>
+<p>#4&#x3001;Java&#x4E0E;&#x7EBF;&#x7A0B;</p>
+<p>##4.1&#x3001;&#x7EBF;&#x7A0B;&#x7684;&#x5B9E;&#x73B0;<br>Thread&#x7C7B;&#x4E0E;&#x5927;&#x90E8;&#x5206;&#x7684;Java API&#x6709;&#x663E;&#x8457;&#x7684;&#x5DEE;&#x522B;&#xFF0C;&#x5B83;&#x7684;&#x6240;&#x6709;&#x5173;&#x952E;&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x58F0;&#x660E;&#x4E3A;Native&#x7684;&#x3002;</p>
+<p>&#x5B9E;&#x73B0;&#x7EBF;&#x7A0B;&#x4E3B;&#x8981;&#x6709;3&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x4F7F;&#x7528;&#x5185;&#x6838;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#x3001;&#x4F7F;&#x7528;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#x548C;&#x4F7F;&#x7528;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x52A0;&#x8F7B;&#x91CF;&#x7EA7;&#x8FDB;&#x7A0B;&#x6DF7;&#x5408;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x5185;&#x6838;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;<br>&#x7531;&#x4E8E;&#x662F;&#x57FA;&#x4E8E;&#x5185;&#x6838;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5404;&#x79CD;&#x7EBF;&#x7A0B;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x521B;&#x5EFA;&#x3001;&#x6790;&#x6784;&#x53CA;&#x540C;&#x6B65;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;&#x800C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x4EE3;&#x4EF7;&#x76F8;&#x5BF9;&#x8F83;&#x9AD8;&#xFF0C;&#x9700;&#x8981;&#x518D;&#x7528;&#x6237;&#x6001;&#x548C;&#x5185;&#x6838;&#x6001;&#x4E2D;&#x6765;&#x56DE;&#x5207;&#x6362;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;</p>
+<p>###&#x4F7F;&#x7528;&#x7528;&#x6237;&#x7EBF;&#x7A0B;&#x52A0;&#x8F7B;&#x91CF;&#x7EA7;&#x8FDB;&#x7A0B;&#x6DF7;&#x5408;&#x5B9E;&#x73B0;</p>
+<p>###Java&#x7EBF;&#x7A0B;&#x7684;&#x5B9E;&#x73B0;</p>
+<p>##4.2&#x3001;Java&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;<br>&#x5206;&#x4E3A;&#x534F;&#x540C;&#x5F0F;&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;&#x548C;&#x62A2;&#x5360;&#x5F0F;&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;&#x3002;Java&#x4F7F;&#x7528;&#x7684;&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x62A2;&#x5360;&#x5F0F;&#x8C03;&#x5EA6;&#x3002;</p>
+<p>&#x7EBF;&#x7A0B;&#x4F18;&#x5148;&#x7EA7;&#x5E76;&#x4E0D;&#x662F;&#x592A;&#x9760;&#x8C31;&#xFF0C;&#x539F;&#x56E0;&#x662F;Java&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x901A;&#x8FC7;&#x6620;&#x5C04;&#x5230;&#x7CFB;&#x7EDF;&#x7684;&#x539F;&#x751F;&#x7EBF;&#x7A0B;&#x4E0A;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;&#x6700;&#x7EC8;&#x8FD8;&#x662F;&#x53D6;&#x51B3;&#x4E8E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x3002;</p>
+<p>##4.3&#x3001;&#x72B6;&#x6001;&#x8F6C;&#x6362;</p>
+<p>###&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x4F1A;&#x8BA9;&#x7EBF;&#x7A0B;&#x9677;&#x5165;&#x65E0;&#x9650;&#x671F;&#x7684;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#xFF1A;</p>
+<ul>
+<li>&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;Timeout&#x53C2;&#x6570;&#x7684;Object.wait()&#x65B9;&#x6CD5;</li>
+<li>&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;Timeout&#x53C2;&#x6570;&#x7684;Thread.join()&#x65B9;&#x6CD5;</li>
+<li>LockSupport.park()&#x65B9;&#x6CD5;</li>
+</ul>
+<p>&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x4F1A;&#x8BA9;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x9650;&#x671F;&#x7B49;&#x5F85;&#x72B6;&#x4F53;&#xFF1A;</p>
+<ul>
+<li>Thread.sleep()</li>
+<li>&#x8BBE;&#x7F6E;&#x4E86;Timeout&#x53C2;&#x6570;&#x7684;Object.wait()&#x65B9;&#x6CD5;</li>
+<li>&#x8BBE;&#x7F6E;&#x4E86;Timeout&#x53C2;&#x6570;&#x7684;Thread.join()&#x65B9;&#x6CD5;</li>
+<li>LockSupport.parkNanos()&#x65B9;&#x6CD5;</li>
+<li>LockSupport.parkUntil()&#x65B9;&#x6CD5;</li>
+</ul>
+<p>#5&#x3001;&#x672C;&#x7AE0;&#x5C0F;&#x7ED3;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/JVM/">JVM</a>
+  </span>
+
+
           
         </div>
         

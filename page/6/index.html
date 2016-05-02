@@ -77,22 +77,22 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
 </blockquote>
-<h1 id="Maven插件编译问题"><a href="#Maven插件编译问题" class="headerlink" title="Maven插件编译问题"></a>Maven插件编译问题</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TestService testService = serviceFactory.getService(ServiceType.testServiceClazz);</span><br></pre></td></tr></table></figure>
-<p>maven compile 报如下错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] /xxx.java:[100，20] xxx.java:106: 不兼容的类型找到： java.lang.Object需要： TestService[INFO] 1 error</span><br></pre></td></tr></table></figure>
-<p>而以下代码则不会报错：</p>
+<h1 id="maven&#x63D2;&#x4EF6;&#x7F16;&#x8BD1;&#x95EE;&#x9898;"><a href="#Maven&#x63D2;&#x4EF6;&#x7F16;&#x8BD1;&#x95EE;&#x9898;" class="headerlink" title="Maven&#x63D2;&#x4EF6;&#x7F16;&#x8BD1;&#x95EE;&#x9898;"></a>Maven&#x63D2;&#x4EF6;&#x7F16;&#x8BD1;&#x95EE;&#x9898;</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TestService testService = serviceFactory.getService(ServiceType.testServiceClazz);</span><br></pre></td></tr></table></figure>
+<p>maven compile &#x62A5;&#x5982;&#x4E0B;&#x9519;&#x8BEF;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] /xxx.java:[100&#xFF0C;20] xxx.java:106: &#x4E0D;&#x517C;&#x5BB9;&#x7684;&#x7C7B;&#x578B;&#x627E;&#x5230;&#xFF1A; java.lang.Object&#x9700;&#x8981;&#xFF1A; TestService[INFO] 1 error</span><br></pre></td></tr></table></figure>
+<p>&#x800C;&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x5219;&#x4E0D;&#x4F1A;&#x62A5;&#x9519;&#xFF1A;</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TestService testService = serviceFactory.getService(TestService.class);</span><br></pre></td></tr></table></figure>
-<p>其中getService()方法如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>&lt;T&gt; T <span class="title">getService</span><span class="params">(Class&lt;T&gt; class)</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以发现，报错的代码，传入的Class是动态的，这是导致Maven编译报错的原因。</p>
-<p>查看下项目的maven-compiler-plugin插件配置：</p>
+<p>&#x5176;&#x4E2D;getService()&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>&lt;T&gt; T <span class="title">getService</span><span class="params">(Class&lt;T&gt; class)</span></span>{</span><br><span class="line">    ...</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x62A5;&#x9519;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F20;&#x5165;&#x7684;Class&#x662F;&#x52A8;&#x6001;&#x7684;&#xFF0C;&#x8FD9;&#x662F;&#x5BFC;&#x81F4;Maven&#x7F16;&#x8BD1;&#x62A5;&#x9519;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<p>&#x67E5;&#x770B;&#x4E0B;&#x9879;&#x76EE;&#x7684;maven-compiler-plugin&#x63D2;&#x4EF6;&#x914D;&#x7F6E;&#xFF1A;</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span>  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.6<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.6<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">showWarnings</span>&gt;</span>flase<span class="tag">&lt;/<span class="name">showWarnings</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以发现我们并没有为maven指定其他的JDT(Java Development Tools)，使用的是默认的javac进行编译。而我们在Eclipse里面使用的是自带的JDT，编译没有问题。可见，javac的检查机制更加严格，导致Eclipse可以编译通过的，用Maven编译会报错。在用Maven编译的时候要注意下这点哦。</p>
+<p>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6211;&#x4EEC;&#x5E76;&#x6CA1;&#x6709;&#x4E3A;maven&#x6307;&#x5B9A;&#x5176;&#x4ED6;&#x7684;JDT(Java Development Tools)&#xFF0C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x9ED8;&#x8BA4;&#x7684;javac&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x3002;&#x800C;&#x6211;&#x4EEC;&#x5728;Eclipse&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x81EA;&#x5E26;&#x7684;JDT&#xFF0C;&#x7F16;&#x8BD1;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x3002;&#x53EF;&#x89C1;&#xFF0C;javac&#x7684;&#x68C0;&#x67E5;&#x673A;&#x5236;&#x66F4;&#x52A0;&#x4E25;&#x683C;&#xFF0C;&#x5BFC;&#x81F4;Eclipse&#x53EF;&#x4EE5;&#x7F16;&#x8BD1;&#x901A;&#x8FC7;&#x7684;&#xFF0C;&#x7528;Maven&#x7F16;&#x8BD1;&#x4F1A;&#x62A5;&#x9519;&#x3002;&#x5728;&#x7528;Maven&#x7F16;&#x8BD1;&#x7684;&#x65F6;&#x5019;&#x8981;&#x6CE8;&#x610F;&#x4E0B;&#x8FD9;&#x70B9;&#x54E6;&#x3002;</p>
 <p>##Reference</p>
-<p><a href="https://maven.apache.org/plugins/" target="_blank" rel="external">maven插件列表</a></p>
-<p><a href="http://blog.csdn.net/liushuijinger/article/details/44618557" target="_blank" rel="external">maven编译问题</a></p>
+<p><a href="https://maven.apache.org/plugins/" target="_blank" rel="external">maven&#x63D2;&#x4EF6;&#x5217;&#x8868;</a></p>
+<p><a href="http://blog.csdn.net/liushuijinger/article/details/44618557" target="_blank" rel="external">maven&#x7F16;&#x8BD1;&#x95EE;&#x9898;</a></p>
 <p><a href="http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.isv%2Fguide%2Fjdt_api_compile.htm" target="_blank" rel="external">Compiling Java code</a></p>
-<p><a href="http://blog.csdn.net/feng2007110221053/article/details/7311056" target="_blank" rel="external">关于Eclipse和Javac编译结果不一致的问题分析与解决</a></p>
+<p><a href="http://blog.csdn.net/feng2007110221053/article/details/7311056" target="_blank" rel="external">&#x5173;&#x4E8E;Eclipse&#x548C;Javac&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x95EE;&#x9898;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x51B3;</a></p>
 <p><a href="http://stackoverflow.com/questions/3061654/what-is-the-difference-between-javac-and-the-eclipse-compiler" target="_blank" rel="external">What is the difference between javac and the Eclipse compiler?</a></p>
 
       
@@ -152,36 +152,36 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>IntelliJ IDEA对目录做了调整，把偏好设置调整到了如下目录：</p>
-<p>IntelliJ IDEA –&gt; preferences(快捷键：⌘,) –&gt; Appearance &amp; Behavior –&gt; Appearance –&gt; UI Options –&gt; Theme</p>
-<p>旧版本的可以在<code>file --&gt; Settings中找到</code>。</p>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>有如下三种编译：</p>
+<h2 id="&#x4FEE;&#x6539;&#x4E3B;&#x9898;"><a href="#&#x4FEE;&#x6539;&#x4E3B;&#x9898;" class="headerlink" title="&#x4FEE;&#x6539;&#x4E3B;&#x9898;"></a>&#x4FEE;&#x6539;&#x4E3B;&#x9898;</h2><p>IntelliJ IDEA&#x5BF9;&#x76EE;&#x5F55;&#x505A;&#x4E86;&#x8C03;&#x6574;&#xFF0C;&#x628A;&#x504F;&#x597D;&#x8BBE;&#x7F6E;&#x8C03;&#x6574;&#x5230;&#x4E86;&#x5982;&#x4E0B;&#x76EE;&#x5F55;&#xFF1A;</p>
+<p>IntelliJ IDEA &#x2013;&gt; preferences(&#x5FEB;&#x6377;&#x952E;&#xFF1A;&#x2318;,) &#x2013;&gt; Appearance &amp; Behavior &#x2013;&gt; Appearance &#x2013;&gt; UI Options &#x2013;&gt; Theme</p>
+<p>&#x65E7;&#x7248;&#x672C;&#x7684;&#x53EF;&#x4EE5;&#x5728;<code>file --&gt; Settings&#x4E2D;&#x627E;&#x5230;</code>&#x3002;</p>
+<h2 id="&#x7F16;&#x8BD1;"><a href="#&#x7F16;&#x8BD1;" class="headerlink" title="&#x7F16;&#x8BD1;"></a>&#x7F16;&#x8BD1;</h2><p>&#x6709;&#x5982;&#x4E0B;&#x4E09;&#x79CD;&#x7F16;&#x8BD1;&#xFF1A;</p>
 <ul>
 <li>Compile</li>
 </ul>
-<p>对特定的代码文件进行强制编译；</p>
+<p>&#x5BF9;&#x7279;&#x5B9A;&#x7684;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x5F3A;&#x5236;&#x7F16;&#x8BD1;&#xFF1B;</p>
 <ul>
 <li>Rebuild</li>
 </ul>
-<p>对选择的project进行强制编译；</p>
+<p>&#x5BF9;&#x9009;&#x62E9;&#x7684;project&#x8FDB;&#x884C;&#x5F3A;&#x5236;&#x7F16;&#x8BD1;&#xFF1B;</p>
 <ul>
 <li>Make</li>
 </ul>
-<p>对选定的Project或者Module进行编译，只编译改动过的文件；</p>
+<p>&#x5BF9;&#x9009;&#x5B9A;&#x7684;Project&#x6216;&#x8005;Module&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#xFF0C;&#x53EA;&#x7F16;&#x8BD1;&#x6539;&#x52A8;&#x8FC7;&#x7684;&#x6587;&#x4EF6;&#xFF1B;</p>
 <p><code>shift + command + F9</code>  compile one class.</p>
-<h3 id="Run配置"><a href="#Run配置" class="headerlink" title="Run配置"></a>Run配置</h3><p>Run –&gt; Edit Configurations</p>
-<h2 id="项目结构设置"><a href="#项目结构设置" class="headerlink" title="项目结构设置"></a>项目结构设置</h2><p>file –&gt; project structrue(快捷键：⌘;)<br>可以在这里管理SDK版本(Platform Settings –&gt; SDKs)，设置项目SDK(Project Settings –&gt; Project)。</p>
-<h3 id="language-level"><a href="#language-level" class="headerlink" title="language level"></a>language level</h3><p>对于大型项目，各个 Module 用到的 SDK 和 language level 很有可能是各不一样的，IntelliJ IDEA 对此也进行了支持。(Project Settings –&gt; Modules –&gt; Sources –&gt; Lauguage Level…)</p>
-<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><h3 id="实时代码模板"><a href="#实时代码模板" class="headerlink" title="实时代码模板"></a>实时代码模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IntelliJ IDEA --&gt; Editor --&gt; Live Template</span><br></pre></td></tr></table></figure>
-<p>提示快捷键：<code>Tab</code> 和 <code>Ctrl + J</code></p>
-<h3 id="文件代码模板"><a href="#文件代码模板" class="headerlink" title="文件代码模板"></a>文件代码模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Prefrences --&gt; Editor --&gt; File and code Template</span><br></pre></td></tr></table></figure>
-<p>IntelliJ IDEA 的文件代码模板是可以用Velocity Template Language进行书写的；</p>
-<h3 id="Emmet的使用"><a href="#Emmet的使用" class="headerlink" title="Emmet的使用"></a>Emmet的使用</h3><p>该工具常用于前端代码的自动生成；</p>
-<h3 id="Postfix-Completion的使用"><a href="#Postfix-Completion的使用" class="headerlink" title="Postfix Completion的使用"></a>Postfix Completion的使用</h3><p>代码模板的自动补全功能</p>
+<h3 id="run&#x914D;&#x7F6E;"><a href="#Run&#x914D;&#x7F6E;" class="headerlink" title="Run&#x914D;&#x7F6E;"></a>Run&#x914D;&#x7F6E;</h3><p>Run &#x2013;&gt; Edit Configurations</p>
+<h2 id="&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x8BBE;&#x7F6E;"><a href="#&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x8BBE;&#x7F6E;"></a>&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x8BBE;&#x7F6E;</h2><p>file &#x2013;&gt; project structrue(&#x5FEB;&#x6377;&#x952E;&#xFF1A;&#x2318;;)<br>&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x7BA1;&#x7406;SDK&#x7248;&#x672C;(Platform Settings &#x2013;&gt; SDKs)&#xFF0C;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;SDK(Project Settings &#x2013;&gt; Project)&#x3002;</p>
+<h3 id="language-level"><a href="#language-level" class="headerlink" title="language level"></a>language level</h3><p>&#x5BF9;&#x4E8E;&#x5927;&#x578B;&#x9879;&#x76EE;&#xFF0C;&#x5404;&#x4E2A; Module &#x7528;&#x5230;&#x7684; SDK &#x548C; language level &#x5F88;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x5404;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;IntelliJ IDEA &#x5BF9;&#x6B64;&#x4E5F;&#x8FDB;&#x884C;&#x4E86;&#x652F;&#x6301;&#x3002;(Project Settings &#x2013;&gt; Modules &#x2013;&gt; Sources &#x2013;&gt; Lauguage Level&#x2026;)</p>
+<h2 id="&#x7F16;&#x8F91;"><a href="#&#x7F16;&#x8F91;" class="headerlink" title="&#x7F16;&#x8F91;"></a>&#x7F16;&#x8F91;</h2><h3 id="&#x5B9E;&#x65F6;&#x4EE3;&#x7801;&#x6A21;&#x677F;"><a href="#&#x5B9E;&#x65F6;&#x4EE3;&#x7801;&#x6A21;&#x677F;" class="headerlink" title="&#x5B9E;&#x65F6;&#x4EE3;&#x7801;&#x6A21;&#x677F;"></a>&#x5B9E;&#x65F6;&#x4EE3;&#x7801;&#x6A21;&#x677F;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IntelliJ IDEA --&gt; Editor --&gt; Live Template</span><br></pre></td></tr></table></figure>
+<p>&#x63D0;&#x793A;&#x5FEB;&#x6377;&#x952E;&#xFF1A;<code>Tab</code> &#x548C; <code>Ctrl + J</code></p>
+<h3 id="&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;"><a href="#&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;" class="headerlink" title="&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;"></a>&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Prefrences --&gt; Editor --&gt; File and code Template</span><br></pre></td></tr></table></figure>
+<p>IntelliJ IDEA &#x7684;&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;&#x662F;&#x53EF;&#x4EE5;&#x7528;Velocity Template Language&#x8FDB;&#x884C;&#x4E66;&#x5199;&#x7684;&#xFF1B;</p>
+<h3 id="emmet&#x7684;&#x4F7F;&#x7528;"><a href="#Emmet&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="Emmet&#x7684;&#x4F7F;&#x7528;"></a>Emmet&#x7684;&#x4F7F;&#x7528;</h3><p>&#x8BE5;&#x5DE5;&#x5177;&#x5E38;&#x7528;&#x4E8E;&#x524D;&#x7AEF;&#x4EE3;&#x7801;&#x7684;&#x81EA;&#x52A8;&#x751F;&#x6210;&#xFF1B;</p>
+<h3 id="postfix-completion&#x7684;&#x4F7F;&#x7528;"><a href="#Postfix-Completion&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="Postfix Completion&#x7684;&#x4F7F;&#x7528;"></a>Postfix Completion&#x7684;&#x4F7F;&#x7528;</h3><p>&#x4EE3;&#x7801;&#x6A21;&#x677F;&#x7684;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x529F;&#x80FD;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences --&gt; Editor --&gt; General --&gt; Postfix Completion</span><br></pre></td></tr></table></figure>
-<h2 id="插件讲解"><a href="#插件讲解" class="headerlink" title="插件讲解"></a>插件讲解</h2><p><a href="https://plugins.jetbrains.com/" target="_blank" rel="external">官方插件库</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences --&gt; Plugins</span><br></pre></td></tr></table></figure></p>
-<h2 id="Eclipse的Java-Web项目环境搭建"><a href="#Eclipse的Java-Web项目环境搭建" class="headerlink" title="Eclipse的Java Web项目环境搭建"></a>Eclipse的Java Web项目环境搭建</h2><h2 id="Maven项目介绍"><a href="#Maven项目介绍" class="headerlink" title="Maven项目介绍"></a>Maven项目介绍</h2><h2 id="Debug讲解"><a href="#Debug讲解" class="headerlink" title="Debug讲解"></a>Debug讲解</h2><h2 id="重构讲解"><a href="#重构讲解" class="headerlink" title="重构讲解"></a>重构讲解</h2><h2 id="数据库管理工具"><a href="#数据库管理工具" class="headerlink" title="数据库管理工具"></a>数据库管理工具</h2><h2 id="IntelliJ-IDEA常用设置"><a href="#IntelliJ-IDEA常用设置" class="headerlink" title="IntelliJ IDEA常用设置"></a>IntelliJ IDEA常用设置</h2><h2 id="IntelliJ-IDEA常用快捷键讲解（Win-Linux）"><a href="#IntelliJ-IDEA常用快捷键讲解（Win-Linux）" class="headerlink" title="IntelliJ IDEA常用快捷键讲解（Win + Linux）"></a>IntelliJ IDEA常用快捷键讲解（Win + Linux）</h2><h2 id="IntelliJ-IDEA常用快捷键讲解（Mac）"><a href="#IntelliJ-IDEA常用快捷键讲解（Mac）" class="headerlink" title="IntelliJ IDEA常用快捷键讲解（Mac）"></a>IntelliJ IDEA常用快捷键讲解（Mac）</h2><h2 id="IntelliJ-IDEA的Java热部署插件JRebel安装及使用"><a href="#IntelliJ-IDEA的Java热部署插件JRebel安装及使用" class="headerlink" title="IntelliJ IDEA的Java热部署插件JRebel安装及使用"></a>IntelliJ IDEA的Java热部署插件JRebel安装及使用</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://github.com/judasn/IntelliJ-IDEA-Tutorial" target="_blank" rel="external">https://github.com/judasn/IntelliJ-IDEA-Tutorial</a></p>
-<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/" target="_blank" rel="external">IntelliJ IDEA使用教程</a></p>
+<h2 id="&#x63D2;&#x4EF6;&#x8BB2;&#x89E3;"><a href="#&#x63D2;&#x4EF6;&#x8BB2;&#x89E3;" class="headerlink" title="&#x63D2;&#x4EF6;&#x8BB2;&#x89E3;"></a>&#x63D2;&#x4EF6;&#x8BB2;&#x89E3;</h2><p><a href="https://plugins.jetbrains.com/" target="_blank" rel="external">&#x5B98;&#x65B9;&#x63D2;&#x4EF6;&#x5E93;</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences --&gt; Plugins</span><br></pre></td></tr></table></figure></p>
+<h2 id="eclipse&#x7684;java-web&#x9879;&#x76EE;&#x73AF;&#x5883;&#x642D;&#x5EFA;"><a href="#Eclipse&#x7684;Java-Web&#x9879;&#x76EE;&#x73AF;&#x5883;&#x642D;&#x5EFA;" class="headerlink" title="Eclipse&#x7684;Java Web&#x9879;&#x76EE;&#x73AF;&#x5883;&#x642D;&#x5EFA;"></a>Eclipse&#x7684;Java Web&#x9879;&#x76EE;&#x73AF;&#x5883;&#x642D;&#x5EFA;</h2><h2 id="maven&#x9879;&#x76EE;&#x4ECB;&#x7ECD;"><a href="#Maven&#x9879;&#x76EE;&#x4ECB;&#x7ECD;" class="headerlink" title="Maven&#x9879;&#x76EE;&#x4ECB;&#x7ECD;"></a>Maven&#x9879;&#x76EE;&#x4ECB;&#x7ECD;</h2><h2 id="debug&#x8BB2;&#x89E3;"><a href="#Debug&#x8BB2;&#x89E3;" class="headerlink" title="Debug&#x8BB2;&#x89E3;"></a>Debug&#x8BB2;&#x89E3;</h2><h2 id="&#x91CD;&#x6784;&#x8BB2;&#x89E3;"><a href="#&#x91CD;&#x6784;&#x8BB2;&#x89E3;" class="headerlink" title="&#x91CD;&#x6784;&#x8BB2;&#x89E3;"></a>&#x91CD;&#x6784;&#x8BB2;&#x89E3;</h2><h2 id="&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;"><a href="#&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;"></a>&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;</h2><h2 id="intellij-idea&#x5E38;&#x7528;&#x8BBE;&#x7F6E;"><a href="#IntelliJ-IDEA&#x5E38;&#x7528;&#x8BBE;&#x7F6E;" class="headerlink" title="IntelliJ IDEA&#x5E38;&#x7528;&#x8BBE;&#x7F6E;"></a>IntelliJ IDEA&#x5E38;&#x7528;&#x8BBE;&#x7F6E;</h2><h2 id="intellij-idea&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;win-linux"><a href="#IntelliJ-IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Win-Linux&#xFF09;" class="headerlink" title="IntelliJ IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Win + Linux&#xFF09;"></a>IntelliJ IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Win + Linux&#xFF09;</h2><h2 id="intellij-idea&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;mac"><a href="#IntelliJ-IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Mac&#xFF09;" class="headerlink" title="IntelliJ IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Mac&#xFF09;"></a>IntelliJ IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Mac&#xFF09;</h2><h2 id="intellij-idea&#x7684;java&#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6;jrebel&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;"><a href="#IntelliJ-IDEA&#x7684;Java&#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6;JRebel&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;" class="headerlink" title="IntelliJ IDEA&#x7684;Java&#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6;JRebel&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;"></a>IntelliJ IDEA&#x7684;Java&#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6;JRebel&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;</h2><h2 id="references"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://github.com/judasn/IntelliJ-IDEA-Tutorial" target="_blank" rel="external">https://github.com/judasn/IntelliJ-IDEA-Tutorial</a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/" target="_blank" rel="external">IntelliJ IDEA&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a></p>
 
       
     </div>
@@ -240,44 +240,44 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h1 id="Mac实用工具安装"><a href="#Mac实用工具安装" class="headerlink" title="Mac实用工具安装"></a>Mac实用工具安装</h1><h2 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h2><h3 id="安装maven"><a href="#安装maven" class="headerlink" title="安装maven"></a><a href="http://wlb.wlb.blog.163.com/blog/static/46741320154215621382/" target="_blank" rel="external">安装maven</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf 压缩文件名.tar.gz -C /usr/local/maven</span><br></pre></td></tr></table></figure>
-<h3 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h3><p><a href="http://www.cnblogs.com/macro-cheng/archive/2011/10/25/mysql-001.html" target="_blank" rel="external">MAC下安装与配置MySQL</a></p>
-<p><a href="http://www.cnblogs.com/TsengYuen/archive/2012/01/11/2318920.html" target="_blank" rel="external">如何在Mac OS X中安装MySQL</a></p>
-<h3 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h3><p><a href="http://blog.csdn.net/huyisu/article/details/38372663" target="_blank" rel="external">在mac系统安装Apache Tomcat的详细步骤</a></p>
-<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><h3 id="安装Memcached"><a href="#安装Memcached" class="headerlink" title="安装Memcached"></a>安装Memcached</h3><h3 id="安装-MySQL客户端"><a href="#安装-MySQL客户端" class="headerlink" title="安装 MySQL客户端"></a>安装 MySQL客户端</h3><h3 id="安装office"><a href="#安装office" class="headerlink" title="安装office"></a>安装office</h3><h3 id="SecureCRT"><a href="#SecureCRT" class="headerlink" title="SecureCRT"></a>SecureCRT</h3><p><a href="http://bbs.feng.com/read-htm-tid-5100374.html" target="_blank" rel="external">Mac下面的SecureCRT(附破解方案) 更新到最新的7.2的破解方案</a></p>
-<h3 id="brew"><a href="#brew" class="headerlink" title="brew"></a>brew</h3><p>安装命令如下：</p>
+<h1 id="mac&#x5B9E;&#x7528;&#x5DE5;&#x5177;&#x5B89;&#x88C5;"><a href="#Mac&#x5B9E;&#x7528;&#x5DE5;&#x5177;&#x5B89;&#x88C5;" class="headerlink" title="Mac&#x5B9E;&#x7528;&#x5DE5;&#x5177;&#x5B89;&#x88C5;"></a>Mac&#x5B9E;&#x7528;&#x5DE5;&#x5177;&#x5B89;&#x88C5;</h1><h2 id="&#x5B89;&#x88C5;&#x7A0B;&#x5E8F;"><a href="#&#x5B89;&#x88C5;&#x7A0B;&#x5E8F;" class="headerlink" title="&#x5B89;&#x88C5;&#x7A0B;&#x5E8F;"></a>&#x5B89;&#x88C5;&#x7A0B;&#x5E8F;</h2><h3 id="&#x5B89;&#x88C5;maven"><a href="#&#x5B89;&#x88C5;maven" class="headerlink" title="&#x5B89;&#x88C5;maven"></a><a href="http://wlb.wlb.blog.163.com/blog/static/46741320154215621382/" target="_blank" rel="external">&#x5B89;&#x88C5;maven</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf &#x538B;&#x7F29;&#x6587;&#x4EF6;&#x540D;.tar.gz -C /usr/local/maven</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5B89;&#x88C5;mysql"><a href="#&#x5B89;&#x88C5;MySQL" class="headerlink" title="&#x5B89;&#x88C5;MySQL"></a>&#x5B89;&#x88C5;MySQL</h3><p><a href="http://www.cnblogs.com/macro-cheng/archive/2011/10/25/mysql-001.html" target="_blank" rel="external">MAC&#x4E0B;&#x5B89;&#x88C5;&#x4E0E;&#x914D;&#x7F6E;MySQL</a></p>
+<p><a href="http://www.cnblogs.com/TsengYuen/archive/2012/01/11/2318920.html" target="_blank" rel="external">&#x5982;&#x4F55;&#x5728;Mac OS X&#x4E2D;&#x5B89;&#x88C5;MySQL</a></p>
+<h3 id="&#x5B89;&#x88C5;tomcat"><a href="#&#x5B89;&#x88C5;Tomcat" class="headerlink" title="&#x5B89;&#x88C5;Tomcat"></a>&#x5B89;&#x88C5;Tomcat</h3><p><a href="http://blog.csdn.net/huyisu/article/details/38372663" target="_blank" rel="external">&#x5728;mac&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;Apache Tomcat&#x7684;&#x8BE6;&#x7EC6;&#x6B65;&#x9AA4;</a></p>
+<h3 id="&#x5B89;&#x88C5;nginx"><a href="#&#x5B89;&#x88C5;Nginx" class="headerlink" title="&#x5B89;&#x88C5;Nginx"></a>&#x5B89;&#x88C5;Nginx</h3><h3 id="&#x5B89;&#x88C5;memcached"><a href="#&#x5B89;&#x88C5;Memcached" class="headerlink" title="&#x5B89;&#x88C5;Memcached"></a>&#x5B89;&#x88C5;Memcached</h3><h3 id="&#x5B89;&#x88C5;-mysql&#x5BA2;&#x6237;&#x7AEF;"><a href="#&#x5B89;&#x88C5;-MySQL&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="&#x5B89;&#x88C5; MySQL&#x5BA2;&#x6237;&#x7AEF;"></a>&#x5B89;&#x88C5; MySQL&#x5BA2;&#x6237;&#x7AEF;</h3><h3 id="&#x5B89;&#x88C5;office"><a href="#&#x5B89;&#x88C5;office" class="headerlink" title="&#x5B89;&#x88C5;office"></a>&#x5B89;&#x88C5;office</h3><h3 id="securecrt"><a href="#SecureCRT" class="headerlink" title="SecureCRT"></a>SecureCRT</h3><p><a href="http://bbs.feng.com/read-htm-tid-5100374.html" target="_blank" rel="external">Mac&#x4E0B;&#x9762;&#x7684;SecureCRT(&#x9644;&#x7834;&#x89E3;&#x65B9;&#x6848;) &#x66F4;&#x65B0;&#x5230;&#x6700;&#x65B0;&#x7684;7.2&#x7684;&#x7834;&#x89E3;&#x65B9;&#x6848;</a></p>
+<h3 id="brew"><a href="#brew" class="headerlink" title="brew"></a>brew</h3><p>&#x5B89;&#x88C5;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -LsSf http://github.com/mxcl/homebrew/tarball/master | sudo tar xvz -C/usr/<span class="built_in">local</span> --strip 1</span><br></pre></td></tr></table></figure>
-<p>当brew安装成功后，就可以随意安装自己想要的软件了，例如wget，命令如下：</p>
+<p>&#x5F53;brew&#x5B89;&#x88C5;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x968F;&#x610F;&#x5B89;&#x88C5;&#x81EA;&#x5DF1;&#x60F3;&#x8981;&#x7684;&#x8F6F;&#x4EF6;&#x4E86;&#xFF0C;&#x4F8B;&#x5982;wget&#xFF0C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew install wget</span><br></pre></td></tr></table></figure>
-<p>卸载的话，命令如下：</p>
+<p>&#x5378;&#x8F7D;&#x7684;&#x8BDD;&#xFF0C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew uninstall wget</span><br></pre></td></tr></table></figure>
-<p>查看安装软件的话，命令如下：</p>
+<p>&#x67E5;&#x770B;&#x5B89;&#x88C5;&#x8F6F;&#x4EF6;&#x7684;&#x8BDD;&#xFF0C;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo brew search /apache*/</span><br></pre></td></tr></table></figure>
-<p>注意/apache*/是使用的正则表达式，用/分割。</p>
+<p>&#x6CE8;&#x610F;/apache*/&#x662F;&#x4F7F;&#x7528;&#x7684;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x7528;/&#x5206;&#x5272;&#x3002;</p>
 <h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h3><blockquote>
-<p>1、brew search nginx<br>2、brew install nginx</p>
+<p>1&#x3001;brew search nginx<br>2&#x3001;brew install nginx</p>
 </blockquote>
-<p>启动nginx ，sudo nginx ;访问localhost:8080 发现已出现nginx的欢迎页面了。</p>
+<p>&#x542F;&#x52A8;nginx &#xFF0C;sudo nginx ;&#x8BBF;&#x95EE;localhost:8080 &#x53D1;&#x73B0;&#x5DF2;&#x51FA;&#x73B0;nginx&#x7684;&#x6B22;&#x8FCE;&#x9875;&#x9762;&#x4E86;&#x3002;</p>
 <blockquote>
-<p>备注： ln -s  /usr/local/sbin/nginx /usr/bin/nginx 做个软连接。</p>
+<p>&#x5907;&#x6CE8;&#xFF1A; ln -s  /usr/local/sbin/nginx /usr/bin/nginx &#x505A;&#x4E2A;&#x8F6F;&#x8FDE;&#x63A5;&#x3002;</p>
 </blockquote>
-<p>常用的指令有： </p>
+<p>&#x5E38;&#x7528;&#x7684;&#x6307;&#x4EE4;&#x6709;&#xFF1A; </p>
 <blockquote>
-<p>nginx -V 查看版本，以及配置文件地址<br>nginx -v 查看版本<br>nginx -c filename 指定配置文件<br>nginx -h 帮助</p>
+<p>nginx -V &#x67E5;&#x770B;&#x7248;&#x672C;&#xFF0C;&#x4EE5;&#x53CA;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5730;&#x5740;<br>nginx -v &#x67E5;&#x770B;&#x7248;&#x672C;<br>nginx -c filename &#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<br>nginx -h &#x5E2E;&#x52A9;</p>
 </blockquote>
-<p>重新加载配置|重启|停止|退出 nginx</p>
+<p>&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;|&#x91CD;&#x542F;|&#x505C;&#x6B62;|&#x9000;&#x51FA; nginx</p>
 <blockquote>
 <p>nginx -s reload|reopen|stop|quit</p>
 </blockquote>
-<p>打开 nginx</p>
+<p>&#x6253;&#x5F00; nginx</p>
 <blockquote>
 <p>sudo nginx</p>
 </blockquote>
-<p>测试配置是否有语法错误</p>
+<p>&#x6D4B;&#x8BD5;&#x914D;&#x7F6E;&#x662F;&#x5426;&#x6709;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;</p>
 <blockquote>
 <p>nginx -t</p>
 </blockquote>
-<h3 id="其他实用工具"><a href="#其他实用工具" class="headerlink" title="其他实用工具"></a>其他实用工具</h3><ul>
+<h3 id="&#x5176;&#x4ED6;&#x5B9E;&#x7528;&#x5DE5;&#x5177;"><a href="#&#x5176;&#x4ED6;&#x5B9E;&#x7528;&#x5DE5;&#x5177;" class="headerlink" title="&#x5176;&#x4ED6;&#x5B9E;&#x7528;&#x5DE5;&#x5177;"></a>&#x5176;&#x4ED6;&#x5B9E;&#x7528;&#x5DE5;&#x5177;</h3><ul>
 <li><a href="https://wudi.in/archives/317.html" target="_blank" rel="external">Dash for Mac</a></li>
 </ul>
 
@@ -307,13 +307,13 @@
 
   
   
-    <h3 class="article-title"><a href="/operating-system/linux/vim/"><span>VIM常用命令</span></a></h3>
+    <h3 class="article-title"><a href="/cache/memcached/20141211_Memcached缓存时间比实际过期时间长的问题/"><span>Memcached缓存时间比实际过期时间长的问题</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/operating-system/linux/vim/" rel="bookmark">
+      <a href="/cache/memcached/20141211_Memcached缓存时间比实际过期时间长的问题/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -330,18 +330,15 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>##选择<br>选中： v<br>取消选择：再按一下v    </p>
-<p>矩形选区：ctrl + v</p>
-<p>全选：ggVG</p>
-<p>###选中后的操作<br>d  删除<br>y  复制<br>p  粘贴<br>“+y<br>“+p</p>
-<p>##复制<br>single line：yy<br>muitl line:nyy<br>copy block to destination:6,9 co 12    </p>
-<p>##粘贴<br>paste：p    </p>
-<p>##删除<br>x  删除一个字符<br>dd  删除一整行</p>
-<p>##撤销<br>u</p>
-<p>##重做<br>ctrl + r</p>
-<p>##合并<br>J  合并两行    </p>
-<p>##退出保存<br>ZZ    </p>
-<p><a href="http://blog.csdn.net/ithomer/article/details/5929428" title="more" target="_blank" rel="external">more</a></p>
+<p>&#x67E5;&#x770B;<a href="https://github.com/memcached/memcached/blob/master/memcached.c" title="Memcached&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E90;&#x7801;" target="_blank" rel="external">Memcached&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E90;&#x7801;</a>&#xFF0C;&#x53D1;&#x73B0;MC&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5224;&#x65AD;&#x7F13;&#x5B58;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x662F;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#x7684;&#xFF1A;    </p>
+<p>##&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;</p>
+<p>###1&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;Unix&#x65F6;&#x95F4;&#x6233;&#xFF1A;<br>&#x5931;&#x6548;&#x65F6;&#x95F4; = &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;- &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x8DDD;&#x79BB;memcached&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x7684;&#x79D2;&#x6570;;</p>
+<p>###2&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF1A;<br>&#x5931;&#x6548;&#x65F6;&#x95F4; = &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x957F;&#x5EA6; + current_time</p>
+<blockquote>
+<p>&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://my.oschina.net/u/1255608/blog/163342" title="&#x8FD9;&#x91CC;" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>     </p>
+</blockquote>
+<p>&#x5982;&#x679C;MC&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x5BF9;&#x7CFB;&#x7EDF;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#xFF0C;&#x90A3;&#x4E48;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x4E0D;&#x51C6;&#x786E;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x4E86;</p>
+<p><a href="http://www.couchbase.com/issues/browse/MB-11548" title="&#x76F8;&#x5173;bug" target="_blank" rel="external">&#x76F8;&#x5173;bug</a></p>
 
       
     </div>
@@ -352,7 +349,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/IDE/">IDE</a>
+    <a href="/categories/Cache/">Cache</a>
   </span>
 
 
@@ -361,7 +358,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/VIM/">VIM</a>
+    <a href="/tags/Memcached/">Memcached</a>
   </span>
 
 
@@ -400,14 +397,14 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>###1、数据库需要5.5.3+的支持</p>
-<p>###2、修改database、table和column字符集<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> guitargg <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">2000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">'%char%'</span>;</span><br></pre></td></tr></table></figure></p>
-<p>###3、修改配置文件<br>etc/mysql/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-client-handshake = FALSE character-set-server = utf8mb4</span><br><span class="line">collation-server = utf8mb4_unicode_ci init_connect=&apos;SET NAMES utf8mb4&apos;</span><br></pre></td></tr></table></figure></p>
-<p>###4、重启MySQL Server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart</span><br></pre></td></tr></table></figure></p>
-<p>###5、升级JDBC驱动<br>确保mysql connector版本高于5.1.13</p>
-<p>###6、检查应用的数据库连接配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/database?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE jdbc.username=root</span><br><span class="line">jdbc.password=password</span><br></pre></td></tr></table></figure></p>
+<p>###1&#x3001;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;5.5.3+&#x7684;&#x652F;&#x6301;</p>
+<p>###2&#x3001;&#x4FEE;&#x6539;database&#x3001;table&#x548C;column&#x5B57;&#x7B26;&#x96C6;<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> guitargg <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">2000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">&apos;%char%&apos;</span>;</span><br></pre></td></tr></table></figure></p>
+<p>###3&#x3001;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;<br>etc/mysql/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-client-handshake = FALSE character-set-server = utf8mb4</span><br><span class="line">collation-server = utf8mb4_unicode_ci init_connect=&apos;SET NAMES utf8mb4&apos;</span><br></pre></td></tr></table></figure></p>
+<p>###4&#x3001;&#x91CD;&#x542F;MySQL Server<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart</span><br></pre></td></tr></table></figure></p>
+<p>###5&#x3001;&#x5347;&#x7EA7;JDBC&#x9A71;&#x52A8;<br>&#x786E;&#x4FDD;mysql connector&#x7248;&#x672C;&#x9AD8;&#x4E8E;5.1.13</p>
+<p>###6&#x3001;&#x68C0;&#x67E5;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/database?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE jdbc.username=root</span><br><span class="line">jdbc.password=password</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p><a href="http://segmentfault.com/blog/ilikewhite/1190000000616820" title="mysql/Java服务端对emoji的支持" target="_blank" rel="external">mysql/Java服务端对emoji的支持</a></p>
+<p><a href="http://segmentfault.com/blog/ilikewhite/1190000000616820" title="mysql/Java&#x670D;&#x52A1;&#x7AEF;&#x5BF9;emoji&#x7684;&#x652F;&#x6301;" target="_blank" rel="external">mysql/Java&#x670D;&#x52A1;&#x7AEF;&#x5BF9;emoji&#x7684;&#x652F;&#x6301;</a></p>
 </blockquote>
 
       
@@ -467,12 +464,12 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>批量插入：</p>
+<p>&#x6279;&#x91CF;&#x63D2;&#x5165;&#xFF1A;</p>
 <blockquote>
 <p><a href="http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html</a></p>
 </blockquote>
-<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac下新安装的MySQL无法登陆root用户解决方法</a></p>
-<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac下安装MySQL5.7遇到默认密码的大坑</a></p>
+<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac&#x4E0B;&#x65B0;&#x5B89;&#x88C5;&#x7684;MySQL&#x65E0;&#x6CD5;&#x767B;&#x9646;root&#x7528;&#x6237;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</a></p>
+<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac&#x4E0B;&#x5B89;&#x88C5;MySQL5.7&#x9047;&#x5230;&#x9ED8;&#x8BA4;&#x5BC6;&#x7801;&#x7684;&#x5927;&#x5751;</a></p>
 
       
     </div>
@@ -531,12 +528,12 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>MySQL要存储大数据，一般都是按照分库分表的方式进行的，类似的<a href="http://www.lanceyan.com/category/tech/mongodb" title="MongoDB" target="_blank" rel="external">MongoDB</a>也是一样的。    </p>
-<p>而淘宝版开源了一个数据库访问组件<a href="http://www.open-open.com/lib/view/open1393247567490.html" title="TDDL" target="_blank" rel="external">TDDL</a>，主要解决了分库分表对应用的透明化以及异构数据库之间的数据复制，它是一个基于集中式配置的JDBC datasource实现，具有主备份，读写分离，动态数据库配置等功能。</p>
+<p>MySQL&#x8981;&#x5B58;&#x50A8;&#x5927;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x6309;&#x7167;&#x5206;&#x5E93;&#x5206;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x7C7B;&#x4F3C;&#x7684;<a href="http://www.lanceyan.com/category/tech/mongodb" title="MongoDB" target="_blank" rel="external">MongoDB</a>&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;    </p>
+<p>&#x800C;&#x6DD8;&#x5B9D;&#x7248;&#x5F00;&#x6E90;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;<a href="http://www.open-open.com/lib/view/open1393247567490.html" title="TDDL" target="_blank" rel="external">TDDL</a>&#xFF0C;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x4E86;&#x5206;&#x5E93;&#x5206;&#x8868;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x900F;&#x660E;&#x5316;&#x4EE5;&#x53CA;&#x5F02;&#x6784;&#x6570;&#x636E;&#x5E93;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x96C6;&#x4E2D;&#x5F0F;&#x914D;&#x7F6E;&#x7684;JDBC datasource&#x5B9E;&#x73B0;&#xFF0C;&#x5177;&#x6709;&#x4E3B;&#x5907;&#x4EFD;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF0C;&#x52A8;&#x6001;&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
 <p>Cobar</p>
 <p>MyCat</p>
-<p><a href="http://my.oschina.net/tinyframework/blog/186583" title="数据库分区分片框架" target="_blank" rel="external">数据库分区分片框架</a></p>
-<p>Github上看到了<a href="https://github.com/arthinking/kamike.divide" title="这个" target="_blank" rel="external">这个</a>开源的也不错。</p>
+<p><a href="http://my.oschina.net/tinyframework/blog/186583" title="&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;" target="_blank" rel="external">&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;</a></p>
+<p>Github&#x4E0A;&#x770B;&#x5230;&#x4E86;<a href="https://github.com/arthinking/kamike.divide" title="&#x8FD9;&#x4E2A;" target="_blank" rel="external">&#x8FD9;&#x4E2A;</a>&#x5F00;&#x6E90;&#x7684;&#x4E5F;&#x4E0D;&#x9519;&#x3002;</p>
 <p>Cobar</p>
 <p>MyCat</p>
 
@@ -574,13 +571,13 @@
 
   
   
-    <h3 class="article-title"><a href="/Java/jdbc/20150116_数据库连接池/"><span>数据库连接池</span></a></h3>
+    <h3 class="article-title"><a href="/Java/JDK配置与JVM监控/"><span>JDK配置与JVM监控</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/Java/jdbc/20150116_数据库连接池/" rel="bookmark">
+      <a href="/Java/JDK配置与JVM监控/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -597,9 +594,31 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>###数据库连接池工具：<br>common-pool工具库是对池化技术原理的一种具体实现。    </p>
-<p>apache的连接池工具库common-dbcp是common-pool在数据库访问方面的一个具体应用。</p>
-<p><a href="http://macrochen.iteye.com/blog/320077" title="common-dbcp" target="_blank" rel="external">common-dbcp</a></p>
+<p>#&#x5B89;&#x88C5;JDK</p>
+<blockquote>
+<p><a href="http://jingyan.baidu.com/article/b0b63dbfd5db8b4a48307027.html" title="ubuntu 12.04 LTS &#x5B89;&#x88C5;&#x914D;&#x7F6E;JDK" target="_blank" rel="external">ubuntu 12.04 LTS &#x5B89;&#x88C5;&#x914D;&#x7F6E;JDK</a>    </p>
+</blockquote>
+<p>&#x4E0B;&#x8F7D;jdk-xxx.bin</p>
+<p>&#x89E3;&#x538B;&#x6587;&#x4EF6;<br>chmod u+x jdk-xxx.bin<br>./jdk-xxx.bin    </p>
+<p>&#x590D;&#x5236;&#x89E3;&#x538B;&#x51FA;jdk-xxx&#x6587;&#x4EF6;&#x5939;&#x5230;/usr/lib&#x4E0B;<br>sudo mkdir -p /usr/lib/jvm/<br>cp -r jdk-xxx /usr/lib/jvm/jdkxxx</p>
+<p>#&#x914D;&#x7F6E;JDK</p>
+<blockquote>
+<p><a href="http://blog.chinaunix.net/uid-26404477-id-3471246.html" title="ubuntu 12.04&#x5B89;&#x88C5;jdk" target="_blank" rel="external">ubuntu 12.04&#x5B89;&#x88C5;jdk</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install gedit</span><br><span class="line">sudo gedit /etc/profile</span><br></pre></td></tr></table></figure>
+<p>or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/</span><br><span class="line">vim profile</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_10</span><br><span class="line">export JRE_HOME=/usr/lib/jvm/jdk1.7.0_10/jre </span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH</span><br><span class="line"></span><br><span class="line">export PATH=$JAVA_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
+<p>&#x5173;&#x95ED;&#xFF0C;&#x4FDD;&#x5B58;&#xFF0C;&#x4F7F;&#x7528;source&#x66F4;&#x65B0;&#x4E00;&#x4E0B;profile&#x6587;&#x4EF6;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;&#x4E4B;&#x524D;&#x7CFB;&#x7EDF;&#x91CC;&#x9762;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x4E86;openjdk&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#x5C06;&#x9ED8;&#x8BA4;jdk&#x66F4;&#x6539;&#x8FC7;&#x6765;&#xFF1A;</p>
+<p>&#x5C06;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;jdk&#x4FEE;&#x6539;&#x8FC7;&#x6765;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_10/bin/java 300</span><br></pre></td></tr></table></figure></p>
+<p>&#x8F93;&#x5165;sun jdk&#x524D;&#x7684;&#x6570;&#x5B57;&#x5C31;&#x597D;&#x4E86;    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_10/bin/javac 300</span><br><span class="line">$ sudo update-alternatives --config java </span><br><span class="line">$ sudo update-alternatives --config javac</span><br></pre></td></tr></table></figure>
+<p>#&#x4F7F;&#x7528;VisualVM&#x76D1;&#x63A7;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;JVM</p>
+<blockquote>
+<p><a href="http://www.blogjava.net/titanaly/archive/2012/03/20/372318.html" title="visualvm&#x76D1;&#x63A7;jvm&#x53CA;&#x8FDC;&#x7A0B;jvm&#x76D1;&#x63A7;&#x65B9;&#x6CD5;" target="_blank" rel="external">visualvm&#x76D1;&#x63A7;jvm&#x53CA;&#x8FDC;&#x7A0B;jvm&#x76D1;&#x63A7;&#x65B9;&#x6CD5;</a></p>
+</blockquote>
+<p>##&#x76F4;&#x63A5;&#x4F7F;&#x7528;JDK<br>&#x5982;&#x679C;&#x662F;&#x76F4;&#x63A5;&#x76D1;&#x63A7;JVM&#xFF0C;&#x5219;&#x5728; <code>/etc/profile</code> &#x6587;&#x4EF6;&#x91CC;&#x9762;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_OPTS=&quot;-Dcom.sun.management.jmxremote.port=<span class="tag">&lt;<span class="name">port</span>&gt;</span> -Dcom.sun.management.jmxremote.ssl=false</span><br><span class="line">-Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=<span class="tag">&lt;<span class="name">hostname</span>&gt;</span>  </span><br><span class="line">-Dcom.sun.management.jmxremote.ssl=false&quot;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">&#x8BE6;&#x7EC6;&#x53C2;&#x8003;&#xFF1A;</span><br><span class="line">&gt; [&#x4F7F;&#x7528;Java&#x81EA;&#x5E26;&#x7684;VisualVM&#x76D1;&#x63A7;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;JVM&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;](http://www.cnblogs.com/chenying99/archive/2012/06/21/2557208.html &quot;&#x4F7F;&#x7528;Java&#x81EA;&#x5E26;&#x7684;VisualVM&#x76D1;&#x63A7;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;JVM&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&quot;)</span><br><span class="line"></span><br><span class="line">##&#x4F7F;&#x7528;resin</span><br><span class="line">&#x5728;resin.conf&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;</span><br><span class="line">```xml</span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Djava.rmi.server.hostname=192.168.75.34<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.port=9934<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.ssl=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.authenticate=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;JMX&#x8FDE;&#x63A5;&#x5373;&#x53EF;</p>
 
       
     </div>
@@ -610,7 +629,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/JDBC/">JDBC</a>
+    <a href="/categories/Java/">Java</a>
   </span>
 
 
@@ -619,7 +638,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/数据库连接池/">数据库连接池</a>
+    <a href="/tags/JVM/">JVM</a>, <a href="/tags/JDK/">JDK</a>
   </span>
 
 
@@ -635,13 +654,13 @@
 
   
   
-    <h3 class="article-title"><a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/"><span>Memcached使用getMulti造成的性能问题</span></a></h3>
+    <h3 class="article-title"><a href="/Java/2015030901_为什么不建议调用sun包，如何通过其他方法确定调用者/"><span>为什么不建议调用sun包，如何通过其他方法确定调用者</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/cache/memcached/20141128_Memcached使用getMulti造成的性能问题/" rel="bookmark">
+      <a href="/Java/2015030901_为什么不建议调用sun包，如何通过其他方法确定调用者/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -658,20 +677,54 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>有这样一个场景：使用<code>getMulti</code>一次性读取一个系列的所有手机100个key，请求了100万次，系统最初只有一个MC服务器，随着访问量的增加，负载加大了，于是增加了几个MC服务器，但结果负载反而更加大了。</p>
-<p>原因是开始那100个key在一台服务器上获取，现在分不到了几MC服务器，需要访问的服务器增多了，而关键性的因素是我们用到的MC客户端memcached-client，其中的AscIIClient如下：    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMulti</span><span class="params">(String[] keys, Integer[] hashCodes, <span class="keyword">boolean</span> asString)</span></span><br><span class="line">  </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((keys == <span class="keyword">null</span>) || (keys.length == <span class="number">0</span>)) &#123;</span><br><span class="line">      <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">        log.error(<span class="string">"missing keys for getMulti()"</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Map cmdMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    String[] cleanKeys = <span class="keyword">new</span> String[keys.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++) &#123;</span><br><span class="line">      String key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">          log.error(<span class="string">"null key, so skipping"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      &#123;</span><br><span class="line">        Integer hash = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ((hashCodes != <span class="keyword">null</span>) &amp;&amp; (hashCodes.length &gt; i)) &#123;</span><br><span class="line">          hash = hashCodes[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cleanKeys[i] = key;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          cleanKeys[i] = sanitizeKey(key);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, e, key);</span><br><span class="line">          <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">            log.error(<span class="string">"failed to sanitize your key!"</span>, e);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        SchoonerSockIO sock = <span class="keyword">this</span>.pool.getSock(cleanKeys[i], hash);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sock == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, <span class="keyword">new</span> IOException(<span class="string">"no socket to server available"</span>), key);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">          <span class="keyword">if</span> (!cmdMap.containsKey(sock.getHost())) &#123;</span><br><span class="line">            cmdMap.put(sock.getHost(), <span class="keyword">new</span> StringBuilder(<span class="string">"get"</span>));</span><br><span class="line">          &#125;</span><br><span class="line">          ((StringBuilder)cmdMap.get(sock.getHost())).append(<span class="keyword">new</span> StringBuilder().append(<span class="string">" "</span>).append(cleanKeys[i]).toString());</span><br><span class="line"></span><br><span class="line">          sock.close();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) &#123;</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">"multi get socket count : "</span>).append(cmdMap.size()).toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Map ret = <span class="keyword">new</span> HashMap(keys.length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> NIOLoader(<span class="keyword">this</span>).doMulti(asString, cmdMap, keys, ret);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span> ((!keys[i].equals(cleanKeys[i])) &amp;&amp; (ret.containsKey(cleanKeys[i]))) &#123;</span><br><span class="line">        ret.put(keys[i], ret.get(cleanKeys[i]));</span><br><span class="line">        ret.remove(cleanKeys[i]);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">"++++ memcache: got back "</span>).append(ret.size()).append(<span class="string">" results"</span>).toString());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>请求多台服务器是串行的，结果导致客户端操作时间累加，请求堆积，最终导致性能下降。</p>
-<h2 id="解决方法有两个："><a href="#解决方法有两个：" class="headerlink" title="解决方法有两个："></a>解决方法有两个：</h2><p>一是把串行请求改为并行请求，可以参考spymemcached的并行实现：    </p>
-<ul>
-<li>第一步，将本次操作构造成一个针对每个 node 的 Operation 对象，加入连接对象中；    </li>
-<li>第二步，在连接对象中，将所有的 node 操作放入 addedQueue 队列，然后触发 Selector 方式异步非阻塞的执行；</li>
-</ul>
-<p>一是把key根据一个系列的手机散列不同的MC服务器上，这样就达到请求一台服务器获取所有的内容了，不过根据就不同的业务场景散列方法也不同，比较不好处理。</p>
-<p>或者不使用getMulti这个方法了</p>
-<p>必须使用getMulti方法的时候可以把缓存数据复制到另一个memcache集群上，一个集群负责读取一半的keys，但是又会引发需要更多的CPU的问题。</p>
-<p><a href="http://www.cnblogs.com/zhengyun_ustc/p/multigethole.html" title="旁观者的博客" target="_blank" rel="external">旁观者的博客</a>也分析了这类分析，很透彻，提供给大家参考下</p>
-<p>该博文发表于：<a href="http://www.itzhai.com/mc-use-getmulti-problem.html" target="_blank" rel="external">http://www.itzhai.com/mc-use-getmulti-problem.html</a></p>
+<p>#&#x83B7;&#x53D6;&#x8C03;&#x7528;&#x8005;&#x4FE1;&#x606F;&#x7684;&#x65B9;&#x6CD5;</p>
+<p>&#x4E00;&#x822C;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5806;&#x6808;&#x4FE1;&#x606F;&#x83B7;&#x53D6;&#x8C03;&#x7528;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x7684;&#x7C7B;&#x540D;&#x548C;&#x65B9;&#x6CD5;&#x540D;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#x901A;&#x8FC7;&#x5806;&#x6808;&#x4FE1;&#x606F;&#x83B7;&#x53D6;&#x8C03;&#x7528;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x7684;&#x7C7B;&#x540D;&#x548C;&#x65B9;&#x6CD5;&#x540D;</span></span><br><span class="line">String className = <span class="string">&quot;&quot;</span>;</span><br><span class="line">String methodName = <span class="string">&quot;&quot;</span>;</span><br><span class="line">Class clazz = <span class="keyword">null</span>;</span><br><span class="line">StackTraceElement[] elements = <span class="keyword">new</span> Throwable().getStackTrace();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; elements.length; i++){</span><br><span class="line">   <span class="keyword">if</span> (<span class="keyword">this</span>.getClass().getName().equals(elements[i].getClassName())){</span><br><span class="line">      <span class="comment">// &#x83B7;&#x53D6;&#x5806;&#x6808;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5C31;&#x662F;&#x8C03;&#x7528;&#x8005;&#x5143;&#x7D20;</span></span><br><span class="line">      <span class="comment">// &#x5982;&#x679C;&#x60F3;&#x8981;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x6240;&#x5728;&#x7C7B;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;elements[i]&#x5C31;&#x53EF;&#x4EE5;&#x4E86;</span></span><br><span class="line">      className = elements[i + <span class="number">1</span>].getClassName();</span><br><span class="line">      methodName = elements[i + <span class="number">1</span>].getMethodName();</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">   }</span><br><span class="line">}</span><br><span class="line">System.out.println(className + <span class="string">&quot;.&quot;</span> + methodName + <span class="string">&quot;\n&quot;</span>);</span><br></pre></td></tr></table></figure></p>
+<p>&#x8BE5;&#x65B9;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x8C03;&#x7528;&#x4EE3;&#x7801;&#x6240;&#x5728;&#x7684;&#x884C;&#x53F7;&#x7684;&#x7C7B;&#x6240;&#x5728;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4E0D;&#x80FD;&#x83B7;&#x5F97;&#x8C03;&#x7528;&#x8005;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x77E5;&#x9053;&#x8C03;&#x7528;&#x8005;&#x7684;&#x7684;&#x7C7B;&#x88C5;&#x8F7D;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x5C31;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;Class.forName(String)&#x5F97;&#x5230;&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#x83B7;&#x5F97;&#x8C03;&#x7528;&#x8005;&#x7684;&#x7C7B;&#x578B;&#xFF08;&#x4F46;&#x8BE5;&#x65B9;&#x6CD5;&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#xFF0C;&#x540E;&#x9762;&#x6709;&#x8BF4;&#x660E;&#xFF09;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clazz = Reflection.getCallerClass(<span class="number">2</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;invoker&apos;s class loader: &quot;</span> + clazz.getClassLoader() + <span class="string">&quot;\nclass name: &quot;</span> + clazz.getName());</span><br></pre></td></tr></table></figure>
+<p>&#x8BE5;&#x65B9;&#x6CD5;&#x6BD4;&#x4F7F;&#x7528;&#x5806;&#x6808;&#x7684;&#x6548;&#x7387;&#x9AD8;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8981;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x6240;&#x5728;&#x7C7B;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8C03;&#x7528; Reflection.getCallerClass(1) &#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;Reflection.getCallerClass(0) &#x662F;Reflection&#x5BF9;&#x8C61;</p>
+<p>#&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x5EFA;&#x8BAE;&#x8C03;&#x7528;sun&#x5305;</p>
+<p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x63D0;&#x5230;&#x4E86;JDK 8&#x5F03;&#x7528; sun.reflect.Reflection.getCallerClass&#xFF1A;</p>
+<blockquote>
+<p><a href="http://www.infoq.com/cn/news/2013/07/Oracle-Removes-getCallerClass" target="_blank" rel="external">http://www.infoq.com/cn/news/2013/07/Oracle-Removes-getCallerClass</a></p>
+</blockquote>
+<p>&#x4F46;&#x540E;&#x6765;&#x53C8;&#x51B3;&#x5B9A;&#x4FDD;&#x7559;&#x4E0B;&#x6765;&#x4E86;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://www.infoq.com/cn/news/2013/08/Oracle-Resurrects-getCallerClass" target="_blank" rel="external">http://www.infoq.com/cn/news/2013/08/Oracle-Resurrects-getCallerClass</a></p>
+</blockquote>
+<p>JDK 8 &#x5B9E;&#x9645;&#x4E0A;&#x65B0;&#x7279;&#x6027;&#x5982;&#x4E0B;</p>
+<blockquote>
+<p><a href="http://www.iteye.com/news/28870-java-8-release" target="_blank" rel="external">http://www.iteye.com/news/28870-java-8-release</a></p>
+</blockquote>
+<p>&#x5176;&#x4E2D; JEP 176&#xFF1A;&#x81EA;&#x52A8;&#x68C0;&#x6D4B;&#x8BC6;&#x522B;Caller-Sensitive&#x65B9;&#x6CD5;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://openjdk.java.net/jeps/176" target="_blank" rel="external">http://openjdk.java.net/jeps/176</a></p>
+</blockquote>
+<p>JDK 8&#x4E2D;&#x5728;getCallerClass&#x65B9;&#x6CD5;&#x52A0;&#x4E86; @sun.reflect.CallerSensitive &#x6CE8;&#x89E3;&#xFF0C;&#x8BE5;&#x6CE8;&#x89E3;&#x662F;&#x63D0;&#x4F9B;&#x7ED9;JVM&#x5E95;&#x5C42;&#x8BFB;&#x53D6;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x63D0;&#x9AD8;&#x4E86;JDK&#x5B9E;&#x73B0;&#x611F;&#x77E5;&#x8C03;&#x7528;&#x8005;&#x529F;&#x80FD;&#x7684;&#x5B89;&#x5168;&#x6027;&#xFF0C;&#x8BE6;&#x7EC6;&#x53C2;&#x8003;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://stackoverflow.com/questions/22626808/what-does-the-sun-reflect-callersensitive-annotation-mean" target="_blank" rel="external">http://stackoverflow.com/questions/22626808/what-does-the-sun-reflect-callersensitive-annotation-mean</a></p>
+</blockquote>
+<p>&#x67E5;&#x770B;getCallerClass&#x7684;<a href="http://cr.openjdk.java.net/~mchung/jdk8/webrevs/8025799/hotspot.00/src/share/vm/prims/jvm.cpp.html" title="&#x5E95;&#x5C42;&#x5B9E;&#x73B0;" target="_blank" rel="external">&#x5E95;&#x5C42;&#x5B9E;&#x73B0;</a>#668&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#xFF0C;&#x5F53;&#x4F20;&#x5165;&#x4E86;depth&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8C03;&#x7528;&#x4E86;net.reflect.Reflection&#x7C7B;&#x7684;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@java</span>.lang.Deprecated</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> java.lang.<span class="function">Class <span class="title">getCallerClass</span><span class="params">(<span class="keyword">int</span> arg0)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5728;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x4E2D;&#x8FD8;&#x662F;&#x901A;&#x8FC7;&#x517C;&#x5BB9;&#x65E7;&#x7248;&#x672C;&#x7684;&#x4EE3;&#x7801;&#x53BB;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x52A0;&#x4E86;&#x4E00;&#x4E2A; @Deprecated &#x6CE8;&#x89E3;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x63A8;&#x8350;&#x4E0A;&#x9762;&#x90A3;&#x79CD;&#x65B9;&#x6CD5;&#x83B7;&#x53D6;&#x8C03;&#x7528;&#x8005;&#x7C7B;&#x578B;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<p>&#x7C7B;&#x4F3C;&#x7684;&#xFF0C; JDK8 &#x4E2D;&#x7684; @java.lang.Class &#x7684; forName(className) &#x65B9;&#x6CD5;&#x4E5F;&#x52A0;&#x4E86;&#x8FD9;&#x4E2A;&#x6CE8;&#x89E3;&#xFF0C;&#x56E0;&#x4E3A;forName&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x4E5F;&#x8C03;&#x7528;&#x7ED9;&#x5230;&#x4E86;Reflection.getCallerClass()</p>
+<p>Oracle&#x5EFA;&#x8BAE;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x4E0D;&#x8981;&#x4F7F;&#x7528;sun&#x5305;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x9879;&#x76EE;&#x90FD;&#x4F9D;&#x8D56;&#x4E8E;getCallerClass()&#x65B9;&#x6CD5;&#xFF0C;&#x5982;Jigsaw&#x548C;Lambda&#xFF0C;Intellij IDEA&#x3002;&#x5728;spring-loaded&#x7684;<a href="https://github.com/spring-projects/spring-loaded/blob/master/springloaded/src/main/java/org/springsource/loaded/ri/ReflectiveInterceptor.java#L213" title="&#x6E90;&#x7801;" target="_blank" rel="external">&#x6E90;&#x7801;</a>&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x8C03;&#x7528;&#x4E86;getCallerClass()&#x65B9;&#x6CD5;&#xFF0C;&#x4F5C;&#x4E3A;&#x4E34;&#x65F6;&#x7684;&#x65B9;&#x6848;&#x53BB;&#x517C;&#x5BB9;JDK 7u25&#xFF0C;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x7CFB;&#x7EDF;&#x5C5E;&#x6027;&#xFF1A;jdk.reflect.allowGetCallerClass&#xFF0C;&#x53C2;&#x8003;&#x8FD9;&#x91CC;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://permalink.gmane.org/gmane.comp.java.openjdk.jdk7u.devel/6573" target="_blank" rel="external">http://permalink.gmane.org/gmane.comp.java.openjdk.jdk7u.devel/6573</a></p>
+</blockquote>
+<p>&#x5176;&#x5B9E;&#x67E5;&#x770B;JDK 7 Reflection&#x7684;&#x5B57;&#x8282;&#x7801;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5BF9;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static java.lang.Class getCallerClass(int arg0);</span><br><span class="line">     0  invokestatic sun.misc.VM.allowGetCallerClass() : boolean [216]</span><br><span class="line">     3  ifeq 13</span><br><span class="line">     6  iload_0 [arg0]</span><br><span class="line">     7  iconst_1</span><br><span class="line">     8  iadd</span><br><span class="line">     9  invokestatic sun.reflect.Reflection.getCallerClass0(int) : java.lang.Class [217]</span><br><span class="line">    12  areturn</span><br><span class="line">    13  new java.lang.UnsupportedOperationException [112]</span><br><span class="line">    16  dup</span><br><span class="line">    17  ldc &lt;String &quot;This method has been disabled by a system property&quot;&gt; [7]</span><br><span class="line">    19  invokespecial java.lang.UnsupportedOperationException(java.lang.String) [206]</span><br><span class="line">    22  athrow</span><br><span class="line">      Line numbers:</span><br><span class="line">        [pc: 0, line: 68]</span><br><span class="line">        [pc: 6, line: 69]</span><br><span class="line">        [pc: 13, line: 71]</span><br><span class="line">      Stack map table: number of frames 1</span><br><span class="line">        [pc: 13, same]</span><br></pre></td></tr></table></figure></p>
+<p>&#x5F00;&#x53D1;&#x8005;&#x4E0D;&#x5E94;&#x8BE5;&#x8C03;&#x7528;sun&#x5305;&#xFF0C;Oracle&#x4E00;&#x76F4;&#x5728;&#x63D0;&#x9192;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x8C03;&#x7528;sun.*&#x5305;&#x91CC;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x5371;&#x9669;&#x7684;&#x3002;&#x4E0A;&#x9762;&#x7528;&#x5230;&#x7684;Reflection.getCallerClass()&#x4E5F;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x5305;&#x91CC;&#x9762;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;sun&#x5305;&#x5E76;&#x4E0D;&#x5305;&#x542B;&#x5728;Java&#x5E73;&#x53F0;&#x7684;&#x6807;&#x51C6;&#x4E2D;&#xFF0C;&#x5B83;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x76F8;&#x5173;&#xFF0C;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5982;Solaris&#xFF0C;Windows&#xFF0C;Linux&#xFF0C;Mac&#x7B49;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x4E5F;&#x5404;&#x4E0D;&#x76F8;&#x540C;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x80FD;&#x968F;&#x7740;JDK&#x7248;&#x672C;&#x800C;&#x53D8;&#x5316;&#x3002;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;: </p>
+<blockquote>
+<p><a href="http://www.oracle.com/technetwork/java/faq-sun-packages-142232.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/faq-sun-packages-142232.html</a></p>
+</blockquote>
+<p>&#x5B8C;&#x6574;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<blockquote>
+<p><a href="https://github.com/arthinking/java-code/blob/master/src/main/java/me/arthinking/question/Q_07_stack_trace.java" target="_blank" rel="external">https://github.com/arthinking/java-code/blob/master/src/main/java/me/arthinking/question/Q_07_stack_trace.java</a></p>
+</blockquote>
+<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://www.itzhai.com/get-invoker-by-stacktrace-and-getcallerclass.html" target="_blank" rel="external">http://www.itzhai.com/get-invoker-by-stacktrace-and-getcallerclass.html</a></p>
+</blockquote>
 
       
     </div>
@@ -682,7 +735,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
+    <a href="/categories/Java/">Java</a>
   </span>
 
 
@@ -691,7 +744,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
+    <a href="/tags/Refection/">Refection</a>
   </span>
 
 
@@ -707,13 +760,13 @@
 
   
   
-    <h3 class="article-title"><a href="/javascript/seajs/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/Java/2014120801_JVM笔记 - 高效并发（线程安全与锁优化）/"><span>JVM笔记 - 高效并发（线程安全与锁优化）</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/javascript/seajs/" rel="bookmark">
+      <a href="/Java/2014120801_JVM笔记 - 高效并发（线程安全与锁优化）/" rel="bookmark">
         <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
           2016-02-02
         </time>
@@ -727,58 +780,51 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>在使用spm之前，首先得安装nodejs，因为spm是nodejs的一个package。<a href="http://qianduanblog.com/post/js-learning-42-using-spm-3-build-seajs-project.html" title="使用spm@3构建seajs项目" target="_blank" rel="external">使用spm@3构建seajs项目</a></p>
-<p><a href="http://spmjs.io/documentation" title="spm 3官方教程" target="_blank" rel="external">spm 3官方教程</a></p>
-<p>构建目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dist  构建目标文件夹</span><br><span class="line">examples  相关使用文档</span><br><span class="line">spm_modules   依赖的js文件仓库，spm install的时候下载到里面</span><br><span class="line">tests  测试案例</span><br><span class="line">xx.js  </span><br><span class="line">package.json  spm维护的依赖配置文件，用于生产dist目录的相关配置</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://spmjs.io/package/expect.js" title="expectjs" target="_blank" rel="external">expectjs</a></p>
-<p><a href="http://chaoskeh.com/blog/why-its-hard-to-combo-seajs-modules.html" title="为什么 SeaJS 模块的合并这么麻烦" target="_blank" rel="external">为什么 SeaJS 模块的合并这么麻烦</a></p>
-<p>###安装nodejs</p>
-<p><a href="http://seajs.org/docs/#docs" title="seajs" target="_blank" rel="external">seajs</a></p>
-<p>配置NODE_PATH</p>
-<p><a href="http://segmentfault.com/blog/yinchangsheng/1190000002478924" title="nodejs 中的 NODE_PATH" target="_blank" rel="external">nodejs 中的 NODE_PATH</a></p>
-<p>windows下需要安装<a href="http://gnuwin32.sourceforge.net/packages/make.htm" title="make" target="_blank" rel="external">make</a></p>
-<p>下载<a href="https://github.com/seajs/examples" title="demo" target="_blank" rel="external">demo</a>编译执行</p>
-<p>SeaJS遵循<a href="https://github.com/cmdjs/specification/blob/master/draft/module.md" title="CMD" target="_blank" rel="external">CMD</a>规范，一个模块就是一个文件，通过<code>require</code> 关键词引入外部模块，每次加载需要直接使用到的模块的时候，模块内部 <code>require</code> 进来的js也会一并加载，为了让SeaJS在加载之前把所有相关联的JS都能够通过一个JS文件一次性加载进来，就需要用到SeaJS的<a href="http://www.zhihu.com/question/20789867/answer/16187950" title="Transport" target="_blank" rel="external">Transport</a>格式<br>没转换前Modules/Wrappingsgui规范格式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, exports, module) &#123;</span><br><span class="line">   var a = require(&quot;a&quot;)</span><br><span class="line">   exports.foo = ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>CMD模块在正式上线前，通过构建工具（如SPM）先转换为Modules/Transport格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define(&quot;id&quot;, [&quot;dep-1&quot;, &quot;dep-2&quot;], function(require, exports, module) &#123;</span><br><span class="line">   // source code</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>进一步通过构建工具，就可以一并吧 <code>require</code> 引入进来的模块一起压缩合并到同一个文件中了。</p>
-<p>##说明<br>简单来说，通过使用SeaJS，我们可以把JS代码模块化，在上线之前，通过spm这样的构建工具，把自己开发的模块压缩合并，当成SeaJS的一个模块来使用。</p>
-<p>##Step by step</p>
-<p>下面一步一步来实现这个过程：</p>
-<p>##正面项目接口</p>
-<p>整体目录结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">project   // 项目跟目录 </span><br><span class="line">|</span><br><span class="line">|-assets  // web资源文件</span><br><span class="line">  |</span><br><span class="line">  |- sea-modules  // SeaJS相关模块</span><br><span class="line">  |  </span><br><span class="line">  |- static  // 模块开发路径</span><br><span class="line">  |   |</span><br><span class="line">  |   |- first-module</span><br><span class="line">  |       |- dist  // 我的模块构建目标文件夹</span><br><span class="line">  |       |- src  // 我的模块开发文件夹</span><br><span class="line">  |       |- package.json  // spm编译配置</span><br><span class="line">  |</span><br><span class="line">  |- app  // 我的模块使用例子</span><br><span class="line">  |</span><br></pre></td></tr></table></figure></p>
-<p>##创建目录结构</p>
-<p>###step1、创建项目 project</p>
-<p>###step2、创建web资源文件夹<br>在project里面新建一个assetsweb资源文件夹，专门用来存放JS，CSS等资源，我们的模块开发就在这个目录下面进行</p>
-<p>###step3、在assets下面创建sea-modules文件夹<br>这个文件夹是用来存放SeaJS模块的，我们需要用到的模块，包括自己实现的模块最终都要存放到这里</p>
-<p>###step4、在assets目录下创建 static 文件夹<br>这个文件夹用于模块开发</p>
-<p>###step5、在 static 目录下创建 first-module 文件夹<br>这个文件夹用于存储我的第一个模块的开发代码</p>
-<p>###step6、在 first-module 目录下创建 src 目录，这个目录用于存放我们模块开发的代码</p>
-<p>###step7、在assets下面创建 app 文件夹<br>这个文件夹存放我们演示调用模块代码的HTML文件</p>
-<p>##使用spm初始化构建</p>
-<p>###首先你需要通过npm安装spm，而npm是Node.js里面的一个工具，所以你需要先这样搭建环境：</p>
-<ul>
-<li>安装<a href="http://nodejs.org/" title="Node.js" target="_blank" rel="external">Node.js</a></li>
-<li>安装spm<br>目前最新的是3版本的，建议安装最新的，详细可以参考官方文档：<br><a href="http://spmjs.io/documentation/getting-started" title="spmjs.io" target="_blank" rel="external">http://spmjs.io/</a><br>这里只要在cmd里面执行以下一句就可以了</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install spm -g</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用spm初始化项目目录</li>
-</ul>
-<p>在first-module目录下执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spm init</span><br></pre></td></tr></table></figure>
-<p>接下来按照提示分表填写 Package name, Version, Description, Author即可。</p>
-<p>执行完之后生成如下目录：<br><img src="" alt=""></p>
-<p>接下来就可以开始开发自己的模块了。</p>
-<p>##模块开发</p>
-<p>###编辑我们自己的模块代码<br>在src目录下创建我们的模块代码 index.js</p>
-<p><a href="http://blog.csdn.net/huyoo/article/details/21703701" target="_blank" rel="external">http://blog.csdn.net/huyoo/article/details/21703701</a></p>
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>#1&#x3001;&#x6982;&#x8FF0;</p>
+<p>#2&#x3001;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</p>
+<p>##2.1&#x3001;Java&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;<br>&#x6309;&#x7167;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x201C;&#x5B89;&#x5168;&#x7A0B;&#x5EA6;&#x201D;&#x7531;&#x5F3A;&#x81F3;&#x5F31;&#x6765;&#x6392;&#x5E8F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;Java&#x8BED;&#x8A00;&#x4E2D;&#x5404;&#x79CD;&#x64CD;&#x4F5C;&#x5171;&#x4EAB;&#x7684;&#x6570;&#x636E;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;5&#x7C7B;&#xFF1A;&#x4E0D;&#x53EF;&#x53D8;&#x3001;&#x7EDD;&#x5BF9;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x3001;&#x76F8;&#x5BF9;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x3001;&#x7EBF;&#x7A0B;&#x5EFA;&#x8363;&#x548C;&#x7EBF;&#x7A0B;&#x5BF9;&#x7ACB;&#x3002;</p>
+<p>###&#x4E0D;&#x53EF;&#x53D8;</p>
+<p>&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x5BF9;&#x8C61;&#x4E00;&#x5B9A;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
+<p>&#x4FDD;&#x8BC1;&#x5BF9;&#x8C61;&#x884C;&#x4E3A;&#x4E0D;&#x5F71;&#x54CD;&#x81EA;&#x5DF1;&#x72B6;&#x6001;&#x7684;&#x9014;&#x5F84;&#x6709;&#x5F88;&#x591A;&#x79CD;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x7B80;&#x5355;&#x7684;&#x5C31;&#x662F;&#x628A;&#x5BF9;&#x8C61;&#x4E2D;&#x5E26;&#x6709;&#x72B6;&#x6001;&#x7684;&#x53D8;&#x91CF;&#x90FD;&#x58F0;&#x660E;&#x4E3A;final&#x3002;</p>
+<p>Java API&#x4E2D;&#x7B26;&#x5408;&#x4E0D;&#x53EF;&#x53D8;&#x8981;&#x6C42;&#x7684;&#x7C7B;&#x578B;&#xFF1A;String&#xFF0C;java.lang.Number&#x7684;&#x90E8;&#x5206;&#x5B50;&#x7C7B;&#xFF08;&#x5982;Long&#x548C;Double&#x7684;&#x6570;&#x503C;&#x5305;&#x88C5;&#x7C7B;&#xFF0C;BigInteger&#x548C;BigDecimal&#x7B49;&#x5927;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4F46;<code>AtomicInteger</code>&#x548C;<code>AtomicLong</code>&#x5219;&#x5E76;&#x975E;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#xFF09;&#x3002;</p>
+<p>###&#x7EDD;&#x5BF9;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;<br>Java API&#x4E2D;&#x6807;&#x6CE8;&#x81EA;&#x5DF1;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x7C7B;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x90FD;&#x4E0D;&#x662F;&#x7EDD;&#x5BF9;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x3002;</p>
+<p>###&#x76F8;&#x5BF9;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;<br>Java&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x7684;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x90FD;&#x5C5E;&#x4E8E;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x4F8B;&#x5982;Vector&#xFF0C;HashTable&#xFF0C;Collections&#x7684;synchronizedCollection()&#x65B9;&#x6CD5;&#x5305;&#x88C5;&#x7684;&#x96C6;&#x5408;&#x7B49;&#x3002;</p>
+<p>###&#x7EBF;&#x7A0B;&#x517C;&#x5BB9;<br>&#x6307;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x540C;&#x6B65;&#x624B;&#x6BB5;&#x6765;&#x4FDD;&#x8BC1;&#x5BF9;&#x8C61;&#x5728;&#x5E76;&#x53D1;&#x73AF;&#x5883;&#x4E2D;&#x53EF;&#x4EE5;&#x5B89;&#x5168;&#x7684;&#x4F7F;&#x7528;&#x3002;Java API&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x7684;&#x7C7B;&#x90FD;&#x662F;&#x5C5E;&#x4E8E;&#x7EBF;&#x7A0B;&#x517C;&#x5BB9;&#x7684;&#xFF0C;&#x5982;ArrayList&#x548C;HashMap&#x3002;</p>
+<p>###&#x7EBF;&#x7A0B;&#x5BF9;&#x7ACB;<br>&#x6307;&#x65E0;&#x8BBA;&#x8C03;&#x7528;&#x7AEF;&#x662F;&#x5426;&#x91C7;&#x53D6;&#x4E86;&#x540C;&#x6B65;&#x63AA;&#x65BD;&#xFF0C;&#x90FD;&#x65E0;&#x6CD5;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x73AF;&#x5883;&#x4E2D;&#x5E76;&#x53D1;&#x4F7F;&#x7528;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x7ACB;&#x7684;&#x4F8B;&#x5B50;&#x5C31;&#x662F;Thread&#x7C7B;&#x7684;suspend()&#x548C;resumn()&#x65B9;&#x6CD5;&#xFF08;&#x5DF2;&#x88AB;JDK&#x58F0;&#x660E;&#x5E9F;&#x5F03;&#x4E86;&#xFF09;&#x3002;</p>
+<p>&#x5E38;&#x89C1;&#x7684;&#x7EBF;&#x7A0B;&#x5BF9;&#x7ACB;&#x64CD;&#x4F5C;&#x8FD8;&#x6709;System.setIn(), System.setOut(), System.runFinalizersOnExit()&#x2026;</p>
+<p>##2.2&#x3001;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;</p>
+<p>###&#x4E92;&#x65A5;&#x540C;&#x6B65;<br>Java&#x4E2D;&#xFF0C;&#x6700;&#x57FA;&#x672C;&#x7684;&#x4E92;&#x65A5;&#x540C;&#x6B65;&#x624B;&#x6BB5;&#x5C31;&#x662F;synchronized&#x5173;&#x952E;&#x5B57;&#x3002;</p>
+<p>synchronized&#x662F;&#x4E00;&#x4E2A;&#x91CD;&#x91CF;&#x7EA7;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x4E3A;&#xFF1A;Java&#x7684;&#x7EBF;&#x7A0B;&#x662F;&#x6620;&#x5C04;&#x5230;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x539F;&#x751F;&#x7EBF;&#x7A0B;&#x4E4B;&#x4E0A;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x963B;&#x585E;&#x6216;&#x5524;&#x9192;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6765;&#x5E2E;&#x5FD9;&#x5B8C;&#x6210;&#xFF0C;&#x8FD9;&#x5C31;&#x9700;&#x8981;&#x4ECE;&#x7528;&#x6237;&#x6001;&#x8F6C;&#x6362;&#x5230;&#x6838;&#x5FC3;&#x6001;&#x4E2D;&#xFF0C;&#x56E0;&#x6B64;&#x72B6;&#x6001;&#x8F6C;&#x6362;&#x9700;&#x8981;&#x6D88;&#x8017;&#x5F88;&#x591A;&#x7684;&#x5904;&#x7406;&#x5668;&#x65F6;&#x95F4;&#x3002;&#x5BF9;&#x4E8E;&#x4EE3;&#x7801;&#x7B80;&#x5355;&#x7684;&#x540C;&#x6B65;&#x5757;&#xFF08;&#x5982;synchronized&#x4FEE;&#x9970;&#x7684;getter()&#x548C;setter&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x72B6;&#x6001;&#x8F6C;&#x6362;&#x6D88;&#x8017;&#x7684;&#x65F6;&#x95F4;&#x6709;&#x53EF;&#x80FD;&#x6BD4;&#x7528;&#x6237;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7684;&#x65F6;&#x95F4;&#x8FD8;&#x8981;&#x957F;&#x3002;</p>
+<p>&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;java.util.concurrent&#x5305;&#x4E2D;&#x7684;<code>ReentrantLock(&#x91CD;&#x5165;&#x9501;)</code>&#x6765;&#x5B9E;&#x73B0;&#x540C;&#x6B65;&#xFF1A;JDK1.5&#x591A;&#x7EBF;&#x7A0B;&#x73AF;&#x5883;&#x4E0B;synchronized&#x7684;&#x541E;&#x5410;&#x91CF;&#x4E0B;&#x964D;&#x7684;&#x5F88;&#x4E25;&#x91CD;&#xFF0C;&#x800C;ReentrantLock&#x5219;&#x57FA;&#x672C;&#x4FDD;&#x6301;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x7A33;&#x5B9A;&#x7684;&#x6C34;&#x5E73;&#x4E0A;&#x3002;JDK 1.6&#x4E4B;&#x540E;&#x4E24;&#x8005;&#x6027;&#x80FD;&#x57FA;&#x672C;&#x6301;&#x5E73;&#x3002;</p>
+<p>&#x865A;&#x62DF;&#x673A;&#x5728;&#x672A;&#x6765;&#x7684;&#x6027;&#x80FD;&#x6539;&#x8FDB;&#x4E2D;&#x8FD8;&#x4F1A;&#x66F4;&#x504F;&#x5411;&#x4E8E;&#x539F;&#x751F;&#x7684;synchronize&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;<br>&#x63D0;&#x5021;&#x5728;synchronized&#x80FD;&#x5B9E;&#x73B0;&#x9700;&#x6C42;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F18;&#x5148;&#x8003;&#x8651;&#x4F7F;&#x7528;synchronized&#x6765;&#x8FDB;&#x884C;&#x540C;&#x6B65;&#x3002;</p>
+<p>###&#x975E;&#x963B;&#x585E;&#x540C;&#x6B65;<br>&#x975E;&#x963B;&#x585E;&#x540C;&#x6B65;&#xFF1A;&#x4ECE;&#x5904;&#x7406;&#x95EE;&#x9898;&#x7684;&#x65B9;&#x5F0F;&#x4E0A;&#x8BF4;&#xFF0C;&#x4E92;&#x65A5;&#x540C;&#x6B65;&#x5C5E;&#x4E8E;&#x4E00;&#x79CD;&#x60B2;&#x89C2;&#x7684;&#x5E76;&#x53D1;&#x7B56;&#x7565;&#x3002;&#x968F;&#x7740;&#x786C;&#x4EF6;&#x6307;&#x4EE4;&#x96C6;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x57FA;&#x4E8E;&#x51B2;&#x7A81;&#x68C0;&#x67E5;&#x7684;&#x4E50;&#x89C2;&#x5E76;&#x53D1;&#x7B56;&#x7565;&#xFF0C;&#x901A;&#x4FD7;&#x5730;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x5148;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x4E89;&#x7528;&#x5171;&#x4EAB;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x64CD;&#x4F5C;&#x5C31;&#x6210;&#x529F;&#x4E86;&#xFF1B;&#x5982;&#x679C;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x6709;&#x4E89;&#x7528;&#xFF0C;&#x4EA7;&#x751F;&#x4E86;&#x51B2;&#x7A81;&#xFF0C;&#x90A3;&#x5C31;&#x518D;&#x91C7;&#x53D6;&#x5176;&#x4ED6;&#x7684;&#x8865;&#x507F;&#x63AA;&#x65BD;&#xFF08;&#x6700;&#x5E38;&#x89C1;&#x7684;&#x8865;&#x507F;&#x63AA;&#x65BD;&#x5C31;&#x662F;&#x4E0D;&#x65AD;&#x5730;&#x91CD;&#x8BD5;&#xFF0C;&#x76F4;&#x5230;&#x6210;&#x529F;&#x4E3A;&#x6B62;&#xFF09;&#xFF0C;&#x8FD9;&#x79CD;&#x4E50;&#x89C2;&#x7684;&#x5E76;&#x53D1;&#x7B56;&#x7565;&#x7684;&#x8BB8;&#x591A;&#x5B9E;&#x73B0;&#x5076;&#x8BFB;&#x4E0D;&#x9700;&#x8981;&#x628A;&#x7EBF;&#x7A0B;&#x6302;&#x8D77;&#xFF0C;&#x56E0;&#x6B64;&#x8FD9;&#x8BDD;&#x603B;&#x540C;&#x6B65;&#x64CD;&#x4F5C;&#x79F0;&#x4E3A;&#x975E;&#x963B;&#x585E;&#x540C;&#x6B65;&#x3002;</p>
+<p>###&#x65E0;&#x540C;&#x6B65;&#x65B9;&#x6848;<br>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x672C;&#x6765;&#x5C31;&#x4E0D;&#x8BBE;&#x8BA1;&#x5171;&#x4EAB;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x5B83;&#x81EA;&#x7136;&#x5C31;&#x65E0;&#x987B;&#x4EFB;&#x4F55;&#x540C;&#x6B65;&#x63AA;&#x65BD;&#x53BB;&#x4FDD;&#x8BC1;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x56E0;&#x6B64;&#x4F1A;&#x6709;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#x5929;&#x751F;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x3002;&#x8FD9;&#x7C7B;&#x4EE3;&#x7801;&#x5305;&#x62EC;&#xFF1A;&#x53EF;&#x91CD;&#x5165;&#x4EE3;&#x7801;&#x548C;&#x7EBF;&#x7A0B;&#x672C;&#x5730;&#x5B58;&#x50A8;&#x3002;</p>
+<p>#3&#x3001;&#x9501;&#x4F18;&#x5316;<br>&#x4E3A;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x6539;&#x8FDB;&#x9AD8;&#x6548;&#x5E76;&#x53D1;&#xFF0C;HotSpot&#x865A;&#x62DF;&#x673A;&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x5728;JDK1.6&#x7248;&#x672C;&#x4E0A;&#x82B1;&#x8D39;&#x4E86;&#x5927;&#x91CF;&#x7CBE;&#x529B;&#x5B9E;&#x73B0;&#x5404;&#x79CD;&#x9501;&#x4F18;&#x5316;&#x3002;</p>
+<p>##3.1&#x3001;&#x81EA;&#x65CB;&#x9501;&#x4E0E;&#x81EA;&#x9002;&#x5E94;&#x81EA;&#x65CB;<br>&#x4E3A;&#x4E86;&#x8BA9;&#x7EBF;&#x7A0B;&#x7B49;&#x5F85;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x8BA9;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x4E00;&#x4E2A;&#x5FD9;&#x5FAA;&#x73AF;&#xFF08;&#x81EA;&#x65CB;&#xFF09;&#xFF0C;&#x8FD9;&#x9879;&#x6280;&#x672F;&#x5C31;&#x662F;&#x6240;&#x8C13;&#x7684;&#x81EA;&#x65CB;&#x9501;&#x3002;&#x5F15;&#x5165;&#x81EA;&#x65CB;&#x9501;&#x7684;&#x539F;&#x56E0;&#x662F;&#x4E92;&#x65A5;&#x540C;&#x6B65;&#x5BF9;&#x6027;&#x80FD;&#x6700;&#x5927;&#x7684;&#x5F71;&#x54CD;&#x662F;&#x963B;&#x585E;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x7BA1;&#x94B1;&#x7EBF;&#x7A0B;&#x548C;&#x6062;&#x590D;&#x7EBF;&#x7A0B;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x9700;&#x8981;&#x8F6C;&#x5165;&#x5185;&#x6838;&#x6001;&#x4E2D;&#x5B8C;&#x6210;&#xFF0C;&#x7ED9;&#x5E76;&#x53D1;&#x5E26;&#x6765;&#x5F88;&#x5927;&#x538B;&#x529B;&#x3002;&#x81EA;&#x65CB;&#x9501;&#x8BA9;&#x7269;&#x7406;&#x673A;&#x5668;&#x6709;&#x4E00;&#x4E2A;&#x4EE5;&#x4E0A;&#x7684;&#x5904;&#x7406;&#x5668;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x80FD;&#x8BA9;&#x4E24;&#x4E2A;&#x6216;&#x4EE5;&#x4E0A;&#x7684;&#x7EBF;&#x7A0B;&#x540C;&#x65F6;&#x5E76;&#x884C;&#x6267;&#x884C;&#x3002;</p>
+<p>##3.2&#x3001;&#x9501;&#x6D88;&#x9664;<br>&#x6D88;&#x9664;&#x9501;&#x662F;&#x6307;&#x865A;&#x62DF;&#x673A;&#x5373;&#x65F6;&#x7F16;&#x8BD1;&#x5668;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x5BF9;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#x4E0A;&#x8981;&#x6C42;&#x540C;&#x6B65;&#xFF0C;&#x4F46;&#x662F;&#x88AB;&#x68C0;&#x6D4B;&#x5230;&#x4E0D;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x7ADE;&#x4E89;&#x7684;&#x9501;&#x8FDB;&#x884C;&#x6D88;&#x9664;&#x3002;</p>
+<p>##3.3&#x3001;&#x9501;&#x7C97;&#x5316;<br>&#x5982;&#x679C;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x8FDE;&#x7EED;&#x64CD;&#x4F5C;&#x90FD;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x53CD;&#x590D;&#x52A0;&#x9501;&#x548C;&#x89E3;&#x9501;&#xFF0C;&#x751A;&#x81F3;&#x52A0;&#x9501;&#x64CD;&#x4F5C;&#x662F;&#x51FA;&#x73B0;&#x5728;&#x5FAA;&#x73AF;&#x4F53;&#x4E2D;&#x7684;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x9501;&#x7C97;&#x5316;&#x7684;&#x4F18;&#x5316;&#x3002;</p>
+<p>##3.4&#x3001;&#x8F7B;&#x91CF;&#x7EA7;&#x9501;<br>&#x5B83;&#x7684;&#x672C;&#x610F;&#x662F;&#x5728;&#x6CA1;&#x6709;&#x591A;&#x7EBF;&#x7A0B;&#x7ADE;&#x4E89;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x51CF;&#x5C11;&#x4F20;&#x7EDF;&#x7684;&#x91CD;&#x91CF;&#x7EA7;&#x9501;&#x4F7F;&#x7528;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E92;&#x65A5;&#x91CF;&#x4EA7;&#x751F;&#x7684;&#x6027;&#x80FD;&#x6D88;&#x8017;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x5982;&#x679C;&#x5B58;&#x5728;&#x9501;&#x7ADE;&#x4E89;&#xFF0C;&#x9664;&#x4E86;&#x4E92;&#x65A5;&#x91CF;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x8FD8;&#x53D1;&#x751F;&#x4E86;CAS&#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x6709;&#x7ADE;&#x4E89;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8F7B;&#x91CF;&#x7EA7;&#x9501;&#x4F1A;&#x6BD4;&#x4F20;&#x7EDF;&#x7684;&#x91CD;&#x91CF;&#x7EA7;&#x9501;&#x66F4;&#x6162;&#x3002;</p>
+<p>##3.5&#x3001;&#x504F;&#x5411;&#x9501;<br>&#x5982;&#x679C;&#x8BF4;&#x8F7B;&#x91CF;&#x7EA7;&#x9501;&#x662F;&#x5728;&#x65E0;&#x7ADE;&#x4E89;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528;&#x4E86;CAS&#x64CD;&#x4F5C;&#x53BB;&#x6D88;&#x9664;&#x540C;&#x6B65;&#x4F7F;&#x7528;&#x7684;&#x4E92;&#x65A5;&#x91CF;&#xFF0C;&#x90A3;&#x504F;&#x5411;&#x9501;&#x5C31;&#x662F;&#x5728;&#x65E0;&#x7ADE;&#x4E89;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x628A;&#x6574;&#x4E2A;&#x540C;&#x6B65;&#x90FD;&#x6D88;&#x9664;&#x6389;&#x4E86;&#xFF0C;&#x8FDE;CAS&#x64CD;&#x4F5C;&#x90FD;&#x4E0D;&#x505A;&#x4E86;&#x3002;</p>
+<p>#4&#x3001;&#x672C;&#x7AE0;&#x5C0F;&#x7ED3;</p>
 
       
     </div>
     <footer class="article-footer">
         <div class="article-meta pull-left">
           
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/JVM/">JVM</a>
+  </span>
+
+
           
         </div>
         

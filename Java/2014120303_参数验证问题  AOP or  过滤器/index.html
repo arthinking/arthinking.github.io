@@ -76,22 +76,22 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>使用Spring的AOP，之恩能够操作Spring上下文里面的对象。   </p>
-<p>JSP编译成的Class文件，是切入不了的，JSP编译为Servlet，JSP编译后的类的实例又servlet容器进行管理，对应的，可以通过Servlet的过滤器进行扩展。    </p>
-<p>##下面使用过滤器过滤验证参数：    </p>
-<p>如页面大小，页数这些通用的参数验证，可以抽取出通用的逻辑放入到Filter中处理。    </p>
-<p>对于使用Controller实现的接口，我们可以使用AOP进行拦截验证参数，而对于JSP页面，我们就只能使用Filter进行过滤验证了。    </p>
-<p>##JSP请求整个处理流程如下：</p>
+<p>&#x4F7F;&#x7528;Spring&#x7684;AOP&#xFF0C;&#x4E4B;&#x6069;&#x80FD;&#x591F;&#x64CD;&#x4F5C;Spring&#x4E0A;&#x4E0B;&#x6587;&#x91CC;&#x9762;&#x7684;&#x5BF9;&#x8C61;&#x3002;   </p>
+<p>JSP&#x7F16;&#x8BD1;&#x6210;&#x7684;Class&#x6587;&#x4EF6;&#xFF0C;&#x662F;&#x5207;&#x5165;&#x4E0D;&#x4E86;&#x7684;&#xFF0C;JSP&#x7F16;&#x8BD1;&#x4E3A;Servlet&#xFF0C;JSP&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x53C8;servlet&#x5BB9;&#x5668;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Servlet&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x8FDB;&#x884C;&#x6269;&#x5C55;&#x3002;    </p>
+<p>##&#x4E0B;&#x9762;&#x4F7F;&#x7528;&#x8FC7;&#x6EE4;&#x5668;&#x8FC7;&#x6EE4;&#x9A8C;&#x8BC1;&#x53C2;&#x6570;&#xFF1A;    </p>
+<p>&#x5982;&#x9875;&#x9762;&#x5927;&#x5C0F;&#xFF0C;&#x9875;&#x6570;&#x8FD9;&#x4E9B;&#x901A;&#x7528;&#x7684;&#x53C2;&#x6570;&#x9A8C;&#x8BC1;&#xFF0C;&#x53EF;&#x4EE5;&#x62BD;&#x53D6;&#x51FA;&#x901A;&#x7528;&#x7684;&#x903B;&#x8F91;&#x653E;&#x5165;&#x5230;Filter&#x4E2D;&#x5904;&#x7406;&#x3002;    </p>
+<p>&#x5BF9;&#x4E8E;&#x4F7F;&#x7528;Controller&#x5B9E;&#x73B0;&#x7684;&#x63A5;&#x53E3;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;AOP&#x8FDB;&#x884C;&#x62E6;&#x622A;&#x9A8C;&#x8BC1;&#x53C2;&#x6570;&#xFF0C;&#x800C;&#x5BF9;&#x4E8E;JSP&#x9875;&#x9762;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EA;&#x80FD;&#x4F7F;&#x7528;Filter&#x8FDB;&#x884C;&#x8FC7;&#x6EE4;&#x9A8C;&#x8BC1;&#x4E86;&#x3002;    </p>
+<p>##JSP&#x8BF7;&#x6C42;&#x6574;&#x4E2A;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
 <ul>
-<li>客户端发起HTTP请求</li>
-<li>服务器端Web Server接受到请求，把请求转交给容器</li>
-<li>容器获取到请求的url</li>
-<li>容器根据web.xml中配置的filter，判断请求url是否需要执行filter</li>
-<li>容器根据web.xml中的配置，找到URL对应的Servlet（如果没有找到该Servlet，直接返回404错误码到客户端，表示访问的资源不存在）</li>
-<li>调用servlet的service方法处理请求（如果servlet还未装载入虚拟机，则进行加载，连接，并实例化，整个时候会调用servlet的init()方法，该方法只调用一次），分配一个线程去执行</li>
-<li>如果Servlet实例需要在容器中移除的时候，则调用servlet实例的destroy方法，以便释放实例所使用的资源，并持久化数据，之后等待GC回收。</li>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x8D77;HTTP&#x8BF7;&#x6C42;</li>
+<li>&#x670D;&#x52A1;&#x5668;&#x7AEF;Web Server&#x63A5;&#x53D7;&#x5230;&#x8BF7;&#x6C42;&#xFF0C;&#x628A;&#x8BF7;&#x6C42;&#x8F6C;&#x4EA4;&#x7ED9;&#x5BB9;&#x5668;</li>
+<li>&#x5BB9;&#x5668;&#x83B7;&#x53D6;&#x5230;&#x8BF7;&#x6C42;&#x7684;url</li>
+<li>&#x5BB9;&#x5668;&#x6839;&#x636E;web.xml&#x4E2D;&#x914D;&#x7F6E;&#x7684;filter&#xFF0C;&#x5224;&#x65AD;&#x8BF7;&#x6C42;url&#x662F;&#x5426;&#x9700;&#x8981;&#x6267;&#x884C;filter</li>
+<li>&#x5BB9;&#x5668;&#x6839;&#x636E;web.xml&#x4E2D;&#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x627E;&#x5230;URL&#x5BF9;&#x5E94;&#x7684;Servlet&#xFF08;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x8BE5;Servlet&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;404&#x9519;&#x8BEF;&#x7801;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x8868;&#x793A;&#x8BBF;&#x95EE;&#x7684;&#x8D44;&#x6E90;&#x4E0D;&#x5B58;&#x5728;&#xFF09;</li>
+<li>&#x8C03;&#x7528;servlet&#x7684;service&#x65B9;&#x6CD5;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#xFF08;&#x5982;&#x679C;servlet&#x8FD8;&#x672A;&#x88C5;&#x8F7D;&#x5165;&#x865A;&#x62DF;&#x673A;&#xFF0C;&#x5219;&#x8FDB;&#x884C;&#x52A0;&#x8F7D;&#xFF0C;&#x8FDE;&#x63A5;&#xFF0C;&#x5E76;&#x5B9E;&#x4F8B;&#x5316;&#xFF0C;&#x6574;&#x4E2A;&#x65F6;&#x5019;&#x4F1A;&#x8C03;&#x7528;servlet&#x7684;init()&#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF09;&#xFF0C;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53BB;&#x6267;&#x884C;</li>
+<li>&#x5982;&#x679C;Servlet&#x5B9E;&#x4F8B;&#x9700;&#x8981;&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x79FB;&#x9664;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5219;&#x8C03;&#x7528;servlet&#x5B9E;&#x4F8B;&#x7684;destroy&#x65B9;&#x6CD5;&#xFF0C;&#x4EE5;&#x4FBF;&#x91CA;&#x653E;&#x5B9E;&#x4F8B;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x5E76;&#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#xFF0C;&#x4E4B;&#x540E;&#x7B49;&#x5F85;GC&#x56DE;&#x6536;&#x3002;</li>
 </ul>
-<p>##Spring Controller请求整个处理流程如下：</p>
+<p>##Spring Controller&#x8BF7;&#x6C42;&#x6574;&#x4E2A;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
 
       
     </div>

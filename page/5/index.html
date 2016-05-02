@@ -54,6 +54,52 @@
 
   
   
+    <h3 class="article-title"><a href="/README/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/README/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="arthinking&#x7684;&#x6280;&#x672F;&#x603B;&#x7ED3;"><a href="#arthinking&#x7684;&#x6280;&#x672F;&#x603B;&#x7ED3;" class="headerlink" title="arthinking&#x7684;&#x6280;&#x672F;&#x603B;&#x7ED3;"></a>arthinking&#x7684;&#x6280;&#x672F;&#x603B;&#x7ED3;</h2><blockquote>
+<p>Author: arthinking<br>E-mail: 1225538383@qq.com</p>
+</blockquote>
+<hr>
+<h1 id="java"><a href="#Java" class="headerlink" title="Java"></a><a href="https://github.com/arthinking/arthinking/blob/master/Java.md" title="Java" target="_blank" rel="external">Java</a></h1><h1 id="mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><hr>
+<p>#GitHub&#x76F8;&#x5173;&#x8D44;&#x6E90;<br>markdown&#x8BED;&#x6CD5;&#xFF1A;<a href="https://github.com/guodongxiaren/test" target="_blank" rel="external">https://github.com/guodongxiaren/test</a><br>GitHub&#x4E0A;README&#x5199;&#x6CD5;&#x66A8;GFM&#x8BED;&#x6CD5;&#x89E3;&#x8BFB;&#xFF1A;<a href="http://blog.csdn.net/wqvbjhc/article/details/27349209" target="_blank" rel="external">http://blog.csdn.net/wqvbjhc/article/details/27349209</a></p>
+<p>&#x56FE;&#x7247;&#x683C;&#x5F0F;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-02.png</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
     <h3 class="article-title"><a href="/operating-system/linux/common-command/"><span>Linux common command</span></a></h3>
   
 
@@ -77,46 +123,46 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h1 id="common-linux-command"><a href="#common-linux-command" class="headerlink" title="common linux command"></a>common linux command</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="_">-l</span> -r <span class="_">-e</span> <span class="string">'arthinking.github.io'</span> /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i <span class="string">""</span> <span class="string">"s/arthinking.github.io/informal-essay/g"</span></span><br></pre></td></tr></table></figure>
+<h1 id="common-linux-command"><a href="#common-linux-command" class="headerlink" title="common linux command"></a>common linux command</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="_">-l</span> -r <span class="_">-e</span> <span class="string">&apos;arthinking.github.io&apos;</span> /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i <span class="string">&quot;&quot;</span> <span class="string">&quot;s/arthinking.github.io/informal-essay/g&quot;</span></span><br></pre></td></tr></table></figure>
 <p><a href="http://www.th7.cn/system.mac/201411/77742.shtml
-http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="external">sed在mac下使用差异</a></p>
-<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>Linux的scp命令可以在Linux之间复制文件和目录：</p>
+http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="external">sed&#x5728;mac&#x4E0B;&#x4F7F;&#x7528;&#x5DEE;&#x5F02;</a></p>
+<h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>Linux&#x7684;scp&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x5728;Linux&#x4E4B;&#x95F4;&#x590D;&#x5236;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#xFF1A;</p>
 <blockquote>
-<p>scp [可选参数] file_source file_target</p>
+<p>scp [&#x53EF;&#x9009;&#x53C2;&#x6570;] file_source file_target</p>
 </blockquote>
-<p>可选参数：</p>
+<p>&#x53EF;&#x9009;&#x53C2;&#x6570;&#xFF1A;</p>
 <ul>
-<li><code>-v</code>和大多数 linux 命令中的 -v 意思一样 , 用来显示进度 . 可以用来查看连接 , 认证 , 或是配置错误；</li>
-<li><code>-C</code>使能压缩选项；</li>
-<li><code>-P</code>选择端口 . 注意 -p 已经被 rcp 使用；</li>
-<li><code>-4</code>强行使用<code>IPV4</code>地址；</li>
-<li><code>-6</code>强行使用<code>IPV6</code>地址。</li>
+<li><code>-v</code>&#x548C;&#x5927;&#x591A;&#x6570; linux &#x547D;&#x4EE4;&#x4E2D;&#x7684; -v &#x610F;&#x601D;&#x4E00;&#x6837; , &#x7528;&#x6765;&#x663E;&#x793A;&#x8FDB;&#x5EA6; . &#x53EF;&#x4EE5;&#x7528;&#x6765;&#x67E5;&#x770B;&#x8FDE;&#x63A5; , &#x8BA4;&#x8BC1; , &#x6216;&#x662F;&#x914D;&#x7F6E;&#x9519;&#x8BEF;&#xFF1B;</li>
+<li><code>-C</code>&#x4F7F;&#x80FD;&#x538B;&#x7F29;&#x9009;&#x9879;&#xFF1B;</li>
+<li><code>-P</code>&#x9009;&#x62E9;&#x7AEF;&#x53E3; . &#x6CE8;&#x610F; -p &#x5DF2;&#x7ECF;&#x88AB; rcp &#x4F7F;&#x7528;&#xFF1B;</li>
+<li><code>-4</code>&#x5F3A;&#x884C;&#x4F7F;&#x7528;<code>IPV4</code>&#x5730;&#x5740;&#xFF1B;</li>
+<li><code>-6</code>&#x5F3A;&#x884C;&#x4F7F;&#x7528;<code>IPV6</code>&#x5730;&#x5740;&#x3002;</li>
 </ul>
-<h2 id="从本地复制到远程"><a href="#从本地复制到远程" class="headerlink" title="从本地复制到远程"></a>从本地复制到远程</h2><h3 id="复制文件："><a href="#复制文件：" class="headerlink" title="复制文件："></a>复制文件：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定上传文件夹</span></span><br><span class="line">scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_folder <span class="comment"># 指定上传后的文件名</span>scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_file </span><br><span class="line"><span class="comment"># 以下两个不指定远程服务器的登录名</span>scp <span class="built_in">local</span>_file remote_ip:remote_folder scp <span class="built_in">local</span>_file remote_ip:remote_file</span><br></pre></td></tr></table></figure>
-<h3 id="复制目录"><a href="#复制目录" class="headerlink" title="复制目录"></a>复制目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r <span class="built_in">local</span>_folder remote_username@remote_ip:remote_folder scp -r <span class="built_in">local</span>_folder remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
-<p>会在<code>remote_folder</code>下面创建<code>local_folder</code>文件夹</p>
-<h2 id="从远程复制到本地"><a href="#从远程复制到本地" class="headerlink" title="从远程复制到本地"></a>从远程复制到本地</h2><p>只要将从本地复制到远程的命令的后2个参数调换顺序即可。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>从远程下载文件到本地</p>
+<h2 id="&#x4ECE;&#x672C;&#x5730;&#x590D;&#x5236;&#x5230;&#x8FDC;&#x7A0B;"><a href="#&#x4ECE;&#x672C;&#x5730;&#x590D;&#x5236;&#x5230;&#x8FDC;&#x7A0B;" class="headerlink" title="&#x4ECE;&#x672C;&#x5730;&#x590D;&#x5236;&#x5230;&#x8FDC;&#x7A0B;"></a>&#x4ECE;&#x672C;&#x5730;&#x590D;&#x5236;&#x5230;&#x8FDC;&#x7A0B;</h2><h3 id="&#x590D;&#x5236;&#x6587;&#x4EF6;"><a href="#&#x590D;&#x5236;&#x6587;&#x4EF6;&#xFF1A;" class="headerlink" title="&#x590D;&#x5236;&#x6587;&#x4EF6;&#xFF1A;"></a>&#x590D;&#x5236;&#x6587;&#x4EF6;&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x6307;&#x5B9A;&#x4E0A;&#x4F20;&#x6587;&#x4EF6;&#x5939;</span></span><br><span class="line">scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_folder <span class="comment"># &#x6307;&#x5B9A;&#x4E0A;&#x4F20;&#x540E;&#x7684;&#x6587;&#x4EF6;&#x540D;</span>scp <span class="built_in">local</span>_file remote_username@remote_ip:remote_file </span><br><span class="line"><span class="comment"># &#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x4E0D;&#x6307;&#x5B9A;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x767B;&#x5F55;&#x540D;</span>scp <span class="built_in">local</span>_file remote_ip:remote_folder scp <span class="built_in">local</span>_file remote_ip:remote_file</span><br></pre></td></tr></table></figure>
+<h3 id="&#x590D;&#x5236;&#x76EE;&#x5F55;"><a href="#&#x590D;&#x5236;&#x76EE;&#x5F55;" class="headerlink" title="&#x590D;&#x5236;&#x76EE;&#x5F55;"></a>&#x590D;&#x5236;&#x76EE;&#x5F55;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r <span class="built_in">local</span>_folder remote_username@remote_ip:remote_folder scp -r <span class="built_in">local</span>_folder remote_ip:remote_folder</span><br></pre></td></tr></table></figure>
+<p>&#x4F1A;&#x5728;<code>remote_folder</code>&#x4E0B;&#x9762;&#x521B;&#x5EFA;<code>local_folder</code>&#x6587;&#x4EF6;&#x5939;</p>
+<h2 id="&#x4ECE;&#x8FDC;&#x7A0B;&#x590D;&#x5236;&#x5230;&#x672C;&#x5730;"><a href="#&#x4ECE;&#x8FDC;&#x7A0B;&#x590D;&#x5236;&#x5230;&#x672C;&#x5730;" class="headerlink" title="&#x4ECE;&#x8FDC;&#x7A0B;&#x590D;&#x5236;&#x5230;&#x672C;&#x5730;"></a>&#x4ECE;&#x8FDC;&#x7A0B;&#x590D;&#x5236;&#x5230;&#x672C;&#x5730;</h2><p>&#x53EA;&#x8981;&#x5C06;&#x4ECE;&#x672C;&#x5730;&#x590D;&#x5236;&#x5230;&#x8FDC;&#x7A0B;&#x7684;&#x547D;&#x4EE4;&#x7684;&#x540E;2&#x4E2A;&#x53C2;&#x6570;&#x8C03;&#x6362;&#x987A;&#x5E8F;&#x5373;&#x53EF;&#x3002;</p>
+<h2 id="&#x4F8B;&#x5B50;"><a href="#&#x4F8B;&#x5B50;" class="headerlink" title="&#x4F8B;&#x5B50;"></a>&#x4F8B;&#x5B50;</h2><p>&#x4ECE;&#x8FDC;&#x7A0B;&#x4E0B;&#x8F7D;&#x6587;&#x4EF6;&#x5230;&#x672C;&#x5730;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp root@182.92.6.82:/home/guitargg.gz ~/Downloads/</span><br></pre></td></tr></table></figure>
-<p>把本金文件传递到另一台主机上面：</p>
+<p>&#x628A;&#x672C;&#x91D1;&#x6587;&#x4EF6;&#x4F20;&#x9012;&#x5230;&#x53E6;&#x4E00;&#x53F0;&#x4E3B;&#x673A;&#x4E0A;&#x9762;&#xFF1A;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp ~/Downloads/guitargg.gz root@182.92.6.82:/home/</span><br></pre></td></tr></table></figure>
-<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p>解压：<br>tar -zxvf /usr/local/test.tar.gz<br>tar -zxvf 压缩文件名.tar.gz -C /usr/local/maven</p>
-<p>01-.tar格式<br>解包：[＊＊＊＊＊＊＊]$ tar xvf FileName.tar<br>打包：[＊＊＊＊＊＊＊]$ tar cvf FileName.tar DirName（注：tar是打包，不是压缩！）</p>
-<p>02-.gz格式<br>解压1：[＊＊＊＊＊＊＊]$ gunzip FileName.gz<br>解压2：[＊＊＊＊＊＊＊]$ gzip -d FileName.gz<br>压 缩：[＊＊＊＊＊＊＊]$ gzip FileName</p>
-<p>03-.tar.gz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.gz<br>压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.gz DirName</p>
-<p>04-.bz2格式<br>解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz2<br>解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz2<br>压 缩： [＊＊＊＊＊＊＊]$ bzip2 -z FileName</p>
-<p>05-.tar.bz2格式<br>解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz2<br>压缩：[＊＊＊＊＊＊＊]$ tar jcvf FileName.tar.bz2 DirName</p>
-<p>06-.bz格式<br>解压1：[＊＊＊＊＊＊＊]$ bzip2 -d FileName.bz<br>解压2：[＊＊＊＊＊＊＊]$ bunzip2 FileName.bz</p>
-<p>07-.tar.bz格式<br>解压：[＊＊＊＊＊＊＊]$ tar jxvf FileName.tar.bz</p>
-<p>08-.Z格式<br>解压：[＊＊＊＊＊＊＊]$ uncompress FileName.Z<br>压缩：[＊＊＊＊＊＊＊]$ compress FileName</p>
-<p>09-.tar.Z格式<br>解压：[＊＊＊＊＊＊＊]$ tar Zxvf FileName.tar.Z<br>压缩：[＊＊＊＊＊＊＊]$ tar Zcvf FileName.tar.Z DirName</p>
-<p>10-.tgz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tgz</p>
-<p>11-.tar.tgz格式<br>解压：[＊＊＊＊＊＊＊]$ tar zxvf FileName.tar.tgz<br>压缩：[＊＊＊＊＊＊＊]$ tar zcvf FileName.tar.tgz FileName</p>
-<p>12-.zip格式<br>解压：[＊＊＊＊＊＊＊]$ unzip FileName.zip<br>压缩：[＊＊＊＊＊＊＊]$ zip FileName.zip DirName</p>
-<p>13-.lha格式<br>解压：[＊＊＊＊＊＊＊]$ lha -e FileName.lha<br>压缩：[＊＊＊＊＊＊＊]$ lha -a FileName.lha FileName</p>
-<p>14-.rar格式<br>解压：[＊＊＊＊＊＊＊]$ rar a FileName.rar<br>压缩：[＊＊＊＊＊＊＊]$ rar e FileName.rar<br>rar请到：<a href="http://www.rarsoft.com/download.htm" target="_blank" rel="external">http://www.rarsoft.com/download.htm</a> 下载！<br>解压后请将rar_static拷贝到/usr/bin目录（其他由$PATH环境变量<br>指定的目录也行）：[＊＊＊＊＊＊＊]$ cp rar_static /usr/bin/rar</p>
-<h1 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h1><p>复制并且覆盖目标文件的文件<br>cp -r -f /webapp/* /dist/</p>
-<h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h1><p>查看端口占用</p>
+<h1 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h1><p>&#x89E3;&#x538B;&#xFF1A;<br>tar -zxvf /usr/local/test.tar.gz<br>tar -zxvf &#x538B;&#x7F29;&#x6587;&#x4EF6;&#x540D;.tar.gz -C /usr/local/maven</p>
+<p>01-.tar&#x683C;&#x5F0F;<br>&#x89E3;&#x5305;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar xvf FileName.tar<br>&#x6253;&#x5305;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar cvf FileName.tar DirName&#xFF08;&#x6CE8;&#xFF1A;tar&#x662F;&#x6253;&#x5305;&#xFF0C;&#x4E0D;&#x662F;&#x538B;&#x7F29;&#xFF01;&#xFF09;</p>
+<p>02-.gz&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;1&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ gunzip FileName.gz<br>&#x89E3;&#x538B;2&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ gzip -d FileName.gz<br>&#x538B; &#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ gzip FileName</p>
+<p>03-.tar.gz&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar zxvf FileName.tar.gz<br>&#x538B;&#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar zcvf FileName.tar.gz DirName</p>
+<p>04-.bz2&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;1&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ bzip2 -d FileName.bz2<br>&#x89E3;&#x538B;2&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ bunzip2 FileName.bz2<br>&#x538B; &#x7F29;&#xFF1A; [&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ bzip2 -z FileName</p>
+<p>05-.tar.bz2&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar jxvf FileName.tar.bz2<br>&#x538B;&#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar jcvf FileName.tar.bz2 DirName</p>
+<p>06-.bz&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;1&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ bzip2 -d FileName.bz<br>&#x89E3;&#x538B;2&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ bunzip2 FileName.bz</p>
+<p>07-.tar.bz&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar jxvf FileName.tar.bz</p>
+<p>08-.Z&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ uncompress FileName.Z<br>&#x538B;&#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ compress FileName</p>
+<p>09-.tar.Z&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar Zxvf FileName.tar.Z<br>&#x538B;&#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar Zcvf FileName.tar.Z DirName</p>
+<p>10-.tgz&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar zxvf FileName.tgz</p>
+<p>11-.tar.tgz&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar zxvf FileName.tar.tgz<br>&#x538B;&#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ tar zcvf FileName.tar.tgz FileName</p>
+<p>12-.zip&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ unzip FileName.zip<br>&#x538B;&#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ zip FileName.zip DirName</p>
+<p>13-.lha&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ lha -e FileName.lha<br>&#x538B;&#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ lha -a FileName.lha FileName</p>
+<p>14-.rar&#x683C;&#x5F0F;<br>&#x89E3;&#x538B;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ rar a FileName.rar<br>&#x538B;&#x7F29;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ rar e FileName.rar<br>rar&#x8BF7;&#x5230;&#xFF1A;<a href="http://www.rarsoft.com/download.htm" target="_blank" rel="external">http://www.rarsoft.com/download.htm</a> &#x4E0B;&#x8F7D;&#xFF01;<br>&#x89E3;&#x538B;&#x540E;&#x8BF7;&#x5C06;rar_static&#x62F7;&#x8D1D;&#x5230;/usr/bin&#x76EE;&#x5F55;&#xFF08;&#x5176;&#x4ED6;&#x7531;$PATH&#x73AF;&#x5883;&#x53D8;&#x91CF;<br>&#x6307;&#x5B9A;&#x7684;&#x76EE;&#x5F55;&#x4E5F;&#x884C;&#xFF09;&#xFF1A;[&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;&#xFF0A;]$ cp rar_static /usr/bin/rar</p>
+<h1 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h1><p>&#x590D;&#x5236;&#x5E76;&#x4E14;&#x8986;&#x76D6;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x7684;&#x6587;&#x4EF6;<br>cp -r -f /webapp/* /dist/</p>
+<h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h1><p>&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#x5360;&#x7528;</p>
 <p>lsof -i tcp:port</p>
 
       
@@ -133,6 +179,303 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
 
 
           
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/design-pattern/20150209_设计模式笔记/"><span>设计模式笔记</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/design-pattern/20150209_设计模式笔记/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>##&#x804C;&#x8D23;&#x94FE;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-01.png" alt=""> </p>
+<p>###&#x8BF4;&#x660E;&#xFF1A;<br>&#x901A;&#x8FC7;&#x628A;&#x5BF9;&#x8C61;&#x94FE;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x7ED9;&#x66F4;&#x591A;&#x7684;&#x5BF9;&#x8C61;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x7684;&#x673A;&#x4F1A;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>&#x591A;&#x4E2A;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x5904;&#x7406;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x4E14;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x7684;&#x5BF9;&#x8C61;&#x4E0D;&#x662F;&#x7279;&#x5B9A;&#x7684;&#xFF1B;</li>
+<li>&#x8FD0;&#x884C;&#x671F;&#x624D;&#x80FD;&#x51B3;&#x5B9A;&#x54EA;&#x4E9B;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x8BF7;&#x6C42;&#xFF1B;</li>
+<li>&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x53EF;&#x80FD;&#x4E0D;&#x88AB;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5904;&#x7406;&#x7684;&#x60C5;&#x51B5;&#xFF1B;</li>
+</ul>
+<p>###&#x5B9E;&#x4F8B;&#xFF1A;<br>Java&#x8BED;&#x8A00;&#x7684;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5B9E;&#x73B0;&#x4F7F;&#x7528;&#x4E86;&#x804C;&#x8D23;&#x94FE;&#x6A21;&#x5F0F;&#xFF1B;</p>
+<p>##&#x547D;&#x4EE4;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-02.png" alt=""></p>
+<p>###&#x8BF4;&#x660E;&#xFF1A;<br>&#x628A;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x5C01;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x8BA9;&#x8BF7;&#x6C42;&#x88AB;&#x5F53;&#x6210;&#x57FA;&#x4E8E;&#x5BF9;&#x8C61;&#x7684;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5982;&#x56DE;&#x8C03;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>&#x4F60;&#x9700;&#x8981;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF1B;</li>
+<li>&#x8BF7;&#x6C42;&#x9700;&#x8981;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x65F6;&#x95F4;&#x6216;&#x8005;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;&#x987A;&#x5E8F;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1B;</li>
+<li>&#x9700;&#x8981;&#x8BF7;&#x6C42;&#x7684;&#x5386;&#x53F2;&#x8BB0;&#x5F55;&#xFF1B;</li>
+<li>&#x8C03;&#x7528;&#x8005;&#x9700;&#x8981;&#x548C;&#x6267;&#x884C;&#x8005;&#x89E3;&#x8026;&#x7684;&#x65F6;&#x5019;</li>
+</ul>
+<p>###&#x5B9E;&#x4F8B;&#xFF1A;<br>&#x4EFB;&#x52A1;&#x961F;&#x5217;</p>
+<p>##&#x89E3;&#x6790;&#x5668;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-03.png" alt="">  </p>
+<p>###&#x8BF4;&#x660E;&#xFF1A;<br>&#x4E3A;&#x6587;&#x6CD5;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x89E3;&#x6790;&#x7684;&#x673A;&#x5236;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>&#x9700;&#x8981;&#x628A;&#x6587;&#x6CD5;&#x89E3;&#x6790;&#x6210;&#x4E00;&#x4E2A;&#x5927;&#x7684;&#x8BED;&#x6CD5;&#x6811;&#xFF1B;</li>
+<li>&#x6587;&#x6CD5;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF1B;</li>
+<li>&#x89E3;&#x6790;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x6027;&#x80FD;&#x5E76;&#x4E0D;&#x662F;&#x5F88;&#x91CD;&#x8981;&#xFF1B;</li>
+<li>&#x9700;&#x8981;&#x628A;&#x6587;&#x6CD5;&#x548C;&#x89E3;&#x6790;&#x5F0F;&#x8FDB;&#x884C;&#x89E3;&#x8026;&#xFF1B;</li>
+</ul>
+<p>###&#x5B9E;&#x4F8B;<br>&#x4E0A;&#x4E2A;&#x4E16;&#x7EAA;80&#x5E74;&#x4EE3;&#x6D41;&#x884C;&#x7684;&#x57FA;&#x4E8E;&#x6587;&#x5B57;&#x7684;&#x5192;&#x9669;&#x6E38;&#x620F;&#x3002;</p>
+<p>##&#x8FED;&#x4EE3;&#x5668;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-04.png" alt=""></p>
+<p>###&#x8BF4;&#x660E;&#xFF1A;<br>&#x5728;&#x4E0D;&#x77E5;&#x9053;&#x96C6;&#x5408;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5B9E;&#x73B0;&#x8BBF;&#x95EE;&#x96C6;&#x5408;&#x5143;&#x7D20;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>&#x4E0D;&#x8BBF;&#x95EE;&#x5BF9;&#x8C61;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x5230;&#x5BF9;&#x8C61;&#x91CC;&#x9762;&#x7684;&#x5143;&#x7D20;</li>
+<li>&#x9700;&#x8981;&#x652F;&#x6301;&#x591A;&#x7EBF;&#x7A0B;&#x6216;&#x8005;&#x5E76;&#x53D1;&#x904D;&#x5386;&#x96C6;&#x5408;</li>
+<li>&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x540C;&#x4E00;&#x4E2A;&#x904D;&#x5386;&#x63A5;&#x53E3;</li>
+<li>&#x4E0D;&#x540C;&#x7684;&#x8FED;&#x4EE3;&#x5668;&#x5B9E;&#x73B0;&#x7531;&#x7EC6;&#x5FAE;&#x7684;&#x5DEE;&#x522B;</li>
+</ul>
+<p>###&#x5B9E;&#x4F8B;&#xFF1A;<br>Java&#x7684;&#x96C6;&#x5408;&#x7C7B;&#x5C31;&#x5F88;&#x597D;&#x7684;&#x7528;&#x5230;&#x4E86;&#x8FED;&#x4EE3;&#x5668;&#x6A21;&#x5F0F;&#xFF0C;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5728;&#x4E0D;&#x77E5;&#x9053;&#x96C6;&#x5408;&#x7684;&#x5B9E;&#x73B0;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x904D;&#x5386;&#x5404;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5408;&#x3002;</p>
+<p>##&#x4E2D;&#x4ECB;&#x8005;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-05.png" alt=""></p>
+<p>###&#x8BF4;&#x660E;&#xFF1A;<br>&#x901A;&#x8FC7;&#x5C01;&#x88C5;&#x4E0D;&#x540C;&#x5BF9;&#x8C61;&#x96C6;&#x7684;&#x4EA4;&#x4E92;&#x6765;&#x8FBE;&#x5230;&#x89E3;&#x8026;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;&#x8C61;&#x95F4;&#x7684;&#x4EA4;&#x6D41;&#x52A8;&#x4F5C;&#x6709;&#x660E;&#x786E;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x5E76;&#x4E14;&#x5F88;&#x590D;&#x6742;&#xFF1B;</li>
+<li>&#x5BF9;&#x8C61;&#x95F4;&#x5B58;&#x5728;&#x590D;&#x6742;&#x7684;&#x4EA4;&#x4E92;&#x5173;&#x7CFB;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x4E2D;&#x592E;&#x7684;&#x63A7;&#x5236;&#x8282;&#x70B9;&#x6765;&#x8F6C;&#x53D1;&#x8FD9;&#x4E9B;&#x4EA4;&#x4E92;&#x3002;</li>
+</ul>
+<p>###&#x5B9E;&#x4F8B;&#xFF1A;<br>&#x90AE;&#x4EF6;&#x7FA4;&#x53D1;&#x7CFB;&#x7EDF;&#xFF0C;&#x901A;&#x8FC7;&#x4E2D;&#x4ECB;&#x8005;&#x6A21;&#x5F0F;&#xFF0C;&#x53D1;&#x9001;&#x8005;&#x65E0;&#x9700;&#x8BB0;&#x5F55;&#x54EA;&#x4E9B;&#x90AE;&#x4EF6;&#x5730;&#x5740;&#x662F;&#x5426;&#x6CE8;&#x518C;&#x4E86;&#xFF0C;&#x628A;&#x90AE;&#x4EF6;&#x53D1;&#x7ED9;&#x4E2D;&#x4ECB;&#x8005;&#xFF0C;&#x4E2D;&#x4ECB;&#x8005;&#x628A;&#x90AE;&#x4EF6;&#x8F6C;&#x53D1;&#x7ED9;&#x6709;&#x6548;&#x7684;&#x63A5;&#x6536;&#x8005;&#x3002;</p>
+<p>##&#x5907;&#x5FD8;&#x5F55;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-06.png" alt=""></p>
+<p>###&#x8BF4;&#x660E;&#xFF1A;<br>&#x5728;&#x4E0D;&#x8FDD;&#x53CD;&#x5C01;&#x88C5;&#x6027;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x5141;&#x8BB8;&#x6355;&#x83B7;&#x5E76;&#x4E14;&#x5916;&#x5316;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x90E8;&#x72B6;&#x6001;&#xFF0C;&#x4EE5;&#x4FBF;&#x5B58;&#x50A8;&#x4E0B;&#x6765;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x9700;&#x8981;&#x5B58;&#x50A8;&#x4E0B;&#x6765;&#xFF1B;</li>
+<li>&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x5BF9;&#x5916;&#x66B4;&#x9732;&#x7684;&#x63A5;&#x53E3;&#xFF1B;</li>
+<li>&#x5C01;&#x88C5;&#x7684;&#x8FB9;&#x754C;&#x5FC5;&#x987B;&#x88AB;&#x4FDD;&#x5B58;</li>
+</ul>
+<p>###&#x5B9E;&#x4F8B;&#xFF1A;<br>&#x64A4;&#x9500;&#x52A8;&#x4F5C;&#xFF0C;&#x901A;&#x8FC7;&#x5EFA;&#x7ACB;&#x5BF9;&#x8C61;&#x7684;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>##&#x89C2;&#x5BDF;&#x8005;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-07.png" alt=""></p>
+<p>###&#x8BF4;&#x660E;&#xFF1A;<br>&#x5728;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x6539;&#x53D8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x77E5;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>###&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li>&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5BF9;&#x8C61;&#x72B6;&#x6001;&#x7684;&#x6539;&#x53D8;&#x89E6;&#x53D1;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x7684;&#x5904;&#x7406;&#x4E8B;&#x4EF6;</li>
+<li>&#x9700;&#x8981;&#x5E7F;&#x64AD;&#x7684;&#x80FD;&#x529B;</li>
+<li></li>
+</ul>
+<p>###&#x5B9E;&#x4F8B;&#xFF1A;<br>&#x5728;&#x5927;&#x90E8;&#x5206;&#x7684;GUI&#x73AF;&#x5883;&#x4E2D;&#x90FD;&#x6709;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#xFF0C;&#x901A;&#x8FC7;&#x628A;&#x6309;&#x94AE;&#xFF0C;&#x6587;&#x672C;&#x533A;&#x7B49;&#x6CE8;&#x518C;&#x4E3A;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x5F53;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;&#x5C31;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x901A;&#x77E5;&#x5230;&#x6240;&#x6709;&#x7684;&#x89C2;&#x5BDF;&#x8005;&#x3002;</p>
+<p>##&#x72B6;&#x6001;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-08.png" alt=""></p>
+<p>###&#x8BF4;&#x660E;&#xFF1A;</p>
+<p>###&#x4F7F;&#x7528;&#x573A;&#x666F;&#xFF1A;</p>
+<p>###&#x5B9E;&#x4F8B;&#xFF1A;</p>
+<p>##&#x7B56;&#x7565;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-09.png" alt=""></p>
+<p>##&#x6A21;&#x677F;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-10.png" alt=""></p>
+<p>##&#x8BBF;&#x95EE;&#x8005;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-11.png" alt="">     </p>
+<p>##&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-12.png" alt="">    </p>
+<p>##&#x6865;&#x63A5;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-13.png" alt=""></p>
+<p>##&#x7EC4;&#x5408;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-14.png" alt=""></p>
+<p>##&#x88C5;&#x9970;&#x8005;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-15.png" alt=""></p>
+<p>##&#x95E8;&#x9762;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-16.png" alt=""></p>
+<p>##&#x4EAB;&#x5143;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-17.png" alt=""></p>
+<p>##&#x4EE3;&#x7406;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-18.png" alt=""></p>
+<p>##&#x62BD;&#x8C61;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-19.png" alt=""></p>
+<p>##&#x6784;&#x5EFA;&#x8005;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-20.png" alt=""></p>
+<p>##&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-21.png" alt=""></p>
+<p>##&#x539F;&#x578B;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-22.png" alt=""></p>
+<p>##&#x5355;&#x4F8B;&#x6A21;&#x5F0F;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-23.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/设计模式/">设计模式</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/职责链模式/">职责链模式</a>, <a href="/tags/命令模式/">命令模式</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/spring/2014122401-Spring架构设计/"><span>Spring架构设计</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/spring/2014122401-Spring架构设计/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>Spring&#x6846;&#x67B6;&#x7684;7&#x4E2A;&#x6A21;&#x5757;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring001.png" alt=""> </p>
+<p>#Spring Core&#xFF1A;<br>&#x6838;&#x5FC3;&#x5BB9;&#x5668;&#x63D0;&#x4F9B; Spring &#x6846;&#x67B6;&#x7684;&#x57FA;&#x672C;&#x529F;&#x80FD;&#x3002;&#x6838;&#x5FC3;&#x5BB9;&#x5668;&#x7684;&#x4E3B;&#x8981;&#x7EC4;&#x4EF6;&#x662F; BeanFactory&#xFF0C;&#x5B83;&#x662F;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#x7684;&#x5B9E;&#x73B0;&#x3002;BeanFactory &#x4F7F;&#x7528;&#x63A7;&#x5236;&#x53CD;&#x8F6C; &#xFF08;IOC&#xFF09; &#x6A21;&#x5F0F;&#x5C06;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;&#x914D;&#x7F6E;&#x548C;&#x4F9D;&#x8D56;&#x6027;&#x89C4;&#x8303;&#x4E0E;&#x5B9E;&#x9645;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x5206;&#x5F00;&#x3002;</p>
+<p>#Spring Context:<br>Spring &#x4E0A;&#x4E0B;&#x6587;&#x662F;&#x4E00;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x5411; Spring &#x6846;&#x67B6;&#x63D0;&#x4F9B;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x3002;Spring &#x4E0A;&#x4E0B;&#x6587;&#x5305;&#x62EC;&#x4F01;&#x4E1A;&#x670D;&#x52A1;&#xFF0C;&#x4F8B;&#x5982; JNDI&#x3001;EJB&#x3001;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x3001;&#x56FD;&#x9645;&#x5316;&#x3001;&#x6821;&#x9A8C;&#x548C;&#x8C03;&#x5EA6;&#x529F;&#x80FD;&#x3002;</p>
+<p>#Spring AOP:<br>&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#x7279;&#x6027;&#xFF0C;Spring AOP &#x6A21;&#x5757;&#x76F4;&#x63A5;&#x5C06;&#x9762;&#x5411;&#x65B9;&#x9762;&#x7684;&#x7F16;&#x7A0B;&#x529F;&#x80FD;&#x96C6;&#x6210;&#x5230;&#x4E86; Spring &#x6846;&#x67B6;&#x4E2D;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x4F7F; Spring &#x6846;&#x67B6;&#x7BA1;&#x7406;&#x7684;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#x652F;&#x6301; AOP&#x3002;Spring AOP &#x6A21;&#x5757;&#x4E3A;&#x57FA;&#x4E8E; Spring &#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x4E86;&#x4E8B;&#x52A1;&#x7BA1;&#x7406;&#x670D;&#x52A1;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528; Spring AOP&#xFF0C;&#x4E0D;&#x7528;&#x4F9D;&#x8D56; EJB &#x7EC4;&#x4EF6;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x58F0;&#x660E;&#x6027;&#x4E8B;&#x52A1;&#x7BA1;&#x7406;&#x96C6;&#x6210;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x3002;</p>
+<p>#Spring DAO:<br>JDBC DAO &#x62BD;&#x8C61;&#x5C42;&#x63D0;&#x4F9B;&#x4E86;&#x6709;&#x610F;&#x4E49;&#x7684;&#x5F02;&#x5E38;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#xFF0C;&#x53EF;&#x7528;&#x8BE5;&#x7ED3;&#x6784;&#x6765;&#x7BA1;&#x7406;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x548C;&#x4E0D;&#x540C;&#x6570;&#x636E;&#x5E93;&#x4F9B;&#x5E94;&#x5546;&#x629B;&#x51FA;&#x7684;&#x9519;&#x8BEF;&#x6D88;&#x606F;&#x3002;&#x5F02;&#x5E38;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x7B80;&#x5316;&#x4E86;&#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x4E14;&#x6781;&#x5927;&#x5730;&#x964D;&#x4F4E;&#x4E86;&#x9700;&#x8981;&#x7F16;&#x5199;&#x7684;&#x5F02;&#x5E38;&#x4EE3;&#x7801;&#x6570;&#x91CF;&#xFF08;&#x4F8B;&#x5982;&#x6253;&#x5F00;&#x548C;&#x5173;&#x95ED;&#x8FDE;&#x63A5;&#xFF09;&#x3002;Spring DAO &#x7684;&#x9762;&#x5411; JDBC &#x7684;&#x5F02;&#x5E38;&#x9075;&#x4ECE;&#x901A;&#x7528;&#x7684; DAO &#x5F02;&#x5E38;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x3002;</p>
+<p>#Spring ORM:<br>Spring &#x6846;&#x67B6;&#x63D2;&#x5165;&#x4E86;&#x82E5;&#x5E72;&#x4E2A; ORM &#x6846;&#x67B6;&#xFF0C;&#x4ECE;&#x800C;&#x63D0;&#x4F9B;&#x4E86; ORM &#x7684;&#x5BF9;&#x8C61;&#x5173;&#x7CFB;&#x5DE5;&#x5177;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC; JDO&#x3001;Hibernate &#x548C; iBatis SQL Map&#x3002;&#x6240;&#x6709;&#x8FD9;&#x4E9B;&#x90FD;&#x9075;&#x4ECE; Spring &#x7684;&#x901A;&#x7528;&#x4E8B;&#x52A1;&#x548C; DAO &#x5F02;&#x5E38;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#x3002;</p>
+<p>#Spring Web&#x6A21;&#x5757;&#xFF1A;<br>Web &#x4E0A;&#x4E0B;&#x6587;&#x6A21;&#x5757;&#x5EFA;&#x7ACB;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E0A;&#x4E0B;&#x6587;&#x6A21;&#x5757;&#x4E4B;&#x4E0A;&#xFF0C;&#x4E3A;&#x57FA;&#x4E8E; Web &#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x63D0;&#x4F9B;&#x4E86;&#x4E0A;&#x4E0B;&#x6587;&#x3002;&#x6240;&#x4EE5;&#xFF0C;Spring &#x6846;&#x67B6;&#x652F;&#x6301;&#x4E0E; Jakarta Struts &#x7684;&#x96C6;&#x6210;&#x3002;Web &#x6A21;&#x5757;&#x8FD8;&#x7B80;&#x5316;&#x4E86;&#x5904;&#x7406;&#x591A;&#x90E8;&#x5206;&#x8BF7;&#x6C42;&#x4EE5;&#x53CA;&#x5C06;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x7ED1;&#x5B9A;&#x5230;&#x57DF;&#x5BF9;&#x8C61;&#x7684;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p>#Spring MVC&#x6846;&#x67B6;&#xFF1A;<br>MVC &#x6846;&#x67B6;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x529F;&#x80FD;&#x7684;&#x6784;&#x5EFA; Web &#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684; MVC &#x5B9E;&#x73B0;&#x3002;&#x901A;&#x8FC7;&#x7B56;&#x7565;&#x63A5;&#x53E3;&#xFF0C;MVC &#x6846;&#x67B6;&#x53D8;&#x6210;&#x4E3A;&#x9AD8;&#x5EA6;&#x53EF;&#x914D;&#x7F6E;&#x7684;&#xFF0C;MVC &#x5BB9;&#x7EB3;&#x4E86;&#x5927;&#x91CF;&#x89C6;&#x56FE;&#x6280;&#x672F;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC; JSP&#x3001;Velocity&#x3001;Tiles&#x3001;iText &#x548C; POI&#x3002;</p>
+<blockquote>
+<p><a href="http://blog.javachen.com/2014/09/29/spring-source-codes/" title="Spring&#x6E90;&#x7801;&#x6574;&#x4F53;&#x67B6;&#x6784;" target="_blank" rel="external">Spring&#x6E90;&#x7801;&#x6574;&#x4F53;&#x67B6;&#x6784;</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/源码/">源码</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/IDE/20141204_配置Maven项目自动编译/"><span>配置Maven项目自动编译</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/IDE/20141204_配置Maven项目自动编译/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>##Maven&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">    - src    </span><br><span class="line">        - main</span><br><span class="line">            - java</span><br><span class="line">            - resources</span><br><span class="line">            - webapp</span><br><span class="line">                - WEB-INF</span><br><span class="line">                    - classes</span><br><span class="line">                    - lib</span><br><span class="line">    - target</span><br><span class="line">        - project-snapshot</span><br><span class="line">            - WEB-INF</span><br><span class="line">                - classes</span><br><span class="line">                - lib</span><br><span class="line">        - classes</span><br><span class="line">```     </span><br><span class="line">&#x5176;&#x4E2D; project-snapshot&#x5C31;&#x662F;maven&#x7F16;&#x8BD1;&#x751F;&#x6210;&#x7684;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x5BF9;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#xFF0C;&#x8FD9;&#x6837;&#x95EE;&#x9898;&#x6765;&#x4E86;&#xFF1A;  </span><br><span class="line">  </span><br><span class="line">&#x6BCF;&#x6B21;&#x6539;&#x52A8;JSP&#x6587;&#x4EF6;&#x6216;&#x8005;Java&#x6587;&#x4EF6;&#xFF0C;&#x90FD;&#x5F97;&#x91CD;&#x65B0;&#x7528;maven&#x7F16;&#x8BD1;&#x4E00;&#x4E0B;&#xFF0C;&#x4EE5;&#x4FBF;&#x751F;&#x6210;&#x4EE3;&#x7801;&#x5230;&#x8BE5;&#x76EE;&#x5F55;&#xFF0C;&#x6709;&#x6CA1;&#x6709;&#x65B9;&#x4FBF;&#x70B9;&#x7684;&#x505A;&#x6CD5;&#x5462;&#xFF1F;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x5566;&#x3002;</span><br><span class="line"></span><br><span class="line">##&#x8BA9;Maven&#x9879;&#x76EE;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#xFF1A;    </span><br><span class="line">    </span><br><span class="line">&#x4E3A;&#x4E86;&#x8BA9;&#x6539;&#x5199;JSP&#x4E4B;&#x540E;&#x65E0;&#x9700;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x6709;&#x4F7F;&#x7528;src/main/webapp/&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x822C;&#x6211;&#x4EEC;&#x662F;&#x76F4;&#x63A5;&#x6539;&#x52A8;&#x91CC;&#x9762;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x7684;&#xFF1B;    </span><br><span class="line">    </span><br><span class="line">&#x800C;jar&#x5305;&#x662F;maven&#x4ECE;&#x4ED3;&#x5E93;&#x4E0B;&#x8F7D;&#x8FC7;&#x6765;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x80FD;&#x7528;&#x4E0A;&#x4E0B;&#x8F7D;&#x56DE;&#x6765;&#x7684;jar&#x5305;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;</span><br><span class="line">&gt; target/project-snapshot/WEB-INF/lib   </span><br><span class="line">  </span><br><span class="line">&#x76EE;&#x5F55;&#x8054;&#x63A5;&#x5230;</span><br><span class="line">    </span><br><span class="line">&gt; src/main/webapp/WEB-INF/lib</span><br><span class="line"></span><br><span class="line">windows&#x4E0B;&#x901A;&#x8FC7; [mklink /j](http://technet.microsoft.com/en-us/library/cc753194.aspx &quot;mklink&quot;) &#x547D;&#x4EE4;(&#x5047;&#x8BBE;&#x9879;&#x76EE;&#x5728;D:/dev&#x76EE;&#x5F55;&#x4E0B;)&#xFF1A;</span><br></pre></td></tr></table></figure></p>
+<p>mklink /j &#x201C;D:\dev\project\src\main\webapp\WEB-INF\lib&#x201D; &#x201C;D:\dev\project\target\project-snapshot\WEB-INF\lib&#x201D;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x8FD9;&#x6837;&#x5C31;&#x628A;maven&#x4E0B;&#x8F7D;&#x7684;lib&#x76EE;&#x5F55;&#x8054;&#x63A5;&#x5230;&#x90E8;&#x7F72;&#x76EE;&#x5F55;webapp&#x4E0B;&#x4E86;&#xFF1B;</span><br><span class="line">   </span><br><span class="line">&#x5BF9;&#x4E8E;class&#x76EE;&#x5F55;&#xFF0C;&#x4E5F;&#x662F;&#x540C;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53E6;&#x5916;&#x9700;&#x8981;&#x8BBE;&#x7F6E;IDE&#x7684;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#x5230;&#xFF1A;</span><br><span class="line">&gt; target/project-snapshot/WEB-INF/classes    </span><br><span class="line"></span><br><span class="line">&#x53F3;&#x51FB;&#x9879;&#x76EE; -&gt; properties -&gt; Java Build Path -&gt; &#x53F3;&#x8FB9;&#x9762;&#x677F;&#x5E95;&#x90E8;&#x8BBE;&#x7F6E;Default output folder&#xFF1B;        </span><br><span class="line"></span><br><span class="line">##&#x76F4;&#x63A5;&#x8FD0;&#x884C;main&#x65B9;&#x6CD5;&#x7684;&#x95EE;&#x9898;</span><br><span class="line"></span><br><span class="line">&#x4F46;&#x662F;&#x8FD9;&#x6837;Eclipse&#x4E0B;&#x4F1A;&#x6709;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;main&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x9519;&#x8BEF;&#xFF1A;</span><br></pre></td></tr></table></figure></p>
+<p>java.lang.NoClassDefFoundError: me/arthinking/test/Demo<br>Caused by: java.lang.ClassNotFoundException: me.arthinking.test.Demo<br>    at java.net.URLClassLoader$1.run(URLClassLoader.java:202)<br>    at java.security.AccessController.doPrivileged(Native Method)<br>    at java.net.URLClassLoader.findClass(URLClassLoader.java:190)<br>    at java.lang.ClassLoader.loadClass(ClassLoader.java:306)<br>    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)<br>    at java.lang.ClassLoader.loadClass(ClassLoader.java:247)<br>Exception in thread &#x201C;main&#x201D;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x539F;&#x56E0;&#x662F;&#x6CA1;&#x6709;&#x8BFB;&#x53D6;&#x5230;&#x8F93;&#x51FA;&#x7684;classes&#x6587;&#x4EF6;&#xFF0C;&#x4E3A;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;class&#x7F16;&#x8BD1;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#x8BBE;&#x7F6E;&#x4E3A;&#xFF1A;    </span><br><span class="line"></span><br><span class="line">&gt; project/target/classes</span><br><span class="line"></span><br><span class="line">&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x6267;&#x884C;main&#x65B9;&#x6CD5;&#x4E86;</span><br><span class="line"></span><br><span class="line">&#x628A;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x8054;&#x63A5;&#x5230;webapp/WEB-INF/classes&#x76EE;&#x5F55;&#x4E0B;&#x5373;&#x53EF;&#x3002;</span><br><span class="line">&#x7F16;&#x8BD1;&#x76EE;&#x5F55;&#x8BBE;&#x7F6E;&#x5982;&#x56FE;&#xFF1A;    </span><br><span class="line">![](https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141204-java01.png)</span><br><span class="line"></span><br><span class="line">&#x5176;&#x4ED6;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x9700;&#x8981;&#x8054;&#x63A5;&#x5230;webapp&#x76EE;&#x5F55;&#xFF0C;&#x540C;&#x4E0A;&#x64CD;&#x4F5C;&#x3002;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##&#x5173;&#x4E8E;IDEA&#x96C6;&#x6210;&#x5F00;&#x53D1;&#x73AF;&#x5883;</span><br><span class="line"></span><br><span class="line">&#x636E;[Ryan](https://github.com/mojunbin &quot;Ryan&quot;)&#x4ECB;&#x7ECD;&#xFF0C;IDEA&#x96C6;&#x6210;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x662F;&#x4E0D;&#x4F1A;&#x5B58;&#x5728;&#x627E;&#x4E0D;&#x5230;main&#x65B9;&#x6CD5;&#x7684;&#x95EE;&#x9898;&#x7684;&#xFF1B;</span><br><span class="line"></span><br><span class="line">&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;pom.xml&#x4E2D;&#x914D;&#x7F6E;classes&#x6587;&#x4EF6;&#x7684;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#xFF0C;&#x628A;classes&#x6587;&#x4EF6;&#x8F93;&#x51FA;&#x5230;webapp&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x8FD9;&#x6837;&#x6539;&#x5199;&#x4E86;Java&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x9700;&#x8981;&#x4F7F;&#x7528;maven&#x7F16;&#x8BD1;&#x4E0B;&#x9879;&#x76EE;&#x4E86;&#x3002;:sunglasses:     </span><br><span class="line">pom.xml</span><br><span class="line">```xml</span><br><span class="line">&lt;outputDirectory&gt;D:\dev\project\webapp\WEB-INF\classes&lt;/outputDirectory&gt;</span><br></pre></td></tr></table></figure></p>
+<p>##Resin&#x4E2D;&#x7684;&#x914D;&#x7F6E;<br>&#x73B0;&#x5728;&#x6211;&#x7528;&#x7740;Resin&#xFF0C;&#x6070;&#x5DE7;&#xFF0C;resin&#x91CC;&#x9762;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; <a href="http://www.caucho.com/resin-4.0/reference.xtp#classloader" title="&lt;class-loader&gt;" target="_blank" rel="external"><class-loader></class-loader></a> &#x7684;&#x914D;&#x7F6E;&#x6807;&#x7B7E;&#xFF0C;&#x901A;&#x8FC7;&#x5176;&#x4E2D;&#x7684; <a href="http://www.caucho.com/resin-4.0/reference.xtp#compilingloader" title="[&lt;compiling-loader&gt;]" target="_blank" rel="external"><compiling-loader></compiling-loader></a> &#x548C; <a href="http://www.caucho.com/resin-4.0/reference.xtp#libraryloader" title="&lt;library-loader&gt;" target="_blank" rel="external"><library-loader></library-loader></a> &#x5B50;&#x6807;&#x7B7E;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x52A0;&#x8F7D;class&#x6587;&#x4EF6;&#x548C;jar&#x5305;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x914D;&#x7F6E;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">id</span>=<span class="string">&quot;/&quot;</span> <span class="attr">root-directory</span>=<span class="string">&quot;D:\dev\project\src\main\webapp&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">prologue</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">class-loader</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">compiling-loader</span> <span class="attr">path</span>=<span class="string">&quot;D:\dev\project\target\classes&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">library-loader</span> <span class="attr">path</span>=<span class="string">&quot;D:\dev\project\target\project-snapshot\WEB-INF\lib&quot;</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">class-loader</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">prologue</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x8FDB;&#x4E00;&#x6B65;&#x67E5;&#x770B;<a href="http://caucho.com/resin-4.0/reference.xtp#compilingloader" title="&#x5B98;&#x65B9;&#x6587;&#x6863;" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x4ECB;&#x7ECD;&#xFF1A;</p>
+<blockquote>
+<p>automatically compiles Java code into .class files before loading them.    </p>
+</blockquote>
+<p>&#x9996;&#x5148;&#x8FD9;&#x91CC;class-loader&#x5B9E;&#x73B0;&#x4E86;&#x70ED;&#x90E8;&#x7F72;&#xFF08;&#x7C7B;&#x4F3C;&#x7684;&#x4E00;&#x822C;&#x7684;Servlet&#x5BB9;&#x5668;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;JSP&#x7684;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x5982;Tomcat&#x7684;<a href="http://my.oschina.net/heroShane/blog/198450" title="JasperLoader" target="_blank" rel="external">JasperLoader</a>&#xFF0C;&#x5F53;&#x5BB9;&#x5668;&#x68C0;&#x6D4B;&#x5230;JSP&#x6587;&#x4EF6;&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x66FF;&#x6362;&#x6389;&#x539F;&#x6765;&#x7684;JSP&#x52A0;&#x8F7D;&#x5668;&#x7684;Class&#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x3002;&#x5173;&#x4E8E;Resin&#x4E2D;&#x7684;<a href="http://coolshell.cn/articles/6112.html" title="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6267;&#x884C;&#x95EE;&#x9898;" target="_blank" rel="external">&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6267;&#x884C;&#x95EE;&#x9898;</a>&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x4F1A;&#x5728;&#x52A0;&#x8F7D;class&#x6587;&#x4EF6;&#x4E4B;&#x524D;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x67E5;&#x770B;&#x6587;&#x6863;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;source&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6DFB;&#x52A0;&#x4E0A;&#x4E4B;&#x540E;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">compiling-loader</span> <span class="attr">path</span>=<span class="string">&quot;D:\dev\project\target\classes&quot;</span> <span class="attr">source</span>=<span class="string">&quot;D:\dev\project\src\main\java&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x4F1A;&#x5728;&#x52A0;&#x8F7D;class&#x524D;&#x5148;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;Java&#x4EE3;&#x7801;&#x4E86;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;Eclipse&#x6CA1;&#x6709;&#x5F00;&#x542F;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x529F;&#x80FD;&#x7684;&#x73AF;&#x5883;&#x5C24;&#x5176;&#x6709;&#x7528;&#xFF08;Eclipse&#x7684;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x529F;&#x80FD;&#x4E5F;&#x662F;&#x9700;&#x8981;&#x4E00;&#x5B9A;&#x7684;&#x8D44;&#x6E90;&#x5F00;&#x9500;&#x7684;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x4F1A;&#x5BFC;&#x81F4;Eclipse&#x5361;&#x4F4F;&#xFF0C;&#x5982;&#x679C;&#x5173;&#x95ED;&#x4E86;&#x8BE5;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x4EE5;&#x4E0A;&#x914D;&#x7F6E;&#xFF09;&#x3002;</p>
+<p>##&#x5176;&#x4ED6;&#x7684;&#x70ED;&#x90E8;&#x7F72;&#x65B9;&#x6848;</p>
+<p>###&#x70ED;&#x90E8;&#x7F72;&#x795E;&#x5668;<a href="http://zeroturnaround.com/software/jrebel/" title="JRebel" target="_blank" rel="external">JRebel</a>    </p>
+<p><a href="http://zeroturnaround.com/software/jrebel/features/comparison-matrix/" title="&#x8FD9;&#x91CC;" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>&#x662F;JRebel&#x548C;JVM Hot Swap&#x7684;&#x533A;&#x522B;</p>
+<p>&#x53E6;&#x5916;&#xFF0C;<a href="http://jm-blog.aliapp.com/?p=641" title="&#x8FD9;&#x91CC;" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>&#x6709;&#x4E00;&#x4E2A;JVM hotswap&#x7684;&#x8865;&#x4E01;</p>
+<blockquote>
+<p>&#x8BF4;&#x5230;HotSwap&#x7279;&#x6027;&#xFF0C;&#x662F;&#x5728;2002&#x5E74;&#x7684;&#x65F6;&#x5019;&#xFF0C;Sun&#x5728;Java 1.4&#x7684;JVM&#x4E2D;&#x5F15;&#x5165;&#x7684;&#x5B9E;&#x9A8C;&#x6027;&#x6280;&#x672F;&#x3002;&#x8FD9;&#x4E00;&#x6280;&#x672F;&#x88AB;&#x5408;&#x6210;&#x5230;&#x4E86;DebuggerAPI&#x7684;&#x5185;&#x90E8;&#x3002;<br><a href="http://article.yeeyan.org/view/213582/186226" title="HotSwap&#x548C;JRebel&#x2014;&#x2014;&#x5E55;&#x540E;&#x7684;&#x6545;&#x4E8B;" target="_blank" rel="external">&#x300A;HotSwap&#x548C;JRebel&#x2014;&#x2014;&#x5E55;&#x540E;&#x7684;&#x6545;&#x4E8B;&#x300B;</a></p>
+</blockquote>
+<p>###Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;<br>&#x5728;resin.conf&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;JVM&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF1A;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>&#x8868;&#x793A;&#x542F;&#x52A8;debug&#x6A21;&#x5F0F;&#xFF0C;&#x5F53;&#x66F4;&#x65B0;&#x4E86;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;reloading class&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7;JVM&#x7684;HotSwap&#x529F;&#x80FD;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x7684;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br></pre></td></tr></table></figure>
+<p>&#x7531;&#x4E8E;JVM&#x7684;HotSwap&#x4E0D;&#x652F;&#x6301;&#x65B0;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x7684;&#xFF0C;Resin&#x4F1A;&#x81EA;&#x52A8;&#x6539;&#x7528;Hot deploy&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x3002;</p>
+<p>&#x5F53;&#x53BB;&#x6389;&#x8BE5;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">... WebApp[...] stopping</span><br><span class="line">... WebApp[...] active</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/maven-setting-auto-compile.html" target="_blank" rel="external">http://www.itzhai.com/maven-setting-auto-compile.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/构建/">构建</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Maven/">Maven</a>
+  </span>
+
+
         </div>
         
     </footer>
@@ -168,26 +511,26 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>Context 在 Spring 的 org.springframework.context 包下，前面已经讲解了 Context 组件在 Spring 中的作用，他实际上就是给 Spring 提供一个运行时的环境，用以保存各个对象的状态。下面看一下这个环境是如何构建的。</p>
-<p>ApplicationContext 是 Context 的顶级父类，他除了能标识一个应用环境的基本信息外，他还继承了五个接口，这五个接口主要是扩展了 Context 的功能。下面是 Context 的类结构图：</p>
-<p><strong>Context相关的类结构图</strong></p>
+<p>Context &#x5728; Spring &#x7684; org.springframework.context &#x5305;&#x4E0B;&#xFF0C;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x8BB2;&#x89E3;&#x4E86; Context &#x7EC4;&#x4EF6;&#x5728; Spring &#x4E2D;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x4ED6;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x7ED9; Spring &#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x7528;&#x4EE5;&#x4FDD;&#x5B58;&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x3002;&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x73AF;&#x5883;&#x662F;&#x5982;&#x4F55;&#x6784;&#x5EFA;&#x7684;&#x3002;</p>
+<p>ApplicationContext &#x662F; Context &#x7684;&#x9876;&#x7EA7;&#x7236;&#x7C7B;&#xFF0C;&#x4ED6;&#x9664;&#x4E86;&#x80FD;&#x6807;&#x8BC6;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x73AF;&#x5883;&#x7684;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x5916;&#xFF0C;&#x4ED6;&#x8FD8;&#x7EE7;&#x627F;&#x4E86;&#x4E94;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x4E94;&#x4E2A;&#x63A5;&#x53E3;&#x4E3B;&#x8981;&#x662F;&#x6269;&#x5C55;&#x4E86; Context &#x7684;&#x529F;&#x80FD;&#x3002;&#x4E0B;&#x9762;&#x662F; Context &#x7684;&#x7C7B;&#x7ED3;&#x6784;&#x56FE;&#xFF1A;</p>
+<p><strong>Context&#x76F8;&#x5173;&#x7684;&#x7C7B;&#x7ED3;&#x6784;&#x56FE;</strong></p>
 <p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring005.png" alt="">    </p>
-<p>从上图中可以看出 ApplicationContext 继承了 BeanFactory，这也说明了 Spring 容器中运行的主体对象是 Bean，另外 ApplicationContext 继承了 ResourceLoader 接口，使得 ApplicationContext 可以访问到任何外部资源，这将在 Core 中详细说明。</p>
-<p>###ApplicationContext 的子类主要包含两个方面：</p>
+<p>&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA; ApplicationContext &#x7EE7;&#x627F;&#x4E86; BeanFactory&#xFF0C;&#x8FD9;&#x4E5F;&#x8BF4;&#x660E;&#x4E86; Spring &#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x4E3B;&#x4F53;&#x5BF9;&#x8C61;&#x662F; Bean&#xFF0C;&#x53E6;&#x5916; ApplicationContext &#x7EE7;&#x627F;&#x4E86; ResourceLoader &#x63A5;&#x53E3;&#xFF0C;&#x4F7F;&#x5F97; ApplicationContext &#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5230;&#x4EFB;&#x4F55;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#xFF0C;&#x8FD9;&#x5C06;&#x5728; Core &#x4E2D;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x3002;</p>
+<p>###ApplicationContext &#x7684;&#x5B50;&#x7C7B;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
 <ul>
-<li>ConfigurableApplicationContext 表示该 Context 是可修改的，也就是在构建 Context 中用户可以动态添加或修改已有的配置信息，它下面又有多个子类，其中最经常使用的是可更新的 Context，即 AbstractRefreshableApplicationContext 类。</li>
-<li>WebApplicationContext 顾名思义，就是为 web 准备的 Context 他可以直接访问到 ServletContext，通常情况下，这个接口使用的少。<br>再往下分就是按照构建 Context 的文件类型，接着就是访问 Context 的方式。这样一级一级构成了完整的 Context 等级层次。</li>
+<li>ConfigurableApplicationContext &#x8868;&#x793A;&#x8BE5; Context &#x662F;&#x53EF;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x6784;&#x5EFA; Context &#x4E2D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x6DFB;&#x52A0;&#x6216;&#x4FEE;&#x6539;&#x5DF2;&#x6709;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5B83;&#x4E0B;&#x9762;&#x53C8;&#x6709;&#x591A;&#x4E2A;&#x5B50;&#x7C7B;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x53EF;&#x66F4;&#x65B0;&#x7684; Context&#xFF0C;&#x5373; AbstractRefreshableApplicationContext &#x7C7B;&#x3002;</li>
+<li>WebApplicationContext &#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5C31;&#x662F;&#x4E3A; web &#x51C6;&#x5907;&#x7684; Context &#x4ED6;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5230; ServletContext&#xFF0C;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x4F7F;&#x7528;&#x7684;&#x5C11;&#x3002;<br>&#x518D;&#x5F80;&#x4E0B;&#x5206;&#x5C31;&#x662F;&#x6309;&#x7167;&#x6784;&#x5EFA; Context &#x7684;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x8BBF;&#x95EE; Context &#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x7EA7;&#x4E00;&#x7EA7;&#x6784;&#x6210;&#x4E86;&#x5B8C;&#x6574;&#x7684; Context &#x7B49;&#x7EA7;&#x5C42;&#x6B21;&#x3002;</li>
 </ul>
-<p>###总体来说 ApplicationContext 必须要完成以下几件事：    </p>
+<p>###&#x603B;&#x4F53;&#x6765;&#x8BF4; ApplicationContext &#x5FC5;&#x987B;&#x8981;&#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;    </p>
 <ul>
-<li>标识一个应用环境</li>
-<li>利用 BeanFactory 创建 Bean 对象</li>
-<li>保存对象关系表</li>
-<li>能够捕获各种事件</li>
-<li>Context 作为 Spring 的 Ioc 容器，基本上整合了 Spring 的大部分功能，或者说是大部分功能的基础。</li>
+<li>&#x6807;&#x8BC6;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x73AF;&#x5883;</li>
+<li>&#x5229;&#x7528; BeanFactory &#x521B;&#x5EFA; Bean &#x5BF9;&#x8C61;</li>
+<li>&#x4FDD;&#x5B58;&#x5BF9;&#x8C61;&#x5173;&#x7CFB;&#x8868;</li>
+<li>&#x80FD;&#x591F;&#x6355;&#x83B7;&#x5404;&#x79CD;&#x4E8B;&#x4EF6;</li>
+<li>Context &#x4F5C;&#x4E3A; Spring &#x7684; Ioc &#x5BB9;&#x5668;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x6574;&#x5408;&#x4E86; Spring &#x7684;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x7684;&#x57FA;&#x7840;&#x3002;</li>
 </ul>
 <blockquote>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring 框架的设计理念与设计模式分析" target="_blank" rel="external">Spring 框架的设计理念与设计模式分析</a> </p>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;" target="_blank" rel="external">Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;</a></p>
 </blockquote>
 
       
@@ -203,52 +546,6 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
   </span>
 
 
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/README/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/README/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="arthinking的技术总结"><a href="#arthinking的技术总结" class="headerlink" title="arthinking的技术总结"></a>arthinking的技术总结</h2><blockquote>
-<p>Author: arthinking<br>E-mail: 1225538383@qq.com</p>
-</blockquote>
-<hr>
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a><a href="https://github.com/arthinking/arthinking/blob/master/Java.md" title="Java" target="_blank" rel="external">Java</a></h1><h1 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h1><hr>
-<p>#GitHub相关资源<br>markdown语法：<a href="https://github.com/guodongxiaren/test" target="_blank" rel="external">https://github.com/guodongxiaren/test</a><br>GitHub上README写法暨GFM语法解读：<a href="http://blog.csdn.net/wqvbjhc/article/details/27349209" target="_blank" rel="external">http://blog.csdn.net/wqvbjhc/article/details/27349209</a></p>
-<p>图片格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-02.png</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
           
         </div>
         
@@ -285,23 +582,86 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>Core 组件作为 Spring 的核心组件，他其中包含了很多的关键类，其中一个重要组成部分就是定义了资源的访问方式。这种把所有资源都抽象成一个接口的方式很值得在以后的设计中拿来学习。下面就重要看一下这个部分在 Spring 的作用。</p>
-<p><strong>Resource相关的类结构图：</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring006.png" alt=""> </p>
-<p>从上图可以看出 Resource 接口封装了各种可能的资源类型，也就是对使用者来说屏蔽了文件类型的不同。对资源的提供者来说，如何把资源包装起来交给其他人用这也是一个问题，我们看到 Resource 接口继承了 InputStreamSource 接口，这个接口中有个 getInputStream 方法，返回的是 InputStream 类。这样所有的资源都被可以通过 InputStream 这个类来获取，所以也屏蔽了资源的提供者。另外还有一个问题就是加载资源的问题，也就是资源的加载者要统一，从上图中可以看出这个任务是由 ResourceLoader 接口完成，他屏蔽了所有的资源加载者的差异，只需要实现这个接口就可以加载所有的资源，他的默认实现是 DefaultResourceLoader。<br>下面看一下 Context 和 Resource 是如何建立关系的？首先看一下他们的类关系图：</p>
-<p><strong>Context和Resource的类关系图</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring007.png" alt=""> </p>
-<h3 id="如何创建BeanFactory工厂"><a href="#如何创建BeanFactory工厂" class="headerlink" title="如何创建BeanFactory工厂"></a>如何创建BeanFactory工厂</h3><p>正如图 2 描述的那样，Ioc 容器实际上就是 Context 组件结合其他两个组件共同构建了一个 Bean 关系网，如何构建这个关系网？构建的入口就在 AbstractApplicationContext 类的 refresh 方法中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public void refresh() throws BeansException, IllegalStateException &#123; </span><br><span class="line">    synchronized (this.startupShutdownMonitor) &#123; </span><br><span class="line">        // Prepare this context for refreshing. </span><br><span class="line">        // 创建和配置BeanFactory</span><br><span class="line">        prepareRefresh(); </span><br><span class="line">        // Tell the subclass to refresh the internal bean factory. </span><br><span class="line">        ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory(); </span><br><span class="line">        // Prepare the bean factory for use in this context. </span><br><span class="line">        prepareBeanFactory(beanFactory); </span><br><span class="line">        try &#123; </span><br><span class="line">            // Allows post-processing of the bean factory in context subclasses. </span><br><span class="line">            postProcessBeanFactory(beanFactory); </span><br><span class="line">            // Invoke factory processors registered as beans in the context. </span><br><span class="line">            invokeBeanFactoryPostProcessors(beanFactory); </span><br><span class="line">            // Register bean processors that intercept bean creation. </span><br><span class="line">            registerBeanPostProcessors(beanFactory); </span><br><span class="line">            // Initialize message source for this context. </span><br><span class="line">            initMessageSource(); </span><br><span class="line">            // Initialize event multicaster for this context. </span><br><span class="line">            initApplicationEventMulticaster(); </span><br><span class="line">            // Initialize other special beans in specific context subclasses. </span><br><span class="line">            onRefresh(); </span><br><span class="line">            // Check for listener beans and register them. </span><br><span class="line">            registerListeners(); </span><br><span class="line">            // Instantiate all remaining (non-lazy-init) singletons. </span><br><span class="line">            finishBeanFactoryInitialization(beanFactory); </span><br><span class="line">            // Last step: publish corresponding event. </span><br><span class="line">            finishRefresh(); </span><br><span class="line">        &#125; </span><br><span class="line">        catch (BeansException ex) &#123; </span><br><span class="line">            // Destroy already created singletons to avoid dangling resources. </span><br><span class="line">            destroyBeans(); </span><br><span class="line">            // Reset &apos;active&apos; flag. </span><br><span class="line">            cancelRefresh(ex); </span><br><span class="line">            // Propagate exception to caller. </span><br><span class="line">            throw ex; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这个方法就是构建整个 Ioc 容器过程的完整的代码，了解了里面的每一行代码基本上就了解大部分 Spring 的原理和功能了。</p>
-<p>这段代码主要包含这样几个步骤：    </p>
+<p>Core &#x7EC4;&#x4EF6;&#x4F5C;&#x4E3A; Spring &#x7684;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#xFF0C;&#x4ED6;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x5173;&#x952E;&#x7C7B;&#xFF0C;&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x5C31;&#x662F;&#x5B9A;&#x4E49;&#x4E86;&#x8D44;&#x6E90;&#x7684;&#x8BBF;&#x95EE;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x79CD;&#x628A;&#x6240;&#x6709;&#x8D44;&#x6E90;&#x90FD;&#x62BD;&#x8C61;&#x6210;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x5F0F;&#x5F88;&#x503C;&#x5F97;&#x5728;&#x4EE5;&#x540E;&#x7684;&#x8BBE;&#x8BA1;&#x4E2D;&#x62FF;&#x6765;&#x5B66;&#x4E60;&#x3002;&#x4E0B;&#x9762;&#x5C31;&#x91CD;&#x8981;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#x5728; Spring &#x7684;&#x4F5C;&#x7528;&#x3002;</p>
+<p><strong>Resource&#x76F8;&#x5173;&#x7684;&#x7C7B;&#x7ED3;&#x6784;&#x56FE;&#xFF1A;</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring006.png" alt=""> </p>
+<p>&#x4ECE;&#x4E0A;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x51FA; Resource &#x63A5;&#x53E3;&#x5C01;&#x88C5;&#x4E86;&#x5404;&#x79CD;&#x53EF;&#x80FD;&#x7684;&#x8D44;&#x6E90;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5BF9;&#x4F7F;&#x7528;&#x8005;&#x6765;&#x8BF4;&#x5C4F;&#x853D;&#x4E86;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#x7684;&#x4E0D;&#x540C;&#x3002;&#x5BF9;&#x8D44;&#x6E90;&#x7684;&#x63D0;&#x4F9B;&#x8005;&#x6765;&#x8BF4;&#xFF0C;&#x5982;&#x4F55;&#x628A;&#x8D44;&#x6E90;&#x5305;&#x88C5;&#x8D77;&#x6765;&#x4EA4;&#x7ED9;&#x5176;&#x4ED6;&#x4EBA;&#x7528;&#x8FD9;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x770B;&#x5230; Resource &#x63A5;&#x53E3;&#x7EE7;&#x627F;&#x4E86; InputStreamSource &#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x4E2D;&#x6709;&#x4E2A; getInputStream &#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x662F; InputStream &#x7C7B;&#x3002;&#x8FD9;&#x6837;&#x6240;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x90FD;&#x88AB;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; InputStream &#x8FD9;&#x4E2A;&#x7C7B;&#x6765;&#x83B7;&#x53D6;&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x5C4F;&#x853D;&#x4E86;&#x8D44;&#x6E90;&#x7684;&#x63D0;&#x4F9B;&#x8005;&#x3002;&#x53E6;&#x5916;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x52A0;&#x8F7D;&#x8D44;&#x6E90;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8D44;&#x6E90;&#x7684;&#x52A0;&#x8F7D;&#x8005;&#x8981;&#x7EDF;&#x4E00;&#xFF0C;&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x8FD9;&#x4E2A;&#x4EFB;&#x52A1;&#x662F;&#x7531; ResourceLoader &#x63A5;&#x53E3;&#x5B8C;&#x6210;&#xFF0C;&#x4ED6;&#x5C4F;&#x853D;&#x4E86;&#x6240;&#x6709;&#x7684;&#x8D44;&#x6E90;&#x52A0;&#x8F7D;&#x8005;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x5C31;&#x53EF;&#x4EE5;&#x52A0;&#x8F7D;&#x6240;&#x6709;&#x7684;&#x8D44;&#x6E90;&#xFF0C;&#x4ED6;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x662F; DefaultResourceLoader&#x3002;<br>&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B; Context &#x548C; Resource &#x662F;&#x5982;&#x4F55;&#x5EFA;&#x7ACB;&#x5173;&#x7CFB;&#x7684;&#xFF1F;&#x9996;&#x5148;&#x770B;&#x4E00;&#x4E0B;&#x4ED6;&#x4EEC;&#x7684;&#x7C7B;&#x5173;&#x7CFB;&#x56FE;&#xFF1A;</p>
+<p><strong>Context&#x548C;Resource&#x7684;&#x7C7B;&#x5173;&#x7CFB;&#x56FE;</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring007.png" alt=""> </p>
+<h3 id="&#x5982;&#x4F55;&#x521B;&#x5EFA;beanfactory&#x5DE5;&#x5382;"><a href="#&#x5982;&#x4F55;&#x521B;&#x5EFA;BeanFactory&#x5DE5;&#x5382;" class="headerlink" title="&#x5982;&#x4F55;&#x521B;&#x5EFA;BeanFactory&#x5DE5;&#x5382;"></a>&#x5982;&#x4F55;&#x521B;&#x5EFA;BeanFactory&#x5DE5;&#x5382;</h3><p>&#x6B63;&#x5982;&#x56FE; 2 &#x63CF;&#x8FF0;&#x7684;&#x90A3;&#x6837;&#xFF0C;Ioc &#x5BB9;&#x5668;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F; Context &#x7EC4;&#x4EF6;&#x7ED3;&#x5408;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x7EC4;&#x4EF6;&#x5171;&#x540C;&#x6784;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; Bean &#x5173;&#x7CFB;&#x7F51;&#xFF0C;&#x5982;&#x4F55;&#x6784;&#x5EFA;&#x8FD9;&#x4E2A;&#x5173;&#x7CFB;&#x7F51;&#xFF1F;&#x6784;&#x5EFA;&#x7684;&#x5165;&#x53E3;&#x5C31;&#x5728; AbstractApplicationContext &#x7C7B;&#x7684; refresh &#x65B9;&#x6CD5;&#x4E2D;&#x3002;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public void refresh() throws BeansException, IllegalStateException { </span><br><span class="line">    synchronized (this.startupShutdownMonitor) { </span><br><span class="line">        // Prepare this context for refreshing. </span><br><span class="line">        // &#x521B;&#x5EFA;&#x548C;&#x914D;&#x7F6E;BeanFactory</span><br><span class="line">        prepareRefresh(); </span><br><span class="line">        // Tell the subclass to refresh the internal bean factory. </span><br><span class="line">        ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory(); </span><br><span class="line">        // Prepare the bean factory for use in this context. </span><br><span class="line">        prepareBeanFactory(beanFactory); </span><br><span class="line">        try { </span><br><span class="line">            // Allows post-processing of the bean factory in context subclasses. </span><br><span class="line">            postProcessBeanFactory(beanFactory); </span><br><span class="line">            // Invoke factory processors registered as beans in the context. </span><br><span class="line">            invokeBeanFactoryPostProcessors(beanFactory); </span><br><span class="line">            // Register bean processors that intercept bean creation. </span><br><span class="line">            registerBeanPostProcessors(beanFactory); </span><br><span class="line">            // Initialize message source for this context. </span><br><span class="line">            initMessageSource(); </span><br><span class="line">            // Initialize event multicaster for this context. </span><br><span class="line">            initApplicationEventMulticaster(); </span><br><span class="line">            // Initialize other special beans in specific context subclasses. </span><br><span class="line">            onRefresh(); </span><br><span class="line">            // Check for listener beans and register them. </span><br><span class="line">            registerListeners(); </span><br><span class="line">            // Instantiate all remaining (non-lazy-init) singletons. </span><br><span class="line">            finishBeanFactoryInitialization(beanFactory); </span><br><span class="line">            // Last step: publish corresponding event. </span><br><span class="line">            finishRefresh(); </span><br><span class="line">        } </span><br><span class="line">        catch (BeansException ex) { </span><br><span class="line">            // Destroy already created singletons to avoid dangling resources. </span><br><span class="line">            destroyBeans(); </span><br><span class="line">            // Reset &apos;active&apos; flag. </span><br><span class="line">            cancelRefresh(ex); </span><br><span class="line">            // Propagate exception to caller. </span><br><span class="line">            throw ex; </span><br><span class="line">        } </span><br><span class="line">    } </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x6784;&#x5EFA;&#x6574;&#x4E2A; Ioc &#x5BB9;&#x5668;&#x8FC7;&#x7A0B;&#x7684;&#x5B8C;&#x6574;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4E86;&#x89E3;&#x4E86;&#x91CC;&#x9762;&#x7684;&#x6BCF;&#x4E00;&#x884C;&#x4EE3;&#x7801;&#x57FA;&#x672C;&#x4E0A;&#x5C31;&#x4E86;&#x89E3;&#x5927;&#x90E8;&#x5206; Spring &#x7684;&#x539F;&#x7406;&#x548C;&#x529F;&#x80FD;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x8FD9;&#x6837;&#x51E0;&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;    </p>
 <ul>
-<li>构建 BeanFactory，以便于产生所需的“演员”</li>
-<li>注册可能感兴趣的事件</li>
-<li>创建 Bean 实例对象</li>
-<li>触发被监听的事件</li>
+<li>&#x6784;&#x5EFA; BeanFactory&#xFF0C;&#x4EE5;&#x4FBF;&#x4E8E;&#x4EA7;&#x751F;&#x6240;&#x9700;&#x7684;&#x201C;&#x6F14;&#x5458;&#x201D;</li>
+<li>&#x6CE8;&#x518C;&#x53EF;&#x80FD;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4E8B;&#x4EF6;</li>
+<li>&#x521B;&#x5EFA; Bean &#x5B9E;&#x4F8B;&#x5BF9;&#x8C61;</li>
+<li>&#x89E6;&#x53D1;&#x88AB;&#x76D1;&#x542C;&#x7684;&#x4E8B;&#x4EF6;</li>
 </ul>
-<p>实现AbstractApplicationContext的refreshBeanFactory的refreshBeanFactory()子类的方法，可更新的子类AbstractRefreshableApplicationContext：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">protected final void refreshBeanFactory() throws BeansException &#123; </span><br><span class="line">    if (hasBeanFactory()) &#123; </span><br><span class="line">        destroyBeans(); </span><br><span class="line">        closeBeanFactory(); </span><br><span class="line">    &#125; </span><br><span class="line">    try &#123; </span><br><span class="line">        DefaultListableBeanFactory beanFactory = createBeanFactory(); </span><br><span class="line">        beanFactory.setSerializationId(getId()); </span><br><span class="line">        customizeBeanFactory(beanFactory); </span><br><span class="line">        loadBeanDefinitions(beanFactory); </span><br><span class="line">        synchronized (this.beanFactoryMonitor) &#123; </span><br><span class="line">            this.beanFactory = beanFactory; </span><br><span class="line">        &#125; </span><br><span class="line">    &#125; </span><br><span class="line">    catch (IOException ex) &#123; </span><br><span class="line">        throw new ApplicationContextException(</span><br><span class="line">			&quot;I/O error parsing bean definition source for &quot; </span><br><span class="line">			+ getDisplayName(), ex); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>BeanFactory 的原始对象是 DefaultListableBeanFactory，这个非常关键，因为他设计到后面对这个对象的多种操作，下面看一下这个类的继承层次类图：</p>
+<p>&#x5B9E;&#x73B0;AbstractApplicationContext&#x7684;refreshBeanFactory&#x7684;refreshBeanFactory()&#x5B50;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x66F4;&#x65B0;&#x7684;&#x5B50;&#x7C7B;AbstractRefreshableApplicationContext&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">protected final void refreshBeanFactory() throws BeansException { </span><br><span class="line">    if (hasBeanFactory()) { </span><br><span class="line">        destroyBeans(); </span><br><span class="line">        closeBeanFactory(); </span><br><span class="line">    } </span><br><span class="line">    try { </span><br><span class="line">        DefaultListableBeanFactory beanFactory = createBeanFactory(); </span><br><span class="line">        beanFactory.setSerializationId(getId()); </span><br><span class="line">        customizeBeanFactory(beanFactory); </span><br><span class="line">        loadBeanDefinitions(beanFactory); </span><br><span class="line">        synchronized (this.beanFactoryMonitor) { </span><br><span class="line">            this.beanFactory = beanFactory; </span><br><span class="line">        } </span><br><span class="line">    } </span><br><span class="line">    catch (IOException ex) { </span><br><span class="line">        throw new ApplicationContextException(</span><br><span class="line">			&quot;I/O error parsing bean definition source for &quot; </span><br><span class="line">			+ getDisplayName(), ex); </span><br><span class="line">    } </span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>BeanFactory &#x7684;&#x539F;&#x59CB;&#x5BF9;&#x8C61;&#x662F; DefaultListableBeanFactory&#xFF0C;&#x8FD9;&#x4E2A;&#x975E;&#x5E38;&#x5173;&#x952E;&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x8BBE;&#x8BA1;&#x5230;&#x540E;&#x9762;&#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x591A;&#x79CD;&#x64CD;&#x4F5C;&#xFF0C;&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x7EE7;&#x627F;&#x5C42;&#x6B21;&#x7C7B;&#x56FE;&#xFF1A;</p>
 <blockquote>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring 框架的设计理念与设计模式分析" target="_blank" rel="external">Spring 框架的设计理念与设计模式分析</a> </p>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;" target="_blank" rel="external">Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/spring/2014122402-spring-beans/"><span>Spring beans</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/spring/2014122402-spring-beans/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
+          2016-02-11
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>Bean &#x7EC4;&#x4EF6;&#x5728; Spring &#x7684; org.springframework.beans &#x5305;&#x4E0B;&#x3002;&#x8FD9;&#x4E2A;&#x5305;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7C7B;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x4E86;&#x4E09;&#x4EF6;&#x4E8B;&#xFF1A;Bean &#x7684;&#x5B9A;&#x4E49;&#x3001;Bean &#x7684;&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x5BF9; Bean &#x7684;&#x89E3;&#x6790;&#x3002;&#x5BF9; Spring &#x7684;&#x4F7F;&#x7528;&#x8005;&#x6765;&#x8BF4;&#x552F;&#x4E00;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x7684;&#x5C31;&#x662F; Bean &#x7684;&#x521B;&#x5EFA;&#xFF0C;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x7531; Spring &#x5728;&#x5185;&#x90E8;&#x5E2E;&#x4F60;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x5BF9;&#x4F60;&#x6765;&#x8BF4;&#x662F;&#x900F;&#x660E;&#x7684;&#x3002;</p>
+<p>Spring Bean &#x7684;&#x521B;&#x5EFA;&#x662F;&#x5178;&#x578B;&#x7684;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF0C;&#x4ED6;&#x7684;&#x9876;&#x7EA7;&#x63A5;&#x53E3;&#x662F; BeanFactory&#xFF0C;&#x4E0B;&#x56FE;&#x662F;&#x8FD9;&#x4E2A;&#x5DE5;&#x5382;&#x7684;&#x7EE7;&#x627F;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#xFF1A;    </p>
+<p><strong>Bean&#x5DE5;&#x5382;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring002.png" alt=""></p>
+<p>BeanFactory &#x6709;&#x4E09;&#x4E2A;&#x5B50;&#x7C7B;&#xFF1A;ListableBeanFactory&#x3001;HierarchicalBeanFactory &#x548C; AutowireCapableBeanFactory&#x3002;&#x4F46;&#x662F;&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6700;&#x7EC8;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x7C7B;&#x662F; DefaultListableBeanFactory&#xFF0C;&#x4ED6;&#x5B9E;&#x73B0;&#x4E86;&#x6240;&#x6709;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x90A3;&#x4E3A;&#x4F55;&#x8981;&#x5B9A;&#x4E49;&#x8FD9;&#x4E48;&#x591A;&#x5C42;&#x6B21;&#x7684;&#x63A5;&#x53E3;&#x5462;&#xFF1F;&#x67E5;&#x9605;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x7684;&#x6E90;&#x7801;&#x548C;&#x8BF4;&#x660E;&#x53D1;&#x73B0;&#xFF0C;&#x6BCF;&#x4E2A;&#x63A5;&#x53E3;&#x90FD;&#x6709;&#x4ED6;&#x4F7F;&#x7528;&#x7684;&#x573A;&#x5408;&#xFF0C;&#x5B83;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x533A;&#x5206;&#x5728; Spring &#x5185;&#x90E8;&#x5728;&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x4F20;&#x9012;&#x548C;&#x8F6C;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5BF9;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x6240;&#x505A;&#x7684;&#x9650;&#x5236;&#x3002;&#x4F8B;&#x5982; ListableBeanFactory &#x63A5;&#x53E3;&#x8868;&#x793A;&#x8FD9;&#x4E9B; Bean &#x662F;&#x53EF;&#x5217;&#x8868;&#x7684;&#xFF0C;&#x800C; HierarchicalBeanFactory &#x8868;&#x793A;&#x7684;&#x662F;&#x8FD9;&#x4E9B; Bean &#x662F;&#x6709;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6BCF;&#x4E2A; Bean &#x6709;&#x53EF;&#x80FD;&#x6709;&#x7236; Bean&#x3002;AutowireCapableBeanFactory &#x63A5;&#x53E3;&#x5B9A;&#x4E49; Bean &#x7684;&#x81EA;&#x52A8;&#x88C5;&#x914D;&#x89C4;&#x5219;&#x3002;&#x8FD9;&#x56DB;&#x4E2A;&#x63A5;&#x53E3;&#x5171;&#x540C;&#x5B9A;&#x4E49;&#x4E86; Bean &#x7684;&#x96C6;&#x5408;&#x3001;Bean &#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x3001;&#x4EE5;&#x53CA; Bean &#x884C;&#x4E3A;&#x3002;    </p>
+<p><strong>Bean&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#x56FE;</strong>    </p>
+<p>Bean &#x7684;&#x5B9A;&#x4E49;&#x4E3B;&#x8981;&#x7531; BeanDefinition &#x63CF;&#x8FF0;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x8BF4;&#x660E;&#x4E86;&#x8FD9;&#x4E9B;&#x7C7B;&#x7684;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring003.png" alt=""><br>Bean &#x7684;&#x5B9A;&#x4E49;&#x5C31;&#x662F;&#x5B8C;&#x6574;&#x7684;&#x63CF;&#x8FF0;&#x4E86;&#x5728; Spring &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x4F60;&#x5B9A;&#x4E49;&#x7684; <bean> &#x8282;&#x70B9;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x5404;&#x79CD;&#x5B50;&#x8282;&#x70B9;&#x3002;&#x5F53; Spring &#x6210;&#x529F;&#x89E3;&#x6790;&#x4F60;&#x5B9A;&#x4E49;&#x7684;&#x4E00;&#x4E2A; <bean> &#x8282;&#x70B9;&#x540E;&#xFF0C;&#x5728; Spring &#x7684;&#x5185;&#x90E8;&#x4ED6;&#x5C31;&#x88AB;&#x8F6C;&#x5316;&#x6210; BeanDefinition &#x5BF9;&#x8C61;&#x3002;&#x4EE5;&#x540E;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x5B8C;&#x6210;&#x7684;&#x3002;</bean></bean></p>
+<p>Bean &#x7684;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x529F;&#x80FD;&#x88AB;&#x5206;&#x7684;&#x5F88;&#x7EC6;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x88AB;&#x6269;&#x5C55;&#x7684;&#x5730;&#x65B9;&#x5F88;&#x591A;&#xFF0C;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x4EE5;&#x5E94;&#x5BF9;&#x53EF;&#x80FD;&#x7684;&#x53D8;&#x5316;&#x3002;Bean &#x7684;&#x89E3;&#x6790;&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x5BF9; Spring &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x89E3;&#x6790;&#x3002;&#x8FD9;&#x4E2A;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x4E3B;&#x8981;&#x901A;&#x8FC7;&#x4E0B;&#x56FE;&#x4E2D;&#x7684;&#x7C7B;&#x5B8C;&#x6210;&#xFF1A;    </p>
+<p><strong>Bean&#x7684;&#x89E3;&#x6790;&#x7C7B;</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring004.png" alt=""></p>
+<p><a href="https://github.com/arthinking/java-code/blob/master/src/main/java/me/arthinking/spring/ioc/BeanFactoryTest.java" title="&#x901A;&#x8FC7;XmlBeanFactory&#x5B9E;&#x73B0;&#x542F;&#x52A8;Spring IoC&#x5BB9;&#x5668;" target="_blank" rel="external">&#x901A;&#x8FC7;XmlBeanFactory&#x5B9E;&#x73B0;&#x542F;&#x52A8;Spring IoC&#x5BB9;&#x5668;</a></p>
+<blockquote>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;" target="_blank" rel="external">Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;</a></p>
 </blockquote>
 
       
@@ -353,29 +713,29 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>#1、配置</p>
-<p>##1.1、安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install memcached</span><br></pre></td></tr></table></figure></p>
-<p>##1.2、启动</p>
+<p>#1&#x3001;&#x914D;&#x7F6E;</p>
+<p>##1.1&#x3001;&#x5B89;&#x88C5;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install memcached</span><br></pre></td></tr></table></figure></p>
+<p>##1.2&#x3001;&#x542F;&#x52A8;</p>
 <blockquote>
-<p>Memcached的基本设置：</p>
-<p>-p 监听的端口<br>-l 连接的IP地址, 默认是本机<br>-d start 启动memcached服务<br>-d restart 重起memcached服务<br>-d stop|shutdown 关闭正在运行的memcached服务<br>-d install 安装memcached服务<br>-d uninstall 卸载memcached服务<br>-u 以的身份运行 (仅在以root运行的时候有效)<br>-m 最大内存使用，单位MB。默认64MB<br>-M 内存耗尽时返回错误，而不是删除项<br>-c 最大同时连接数，默认是1024<br>-f 块大小增长因子，默认是1.25<br>-n 最小分配空间，key+value+flags默认是48<br>-h 显示帮助<br>mixi的设置,单台:    </p>
+<p>Memcached&#x7684;&#x57FA;&#x672C;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<p>-p &#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;<br>-l &#x8FDE;&#x63A5;&#x7684;IP&#x5730;&#x5740;, &#x9ED8;&#x8BA4;&#x662F;&#x672C;&#x673A;<br>-d start &#x542F;&#x52A8;memcached&#x670D;&#x52A1;<br>-d restart &#x91CD;&#x8D77;memcached&#x670D;&#x52A1;<br>-d stop|shutdown &#x5173;&#x95ED;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;memcached&#x670D;&#x52A1;<br>-d install &#x5B89;&#x88C5;memcached&#x670D;&#x52A1;<br>-d uninstall &#x5378;&#x8F7D;memcached&#x670D;&#x52A1;<br>-u &#x4EE5;&#x7684;&#x8EAB;&#x4EFD;&#x8FD0;&#x884C; (&#x4EC5;&#x5728;&#x4EE5;root&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x6709;&#x6548;)<br>-m &#x6700;&#x5927;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#xFF0C;&#x5355;&#x4F4D;MB&#x3002;&#x9ED8;&#x8BA4;64MB<br>-M &#x5185;&#x5B58;&#x8017;&#x5C3D;&#x65F6;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5220;&#x9664;&#x9879;<br>-c &#x6700;&#x5927;&#x540C;&#x65F6;&#x8FDE;&#x63A5;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1024<br>-f &#x5757;&#x5927;&#x5C0F;&#x589E;&#x957F;&#x56E0;&#x5B50;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1.25<br>-n &#x6700;&#x5C0F;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#xFF0C;key+value+flags&#x9ED8;&#x8BA4;&#x662F;48<br>-h &#x663E;&#x793A;&#x5E2E;&#x52A9;<br>mixi&#x7684;&#x8BBE;&#x7F6E;,&#x5355;&#x53F0;:    </p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 每台mc服务器仅启动一个mc进程，分配1G内存</span><br><span class="line">/usr/bin/memcached -p 11211 -u nobody -m 1000 -c 512</span><br><span class="line"></span><br><span class="line"># 启动mc</span><br><span class="line">/usr/share/memcached/scripts/start-memcached</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">注意：32位的操作系统中，每个进程最多只能够使用**2G**的内存，所以需要更大的内存的时候就只能进行集群了。（用同一台服务器进行集群，TCP连接数就会成倍增加，x86_64的操作系统可以分配超过2G的内存）；</span><br><span class="line"></span><br><span class="line">mc进程的实际内存分配量要比置顶的内存要大一些，所以如果置顶分配的内存太大了，有可能导致内存交换（swap）。</span><br><span class="line"></span><br><span class="line">#2、集群配置</span><br><span class="line">通过magent能够让缓存写入到多个不同的memcached里面</span><br><span class="line"></span><br><span class="line">##2.1、安装使用magent</span><br><span class="line">###2.1.1、编译安装libevent</span><br><span class="line">```shell</span><br><span class="line">wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz</span><br><span class="line">tar zxvf libevent-1.4.9-stable.tar.gz</span><br><span class="line">cd libevent-1.4.9-stable/</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
-<p>###2.1.2、编译安装Memcached：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz</span><br><span class="line">tar zxvf memcached-1.2.6.tar.gz</span><br><span class="line">cd memcached-1.2.6/</span><br><span class="line">./configure --with-libevent=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure></p>
-<p>###2.1.3、编译安装magent：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir magent</span><br><span class="line">cd magent/</span><br><span class="line">wget http://memagent.googlecode.com/files/magent-0.5.tar.gz</span><br><span class="line">tar zxvf magent-0.5.tar.gz</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">sed -i &quot;s#LIBS = -levent#LIBS = -levent -lm#g&quot; Makefile</span><br><span class="line">make</span><br><span class="line">cp magent /usr/bin/magent</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure></p>
-<p>###2.1.4、集群配置<br>集群两台服务器，实现缓存备份。<br>高可用网络架构：<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png" alt=""></p>
-<p><strong>启动两个mc进程，端口分别为11211,11212</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11211</span><br><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11212</span><br></pre></td></tr></table></figure></p>
-<p><strong>启动两个magent进程，端口分别为10000,10001</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10000 -s 127.0.0.1:11211 -b 127.0.0.1:11212</span><br><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
-<p>-s为要写入的memcached，-b为备份用的memcached    </p>
-<p>#3、使用</p>
-<p>##3.1、清空缓存<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">flush_all</span><br><span class="line">quit</span><br></pre></td></tr></table></figure></p>
-<p>#4、监控</p>
-<p>##4.1、stats<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">stats</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># &#x6BCF;&#x53F0;mc&#x670D;&#x52A1;&#x5668;&#x4EC5;&#x542F;&#x52A8;&#x4E00;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x5206;&#x914D;1G&#x5185;&#x5B58;</span><br><span class="line">/usr/bin/memcached -p 11211 -u nobody -m 1000 -c 512</span><br><span class="line"></span><br><span class="line"># &#x542F;&#x52A8;mc</span><br><span class="line">/usr/share/memcached/scripts/start-memcached</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">&#x6CE8;&#x610F;&#xFF1A;32&#x4F4D;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x591F;&#x4F7F;&#x7528;**2G**&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x66F4;&#x5927;&#x7684;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#x4E86;&#x3002;&#xFF08;&#x7528;&#x540C;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#xFF0C;TCP&#x8FDE;&#x63A5;&#x6570;&#x5C31;&#x4F1A;&#x6210;&#x500D;&#x589E;&#x52A0;&#xFF0C;x86_64&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x5206;&#x914D;&#x8D85;&#x8FC7;2G&#x7684;&#x5185;&#x5B58;&#xFF09;&#xFF1B;</span><br><span class="line"></span><br><span class="line">mc&#x8FDB;&#x7A0B;&#x7684;&#x5B9E;&#x9645;&#x5185;&#x5B58;&#x5206;&#x914D;&#x91CF;&#x8981;&#x6BD4;&#x7F6E;&#x9876;&#x7684;&#x5185;&#x5B58;&#x8981;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x7F6E;&#x9876;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x592A;&#x5927;&#x4E86;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x4EA4;&#x6362;&#xFF08;swap&#xFF09;&#x3002;</span><br><span class="line"></span><br><span class="line">#2&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</span><br><span class="line">&#x901A;&#x8FC7;magent&#x80FD;&#x591F;&#x8BA9;&#x7F13;&#x5B58;&#x5199;&#x5165;&#x5230;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684;memcached&#x91CC;&#x9762;</span><br><span class="line"></span><br><span class="line">##2.1&#x3001;&#x5B89;&#x88C5;&#x4F7F;&#x7528;magent</span><br><span class="line">###2.1.1&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;libevent</span><br><span class="line">```shell</span><br><span class="line">wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz</span><br><span class="line">tar zxvf libevent-1.4.9-stable.tar.gz</span><br><span class="line">cd libevent-1.4.9-stable/</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
+<p>###2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz</span><br><span class="line">tar zxvf memcached-1.2.6.tar.gz</span><br><span class="line">cd memcached-1.2.6/</span><br><span class="line">./configure --with-libevent=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure></p>
+<p>###2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir magent</span><br><span class="line">cd magent/</span><br><span class="line">wget http://memagent.googlecode.com/files/magent-0.5.tar.gz</span><br><span class="line">tar zxvf magent-0.5.tar.gz</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">sed -i &quot;s#LIBS = -levent#LIBS = -levent -lm#g&quot; Makefile</span><br><span class="line">make</span><br><span class="line">cp magent /usr/bin/magent</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure></p>
+<p>###2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;<br>&#x96C6;&#x7FA4;&#x4E24;&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x5907;&#x4EFD;&#x3002;<br>&#x9AD8;&#x53EF;&#x7528;&#x7F51;&#x7EDC;&#x67B6;&#x6784;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png" alt=""></p>
+<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;11211,11212</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11211</span><br><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11212</span><br></pre></td></tr></table></figure></p>
+<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;magent&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;10000,10001</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10000 -s 127.0.0.1:11211 -b 127.0.0.1:11212</span><br><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
+<p>-s&#x4E3A;&#x8981;&#x5199;&#x5165;&#x7684;memcached&#xFF0C;-b&#x4E3A;&#x5907;&#x4EFD;&#x7528;&#x7684;memcached    </p>
+<p>#3&#x3001;&#x4F7F;&#x7528;</p>
+<p>##3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">flush_all</span><br><span class="line">quit</span><br></pre></td></tr></table></figure></p>
+<p>#4&#x3001;&#x76D1;&#x63A7;</p>
+<p>##4.1&#x3001;stats<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">stats</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>相关资源：</p>
-<p><a href="http://www.cnblogs.com/happyday56/p/3461113.html" title="memcached+magent实现memcached集群" target="_blank" rel="external">memcached+magent实现memcached集群</a>     </p>
-<p><a href="http://zhumeng8337797.blog.163.com/blog/static/10076891420113431424757/" title="memcache集群服务：memagent配置使用  " target="_blank" rel="external">memcache集群服务：memagent配置使用  </a></p>
-<p>发表于：<a href="http://www.itzhai.com/mc-config-and-monitoring.html" target="_blank" rel="external">http://www.itzhai.com/mc-config-and-monitoring.html</a></p>
+<p>&#x76F8;&#x5173;&#x8D44;&#x6E90;&#xFF1A;</p>
+<p><a href="http://www.cnblogs.com/happyday56/p/3461113.html" title="memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;" target="_blank" rel="external">memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;</a>     </p>
+<p><a href="http://zhumeng8337797.blog.163.com/blog/static/10076891420113431424757/" title="memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  " target="_blank" rel="external">memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  </a></p>
+<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-config-and-monitoring.html" target="_blank" rel="external">http://www.itzhai.com/mc-config-and-monitoring.html</a></p>
 </blockquote>
 
       
@@ -397,358 +757,6 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
   <span class="post-tags">
     <i class="icon-tags"></i>
     <a href="/tags/Memcached/">Memcached</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/design-pattern/20150209_设计模式笔记/"><span>设计模式笔记</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/design-pattern/20150209_设计模式笔记/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>##职责链模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-01.png" alt=""> </p>
-<p>###说明：<br>通过把对象链接起来，给更多的对象处理请求的机会。</p>
-<p>###使用场景：</p>
-<ul>
-<li>多个对象需要处理一个请求，并且处理请求的对象不是特定的；</li>
-<li>运行期才能决定哪些对象需要处理这个请求；</li>
-<li>允许出现一个请求可能不被其中一个对象处理的情况；</li>
-</ul>
-<p>###实例：<br>Java语言的异常处理实现使用了职责链模式；</p>
-<p>##命令模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-02.png" alt=""></p>
-<p>###说明：<br>把一个请求封装成一个对象，让请求被当成基于对象的形式进行处理，如回调。</p>
-<p>###使用场景：</p>
-<ul>
-<li>你需要回调函数的时候；</li>
-<li>请求需要在不同的时间或者通过不同的顺序进行处理；</li>
-<li>需要请求的历史记录；</li>
-<li>调用者需要和执行者解耦的时候</li>
-</ul>
-<p>###实例：<br>任务队列</p>
-<p>##解析器模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-03.png" alt="">  </p>
-<p>###说明：<br>为文法提供一个解析的机制。</p>
-<p>###使用场景：</p>
-<ul>
-<li>需要把文法解析成一个大的语法树；</li>
-<li>文法比较简单；</li>
-<li>解析的过程中性能并不是很重要；</li>
-<li>需要把文法和解析式进行解耦；</li>
-</ul>
-<p>###实例<br>上个世纪80年代流行的基于文字的冒险游戏。</p>
-<p>##迭代器模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-04.png" alt=""></p>
-<p>###说明：<br>在不知道集合类实现的情况下，实现访问集合元素的功能。</p>
-<p>###使用场景：</p>
-<ul>
-<li>不访问对象的情况下，需要访问到对象里面的元素</li>
-<li>需要支持多线程或者并发遍历集合</li>
-<li>需要一个同一个遍历接口</li>
-<li>不同的迭代器实现由细微的差别</li>
-</ul>
-<p>###实例：<br>Java的集合类就很好的用到了迭代器模式，允许用户在不知道集合的实现的情况下遍历各种类型的数据集合。</p>
-<p>##中介者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-05.png" alt=""></p>
-<p>###说明：<br>通过封装不同对象集的交互来达到解耦这些对象。</p>
-<p>###使用场景：</p>
-<ul>
-<li>对象间的交流动作有明确的定义，并且很复杂；</li>
-<li>对象间存在复杂的交互关系，并且需要一个中央的控制节点来转发这些交互。</li>
-</ul>
-<p>###实例：<br>邮件群发系统，通过中介者模式，发送者无需记录哪些邮件地址是否注册了，把邮件发给中介者，中介者把邮件转发给有效的接收者。</p>
-<p>##备忘录模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-06.png" alt=""></p>
-<p>###说明：<br>在不违反封装性的前提下，允许捕获并且外化一个对象的内部状态，以便存储下来。</p>
-<p>###使用场景：</p>
-<ul>
-<li>一个对象的内部状态需要存储下来；</li>
-<li>一个对象的内部状态没有提供对外暴露的接口；</li>
-<li>封装的边界必须被保存</li>
-</ul>
-<p>###实例：<br>撤销动作，通过建立对象的一个快照实现。</p>
-<p>##观察者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-07.png" alt=""></p>
-<p>###说明：<br>在一个系统中，当一个对象的状态改变的时候，通知其他对象。</p>
-<p>###使用场景：</p>
-<ul>
-<li>一个或多个对象状态的改变触发其他对象的处理事件</li>
-<li>需要广播的能力</li>
-<li></li>
-</ul>
-<p>###实例：<br>在大部分的GUI环境中都有用到这个设计模式，通过把按钮，文本区等注册为观察者，当一个用户触发一个事件，就发送一个通知到所有的观察者。</p>
-<p>##状态模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-08.png" alt=""></p>
-<p>###说明：</p>
-<p>###使用场景：</p>
-<p>###实例：</p>
-<p>##策略模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-09.png" alt=""></p>
-<p>##模板模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-10.png" alt=""></p>
-<p>##访问者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-11.png" alt="">     </p>
-<p>##适配器模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-12.png" alt="">    </p>
-<p>##桥接模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-13.png" alt=""></p>
-<p>##组合模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-14.png" alt=""></p>
-<p>##装饰者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-15.png" alt=""></p>
-<p>##门面模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-16.png" alt=""></p>
-<p>##享元模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-17.png" alt=""></p>
-<p>##代理模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-18.png" alt=""></p>
-<p>##抽象工厂模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-19.png" alt=""></p>
-<p>##构建者模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-20.png" alt=""></p>
-<p>##工厂方法模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-21.png" alt=""></p>
-<p>##原型模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-22.png" alt=""></p>
-<p>##单例模式<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2015/02/20150207-design-pattern-23.png" alt="">           </p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/设计模式/">设计模式</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/职责链模式/">职责链模式</a>, <a href="/tags/命令模式/">命令模式</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/spring/2014122402-spring-beans/"><span>Spring beans</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/spring/2014122402-spring-beans/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>Bean 组件在 Spring 的 org.springframework.beans 包下。这个包下的所有类主要解决了三件事：Bean 的定义、Bean 的创建以及对 Bean 的解析。对 Spring 的使用者来说唯一需要关心的就是 Bean 的创建，其他两个由 Spring 在内部帮你完成了，对你来说是透明的。</p>
-<p>Spring Bean 的创建是典型的工厂模式，他的顶级接口是 BeanFactory，下图是这个工厂的继承层次关系：    </p>
-<p><strong>Bean工厂的继承关系</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring002.png" alt=""></p>
-<p>BeanFactory 有三个子类：ListableBeanFactory、HierarchicalBeanFactory 和 AutowireCapableBeanFactory。但是从上图中我们可以发现最终的默认实现类是 DefaultListableBeanFactory，他实现了所有的接口。那为何要定义这么多层次的接口呢？查阅这些接口的源码和说明发现，每个接口都有他使用的场合，它主要是为了区分在 Spring 内部在操作过程中对象的传递和转化过程中，对对象的数据访问所做的限制。例如 ListableBeanFactory 接口表示这些 Bean 是可列表的，而 HierarchicalBeanFactory 表示的是这些 Bean 是有继承关系的，也就是每个 Bean 有可能有父 Bean。AutowireCapableBeanFactory 接口定义 Bean 的自动装配规则。这四个接口共同定义了 Bean 的集合、Bean 之间的关系、以及 Bean 行为。    </p>
-<p><strong>Bean定义的类层次关系图</strong>    </p>
-<p>Bean 的定义主要由 BeanDefinition 描述，如下图说明了这些类的层次关系：<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring003.png" alt=""><br>Bean 的定义就是完整的描述了在 Spring 的配置文件中你定义的 <bean> 节点中所有的信息，包括各种子节点。当 Spring 成功解析你定义的一个 <bean> 节点后，在 Spring 的内部他就被转化成 BeanDefinition 对象。以后所有的操作都是对这个对象完成的。</bean></bean></p>
-<p>Bean 的解析过程非常复杂，功能被分的很细，因为这里需要被扩展的地方很多，必须保证有足够的灵活性，以应对可能的变化。Bean 的解析主要就是对 Spring 配置文件的解析。这个解析过程主要通过下图中的类完成：    </p>
-<p><strong>Bean的解析类</strong></p>
-<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring004.png" alt=""></p>
-<p><a href="https://github.com/arthinking/java-code/blob/master/src/main/java/me/arthinking/spring/ioc/BeanFactoryTest.java" title="通过XmlBeanFactory实现启动Spring IoC容器" target="_blank" rel="external">通过XmlBeanFactory实现启动Spring IoC容器</a></p>
-<blockquote>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring 框架的设计理念与设计模式分析" target="_blank" rel="external">Spring 框架的设计理念与设计模式分析</a> </p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/server/服务器监控/"><span>服务器监控</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/server/服务器监控/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>#缓存<br><a href="https://github.com/arthinking/informal-essay/blob/master/memcached/Memcached%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%9B%91%E6%8E%A7.md" title="memcached的配置与监控" target="_blank" rel="external">memcached的配置与监控</a><br>通过查看占用内存，决定需不需要进行扩容</p>
-<p>#JDK监控</p>
-<p>#应用服务器监控</p>
-<p>#数据库监控</p>
-<p>##数据库内存监控</p>
-<p>##数据库访问监控</p>
-<p>##数据库并发测试</p>
-<p>#nginx并发访问监控</p>
-<p>#Lucene服务监控</p>
-<p>##占用内存</p>
-<p>##查询效率</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/监控/">监控</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/IDE/20141204_配置Maven项目自动编译/"><span>配置Maven项目自动编译</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/IDE/20141204_配置Maven项目自动编译/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>##Maven项目目录结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">    - src    </span><br><span class="line">        - main</span><br><span class="line">            - java</span><br><span class="line">            - resources</span><br><span class="line">            - webapp</span><br><span class="line">                - WEB-INF</span><br><span class="line">                    - classes</span><br><span class="line">                    - lib</span><br><span class="line">    - target</span><br><span class="line">        - project-snapshot</span><br><span class="line">            - WEB-INF</span><br><span class="line">                - classes</span><br><span class="line">                - lib</span><br><span class="line">        - classes</span><br><span class="line">```     </span><br><span class="line">其中 project-snapshot就是maven编译生成的项目目录了，我们一般使用这个目录对项目进行部署，这样问题来了：  </span><br><span class="line">  </span><br><span class="line">每次改动JSP文件或者Java文件，都得重新用maven编译一下，以便生成代码到该目录，有没有方便点的做法呢？接下来就是啦。</span><br><span class="line"></span><br><span class="line">##让Maven项目自动编译：    </span><br><span class="line">    </span><br><span class="line">为了让改写JSP之后无需重新编译，我们只有使用src/main/webapp/这个目录进行部署了，因为一般我们是直接改动里面的文件进行编码的；    </span><br><span class="line">    </span><br><span class="line">而jar包是maven从仓库下载过来的，为了能用上下载回来的jar包，我们可以把</span><br><span class="line">&gt; target/project-snapshot/WEB-INF/lib   </span><br><span class="line">  </span><br><span class="line">目录联接到</span><br><span class="line">    </span><br><span class="line">&gt; src/main/webapp/WEB-INF/lib</span><br><span class="line"></span><br><span class="line">windows下通过 [mklink /j](http://technet.microsoft.com/en-us/library/cc753194.aspx &quot;mklink&quot;) 命令(假设项目在D:/dev目录下)：</span><br></pre></td></tr></table></figure></p>
-<p>mklink /j “D:\dev\project\src\main\webapp\WEB-INF\lib” “D:\dev\project\target\project-snapshot\WEB-INF\lib”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这样就把maven下载的lib目录联接到部署目录webapp下了；</span><br><span class="line">   </span><br><span class="line">对于class目录，也是同样的方法，另外需要设置IDE的自动编译输出目录到：</span><br><span class="line">&gt; target/project-snapshot/WEB-INF/classes    </span><br><span class="line"></span><br><span class="line">右击项目 -&gt; properties -&gt; Java Build Path -&gt; 右边面板底部设置Default output folder；        </span><br><span class="line"></span><br><span class="line">##直接运行main方法的问题</span><br><span class="line"></span><br><span class="line">但是这样Eclipse下会有个问题，直接运行某个类的main方法，会提示如下错误：</span><br></pre></td></tr></table></figure></p>
-<p>java.lang.NoClassDefFoundError: me/arthinking/test/Demo<br>Caused by: java.lang.ClassNotFoundException: me.arthinking.test.Demo<br>    at java.net.URLClassLoader$1.run(URLClassLoader.java:202)<br>    at java.security.AccessController.doPrivileged(Native Method)<br>    at java.net.URLClassLoader.findClass(URLClassLoader.java:190)<br>    at java.lang.ClassLoader.loadClass(ClassLoader.java:306)<br>    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)<br>    at java.lang.ClassLoader.loadClass(ClassLoader.java:247)<br>Exception in thread “main”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">原因是没有读取到输出的classes文件，为此，我们可以把class编译输出目录设置为：    </span><br><span class="line"></span><br><span class="line">&gt; project/target/classes</span><br><span class="line"></span><br><span class="line">这样就可以正常执行main方法了</span><br><span class="line"></span><br><span class="line">把这个目录联接到webapp/WEB-INF/classes目录下即可。</span><br><span class="line">编译目录设置如图：    </span><br><span class="line">![](https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141204-java01.png)</span><br><span class="line"></span><br><span class="line">其他的配置文件目录需要联接到webapp目录，同上操作。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##关于IDEA集成开发环境</span><br><span class="line"></span><br><span class="line">据[Ryan](https://github.com/mojunbin &quot;Ryan&quot;)介绍，IDEA集成开发环境是不会存在找不到main方法的问题的；</span><br><span class="line"></span><br><span class="line">另外我们也可以在pom.xml中配置classes文件的输出目录，把classes文件输出到webapp目录下，这样改写了Java文件之后需要使用maven编译下项目了。:sunglasses:     </span><br><span class="line">pom.xml</span><br><span class="line">```xml</span><br><span class="line">&lt;outputDirectory&gt;D:\dev\project\webapp\WEB-INF\classes&lt;/outputDirectory&gt;</span><br></pre></td></tr></table></figure></p>
-<p>##Resin中的配置<br>现在我用着Resin，恰巧，resin里面提供了一个 <a href="http://www.caucho.com/resin-4.0/reference.xtp#classloader" title="&lt;class-loader&gt;" target="_blank" rel="external"><class-loader></class-loader></a> 的配置标签，通过其中的 <a href="http://www.caucho.com/resin-4.0/reference.xtp#compilingloader" title="[&lt;compiling-loader&gt;]" target="_blank" rel="external"><compiling-loader></compiling-loader></a> 和 <a href="http://www.caucho.com/resin-4.0/reference.xtp#libraryloader" title="&lt;library-loader&gt;" target="_blank" rel="external"><library-loader></library-loader></a> 子标签同样可以配置加载class文件和jar包的位置，配置代码如下：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">id</span>=<span class="string">"/"</span> <span class="attr">root-directory</span>=<span class="string">"D:\dev\project\src\main\webapp"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">prologue</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">class-loader</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">compiling-loader</span> <span class="attr">path</span>=<span class="string">"D:\dev\project\target\classes"</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">library-loader</span> <span class="attr">path</span>=<span class="string">"D:\dev\project\target\project-snapshot\WEB-INF\lib"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">class-loader</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">prologue</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>进一步查看<a href="http://caucho.com/resin-4.0/reference.xtp#compilingloader" title="官方文档" target="_blank" rel="external">官方文档</a>可以发现有这样的介绍：</p>
-<blockquote>
-<p>automatically compiles Java code into .class files before loading them.    </p>
-</blockquote>
-<p>首先这里class-loader实现了热部署（类似的一般的Servlet容器都提供了JSP的加载器，如Tomcat的<a href="http://my.oschina.net/heroShane/blog/198450" title="JasperLoader" target="_blank" rel="external">JasperLoader</a>，当容器检测到JSP文件被修改的时候，会自动替换掉原来的JSP加载器的Class实例，并创建一个新的，从而实现热部署。关于Resin中的<a href="http://coolshell.cn/articles/6112.html" title="类加载器执行问题" target="_blank" rel="external">类加载器执行问题</a>），那么如果会在加载class文件之前重新编译源代码，就需要提供源代码的目录，查看文档，可以发现source这样的一个属性，添加上之后配置如下：    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">compiling-loader</span> <span class="attr">path</span>=<span class="string">"D:\dev\project\target\classes"</span> <span class="attr">source</span>=<span class="string">"D:\dev\project\src\main\java"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这样就会在加载class前先自动编译Java代码了，这对于Eclipse没有开启自动编译功能的环境尤其有用（Eclipse的自动编译功能也是需要一定的资源开销的，有时候会导致Eclipse卡住，如果关闭了该功能，可以尝试以上配置）。</p>
-<p>##其他的热部署方案</p>
-<p>###热部署神器<a href="http://zeroturnaround.com/software/jrebel/" title="JRebel" target="_blank" rel="external">JRebel</a>    </p>
-<p><a href="http://zeroturnaround.com/software/jrebel/features/comparison-matrix/" title="这里" target="_blank" rel="external">这里</a>是JRebel和JVM Hot Swap的区别</p>
-<p>另外，<a href="http://jm-blog.aliapp.com/?p=641" title="这里" target="_blank" rel="external">这里</a>有一个JVM hotswap的补丁</p>
-<blockquote>
-<p>说到HotSwap特性，是在2002年的时候，Sun在Java 1.4的JVM中引入的实验性技术。这一技术被合成到了DebuggerAPI的内部。<br><a href="http://article.yeeyan.org/view/213582/186226" title="HotSwap和JRebel——幕后的故事" target="_blank" rel="external">《HotSwap和JRebel——幕后的故事》</a></p>
-</blockquote>
-<p>###Resin中的热部署<br>在resin.conf中添加如下的JVM启动参数：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>表示启动debug模式，当更新了类中的方法的时候，控制台会提示reloading class，这是通过JVM的HotSwap功能动态更新的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br></pre></td></tr></table></figure>
-<p>由于JVM的HotSwap不支持新增属性，方法和类的修改，所以进行了这些操作之后，是无法实现热部署的，Resin会自动改用Hot deploy的方式进行应用更新。</p>
-<p>当去掉该启动参数的时候，修改一个类，控制台会提示如下的内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">... WebApp[...] stopping</span><br><span class="line">... WebApp[...] active</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>发表于：<a href="http://www.itzhai.com/maven-setting-auto-compile.html" target="_blank" rel="external">http://www.itzhai.com/maven-setting-auto-compile.html</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/构建/">构建</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Maven/">Maven</a>
   </span>
 
 
@@ -787,24 +795,24 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h1 id="Mac下相关快捷键"><a href="#Mac下相关快捷键" class="headerlink" title="Mac下相关快捷键"></a>Mac下相关快捷键</h1><p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2016/02/20160212-mac-shotcut-01.png" alt=""></p>
-<p><a href="https://www.zhihu.com/question/20021861" target="_blank" rel="external">常用快捷键</a></p>
-<p><a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">官方快捷键说明</a></p>
-<p>Mac 菜单和键盘通常使用某些按键的符号，其中包括以下修饰键：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Command ⌘</span><br><span class="line">Shift ⇧</span><br><span class="line">Option ⌥</span><br><span class="line">Control ⌃</span><br><span class="line">Caps Lock ⇪</span><br><span class="line">Fn</span><br></pre></td></tr></table></figure></p>
-<h2 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h2><p>快速切换中英文：<code>caps lock</code>，按了之后<code>caps lock</code>键会亮起绿灯。</p>
-<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><ul>
-<li>command＋shift＋3是全屏截图</li>
-<li>command＋shift＋4是局部截图</li>
+<h1 id="mac&#x4E0B;&#x76F8;&#x5173;&#x5FEB;&#x6377;&#x952E;"><a href="#Mac&#x4E0B;&#x76F8;&#x5173;&#x5FEB;&#x6377;&#x952E;" class="headerlink" title="Mac&#x4E0B;&#x76F8;&#x5173;&#x5FEB;&#x6377;&#x952E;"></a>Mac&#x4E0B;&#x76F8;&#x5173;&#x5FEB;&#x6377;&#x952E;</h1><p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2016/02/20160212-mac-shotcut-01.png" alt=""></p>
+<p><a href="https://www.zhihu.com/question/20021861" target="_blank" rel="external">&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;</a></p>
+<p><a href="https://support.apple.com/zh-cn/HT201236" target="_blank" rel="external">&#x5B98;&#x65B9;&#x5FEB;&#x6377;&#x952E;&#x8BF4;&#x660E;</a></p>
+<p>Mac &#x83DC;&#x5355;&#x548C;&#x952E;&#x76D8;&#x901A;&#x5E38;&#x4F7F;&#x7528;&#x67D0;&#x4E9B;&#x6309;&#x952E;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x4FEE;&#x9970;&#x952E;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Command &#x2318;</span><br><span class="line">Shift &#x21E7;</span><br><span class="line">Option &#x2325;</span><br><span class="line">Control &#x2303;</span><br><span class="line">Caps Lock &#x21EA;</span><br><span class="line">Fn</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x8F93;&#x5165;&#x6CD5;"><a href="#&#x8F93;&#x5165;&#x6CD5;" class="headerlink" title="&#x8F93;&#x5165;&#x6CD5;"></a>&#x8F93;&#x5165;&#x6CD5;</h2><p>&#x5FEB;&#x901F;&#x5207;&#x6362;&#x4E2D;&#x82F1;&#x6587;&#xFF1A;<code>caps lock</code>&#xFF0C;&#x6309;&#x4E86;&#x4E4B;&#x540E;<code>caps lock</code>&#x952E;&#x4F1A;&#x4EAE;&#x8D77;&#x7EFF;&#x706F;&#x3002;</p>
+<h2 id="&#x7F16;&#x8F91;"><a href="#&#x7F16;&#x8F91;" class="headerlink" title="&#x7F16;&#x8F91;"></a>&#x7F16;&#x8F91;</h2><h3 id="&#x622A;&#x56FE;"><a href="#&#x622A;&#x56FE;" class="headerlink" title="&#x622A;&#x56FE;"></a>&#x622A;&#x56FE;</h3><ul>
+<li>command&#xFF0B;shift&#xFF0B;3&#x662F;&#x5168;&#x5C4F;&#x622A;&#x56FE;</li>
+<li>command&#xFF0B;shift&#xFF0B;4&#x662F;&#x5C40;&#x90E8;&#x622A;&#x56FE;</li>
 </ul>
-<p>图片默认存储在桌面。</p>
-<h4 id="设置截图保存路径"><a href="#设置截图保存路径" class="headerlink" title="设置截图保存路径"></a>设置截图保存路径</h4><p>打开<code>Terminal</code>并输入如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture location /path/</span><br></pre></td></tr></table></figure></p>
-<p>/path/即你想要设置的保存路径，比如将截图文件存储在用户目录的图片（Pictures）文件夹，命令则为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture location ~/Pictures/</span><br></pre></td></tr></table></figure></p>
-<p>接下来，为了使得修改生效，输入下面这条命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall SystemUIServer</span><br></pre></td></tr></table></figure></p>
-<p>当然，如果你习惯将截图保存在桌面的话，/path/ 对应的路径为 ~/Desktop/。</p>
-<h4 id="设置截图文件格式"><a href="#设置截图文件格式" class="headerlink" title="设置截图文件格式"></a>设置截图文件格式</h4><p>OS X 系统默认截图文件格式为 png，通过下面的终端（Terminal）命令可以修改截图文件格式为 jpg ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture type jpg</span><br></pre></td></tr></table></figure></p>
-<p>另外，还可以将命令中的 jpg 修改为 gif 或 pdf，以及改回默认的 png 格式。同样别忘了输入上面那条使得修改生效的命令。</p>
-<p>⌘ t: 新建一个tab页</p>
-<p>⌘ shift []: 切换tab页</p>
+<p>&#x56FE;&#x7247;&#x9ED8;&#x8BA4;&#x5B58;&#x50A8;&#x5728;&#x684C;&#x9762;&#x3002;</p>
+<h4 id="&#x8BBE;&#x7F6E;&#x622A;&#x56FE;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;"><a href="#&#x8BBE;&#x7F6E;&#x622A;&#x56FE;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;" class="headerlink" title="&#x8BBE;&#x7F6E;&#x622A;&#x56FE;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;"></a>&#x8BBE;&#x7F6E;&#x622A;&#x56FE;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;</h4><p>&#x6253;&#x5F00;<code>Terminal</code>&#x5E76;&#x8F93;&#x5165;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture location /path/</span><br></pre></td></tr></table></figure></p>
+<p>/path/&#x5373;&#x4F60;&#x60F3;&#x8981;&#x8BBE;&#x7F6E;&#x7684;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;&#xFF0C;&#x6BD4;&#x5982;&#x5C06;&#x622A;&#x56FE;&#x6587;&#x4EF6;&#x5B58;&#x50A8;&#x5728;&#x7528;&#x6237;&#x76EE;&#x5F55;&#x7684;&#x56FE;&#x7247;&#xFF08;Pictures&#xFF09;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x547D;&#x4EE4;&#x5219;&#x4E3A;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture location ~/Pictures/</span><br></pre></td></tr></table></figure></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x4E3A;&#x4E86;&#x4F7F;&#x5F97;&#x4FEE;&#x6539;&#x751F;&#x6548;&#xFF0C;&#x8F93;&#x5165;&#x4E0B;&#x9762;&#x8FD9;&#x6761;&#x547D;&#x4EE4;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall SystemUIServer</span><br></pre></td></tr></table></figure></p>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x4E60;&#x60EF;&#x5C06;&#x622A;&#x56FE;&#x4FDD;&#x5B58;&#x5728;&#x684C;&#x9762;&#x7684;&#x8BDD;&#xFF0C;/path/ &#x5BF9;&#x5E94;&#x7684;&#x8DEF;&#x5F84;&#x4E3A; ~/Desktop/&#x3002;</p>
+<h4 id="&#x8BBE;&#x7F6E;&#x622A;&#x56FE;&#x6587;&#x4EF6;&#x683C;&#x5F0F;"><a href="#&#x8BBE;&#x7F6E;&#x622A;&#x56FE;&#x6587;&#x4EF6;&#x683C;&#x5F0F;" class="headerlink" title="&#x8BBE;&#x7F6E;&#x622A;&#x56FE;&#x6587;&#x4EF6;&#x683C;&#x5F0F;"></a>&#x8BBE;&#x7F6E;&#x622A;&#x56FE;&#x6587;&#x4EF6;&#x683C;&#x5F0F;</h4><p>OS X &#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x622A;&#x56FE;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x4E3A; png&#xFF0C;&#x901A;&#x8FC7;&#x4E0B;&#x9762;&#x7684;&#x7EC8;&#x7AEF;&#xFF08;Terminal&#xFF09;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x622A;&#x56FE;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x4E3A; jpg &#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.screencapture type jpg</span><br></pre></td></tr></table></figure></p>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x5C06;&#x547D;&#x4EE4;&#x4E2D;&#x7684; jpg &#x4FEE;&#x6539;&#x4E3A; gif &#x6216; pdf&#xFF0C;&#x4EE5;&#x53CA;&#x6539;&#x56DE;&#x9ED8;&#x8BA4;&#x7684; png &#x683C;&#x5F0F;&#x3002;&#x540C;&#x6837;&#x522B;&#x5FD8;&#x4E86;&#x8F93;&#x5165;&#x4E0A;&#x9762;&#x90A3;&#x6761;&#x4F7F;&#x5F97;&#x4FEE;&#x6539;&#x751F;&#x6548;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x2318; t: &#x65B0;&#x5EFA;&#x4E00;&#x4E2A;tab&#x9875;</p>
+<p>&#x2318; shift []: &#x5207;&#x6362;tab&#x9875;</p>
 
       
     </div>
