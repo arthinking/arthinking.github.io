@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Maven插件编译问题 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Maven插件编译问题"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>Maven插件编译问题</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/02/04/Maven插件编译问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-04T08:49:07.000Z">
+          2016-02-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
+</blockquote>
+<h1 id="Maven插件编译问题"><a href="#Maven插件编译问题" class="headerlink" title="Maven插件编译问题"></a>Maven插件编译问题</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TestService testService = serviceFactory.getService(ServiceType.testServiceClazz);</span><br></pre></td></tr></table></figure>
+<p>maven compile 报如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] /xxx.java:[100，20] xxx.java:106: 不兼容的类型找到： java.lang.Object需要： TestService[INFO] 1 error</span><br></pre></td></tr></table></figure>
+<p>而以下代码则不会报错：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TestService testService = serviceFactory.getService(TestService.class);</span><br></pre></td></tr></table></figure>
+<p>其中getService()方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>&lt;T&gt; T <span class="title">getService</span><span class="params">(Class&lt;T&gt; class)</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现，报错的代码，传入的Class是动态的，这是导致Maven编译报错的原因。</p>
+<p>查看下项目的maven-compiler-plugin插件配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span>  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.6<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.6<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">showWarnings</span>&gt;</span>flase<span class="tag">&lt;/<span class="name">showWarnings</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以发现我们并没有为maven指定其他的JDT(Java Development Tools)，使用的是默认的javac进行编译。而我们在Eclipse里面使用的是自带的JDT，编译没有问题。可见，javac的检查机制更加严格，导致Eclipse可以编译通过的，用Maven编译会报错。在用Maven编译的时候要注意下这点哦。</p>
+<p>##Reference</p>
+<p><a href="https://maven.apache.org/plugins/" target="_blank" rel="external">maven插件列表</a></p>
+<p><a href="http://blog.csdn.net/liushuijinger/article/details/44618557" target="_blank" rel="external">maven编译问题</a></p>
+<p><a href="http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.isv%2Fguide%2Fjdt_api_compile.htm" target="_blank" rel="external">Compiling Java code</a></p>
+<p><a href="http://blog.csdn.net/feng2007110221053/article/details/7311056" target="_blank" rel="external">关于Eclipse和Javac编译结果不一致的问题分析与解决</a></p>
+<p><a href="http://stackoverflow.com/questions/3061654/what-is-the-difference-between-javac-and-the-eclipse-compiler" target="_blank" rel="external">What is the difference between javac and the Eclipse compiler?</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Maven/">Maven</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Maven/">Maven</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Spring源码解读笔记 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Spring源码解读笔记"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span>Spring源码解读笔记</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2015/03/17/Spring源码解读笔记/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-02-02T06:33:13.000Z">
+          2016-02-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: arthinking<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
+</blockquote>
+<p>#Spring-core</p>
+<p>##org/springframework/core/io/相关内容</p>
+<p>###UrlResource.getInputStream()  #166<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResourceUtils.useCachesIfNecessary(con);</span><br></pre></td></tr></table></figure></p>
+<p>设置<code>URLConnection</code>的<code>UseCaches</code>为false，主要是为了防止在Windows下jar包被锁住。</p>
+<p>###AbstractFileResolvingResource<br>里面包含了JBoss vfs协议URL文件的获取。通过静态内部类 VfsResourceDelegate 进行处理的</p>
+<p>###ResourceLoader<br>是一个策略接口，其 getResource(String location)方法根据传入不同的location，返回不同的Resource。其实现类是一个可以单独使用的ResourceLoader实现类，ResourceEditor也使用了这个类</p>
+<p>###DefaultResourceLoader<br>ResourceLoader的默认实现，可以单独使用，ResourceEditor使用了该类，是AbstractApplicationContext的基类。</p>
+<p>##说说Spring容器的加载过程<br>XmlBeanFactory通过Resource装载Spring配置信息并启动IoC容器；<br>然后通过BeanFactory#getBean(beanName)方法从IoC容器获取Bean；<br>通过BeanFactory启动IoC容器时，并不会初始化配置文件中定义的Bean，初始化动作发生在第一个调用时；<br>对于单实例的Bean来说，BeanFactory会缓存Bean实例，所以第二次使用getBean()获取Bean的时候将直接从IoC容器的缓存中获取Bean实例。</p>
+<p>##Spring MVC一次执行的原理</p>
+<p>##列举出5种常用的SQL语句优化方式</p>
+<p>##说说两种数据库引擎的区别</p>
+<p>##猿题库</p>
+<p>问题<br>描述<br>回答<br>参考网址<br>举报test</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Spring/">Spring</a>, <a href="/tags/Spring源码/">Spring源码</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
