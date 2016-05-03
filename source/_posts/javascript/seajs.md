@@ -16,7 +16,7 @@ package.json  spm维护的依赖配置文件，用于生产dist目录的相关�
 
 [为什么 SeaJS 模块的合并这么麻烦](http://chaoskeh.com/blog/why-its-hard-to-combo-seajs-modules.html "为什么 SeaJS 模块的合并这么麻烦")
 
-###安装nodejs
+### 安装nodejs
 
 [seajs](http://seajs.org/docs/#docs "seajs")
 
@@ -56,15 +56,15 @@ define("id", ["dep-1", "dep-2"], function(require, exports, module) {
 
 
 
-##说明
+## 说明
 简单来说，通过使用SeaJS，我们可以把JS代码模块化，在上线之前，通过spm这样的构建工具，把自己开发的模块压缩合并，当成SeaJS的一个模块来使用。
 
-##Step by step
+## Step by step
 
 下面一步一步来实现这个过程：
 
 
-##正面项目接口
+## 正面项目接口
 
 整体目录结构如下：
 ```
@@ -85,30 +85,30 @@ project   // 项目跟目录
   |
 ```
 
-##创建目录结构
+## 创建目录结构
 
-###step1、创建项目 project
+### step1、创建项目 project
 
-###step2、创建web资源文件夹
+### step2、创建web资源文件夹
 在project里面新建一个assetsweb资源文件夹，专门用来存放JS，CSS等资源，我们的模块开发就在这个目录下面进行
 
-###step3、在assets下面创建sea-modules文件夹
+### step3、在assets下面创建sea-modules文件夹
 这个文件夹是用来存放SeaJS模块的，我们需要用到的模块，包括自己实现的模块最终都要存放到这里
 
-###step4、在assets目录下创建 static 文件夹
+### step4、在assets目录下创建 static 文件夹
 这个文件夹用于模块开发
 
-###step5、在 static 目录下创建 first-module 文件夹
+### step5、在 static 目录下创建 first-module 文件夹
 这个文件夹用于存储我的第一个模块的开发代码
 
-###step6、在 first-module 目录下创建 src 目录，这个目录用于存放我们模块开发的代码
+### step6、在 first-module 目录下创建 src 目录，这个目录用于存放我们模块开发的代码
 
-###step7、在assets下面创建 app 文件夹
+### step7、在assets下面创建 app 文件夹
 这个文件夹存放我们演示调用模块代码的HTML文件
 
-##使用spm初始化构建
+## 使用spm初始化构建
 
-###首先你需要通过npm安装spm，而npm是Node.js里面的一个工具，所以你需要先这样搭建环境：
+### 首先你需要通过npm安装spm，而npm是Node.js里面的一个工具，所以你需要先这样搭建环境：
 
 * 安装[Node.js](http://nodejs.org/ "Node.js")
 * 安装spm    
@@ -135,9 +135,9 @@ spm init
 
 接下来就可以开始开发自己的模块了。
 
-##模块开发
+## 模块开发
 
-###编辑我们自己的模块代码
+### 编辑我们自己的模块代码
 在src目录下创建我们的模块代码 index.js
 
 

@@ -8,12 +8,12 @@ tags: [Memcached]
 > Weibo: [arthinking_plus](http://weibo.com/arthinkingplus)
 > Posted in: http://www.itzhai.com
 
-#1、配置
-##1.1、安装
+# 1、配置
+## 1.1、安装
 ```
 sudo apt-get install memcached
 ```
-##1.2、启动
+## 1.2、启动
 > Memcached的基本设置：
 >     
 > -p 监听的端口    
@@ -44,11 +44,11 @@ sudo apt-get install memcached
 
 mc进程的实际内存分配量要比置顶的内存要大一些，所以如果置顶分配的内存太大了，有可能导致内存交换（swap）。
 
-#2、集群配置
+# 2、集群配置
 通过magent能够让缓存写入到多个不同的memcached里面
 
-##2.1、安装使用magent
-###2.1.1、编译安装libevent
+## 2.1、安装使用magent
+### 2.1.1、编译安装libevent
 ```shell
 wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz
 tar zxvf libevent-1.4.9-stable.tar.gz
@@ -58,7 +58,7 @@ make && make install
 cd ../
 ```
 
-###2.1.2、编译安装Memcached：
+### 2.1.2、编译安装Memcached：
 ```shell
 wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz
 tar zxvf memcached-1.2.6.tar.gz
@@ -68,7 +68,7 @@ make && make install
 cd ../
 ```
 
-###2.1.3、编译安装magent：
+### 2.1.3、编译安装magent：
 ```shell
 mkdir magent
 cd magent/
@@ -81,7 +81,7 @@ cp magent /usr/bin/magent
 cd ../
 ```
 
-###2.1.4、集群配置
+### 2.1.4、集群配置
 集群两台服务器，实现缓存备份。
 高可用网络架构：    
 ![](https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png)
@@ -100,16 +100,16 @@ magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11
 
 -s为要写入的memcached，-b为备份用的memcached    
 
-#3、使用
-##3.1、清空缓存
+# 3、使用
+## 3.1、清空缓存
 ```
 telnet 127.0.0.1 11211
 flush_all
 quit
 ```
 
-#4、监控
-##4.1、stats
+# 4、监控
+## 4.1、stats
 ```shell
 telnet 127.0.0.1 11211
 stats

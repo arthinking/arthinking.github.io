@@ -8,7 +8,7 @@ tags: [Log4J]
 > Weibo: [arthinking_plus](http://weibo.com/arthinkingplus)
 > Posted in: http://www.itzhai.com
 
-#性能问题
+# 性能问题
 
 关于Log4j的性能问题，可以先阅读以下官方文档的一点说明：[Performance](http://logging.apache.org/log4j/1.2/manual.html "Performance")
 

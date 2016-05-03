@@ -13,7 +13,7 @@ arthinking的技术总结
 
 ----------
 
-#GitHub相关资源
+# GitHub相关资源
 markdown语法：https://github.com/guodongxiaren/test  
 GitHub上README写法暨GFM语法解读：http://blog.csdn.net/wqvbjhc/article/details/27349209
 

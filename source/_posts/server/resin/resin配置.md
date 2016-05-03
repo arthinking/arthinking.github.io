@@ -8,17 +8,17 @@ tags: [Resin]
 > Weibo: [arthinking_plus](http://weibo.com/arthinkingplus)
 > Posted in: http://www.itzhai.com
 
-#1、安装
-##1.1、上传resin程序包
+# 1、安装
+## 1.1、上传resin程序包
 ```shell
 mkdir /home/mmt/soft
-#将resin-pro-3.1.12.tar.gz程序上传至soft目录下，解包：
+# 将resin-pro-3.1.12.tar.gz程序上传至soft目录下，解包：
 tar zxvf resin-pro-3.1.12.tar.gz
-#将解包后的程序copy至/usr/local目录下：
+# 将解包后的程序copy至/usr/local目录下：
 cp -rf resin-pro-3.1.12 /usr/local
-#将 resin-pro-3.1.12 改名为 resin
+# 将 resin-pro-3.1.12 改名为 resin
 mv /usr/local/resin-pro-3.1.12/ /usr/local/resin
-#进入/usr/local/resin/目录
+# 进入/usr/local/resin/目录
 cd /usr/local/resin
 ```
 
@@ -27,17 +27,17 @@ cd /usr/local/resin
 > 
 > [ubuntu 编译并安装resin3.1.12+nginx1.2.6](http://blog.csdn.net/tegwy/article/details/8870873 "ubuntu 编译并安装resin3.1.12+nginx1.2.6")
 
-##1.2、安装
+## 1.2、安装
 ```shell
 ./configure --with-java-home=/usr/lib/jvm/java/jdk1.6.0_26
-#启动resin，看是否安装成功
+# 启动resin，看是否安装成功
 /usr/local/resin/bin/httpd.sh start
-#如果能正常显示页面则表示安装成功，现在可以停止并设置相关配置文件了。
+# 如果能正常显示页面则表示安装成功，现在可以停止并设置相关配置文件了。
 /usr/local/resin/bin/httpd.sh stop
 ```
 
-#2、配置
-##JVM参数设置
+# 2、配置
+## JVM参数设置
 
 在resin/conf/resin.conf中的<jvm-arg>标签中进行配置，这将是启动JVM的初始化参数。
 
@@ -99,7 +99,7 @@ heap 空间不足，可能是 -Xmx 配得过大，或者系统内存不足或泄
 <!--keepalive 的最大数量，对网络性能有影响-->
 ```
 
-###JVM调优相关：    
+### JVM调优相关：    
 * [JVM调优](http://blog.csdn.net/tyrone1979/article/details/1274458 "JVM调优")    
 * [resin优化经验](http://www.opendigest.org/article.php/450 "resin优化经验")    
 * [resin](http://www.caucho.com/resin-3.0/performance/jvm-tuning.xtp#garbage-collection "resin")    

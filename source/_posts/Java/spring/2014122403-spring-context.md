@@ -18,12 +18,12 @@ ApplicationContext 是 Context 的顶级父类，他除了能标识一个应用�
 
 从上图中可以看出 ApplicationContext 继承了 BeanFactory，这也说明了 Spring 容器中运行的主体对象是 Bean，另外 ApplicationContext 继承了 ResourceLoader 接口，使得 ApplicationContext 可以访问到任何外部资源，这将在 Core 中详细说明。
 
-###ApplicationContext 的子类主要包含两个方面：
+### ApplicationContext 的子类主要包含两个方面：
 * ConfigurableApplicationContext 表示该 Context 是可修改的，也就是在构建 Context 中用户可以动态添加或修改已有的配置信息，它下面又有多个子类，其中最经常使用的是可更新的 Context，即 AbstractRefreshableApplicationContext 类。
 * WebApplicationContext 顾名思义，就是为 web 准备的 Context 他可以直接访问到 ServletContext，通常情况下，这个接口使用的少。
 再往下分就是按照构建 Context 的文件类型，接着就是访问 Context 的方式。这样一级一级构成了完整的 Context 等级层次。
 
-###总体来说 ApplicationContext 必须要完成以下几件事：    
+### 总体来说 ApplicationContext 必须要完成以下几件事：    
 * 标识一个应用环境
 * 利用 BeanFactory 创建 Bean 对象
 * 保存对象关系表

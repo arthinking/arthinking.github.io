@@ -51,7 +51,7 @@ public<T> T getService(Class<T> class){
 
 可以发现我们并没有为maven指定其他的JDT(Java Development Tools)，使用的是默认的javac进行编译。而我们在Eclipse里面使用的是自带的JDT，编译没有问题。可见，javac的检查机制更加严格，导致Eclipse可以编译通过的，用Maven编译会报错。在用Maven编译的时候要注意下这点哦。
 
-##Reference
+## Reference
 
 [maven插件列表](https://maven.apache.org/plugins/)
 

@@ -136,7 +136,7 @@ angular.module('myApp.filters', [])
 ## 7.2、表单验证
 AngularJS提供了很多表单验证指令。
 
-###  input元素上使用的所有验证选项：
+### input元素上使用的所有验证选项：
 
 1. 必填项
 ```html
