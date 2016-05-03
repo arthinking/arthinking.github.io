@@ -1,14 +1,16 @@
 ---
-title: 高薪园博客系统搭建说明
+title: HighPay Zoom博客系统搭建说明
 categories: [杂谈]
 tags: [Hexo]
 ---
 
 > Author: ChinSyun Pang
 > Weibo: [arthinking_plus](http://weibo.com/arthinkingplus)
-> Posted in: 
+> Posted in: [HighPay Zoom博客系统搭建说明](http://www.itzhai.com/highpay-zoom-blog-build-intro.html)
 
-高薪园博客托管于Github,基于Hexo制作成静态博客;
+<!-- ttoc -->
+
+HighPay Zoom博客托管于Github,基于Hexo制作成静态博客;
 
 ## Hexo
 
@@ -78,13 +80,23 @@ hexo deploy
 
 ```md
 ---
-title: 高薪园博客系统搭建说明
+title: HighPay Zoom博客系统搭建说明
 categories: [杂谈]
 tags: [Hexo]
 ---
 ```
 
 其中title是博文的标题,categories是分类,tags是标签,如果有多个标签或者分类,按照这个格式进行添加:[a,b,c]
+
+## Hexo相关的问题
+
+文档中的分隔项不可以使用`---`，与hexo的文件顶部定义的字符冲突了，报如下错：
+
+```
+YAMLException: end of the stream or a document separator is expected at
+```
+
+您应该尝试使用`***`替代。
 
 以上就是我们搭建过程啦, Bon Voyage!
 
@@ -94,4 +106,9 @@ tags: [Hexo]
 * [HEXO+Github,搭建属于自己的博客](http://www.jianshu.com/p/465830080ea9)
 * [Hexo@简书](http://www.jianshu.com/collection/7fafdc0abb5b)
 * [Hexo使用攻略](http://ijiaober.github.io/categories/hexo/)
+* [Hexo添加Toc支持，生成文章目录](http://www.imys.net/20150514/hexo-toc.html)
+
+
+
+
 

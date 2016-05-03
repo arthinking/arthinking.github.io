@@ -1,0 +1,28 @@
+---
+title: data binding
+categories: [web前端, Javascript]
+tags: [AngularJS]
+---
+
+> Author: ChinSyun Pang
+> Weibo: [arthinking_plus](http://weibo.com/arthinkingplus)
+> Posted in: http://www.itzhai.com
+
+## Hello World
+```html
+<!DOCTYPE html>
+<!-- ng-app 声明所有被它包含的元素都属于AngularJS 应用 -->
+<html ng-app>
+	<head>
+		<title>Simple app</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>
+	</head>
+	<body>
+		<input ng-model="name" type="text" placeholder="Your name">
+		<h1>Hello {{ name | number:2 }}</h1>
+	</body>
+</html>
+```
+
+
+

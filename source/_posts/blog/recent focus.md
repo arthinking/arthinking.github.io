@@ -1,0 +1,16 @@
+---
+title: recent focus
+categories: [杂谈]
+tags: []
+---
+
+> Author: ChinSyun Pang
+> Weibo: [arthinking_plus](http://weibo.com/arthinkingplus)
+> Posted in: http://www.itzhai.com
+
+
+[一篇文看懂Hadoop：风雨十年，未来何去何从](http://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&mid=403025428&idx=1&sn=bb2c0380ce29dc3cecf5f6a2afe36960&scene=23&srcid=03138MMvCvhjmcgWvf6oFcOS#rd)
+
+
+
+
