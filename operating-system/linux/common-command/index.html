@@ -40,9 +40,9 @@
 <nav id="site-navigation" class="main-navigation" role="navigation">
   <ul>
     
-      <li><a href="/">主页</a></li>
+      <li><a href="/">Home</a></li>
     
-      <li><a href="/archives">归档</a></li>
+      <li><a href="/archives">Archives</a></li>
     
   </ul>
 </nav></header>
@@ -61,8 +61,8 @@
   <div class="article-top-meta">
     <span class="posted-on">
       <a href="/operating-system/linux/common-command/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-02-11T09:40:14.000Z">
-          2016-02-11
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
         </time>
       </a>
     </span>
@@ -77,7 +77,7 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h1 id="common-linux-command"><a href="#common-linux-command" class="headerlink" title="common linux command"></a>common linux command</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="_">-l</span> -r <span class="_">-e</span> <span class="string">&apos;arthinking.github.io&apos;</span> /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i <span class="string">&quot;&quot;</span> <span class="string">&quot;s/arthinking.github.io/informal-essay/g&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="common-linux-command"><a href="#common-linux-command" class="headerlink" title="common linux command"></a>common linux command</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="_">-l</span> -r <span class="_">-e</span> <span class="string">&apos;arthinking.github.io&apos;</span> /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i <span class="string">&quot;&quot;</span> <span class="string">&quot;s/arthinking.github.io/informal-essay/g&quot;</span></span><br><span class="line"></span><br><span class="line">find /Users/arthinking/Dev/arthinking.github.io/<span class="built_in">source</span>/_posts/* -name <span class="string">&quot;*.md&quot;</span> -print0 | xargs -0 sed -i <span class="string">&quot;&quot;</span> <span class="string">&quot;s/^\(##*\) *\(.*\)$/\1 \2/g&quot;</span></span><br></pre></td></tr></table></figure>
 <p><a href="http://www.th7.cn/system.mac/201411/77742.shtml
 http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="external">sed&#x5728;mac&#x4E0B;&#x4F7F;&#x7528;&#x5DEE;&#x5F02;</a></p>
 <h1 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h1><p>Linux&#x7684;scp&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x5728;Linux&#x4E4B;&#x95F4;&#x590D;&#x5236;&#x6587;&#x4EF6;&#x548C;&#x76EE;&#x5F55;&#xFF1A;</p>
