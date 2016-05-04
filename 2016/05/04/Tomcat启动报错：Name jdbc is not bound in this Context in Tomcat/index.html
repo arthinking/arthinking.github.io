@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article">
+
+  
+  
+    <h3 class="article-title"><span></span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/05/04/Tomcat启动报错：Name jdbc is not bound in this Context in Tomcat/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-04T05:13:14.000Z">
+          2016-05-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x6709;&#x65F6;&#x5019;Tomcat&#x8FD0;&#x884C;&#x597D;&#x597D;&#x7684;&#xFF0C;&#x505C;&#x6389;&#x4E4B;&#x540E;&#x518D;&#x6B21;&#x8FD0;&#x884C;&#x5C31;&#x62A5;&#x9519;&#x4E86;&#xFF1A;</p>
+<blockquote>
+<p>Name jdbc is not bound in this Context in Tomcat</p>
+</blockquote>
+<p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F60;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x5728;<code>context.xml</code>&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x914D;&#x7F6E;<a href="http://tomcat.apache.org/tomcat-6.0-doc/config/context.html#Resource%20Links" target="_blank" rel="external">ResourceLink</a>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">ResourceLink</span> <span class="attr">global</span>=<span class="string">&quot;jdbc/MyDS&quot;</span> <span class="attr">name</span>=<span class="string">&quot;jdbc/MyDS&quot;</span> <span class="attr">type</span>=<span class="string">&quot;javax.sql.DataSource&quot;</span> /&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>#References</p>
+<p><a href="http://stackoverflow.com/questions/8849461/name-jdbc-is-not-bound-in-this-context-in-tomcat" target="_blank" rel="external">Name jdbc is not bound in this Context in Tomcat</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
