@@ -15,6 +15,10 @@ grep -i -l -r -e 'arthinking.github.io' /Users/arthinking/Dev/informal-essay-git
 
 find /Users/arthinking/Dev/arthinking.github.io/source/_posts/* -name "*.md" -print0 | xargs -0 sed -i "" "s/^\(##*\) *\(.*\)$/\1 \2/g"
 
+# 注意贪婪模式
+
+http://serverfault.com/questions/268368/how-can-i-handle-spaces-in-file-names-when-using-xargs-on-find-results
+
 ```
 
 [sed在mac下使用差异](http://www.th7.cn/system.mac/201411/77742.shtml
