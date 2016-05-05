@@ -1,5 +1,19 @@
 .article {
     position: relative;
+    float: right;
+    width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+    .article-container {
+        margin-right: 220px;
+    }
+}
+
+.article-main {
+    float: left;
+    width: 100%;
+    padding: 40px 0;
 }
 
 .article:not(:first-child):before {
@@ -239,4 +253,75 @@
 
 .tags-list a:hover {
     color: #e41111;
+}
+
+#article-toc {
+    display: none;
+    float: right;
+    width: 220px;
+    margin-right: -220px;
+    opacity: .8;
+    padding: 40px 0;
+}
+
+@media screen and (min-width: 769px) {
+    #article-toc {
+        display: block;
+    }
+}
+
+#article-toc.fixed {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 220px;
+}
+
+.article-toc-inner {
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 220px;
+}
+
+.fixed .article-toc-inner {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.article-toc-inner, .inner {
+    padding: 0 20px;
+}
+
+.sidebar-title {
+    margin-top: 40px;
+    padding: 10px 0;
+    font-weight: 700;
+    color: #0e83cd;
+    display: inline-block;
+    border-top: 1px solid #e3e3e3;
+}
+
+.post-toc {
+    padding: 0;
+}
+
+.post-toc span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    font-size: 80%;
+    vertical-align: baseline;
+    display: block;
+    color: #444;
+    text-decoration: none;
+    position: relative;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

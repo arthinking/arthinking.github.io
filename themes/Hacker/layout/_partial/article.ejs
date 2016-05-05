@@ -17,32 +17,49 @@
     <%- partial('post/gallery') %>
   <% } %>
 
-  <div class="article-content">
-    <div class="entry">
-      <% if (item.excerpt && index){ %>
-        <%- item.excerpt %>
-      <% } else { %>
-        <%- item.content %>
-      <% } %>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          <% if (item.excerpt && index){ %>
+            <%- item.excerpt %>
+          <% } else { %>
+            <%- item.content %>
+          <% } %>
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              <%- partial('post/category') %>
+              <%- partial('post/tag') %>
+            </div>
+            <% if (index && (theme.duoshuo || theme.disqus)){ %>
+            <div class="article-meta pull-right">
+              <span>
+                <i class="icon-comments"></i>
+                <span>
+                  <a href="<%- item.permalink %>#comment"><%- __('comment') %></a>
+                </span>
+              </span>
+            </div>
+            <% } %>
+        </footer>
+      </div>
+
     </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          <%- partial('post/category') %>
-          <%- partial('post/tag') %>
-        </div>
-        <% if (index && (theme.duoshuo || theme.disqus)){ %>
-        <div class="article-meta pull-right">
-          <span>
-            <i class="icon-comments"></i>
-            <span>
-              <a href="<%- item.permalink %>#comment"><%- __('comment') %></a>
-            </span>
-          </span>
-        </div>
-        <% } %>
-    </footer>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <%- toc(page.content, {
+          class: 'post-toc',
+          list_number: false
+        }) %>
+      </div>
+    </aside>
+
   </div>
+
 </article>
-<% if (!index){ %>
-  <%- partial('comment') %>
-<% } %>
+<%- partial('comment') %>
