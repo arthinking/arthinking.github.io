@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
 <h3 id="1-&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;553&#x7684;&#x652F;&#x6301;"><a href="#1&#x3001;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;5-5-3-&#x7684;&#x652F;&#x6301;" class="headerlink" title="1&#x3001;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;5.5.3+&#x7684;&#x652F;&#x6301;"></a>1&#x3001;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;5.5.3+&#x7684;&#x652F;&#x6301;</h3><h3 id="2-&#x4FEE;&#x6539;database-table&#x548C;column&#x5B57;&#x7B26;&#x96C6;"><a href="#2&#x3001;&#x4FEE;&#x6539;database&#x3001;table&#x548C;column&#x5B57;&#x7B26;&#x96C6;" class="headerlink" title="2&#x3001;&#x4FEE;&#x6539;database&#x3001;table&#x548C;column&#x5B57;&#x7B26;&#x96C6;"></a>2&#x3001;&#x4FEE;&#x6539;database&#x3001;table&#x548C;column&#x5B57;&#x7B26;&#x96C6;</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> guitargg <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">2000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">&apos;%char%&apos;</span>;</span><br></pre></td></tr></table></figure>
@@ -85,11 +89,11 @@
 <p><a href="http://segmentfault.com/blog/ilikewhite/1190000000616820" title="mysql/Java&#x670D;&#x52A1;&#x7AEF;&#x5BF9;emoji&#x7684;&#x652F;&#x6301;" target="_blank" rel="external">mysql/Java&#x670D;&#x52A1;&#x7AEF;&#x5BF9;emoji&#x7684;&#x652F;&#x6301;</a></p>
 </blockquote>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -98,7 +102,7 @@
   </span>
 
 
-          
+              
   
 
   <span class="post-tags">
@@ -107,13 +111,23 @@
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-数据库需要553的支持"><span class="post-toc-text">1、数据库需要5.5.3+的支持</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-修改database-table和column字符集"><span class="post-toc-text">2、修改database、table和column字符集</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-修改配置文件"><span class="post-toc-text">3、修改配置文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-重启mysql-server"><span class="post-toc-text">4、重启MySQL Server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-升级jdbc驱动"><span class="post-toc-text">5、升级JDBC驱动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-检查应用的数据库连接配置"><span class="post-toc-text">6、检查应用的数据库连接配置：</span></a></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -122,7 +136,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

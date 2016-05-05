@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
 <h1 id="common-linux-command"><a href="#common-linux-command" class="headerlink" title="common linux command"></a>common linux command</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">grep -i <span class="_">-l</span> -r <span class="_">-e</span> <span class="string">&apos;arthinking.github.io&apos;</span> /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i <span class="string">&quot;&quot;</span> <span class="string">&quot;s/arthinking.github.io/informal-essay/g&quot;</span></span><br><span class="line"></span><br><span class="line">find /Users/arthinking/Dev/arthinking.github.io/<span class="built_in">source</span>/_posts/* -name <span class="string">&quot;*.md&quot;</span> -print0 | xargs -0 sed -i <span class="string">&quot;&quot;</span> <span class="string">&quot;s/^\(##*\) *\(.*\)$/\1 \2/g&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x6CE8;&#x610F;&#x8D2A;&#x5A6A;&#x6A21;&#x5F0F;</span></span><br><span class="line"></span><br><span class="line">http://serverfault.com/questions/268368/how-can-i-handle-spaces-in-file-names-when-using-xargs-on-find-results</span><br></pre></td></tr></table></figure>
@@ -118,11 +122,11 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
 <h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h1><p>&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#x5360;&#x7528;</p>
 <p>lsof -i tcp:port</p>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -131,14 +135,24 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
   </span>
 
 
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
+              
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#common-linux-command"><span class="post-toc-text">common linux command</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#scp"><span class="post-toc-text">scp</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从本地复制到远程"><span class="post-toc-text">从本地复制到远程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#复制文件"><span class="post-toc-text">复制文件：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#复制目录"><span class="post-toc-text">复制目录</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#从远程复制到本地"><span class="post-toc-text">从远程复制到本地</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#例子"><span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tar"><span class="post-toc-text">tar</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cp"><span class="post-toc-text">cp</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lsof"><span class="post-toc-text">lsof</span></a></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -147,7 +161,8 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
 <h1 id="&#x5B89;&#x88C5;jdk"><a href="#&#x5B89;&#x88C5;JDK" class="headerlink" title="&#x5B89;&#x88C5;JDK"></a>&#x5B89;&#x88C5;JDK</h1><blockquote>
@@ -99,11 +103,11 @@
 <h2 id="&#x76F4;&#x63A5;&#x4F7F;&#x7528;jdk"><a href="#&#x76F4;&#x63A5;&#x4F7F;&#x7528;JDK" class="headerlink" title="&#x76F4;&#x63A5;&#x4F7F;&#x7528;JDK"></a>&#x76F4;&#x63A5;&#x4F7F;&#x7528;JDK</h2><p>&#x5982;&#x679C;&#x662F;&#x76F4;&#x63A5;&#x76D1;&#x63A7;JVM&#xFF0C;&#x5219;&#x5728; <code>/etc/profile</code> &#x6587;&#x4EF6;&#x91CC;&#x9762;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_OPTS=&quot;-Dcom.sun.management.jmxremote.port=<span class="tag">&lt;<span class="name">port</span>&gt;</span> -Dcom.sun.management.jmxremote.ssl=false</span><br><span class="line">-Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=<span class="tag">&lt;<span class="name">hostname</span>&gt;</span>  </span><br><span class="line">-Dcom.sun.management.jmxremote.ssl=false&quot;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">&#x8BE6;&#x7EC6;&#x53C2;&#x8003;&#xFF1A;</span><br><span class="line">&gt; [&#x4F7F;&#x7528;Java&#x81EA;&#x5E26;&#x7684;VisualVM&#x76D1;&#x63A7;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;JVM&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;](http://www.cnblogs.com/chenying99/archive/2012/06/21/2557208.html &quot;&#x4F7F;&#x7528;Java&#x81EA;&#x5E26;&#x7684;VisualVM&#x76D1;&#x63A7;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;JVM&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&quot;)</span><br><span class="line"></span><br><span class="line">## &#x4F7F;&#x7528;resin</span><br><span class="line">&#x5728;resin.conf&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;</span><br><span class="line">```xml</span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Djava.rmi.server.hostname=192.168.75.34<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.port=9934<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.ssl=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.authenticate=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;JMX&#x8FDE;&#x63A5;&#x5373;&#x53EF;</p>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -112,7 +116,7 @@
   </span>
 
 
-          
+              
   
 
   <span class="post-tags">
@@ -121,13 +125,23 @@
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装jdk"><span class="post-toc-text">安装JDK</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置jdk"><span class="post-toc-text">配置JDK</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用visualvm监控远程主机jvm"><span class="post-toc-text">使用VisualVM监控远程主机JVM</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#直接使用jdk"><span class="post-toc-text">直接使用JDK</span></a></li></ol></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -136,7 +150,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

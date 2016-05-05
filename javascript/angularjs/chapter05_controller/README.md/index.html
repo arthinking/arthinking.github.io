@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 <p>&#x5C06;&#x63A7;&#x5236;&#x5668;&#x547D;&#x540D;&#x4E3A;[Name]Controller&#x800C;&#x4E0D;&#x662F;[Name]Ctrl&#x662F;&#x4E00;&#x4E2A;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;</p>
 <p>&#x63A7;&#x5236;&#x5668;&#x53EF;&#x4EE5;&#x5C06;&#x4E0E;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x89C6;&#x56FE;&#x76F8;&#x5173;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5C01;&#x88C5;&#x5728;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x5BB9;&#x5668;&#x4E2D;&#x3002;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x7CBE;&#x7B80;&#x63A7;&#x5236;&#x5668;&#x662F;&#x5F88;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
@@ -88,11 +92,11 @@
 <p>&#x8BBE;&#x8BA1;&#x826F;&#x597D;&#x7684;&#x5E94;&#x7528;&#x4F1A;&#x5C06;&#x590D;&#x6742;&#x7684;&#x903B;&#x8F91;&#x653E;&#x5230;&#x6307;&#x4EE4;&#x548C;&#x670D;&#x52A1;&#x4E2D;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x6307;&#x4EE4;&#x548C;&#x670D;&#x52A1;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x63A7;&#x5236;&#x5668;&#x91CD;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x8F7B;&#x91CF;&#x4E14;&#x66F4;&#x6613;&#x7EF4;&#x62A4;&#x7684;&#x5F62;&#x5F0F;&#xFF1A;</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>, [])</span><br><span class="line">	.controller(<span class="string">&apos;MyController&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope,UserSrv</span>) </span>{</span><br><span class="line">		<span class="comment">// &#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x88AB;&#x6307;&#x4EE4;&#x63A7;&#x5236;</span></span><br><span class="line">		$scope.onLogin = <span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>{</span><br><span class="line">			UserSrv.runLogin(user);</span><br><span class="line">		};</span><br><span class="line">	});</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -101,7 +105,7 @@
   </span>
 
 
-          
+              
   
 
   <span class="post-tags">
@@ -110,13 +114,23 @@
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#51-控制器嵌套作用域包含作用域"><span class="post-toc-text">5.1、控制器嵌套（作用域包含作用域）</span></a></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -125,7 +139,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
 <h1 id="git&#x5E38;&#x7528;&#x547D;&#x4EE4;"><a href="#Git&#x5E38;&#x7528;&#x547D;&#x4EE4;" class="headerlink" title="Git&#x5E38;&#x7528;&#x547D;&#x4EE4;"></a>Git&#x5E38;&#x7528;&#x547D;&#x4EE4;</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x5C06;&#x8FDC;&#x7A0B;&#x5206;&#x652F;&#x4FE1;&#x606F;&#x83B7;&#x53D6;&#x5230;&#x672C;&#x5730;</span></span><br><span class="line">git fetch</span><br><span class="line"><span class="comment"># &#x5C06;&#x8FDC;&#x7A0B;&#x5206;&#x652F;&#x6620;&#x5C04;&#x5230;&#x672C;&#x5730;&#x547D;&#x540D;&#x4E3A;`local-branchname`&#x7684;&#x4E00;&#x5206;&#x652F;</span></span><br><span class="line">git checkout -b <span class="built_in">local</span>-branchname origin/remote_branchname</span><br></pre></td></tr></table></figure>
@@ -95,11 +99,11 @@ undefined
 <p><a href="https://git-scm.com/book/zh/v2/" target="_blank" rel="external">Pro Git</a></p>
 <p><a href="http://gitbook.liuhui998.com/4_2.html" target="_blank" rel="external">Git Rebase</a></p>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -108,7 +112,7 @@ undefined
   </span>
 
 
-          
+              
   
 
   <span class="post-tags">
@@ -117,13 +121,23 @@ undefined
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#git常用命令"><span class="post-toc-text">Git常用命令</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分支管理"><span class="post-toc-text">分支管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置推送分支"><span class="post-toc-text">设置推送分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看分支"><span class="post-toc-text">查看分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建分支"><span class="post-toc-text">创建分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#切换分支"><span class="post-toc-text">切换分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除分支"><span class="post-toc-text">删除分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#rebase-相关命令"><span class="post-toc-text">Rebase 相关命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#tag管理"><span class="post-toc-text">Tag管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除远程tag"><span class="post-toc-text">删除远程Tag</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#references"><span class="post-toc-text">References</span></a></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -132,7 +146,8 @@ undefined
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com/web-project-setup-introduction-html.html" target="_blank" rel="external">web&#x524D;&#x7AEF;&#x9879;&#x76EE;&#x642D;&#x5EFA;&#x8BF4;&#x660E;</a><br>&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/highpay-zoom/app-mis" target="_blank" rel="external">app-mis</a></p>
 </blockquote>
 <h2 id="&#x5B89;&#x88C5;webpack"><a href="#&#x5B89;&#x88C5;webpack&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;webpack&#xFF1A;"></a>&#x5B89;&#x88C5;webpack&#xFF1A;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack -g</span><br></pre></td></tr></table></figure>
@@ -131,11 +135,11 @@
 <li><a href="http://www.tuicool.com/articles/7JZZJzn" target="_blank" rel="external">ESLint &#x4F7F;&#x7528;&#x5165;&#x95E8;</a></li>
 </ul>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -144,7 +148,7 @@
   </span>
 
 
-          
+              
   
 
   <span class="post-tags">
@@ -153,13 +157,23 @@
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装webpack"><span class="post-toc-text">安装webpack：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化项目"><span class="post-toc-text">初始化项目：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为项目安装webpack"><span class="post-toc-text">为项目安装webpack：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装webpack调试工具"><span class="post-toc-text">安装webpack调试工具：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动webpack-dev-server"><span class="post-toc-text">启动webpack-dev-server：</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#webpack构建命令"><span class="post-toc-text">webpack构建命令：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装需要的模块"><span class="post-toc-text">安装需要的模块：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lodash"><span class="post-toc-text">lodash</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装babel"><span class="post-toc-text">安装babel：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装eslint"><span class="post-toc-text">安装eslint：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装react"><span class="post-toc-text">安装react：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装antd"><span class="post-toc-text">安装antd</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装需要的webpack-loader"><span class="post-toc-text">安装需要的webpack loader：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#loader配置说明"><span class="post-toc-text">loader配置说明：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装需要的webpack-plugin"><span class="post-toc-text">安装需要的webpack plugin：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-text">参考：</span></a></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -168,7 +182,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

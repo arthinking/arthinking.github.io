@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 <p>&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#xFF1A;JVM&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#x4E0E;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF08;&#x7B2C;2&#x7248;&#xFF09;&#x300B;&#x7B14;&#x8BB0;</p>
 </blockquote>
@@ -143,11 +147,11 @@
 <p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/jvm-executive-subsystem-bytecode-interpreter.html" title="&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x5B57;&#x8282;&#x7801;&#x6267;&#x884C;&#x5F15;&#x64CE;&#xFF09;" target="_blank" rel="external">&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x5B57;&#x8282;&#x7801;&#x6267;&#x884C;&#x5F15;&#x64CE;&#xFF09;</a></p>
 </blockquote>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -156,14 +160,24 @@
   </span>
 
 
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
+              
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-概述"><span class="post-toc-text">1、概述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-运行时栈帧结构"><span class="post-toc-text">2、运行时栈帧结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#21-局部变量表"><span class="post-toc-text">2.1、局部变量表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#22-操作数栈"><span class="post-toc-text">2.2、操作数栈</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#23-动态连接"><span class="post-toc-text">2.3、动态连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#24-方法返回地址"><span class="post-toc-text">2.4、方法返回地址</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#25-附加信息"><span class="post-toc-text">2.5、附加信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-方法调用"><span class="post-toc-text">3、方法调用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#31-解析"><span class="post-toc-text">3.1、解析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#32-分派"><span class="post-toc-text">3.2、分派</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态分派"><span class="post-toc-text">静态分派：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态分派"><span class="post-toc-text">动态分派：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单分派与多分派"><span class="post-toc-text">单分派与多分派：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#虚拟机动态分派的实现"><span class="post-toc-text">虚拟机动态分派的实现：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#33-动态类型语言支持"><span class="post-toc-text">3.3、动态类型语言支持</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-动态类型语言"><span class="post-toc-text">1. 动态类型语言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-jdk-1-7-与动态类型"><span class="post-toc-text">2. JDK   1. 7 与动态类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-java-lang-invoke-包"><span class="post-toc-text">3. java. lang. invoke 包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-invokedynamic-指令"><span class="post-toc-text">4. invokedynamic 指令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-掌控方法分派规则"><span class="post-toc-text">5. 掌控方法分派规则</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-基于栈的字节码解析执行引擎"><span class="post-toc-text">4、基于栈的字节码解析执行引擎</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#41-解析执行"><span class="post-toc-text">4.1、解析执行</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#42-基于栈的指令集与基于寄存器的指令集"><span class="post-toc-text">4.2、基于栈的指令集与基于寄存器的指令集</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#43-基于栈的解析执行过程"><span class="post-toc-text">4.3、基于栈的解析执行过程</span></a></li></ol></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -172,7 +186,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

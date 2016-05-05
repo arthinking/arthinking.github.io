@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
 <p>&#x73B0;&#x6709;&#x5982;&#x4E0B;&#x7A0B;&#x5E8F;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Searcher</span> </span>{</span><br><span class="line">	<span class="function">List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		result.add(<span class="string">&quot;Wings you are the hero&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
@@ -82,11 +86,11 @@
 <p>&#x5982;&#x679C;Searcher&#x63A5;&#x53E3;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x6539;&#x5199;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x786E;&#x5B9A;&#x9700;&#x8981;&#x4E3A;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x90FD;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x8FDB;&#x884C;&#x6539;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E14;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF08;<a href="http://www.itzhai.com/java-notes-reflection-dynamic-proxies.html#&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF1A;" title="JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;invoke&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x662F;&#x5426;&#x60F3;&#x8981;&#x6539;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;<a href="http://www.itzhai.com/java-dong-tai-dai-li-zhi-jdk-dong-tai-dai-li-he-cglib-dong-tai-dai-li-mian-xiang-qie-mian-bian-cheng-aop-yuan-li.html#CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" title="CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>]&#x5BF9;&#x5E94;&#x4E3A;intercept&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5199;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5904;&#x7406;&#x7C7B;&#xFF0C;&#x5C31;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x4EE3;&#x7406;&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x66F4;&#x7075;&#x6D3B;&#x3002;</p>
 <p>&#x5982;&#x679C;LuceneSearcher&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x5F0F;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;LuceneSearcher&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x8986;&#x76D6;searchSong&#x65B9;&#x6CD5;&#x52A0;&#x5165;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x901A;&#x8FC7;&#x6539;&#x52A8;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#x3002;</p>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -95,14 +99,24 @@
   </span>
 
 
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
+              
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -111,7 +125,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

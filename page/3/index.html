@@ -128,8 +128,6 @@
   </div>
 </article>
 
-
-
   <article class="post article">
 
   
@@ -232,19 +230,17 @@
   </div>
 </article>
 
-
-
   <article class="post article">
 
   
   
-    <h3 class="article-title"><a href="/IDE/20141204_配置Maven项目自动编译/"><span>配置Maven项目自动编译</span></a></h3>
+    <h3 class="article-title"><a href="/Java/热部署/"><span>Resin中的热部署</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/IDE/20141204_配置Maven项目自动编译/" rel="bookmark">
+      <a href="/Java/热部署/" rel="bookmark">
         <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
           2016-05-03
         </time>
@@ -261,32 +257,12 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h2 id="maven&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;"><a href="#Maven&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;" class="headerlink" title="Maven&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;"></a>Maven&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">project</span><br><span class="line">    - src    </span><br><span class="line">        - main</span><br><span class="line">            - java</span><br><span class="line">            - resources</span><br><span class="line">            - webapp</span><br><span class="line">                - WEB-INF</span><br><span class="line">                    - classes</span><br><span class="line">                    - lib</span><br><span class="line">    - target</span><br><span class="line">        - project-snapshot</span><br><span class="line">            - WEB-INF</span><br><span class="line">                - classes</span><br><span class="line">                - lib</span><br><span class="line">        - classes</span><br><span class="line">```     </span><br><span class="line">&#x5176;&#x4E2D; project-snapshot&#x5C31;&#x662F;maven&#x7F16;&#x8BD1;&#x751F;&#x6210;&#x7684;&#x9879;&#x76EE;&#x76EE;&#x5F55;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x5BF9;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#xFF0C;&#x8FD9;&#x6837;&#x95EE;&#x9898;&#x6765;&#x4E86;&#xFF1A;  </span><br><span class="line">  </span><br><span class="line">&#x6BCF;&#x6B21;&#x6539;&#x52A8;JSP&#x6587;&#x4EF6;&#x6216;&#x8005;Java&#x6587;&#x4EF6;&#xFF0C;&#x90FD;&#x5F97;&#x91CD;&#x65B0;&#x7528;maven&#x7F16;&#x8BD1;&#x4E00;&#x4E0B;&#xFF0C;&#x4EE5;&#x4FBF;&#x751F;&#x6210;&#x4EE3;&#x7801;&#x5230;&#x8BE5;&#x76EE;&#x5F55;&#xFF0C;&#x6709;&#x6CA1;&#x6709;&#x65B9;&#x4FBF;&#x70B9;&#x7684;&#x505A;&#x6CD5;&#x5462;&#xFF1F;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x5566;&#x3002;</span><br><span class="line"></span><br><span class="line">## &#x8BA9;Maven&#x9879;&#x76EE;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#xFF1A;    </span><br><span class="line">    </span><br><span class="line">&#x4E3A;&#x4E86;&#x8BA9;&#x6539;&#x5199;JSP&#x4E4B;&#x540E;&#x65E0;&#x9700;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x6709;&#x4F7F;&#x7528;src/main/webapp/&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x4E00;&#x822C;&#x6211;&#x4EEC;&#x662F;&#x76F4;&#x63A5;&#x6539;&#x52A8;&#x91CC;&#x9762;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x7684;&#xFF1B;    </span><br><span class="line">    </span><br><span class="line">&#x800C;jar&#x5305;&#x662F;maven&#x4ECE;&#x4ED3;&#x5E93;&#x4E0B;&#x8F7D;&#x8FC7;&#x6765;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x80FD;&#x7528;&#x4E0A;&#x4E0B;&#x8F7D;&#x56DE;&#x6765;&#x7684;jar&#x5305;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;</span><br><span class="line">&gt; target/project-snapshot/WEB-INF/lib   </span><br><span class="line">  </span><br><span class="line">&#x76EE;&#x5F55;&#x8054;&#x63A5;&#x5230;</span><br><span class="line">    </span><br><span class="line">&gt; src/main/webapp/WEB-INF/lib</span><br><span class="line"></span><br><span class="line">windows&#x4E0B;&#x901A;&#x8FC7; [mklink /j](http://technet.microsoft.com/en-us/library/cc753194.aspx &quot;mklink&quot;) &#x547D;&#x4EE4;(&#x5047;&#x8BBE;&#x9879;&#x76EE;&#x5728;D:/dev&#x76EE;&#x5F55;&#x4E0B;)&#xFF1A;</span><br></pre></td></tr></table></figure>
-<p>mklink /j &#x201C;D:\dev\project\src\main\webapp\WEB-INF\lib&#x201D; &#x201C;D:\dev\project\target\project-snapshot\WEB-INF\lib&#x201D;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x8FD9;&#x6837;&#x5C31;&#x628A;maven&#x4E0B;&#x8F7D;&#x7684;lib&#x76EE;&#x5F55;&#x8054;&#x63A5;&#x5230;&#x90E8;&#x7F72;&#x76EE;&#x5F55;webapp&#x4E0B;&#x4E86;&#xFF1B;</span><br><span class="line">   </span><br><span class="line">&#x5BF9;&#x4E8E;class&#x76EE;&#x5F55;&#xFF0C;&#x4E5F;&#x662F;&#x540C;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x53E6;&#x5916;&#x9700;&#x8981;&#x8BBE;&#x7F6E;IDE&#x7684;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#x5230;&#xFF1A;</span><br><span class="line">&gt; target/project-snapshot/WEB-INF/classes    </span><br><span class="line"></span><br><span class="line">&#x53F3;&#x51FB;&#x9879;&#x76EE; -&gt; properties -&gt; Java Build Path -&gt; &#x53F3;&#x8FB9;&#x9762;&#x677F;&#x5E95;&#x90E8;&#x8BBE;&#x7F6E;Default output folder&#xFF1B;        </span><br><span class="line"></span><br><span class="line">## &#x76F4;&#x63A5;&#x8FD0;&#x884C;main&#x65B9;&#x6CD5;&#x7684;&#x95EE;&#x9898;</span><br><span class="line"></span><br><span class="line">&#x4F46;&#x662F;&#x8FD9;&#x6837;Eclipse&#x4E0B;&#x4F1A;&#x6709;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;main&#x65B9;&#x6CD5;&#xFF0C;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x9519;&#x8BEF;&#xFF1A;</span><br></pre></td></tr></table></figure></p>
-<p>java.lang.NoClassDefFoundError: me/arthinking/test/Demo<br>Caused by: java.lang.ClassNotFoundException: me.arthinking.test.Demo<br>    at java.net.URLClassLoader$1.run(URLClassLoader.java:202)<br>    at java.security.AccessController.doPrivileged(Native Method)<br>    at java.net.URLClassLoader.findClass(URLClassLoader.java:190)<br>    at java.lang.ClassLoader.loadClass(ClassLoader.java:306)<br>    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)<br>    at java.lang.ClassLoader.loadClass(ClassLoader.java:247)<br>Exception in thread &#x201C;main&#x201D;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x539F;&#x56E0;&#x662F;&#x6CA1;&#x6709;&#x8BFB;&#x53D6;&#x5230;&#x8F93;&#x51FA;&#x7684;classes&#x6587;&#x4EF6;&#xFF0C;&#x4E3A;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;class&#x7F16;&#x8BD1;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#x8BBE;&#x7F6E;&#x4E3A;&#xFF1A;    </span><br><span class="line"></span><br><span class="line">&gt; project/target/classes</span><br><span class="line"></span><br><span class="line">&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x6267;&#x884C;main&#x65B9;&#x6CD5;&#x4E86;</span><br><span class="line"></span><br><span class="line">&#x628A;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x8054;&#x63A5;&#x5230;webapp/WEB-INF/classes&#x76EE;&#x5F55;&#x4E0B;&#x5373;&#x53EF;&#x3002;</span><br><span class="line">&#x7F16;&#x8BD1;&#x76EE;&#x5F55;&#x8BBE;&#x7F6E;&#x5982;&#x56FE;&#xFF1A;    </span><br><span class="line">![](https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141204-java01.png)</span><br><span class="line"></span><br><span class="line">&#x5176;&#x4ED6;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x9700;&#x8981;&#x8054;&#x63A5;&#x5230;webapp&#x76EE;&#x5F55;&#xFF0C;&#x540C;&#x4E0A;&#x64CD;&#x4F5C;&#x3002;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## &#x5173;&#x4E8E;IDEA&#x96C6;&#x6210;&#x5F00;&#x53D1;&#x73AF;&#x5883;</span><br><span class="line"></span><br><span class="line">&#x636E;[Ryan](https://github.com/mojunbin &quot;Ryan&quot;)&#x4ECB;&#x7ECD;&#xFF0C;IDEA&#x96C6;&#x6210;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x662F;&#x4E0D;&#x4F1A;&#x5B58;&#x5728;&#x627E;&#x4E0D;&#x5230;main&#x65B9;&#x6CD5;&#x7684;&#x95EE;&#x9898;&#x7684;&#xFF1B;</span><br><span class="line"></span><br><span class="line">&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;pom.xml&#x4E2D;&#x914D;&#x7F6E;classes&#x6587;&#x4EF6;&#x7684;&#x8F93;&#x51FA;&#x76EE;&#x5F55;&#xFF0C;&#x628A;classes&#x6587;&#x4EF6;&#x8F93;&#x51FA;&#x5230;webapp&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x8FD9;&#x6837;&#x6539;&#x5199;&#x4E86;Java&#x6587;&#x4EF6;&#x4E4B;&#x540E;&#x9700;&#x8981;&#x4F7F;&#x7528;maven&#x7F16;&#x8BD1;&#x4E0B;&#x9879;&#x76EE;&#x4E86;&#x3002;:sunglasses:     </span><br><span class="line">pom.xml</span><br><span class="line">```xml</span><br><span class="line">&lt;outputDirectory&gt;D:\dev\project\webapp\WEB-INF\classes&lt;/outputDirectory&gt;</span><br></pre></td></tr></table></figure></p>
-<h2 id="resin&#x4E2D;&#x7684;&#x914D;&#x7F6E;"><a href="#Resin&#x4E2D;&#x7684;&#x914D;&#x7F6E;" class="headerlink" title="Resin&#x4E2D;&#x7684;&#x914D;&#x7F6E;"></a>Resin&#x4E2D;&#x7684;&#x914D;&#x7F6E;</h2><p>&#x73B0;&#x5728;&#x6211;&#x7528;&#x7740;Resin&#xFF0C;&#x6070;&#x5DE7;&#xFF0C;resin&#x91CC;&#x9762;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; <a href="http://www.caucho.com/resin-4.0/reference.xtp#classloader" title="&lt;class-loader&gt;" target="_blank" rel="external"><class-loader></class-loader></a> &#x7684;&#x914D;&#x7F6E;&#x6807;&#x7B7E;&#xFF0C;&#x901A;&#x8FC7;&#x5176;&#x4E2D;&#x7684; <a href="http://www.caucho.com/resin-4.0/reference.xtp#compilingloader" title="[&lt;compiling-loader&gt;]" target="_blank" rel="external"><compiling-loader></compiling-loader></a> &#x548C; <a href="http://www.caucho.com/resin-4.0/reference.xtp#libraryloader" title="&lt;library-loader&gt;" target="_blank" rel="external"><library-loader></library-loader></a> &#x5B50;&#x6807;&#x7B7E;&#x540C;&#x6837;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x52A0;&#x8F7D;class&#x6587;&#x4EF6;&#x548C;jar&#x5305;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x914D;&#x7F6E;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">id</span>=<span class="string">&quot;/&quot;</span> <span class="attr">root-directory</span>=<span class="string">&quot;D:\dev\project\src\main\webapp&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">prologue</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">class-loader</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">compiling-loader</span> <span class="attr">path</span>=<span class="string">&quot;D:\dev\project\target\classes&quot;</span>/&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">library-loader</span> <span class="attr">path</span>=<span class="string">&quot;D:\dev\project\target\project-snapshot\WEB-INF\lib&quot;</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">class-loader</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">prologue</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&#x8FDB;&#x4E00;&#x6B65;&#x67E5;&#x770B;<a href="http://caucho.com/resin-4.0/reference.xtp#compilingloader" title="&#x5B98;&#x65B9;&#x6587;&#x6863;" target="_blank" rel="external">&#x5B98;&#x65B9;&#x6587;&#x6863;</a>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x4ECB;&#x7ECD;&#xFF1A;</p>
-<blockquote>
-<p>automatically compiles Java code into .class files before loading them.    </p>
-</blockquote>
-<p>&#x9996;&#x5148;&#x8FD9;&#x91CC;class-loader&#x5B9E;&#x73B0;&#x4E86;&#x70ED;&#x90E8;&#x7F72;&#xFF08;&#x7C7B;&#x4F3C;&#x7684;&#x4E00;&#x822C;&#x7684;Servlet&#x5BB9;&#x5668;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;JSP&#x7684;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x5982;Tomcat&#x7684;<a href="http://my.oschina.net/heroShane/blog/198450" title="JasperLoader" target="_blank" rel="external">JasperLoader</a>&#xFF0C;&#x5F53;&#x5BB9;&#x5668;&#x68C0;&#x6D4B;&#x5230;JSP&#x6587;&#x4EF6;&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x66FF;&#x6362;&#x6389;&#x539F;&#x6765;&#x7684;JSP&#x52A0;&#x8F7D;&#x5668;&#x7684;Class&#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x3002;&#x5173;&#x4E8E;Resin&#x4E2D;&#x7684;<a href="http://coolshell.cn/articles/6112.html" title="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6267;&#x884C;&#x95EE;&#x9898;" target="_blank" rel="external">&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x6267;&#x884C;&#x95EE;&#x9898;</a>&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x4F1A;&#x5728;&#x52A0;&#x8F7D;class&#x6587;&#x4EF6;&#x4E4B;&#x524D;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x67E5;&#x770B;&#x6587;&#x6863;&#xFF0C;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;source&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6DFB;&#x52A0;&#x4E0A;&#x4E4B;&#x540E;&#x914D;&#x7F6E;&#x5982;&#x4E0B;&#xFF1A;    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">compiling-loader</span> <span class="attr">path</span>=<span class="string">&quot;D:\dev\project\target\classes&quot;</span> <span class="attr">source</span>=<span class="string">&quot;D:\dev\project\src\main\java&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&#x8FD9;&#x6837;&#x5C31;&#x4F1A;&#x5728;&#x52A0;&#x8F7D;class&#x524D;&#x5148;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;Java&#x4EE3;&#x7801;&#x4E86;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;Eclipse&#x6CA1;&#x6709;&#x5F00;&#x542F;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x529F;&#x80FD;&#x7684;&#x73AF;&#x5883;&#x5C24;&#x5176;&#x6709;&#x7528;&#xFF08;Eclipse&#x7684;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;&#x529F;&#x80FD;&#x4E5F;&#x662F;&#x9700;&#x8981;&#x4E00;&#x5B9A;&#x7684;&#x8D44;&#x6E90;&#x5F00;&#x9500;&#x7684;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x4F1A;&#x5BFC;&#x81F4;Eclipse&#x5361;&#x4F4F;&#xFF0C;&#x5982;&#x679C;&#x5173;&#x95ED;&#x4E86;&#x8BE5;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x4EE5;&#x4E0A;&#x914D;&#x7F6E;&#xFF09;&#x3002;</p>
-<h2 id="&#x5176;&#x4ED6;&#x7684;&#x70ED;&#x90E8;&#x7F72;&#x65B9;&#x6848;"><a href="#&#x5176;&#x4ED6;&#x7684;&#x70ED;&#x90E8;&#x7F72;&#x65B9;&#x6848;" class="headerlink" title="&#x5176;&#x4ED6;&#x7684;&#x70ED;&#x90E8;&#x7F72;&#x65B9;&#x6848;"></a>&#x5176;&#x4ED6;&#x7684;&#x70ED;&#x90E8;&#x7F72;&#x65B9;&#x6848;</h2><h3 id="&#x70ED;&#x90E8;&#x7F72;&#x795E;&#x5668;jrebel"><a href="#&#x70ED;&#x90E8;&#x7F72;&#x795E;&#x5668;JRebel" class="headerlink" title="&#x70ED;&#x90E8;&#x7F72;&#x795E;&#x5668;JRebel"></a>&#x70ED;&#x90E8;&#x7F72;&#x795E;&#x5668;<a href="http://zeroturnaround.com/software/jrebel/" title="JRebel" target="_blank" rel="external">JRebel</a></h3><p><a href="http://zeroturnaround.com/software/jrebel/features/comparison-matrix/" title="&#x8FD9;&#x91CC;" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>&#x662F;JRebel&#x548C;JVM Hot Swap&#x7684;&#x533A;&#x522B;</p>
-<p>&#x53E6;&#x5916;&#xFF0C;<a href="http://jm-blog.aliapp.com/?p=641" title="&#x8FD9;&#x91CC;" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>&#x6709;&#x4E00;&#x4E2A;JVM hotswap&#x7684;&#x8865;&#x4E01;</p>
-<blockquote>
-<p>&#x8BF4;&#x5230;HotSwap&#x7279;&#x6027;&#xFF0C;&#x662F;&#x5728;2002&#x5E74;&#x7684;&#x65F6;&#x5019;&#xFF0C;Sun&#x5728;Java 1.4&#x7684;JVM&#x4E2D;&#x5F15;&#x5165;&#x7684;&#x5B9E;&#x9A8C;&#x6027;&#x6280;&#x672F;&#x3002;&#x8FD9;&#x4E00;&#x6280;&#x672F;&#x88AB;&#x5408;&#x6210;&#x5230;&#x4E86;DebuggerAPI&#x7684;&#x5185;&#x90E8;&#x3002;<br><a href="http://article.yeeyan.org/view/213582/186226" title="HotSwap&#x548C;JRebel&#x2014;&#x2014;&#x5E55;&#x540E;&#x7684;&#x6545;&#x4E8B;" target="_blank" rel="external">&#x300A;HotSwap&#x548C;JRebel&#x2014;&#x2014;&#x5E55;&#x540E;&#x7684;&#x6545;&#x4E8B;&#x300B;</a></p>
-</blockquote>
-<h3 id="resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"><a href="#Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;" class="headerlink" title="Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"></a>Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;</h3><p>&#x5728;resin.conf&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;JVM&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF1A;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"><a href="#Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;" class="headerlink" title="Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"></a>Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;</h3><p>&#x5728;resin.conf&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;JVM&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF1A;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>&#x8868;&#x793A;&#x542F;&#x52A8;debug&#x6A21;&#x5F0F;&#xFF0C;&#x5F53;&#x66F4;&#x65B0;&#x4E86;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;reloading class&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7;JVM&#x7684;HotSwap&#x529F;&#x80FD;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x7684;&#x3002;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br></pre></td></tr></table></figure>
-<p>&#x7531;&#x4E8E;JVM&#x7684;HotSwap&#x4E0D;&#x652F;&#x6301;&#x65B0;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x7684;&#xFF0C;Resin&#x4F1A;&#x81EA;&#x52A8;&#x6539;&#x7528;Hot deploy&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x3002;</p>
-<p>&#x5F53;&#x53BB;&#x6389;&#x8BE5;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">... WebApp[...] stopping</span><br><span class="line">... WebApp[...] active</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/maven-setting-auto-compile.html" target="_blank" rel="external">http://www.itzhai.com/maven-setting-auto-compile.html</a></p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">&#x7531;&#x4E8E;JVM&#x7684;HotSwap&#x4E0D;&#x652F;&#x6301;&#x65B0;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x7684;&#xFF0C;Resin&#x4F1A;&#x81EA;&#x52A8;&#x6539;&#x7528;Hot deploy&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x3002;</span><br><span class="line"></span><br><span class="line">&#x5F53;&#x53BB;&#x6389;&#x8BE5;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</span><br></pre></td></tr></table></figure>
+<p>&#x2026; WebApp[&#x2026;] stopping<br>&#x2026; WebApp[&#x2026;] active<br>```</p>
+<h3 id="&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;"><a href="#&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;" class="headerlink" title="&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;"></a>&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;</h3><p><a href="http://itindex.net/detail/46971-java-%E8%B0%83%E8%AF%95" title="Xdebug" target="_blank" rel="external">-Xdebug</a> -Xrunjdwp,transport=dt_socket,server=y,address=5432,suspend=n,onthrow=java.io.IOException,launch=/sbin/echo</p>
 
       
     </div>
@@ -297,7 +273,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/构建/">构建</a>
+    <a href="/categories/Java/">Java</a>
   </span>
 
 
@@ -306,7 +282,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/Maven/">Maven</a>
+    <a href="/tags/热部署/">热部署</a>
   </span>
 
 
@@ -315,8 +291,6 @@
     </footer>
   </div>
 </article>
-
-
 
   <article class="post article">
 
@@ -420,19 +394,17 @@
   </div>
 </article>
 
-
-
   <article class="post article">
 
   
   
-    <h3 class="article-title"><a href="/blog/recent focus/"><span>recent focus</span></a></h3>
+    <h3 class="article-title"><a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/"><span>给一个多处使用到的类中的某些方法添加额外的处理动作</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/blog/recent focus/" rel="bookmark">
+      <a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/" rel="bookmark">
         <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
           2016-05-03
         </time>
@@ -449,7 +421,11 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&amp;mid=403025428&amp;idx=1&amp;sn=bb2c0380ce29dc3cecf5f6a2afe36960&amp;scene=23&amp;srcid=03138MMvCvhjmcgWvf6oFcOS#rd" target="_blank" rel="external">&#x4E00;&#x7BC7;&#x6587;&#x770B;&#x61C2;Hadoop&#xFF1A;&#x98CE;&#x96E8;&#x5341;&#x5E74;&#xFF0C;&#x672A;&#x6765;&#x4F55;&#x53BB;&#x4F55;&#x4ECE;</a></p>
+<p>&#x73B0;&#x6709;&#x5982;&#x4E0B;&#x7A0B;&#x5E8F;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Searcher</span> </span>{</span><br><span class="line">	<span class="function">List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		result.add(<span class="string">&quot;Wings you are the hero&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>LuceneSearcher&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x90FD;&#x7528;&#x5230;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x60F3;&#x5728;LuceneSearcher&#x7684;searchSong()&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x4E3A;&#x4E86;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x7684;&#x6539;&#x52A8;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x591A;&#x5904;&#x5730;&#x65B9;&#x5206;&#x522B;&#x6539;&#x52A8;&#xFF0C;&#x73B0;&#x5728;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Searcher&#x7684;&#x4EE3;&#x7406;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Searcher searcher;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CustomSearcher</span><span class="params">(Searcher searcher)</span></span>{</span><br><span class="line">		<span class="keyword">this</span>.searcher = searcher;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = searcher.searchSong(songType);</span><br><span class="line">		result.add(<span class="string">&quot;big blue ocean&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x53EA;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x58F0;&#x660E;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x6539;&#x52A8;&#x4E0B;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x539F;&#x6837;&#x4E86;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);  <span class="comment">// &#x8C03;&#x7528;&#x7684;&#x8BED;&#x53E5;&#x4FDD;&#x6301;&#x539F;&#x6837;</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;Searcher&#x63A5;&#x53E3;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x6539;&#x5199;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x786E;&#x5B9A;&#x9700;&#x8981;&#x4E3A;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x90FD;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x8FDB;&#x884C;&#x6539;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E14;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF08;<a href="http://www.itzhai.com/java-notes-reflection-dynamic-proxies.html#&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF1A;" title="JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;invoke&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x662F;&#x5426;&#x60F3;&#x8981;&#x6539;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;<a href="http://www.itzhai.com/java-dong-tai-dai-li-zhi-jdk-dong-tai-dai-li-he-cglib-dong-tai-dai-li-mian-xiang-qie-mian-bian-cheng-aop-yuan-li.html#CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" title="CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>]&#x5BF9;&#x5E94;&#x4E3A;intercept&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5199;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5904;&#x7406;&#x7C7B;&#xFF0C;&#x5C31;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x4EE3;&#x7406;&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x66F4;&#x7075;&#x6D3B;&#x3002;</p>
+<p>&#x5982;&#x679C;LuceneSearcher&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x5F0F;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;LuceneSearcher&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x8986;&#x76D6;searchSong&#x65B9;&#x6CD5;&#x52A0;&#x5165;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x901A;&#x8FC7;&#x6539;&#x52A8;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#x3002;</p>
 
       
     </div>
@@ -460,7 +436,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/杂谈/">杂谈</a>
+    <a href="/categories/设计模式/">设计模式</a>
   </span>
 
 
@@ -470,8 +446,6 @@
     </footer>
   </div>
 </article>
-
-
 
   <article class="post article">
 
@@ -603,19 +577,17 @@
   </div>
 </article>
 
-
-
   <article class="post article">
 
   
   
-    <h3 class="article-title"><a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/"><span>给一个多处使用到的类中的某些方法添加额外的处理动作</span></a></h3>
+    <h3 class="article-title"><a href="/blog/recent focus/"><span>recent focus</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/" rel="bookmark">
+      <a href="/blog/recent focus/" rel="bookmark">
         <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
           2016-05-03
         </time>
@@ -632,11 +604,7 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>&#x73B0;&#x6709;&#x5982;&#x4E0B;&#x7A0B;&#x5E8F;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Searcher</span> </span>{</span><br><span class="line">	<span class="function">List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		result.add(<span class="string">&quot;Wings you are the hero&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>LuceneSearcher&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x90FD;&#x7528;&#x5230;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x60F3;&#x5728;LuceneSearcher&#x7684;searchSong()&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x4E3A;&#x4E86;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x7684;&#x6539;&#x52A8;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x591A;&#x5904;&#x5730;&#x65B9;&#x5206;&#x522B;&#x6539;&#x52A8;&#xFF0C;&#x73B0;&#x5728;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Searcher&#x7684;&#x4EE3;&#x7406;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Searcher searcher;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CustomSearcher</span><span class="params">(Searcher searcher)</span></span>{</span><br><span class="line">		<span class="keyword">this</span>.searcher = searcher;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = searcher.searchSong(songType);</span><br><span class="line">		result.add(<span class="string">&quot;big blue ocean&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x53EA;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x58F0;&#x660E;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x6539;&#x52A8;&#x4E0B;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x539F;&#x6837;&#x4E86;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);  <span class="comment">// &#x8C03;&#x7528;&#x7684;&#x8BED;&#x53E5;&#x4FDD;&#x6301;&#x539F;&#x6837;</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x5982;&#x679C;Searcher&#x63A5;&#x53E3;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x6539;&#x5199;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x786E;&#x5B9A;&#x9700;&#x8981;&#x4E3A;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x90FD;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x8FDB;&#x884C;&#x6539;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E14;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF08;<a href="http://www.itzhai.com/java-notes-reflection-dynamic-proxies.html#&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF1A;" title="JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;invoke&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x662F;&#x5426;&#x60F3;&#x8981;&#x6539;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;<a href="http://www.itzhai.com/java-dong-tai-dai-li-zhi-jdk-dong-tai-dai-li-he-cglib-dong-tai-dai-li-mian-xiang-qie-mian-bian-cheng-aop-yuan-li.html#CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" title="CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>]&#x5BF9;&#x5E94;&#x4E3A;intercept&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5199;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5904;&#x7406;&#x7C7B;&#xFF0C;&#x5C31;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x4EE3;&#x7406;&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x66F4;&#x7075;&#x6D3B;&#x3002;</p>
-<p>&#x5982;&#x679C;LuceneSearcher&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x5F0F;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;LuceneSearcher&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x8986;&#x76D6;searchSong&#x65B9;&#x6CD5;&#x52A0;&#x5165;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x901A;&#x8FC7;&#x6539;&#x52A8;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#x3002;</p>
+<p><a href="http://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&amp;mid=403025428&amp;idx=1&amp;sn=bb2c0380ce29dc3cecf5f6a2afe36960&amp;scene=23&amp;srcid=03138MMvCvhjmcgWvf6oFcOS#rd" target="_blank" rel="external">&#x4E00;&#x7BC7;&#x6587;&#x770B;&#x61C2;Hadoop&#xFF1A;&#x98CE;&#x96E8;&#x5341;&#x5E74;&#xFF0C;&#x672A;&#x6765;&#x4F55;&#x53BB;&#x4F55;&#x4ECE;</a></p>
 
       
     </div>
@@ -647,7 +615,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/设计模式/">设计模式</a>
+    <a href="/categories/杂谈/">杂谈</a>
   </span>
 
 
@@ -657,8 +625,6 @@
     </footer>
   </div>
 </article>
-
-
 
   <article class="post article">
 
@@ -718,7 +684,85 @@
   </div>
 </article>
 
+  <article class="post article">
 
+  
+  
+    <h3 class="article-title"><a href="/javascript/angularjs/chapter04_scope/README/"><span>scope</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/angularjs/chapter04_scope/README/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<ul>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x89C6;&#x56FE;&#x548C;&#x63A7;&#x5236;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x80F6;&#x6C34;&#x3002;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5E94;&#x7528;&#x72B6;&#x6001;&#x7684;&#x57FA;&#x7840;&#x3002;</li>
+<li>AngularJS&#x5C06;$scope&#x8BBE;&#x8BA1;&#x6210;&#x548C;DOM&#x7C7B;&#x4F3C;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x56E0;&#x6B64;$scope&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5D4C;&#x5957;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F15;&#x7528;&#x7236;&#x7EA7;$scope&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x3002;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x63D0;&#x4F9B;&#x4E86;&#x76D1;&#x89C6;&#x6570;&#x636E;&#x6A21;&#x578B;&#x53D8;&#x5316;&#x7684;&#x80FD;&#x529B;&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;&#x5176;&#x4E2D;&#x7684;apply&#x673A;&#x5236;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#x5728;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x8303;&#x56F4;&#x5185;&#x8FDB;&#x884C;&#x901A;&#x77E5;&#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x5C06;&#x5E94;&#x7528;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x90FD;&#x653E;&#x5728;&#x63A7;&#x5236;&#x5668;&#x4E2D;&#xFF0C;&#x800C;&#x5C06;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x90FD;&#x653E;&#x5728;&#x63A7;&#x5236;&#x5668;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x975E;&#x5E38;&#x5B8C;&#x7F8E;&#x7684;&#x67B6;&#x6784;&#x3002;</p>
+</blockquote>
+<h2 id="41-&#x89C6;&#x56FE;&#x548C;scope&#x7684;&#x4E16;&#x754C;"><a href="#4-1&#x3001;&#x89C6;&#x56FE;&#x548C;-scope&#x7684;&#x4E16;&#x754C;" class="headerlink" title="4.1&#x3001;&#x89C6;&#x56FE;&#x548C;$scope&#x7684;&#x4E16;&#x754C;"></a>4.1&#x3001;&#x89C6;&#x56FE;&#x548C;$scope&#x7684;&#x4E16;&#x754C;</h2><p>ng-app&#x5143;&#x7D20;&#x540C;$rootScope&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#xFF0C;$rootScope&#x662F;&#x6240;&#x6709;$scope&#x5BF9;&#x8C61;&#x7684;&#x6700;&#x4E0A;&#x6B21;&#x3002;</p>
+<h2 id="42-&#x5C31;&#x662F;html&#x800C;&#x5DF2;"><a href="#4-2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;" class="headerlink" title="4.2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;"></a>4.2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;</h2><p>&#x5728;AngularJS&#x5E94;&#x7528;&#x7684;&#x6A21;&#x677F;&#x4E2D;&#x4F7F;&#x7528;&#x591A;&#x79CD;&#x6807;&#x8BB0;&#xFF0C;&#x5305;&#x62EC;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;:</p>
+<blockquote>
+<p>&#x6307;&#x4EE4;&#xFF1A;&#x5C06;DOM&#x5143;&#x7D20;&#x589E;&#x5F3A;&#x4E3A;&#x53EF;&#x590D;&#x7528;&#x7684;DOM&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x6216;&#x5143;&#x7D20;&#x3002;<br>&#x503C;&#x7ED1;&#x5B9A;&#xFF1A;&#x6A21;&#x677F;&#x8BED;&#x6CD5;{{ }}&#x53EF;&#x4EE5;&#x5C06;&#x8868;&#x8FBE;&#x5F0F;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;&#x4E0A;&#x3002;<br>&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;&#x53EF;&#x4EE5;&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x683C;&#x5F0F;&#x5316;&#x3002;<br>&#x8868;&#x5355;&#x63A7;&#x4EF6;&#xFF1A;&#x7528;&#x6765;&#x68C0;&#x9A8C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x63A7;&#x4EF6;&#x3002;</p>
+</blockquote>
+<h2 id="43-&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;"><a href="#4-3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;" class="headerlink" title="4.3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;"></a>4.3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;</h2><p>&#x4F5C;&#x7528;&#x57DF;&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x57FA;&#x672C;&#x529F;&#x80FD;&#xFF1A;</p>
+<blockquote>
+<p>&#x63D0;&#x4F9B;&#x89C2;&#x5BDF;&#x8005;&#x4EE5;&#x76D1;&#x89C6;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#xFF1B;<br>&#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#x901A;&#x77E5;&#x7ED9;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x7CFB;&#x7EDF;&#x5916;&#x7684;&#x7EC4;&#x4EF6;&#xFF1B;<br>&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5D4C;&#x5957;&#xFF0C;&#x9694;&#x79BB;&#x4E1A;&#x52A1;&#x529F;&#x80FD;&#x548C;&#x6570;&#x636E;&#xFF1B;<br>&#x7ED9;&#x8868;&#x8FBE;&#x5F0F;&#x63D0;&#x4F9B;&#x8FD0;&#x7B97;&#x65F6;&#x6240;&#x9700;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#x3002;</p>
+</blockquote>
+<h2 id="44-scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#4-4&#x3001;-scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="4.4&#x3001;$scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>4.4&#x3001;$scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h2><p>$scope&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5904;&#x7406;&#x6709;&#x56DB;&#x4E2A;&#x4E0D;&#x540C;&#x9636;&#x6BB5;&#xFF1A;</p>
+<h3 id="441-&#x521B;&#x5EFA;"><a href="#4-4-1&#x3001;&#x521B;&#x5EFA;" class="headerlink" title="4.4.1&#x3001;&#x521B;&#x5EFA;"></a>4.4.1&#x3001;&#x521B;&#x5EFA;</h3><p>&#x5728;&#x521B;&#x5EFA;&#x63A7;&#x5236;&#x5668;&#x6216;&#x6307;&#x4EE4;&#x65F6;&#xFF0C;AngularJS&#x4F1A;&#x7528;<code>$injector</code>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x5E76;&#x5728;&#x8FD9;&#x4E2A;&#x65B0;&#x5EFA;&#x7684;&#x63A7;&#x5236;&#x5668;&#x6216;&#x6307;&#x4EE4;&#x8FD0;&#x884C;&#x65F6;&#x5C06;&#x4F5C;&#x7528;&#x57DF;&#x4F20;&#x9012;&#x8FDB;&#x53BB;&#x3002;</p>
+<h3 id="442-&#x94FE;&#x63A5;"><a href="#4-4-2&#x3001;&#x94FE;&#x63A5;" class="headerlink" title="4.4.2&#x3001;&#x94FE;&#x63A5;"></a>4.4.2&#x3001;&#x94FE;&#x63A5;</h3><p>&#x5F53;Angular&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x7684;$scope&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x9644;&#x52A0;&#x6216;&#x8005;&#x94FE;&#x63A5;&#x5230;&#x89C6;&#x56FE;&#x4E2D;&#x3002;&#x8FD9;&#x4E9B;&#x4F5C;&#x7528;&#x57DF;&#x5C06;&#x4F1A;&#x6CE8;&#x518C;&#x5F53;Angular&#x5E94;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x9700;&#x8981;&#x8FD0;&#x884C;&#x7684;&#x51FD;&#x6570;&#x3002;(<code>$watch&#x51FD;&#x6570;</code>)</p>
+<h3 id="443-&#x66F4;&#x65B0;"><a href="#4-4-3&#x3001;&#x66F4;&#x65B0;" class="headerlink" title="4.4.3&#x3001;&#x66F4;&#x65B0;"></a>4.4.3&#x3001;&#x66F4;&#x65B0;</h3><p>&#x901A;&#x5E38;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x8FD0;&#x884C;&#x5728;$rootScope&#xFF0C;&#x6BCF;&#x4E2A;&#x5B50;&#x57DF;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x810F;&#x503C;&#x68C0;&#x67E5;&#xFF0C;&#x5982;&#x679C;&#x68C0;&#x6D4B;&#x5230;&#x53D8;&#x5316;&#xFF0C;$scope&#x5BF9;&#x8C61;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x6307;&#x5B9A;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<h3 id="444-&#x9500;&#x6BC1;"><a href="#4-4-4&#x3001;&#x9500;&#x6BC1;" class="headerlink" title="4.4.4&#x3001;&#x9500;&#x6BC1;"></a>4.4.4&#x3001;&#x9500;&#x6BC1;</h3><p>&#x5F53;&#x4E00;&#x4E2A;$scope&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x5C06;&#x4F1A;&#x6E05;&#x7406;&#x548C;&#x9500;&#x6BC1;&#x81EA;&#x5DF1;&#x3002;</p>
+<h2 id="45-&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;"><a href="#4-5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="4.5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;"></a>4.5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;</h2><p>&#x6307;&#x4EE4;&#x5728;AngularJS&#x4E2D;&#x88AB;&#x5E7F;&#x6CDB;&#x4F7F;&#x7528;&#xFF0C;&#x6307;&#x4EE4;<em>&#x901A;&#x5E38;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;$scope</em>&#xFF0C;&#x4F46;&#x4E5F;&#x6709;&#x4F8B;&#x5916;&#x3002;&#x6BD4;&#x5982;<code>ng-controller</code>&#x548C;<code>ng-repeat</code>&#x6307;&#x4EE4;&#x4F1A;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x5B50;&#x4F5C;&#x7528;&#x57DF;&#x5E76;&#x5C06;&#x5B83;&#x4EEC;&#x9644;&#x52A0;&#x5230;DOM&#x5143;&#x7D20;&#x4E0A;&#x3002;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/AngularJS/">AngularJS</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
 
   <article class="post article">
 
@@ -784,77 +828,6 @@
 </article>
 
 
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/javascript/angularjs/chapter05_controller/README.md/"><span>controller</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/javascript/angularjs/chapter05_controller/README.md/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p>&#x5C06;&#x63A7;&#x5236;&#x5668;&#x547D;&#x540D;&#x4E3A;[Name]Controller&#x800C;&#x4E0D;&#x662F;[Name]Ctrl&#x662F;&#x4E00;&#x4E2A;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;</p>
-<p>&#x63A7;&#x5236;&#x5668;&#x53EF;&#x4EE5;&#x5C06;&#x4E0E;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x89C6;&#x56FE;&#x76F8;&#x5173;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x5C01;&#x88C5;&#x5728;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x5BB9;&#x5668;&#x4E2D;&#x3002;&#x5C3D;&#x53EF;&#x80FD;&#x5730;&#x7CBE;&#x7B80;&#x63A7;&#x5236;&#x5668;&#x662F;&#x5F88;&#x597D;&#x7684;&#x505A;&#x6CD5;&#x3002;</p>
-<p>AngularJS&#x540C;&#x5176;&#x4ED6;JavaScript&#x6846;&#x67B6;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x4E00;&#x4E2A;&#x533A;&#x522B;&#x5C31;&#x662F;&#xFF0C;<code>&#x63A7;&#x5236;&#x5668;</code>&#x5E76;&#x4E0D;&#x9002;&#x5408;&#x7528;&#x6765;&#x6267;&#x884C;DOM&#x64CD;&#x4F5C;&#x3001;&#x683C;&#x5F0F;&#x5316;&#x6216;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#xFF0C;&#x4EE5;&#x53CA;&#x9664;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x6A21;&#x578B;&#x4E4B;&#x5916;&#x7684;&#x72B6;&#x6001;&#x7EF4;&#x62A4;&#x64CD;&#x4F5C;&#x3002;&#x5B83;&#x53EA;&#x662F;&#x89C6;&#x56FE;&#x548C;$scope&#x4E4B;&#x95F4;&#x7684;&#x6865;&#x6881;&#x3002;</p>
-<p><code>$scope</code>&#x5BF9;&#x8C61;&#x7528;&#x6765;&#x4ECE;&#x6570;&#x636E;&#x6A21;&#x578B;&#x5411;&#x89C6;&#x56FE;&#x4F20;&#x9012;&#x4FE1;&#x606F;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x5B83;&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x8BBE;&#x7F6E;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF0C;&#x540C;&#x5E94;&#x7528;&#x7684;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#xFF0C;&#x4EE5;&#x53CA;&#x521B;&#x5EFA;&#x4E0E;&#x5E94;&#x7528;&#x76F8;&#x5173;&#x7684;&#x7279;&#x5B9A;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;</p>
-<p>AngularJS&#x901A;&#x8FC7;&#x4F5C;&#x7528;&#x57DF;&#x5C06;&#x89C6;&#x56FE;&#x3001;&#x63A7;&#x5236;&#x5668;&#x548C;&#x6307;&#x4EE4;&#xFF08;&#x672C;&#x4E66;&#x540E;&#x9762;&#x4F1A;&#x4ECB;&#x7ECD;&#xFF09;&#x9694;&#x79BB;&#x5F00;&#x6765;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#x4E3A;&#x529F;&#x80FD;&#x7684;&#x5177;&#x4F53;&#x90E8;&#x5206;&#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x3002;</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ng-controller</span>=<span class="string">&quot;FirstController&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h4</span>&gt;</span>The simplest adding machine ever<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">button</span> <span class="attr">ng-click</span>=<span class="string">&quot;add(1)&quot;</span> <span class="attr">class</span>=<span class="string">&quot;button&quot;</span>&gt;</span>Add<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">ng-click</span>=<span class="string">&quot;subtract(1)&quot;</span> <span class="attr">class</span>=<span class="string">&quot;button alert&quot;</span>&gt;</span>Subtract<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h4</span>&gt;</span>Current count: {{ counter }}<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.controller(<span class="string">&apos;FirstController&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>) </span>{</span><br><span class="line">	$scope.counter = <span class="number">0</span>;</span><br><span class="line">	$scope.add = <span class="function"><span class="keyword">function</span>(<span class="params">amount</span>) </span>{ $scope.counter += amount; };</span><br><span class="line">	$scope.subtract = <span class="function"><span class="keyword">function</span>(<span class="params">amount</span>) </span>{ $scope.counter -= amount; };</span><br><span class="line">});</span><br></pre></td></tr></table></figure>
-<h2 id="51-&#x63A7;&#x5236;&#x5668;&#x5D4C;&#x5957;&#x4F5C;&#x7528;&#x57DF;&#x5305;&#x542B;&#x4F5C;&#x7528;&#x57DF;"><a href="#5-1&#x3001;&#x63A7;&#x5236;&#x5668;&#x5D4C;&#x5957;&#xFF08;&#x4F5C;&#x7528;&#x57DF;&#x5305;&#x542B;&#x4F5C;&#x7528;&#x57DF;&#xFF09;" class="headerlink" title="5.1&#x3001;&#x63A7;&#x5236;&#x5668;&#x5D4C;&#x5957;&#xFF08;&#x4F5C;&#x7528;&#x57DF;&#x5305;&#x542B;&#x4F5C;&#x7528;&#x57DF;&#xFF09;"></a>5.1&#x3001;&#x63A7;&#x5236;&#x5668;&#x5D4C;&#x5957;&#xFF08;&#x4F5C;&#x7528;&#x57DF;&#x5305;&#x542B;&#x4F5C;&#x7528;&#x57DF;&#xFF09;</h2><p>&#x63A7;&#x5236;&#x5668;&#x7684;&#x8FD9;&#x79CD;&#x5D4C;&#x5957;&#x7ED3;&#x6784;&#x548C;DOM&#x7684;&#x5D4C;&#x5957;&#x7ED3;&#x6784;&#x5F88;&#x76F8;&#x4F3C;&#x3002;</p>
-<p>&#x63A7;&#x5236;&#x5668;&#x5E94;&#x8BE5;&#x5C3D;&#x53EF;&#x80FD;&#x4FDD;&#x6301;&#x77ED;&#x5C0F;&#x7CBE;&#x608D;&#xFF0C;&#x800C;&#x5728;&#x63A7;&#x5236;&#x5668;&#x4E2D;&#x8FDB;&#x884C;DOM&#x64CD;&#x4F5C;&#x548C;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x5219;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x597D;&#x7684;&#x5B9E;&#x8DF5;&#x3002;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>, [])</span><br><span class="line">	.controller(<span class="string">&apos;MyController&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>) </span>{</span><br><span class="line">		$scope.shouldShowLogin = <span class="literal">true</span>;</span><br><span class="line">		$scope.showLogin = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">			$scope.shouldShowLogin = !$scope.shouldShowLogin;</span><br><span class="line">		};</span><br><span class="line">		$scope.clickButton = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">			$(<span class="string">&apos;#btn span&apos;</span>).html(<span class="string">&apos;Clicked&apos;</span>);</span><br><span class="line">		};</span><br><span class="line">		$scope.onLogin = <span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>{</span><br><span class="line">			$http({</span><br><span class="line">				method: <span class="string">&apos;POST&apos;</span>,</span><br><span class="line">				url: <span class="string">&apos;/login&apos;</span>,</span><br><span class="line">				data: {</span><br><span class="line">					user: user</span><br><span class="line">				}</span><br><span class="line">			}).success(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</span><br><span class="line">				<span class="comment">// user</span></span><br><span class="line">			});</span><br><span class="line">		};</span><br><span class="line">	});</span><br></pre></td></tr></table></figure></p>
-<p>&#x8BBE;&#x8BA1;&#x826F;&#x597D;&#x7684;&#x5E94;&#x7528;&#x4F1A;&#x5C06;&#x590D;&#x6742;&#x7684;&#x903B;&#x8F91;&#x653E;&#x5230;&#x6307;&#x4EE4;&#x548C;&#x670D;&#x52A1;&#x4E2D;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x6307;&#x4EE4;&#x548C;&#x670D;&#x52A1;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x63A7;&#x5236;&#x5668;&#x91CD;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x8F7B;&#x91CF;&#x4E14;&#x66F4;&#x6613;&#x7EF4;&#x62A4;&#x7684;&#x5F62;&#x5F0F;&#xFF1A;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>, [])</span><br><span class="line">	.controller(<span class="string">&apos;MyController&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope,UserSrv</span>) </span>{</span><br><span class="line">		<span class="comment">// &#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x88AB;&#x6307;&#x4EE4;&#x63A7;&#x5236;</span></span><br><span class="line">		$scope.onLogin = <span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>{</span><br><span class="line">			UserSrv.runLogin(user);</span><br><span class="line">		};</span><br><span class="line">	});</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/AngularJS/">AngularJS</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-
-
-
 <nav class="pagination">
   
   <a href="/page/2/" class="pagination-prev">Prev</a>
@@ -868,7 +841,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

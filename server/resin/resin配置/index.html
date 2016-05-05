@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
 <h1 id="1-&#x5B89;&#x88C5;"><a href="#1&#x3001;&#x5B89;&#x88C5;" class="headerlink" title="1&#x3001;&#x5B89;&#x88C5;"></a>1&#x3001;&#x5B89;&#x88C5;</h1><h2 id="11-&#x4E0A;&#x4F20;resin&#x7A0B;&#x5E8F;&#x5305;"><a href="#1-1&#x3001;&#x4E0A;&#x4F20;resin&#x7A0B;&#x5E8F;&#x5305;" class="headerlink" title="1.1&#x3001;&#x4E0A;&#x4F20;resin&#x7A0B;&#x5E8F;&#x5305;"></a>1.1&#x3001;&#x4E0A;&#x4F20;resin&#x7A0B;&#x5E8F;&#x5305;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/mmt/soft</span><br><span class="line"># &#x5C06;resin-pro-3.1.12.tar.gz&#x7A0B;&#x5E8F;&#x4E0A;&#x4F20;&#x81F3;soft&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x89E3;&#x5305;&#xFF1A;</span><br><span class="line">tar zxvf resin-pro-3.1.12.tar.gz</span><br><span class="line"># &#x5C06;&#x89E3;&#x5305;&#x540E;&#x7684;&#x7A0B;&#x5E8F;copy&#x81F3;/usr/local&#x76EE;&#x5F55;&#x4E0B;&#xFF1A;</span><br><span class="line">cp -rf resin-pro-3.1.12 /usr/local</span><br><span class="line"># &#x5C06; resin-pro-3.1.12 &#x6539;&#x540D;&#x4E3A; resin</span><br><span class="line">mv /usr/local/resin-pro-3.1.12/ /usr/local/resin</span><br><span class="line"># &#x8FDB;&#x5165;/usr/local/resin/&#x76EE;&#x5F55;</span><br><span class="line">cd /usr/local/resin</span><br></pre></td></tr></table></figure>
@@ -96,11 +100,11 @@
 <p>&#x7136;&#x540E;&#x89C2;&#x5BDF;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668;&#x4E2D;&#x7684;java&#x7EBF;&#x7A0B;&#x53D8;&#x5316;&#x60C5;&#x51B5;&#xFF0C;&#x770B;&#x770B;&#x5230;&#x5E95;&#x662F;&#x7EBF;&#x7A0B;&#x8FBE;&#x5230;&#x591A;&#x5927;&#x7684;&#x65F6;&#x5019;&#xFF0C;java&#x8FDB;&#x7A0B;&#x5F53;&#x6389;&#x7684;&#x3002;&#x6211;&#x7684;&#x662F;&#x5728;379&#x5DE6;&#x53F3;&#x5F53;&#x6389;&#x3002;</p>
 <p>&#x7136;&#x540E;&#x5C06;thread-min&#xFF0C;thread-max&#xFF0C;thread-keepalive&#x5206;&#x522B;&#x5199;&#x4E3A;150&#xFF0C;400&#xFF0C;300&#xFF1B;&#x4E5F;&#x5C31;&#x662F;&#x5C06;&#x5F53;&#x6389;&#x7684;&#x65F6;&#x5019;&#x7684;&#x6700;&#x5927;&#x503C;&#x7A0D;&#x5FAE;&#x653E;&#x5927;&#x70B9;&#xFF0C;&#x4F5C;&#x4E3A;thread-max&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x8BE5;&#x7CFB;&#x7EDF;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x503C;&#x3002;&#x7136;&#x540E;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E0B;&#x3002;</p>
 
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -109,7 +113,7 @@
   </span>
 
 
-          
+              
   
 
   <span class="post-tags">
@@ -118,13 +122,23 @@
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-安装"><span class="post-toc-text">1、安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-上传resin程序包"><span class="post-toc-text">1.1、上传resin程序包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-安装"><span class="post-toc-text">1.2、安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-配置"><span class="post-toc-text">2、配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jvm参数设置"><span class="post-toc-text">JVM参数设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jvm调优相关"><span class="post-toc-text">JVM调优相关：</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -133,7 +147,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking

@@ -70,10 +70,14 @@
 
   
 
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
 <h1 id="flux&#x6982;&#x8FF0;"><a href="#Flux&#x6982;&#x8FF0;" class="headerlink" title="Flux&#x6982;&#x8FF0;"></a>Flux&#x6982;&#x8FF0;</h1><p>Flux&#x662F;Facebook&#x7528;&#x6765;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x7AEF;&#x7684;web&#x5E94;&#x7528;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F53;&#x7CFB;&#x67B6;&#x6784;&#x3002;&#x5B83;&#x901A;&#x8FC7;&#x5229;&#x7528;&#x6570;&#x636E;&#x7684;&#x5355;&#x5411;&#x6D41;&#x52A8;&#x4E3A;React&#x7684;&#x53EF;&#x590D;&#x7528;&#x7684;&#x89C6;&#x56FE;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x4E86;&#x8865;&#x5145;&#x3002;&#x76F8;&#x6BD4;&#x4E8E;&#x5F62;&#x5F0F;&#x5316;&#x7684;&#x6846;&#x67B6;&#x5B83;&#x66F4;&#x50CF;&#x662F;&#x4E00;&#x4E2A;&#x67B6;&#x6784;&#x601D;&#x60F3;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x591A;&#x65B0;&#x7684;&#x4EE3;&#x7801;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x9A6C;&#x4E0A;&#x4F7F;&#x7528;Flux&#x6784;&#x5EFA;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x3002;</p>
@@ -92,11 +96,11 @@
 <h2 id="actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h2><p>dispatcher&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5411;store&#x4E2D;&#x89E6;&#x53D1;&#x5206;&#x53D1;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;action&#x3002;</p>
 <h2 id="what-about-that-dispatcher"><a href="#What-About-that-Dispatcher" class="headerlink" title="What About that Dispatcher?"></a>What About that Dispatcher?</h2><p>dispatcher&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x7BA1;&#x7406;store&#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x3002;</p>
 <h1 id="flux-todomvc-tutorial"><a href="#Flux-TodoMVC-Tutorial" class="headerlink" title="Flux TodoMVC Tutorial"></a>Flux TodoMVC Tutorial</h1>
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
           
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
   
 
   <span class="post-categories">
@@ -105,7 +109,7 @@
   </span>
 
 
-          
+              
   
 
   <span class="post-tags">
@@ -114,13 +118,23 @@
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
+            </div>
+            
+        </footer>
+      </div>
 
-  
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#flux概述"><span class="post-toc-text">Flux概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#structure-and-data-flow"><span class="post-toc-text">Structure and Data Flow</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#a-single-dispatcher"><span class="post-toc-text">A Single Dispatcher</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#stores"><span class="post-toc-text">Stores</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#views-and-controller-views"><span class="post-toc-text">Views and Controller-Views</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#actions"><span class="post-toc-text">Actions</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#what-about-that-dispatcher"><span class="post-toc-text">What About that Dispatcher?</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#flux-todomvc-tutorial"><span class="post-toc-text">Flux TodoMVC Tutorial</span></a></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
 
 
 
@@ -129,7 +143,8 @@
 
     <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
   Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
-  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="github.com/arthinking">arthinking</a>
   </br>
   
   &copy; 2016 arthinking
