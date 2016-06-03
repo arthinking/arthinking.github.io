@@ -1,0 +1,614 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Memcached," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+1&amp;#x3001;&amp;#x914D;&amp;#x7F6E;1.1&amp;#x3001;&amp;#x5B89;&amp;#x88C5;1sudo apt-get install memcached
+1.2&amp;#x3001;&amp;#x542F;&amp;#x52A8;
+Memcached&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Memcached配置使用与监控">
+<meta property="og:url" content="http://arthinking.github.io/2016/05/03/NoSQL/Memcached/Memcached配置使用与监控/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+1&amp;#x3001;&amp;#x914D;&amp;#x7F6E;1.1&amp;#x3001;&amp;#x5B89;&amp;#x88C5;1sudo apt-get install memcached
+1.2&amp;#x3001;&amp;#x542F;&amp;#x52A8;
+Memcached&amp;">
+<meta property="og:image" content="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png">
+<meta property="og:updated_time" content="2016-05-03T15:39:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Memcached配置使用与监控">
+<meta name="twitter:description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+1&amp;#x3001;&amp;#x914D;&amp;#x7F6E;1.1&amp;#x3001;&amp;#x5B89;&amp;#x88C5;1sudo apt-get install memcached
+1.2&amp;#x3001;&amp;#x542F;&amp;#x52A8;
+Memcached&amp;">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Memcached配置使用与监控 | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="Java, JavaScript, Go etc.">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Memcached配置使用与监控
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T23:39:37+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Cache/" itemprop="url" rel="index">
+                    <span itemprop="name">Cache</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="1-&#x914D;&#x7F6E;"><a href="#1&#x3001;&#x914D;&#x7F6E;" class="headerlink" title="1&#x3001;&#x914D;&#x7F6E;"></a>1&#x3001;&#x914D;&#x7F6E;</h1><h2 id="11-&#x5B89;&#x88C5;"><a href="#1-1&#x3001;&#x5B89;&#x88C5;" class="headerlink" title="1.1&#x3001;&#x5B89;&#x88C5;"></a>1.1&#x3001;&#x5B89;&#x88C5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install memcached</span><br></pre></td></tr></table></figure>
+<h2 id="12-&#x542F;&#x52A8;"><a href="#1-2&#x3001;&#x542F;&#x52A8;" class="headerlink" title="1.2&#x3001;&#x542F;&#x52A8;"></a>1.2&#x3001;&#x542F;&#x52A8;</h2><blockquote>
+<p>Memcached&#x7684;&#x57FA;&#x672C;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<p>-p &#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;<br>-l &#x8FDE;&#x63A5;&#x7684;IP&#x5730;&#x5740;, &#x9ED8;&#x8BA4;&#x662F;&#x672C;&#x673A;<br>-d start &#x542F;&#x52A8;memcached&#x670D;&#x52A1;<br>-d restart &#x91CD;&#x8D77;memcached&#x670D;&#x52A1;<br>-d stop|shutdown &#x5173;&#x95ED;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;memcached&#x670D;&#x52A1;<br>-d install &#x5B89;&#x88C5;memcached&#x670D;&#x52A1;<br>-d uninstall &#x5378;&#x8F7D;memcached&#x670D;&#x52A1;<br>-u &#x4EE5;&#x7684;&#x8EAB;&#x4EFD;&#x8FD0;&#x884C; (&#x4EC5;&#x5728;&#x4EE5;root&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x6709;&#x6548;)<br>-m &#x6700;&#x5927;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#xFF0C;&#x5355;&#x4F4D;MB&#x3002;&#x9ED8;&#x8BA4;64MB<br>-M &#x5185;&#x5B58;&#x8017;&#x5C3D;&#x65F6;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5220;&#x9664;&#x9879;<br>-c &#x6700;&#x5927;&#x540C;&#x65F6;&#x8FDE;&#x63A5;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1024<br>-f &#x5757;&#x5927;&#x5C0F;&#x589E;&#x957F;&#x56E0;&#x5B50;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1.25<br>-n &#x6700;&#x5C0F;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#xFF0C;key+value+flags&#x9ED8;&#x8BA4;&#x662F;48<br>-h &#x663E;&#x793A;&#x5E2E;&#x52A9;<br>mixi&#x7684;&#x8BBE;&#x7F6E;,&#x5355;&#x53F0;:    </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># &#x6BCF;&#x53F0;mc&#x670D;&#x52A1;&#x5668;&#x4EC5;&#x542F;&#x52A8;&#x4E00;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x5206;&#x914D;1G&#x5185;&#x5B58;</span><br><span class="line">/usr/bin/memcached -p 11211 -u nobody -m 1000 -c 512</span><br><span class="line"></span><br><span class="line"># &#x542F;&#x52A8;mc</span><br><span class="line">/usr/share/memcached/scripts/start-memcached</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">&#x6CE8;&#x610F;&#xFF1A;32&#x4F4D;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x591F;&#x4F7F;&#x7528;**2G**&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x66F4;&#x5927;&#x7684;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#x4E86;&#x3002;&#xFF08;&#x7528;&#x540C;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#xFF0C;TCP&#x8FDE;&#x63A5;&#x6570;&#x5C31;&#x4F1A;&#x6210;&#x500D;&#x589E;&#x52A0;&#xFF0C;x86_64&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x5206;&#x914D;&#x8D85;&#x8FC7;2G&#x7684;&#x5185;&#x5B58;&#xFF09;&#xFF1B;</span><br><span class="line"></span><br><span class="line">mc&#x8FDB;&#x7A0B;&#x7684;&#x5B9E;&#x9645;&#x5185;&#x5B58;&#x5206;&#x914D;&#x91CF;&#x8981;&#x6BD4;&#x7F6E;&#x9876;&#x7684;&#x5185;&#x5B58;&#x8981;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x7F6E;&#x9876;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x592A;&#x5927;&#x4E86;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x4EA4;&#x6362;&#xFF08;swap&#xFF09;&#x3002;</span><br><span class="line"></span><br><span class="line"># 2&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</span><br><span class="line">&#x901A;&#x8FC7;magent&#x80FD;&#x591F;&#x8BA9;&#x7F13;&#x5B58;&#x5199;&#x5165;&#x5230;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684;memcached&#x91CC;&#x9762;</span><br><span class="line"></span><br><span class="line">## 2.1&#x3001;&#x5B89;&#x88C5;&#x4F7F;&#x7528;magent</span><br><span class="line">### 2.1.1&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;libevent</span><br><span class="line">```shell</span><br><span class="line">wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz</span><br><span class="line">tar zxvf libevent-1.4.9-stable.tar.gz</span><br><span class="line">cd libevent-1.4.9-stable/</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
+<h3 id="212-&#x7F16;&#x8BD1;&#x5B89;&#x88C5;memcached"><a href="#2-1-2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;" class="headerlink" title="2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;"></a>2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz</span><br><span class="line">tar zxvf memcached-1.2.6.tar.gz</span><br><span class="line">cd memcached-1.2.6/</span><br><span class="line">./configure --with-libevent=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
+<h3 id="213-&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent"><a href="#2-1-3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;" class="headerlink" title="2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;"></a>2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir magent</span><br><span class="line">cd magent/</span><br><span class="line">wget http://memagent.googlecode.com/files/magent-0.5.tar.gz</span><br><span class="line">tar zxvf magent-0.5.tar.gz</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">sed -i &quot;s#LIBS = -levent#LIBS = -levent -lm#g&quot; Makefile</span><br><span class="line">make</span><br><span class="line">cp magent /usr/bin/magent</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
+<h3 id="214-&#x96C6;&#x7FA4;&#x914D;&#x7F6E;"><a href="#2-1-4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;" class="headerlink" title="2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;"></a>2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</h3><p>&#x96C6;&#x7FA4;&#x4E24;&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x5907;&#x4EFD;&#x3002;<br>&#x9AD8;&#x53EF;&#x7528;&#x7F51;&#x7EDC;&#x67B6;&#x6784;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png" alt=""></p>
+<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;11211,11212</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11211</span><br><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11212</span><br></pre></td></tr></table></figure></p>
+<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;magent&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;10000,10001</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10000 -s 127.0.0.1:11211 -b 127.0.0.1:11212</span><br><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
+<p>-s&#x4E3A;&#x8981;&#x5199;&#x5165;&#x7684;memcached&#xFF0C;-b&#x4E3A;&#x5907;&#x4EFD;&#x7528;&#x7684;memcached    </p>
+<h1 id="3-&#x4F7F;&#x7528;"><a href="#3&#x3001;&#x4F7F;&#x7528;" class="headerlink" title="3&#x3001;&#x4F7F;&#x7528;"></a>3&#x3001;&#x4F7F;&#x7528;</h1><h2 id="31-&#x6E05;&#x7A7A;&#x7F13;&#x5B58;"><a href="#3-1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;" class="headerlink" title="3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;"></a>3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">flush_all</span><br><span class="line">quit</span><br></pre></td></tr></table></figure>
+<h1 id="4-&#x76D1;&#x63A7;"><a href="#4&#x3001;&#x76D1;&#x63A7;" class="headerlink" title="4&#x3001;&#x76D1;&#x63A7;"></a>4&#x3001;&#x76D1;&#x63A7;</h1><h2 id="41-stats"><a href="#4-1&#x3001;stats" class="headerlink" title="4.1&#x3001;stats"></a>4.1&#x3001;stats</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">stats</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x76F8;&#x5173;&#x8D44;&#x6E90;&#xFF1A;</p>
+<p><a href="http://www.cnblogs.com/happyday56/p/3461113.html" title="memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;" target="_blank" rel="external">memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;</a>     </p>
+<p><a href="http://zhumeng8337797.blog.163.com/blog/static/10076891420113431424757/" title="memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  " target="_blank" rel="external">memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  </a></p>
+<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-config-and-monitoring.html" target="_blank" rel="external">http://www.itzhai.com/mc-config-and-monitoring.html</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Memcached/" rel="tag">#Memcached</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/03/NoSQL/Redis/2016-04-19 命令/" rel="next" title="Redis命令">
+                <i class="fa fa-chevron-left"></i> Redis命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/03/NoSQL/Memcached/20141211_Memcached缓存时间比实际过期时间长的问题/" rel="prev" title="Memcached缓存时间比实际过期时间长的问题">
+                Memcached缓存时间比实际过期时间长的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-配置"><span class="nav-number">1.</span> <span class="nav-text">1、配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-安装"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-启动"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#212-编译安装memcached"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1.2、编译安装Memcached：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#213-编译安装magent"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.1.3、编译安装magent：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#214-集群配置"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.1.4、集群配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-使用"><span class="nav-number">2.</span> <span class="nav-text">3、使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#31-清空缓存"><span class="nav-number">2.1.</span> <span class="nav-text">3.1、清空缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-监控"><span class="nav-number">3.</span> <span class="nav-text">4、监控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#41-stats"><span class="nav-number">3.1.</span> <span class="nav-text">4.1、stats</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

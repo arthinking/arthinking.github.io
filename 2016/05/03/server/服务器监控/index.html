@@ -1,0 +1,581 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+&amp;#x7F13;&amp;#x5B58;memcached&amp;#x7684;&amp;#x914D;&amp;#x7F6E;&amp;#x4E0E;&amp;#x76D1;&amp;#x63A7;&amp;#x901A;&amp;#x8FC7;&amp;#x67E5;&amp;#x770B;&amp;#x5360;&amp;#x7528;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="服务器监控">
+<meta property="og:url" content="http://arthinking.github.io/2016/05/03/server/服务器监控/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+&amp;#x7F13;&amp;#x5B58;memcached&amp;#x7684;&amp;#x914D;&amp;#x7F6E;&amp;#x4E0E;&amp;#x76D1;&amp;#x63A7;&amp;#x901A;&amp;#x8FC7;&amp;#x67E5;&amp;#x770B;&amp;#x5360;&amp;#x7528;&amp;">
+<meta property="og:updated_time" content="2016-05-03T15:39:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="服务器监控">
+<meta name="twitter:description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+&amp;#x7F13;&amp;#x5B58;memcached&amp;#x7684;&amp;#x914D;&amp;#x7F6E;&amp;#x4E0E;&amp;#x76D1;&amp;#x63A7;&amp;#x901A;&amp;#x8FC7;&amp;#x67E5;&amp;#x770B;&amp;#x5360;&amp;#x7528;&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> 服务器监控 | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="Java, JavaScript, Go etc.">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                服务器监控
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T23:39:37+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/监控/" itemprop="url" rel="index">
+                    <span itemprop="name">监控</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="&#x7F13;&#x5B58;"><a href="#&#x7F13;&#x5B58;" class="headerlink" title="&#x7F13;&#x5B58;"></a>&#x7F13;&#x5B58;</h1><p><a href="https://github.com/arthinking/informal-essay/blob/master/memcached/Memcached%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%9B%91%E6%8E%A7.md" title="memcached&#x7684;&#x914D;&#x7F6E;&#x4E0E;&#x76D1;&#x63A7;" target="_blank" rel="external">memcached&#x7684;&#x914D;&#x7F6E;&#x4E0E;&#x76D1;&#x63A7;</a><br>&#x901A;&#x8FC7;&#x67E5;&#x770B;&#x5360;&#x7528;&#x5185;&#x5B58;&#xFF0C;&#x51B3;&#x5B9A;&#x9700;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6269;&#x5BB9;</p>
+<h1 id="jdk&#x76D1;&#x63A7;"><a href="#JDK&#x76D1;&#x63A7;" class="headerlink" title="JDK&#x76D1;&#x63A7;"></a>JDK&#x76D1;&#x63A7;</h1><h1 id="&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;"><a href="#&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;" class="headerlink" title="&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;"></a>&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;</h1><h1 id="&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;</h1><h2 id="&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;</h2><h2 id="&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;</h2><h2 id="&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;"><a href="#&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;"></a>&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;</h2><h1 id="nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"><a href="#nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;" class="headerlink" title="nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"></a>nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;</h1><h1 id="lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;"><a href="#Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;" class="headerlink" title="Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;"></a>Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;</h1><h2 id="&#x5360;&#x7528;&#x5185;&#x5B58;"><a href="#&#x5360;&#x7528;&#x5185;&#x5B58;" class="headerlink" title="&#x5360;&#x7528;&#x5185;&#x5B58;"></a>&#x5360;&#x7528;&#x5185;&#x5B58;</h2><h2 id="&#x67E5;&#x8BE2;&#x6548;&#x7387;"><a href="#&#x67E5;&#x8BE2;&#x6548;&#x7387;" class="headerlink" title="&#x67E5;&#x8BE2;&#x6548;&#x7387;"></a>&#x67E5;&#x8BE2;&#x6548;&#x7387;</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/03/javascript/angularjs/chapter07_filter/README/" rel="next" title="filter">
+                <i class="fa fa-chevron-left"></i> filter
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/03/library/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存"><span class="nav-number">1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jdk监控"><span class="nav-number">2.</span> <span class="nav-text">JDK监控</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用服务器监控"><span class="nav-number">3.</span> <span class="nav-text">应用服务器监控</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库监控"><span class="nav-number">4.</span> <span class="nav-text">数据库监控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库内存监控"><span class="nav-number">4.1.</span> <span class="nav-text">数据库内存监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库访问监控"><span class="nav-number">4.2.</span> <span class="nav-text">数据库访问监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库并发测试"><span class="nav-number">4.3.</span> <span class="nav-text">数据库并发测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx并发访问监控"><span class="nav-number">5.</span> <span class="nav-text">nginx并发访问监控</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lucene服务监控"><span class="nav-number">6.</span> <span class="nav-text">Lucene服务监控</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#占用内存"><span class="nav-number">6.1.</span> <span class="nav-text">占用内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询效率"><span class="nav-number">6.2.</span> <span class="nav-text">查询效率</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

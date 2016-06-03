@@ -1,0 +1,625 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AngularJS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+
+&amp;#x4F5C;&amp;#x7528;&amp;#x57DF;&amp;#x662F;&amp;#x89C6;&amp;#x56FE;&amp;#x548C;&amp;#x63A7;&amp;#x5236;&amp;#x5668;&amp;#x4E4B;&amp;#x95F4;&amp;#x7684;&amp;#x80F6;&amp;#x6C34;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scope">
+<meta property="og:url" content="http://arthinking.github.io/2016/05/03/javascript/angularjs/chapter04_scope/README/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+
+&amp;#x4F5C;&amp;#x7528;&amp;#x57DF;&amp;#x662F;&amp;#x89C6;&amp;#x56FE;&amp;#x548C;&amp;#x63A7;&amp;#x5236;&amp;#x5668;&amp;#x4E4B;&amp;#x95F4;&amp;#x7684;&amp;#x80F6;&amp;#x6C34;&amp;">
+<meta property="og:updated_time" content="2016-05-03T15:39:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scope">
+<meta name="twitter:description" content="Author: ChinSyun PangWeibo: arthinking_plusPosted in: http://www.itzhai.com
+
+
+&amp;#x4F5C;&amp;#x7528;&amp;#x57DF;&amp;#x662F;&amp;#x89C6;&amp;#x56FE;&amp;#x548C;&amp;#x63A7;&amp;#x5236;&amp;#x5668;&amp;#x4E4B;&amp;#x95F4;&amp;#x7684;&amp;#x80F6;&amp;#x6C34;&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> scope | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="Java, JavaScript, Go etc.">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                scope
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T23:39:37+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web前端/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<ul>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x89C6;&#x56FE;&#x548C;&#x63A7;&#x5236;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x80F6;&#x6C34;&#x3002;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5E94;&#x7528;&#x72B6;&#x6001;&#x7684;&#x57FA;&#x7840;&#x3002;</li>
+<li>AngularJS&#x5C06;$scope&#x8BBE;&#x8BA1;&#x6210;&#x548C;DOM&#x7C7B;&#x4F3C;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x56E0;&#x6B64;$scope&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5D4C;&#x5957;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F15;&#x7528;&#x7236;&#x7EA7;$scope&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x3002;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x63D0;&#x4F9B;&#x4E86;&#x76D1;&#x89C6;&#x6570;&#x636E;&#x6A21;&#x578B;&#x53D8;&#x5316;&#x7684;&#x80FD;&#x529B;&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;&#x5176;&#x4E2D;&#x7684;apply&#x673A;&#x5236;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#x5728;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x8303;&#x56F4;&#x5185;&#x8FDB;&#x884C;&#x901A;&#x77E5;&#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x5C06;&#x5E94;&#x7528;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x90FD;&#x653E;&#x5728;&#x63A7;&#x5236;&#x5668;&#x4E2D;&#xFF0C;&#x800C;&#x5C06;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x90FD;&#x653E;&#x5728;&#x63A7;&#x5236;&#x5668;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x975E;&#x5E38;&#x5B8C;&#x7F8E;&#x7684;&#x67B6;&#x6784;&#x3002;</p>
+</blockquote>
+<h2 id="41-&#x89C6;&#x56FE;&#x548C;scope&#x7684;&#x4E16;&#x754C;"><a href="#4-1&#x3001;&#x89C6;&#x56FE;&#x548C;-scope&#x7684;&#x4E16;&#x754C;" class="headerlink" title="4.1&#x3001;&#x89C6;&#x56FE;&#x548C;$scope&#x7684;&#x4E16;&#x754C;"></a>4.1&#x3001;&#x89C6;&#x56FE;&#x548C;$scope&#x7684;&#x4E16;&#x754C;</h2><p>ng-app&#x5143;&#x7D20;&#x540C;$rootScope&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#xFF0C;$rootScope&#x662F;&#x6240;&#x6709;$scope&#x5BF9;&#x8C61;&#x7684;&#x6700;&#x4E0A;&#x6B21;&#x3002;</p>
+<h2 id="42-&#x5C31;&#x662F;html&#x800C;&#x5DF2;"><a href="#4-2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;" class="headerlink" title="4.2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;"></a>4.2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;</h2><p>&#x5728;AngularJS&#x5E94;&#x7528;&#x7684;&#x6A21;&#x677F;&#x4E2D;&#x4F7F;&#x7528;&#x591A;&#x79CD;&#x6807;&#x8BB0;&#xFF0C;&#x5305;&#x62EC;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;:</p>
+<blockquote>
+<p>&#x6307;&#x4EE4;&#xFF1A;&#x5C06;DOM&#x5143;&#x7D20;&#x589E;&#x5F3A;&#x4E3A;&#x53EF;&#x590D;&#x7528;&#x7684;DOM&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x6216;&#x5143;&#x7D20;&#x3002;<br>&#x503C;&#x7ED1;&#x5B9A;&#xFF1A;&#x6A21;&#x677F;&#x8BED;&#x6CD5;{{ }}&#x53EF;&#x4EE5;&#x5C06;&#x8868;&#x8FBE;&#x5F0F;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;&#x4E0A;&#x3002;<br>&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;&#x53EF;&#x4EE5;&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x683C;&#x5F0F;&#x5316;&#x3002;<br>&#x8868;&#x5355;&#x63A7;&#x4EF6;&#xFF1A;&#x7528;&#x6765;&#x68C0;&#x9A8C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x63A7;&#x4EF6;&#x3002;</p>
+</blockquote>
+<h2 id="43-&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;"><a href="#4-3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;" class="headerlink" title="4.3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;"></a>4.3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;</h2><p>&#x4F5C;&#x7528;&#x57DF;&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x57FA;&#x672C;&#x529F;&#x80FD;&#xFF1A;</p>
+<blockquote>
+<p>&#x63D0;&#x4F9B;&#x89C2;&#x5BDF;&#x8005;&#x4EE5;&#x76D1;&#x89C6;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#xFF1B;<br>&#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#x901A;&#x77E5;&#x7ED9;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x7CFB;&#x7EDF;&#x5916;&#x7684;&#x7EC4;&#x4EF6;&#xFF1B;<br>&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5D4C;&#x5957;&#xFF0C;&#x9694;&#x79BB;&#x4E1A;&#x52A1;&#x529F;&#x80FD;&#x548C;&#x6570;&#x636E;&#xFF1B;<br>&#x7ED9;&#x8868;&#x8FBE;&#x5F0F;&#x63D0;&#x4F9B;&#x8FD0;&#x7B97;&#x65F6;&#x6240;&#x9700;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#x3002;</p>
+</blockquote>
+<h2 id="44-scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#4-4&#x3001;-scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="4.4&#x3001;$scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>4.4&#x3001;$scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h2><p>$scope&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5904;&#x7406;&#x6709;&#x56DB;&#x4E2A;&#x4E0D;&#x540C;&#x9636;&#x6BB5;&#xFF1A;</p>
+<h3 id="441-&#x521B;&#x5EFA;"><a href="#4-4-1&#x3001;&#x521B;&#x5EFA;" class="headerlink" title="4.4.1&#x3001;&#x521B;&#x5EFA;"></a>4.4.1&#x3001;&#x521B;&#x5EFA;</h3><p>&#x5728;&#x521B;&#x5EFA;&#x63A7;&#x5236;&#x5668;&#x6216;&#x6307;&#x4EE4;&#x65F6;&#xFF0C;AngularJS&#x4F1A;&#x7528;<code>$injector</code>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x5E76;&#x5728;&#x8FD9;&#x4E2A;&#x65B0;&#x5EFA;&#x7684;&#x63A7;&#x5236;&#x5668;&#x6216;&#x6307;&#x4EE4;&#x8FD0;&#x884C;&#x65F6;&#x5C06;&#x4F5C;&#x7528;&#x57DF;&#x4F20;&#x9012;&#x8FDB;&#x53BB;&#x3002;</p>
+<h3 id="442-&#x94FE;&#x63A5;"><a href="#4-4-2&#x3001;&#x94FE;&#x63A5;" class="headerlink" title="4.4.2&#x3001;&#x94FE;&#x63A5;"></a>4.4.2&#x3001;&#x94FE;&#x63A5;</h3><p>&#x5F53;Angular&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x7684;$scope&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x9644;&#x52A0;&#x6216;&#x8005;&#x94FE;&#x63A5;&#x5230;&#x89C6;&#x56FE;&#x4E2D;&#x3002;&#x8FD9;&#x4E9B;&#x4F5C;&#x7528;&#x57DF;&#x5C06;&#x4F1A;&#x6CE8;&#x518C;&#x5F53;Angular&#x5E94;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x9700;&#x8981;&#x8FD0;&#x884C;&#x7684;&#x51FD;&#x6570;&#x3002;(<code>$watch&#x51FD;&#x6570;</code>)</p>
+<h3 id="443-&#x66F4;&#x65B0;"><a href="#4-4-3&#x3001;&#x66F4;&#x65B0;" class="headerlink" title="4.4.3&#x3001;&#x66F4;&#x65B0;"></a>4.4.3&#x3001;&#x66F4;&#x65B0;</h3><p>&#x901A;&#x5E38;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x8FD0;&#x884C;&#x5728;$rootScope&#xFF0C;&#x6BCF;&#x4E2A;&#x5B50;&#x57DF;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x810F;&#x503C;&#x68C0;&#x67E5;&#xFF0C;&#x5982;&#x679C;&#x68C0;&#x6D4B;&#x5230;&#x53D8;&#x5316;&#xFF0C;$scope&#x5BF9;&#x8C61;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x6307;&#x5B9A;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<h3 id="444-&#x9500;&#x6BC1;"><a href="#4-4-4&#x3001;&#x9500;&#x6BC1;" class="headerlink" title="4.4.4&#x3001;&#x9500;&#x6BC1;"></a>4.4.4&#x3001;&#x9500;&#x6BC1;</h3><p>&#x5F53;&#x4E00;&#x4E2A;$scope&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x5C06;&#x4F1A;&#x6E05;&#x7406;&#x548C;&#x9500;&#x6BC1;&#x81EA;&#x5DF1;&#x3002;</p>
+<h2 id="45-&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;"><a href="#4-5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="4.5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;"></a>4.5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;</h2><p>&#x6307;&#x4EE4;&#x5728;AngularJS&#x4E2D;&#x88AB;&#x5E7F;&#x6CDB;&#x4F7F;&#x7528;&#xFF0C;&#x6307;&#x4EE4;<em>&#x901A;&#x5E38;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;$scope</em>&#xFF0C;&#x4F46;&#x4E5F;&#x6709;&#x4F8B;&#x5916;&#x3002;&#x6BD4;&#x5982;<code>ng-controller</code>&#x548C;<code>ng-repeat</code>&#x6307;&#x4EE4;&#x4F1A;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x5B50;&#x4F5C;&#x7528;&#x57DF;&#x5E76;&#x5C06;&#x5B83;&#x4EEC;&#x9644;&#x52A0;&#x5230;DOM&#x5143;&#x7D20;&#x4E0A;&#x3002;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS/" rel="tag">#AngularJS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/03/javascript/angularjs/chapter02_data-binding/README.md/" rel="next" title="data binding">
+                <i class="fa fa-chevron-left"></i> data binding
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/03/javascript/angularjs/chapter05_controller/README.md/" rel="prev" title="controller">
+                controller <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#41-视图和scope的世界"><span class="nav-number">1.</span> <span class="nav-text">4.1、视图和$scope的世界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-就是html而已"><span class="nav-number">2.</span> <span class="nav-text">4.2、就是HTML而已</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#43-作用于能做什么"><span class="nav-number">3.</span> <span class="nav-text">4.3、作用于能做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#44-scope的生命周期"><span class="nav-number">4.</span> <span class="nav-text">4.4、$scope的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#441-创建"><span class="nav-number">4.1.</span> <span class="nav-text">4.4.1、创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#442-链接"><span class="nav-number">4.2.</span> <span class="nav-text">4.4.2、链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#443-更新"><span class="nav-number">4.3.</span> <span class="nav-text">4.4.3、更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#444-销毁"><span class="nav-number">4.4.</span> <span class="nav-text">4.4.4、销毁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#45-指令和作用域"><span class="nav-number">5.</span> <span class="nav-text">4.5、指令和作用域</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
