@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Resin配置 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Resin配置"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article article-page">
+
+  
+  
+    <h3 class="article-title"><span>Resin配置</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/server/resin/resin配置/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="1-&#x5B89;&#x88C5;"><a href="#1&#x3001;&#x5B89;&#x88C5;" class="headerlink" title="1&#x3001;&#x5B89;&#x88C5;"></a>1&#x3001;&#x5B89;&#x88C5;</h1><h2 id="11-&#x4E0A;&#x4F20;resin&#x7A0B;&#x5E8F;&#x5305;"><a href="#1-1&#x3001;&#x4E0A;&#x4F20;resin&#x7A0B;&#x5E8F;&#x5305;" class="headerlink" title="1.1&#x3001;&#x4E0A;&#x4F20;resin&#x7A0B;&#x5E8F;&#x5305;"></a>1.1&#x3001;&#x4E0A;&#x4F20;resin&#x7A0B;&#x5E8F;&#x5305;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/mmt/soft</span><br><span class="line"># &#x5C06;resin-pro-3.1.12.tar.gz&#x7A0B;&#x5E8F;&#x4E0A;&#x4F20;&#x81F3;soft&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x89E3;&#x5305;&#xFF1A;</span><br><span class="line">tar zxvf resin-pro-3.1.12.tar.gz</span><br><span class="line"># &#x5C06;&#x89E3;&#x5305;&#x540E;&#x7684;&#x7A0B;&#x5E8F;copy&#x81F3;/usr/local&#x76EE;&#x5F55;&#x4E0B;&#xFF1A;</span><br><span class="line">cp -rf resin-pro-3.1.12 /usr/local</span><br><span class="line"># &#x5C06; resin-pro-3.1.12 &#x6539;&#x540D;&#x4E3A; resin</span><br><span class="line">mv /usr/local/resin-pro-3.1.12/ /usr/local/resin</span><br><span class="line"># &#x8FDB;&#x5165;/usr/local/resin/&#x76EE;&#x5F55;</span><br><span class="line">cd /usr/local/resin</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x76F8;&#x5173;&#x8D44;&#x6E90;&#xFF1A;    </p>
+<p><a href="http://blog.csdn.net/tegwy/article/details/8870873" title="ubuntu &#x7F16;&#x8BD1;&#x5E76;&#x5B89;&#x88C5;resin3.1.12+nginx1.2.6" target="_blank" rel="external">ubuntu &#x7F16;&#x8BD1;&#x5E76;&#x5B89;&#x88C5;resin3.1.12+nginx1.2.6</a></p>
+</blockquote>
+<h2 id="12-&#x5B89;&#x88C5;"><a href="#1-2&#x3001;&#x5B89;&#x88C5;" class="headerlink" title="1.2&#x3001;&#x5B89;&#x88C5;"></a>1.2&#x3001;&#x5B89;&#x88C5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure --with-java-home=/usr/lib/jvm/java/jdk1.6.0_26</span><br><span class="line"># &#x542F;&#x52A8;resin&#xFF0C;&#x770B;&#x662F;&#x5426;&#x5B89;&#x88C5;&#x6210;&#x529F;</span><br><span class="line">/usr/local/resin/bin/httpd.sh start</span><br><span class="line"># &#x5982;&#x679C;&#x80FD;&#x6B63;&#x5E38;&#x663E;&#x793A;&#x9875;&#x9762;&#x5219;&#x8868;&#x793A;&#x5B89;&#x88C5;&#x6210;&#x529F;&#xFF0C;&#x73B0;&#x5728;&#x53EF;&#x4EE5;&#x505C;&#x6B62;&#x5E76;&#x8BBE;&#x7F6E;&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E86;&#x3002;</span><br><span class="line">/usr/local/resin/bin/httpd.sh stop</span><br></pre></td></tr></table></figure>
+<h1 id="2-&#x914D;&#x7F6E;"><a href="#2&#x3001;&#x914D;&#x7F6E;" class="headerlink" title="2&#x3001;&#x914D;&#x7F6E;"></a>2&#x3001;&#x914D;&#x7F6E;</h1><h2 id="jvm&#x53C2;&#x6570;&#x8BBE;&#x7F6E;"><a href="#JVM&#x53C2;&#x6570;&#x8BBE;&#x7F6E;" class="headerlink" title="JVM&#x53C2;&#x6570;&#x8BBE;&#x7F6E;"></a>JVM&#x53C2;&#x6570;&#x8BBE;&#x7F6E;</h2><p>&#x5728;resin/conf/resin.conf&#x4E2D;&#x7684;<jvm-arg>&#x6807;&#x7B7E;&#x4E2D;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#xFF0C;&#x8FD9;&#x5C06;&#x662F;&#x542F;&#x52A8;JVM&#x7684;&#x521D;&#x59CB;&#x5316;&#x53C2;&#x6570;&#x3002;</jvm-arg></p>
+<p>&#x5177;&#x4F53;&#x7684;&#x53C2;&#x6570;&#x673A;&#x5668;&#x4F5C;&#x7528;&#xFF1A;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- - JVM &#x53C2;&#x6570;&#x8BBE;&#x7F6E; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xms512 m<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--jvm &#x6700;&#x5C0F;&#x5185;&#x5B58;&#xFF0C;&#x4E5F;&#x662F;&#x542F;&#x52A8; resin&#x540E;&#x7684;&#x9ED8;&#x8BA4;&#x5185;&#x5B58;&#x5206;&#x914D;&#x503C;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xmx512 m<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span> <span class="comment">&lt;!-- make ms=mx to reduce GC times --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--jvm&#x6700;&#x5927;&#x5185;&#x5B58;&#xFF0C;&#x5F53;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x8D85;&#x8FC7; Xms&#x5206;&#x914D;&#x7684;&#x503C;&#x4E4B;&#x540E;&#x4F1A;&#x81EA;&#x52A8;&#x5411;&#x8FD9;&#x4E2A;&#x6700;&#x5927;&#x503C;&#x63D0;&#x5347;&#xFF0C;&#x4E00;&#x822C;&#x914D;&#x7F6E;&#x6210;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;&#x76F8;&#x7B49;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A;&#x80FD;&#x591F;&#x964D;&#x4F4E; GC &#x5783;&#x573E;&#x6536;&#x96C6;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x53EF;&#x6309;&#x5B9E;&#x9645;&#x8FDB;&#x884C;&#x914D;&#x7F6E;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xmn86m<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&#x5185;&#x5B58;&#x5206;&#x914D;&#x589E;&#x91CF;&#xFF0C;&#x5F53;&#x5185;&#x5B58;&#x9700;&#x6C42;&#x8D85;&#x8FC7; Xms&#x503C;&#x4E4B;&#x540E;&#x8FDB;&#x884C;&#x7B2C;&#x4E00;&#x6B21;&#x5206;&#x914D;&#x8BF7;&#x6C42;&#x7684;&#x5185;&#x5B58;&#x503C;&#xFF0C;&#x4E00;&#x822C;&#x4E3A; Xmx&#x7684; 1/3-1/4 &#xFF1B;&#x5F00;&#x59CB;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x5148;&#x5C4F;&#x853D;&#xFF0C;&#x5F53;&#x5E94;&#x7528;&#x51FA;&#x73B0;OutOfMemory&#x7684;&#x65F6;&#x5019;&#x518D;&#x6253;&#x5F00;&#x4E5F;&#x53EF;&#x4EE5;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-XX:MaxNewSize=256m<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-XX:PermSize=128m<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-XX:MaxPermSize=256m<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&#x4EE5;&#x4E0A;&#x4E09;&#x9879;&#x662F;&#x4E3A;&#x4E86;&#x51CF;&#x5C11; OutOfMemory &#x800C;&#x914D;&#x7F6E;&#x7684;&#xFF0C;</span><br><span class="line">&#x662F;&#x6BCF;&#x4E2A;java&#x7F16;&#x8BD1;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x6700;&#x591A;&#x80FD;&#x4E00;&#x6B21;&#x7533;&#x8BF7; jvm &#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;&#x503C;&#xFF0C;</span><br><span class="line">&#x4EE5;&#x4E0A;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#x57FA;&#x672C;&#x591F;&#x7528;&#xFF0C;&#x4F46;&#x4F9D;&#x7136;&#x51FA;OutOfMemory &#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x9002;&#x5F53;&#x8C03;&#x5927;&#xFF0C;</span><br><span class="line">&#x4F46;&#x4E0D;&#x80FD;&#x8D85;&#x8D8A; Xmx&#x7684;&#x503C;&#xFF1B;</span><br><span class="line">&#x5F00;&#x59CB;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x5148;&#x5C4F;&#x853D;&#xFF0C;&#x5F53;&#x5E94;&#x7528;&#x51FA;&#x73B0; OutOfMemory&#x7684;&#x65F6;&#x5019;&#x518D;&#x6253;&#x5F00;&#x4E5F;&#x53EF;&#x4EE5;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xss256k<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span> <span class="comment">&lt;!-- jvm Stack config --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Djava.awt.headless=true<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span> <span class="comment">&lt;!--&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x9A8C;&#x8BC1;&#x7801;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Djava.net.preferIPv4Stack=true<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span> <span class="comment">&lt;!-- disable IPv6 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Doracle.jdbc.V8Compatible=true<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span><span class="comment">&lt;!--&#x9488;&#x5BF9; oracle10&#x7684;&#x517C;&#x5BB9;&#x914D;&#x7F6E;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">watchdog-arg</span>&gt;</span>-Dcom.sun.management.jmxremote<span class="tag">&lt;/<span class="name">watchdog-arg</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x5F3A;&#x5236; resin &#x5F3A;&#x5236;&#x91CD;&#x542F;&#x65F6;&#x7684;&#x6700;&#x5C0F;&#x7A7A;&#x95F2;&#x5185;&#x5B58; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">memory-free-min</span>&gt;</span>2M<span class="tag">&lt;/<span class="name">memory-free-min</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x6700;&#x5927;&#x7EBF;&#x7A0B;&#x6570;&#x91CF; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">thread-max</span>&gt;</span>256<span class="tag">&lt;/<span class="name">thread-max</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x5957;&#x63A5;&#x5B57;&#x7B49;&#x5F85;&#x65F6;&#x95F4; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">socket-timeout</span>&gt;</span>65s<span class="tag">&lt;/<span class="name">socket-timeout</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &#x914D;&#x7F6E; keepalive --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">keepalive-max</span>&gt;</span>128<span class="tag">&lt;/<span class="name">keepalive-max</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">keepalive-timeout</span>&gt;</span>15s<span class="tag">&lt;/<span class="name">keepalive-timeout</span>&gt;</span></span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">**&#x65E5;&#x5E38;&#x9047;&#x5230;&#x7684;OOM&#x548C;&#x9891;&#x7E41;&#x53D1;&#x751F;GC &#x60C5;&#x51B5;&#x5206;&#x6790;**</span><br><span class="line"></span><br><span class="line">* java.lang.OutOfMemoryError: Java heap space</span><br><span class="line">heap &#x7A7A;&#x95F4;&#x4E0D;&#x8DB3;&#xFF0C;&#x53EF;&#x80FD;&#x662F; -Xmx &#x914D;&#x5F97;&#x8FC7;&#x5927;&#xFF0C;&#x6216;&#x8005;&#x7CFB;&#x7EDF;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x6216;&#x6CC4;&#x6F0F;</span><br><span class="line"></span><br><span class="line">* java.lang.OutOfMemoryError: PermGen space</span><br><span class="line">&#x6301;&#x4E45;&#x4EE3;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#xFF0C;&#x5B58;&#x5728;&#x5927;&#x91CF;&#x7CFB;&#x7EDF;&#x7C7B;&#x88AB;&#x52A0;&#x8F7D;&#x6216; jpa &#x7B49;&#x67B6;&#x6784;&#x9891;&#x7E41;&#x4F7F;&#x7528;&#xFF0C;&#x9700;&#x8981;&#x589E;&#x52A0; Perm&#x7684;&#x5185;&#x5B58;&#x914D;&#x7F6E;</span><br><span class="line"></span><br><span class="line">* java.lang.OutOfMemoryError:unable to create native thread</span><br><span class="line"></span><br><span class="line">* &#x7A7A;&#x95F2;&#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#x4EE5;&#x5EFA;&#x7ACB;&#x65B0;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x51CF;&#x5C11; max-threads &#x7684;&#x914D;&#x7F6E;&#xFF0C;&#x589E;&#x52A0;&#x7A7A;&#x95F2;&#x5185;&#x5B58;&#x6570;&#x91CF;</span><br><span class="line"></span><br><span class="line">&#x5728;&#x5B9E;&#x9645;&#x7684;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x4EE5;&#x4E0B;&#x4E09;&#x4E2A;&#x4E1C;&#x897F;&#x7ECF;&#x5E38;&#x7528;&#x5230;&#xFF0C;&#x6240;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x63D0;&#x4E00;&#x4E0B;&#xFF0C;&#x4E5F;&#x7B97;&#x662F;&#x7B80;&#x5355;&#x7684;&#x4F18;&#x5316;&#x3002;</span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line"><span class="tag">&lt;<span class="name">thread-max</span>&gt;</span>512<span class="tag">&lt;/<span class="name">thread-max</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&#x6700;&#x5927;&#x7EBF;&#x7A0B;&#x6570;&#x5F71;&#x54CD; resin &#x7684;&#x7CFB;&#x7EDF;&#x8D1F;&#x8F7D;&#x80FD;&#x529B;&#x4EE5;&#x53CA; java &#x8FDB;&#x7A0B;&#x7684;&#x5185;&#x5B58;&#x5360;&#x7528;--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">keepalive-max</span>&gt;</span>128<span class="tag">&lt;/<span class="name">keepalive-max</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--keepalive &#x7684;&#x6700;&#x5927;&#x6570;&#x91CF;&#xFF0C;&#x5BF9;&#x7F51;&#x7EDC;&#x6027;&#x80FD;&#x6709;&#x5F71;&#x54CD;--&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="jvm&#x8C03;&#x4F18;&#x76F8;&#x5173;"><a href="#JVM&#x8C03;&#x4F18;&#x76F8;&#x5173;&#xFF1A;" class="headerlink" title="JVM&#x8C03;&#x4F18;&#x76F8;&#x5173;&#xFF1A;"></a>JVM&#x8C03;&#x4F18;&#x76F8;&#x5173;&#xFF1A;</h3><ul>
+<li><a href="http://blog.csdn.net/tyrone1979/article/details/1274458" title="JVM&#x8C03;&#x4F18;" target="_blank" rel="external">JVM&#x8C03;&#x4F18;</a>    </li>
+<li><a href="http://www.opendigest.org/article.php/450" title="resin&#x4F18;&#x5316;&#x7ECF;&#x9A8C;" target="_blank" rel="external">resin&#x4F18;&#x5316;&#x7ECF;&#x9A8C;</a>    </li>
+<li><a href="http://www.caucho.com/resin-3.0/performance/jvm-tuning.xtp#garbage-collection" title="resin" target="_blank" rel="external">resin</a>    </li>
+<li>js/html/css/jpg/gif &#x7B49;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x7531; nginx &#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x7531;nginx&#x4EE5;upstream&#x65B9;&#x5F0F;&#x4EE3;&#x7406;&#x5230;&#x540E;&#x7AEF;resin&#x5904;&#x7406;&#xFF0C;&#x4EE5;&#x51CF;&#x5C11;resin &#x63D0;&#x4F9B;&#x8FD9;&#x4E9B;&#x9759;&#x6001;&#x6587;&#x4EF6;&#x8BBF;&#x95EE;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x3002;</li>
+</ul>
+<p>Resin &#x53CA; jvm &#x4F18;&#x5316;&#xFF0C;&#x662F;&#x4E00;&#x9879;&#x57FA;&#x4E8E;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x7684;&#x5E94;&#x7528;&#x4E0A;&#x8FDB;&#x884C;&#x4E00;&#x6BB5;&#x76F8;&#x5BF9;&#x957F;&#x65F6;&#x95F4;&#x7684;&#x6D4B;&#x8BD5;&#x8FDB;&#x884C;&#xFF0C;&#x7531;&#x4E8E;&#x6BCF;&#x4E2A;&#x9879;&#x76EE;&#x90FD;&#x6709;&#x5176;&#x81EA;&#x8EAB;&#x7279;&#x70B9;&#xFF0C;&#x53EA;&#x6709;&#x6839;&#x636E;&#x8FD9;&#x4E9B;&#x7279;&#x70B9;&#x6765;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#xFF0C;&#x624D;&#x80FD;&#x628A;&#x8BE5;&#x9879;&#x76EE;&#x914D;&#x7F6E;&#x5F97;&#x66F4;&#x597D; &#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x786C;&#x5957;&#x5230;&#x5176;&#x5B83;&#x9879;&#x76EE;&#x4E0A; &#x3002;</p>
+<p><strong>&#x6D4B;&#x8BD5;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x91CF;</strong>    </p>
+<p>&#x5148;&#x5C06;resin.conf&#x6587;&#x4EF6;&#x4E2D;&#x7684;thread-min&#xFF0C;thread-max&#xFF0C;thread-keepalive&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x7684;&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x5206;&#x522B;&#x5199;&#x4E0A;&#xFF0C;1000&#xFF0C;3000&#xFF0C;1000&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x662F;&#x6839;&#x636E;&#x4F60;&#x7684;&#x673A;&#x5668;&#x60C5;&#x51B5;&#x548C;&#x53EF;&#x80FD;&#x540C;&#x65F6;&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x91CF;&#x51B3;&#x5B9A;&#x7684;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x7F51;&#x7AD9;&#x8BBF;&#x95EE;&#x91CF;&#x5F88;&#x5927;&#x7684;&#xFF0C;&#x5E94;&#x8BE5;&#x518D;&#x9002;&#x5F53;&#x653E;&#x5927;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x89C2;&#x5BDF;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x5668;&#x4E2D;&#x7684;java&#x7EBF;&#x7A0B;&#x53D8;&#x5316;&#x60C5;&#x51B5;&#xFF0C;&#x770B;&#x770B;&#x5230;&#x5E95;&#x662F;&#x7EBF;&#x7A0B;&#x8FBE;&#x5230;&#x591A;&#x5927;&#x7684;&#x65F6;&#x5019;&#xFF0C;java&#x8FDB;&#x7A0B;&#x5F53;&#x6389;&#x7684;&#x3002;&#x6211;&#x7684;&#x662F;&#x5728;379&#x5DE6;&#x53F3;&#x5F53;&#x6389;&#x3002;</p>
+<p>&#x7136;&#x540E;&#x5C06;thread-min&#xFF0C;thread-max&#xFF0C;thread-keepalive&#x5206;&#x522B;&#x5199;&#x4E3A;150&#xFF0C;400&#xFF0C;300&#xFF1B;&#x4E5F;&#x5C31;&#x662F;&#x5C06;&#x5F53;&#x6389;&#x7684;&#x65F6;&#x5019;&#x7684;&#x6700;&#x5927;&#x503C;&#x7A0D;&#x5FAE;&#x653E;&#x5927;&#x70B9;&#xFF0C;&#x4F5C;&#x4E3A;thread-max&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x8BE5;&#x7CFB;&#x7EDF;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x8D85;&#x8FC7;&#x8FD9;&#x4E2A;&#x503C;&#x3002;&#x7136;&#x540E;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x6839;&#x636E;&#x60C5;&#x51B5;&#x8BBE;&#x7F6E;&#x4E00;&#x4E0B;&#x3002;</p>
+
+          
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/应用服务器/">应用服务器</a>, <a href="/categories/应用服务器/Resin/">Resin</a>
+  </span>
+
+
+              
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Resin/">Resin</a>
+  </span>
+
+
+            </div>
+            
+        </footer>
+      </div>
+
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-安装"><span class="post-toc-text">1、安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-上传resin程序包"><span class="post-toc-text">1.1、上传resin程序包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-安装"><span class="post-toc-text">1.2、安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-配置"><span class="post-toc-text">2、配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jvm参数设置"><span class="post-toc-text">JVM参数设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#jvm调优相关"><span class="post-toc-text">JVM调优相关：</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
+
+<script>
+  window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    var aside = document.getElementById("article-toc");
+    if(t >= 380) {
+      aside.className = "fixed";
+    } else {
+      aside.className = "";
+    }
+  }
+</script>
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

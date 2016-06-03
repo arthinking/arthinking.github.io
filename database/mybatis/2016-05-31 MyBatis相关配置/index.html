@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article article-page">
+
+  
+  
+    <h3 class="article-title"><span></span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/database/mybatis/2016-05-31 MyBatis相关配置/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-03T11:22:23.000Z">
+          2016-06-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <hr>
+<h2 id=""><a href="#" class="headerlink" title="{}"></a>{}</h2><blockquote>
+<p>&#x4FD7;&#x8BDD;&#x8BF4;&#xFF0C;&#x5DE5;&#x6B32;&#x5584;&#x5176;&#x4E8B;&#xFF0C;&#x5FC5;&#x5148;&#x5229;&#x5176;&#x5668;&#x3002;</p>
+</blockquote>
+<h1 id="&#x8BBE;&#x7F6E;idea-mybatis-xml&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x63D0;&#x793A;"><a href="#&#x8BBE;&#x7F6E;IDEA-Mybatis-xml&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x63D0;&#x793A;" class="headerlink" title="&#x8BBE;&#x7F6E;IDEA Mybatis xml&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x63D0;&#x793A;"></a>&#x8BBE;&#x7F6E;IDEA Mybatis xml&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x63D0;&#x793A;</h1><p><strong>&#x8BBE;&#x7F6E; SQL Dialects</strong></p>
+<p><img src="media/14646755250753.jpg" alt=""></p>
+<p><strong>&#x5728;IDEA&#x91CC;&#x9762;&#x94FE;&#x63A5;&#x6570;&#x636E;&#x5E93;</strong></p>
+<p><img src="media/14646757875441.jpg" alt=""></p>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x4F7F;&#x7528;MyBatis plugin&#x4E4B;&#x540E;,xml&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x5C31;&#x53EF;&#x4EE5;&#x662F;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#x4E86;&#xFF0C;&#x65B9;&#x4FBF;&#x6392;&#x9664;&#x95EE;&#x9898;&#x3002;</p>
+<p><strong>&#x53BB;&#x9664;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x9519;&#x8BEF;&#x63D0;&#x793A;</strong></p>
+<p>&#x5728;mybatis xml&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x6309;&#x7EC4;&#x5408;&#x952E;&#xFF1A;alt + enten  &#x5F39;&#x51FA;&#x610F;&#x56FE;&#x52A8;&#x4F5C;&#x548C;&#x5FEB;&#x901F;&#x4FEE;&#x590D;&#x83DC;&#x5355;&#xFF0C;&#x9009;&#x62E9;Language Injection Settings</p>
+<p><img src="media/14646749374769.jpg" alt=""></p>
+<p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x901A;&#x8FC7;sql&#x6807;&#x7B7E;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#xFF1A;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">&quot;Base_Column_List&quot;</span>&gt;</span>id, create_time, update_time, status<span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x53BB;&#x6389;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x7684;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#xFF0C;&#x5E94;&#x8BE5;&#x5728;<code>Local name</code>&#x914D;&#x7F6E;&#x91CC;&#x9762;&#x53BB;&#x6389;sql&#xFF0C;&#x6539;&#x4E3A;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select|insert|update|delete</span><br></pre></td></tr></table></figure>
+
+          
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
+              
+            </div>
+            
+        </footer>
+      </div>
+
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#"><span class="post-toc-text">{}</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设置idea-mybatis-xml文件错误提示"><span class="post-toc-text">设置IDEA Mybatis xml文件错误提示</span></a>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
+
+<script>
+  window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    var aside = document.getElementById("article-toc");
+    if(t >= 380) {
+      aside.className = "fixed";
+    } else {
+      aside.className = "";
+    }
+  }
+</script>
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

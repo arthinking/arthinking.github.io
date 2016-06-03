@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>服务器监控 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="服务器监控"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article article-page">
+
+  
+  
+    <h3 class="article-title"><span>服务器监控</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/server/服务器监控/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="&#x7F13;&#x5B58;"><a href="#&#x7F13;&#x5B58;" class="headerlink" title="&#x7F13;&#x5B58;"></a>&#x7F13;&#x5B58;</h1><p><a href="https://github.com/arthinking/informal-essay/blob/master/memcached/Memcached%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%9B%91%E6%8E%A7.md" title="memcached&#x7684;&#x914D;&#x7F6E;&#x4E0E;&#x76D1;&#x63A7;" target="_blank" rel="external">memcached&#x7684;&#x914D;&#x7F6E;&#x4E0E;&#x76D1;&#x63A7;</a><br>&#x901A;&#x8FC7;&#x67E5;&#x770B;&#x5360;&#x7528;&#x5185;&#x5B58;&#xFF0C;&#x51B3;&#x5B9A;&#x9700;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6269;&#x5BB9;</p>
+<h1 id="jdk&#x76D1;&#x63A7;"><a href="#JDK&#x76D1;&#x63A7;" class="headerlink" title="JDK&#x76D1;&#x63A7;"></a>JDK&#x76D1;&#x63A7;</h1><h1 id="&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;"><a href="#&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;" class="headerlink" title="&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;"></a>&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;</h1><h1 id="&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;</h1><h2 id="&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;</h2><h2 id="&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;</h2><h2 id="&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;"><a href="#&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;"></a>&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;</h2><h1 id="nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"><a href="#nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;" class="headerlink" title="nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"></a>nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;</h1><h1 id="lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;"><a href="#Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;" class="headerlink" title="Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;"></a>Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;</h1><h2 id="&#x5360;&#x7528;&#x5185;&#x5B58;"><a href="#&#x5360;&#x7528;&#x5185;&#x5B58;" class="headerlink" title="&#x5360;&#x7528;&#x5185;&#x5B58;"></a>&#x5360;&#x7528;&#x5185;&#x5B58;</h2><h2 id="&#x67E5;&#x8BE2;&#x6548;&#x7387;"><a href="#&#x67E5;&#x8BE2;&#x6548;&#x7387;" class="headerlink" title="&#x67E5;&#x8BE2;&#x6548;&#x7387;"></a>&#x67E5;&#x8BE2;&#x6548;&#x7387;</h2>
+          
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/监控/">监控</a>
+  </span>
+
+
+              
+            </div>
+            
+        </footer>
+      </div>
+
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#缓存"><span class="post-toc-text">缓存</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#jdk监控"><span class="post-toc-text">JDK监控</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#应用服务器监控"><span class="post-toc-text">应用服务器监控</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据库监控"><span class="post-toc-text">数据库监控</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库内存监控"><span class="post-toc-text">数据库内存监控</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库访问监控"><span class="post-toc-text">数据库访问监控</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库并发测试"><span class="post-toc-text">数据库并发测试</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nginx并发访问监控"><span class="post-toc-text">nginx并发访问监控</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lucene服务监控"><span class="post-toc-text">Lucene服务监控</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#占用内存"><span class="post-toc-text">占用内存</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查询效率"><span class="post-toc-text">查询效率</span></a></li></ol></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
+
+<script>
+  window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    var aside = document.getElementById("article-toc");
+    if(t >= 380) {
+      aside.className = "fixed";
+    } else {
+      aside.className = "";
+    }
+  }
+</script>
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

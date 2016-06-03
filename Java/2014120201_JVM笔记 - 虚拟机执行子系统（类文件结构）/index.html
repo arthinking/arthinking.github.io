@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JVM笔记 - 虚拟机执行子系统（类文件结构） | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="JVM笔记 - 虚拟机执行子系统（类文件结构）"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article article-page">
+
+  
+  
+    <h3 class="article-title"><span>JVM笔记 - 虚拟机执行子系统（类文件结构）</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/2014120201_JVM笔记 - 虚拟机执行子系统（类文件结构）/" rel="bookmark">
+        <time class="entry-date published" datetime="2014-12-01T16:00:00.000Z">
+          2014-12-02
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+<p>&#x300A;&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#xFF1A;JVM&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#x4E0E;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF08;&#x7B2C;2&#x7248;&#xFF09;&#x300B;&#x7B14;&#x8BB0;    </p>
+</blockquote>
+<h1 id="1-&#x6982;&#x8FF0;"><a href="#1&#x3001;&#x6982;&#x8FF0;" class="headerlink" title="1&#x3001;&#x6982;&#x8FF0;"></a>1&#x3001;&#x6982;&#x8FF0;</h1><h1 id="2-&#x65E0;&#x5173;&#x6027;&#x7684;&#x57FA;&#x77F3;"><a href="#2&#x3001;&#x65E0;&#x5173;&#x6027;&#x7684;&#x57FA;&#x77F3;" class="headerlink" title="2&#x3001;&#x65E0;&#x5173;&#x6027;&#x7684;&#x57FA;&#x77F3;"></a>2&#x3001;&#x65E0;&#x5173;&#x6027;&#x7684;&#x57FA;&#x77F3;</h1><p>JVM &#x8BBE;&#x8BA1;&#x8005;&#x901A;&#x8FC7; JSR- 292 &#x57FA;&#x672C;&#x5151;&#x73B0;&#x4E86;&#x5BF9; Java &#x865A;&#x62DF;&#x673A;&#x8FDB;&#x884C;&#x9002;&#x5F53;&#x7684;&#x6269;&#x5C55;&#xFF0C;&#x4EE5;&#x4FBF;&#x66F4;&#x597D;&#x5730;&#x652F;&#x6301;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x8FD0;&#x884C;&#x4E8E; JVM &#x4E4B;&#x4E0A;&#x8FD9;&#x4E2A;&#x627F;&#x8BFA;&#x3002;</p>
+<p>Java &#x865A;&#x62DF;&#x673A;&#x4E0D;&#x548C;&#x5305;&#x62EC; Java &#x5728;&#x5185;&#x7684;&#x4EFB;&#x4F55;&#x8BED;&#x8A00;&#x7ED1;&#x5B9A;&#xFF0C;&#x5B83;&#x53EA;&#x4E0E;&#x201C; Class &#x6587;&#x4EF6;&#x201D;&#x8FD9;&#x79CD;&#x7279;&#x5B9A;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x6240;&#x5173;&#x8054;</p>
+<h1 id="3-class&#x7C7B;&#x6587;&#x4EF6;&#x7684;&#x7ED3;&#x6784;"><a href="#3&#x3001;Class&#x7C7B;&#x6587;&#x4EF6;&#x7684;&#x7ED3;&#x6784;" class="headerlink" title="3&#x3001;Class&#x7C7B;&#x6587;&#x4EF6;&#x7684;&#x7ED3;&#x6784;"></a>3&#x3001;Class&#x7C7B;&#x6587;&#x4EF6;&#x7684;&#x7ED3;&#x6784;</h1><p>&#x4EFB;&#x4F55;&#x4E00;&#x4E2A; Class &#x6587;&#x4EF6;&#x90FD;&#x5BF9;&#x5E94;&#x7740;&#x552F;&#x4E00;&#x4E00;&#x4E2A;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x7684;&#x5B9A;&#x4E49;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x53CD;&#x8FC7;&#x6765;&#x8BF4;&#xFF0C;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x90FD;&#x5F97;&#x5B9A;&#x4E49;&#x5728;&#x6587;&#x4EF6;&#x91CC;&#xFF08;&#x8B6C;&#x5982;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x76F4;&#x63A5;&#x751F;&#x6210;&#xFF09;&#x3002;</p>
+<p>Class &#x6587;&#x4EF6;&#x662F;&#x4E00;&#x7EC4;&#x4EE5; 8 &#x4F4D;&#x5B57;&#x8282;&#x4E3A;&#x57FA;&#x7840;&#x5355;&#x4F4D;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6D41;&#x3002;</p>
+<p>&#x6839;&#x636E; Java &#x865A;&#x62DF;&#x673A;&#x89C4;&#x8303;&#x7684;&#x89C4;&#x5B9A;&#xFF0C; Class &#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x91C7;&#x7528;&#x4E00;&#x79CD;&#x7C7B;&#x4F3C;&#x4E8E; C &#x8BED;&#x8A00;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x4F2A;&#x7ED3;&#x6784;&#x6765;&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x79CD;&#x4F2A;&#x7ED3;&#x6784;&#x4E2D;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;&#x65E0;&#x7B26;&#x53F7;&#x6570;&#x548C;&#x8868;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x89E3;&#x6790;&#x90FD;&#x8981;&#x4EE5;&#x8FD9;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E3A;&#x57FA;&#x7840;&#x3002;</p>
+<h1 id="4-&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7B80;&#x4ECB;"><a href="#4&#x3001;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7B80;&#x4ECB;" class="headerlink" title="4&#x3001;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7B80;&#x4ECB;"></a>4&#x3001;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7B80;&#x4ECB;</h1><h1 id="5-&#x5171;&#x6709;&#x8BBE;&#x8BA1;&#x548C;&#x79C1;&#x6709;&#x8BBE;&#x8BA1;"><a href="#5&#x3001;&#x5171;&#x6709;&#x8BBE;&#x8BA1;&#x548C;&#x79C1;&#x6709;&#x8BBE;&#x8BA1;" class="headerlink" title="5&#x3001;&#x5171;&#x6709;&#x8BBE;&#x8BA1;&#x548C;&#x79C1;&#x6709;&#x8BBE;&#x8BA1;"></a>5&#x3001;&#x5171;&#x6709;&#x8BBE;&#x8BA1;&#x548C;&#x79C1;&#x6709;&#x8BBE;&#x8BA1;</h1><p>&#x53EA;&#x8981;&#x4F18;&#x5316;&#x540E; Class &#x6587;&#x4EF6;&#x4F9D;&#x7136;&#x53EF;&#x4EE5;&#x88AB;&#x6B63;&#x786E;&#x8BFB;&#x53D6;&#xFF0C;&#x5E76;&#x4E14;&#x5305;&#x542B;&#x5728;&#x5176;&#x4E2D;&#x7684;&#x8BED;&#x4E49;&#x80FD;&#x5F97;&#x5230;&#x5B8C;&#x6574;&#x7684;&#x4FDD;&#x6301;&#xFF0C;&#x90A3;&#x5B9E;&#x73B0;&#x8005;&#x5C31;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x4EFB;&#x4F55;&#x65B9;&#x5F0F;&#x53BB;&#x5B9E;&#x73B0;&#x8FD9;&#x4E9B;&#x8BED;&#x4E49;&#xFF0C;&#x865A;&#x62DF;&#x673A;&#x540E;&#x53F0;&#x5982;&#x4F55;&#x5904;&#x7406; Class &#x6587;&#x4EF6;&#x5B8C;&#x5168;&#x662F;&#x5B9E;&#x73B0;&#x8005;&#x81EA;&#x5DF1;&#x7684;&#x4E8B;&#x60C5;&#xFF0C;&#x53EA;&#x8981;&#x5B83;&#x5728;&#x5916;&#x90E8;&#x63A5;&#x53E3;&#x4E0A;&#x770B;&#x8D77;&#x6765;&#x4E0E;&#x89C4;&#x8303;&#x63CF;&#x8FF0;&#x7684;&#x4E00;&#x81F4;&#x5373;&#x53EF;[ 1]&#x3002;</p>
+<h1 id="6-class&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x7684;&#x53D1;&#x5C55;"><a href="#6&#x3001;Class&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x7684;&#x53D1;&#x5C55;" class="headerlink" title="6&#x3001;Class&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x7684;&#x53D1;&#x5C55;"></a>6&#x3001;Class&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x7684;&#x53D1;&#x5C55;</h1><p>&#x76F8;&#x5BF9;&#x4E8E;&#x8BED;&#x8A00;&#x3001; API &#x4EE5;&#x53CA; Java &#x6280;&#x672F;&#x4F53;&#x7CFB;&#x4E2D;&#x5176;&#x4ED6;&#x65B9;&#x9762;&#x7684;&#x53D8;&#x5316;&#xFF0C; Class &#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x4E00;&#x76F4;&#x5904;&#x4E8E;&#x6BD4;&#x8F83;&#x7A33;&#x5B9A;&#x7684;&#x72B6;&#x6001;&#xFF0C; Class &#x6587;&#x4EF6;&#x7684;&#x4E3B;&#x4F53;&#x7ED3;&#x6784;&#x3001;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7684;&#x8BED;&#x4E49;&#x548C;&#x6570;&#x91CF;&#x51E0;&#x4E4E;&#x6CA1;&#x6709;&#x51FA;&#x73B0;&#x8FC7;&#x53D8;&#x52A8;[ 1]&#xFF0C; &#x6240;&#x6709;&#x5BF9; Class &#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x7684;&#x6539;&#x8FDB;&#xFF0C;&#x90FD;&#x96C6;&#x4E2D;&#x5728;&#x5411;&#x8BBF;&#x95EE;&#x6807;&#x5FD7;&#x3001;&#x5C5E;&#x6027;&#x8868;&#x8FD9;&#x4E9B;&#x5728;&#x8BBE;&#x8BA1;&#x4E0A;&#x5C31;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x6DFB;&#x52A0;&#x5185;&#x5BB9;&#x3002;</p>
+<h1 id="7-&#x672C;&#x7AE0;&#x5C0F;&#x7ED3;"><a href="#7&#x3001;&#x672C;&#x7AE0;&#x5C0F;&#x7ED3;" class="headerlink" title="7&#x3001;&#x672C;&#x7AE0;&#x5C0F;&#x7ED3;"></a>7&#x3001;&#x672C;&#x7AE0;&#x5C0F;&#x7ED3;</h1><blockquote>
+<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/jvm-executive-subsystem-class-structure.html" title="JVM&#x7B14;&#x8BB0; - &#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x7C7B;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF09;" target="_blank" rel="external">JVM&#x7B14;&#x8BB0; - &#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x7C7B;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF09;</a></p>
+</blockquote>
+
+          
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/JVM/">JVM</a>
+  </span>
+
+
+              
+            </div>
+            
+        </footer>
+      </div>
+
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-概述"><span class="post-toc-text">1、概述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-无关性的基石"><span class="post-toc-text">2、无关性的基石</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-class类文件的结构"><span class="post-toc-text">3、Class类文件的结构</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-字节码指令简介"><span class="post-toc-text">4、字节码指令简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-共有设计和私有设计"><span class="post-toc-text">5、共有设计和私有设计</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-class文件结构的发展"><span class="post-toc-text">6、Class文件结构的发展</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#7-本章小结"><span class="post-toc-text">7、本章小结</span></a></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
+
+<script>
+  window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    var aside = document.getElementById("article-toc");
+    if(t >= 380) {
+      aside.className = "fixed";
+    } else {
+      aside.className = "";
+    }
+  }
+</script>
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

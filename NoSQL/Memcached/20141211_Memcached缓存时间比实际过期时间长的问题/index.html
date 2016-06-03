@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Memcached缓存时间比实际过期时间长的问题 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Memcached缓存时间比实际过期时间长的问题"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article article-page">
+
+  
+  
+    <h3 class="article-title"><span>Memcached缓存时间比实际过期时间长的问题</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/NoSQL/Memcached/20141211_Memcached缓存时间比实际过期时间长的问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>&#x67E5;&#x770B;<a href="https://github.com/memcached/memcached/blob/master/memcached.c" title="Memcached&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E90;&#x7801;" target="_blank" rel="external">Memcached&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E90;&#x7801;</a>&#xFF0C;&#x53D1;&#x73B0;MC&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5224;&#x65AD;&#x7F13;&#x5B58;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x662F;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#x7684;&#xFF1A;    </p>
+<h2 id="&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;"><a href="#&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;" class="headerlink" title="&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;"></a>&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;</h2><h3 id="1-&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;unix&#x65F6;&#x95F4;&#x6233;"><a href="#1&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;Unix&#x65F6;&#x95F4;&#x6233;&#xFF1A;" class="headerlink" title="1&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;Unix&#x65F6;&#x95F4;&#x6233;&#xFF1A;"></a>1&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;Unix&#x65F6;&#x95F4;&#x6233;&#xFF1A;</h3><p>&#x5931;&#x6548;&#x65F6;&#x95F4; = &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;- &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x8DDD;&#x79BB;memcached&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x7684;&#x79D2;&#x6570;;</p>
+<h3 id="2-&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;"><a href="#2&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF1A;" class="headerlink" title="2&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF1A;"></a>2&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF1A;</h3><p>&#x5931;&#x6548;&#x65F6;&#x95F4; = &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x957F;&#x5EA6; + current_time</p>
+<blockquote>
+<p>&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://my.oschina.net/u/1255608/blog/163342" title="&#x8FD9;&#x91CC;" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>     </p>
+</blockquote>
+<p>&#x5982;&#x679C;MC&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x5BF9;&#x7CFB;&#x7EDF;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#xFF0C;&#x90A3;&#x4E48;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x4E0D;&#x51C6;&#x786E;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x4E86;</p>
+<p><a href="http://www.couchbase.com/issues/browse/MB-11548" title="&#x76F8;&#x5173;bug" target="_blank" rel="external">&#x76F8;&#x5173;bug</a></p>
+
+          
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Cache/">Cache</a>
+  </span>
+
+
+              
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Memcached/">Memcached</a>
+  </span>
+
+
+            </div>
+            
+        </footer>
+      </div>
+
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计算服务器启动后多少秒该key会失效"><span class="post-toc-text">计算服务器启动后多少秒该key会失效</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-如果是一个超过30天的时间则认为是一个unix时间戳"><span class="post-toc-text">1、如果是一个超过30天的时间，则认为是一个Unix时间戳：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-如果是一个30天内的有效时间则认为是一个时间长度"><span class="post-toc-text">2、如果是一个30天内的有效时间，则认为是一个时间长度：</span></a></li></ol></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
+
+<script>
+  window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    var aside = document.getElementById("article-toc");
+    if(t >= 380) {
+      aside.className = "fixed";
+    } else {
+      aside.className = "";
+    }
+  }
+</script>
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

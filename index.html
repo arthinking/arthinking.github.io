@@ -1,377 +1,118 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="utf-8">
   
+  <title>arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-  
-  
+  <meta name="description" content="Struggle for HighPay zoom.">
   
   
 
-  
-    
-    
-  
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   
+  <meta property="og:site_name" content="arthinking"/>
 
   
-
+    <meta property="og:image" content="undefined"/>
   
 
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="Struggle for HighPay zoom.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="arthinking">
-<meta property="og:url" content="http://arthinking.github.io/index.html">
-<meta property="og:site_name" content="arthinking">
-<meta property="og:description" content="Struggle for HighPay zoom.">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="arthinking">
-<meta name="twitter:description" content="Struggle for HighPay zoom.">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: 'Author'
-    }
-  };
-</script>
-
-  <title> arthinking </title>
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="Java, JavaScript, Go etc.">
 
-  
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
 
-
-
-
-
-
-
-
-
-
-  
-  
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
     
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/database/mybatis/2016-06-02 MyBatis一级缓存引发的问题/"><span></span></a></h3>
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">arthinking</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/database/mybatis/2016-06-02 MyBatis一级缓存引发的问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-03T11:31:21.000Z">
+          2016-06-03
+        </time>
+      </a>
+    </span>
   </div>
-  <p class="site-subtitle">ChinSyun Pang's blog</p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
 
-<nav class="site-nav">
   
 
-  
-    <ul id="menu" class="menu">
+  <div class="article-content">
+    <div class="entry">
       
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Startseite
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archiv
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/03/database/mybatis/2016-06-02 MyBatis一级缓存引发的问题/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-06-03T19:31:21+08:00" content="2016-06-03">
-              2016-06-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
+        <hr>
 <h2 id=""><a href="#" class="headerlink" title="{}"></a>{}</h2>
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/03/database/mybatis/2016-05-31 MyBatis相关配置/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-06-03T19:22:23+08:00" content="2016-06-03">
-              2016-06-03
-            </time>
-          </span>
-
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <hr>
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/database/mybatis/2016-05-31 MyBatis相关配置/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/database/mybatis/2016-05-31 MyBatis相关配置/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-03T11:22:23.000Z">
+          2016-06-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <hr>
 <h2 id=""><a href="#" class="headerlink" title="{}"></a>{}</h2><blockquote>
 <p>&#x4FD7;&#x8BDD;&#x8BF4;&#xFF0C;&#x5DE5;&#x6B32;&#x5584;&#x5176;&#x4E8B;&#xFF0C;&#x5FC5;&#x5148;&#x5229;&#x5176;&#x5668;&#x3002;</p>
 </blockquote>
@@ -388,509 +129,198 @@
 <p>&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x53BB;&#x6389;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x7684;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#xFF0C;&#x5E94;&#x8BE5;&#x5728;<code>Local name</code>&#x914D;&#x7F6E;&#x91CC;&#x9762;&#x53BB;&#x6389;sql&#xFF0C;&#x6539;&#x4E3A;&#x5982;&#x4E0B;&#xFF1A;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select|insert|update|delete</span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/03/operating-system/linux/2016-05-26 线上拍错常用命令/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-06-03T19:00:12+08:00" content="2016-06-03">
-              2016-06-03
-            </time>
-          </span>
-
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <p>&#x67E5;&#x770B;cpu&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#xFF1A;<br>top</p>
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/operating-system/linux/2016-05-26 线上拍错常用命令/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/operating-system/linux/2016-05-26 线上拍错常用命令/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-03T11:00:12.000Z">
+          2016-06-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x67E5;&#x770B;cpu&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#xFF1A;<br>top</p>
 <p>&#x67E5;&#x770B;&#x786C;&#x76D8;&#xFF1A;<br>ls -lh</p>
 <p>&#x8FDB;&#x7A0B;&#x76F8;&#x5173;&#xFF1A;<br>ps aux | grep &#x201C;&#x201D;</p>
 
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/25/version-control/git/2016-05-25 git/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-25T16:20:04+08:00" content="2016-05-25">
-              2016-05-25
-            </time>
-          </span>
-
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <p><img src="media/14641644107037.jpg" alt=""></p>
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/version-control/git/2016-05-25 git/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/version-control/git/2016-05-25 git/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-25T08:20:04.000Z">
+          2016-05-25
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><img src="media/14641644107037.jpg" alt=""></p>
 <p>Setup p4merge as a visual diff and merge tool for git<br><a href="https://gist.github.com/tony4d/3454372" target="_blank" rel="external">https://gist.github.com/tony4d/3454372</a></p>
 
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/20/architecture/2016-05-20 项目规范/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T15:50:21+08:00" content="2016-05-20">
-              2016-05-20
-            </time>
-          </span>
-
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <p>#</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
     </footer>
-  </article>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/architecture/2016-05-20 项目规范/"><span></span></a></h3>
+  
 
 
-    
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/architecture/2016-05-20 项目规范/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-20T07:50:21.000Z">
+          2016-05-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
       
+        <p>#</p>
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/20/NoSQL/Redis/Document/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T14:40:16+08:00" content="2016-05-20">
-              2016-05-20
-            </time>
-          </span>
-
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <p><a href="http://www.quweiji.com/redis%E4%B8%AD%E4%BD%BF%E7%94%A8java%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" target="_blank" rel="external">redis&#x4E2D;&#x4F7F;&#x7528;java&#x811A;&#x672C;&#x5B9E;&#x73B0;&#x5206;&#x5E03;&#x5F0F;&#x9501;</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
     </footer>
-  </article>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/NoSQL/Redis/Document/"><span></span></a></h3>
+  
 
 
-    
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/NoSQL/Redis/Document/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-20T06:40:16.000Z">
+          2016-05-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
       
+        <p><a href="http://www.quweiji.com/redis%E4%B8%AD%E4%BD%BF%E7%94%A8java%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" target="_blank" rel="external">redis&#x4E2D;&#x4F7F;&#x7528;java&#x811A;&#x672C;&#x5B9E;&#x73B0;&#x5206;&#x5E03;&#x5F0F;&#x9501;</a></p>
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/16/Java/zookeeper/问题/" itemprop="url">
-                  Zookeeper
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-16T00:00:00+08:00" content="2016-05-16">
-              2016-05-16
-            </time>
-          </span>
-
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-                  . 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/分布式/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <h2 id="&#x7B2C;&#x4E00;&#x7AE0;"><a href="#&#x7B2C;&#x4E00;&#x7AE0;" class="headerlink" title="&#x7B2C;&#x4E00;&#x7AE0;"></a>&#x7B2C;&#x4E00;&#x7AE0;</h2><h3 id="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;</h3><h3 id="&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;"><a href="#&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;" class="headerlink" title="&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;"></a>&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;</h3><h3 id="&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x4E3A;&#x4EC0;&#x4E48;"><a href="#&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;" class="headerlink" title="&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;"></a>&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;</h3><h3 id="&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#x5E7B;&#x8BFB;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;"></a>&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;</h3><p><a href="http://www.cnblogs.com/phoebus0501/archive/2011/02/28/1966709.html" target="_blank" rel="external">http://www.cnblogs.com/phoebus0501/archive/2011/02/28/1966709.html</a></p>
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/zookeeper/问题/"><span>Zookeeper</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/zookeeper/问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-15T16:00:00.000Z">
+          2016-05-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="&#x7B2C;&#x4E00;&#x7AE0;"><a href="#&#x7B2C;&#x4E00;&#x7AE0;" class="headerlink" title="&#x7B2C;&#x4E00;&#x7AE0;"></a>&#x7B2C;&#x4E00;&#x7AE0;</h2><h3 id="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;</h3><h3 id="&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;"><a href="#&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;" class="headerlink" title="&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;"></a>&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;</h3><h3 id="&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x4E3A;&#x4EC0;&#x4E48;"><a href="#&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;" class="headerlink" title="&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;"></a>&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;</h3><h3 id="&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#x5E7B;&#x8BFB;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;"></a>&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;</h3><p><a href="http://www.cnblogs.com/phoebus0501/archive/2011/02/28/1966709.html" target="_blank" rel="external">http://www.cnblogs.com/phoebus0501/archive/2011/02/28/1966709.html</a></p>
 <h3 id="&#x600E;&#x4E48;&#x9632;&#x6B62;&#x5E7B;&#x8BFB;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;update-&#x770B;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x5230;&#x4E86;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5224;&#x65AD;"><a href="#&#x600E;&#x4E48;&#x9632;&#x6B62;&#x5E7B;&#x8BFB;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1F;&#xFF08;update-&#x2026;-&#x770B;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x5230;&#x4E86;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF09;" class="headerlink" title="&#x600E;&#x4E48;&#x9632;&#x6B62;&#x5E7B;&#x8BFB;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1F;&#xFF08;update &#x2026; &#x770B;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x5230;&#x4E86;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF09;"></a>&#x600E;&#x4E48;&#x9632;&#x6B62;&#x5E7B;&#x8BFB;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1F;&#xFF08;update &#x2026; &#x770B;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x5230;&#x4E86;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF09;</h3><h3 id="&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;"><a href="#&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;" class="headerlink" title="&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;"></a>&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;</h3><h3 id="&#x4EC0;&#x4E48;&#x662F;cap&#x5B9A;&#x7406;&#x4EC0;&#x4E48;&#x662F;base&#x7406;&#x8BBA;"><a href="#&#x4EC0;&#x4E48;&#x662F;CAP&#x5B9A;&#x7406;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;BASE&#x7406;&#x8BBA;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;CAP&#x5B9A;&#x7406;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;BASE&#x7406;&#x8BBA;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#x662F;CAP&#x5B9A;&#x7406;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;BASE&#x7406;&#x8BBA;&#xFF1F;</h3><p>CAP: Consistency, Availability, Partition tolerance</p>
 <p><img src="media/14632367718019.jpg" alt=""></p>
 <p>BASE: Basically Availabel, Soft state, Eventually consistent.</p>
@@ -1019,295 +449,143 @@
 <p><a href="http://www.cnblogs.com/esingchan/p/3917718.html" target="_blank" rel="external">&#x5206;&#x5E03;&#x5F0F;&#x7406;&#x8BBA;&#x4E4B;&#x4E00;&#xFF1A;Paxos&#x7B97;&#x6CD5;&#x7684;&#x901A;&#x4FD7;&#x7406;&#x89E3;</a></p>
 <p><a href="http://blog.csdn.net/xhh198781/article/details/10949697" target="_blank" rel="external">Paxos&#x7B97;&#x6CD5;&#x4E0E;Zookeeper&#x5206;&#x6790;</a></p>
 
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
   
 
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/分布式/">分布式</a>
+  </span>
+
+
+          
   
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/ZooKeeper/">ZooKeeper</a>
+  </span>
 
-    
-      <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/12/question/说明/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T09:14:55+08:00" content="2016-05-12">
-              2016-05-12
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <ul>
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/question/说明/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/question/说明/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-12T01:14:55.000Z">
+          2016-05-12
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <ul>
 <li><p>&#x5BA2;&#x6237;&#x7AEF;&#x7531;&#x4E8E;&#x53D7;&#x5230;&#x7AEF;&#x53E3;&#x53F7;&#x7684;&#x9650;&#x5236; &#x7406;&#x8BBA;&#x4E0A;&#x6700;&#x5927;&#x53D1;&#x51FA;tcp&#x94FE;&#x63A5;&#x662F;6&#x4E07;&#x591A;&#xFF0C;&#x600E;&#x4E48;&#x63D0;&#x9AD8;</p>
 </li>
 <li><p>IO&#x590D;&#x7528;</p>
 </li>
 </ul>
 
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/07/question/错误汇总/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-07T16:49:29+08:00" content="2016-05-07">
-              2016-05-07
-            </time>
-          </span>
-
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <blockquote>
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/question/错误汇总/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/question/错误汇总/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-07T08:49:29.000Z">
+          2016-05-07
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
 <p>but failed to remove it when the web application was stopped. This is very likely to create a memory leak.</p>
 </blockquote>
 <p>ThreadLocal &#x5185;&#x5B58;&#x6CA1;&#x6709;&#x624B;&#x52A8;&#x56DE;&#x6536;&#x5BFC;&#x81F4;&#x6CC4;&#x9732;</p>
 
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/04/IDE/IntelliJ IDEA/从Tomcat启动报错分析IntelliJ IDEA的部署/" itemprop="url">
-                  Unbenannt
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-05-04T13:13:14+08:00" content="2016-05-04">
-              2016-05-04
-            </time>
-          </span>
-
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
-
-          
-            
-          
-
-          
-
-          
-          
-
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
         
-          
-            <p>&#x6709;&#x65F6;&#x5019;Tomcat&#x8FD0;&#x884C;&#x597D;&#x597D;&#x7684;&#xFF0C;&#x505C;&#x6389;&#x4E4B;&#x540E;&#x518D;&#x6B21;&#x8FD0;&#x884C;&#x5C31;&#x62A5;&#x9519;&#x4E86;&#xFF1A;</p>
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/IDE/IntelliJ IDEA/从Tomcat启动报错分析IntelliJ IDEA的部署/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/IDE/IntelliJ IDEA/从Tomcat启动报错分析IntelliJ IDEA的部署/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-04T05:13:14.000Z">
+          2016-05-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x6709;&#x65F6;&#x5019;Tomcat&#x8FD0;&#x884C;&#x597D;&#x597D;&#x7684;&#xFF0C;&#x505C;&#x6389;&#x4E4B;&#x540E;&#x518D;&#x6B21;&#x8FD0;&#x884C;&#x5C31;&#x62A5;&#x9519;&#x4E86;&#xFF1A;</p>
 <blockquote>
 <p>Name jdbc is not bound in this Context in Tomcat</p>
 </blockquote>
@@ -1317,237 +595,40 @@
 <p>#References</p>
 <p><a href="http://stackoverflow.com/questions/8849461/name-jdbc-is-not-bound-in-this-context-in-tomcat" target="_blank" rel="external">Name jdbc is not bound in this Context in Tomcat</a></p>
 
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
           
+          
+        </div>
         
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
     </footer>
-  </article>
+  </div>
+</article>
 
 
+<nav class="pagination">
+  
+  
+  <a href="/page/2/" class="pagination-next">Next</a>
+  
+</nav>
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
     
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
   </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="arthinking" />
-          <p class="site-author-name" itemprop="name">arthinking</p>
-          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">97</span>
-              <span class="site-state-item-name">Artikel</span>
-            </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">24</span>
-                <span class="site-state-item-name">Kategorien</span>
-              
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">39</span>
-                <span class="site-state-item-name">Tags</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">arthinking</span>
 </div>
-
-<div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
-</div>
-
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-        
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-  
-  
-  
-
-  
-
-  
-
 </body>
 </html>

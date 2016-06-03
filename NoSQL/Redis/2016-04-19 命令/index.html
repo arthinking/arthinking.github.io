@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Redis命令 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Redis命令"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article article-page">
+
+  
+  
+    <h3 class="article-title"><span>Redis命令</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/NoSQL/Redis/2016-04-19 命令/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+<ol>
+<li><code>SETNX key value (SET if Not eXists)</code>:&#x5F53;&#x4E14;&#x4EC5;&#x5F53; key &#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5C06; key &#x7684;&#x503C;&#x8BBE;&#x4E3A; value &#xFF0C;&#x5E76;&#x8FD4;&#x56DE;1&#xFF1B;&#x82E5;&#x7ED9;&#x5B9A;&#x7684; key &#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#xFF0C;&#x5219; SETNX &#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x52A8;&#x4F5C;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;0&#x3002;</li>
+<li><code>GETSET key value</code>:&#x5C06;&#x7ED9;&#x5B9A; key &#x7684;&#x503C;&#x8BBE;&#x4E3A; value &#xFF0C;&#x5E76;&#x8FD4;&#x56DE; key &#x7684;&#x65E7;&#x503C; (old value)&#xFF0C;&#x5F53; key &#x5B58;&#x5728;&#x4F46;&#x4E0D;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#xFF0C;&#x5F53;key&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;nil&#x3002;</li>
+<li><code>GET key</code>:&#x8FD4;&#x56DE; key &#x6240;&#x5173;&#x8054;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#xFF0C;&#x5982;&#x679C; key &#x4E0D;&#x5B58;&#x5728;&#x90A3;&#x4E48;&#x8FD4;&#x56DE; nil &#x3002;</li>
+<li><code>DEL key [KEY &#x2026;]</code>:&#x5220;&#x9664;&#x7ED9;&#x5B9A;&#x7684;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A; key ,&#x4E0D;&#x5B58;&#x5728;&#x7684; key &#x4F1A;&#x88AB;&#x5FFD;&#x7565;,&#x8FD4;&#x56DE;&#x5B9E;&#x9645;&#x5220;&#x9664;&#x7684;key&#x7684;&#x4E2A;&#x6570;&#xFF08;integer&#xFF09;&#x3002;</li>
+<li><code>HSET key field value</code>&#xFF1A;&#x7ED9;&#x4E00;&#x4E2A;key &#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;{field=value}&#x7684;&#x7EC4;&#x5408;&#x503C;&#xFF0C;&#x5982;&#x679C;key&#x6CA1;&#x6709;&#x5C31;&#x76F4;&#x63A5;&#x8D4B;&#x503C;&#x5E76;&#x8FD4;&#x56DE;1&#xFF0C;&#x5982;&#x679C;field&#x5DF2;&#x6709;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x66F4;&#x65B0;value&#x7684;&#x503C;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;0.</li>
+<li><code>HEXISTS key field</code>:&#x5F53;key &#x4E2D;&#x5B58;&#x50A8;&#x7740;field&#x7684;&#x65F6;&#x5019;&#x8FD4;&#x56DE;1&#xFF0C;&#x5982;&#x679C;key&#x6216;&#x8005;field&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x8FD4;&#x56DE;0&#x3002;</li>
+<li><code>HINCRBY key field increment</code>:&#x5C06;&#x5B58;&#x50A8;&#x5728; key &#x4E2D;&#x7684;&#x54C8;&#x5E0C;&#xFF08;Hash&#xFF09;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x6307;&#x5B9A;&#x5B57;&#x6BB5; field &#x7684;&#x503C;&#x52A0;&#x4E0A;&#x589E;&#x91CF; increment&#x3002;&#x5982;&#x679C;&#x952E; key &#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x4E00;&#x4E2A;&#x4FDD;&#x5B58;&#x4E86;&#x54C8;&#x5E0C;&#x5BF9;&#x8C61;&#x7684;&#x65B0;&#x5EFA;&#x5C06;&#x88AB;&#x521B;&#x5EFA;&#x3002;&#x5982;&#x679C;&#x5B57;&#x6BB5; field &#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5728;&#x8FDB;&#x884C;&#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x524D;&#xFF0C;&#x5176;&#x5C06;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x4E14;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x88AB;&#x7F6E;&#x4E3A; 0&#x3002;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x589E;&#x91CF;&#x4E4B;&#x540E;&#x7684;&#x503C;&#x3002;</li>
+<li><code>PEXPIRE key milliseconds</code>&#xFF1A;&#x8BBE;&#x7F6E;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D;&#x662F;&#x6BEB;&#x79D2;&#x3002;expire&#x64CD;&#x4F5C;&#x5355;&#x4F4D;&#x662F;&#x79D2;&#x3002;</li>
+<li><code>PUBLISH channel message</code>:&#x5411;channel post&#x4E00;&#x4E2A;message&#x5185;&#x5BB9;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x8FD4;&#x56DE;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x6570;&#x3002;</li>
+</ol>
+</blockquote>
+
+          
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Cache/">Cache</a>
+  </span>
+
+
+              
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Redis/">Redis</a>
+  </span>
+
+
+            </div>
+            
+        </footer>
+      </div>
+
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        
+      </div>
+    </aside>
+
+  </div>
+
+</article>
+
+<script>
+  window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    var aside = document.getElementById("article-toc");
+    if(t >= 380) {
+      aside.className = "fixed";
+    } else {
+      aside.className = "";
+    }
+  }
+</script>
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

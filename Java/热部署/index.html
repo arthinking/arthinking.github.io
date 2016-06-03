@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Resin中的热部署 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="Resin中的热部署"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article article-page">
+
+  
+  
+    <h3 class="article-title"><span>Resin中的热部署</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/热部署/" rel="bookmark">
+        <time class="entry-date published" datetime="2015-03-09T16:00:00.000Z">
+          2015-03-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h3 id="resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"><a href="#Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;" class="headerlink" title="Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"></a>Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;</h3><p>&#x5728;resin.conf&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;JVM&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF1A;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x8868;&#x793A;&#x542F;&#x52A8;debug&#x6A21;&#x5F0F;&#xFF0C;&#x5F53;&#x66F4;&#x65B0;&#x4E86;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;reloading class&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7;JVM&#x7684;HotSwap&#x529F;&#x80FD;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x7684;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">&#x7531;&#x4E8E;JVM&#x7684;HotSwap&#x4E0D;&#x652F;&#x6301;&#x65B0;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x7684;&#xFF0C;Resin&#x4F1A;&#x81EA;&#x52A8;&#x6539;&#x7528;Hot deploy&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x3002;</span><br><span class="line"></span><br><span class="line">&#x5F53;&#x53BB;&#x6389;&#x8BE5;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</span><br></pre></td></tr></table></figure>
+<p>&#x2026; WebApp[&#x2026;] stopping<br>&#x2026; WebApp[&#x2026;] active<br>```</p>
+<h3 id="&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;"><a href="#&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;" class="headerlink" title="&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;"></a>&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;</h3><p><a href="http://itindex.net/detail/46971-java-%E8%B0%83%E8%AF%95" title="Xdebug" target="_blank" rel="external">-Xdebug</a> -Xrunjdwp,transport=dt_socket,server=y,address=5432,suspend=n,onthrow=java.io.IOException,launch=/sbin/echo</p>
+
+          
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Java/">Java</a>
+  </span>
+
+
+              
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/热部署/">热部署</a>
+  </span>
+
+
+            </div>
+            
+        </footer>
+      </div>
+
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#resin中的热部署"><span class="post-toc-text">Resin中的热部署</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#远程调试相关参数"><span class="post-toc-text">远程调试相关参数</span></a></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
+
+<script>
+  window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    var aside = document.getElementById("article-toc");
+    if(t >= 380) {
+      aside.className = "fixed";
+    } else {
+      aside.className = "";
+    }
+  }
+</script>
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

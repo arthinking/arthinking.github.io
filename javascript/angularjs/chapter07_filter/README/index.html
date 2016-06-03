@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>filter | arthinking | ChinSyun Pang&#39;s blog</title>
+  <meta name="author" content="arthinking">
+  
+  <meta name="description" content="Struggle for HighPay zoom.">
+  
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="filter"/>
+  <meta property="og:site_name" content="arthinking"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="arthinking" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div id="page" class="site">
+  <div id="primary" class="content-area">
+
+    <header id="header" class="inner"><div class="site-branding">
+  <h1 class="site-title">
+    <a href="/">arthinking</a>
+  </h1>
+  <p class="site-description">ChinSyun Pang&#39;s blog</p>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+</nav></header>
+
+    <article id="content" class="site-content">
+      <main id="main" class="site-main posts-loop" role="main">
+        <article class="post article article-page">
+
+  
+  
+    <h3 class="article-title"><span>filter</span></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/angularjs/chapter07_filter/README/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-container">
+
+    <div class="article-main">
+
+      <div class="article-content">
+        <div class="entry">
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p><strong>1&#x3001;HTML&#x6A21;&#x677F;&#x4E2D;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ name | uppercase }}</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>&#x4F7F;&#x7528;:&#x4F20;&#x9012;&#x53C2;&#x6570;&#x7ED9;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &#x663E;&#x793A;&#xFF1A;123.46 --&gt;</span></span><br><span class="line">{{ 123.456789 | number:2 }}</span><br></pre></td></tr></table></figure></p>
+<p>&#x53EF;&#x4EE5;&#x7528;|&#x7B26;&#x53F7;&#x4F5C;&#x4E3A;&#x5206;&#x5272;&#x7B26;&#x6765;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;&#x3002;</p>
+</blockquote>
+<p><strong>2&#x3001;&#x5728;JavaScript&#x4EE3;&#x7801;&#x4E2D;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>$filter</code>&#x6765;&#x8C03;&#x7528;&#x8FC7;&#x6EE4;&#x5668;:</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.controller(<span class="string">&apos;DemoController&apos;</span>, [<span class="string">&apos;$scope&apos;</span>, <span class="string">&apos;$filter&apos;</span>,</span><br><span class="line">	<span class="function"><span class="keyword">function</span>(<span class="params">$scope, $filter</span>) </span>{</span><br><span class="line">		$scope.name = $filter(<span class="string">&apos;lowercase&apos;</span>)(<span class="string">&apos;Ari&apos;</span>);</span><br><span class="line">	}]);</span><br></pre></td></tr></table></figure></p>
+<p><strong>3&#x3001;AngularJS&#x63D0;&#x4F9B;&#x7684;&#x5185;&#x7F6E;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;</strong></p>
+<p><em>1. currency</em><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{{ 123 | currency }}</span><br></pre></td></tr></table></figure></p>
+<p><em>2. date</em><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">{{ today | date:&apos;medium&apos; }} <span class="comment">&lt;!-- Aug 09, 2013 12:09:02 PM --&gt;</span></span><br><span class="line">{{ today | date:&apos;short&apos; }} <span class="comment">&lt;!-- 8/9/1312:09PM --&gt;</span></span><br><span class="line">{{ today | date:&apos;fullDate&apos; }} <span class="comment">&lt;!-- Thursday, August 09, 2013 --&gt;</span></span><br><span class="line">{{ today | date:&apos;longDate&apos; }} <span class="comment">&lt;!-- August 09, 2013 --&gt;</span></span><br><span class="line">{{ today | date:&apos;mediumDate&apos; }}<span class="comment">&lt;!-- Aug 09, 2013 --&gt;</span></span><br><span class="line">{{ today | date:&apos;shortDate&apos; }} <span class="comment">&lt;!-- 8/9/13 --&gt;</span></span><br><span class="line">{{ today | date:&apos;mediumTime&apos; }}<span class="comment">&lt;!-- 12:09:02 PM --&gt;</span></span><br><span class="line">{{ today | date:&apos;shortTime&apos; }} <span class="comment">&lt;!-- 12:09 PM --&gt;</span></span><br><span class="line"></span><br><span class="line">&#x5E74;&#x4EFD;&#x683C;&#x5F0F;&#x5316;</span><br><span class="line">&#x56DB;&#x4F4D;&#x5E74;&#x4EFD;&#xFF1A;{{ today | date:&apos;yyyy&apos; }} <span class="comment">&lt;!-- 2013 --&gt;</span></span><br><span class="line">&#x4E24;&#x4F4D;&#x5E74;&#x4EFD;&#xFF1A;{{ today | date:&apos;yy&apos; }} <span class="comment">&lt;!-- 13 --&gt;</span></span><br><span class="line">&#x4E00;&#x4F4D;&#x5E74;&#x4EFD;&#xFF1A;{{ today | date:&apos;y&apos; }} <span class="comment">&lt;!-- 2013 --&gt;</span></span><br><span class="line"></span><br><span class="line">&#x6708;&#x4EFD;&#x683C;&#x5F0F;&#x5316;</span><br><span class="line">&#x82F1;&#x6587;&#x6708;&#x4EFD;&#xFF1A;{{ today | date:&apos;MMMM&apos; }} <span class="comment">&lt;!-- August --&gt;</span></span><br><span class="line">&#x82F1;&#x6587;&#x6708;&#x4EFD;&#x7B80;&#x5199;&#xFF1A;{{ today | date:&apos;MMM&apos; }} <span class="comment">&lt;!-- Aug --&gt;</span></span><br><span class="line">&#x6570;&#x5B57;&#x6708;&#x4EFD;&#xFF1A;{{ today |date:&apos;MM&apos; }} <span class="comment">&lt;!-- 08 --&gt;</span></span><br><span class="line">&#x4E00;&#x5E74;&#x4E2D;&#x7684;&#x7B2C;&#x51E0;&#x4E2A;&#x6708;&#x4EFD;&#xFF1A;{{ today |date:&apos;M&apos; }} <span class="comment">&lt;!-- 8 --&gt;</span></span><br><span class="line"></span><br><span class="line">&#x65E5;&#x671F;&#x683C;&#x5F0F;&#x5316;</span><br><span class="line">&#x6570;&#x5B57;&#x65E5;&#x671F;&#xFF1A;{{ today|date:&apos;dd&apos; }} <span class="comment">&lt;!-- 09 --&gt;</span></span><br><span class="line">&#x4E00;&#x4E2A;&#x6708;&#x4E2D;&#x7684;&#x7B2C;&#x51E0;&#x5929;&#xFF1A;{{ today | date:&apos;d&apos; }} <span class="comment">&lt;!-- 9 --&gt;</span></span><br><span class="line">&#x82F1;&#x6587;&#x661F;&#x671F;&#xFF1A;{{ today | date:&apos;EEEE&apos; }} <span class="comment">&lt;!-- Thursday --&gt;</span></span><br><span class="line">&#x82F1;&#x6587;&#x661F;&#x671F;&#x7B80;&#x5199;&#xFF1A;{{ today | date:&apos;EEE&apos; }} <span class="comment">&lt;!-- Thu --&gt;</span></span><br><span class="line"></span><br><span class="line">&#x5C0F;&#x65F6;&#x683C;&#x5F0F;&#x5316;</span><br><span class="line">24&#x5C0F;&#x65F6;&#x5236;&#x6570;&#x5B57;&#x5C0F;&#x65F6;&#xFF1A;{{today|date:&apos;HH&apos;}} <span class="comment">&lt;!--00--&gt;</span></span><br><span class="line">&#x4E00;&#x5929;&#x4E2D;&#x7684;&#x7B2C;&#x51E0;&#x4E2A;&#x5C0F;&#x65F6;&#xFF1A;{{today|date:&apos;H&apos;}} <span class="comment">&lt;!--0--&gt;</span></span><br><span class="line">12&#x5C0F;&#x65F6;&#x5236;&#x6570;&#x5B57;&#x5C0F;&#x65F6;&#xFF1A;{{today|date:&apos;hh&apos;}} <span class="comment">&lt;!--12--&gt;</span></span><br><span class="line">&#x4E0A;&#x5348;&#x6216;&#x4E0B;&#x5348;&#x7684;&#x7B2C;&#x51E0;&#x4E2A;&#x5C0F;&#x65F6;&#xFF1A;{{today|date:&apos;h&apos;}} <span class="comment">&lt;!--12--&gt;</span></span><br><span class="line"></span><br><span class="line">&#x5206;&#x949F;&#x683C;&#x5F0F;&#x5316;</span><br><span class="line">&#x6570;&#x5B57;&#x5206;&#x949F;&#x6570;&#xFF1A;{{ today | date:&apos;mm&apos; }} <span class="comment">&lt;!-- 09 --&gt;</span></span><br><span class="line">&#x4E00;&#x4E2A;&#x5C0F;&#x65F6;&#x4E2D;&#x7684;&#x7B2C;&#x51E0;&#x5206;&#x949F;&#xFF1A;{{ today | date:&apos;m&apos; }} <span class="comment">&lt;!-- 9 --&gt;</span></span><br><span class="line"></span><br><span class="line">&#x79D2;&#x6570;&#x683C;&#x5F0F;&#x5316;</span><br><span class="line">&#x6570;&#x5B57;&#x79D2;&#x6570;&#xFF1A;{{ today | date:&apos;ss&apos; }} <span class="comment">&lt;!-- 02 --&gt;</span></span><br><span class="line">&#x4E00;&#x5206;&#x949F;&#x5185;&#x7684;&#x7B2C;&#x51E0;&#x79D2;&#xFF1A;{{ today | date:&apos;s&apos; }} <span class="comment">&lt;!-- 2 --&gt;</span></span><br><span class="line">&#x6BEB;&#x79D2;&#x6570;&#xFF1A;{{ today | date:&apos;.sss&apos; }} <span class="comment">&lt;!-- .995 --&gt;</span></span><br><span class="line"></span><br><span class="line">&#x5B57;&#x7B26;&#x683C;&#x5F0F;&#x5316;</span><br><span class="line">&#x4E0A;&#x4E0B;&#x5348;&#x6807;&#x8BC6;&#xFF1A;{{ today | date:&apos;a&apos; }} <span class="comment">&lt;!-- AM --&gt;</span></span><br><span class="line">&#x56DB;&#x4F4D;&#x65F6;&#x533A;&#x6807;&#x8BC6;&#xFF1A;{{ today | date:&apos;Z&apos; }} <span class="comment">&lt;!--- 0700 --&gt;</span></span><br><span class="line"></span><br><span class="line">&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E9B;&#x81EA;&#x5B9A;&#x4E49;&#x65E5;&#x671F;&#x683C;&#x5F0F;&#x7684;&#x793A;&#x4F8B;&#xFF1A;</span><br><span class="line">{{ today | date:&apos;MMMd, y&apos; }} <span class="comment">&lt;!-- Aug9, 2013 --&gt;</span></span><br><span class="line">{{ today | date:&apos;EEEE, d, M&apos; }} <span class="comment">&lt;!-- Thursday, 9, 8--&gt;</span></span><br><span class="line">{{ today | date:&apos;hh:mm:ss.sss&apos; }} <span class="comment">&lt;!-- 12:09:02.995 --&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><em>3. filter</em><br>&#x8FD9;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x3001;&#x5BF9;&#x8C61;&#x6216;&#x662F;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x4ECE;&#x6570;&#x7EC4;&#x4E2D;&#x9009;&#x62E9;&#x5143;&#x7D20;&#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<p><em>4. json</em><br>son&#x8FC7;&#x6EE4;&#x5668;&#x53EF;&#x4EE5;&#x5C06;&#x4E00;&#x4E2A;JSON&#x6216;JavaScript&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x6210;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<p><em>5. limitTo</em><br>limitTo&#x8FC7;&#x6EE4;&#x5668;&#x4F1A;&#x6839;&#x636E;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6570;&#x7EC4;&#x6216;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x65B0;&#x7684;&#x6570;&#x7EC4;&#x6216;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x957F;&#x5EA6;&#x53D6;&#x51B3;&#x4E8E;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x901A;&#x8FC7;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x7684;&#x6B63;&#x8D1F;&#x503C;&#x6765;&#x63A7;&#x5236;&#x4ECE;&#x524D;&#x9762;&#x8FD8;&#x662F;&#x4ECE;&#x540E;&#x9762;&#x5F00;&#x59CB;&#x622A;&#x53D6;&#x3002;</p>
+<p><em>6. lowercase</em></p>
+<p><em>7. number</em><br>number&#x8FC7;&#x6EE4;&#x5668;&#x5C06;&#x6570;&#x5B57;&#x683C;&#x5F0F;&#x5316;&#x6210;&#x6587;&#x672C;&#x3002;&#x5B83;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF0C;&#x7528;&#x6765;&#x63A7;&#x5236;&#x5C0F;&#x6570;&#x70B9;&#x540E;&#x622A;&#x53D6;&#x7684;&#x4F4D;&#x6570;&#x3002;</p>
+<p><em>8. orderBy</em><br>orderBy&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x5FC5;&#x9700;&#x7684;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x53EF;&#x9009;&#x7684;&#x3002;<br>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x7528;&#x6765;&#x786E;&#x5B9A;&#x6570;&#x7EC4;&#x6392;&#x5E8F;&#x65B9;&#x5411;&#x7684;&#x8C13;&#x8BCD;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x7528;&#x6765;&#x63A7;&#x5236;&#x6392;&#x5E8F;&#x7684;&#x65B9;&#x5411;&#xFF08;&#x662F;&#x5426;&#x9006;&#x5411;&#xFF09;&#x3002;<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">orderBy:&apos;name&apos;:true</span><br></pre></td></tr></table></figure></p>
+<p><em>9. uppercase</em><br>uppercase&#x8FC7;&#x6EE4;&#x5668;&#x53EF;&#x4EE5;&#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x8F6C;&#x6362;&#x4E3A;&#x5927;&#x5199;&#x5F62;&#x5F0F;&#x3002;</p>
+<h2 id="71-&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6EE4;&#x5668;"><a href="#7-1&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6EE4;&#x5668;" class="headerlink" title="7.1&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6EE4;&#x5668;"></a>7.1&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6EE4;&#x5668;</h2><h3 id="&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;"><a href="#&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;" class="headerlink" title="&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;"></a>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">&apos;myApp.filters&apos;</span>, [])</span><br><span class="line">	.filter(<span class="string">&apos;capitalize&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">input</span>) </span>{</span><br><span class="line">		<span class="comment">// input&#x662F;&#x6211;&#x4EEC;&#x4F20;&#x5165;&#x7684;&#x5B57;&#x7B26;&#x4E32;</span></span><br><span class="line">		<span class="keyword">if</span> (input) {</span><br><span class="line">			<span class="keyword">return</span> input[<span class="number">0</span>].toUpperCase() + input.slice(<span class="number">1</span>);</span><br><span class="line">		}</span><br><span class="line">	});</span><br></pre></td></tr></table></figure>
+<h3 id="&#x4F7F;&#x7528;"><a href="#&#x4F7F;&#x7528;&#xFF1A;" class="headerlink" title="&#x4F7F;&#x7528;&#xFF1A;"></a>&#x4F7F;&#x7528;&#xFF1A;</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Ginger loves dog treats --&gt;</span></span><br><span class="line">{{ &apos;ginger loves dog treats&apos; | lowercase | capitalize }}</span><br></pre></td></tr></table></figure>
+<h2 id="72-&#x8868;&#x5355;&#x9A8C;&#x8BC1;"><a href="#7-2&#x3001;&#x8868;&#x5355;&#x9A8C;&#x8BC1;" class="headerlink" title="7.2&#x3001;&#x8868;&#x5355;&#x9A8C;&#x8BC1;"></a>7.2&#x3001;&#x8868;&#x5355;&#x9A8C;&#x8BC1;</h2><p>AngularJS&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x8868;&#x5355;&#x9A8C;&#x8BC1;&#x6307;&#x4EE4;&#x3002;</p>
+<h3 id="input&#x5143;&#x7D20;&#x4E0A;&#x4F7F;&#x7528;&#x7684;&#x6240;&#x6709;&#x9A8C;&#x8BC1;&#x9009;&#x9879;"><a href="#input&#x5143;&#x7D20;&#x4E0A;&#x4F7F;&#x7528;&#x7684;&#x6240;&#x6709;&#x9A8C;&#x8BC1;&#x9009;&#x9879;&#xFF1A;" class="headerlink" title="input&#x5143;&#x7D20;&#x4E0A;&#x4F7F;&#x7528;&#x7684;&#x6240;&#x6709;&#x9A8C;&#x8BC1;&#x9009;&#x9879;&#xFF1A;"></a>input&#x5143;&#x7D20;&#x4E0A;&#x4F7F;&#x7528;&#x7684;&#x6240;&#x6709;&#x9A8C;&#x8BC1;&#x9009;&#x9879;&#xFF1A;</h3><ol>
+<li><p>&#x5FC5;&#x586B;&#x9879;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">required</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x6700;&#x5C0F;&#x957F;&#x5EA6;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">ng-minlength</span>=<span class="string">&quot;5&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x6700;&#x5927;&#x957F;&#x5EA6;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">ng-maxlength</span>=<span class="string">&quot;20&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x6A21;&#x5F0F;&#x5339;&#x914D;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">ng-pattern</span>=<span class="string">&quot;[a-zA-Z]&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x7535;&#x5B50;&#x90AE;&#x4EF6;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;email&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">ng-model</span>=<span class="string">&quot;user.email&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x6570;&#x5B57;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">ng-model</span>=<span class="string">&quot;user.age&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>URL</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;url&quot;</span> <span class="attr">name</span>=<span class="string">&quot;homepage&quot;</span> <span class="attr">ng-model</span>=<span class="string">&quot;user.facebook_url&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>&#x81EA;&#x5B9A;&#x4E49;&#x9A8C;&#x8BC1;<br>&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5230;&#x6307;&#x4EE4;&#x7684;&#x76F8;&#x5173;&#x5185;&#x5BB9;&#xFF0C;&#x7B2C;10&#x7AE0;&#x518D;&#x6DF1;&#x5165;&#x7814;&#x7A76;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x81EA;&#x5B9A;&#x4E49;&#x9A8C;&#x8BC1;&#x3002;</p>
+</li>
+<li><p>&#x5728;&#x8868;&#x5355;&#x4E2D;&#x63A7;&#x5236;&#x53D8;&#x91CF;</p>
+</li>
+<li><p>&#x4E00;&#x4E9B;&#x6709;&#x7528;&#x7684;CSS&#x6837;&#x5F0F;<br><em>$parsers&#xFF1A;</em><br>&#x4F7F;&#x7528;$parsers&#x6570;&#x7EC4;&#x662F;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x9A8C;&#x8BC1;&#x7684;&#x9014;&#x5F84;&#x4E4B;&#x4E00;&#x3002;</p>
+</li>
+</ol>
+<p><em>$formatters&#xFF1A;</em></p>
+<ol>
+<li>&#x7EC4;&#x5408;&#x5B9E;&#x4F8B;</li>
+</ol>
+
+          
+        </div>
+        <footer class="article-footer">
+            <div class="article-meta pull-left">
+              
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
+  </span>
+
+
+              
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/AngularJS/">AngularJS</a>
+  </span>
+
+
+            </div>
+            
+        </footer>
+      </div>
+
+    </div>
+
+    <aside id="article-toc">
+      <div class="article-toc-inner">
+        <strong class="sidebar-title">Contents</strong>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#71-自定义过滤器"><span class="post-toc-text">7.1、自定义过滤器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建一个过滤器"><span class="post-toc-text">创建一个过滤器：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用"><span class="post-toc-text">使用：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#72-表单验证"><span class="post-toc-text">7.2、表单验证</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#input元素上使用的所有验证选项"><span class="post-toc-text">input元素上使用的所有验证选项：</span></a></li></ol></li></ol>
+      </div>
+    </aside>
+
+  </div>
+
+</article>
+
+<script>
+  window.onscroll = function(){
+    var t = document.documentElement.scrollTop || document.body.scrollTop;
+    var aside = document.getElementById("article-toc");
+    if(t >= 380) {
+      aside.className = "fixed";
+    } else {
+      aside.className = "";
+    }
+  }
+</script>
+
+
+
+      </main>
+    </article>
+
+    <footer id="colophon" class="site-footer" role="contentinfo"><p class="site-info">
+  Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+  Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>.
+  Improve by <a href="https://github.com/arthinking">arthinking</a>
+  </br>
+  
+  &copy; 2016 arthinking
+  
+</p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
