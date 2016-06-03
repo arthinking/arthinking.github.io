@@ -54,13 +54,13 @@
 
   
   
-    <h3 class="article-title"><a href="/NoSQL/Redis/2016-04-19 分布式锁/"><span>分布式锁</span></a></h3>
+    <h3 class="article-title"><a href="/NoSQL/Memcached/20141128_Memcached使用getMulti造成的性能问题/"><span>Memcached使用getMulti造成的性能问题</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/NoSQL/Redis/2016-04-19 分布式锁/" rel="bookmark">
+      <a href="/NoSQL/Memcached/20141128_Memcached使用getMulti造成的性能问题/" rel="bookmark">
         <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
           2016-05-03
         </time>
@@ -77,21 +77,20 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h1 id="&#x8BBE;&#x8BA1;&#x8981;&#x70B9;"><a href="#&#x8BBE;&#x8BA1;&#x8981;&#x70B9;&#xFF1A;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x8981;&#x70B9;&#xFF1A;"></a>&#x8BBE;&#x8BA1;&#x8981;&#x70B9;&#xFF1A;</h1><ul>
-<li>&#x9501;&#x7684;&#x5B9E;&#x6548;&#xFF0C;&#x907F;&#x514D;&#x88AB;&#x5F3A;&#x5236;&#x89E3;&#x9501;&#xFF0C;&#x6216;&#x8005;&#x5355;&#x70B9;&#x6545;&#x969C;&#x5F71;&#x54CD;&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#x83B7;&#x53D6;&#x9501;&#xFF1B;</li>
-<li>&#x53EF;&#x91CD;&#x5165;&#x9501;&#x548C;&#x541E;&#x5410;&#x91CF;&#x7684;&#x6743;&#x8861;&#xFF1B;</li>
-<li>&#x51CF;&#x5C11;redis&#x538B;&#x529B;&#xFF08;&#x51CF;&#x5C11;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x64CD;&#x4F5C;&#xFF09;&#xFF1B;</li>
-<li>&#x52A0;&#x9501;&#x7684;&#x4E8B;&#x52A1;&#x5C3D;&#x91CF;&#x7EC6;&#x7C92;&#x5EA6;&#xFF1B;</li>
-<li>&#x540C;&#x6B65;&#x9501;&#x72B6;&#x6001;&#x7ED9;&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;&#xFF1A;&#x7C7B;&#x4F3C;&#x7EBF;&#x7A0B;&#x7684;notifyAll&#xFF09;&#xFF1B;</li>
-<li>&#x8003;&#x8651;&#x6267;&#x884C;&#x53E5;&#x67C4;&#x4E2D;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x72B6;&#x6001;&#x7684;&#x6B63;&#x786E;&#x6D41;&#x8F6C;&#x548C;&#x72B6;&#x6001;&#x3002;</li>
+<p>&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#xFF1A;&#x4F7F;&#x7528;<code>getMulti</code>&#x4E00;&#x6B21;&#x6027;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x6240;&#x6709;&#x624B;&#x673A;100&#x4E2A;key&#xFF0C;&#x8BF7;&#x6C42;&#x4E86;100&#x4E07;&#x6B21;&#xFF0C;&#x7CFB;&#x7EDF;&#x6700;&#x521D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x968F;&#x7740;&#x8BBF;&#x95EE;&#x91CF;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x8D1F;&#x8F7D;&#x52A0;&#x5927;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x589E;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4F46;&#x7ED3;&#x679C;&#x8D1F;&#x8F7D;&#x53CD;&#x800C;&#x66F4;&#x52A0;&#x5927;&#x4E86;&#x3002;</p>
+<p>&#x539F;&#x56E0;&#x662F;&#x5F00;&#x59CB;&#x90A3;100&#x4E2A;key&#x5728;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x83B7;&#x53D6;&#xFF0C;&#x73B0;&#x5728;&#x5206;&#x4E0D;&#x5230;&#x4E86;&#x51E0;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x589E;&#x591A;&#x4E86;&#xFF0C;&#x800C;&#x5173;&#x952E;&#x6027;&#x7684;&#x56E0;&#x7D20;&#x662F;&#x6211;&#x4EEC;&#x7528;&#x5230;&#x7684;MC&#x5BA2;&#x6237;&#x7AEF;memcached-client&#xFF0C;&#x5176;&#x4E2D;&#x7684;AscIIClient&#x5982;&#x4E0B;&#xFF1A;    </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMulti</span><span class="params">(String[] keys, Integer[] hashCodes, <span class="keyword">boolean</span> asString)</span></span><br><span class="line">  </span>{</span><br><span class="line">    <span class="keyword">if</span> ((keys == <span class="keyword">null</span>) || (keys.length == <span class="number">0</span>)) {</span><br><span class="line">      <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">        log.error(<span class="string">&quot;missing keys for getMulti()&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map cmdMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    String[] cleanKeys = <span class="keyword">new</span> String[keys.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++) {</span><br><span class="line">      String key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>) {</span><br><span class="line">        <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">          log.error(<span class="string">&quot;null key, so skipping&quot;</span>);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      {</span><br><span class="line">        Integer hash = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ((hashCodes != <span class="keyword">null</span>) &amp;&amp; (hashCodes.length &gt; i)) {</span><br><span class="line">          hash = hashCodes[i];</span><br><span class="line">        }</span><br><span class="line">        cleanKeys[i] = key;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">          cleanKeys[i] = sanitizeKey(key);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, e, key);</span><br><span class="line">          <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">            log.error(<span class="string">&quot;failed to sanitize your key!&quot;</span>, e);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        SchoonerSockIO sock = <span class="keyword">this</span>.pool.getSock(cleanKeys[i], hash);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sock == <span class="keyword">null</span>) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, <span class="keyword">new</span> IOException(<span class="string">&quot;no socket to server available&quot;</span>), key);</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">          <span class="keyword">if</span> (!cmdMap.containsKey(sock.getHost())) {</span><br><span class="line">            cmdMap.put(sock.getHost(), <span class="keyword">new</span> StringBuilder(<span class="string">&quot;get&quot;</span>));</span><br><span class="line">          }</span><br><span class="line">          ((StringBuilder)cmdMap.get(sock.getHost())).append(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot; &quot;</span>).append(cleanKeys[i]).toString());</span><br><span class="line"></span><br><span class="line">          sock.close();</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) {</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;multi get socket count : &quot;</span>).append(cmdMap.size()).toString());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map ret = <span class="keyword">new</span> HashMap(keys.length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> NIOLoader(<span class="keyword">this</span>).doMulti(asString, cmdMap, keys, ret);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++)</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">if</span> ((!keys[i].equals(cleanKeys[i])) &amp;&amp; (ret.containsKey(cleanKeys[i]))) {</span><br><span class="line">        ret.put(keys[i], ret.get(cleanKeys[i]));</span><br><span class="line">        ret.remove(cleanKeys[i]);</span><br><span class="line">      }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;++++ memcache: got back &quot;</span>).append(ret.size()).append(<span class="string">&quot; results&quot;</span>).toString());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure>
+<p>&#x8BF7;&#x6C42;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x662F;&#x4E32;&#x884C;&#x7684;&#xFF0C;&#x7ED3;&#x679C;&#x5BFC;&#x81F4;&#x5BA2;&#x6237;&#x7AEF;&#x64CD;&#x4F5C;&#x65F6;&#x95F4;&#x7D2F;&#x52A0;&#xFF0C;&#x8BF7;&#x6C42;&#x5806;&#x79EF;&#xFF0C;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;</p>
+<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</h2><p>&#x4E00;&#x662F;&#x628A;&#x4E32;&#x884C;&#x8BF7;&#x6C42;&#x6539;&#x4E3A;&#x5E76;&#x884C;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;spymemcached&#x7684;&#x5E76;&#x884C;&#x5B9E;&#x73B0;&#xFF1A;    </p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x5C06;&#x672C;&#x6B21;&#x64CD;&#x4F5C;&#x6784;&#x9020;&#x6210;&#x4E00;&#x4E2A;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A; node &#x7684; Operation &#x5BF9;&#x8C61;&#xFF0C;&#x52A0;&#x5165;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF1B;    </li>
+<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF0C;&#x5728;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x7684; node &#x64CD;&#x4F5C;&#x653E;&#x5165; addedQueue &#x961F;&#x5217;&#xFF0C;&#x7136;&#x540E;&#x89E6;&#x53D1; Selector &#x65B9;&#x5F0F;&#x5F02;&#x6B65;&#x975E;&#x963B;&#x585E;&#x7684;&#x6267;&#x884C;&#xFF1B;</li>
 </ul>
-<h1 id="&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;"><a href="#&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;"></a>&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;</h1><p>&#x65F6;&#x95F4;&#x6233;&#x7684;&#x8BBE;&#x8BA1;&#x6709;&#x5F88;&#x591A;&#x95EE;&#x9898;</p>
-<h2 id="&#x901A;&#x8FC7;&#x4E00;&#x4E9B;javautilconcurrent&#x7684;api&#x6765;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x672C;&#x5730;&#x961F;&#x5217;&#x7684;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5904;&#x7406;"><a href="#&#x901A;&#x8FC7;&#x4E00;&#x4E9B;java-util-concurrent&#x7684;API&#x6765;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x672C;&#x5730;&#x961F;&#x5217;&#x7684;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5904;&#x7406;" class="headerlink" title="&#x901A;&#x8FC7;&#x4E00;&#x4E9B;java.util.concurrent&#x7684;API&#x6765;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x672C;&#x5730;&#x961F;&#x5217;&#x7684;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5904;&#x7406;"></a>&#x901A;&#x8FC7;&#x4E00;&#x4E9B;java.util.concurrent&#x7684;API&#x6765;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x672C;&#x5730;&#x961F;&#x5217;&#x7684;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5904;&#x7406;</h2><ul>
-<li><p>Semaphore</p>
-</li>
-<li><p>ConcurrentHashMap</p>
-</li>
-</ul>
+<p>&#x4E00;&#x662F;&#x628A;key&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x624B;&#x673A;&#x6563;&#x5217;&#x4E0D;&#x540C;&#x7684;MC&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x8FBE;&#x5230;&#x8BF7;&#x6C42;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6839;&#x636E;&#x5C31;&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x6563;&#x5217;&#x65B9;&#x6CD5;&#x4E5F;&#x4E0D;&#x540C;&#xFF0C;&#x6BD4;&#x8F83;&#x4E0D;&#x597D;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x6216;&#x8005;&#x4E0D;&#x4F7F;&#x7528;getMulti&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E86;</p>
+<p>&#x5FC5;&#x987B;&#x4F7F;&#x7528;getMulti&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x628A;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x4E2A;memcache&#x96C6;&#x7FA4;&#x4E0A;&#xFF0C;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x8D1F;&#x8D23;&#x8BFB;&#x53D6;&#x4E00;&#x534A;&#x7684;keys&#xFF0C;&#x4F46;&#x662F;&#x53C8;&#x4F1A;&#x5F15;&#x53D1;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;CPU&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p><a href="http://www.cnblogs.com/zhengyun_ustc/p/multigethole.html" title="&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;" target="_blank" rel="external">&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;</a>&#x4E5F;&#x5206;&#x6790;&#x4E86;&#x8FD9;&#x7C7B;&#x5206;&#x6790;&#xFF0C;&#x5F88;&#x900F;&#x5F7B;&#xFF0C;&#x63D0;&#x4F9B;&#x7ED9;&#x5927;&#x5BB6;&#x53C2;&#x8003;&#x4E0B;</p>
+<p>&#x8BE5;&#x535A;&#x6587;&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-use-getmulti-problem.html" target="_blank" rel="external">http://www.itzhai.com/mc-use-getmulti-problem.html</a></p>
 
       
     </div>
@@ -111,7 +110,83 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/Redis/">Redis</a>, <a href="/tags/分布式锁/">分布式锁</a>
+    <a href="/tags/Memcached/">Memcached</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/NoSQL/Memcached/Memcached配置使用与监控/"><span>Memcached配置使用与监控</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/NoSQL/Memcached/Memcached配置使用与监控/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="1-&#x914D;&#x7F6E;"><a href="#1&#x3001;&#x914D;&#x7F6E;" class="headerlink" title="1&#x3001;&#x914D;&#x7F6E;"></a>1&#x3001;&#x914D;&#x7F6E;</h1><h2 id="11-&#x5B89;&#x88C5;"><a href="#1-1&#x3001;&#x5B89;&#x88C5;" class="headerlink" title="1.1&#x3001;&#x5B89;&#x88C5;"></a>1.1&#x3001;&#x5B89;&#x88C5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install memcached</span><br></pre></td></tr></table></figure>
+<h2 id="12-&#x542F;&#x52A8;"><a href="#1-2&#x3001;&#x542F;&#x52A8;" class="headerlink" title="1.2&#x3001;&#x542F;&#x52A8;"></a>1.2&#x3001;&#x542F;&#x52A8;</h2><blockquote>
+<p>Memcached&#x7684;&#x57FA;&#x672C;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<p>-p &#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;<br>-l &#x8FDE;&#x63A5;&#x7684;IP&#x5730;&#x5740;, &#x9ED8;&#x8BA4;&#x662F;&#x672C;&#x673A;<br>-d start &#x542F;&#x52A8;memcached&#x670D;&#x52A1;<br>-d restart &#x91CD;&#x8D77;memcached&#x670D;&#x52A1;<br>-d stop|shutdown &#x5173;&#x95ED;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;memcached&#x670D;&#x52A1;<br>-d install &#x5B89;&#x88C5;memcached&#x670D;&#x52A1;<br>-d uninstall &#x5378;&#x8F7D;memcached&#x670D;&#x52A1;<br>-u &#x4EE5;&#x7684;&#x8EAB;&#x4EFD;&#x8FD0;&#x884C; (&#x4EC5;&#x5728;&#x4EE5;root&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x6709;&#x6548;)<br>-m &#x6700;&#x5927;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#xFF0C;&#x5355;&#x4F4D;MB&#x3002;&#x9ED8;&#x8BA4;64MB<br>-M &#x5185;&#x5B58;&#x8017;&#x5C3D;&#x65F6;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5220;&#x9664;&#x9879;<br>-c &#x6700;&#x5927;&#x540C;&#x65F6;&#x8FDE;&#x63A5;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1024<br>-f &#x5757;&#x5927;&#x5C0F;&#x589E;&#x957F;&#x56E0;&#x5B50;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1.25<br>-n &#x6700;&#x5C0F;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#xFF0C;key+value+flags&#x9ED8;&#x8BA4;&#x662F;48<br>-h &#x663E;&#x793A;&#x5E2E;&#x52A9;<br>mixi&#x7684;&#x8BBE;&#x7F6E;,&#x5355;&#x53F0;:    </p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># &#x6BCF;&#x53F0;mc&#x670D;&#x52A1;&#x5668;&#x4EC5;&#x542F;&#x52A8;&#x4E00;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x5206;&#x914D;1G&#x5185;&#x5B58;</span><br><span class="line">/usr/bin/memcached -p 11211 -u nobody -m 1000 -c 512</span><br><span class="line"></span><br><span class="line"># &#x542F;&#x52A8;mc</span><br><span class="line">/usr/share/memcached/scripts/start-memcached</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">&#x6CE8;&#x610F;&#xFF1A;32&#x4F4D;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x591F;&#x4F7F;&#x7528;**2G**&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x66F4;&#x5927;&#x7684;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#x4E86;&#x3002;&#xFF08;&#x7528;&#x540C;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#xFF0C;TCP&#x8FDE;&#x63A5;&#x6570;&#x5C31;&#x4F1A;&#x6210;&#x500D;&#x589E;&#x52A0;&#xFF0C;x86_64&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x5206;&#x914D;&#x8D85;&#x8FC7;2G&#x7684;&#x5185;&#x5B58;&#xFF09;&#xFF1B;</span><br><span class="line"></span><br><span class="line">mc&#x8FDB;&#x7A0B;&#x7684;&#x5B9E;&#x9645;&#x5185;&#x5B58;&#x5206;&#x914D;&#x91CF;&#x8981;&#x6BD4;&#x7F6E;&#x9876;&#x7684;&#x5185;&#x5B58;&#x8981;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x7F6E;&#x9876;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x592A;&#x5927;&#x4E86;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x4EA4;&#x6362;&#xFF08;swap&#xFF09;&#x3002;</span><br><span class="line"></span><br><span class="line"># 2&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</span><br><span class="line">&#x901A;&#x8FC7;magent&#x80FD;&#x591F;&#x8BA9;&#x7F13;&#x5B58;&#x5199;&#x5165;&#x5230;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684;memcached&#x91CC;&#x9762;</span><br><span class="line"></span><br><span class="line">## 2.1&#x3001;&#x5B89;&#x88C5;&#x4F7F;&#x7528;magent</span><br><span class="line">### 2.1.1&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;libevent</span><br><span class="line">```shell</span><br><span class="line">wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz</span><br><span class="line">tar zxvf libevent-1.4.9-stable.tar.gz</span><br><span class="line">cd libevent-1.4.9-stable/</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
+<h3 id="212-&#x7F16;&#x8BD1;&#x5B89;&#x88C5;memcached"><a href="#2-1-2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;" class="headerlink" title="2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;"></a>2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz</span><br><span class="line">tar zxvf memcached-1.2.6.tar.gz</span><br><span class="line">cd memcached-1.2.6/</span><br><span class="line">./configure --with-libevent=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
+<h3 id="213-&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent"><a href="#2-1-3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;" class="headerlink" title="2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;"></a>2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir magent</span><br><span class="line">cd magent/</span><br><span class="line">wget http://memagent.googlecode.com/files/magent-0.5.tar.gz</span><br><span class="line">tar zxvf magent-0.5.tar.gz</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">sed -i &quot;s#LIBS = -levent#LIBS = -levent -lm#g&quot; Makefile</span><br><span class="line">make</span><br><span class="line">cp magent /usr/bin/magent</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
+<h3 id="214-&#x96C6;&#x7FA4;&#x914D;&#x7F6E;"><a href="#2-1-4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;" class="headerlink" title="2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;"></a>2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</h3><p>&#x96C6;&#x7FA4;&#x4E24;&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x5907;&#x4EFD;&#x3002;<br>&#x9AD8;&#x53EF;&#x7528;&#x7F51;&#x7EDC;&#x67B6;&#x6784;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png" alt=""></p>
+<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;11211,11212</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11211</span><br><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11212</span><br></pre></td></tr></table></figure></p>
+<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;magent&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;10000,10001</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10000 -s 127.0.0.1:11211 -b 127.0.0.1:11212</span><br><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
+<p>-s&#x4E3A;&#x8981;&#x5199;&#x5165;&#x7684;memcached&#xFF0C;-b&#x4E3A;&#x5907;&#x4EFD;&#x7528;&#x7684;memcached    </p>
+<h1 id="3-&#x4F7F;&#x7528;"><a href="#3&#x3001;&#x4F7F;&#x7528;" class="headerlink" title="3&#x3001;&#x4F7F;&#x7528;"></a>3&#x3001;&#x4F7F;&#x7528;</h1><h2 id="31-&#x6E05;&#x7A7A;&#x7F13;&#x5B58;"><a href="#3-1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;" class="headerlink" title="3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;"></a>3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">flush_all</span><br><span class="line">quit</span><br></pre></td></tr></table></figure>
+<h1 id="4-&#x76D1;&#x63A7;"><a href="#4&#x3001;&#x76D1;&#x63A7;" class="headerlink" title="4&#x3001;&#x76D1;&#x63A7;"></a>4&#x3001;&#x76D1;&#x63A7;</h1><h2 id="41-stats"><a href="#4-1&#x3001;stats" class="headerlink" title="4.1&#x3001;stats"></a>4.1&#x3001;stats</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">stats</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x76F8;&#x5173;&#x8D44;&#x6E90;&#xFF1A;</p>
+<p><a href="http://www.cnblogs.com/happyday56/p/3461113.html" title="memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;" target="_blank" rel="external">memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;</a>     </p>
+<p><a href="http://zhumeng8337797.blog.163.com/blog/static/10076891420113431424757/" title="memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  " target="_blank" rel="external">memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  </a></p>
+<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-config-and-monitoring.html" target="_blank" rel="external">http://www.itzhai.com/mc-config-and-monitoring.html</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Cache/">Cache</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Memcached/">Memcached</a>
   </span>
 
 
@@ -156,76 +231,6 @@
 </blockquote>
 <p>&#x5982;&#x679C;MC&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x5BF9;&#x7CFB;&#x7EDF;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#xFF0C;&#x90A3;&#x4E48;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x4E0D;&#x51C6;&#x786E;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x4E86;</p>
 <p><a href="http://www.couchbase.com/issues/browse/MB-11548" title="&#x76F8;&#x5173;bug" target="_blank" rel="external">&#x76F8;&#x5173;bug</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/NoSQL/Memcached/20141128_Memcached使用getMulti造成的性能问题/"><span>Memcached使用getMulti造成的性能问题</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/NoSQL/Memcached/20141128_Memcached使用getMulti造成的性能问题/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#xFF1A;&#x4F7F;&#x7528;<code>getMulti</code>&#x4E00;&#x6B21;&#x6027;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x6240;&#x6709;&#x624B;&#x673A;100&#x4E2A;key&#xFF0C;&#x8BF7;&#x6C42;&#x4E86;100&#x4E07;&#x6B21;&#xFF0C;&#x7CFB;&#x7EDF;&#x6700;&#x521D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x968F;&#x7740;&#x8BBF;&#x95EE;&#x91CF;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x8D1F;&#x8F7D;&#x52A0;&#x5927;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x589E;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4F46;&#x7ED3;&#x679C;&#x8D1F;&#x8F7D;&#x53CD;&#x800C;&#x66F4;&#x52A0;&#x5927;&#x4E86;&#x3002;</p>
-<p>&#x539F;&#x56E0;&#x662F;&#x5F00;&#x59CB;&#x90A3;100&#x4E2A;key&#x5728;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x83B7;&#x53D6;&#xFF0C;&#x73B0;&#x5728;&#x5206;&#x4E0D;&#x5230;&#x4E86;&#x51E0;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x589E;&#x591A;&#x4E86;&#xFF0C;&#x800C;&#x5173;&#x952E;&#x6027;&#x7684;&#x56E0;&#x7D20;&#x662F;&#x6211;&#x4EEC;&#x7528;&#x5230;&#x7684;MC&#x5BA2;&#x6237;&#x7AEF;memcached-client&#xFF0C;&#x5176;&#x4E2D;&#x7684;AscIIClient&#x5982;&#x4E0B;&#xFF1A;    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMulti</span><span class="params">(String[] keys, Integer[] hashCodes, <span class="keyword">boolean</span> asString)</span></span><br><span class="line">  </span>{</span><br><span class="line">    <span class="keyword">if</span> ((keys == <span class="keyword">null</span>) || (keys.length == <span class="number">0</span>)) {</span><br><span class="line">      <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">        log.error(<span class="string">&quot;missing keys for getMulti()&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map cmdMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    String[] cleanKeys = <span class="keyword">new</span> String[keys.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++) {</span><br><span class="line">      String key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>) {</span><br><span class="line">        <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">          log.error(<span class="string">&quot;null key, so skipping&quot;</span>);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      {</span><br><span class="line">        Integer hash = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ((hashCodes != <span class="keyword">null</span>) &amp;&amp; (hashCodes.length &gt; i)) {</span><br><span class="line">          hash = hashCodes[i];</span><br><span class="line">        }</span><br><span class="line">        cleanKeys[i] = key;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">          cleanKeys[i] = sanitizeKey(key);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, e, key);</span><br><span class="line">          <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">            log.error(<span class="string">&quot;failed to sanitize your key!&quot;</span>, e);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        SchoonerSockIO sock = <span class="keyword">this</span>.pool.getSock(cleanKeys[i], hash);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sock == <span class="keyword">null</span>) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, <span class="keyword">new</span> IOException(<span class="string">&quot;no socket to server available&quot;</span>), key);</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">          <span class="keyword">if</span> (!cmdMap.containsKey(sock.getHost())) {</span><br><span class="line">            cmdMap.put(sock.getHost(), <span class="keyword">new</span> StringBuilder(<span class="string">&quot;get&quot;</span>));</span><br><span class="line">          }</span><br><span class="line">          ((StringBuilder)cmdMap.get(sock.getHost())).append(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot; &quot;</span>).append(cleanKeys[i]).toString());</span><br><span class="line"></span><br><span class="line">          sock.close();</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) {</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;multi get socket count : &quot;</span>).append(cmdMap.size()).toString());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map ret = <span class="keyword">new</span> HashMap(keys.length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> NIOLoader(<span class="keyword">this</span>).doMulti(asString, cmdMap, keys, ret);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++)</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">if</span> ((!keys[i].equals(cleanKeys[i])) &amp;&amp; (ret.containsKey(cleanKeys[i]))) {</span><br><span class="line">        ret.put(keys[i], ret.get(cleanKeys[i]));</span><br><span class="line">        ret.remove(cleanKeys[i]);</span><br><span class="line">      }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;++++ memcache: got back &quot;</span>).append(ret.size()).append(<span class="string">&quot; results&quot;</span>).toString());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure>
-<p>&#x8BF7;&#x6C42;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x662F;&#x4E32;&#x884C;&#x7684;&#xFF0C;&#x7ED3;&#x679C;&#x5BFC;&#x81F4;&#x5BA2;&#x6237;&#x7AEF;&#x64CD;&#x4F5C;&#x65F6;&#x95F4;&#x7D2F;&#x52A0;&#xFF0C;&#x8BF7;&#x6C42;&#x5806;&#x79EF;&#xFF0C;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;</p>
-<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</h2><p>&#x4E00;&#x662F;&#x628A;&#x4E32;&#x884C;&#x8BF7;&#x6C42;&#x6539;&#x4E3A;&#x5E76;&#x884C;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;spymemcached&#x7684;&#x5E76;&#x884C;&#x5B9E;&#x73B0;&#xFF1A;    </p>
-<ul>
-<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x5C06;&#x672C;&#x6B21;&#x64CD;&#x4F5C;&#x6784;&#x9020;&#x6210;&#x4E00;&#x4E2A;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A; node &#x7684; Operation &#x5BF9;&#x8C61;&#xFF0C;&#x52A0;&#x5165;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF1B;    </li>
-<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF0C;&#x5728;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x7684; node &#x64CD;&#x4F5C;&#x653E;&#x5165; addedQueue &#x961F;&#x5217;&#xFF0C;&#x7136;&#x540E;&#x89E6;&#x53D1; Selector &#x65B9;&#x5F0F;&#x5F02;&#x6B65;&#x975E;&#x963B;&#x585E;&#x7684;&#x6267;&#x884C;&#xFF1B;</li>
-</ul>
-<p>&#x4E00;&#x662F;&#x628A;key&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x624B;&#x673A;&#x6563;&#x5217;&#x4E0D;&#x540C;&#x7684;MC&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x8FBE;&#x5230;&#x8BF7;&#x6C42;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6839;&#x636E;&#x5C31;&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x6563;&#x5217;&#x65B9;&#x6CD5;&#x4E5F;&#x4E0D;&#x540C;&#xFF0C;&#x6BD4;&#x8F83;&#x4E0D;&#x597D;&#x5904;&#x7406;&#x3002;</p>
-<p>&#x6216;&#x8005;&#x4E0D;&#x4F7F;&#x7528;getMulti&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E86;</p>
-<p>&#x5FC5;&#x987B;&#x4F7F;&#x7528;getMulti&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x628A;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x4E2A;memcache&#x96C6;&#x7FA4;&#x4E0A;&#xFF0C;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x8D1F;&#x8D23;&#x8BFB;&#x53D6;&#x4E00;&#x534A;&#x7684;keys&#xFF0C;&#x4F46;&#x662F;&#x53C8;&#x4F1A;&#x5F15;&#x53D1;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;CPU&#x7684;&#x95EE;&#x9898;&#x3002;</p>
-<p><a href="http://www.cnblogs.com/zhengyun_ustc/p/multigethole.html" title="&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;" target="_blank" rel="external">&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;</a>&#x4E5F;&#x5206;&#x6790;&#x4E86;&#x8FD9;&#x7C7B;&#x5206;&#x6790;&#xFF0C;&#x5F88;&#x900F;&#x5F7B;&#xFF0C;&#x63D0;&#x4F9B;&#x7ED9;&#x5927;&#x5BB6;&#x53C2;&#x8003;&#x4E0B;</p>
-<p>&#x8BE5;&#x535A;&#x6587;&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-use-getmulti-problem.html" target="_blank" rel="external">http://www.itzhai.com/mc-use-getmulti-problem.html</a></p>
 
       
     </div>
@@ -334,13 +339,13 @@
 
   
   
-    <h3 class="article-title"><a href="/database/mysql/海量数据架构/"><span>MySQL 海量数据架构</span></a></h3>
+    <h3 class="article-title"><a href="/database/mysql/mysql/"><span>MySQL 安装问题</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/database/mysql/海量数据架构/" rel="bookmark">
+      <a href="/database/mysql/mysql/" rel="bookmark">
         <time class="entry-date published" datetime="2016-05-02T16:00:00.000Z">
           2016-05-03
         </time>
@@ -357,14 +362,12 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>MySQL&#x8981;&#x5B58;&#x50A8;&#x5927;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x6309;&#x7167;&#x5206;&#x5E93;&#x5206;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x7C7B;&#x4F3C;&#x7684;<a href="http://www.lanceyan.com/category/tech/mongodb" title="MongoDB" target="_blank" rel="external">MongoDB</a>&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;    </p>
-<p>&#x800C;&#x6DD8;&#x5B9D;&#x7248;&#x5F00;&#x6E90;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;<a href="http://www.open-open.com/lib/view/open1393247567490.html" title="TDDL" target="_blank" rel="external">TDDL</a>&#xFF0C;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x4E86;&#x5206;&#x5E93;&#x5206;&#x8868;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x900F;&#x660E;&#x5316;&#x4EE5;&#x53CA;&#x5F02;&#x6784;&#x6570;&#x636E;&#x5E93;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x96C6;&#x4E2D;&#x5F0F;&#x914D;&#x7F6E;&#x7684;JDBC datasource&#x5B9E;&#x73B0;&#xFF0C;&#x5177;&#x6709;&#x4E3B;&#x5907;&#x4EFD;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF0C;&#x52A8;&#x6001;&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
-<p>Cobar</p>
-<p>MyCat</p>
-<p><a href="http://my.oschina.net/tinyframework/blog/186583" title="&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;" target="_blank" rel="external">&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;</a></p>
-<p>Github&#x4E0A;&#x770B;&#x5230;&#x4E86;<a href="https://github.com/arthinking/kamike.divide" title="&#x8FD9;&#x4E2A;" target="_blank" rel="external">&#x8FD9;&#x4E2A;</a>&#x5F00;&#x6E90;&#x7684;&#x4E5F;&#x4E0D;&#x9519;&#x3002;</p>
-<p>Cobar</p>
-<p>MyCat</p>
+<p>&#x6279;&#x91CF;&#x63D2;&#x5165;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html</a></p>
+</blockquote>
+<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac&#x4E0B;&#x65B0;&#x5B89;&#x88C5;&#x7684;MySQL&#x65E0;&#x6CD5;&#x767B;&#x9646;root&#x7528;&#x6237;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</a></p>
+<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac&#x4E0B;&#x5B89;&#x88C5;MySQL5.7&#x9047;&#x5230;&#x9ED8;&#x8BA4;&#x5BC6;&#x7801;&#x7684;&#x5927;&#x5751;</a></p>
 
       
     </div>
@@ -384,7 +387,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/MySQL/">MySQL</a>, <a href="/tags/高并发/">高并发</a>
+    <a href="/tags/MySQL/">MySQL</a>
   </span>
 
 
@@ -505,68 +508,6 @@
 
   
   
-    <h3 class="article-title"><a href="/database/mysql/mysql/"><span>MySQL 安装问题</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/database/mysql/mysql/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-02T16:00:00.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>&#x6279;&#x91CF;&#x63D2;&#x5165;&#xFF1A;</p>
-<blockquote>
-<p><a href="http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html</a></p>
-</blockquote>
-<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac&#x4E0B;&#x65B0;&#x5B89;&#x88C5;&#x7684;MySQL&#x65E0;&#x6CD5;&#x767B;&#x9646;root&#x7528;&#x6237;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</a></p>
-<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac&#x4E0B;&#x5B89;&#x88C5;MySQL5.7&#x9047;&#x5230;&#x9ED8;&#x8BA4;&#x5BC6;&#x7801;&#x7684;&#x5927;&#x5751;</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Database/">Database</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/MySQL/">MySQL</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
     <h3 class="article-title"><a href="/database/mysql/emoji表情支持/"><span>MySQL emoji表情支持</span></a></h3>
   
 
@@ -618,6 +559,70 @@
   <span class="post-tags">
     <i class="icon-tags"></i>
     <a href="/tags/MySQL/">MySQL</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/database/mysql/海量数据架构/"><span>MySQL 海量数据架构</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/database/mysql/海量数据架构/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-02T16:00:00.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>MySQL&#x8981;&#x5B58;&#x50A8;&#x5927;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x6309;&#x7167;&#x5206;&#x5E93;&#x5206;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x7C7B;&#x4F3C;&#x7684;<a href="http://www.lanceyan.com/category/tech/mongodb" title="MongoDB" target="_blank" rel="external">MongoDB</a>&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;    </p>
+<p>&#x800C;&#x6DD8;&#x5B9D;&#x7248;&#x5F00;&#x6E90;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;<a href="http://www.open-open.com/lib/view/open1393247567490.html" title="TDDL" target="_blank" rel="external">TDDL</a>&#xFF0C;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x4E86;&#x5206;&#x5E93;&#x5206;&#x8868;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x900F;&#x660E;&#x5316;&#x4EE5;&#x53CA;&#x5F02;&#x6784;&#x6570;&#x636E;&#x5E93;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x96C6;&#x4E2D;&#x5F0F;&#x914D;&#x7F6E;&#x7684;JDBC datasource&#x5B9E;&#x73B0;&#xFF0C;&#x5177;&#x6709;&#x4E3B;&#x5907;&#x4EFD;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF0C;&#x52A8;&#x6001;&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
+<p>Cobar</p>
+<p>MyCat</p>
+<p><a href="http://my.oschina.net/tinyframework/blog/186583" title="&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;" target="_blank" rel="external">&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;</a></p>
+<p>Github&#x4E0A;&#x770B;&#x5230;&#x4E86;<a href="https://github.com/arthinking/kamike.divide" title="&#x8FD9;&#x4E2A;" target="_blank" rel="external">&#x8FD9;&#x4E2A;</a>&#x5F00;&#x6E90;&#x7684;&#x4E5F;&#x4E0D;&#x9519;&#x3002;</p>
+<p>Cobar</p>
+<p>MyCat</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/Database/">Database</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/MySQL/">MySQL</a>, <a href="/tags/高并发/">高并发</a>
   </span>
 
 

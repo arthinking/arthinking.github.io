@@ -54,6 +54,116 @@
 
   
   
+    <h3 class="article-title"><a href="/javascript/Webpacket/web前端项目搭建说明/"><span>web前端项目搭建说明</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/Webpacket/web前端项目搭建说明/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com/web-project-setup-introduction-html.html" target="_blank" rel="external">web&#x524D;&#x7AEF;&#x9879;&#x76EE;&#x642D;&#x5EFA;&#x8BF4;&#x660E;</a><br>&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/highpay-zoom/app-mis" target="_blank" rel="external">app-mis</a></p>
+</blockquote>
+<h2 id="&#x5B89;&#x88C5;webpack"><a href="#&#x5B89;&#x88C5;webpack&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;webpack&#xFF1A;"></a>&#x5B89;&#x88C5;webpack&#xFF1A;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack -g</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x5173;&#x4E8E;<a href="https://docs.npmjs.com/" target="_blank" rel="external">npm install</a></p>
+</blockquote>
+<h3 id="&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;"><a href="#&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;&#xFF1A;" class="headerlink" title="&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;&#xFF1A;"></a>&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br></pre></td></tr></table></figure>
+<p>&#x6267;&#x884C;&#x5B8C;&#x8FD9;&#x6B65;&#x4F1A;&#x5728;&#x76EE;&#x5F55;&#x4E0B;&#x751F;&#x6210;<code>package.json</code>&#x6587;&#x4EF6;</p>
+<h3 id="&#x4E3A;&#x9879;&#x76EE;&#x5B89;&#x88C5;webpack"><a href="#&#x4E3A;&#x9879;&#x76EE;&#x5B89;&#x88C5;webpack&#xFF1A;" class="headerlink" title="&#x4E3A;&#x9879;&#x76EE;&#x5B89;&#x88C5;webpack&#xFF1A;"></a>&#x4E3A;&#x9879;&#x76EE;&#x5B89;&#x88C5;webpack&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack --save-dev</span><br></pre></td></tr></table></figure>
+<p>&#x6216;&#x8005;&#x5B89;&#x88C5;&#x7279;&#x5B9A;&#x7684;&#x7248;&#x672C;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack@1.2.x --save-dev</span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.github.io/" target="_blank" rel="external">webpack</a>&#x662F;&#x4E00;&#x6B3E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x517C;&#x6253;&#x5305;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x80FD;&#x628A;&#x5404;&#x79CD;&#x8D44;&#x6E90;&#xFF0C;&#x4F8B;&#x5982;JS&#xFF08;&#x542B;JSX&#xFF09;&#x3001;coffee&#x3001;&#x6837;&#x5F0F;&#xFF08;&#x542B;less/sass&#xFF09;&#x3001;&#x56FE;&#x7247;&#x7B49;&#x90FD;&#x4F5C;&#x4E3A;&#x6A21;&#x5757;&#x6765;&#x4F7F;&#x7528;&#x548C;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>&#x2013;save-dev &#x4E0E; &#x2013;save&#x7684;&#x533A;&#x522B;</strong></p>
+<blockquote>
+<p>&#x2013;save-dev: Package will appear in your devDependencies.<br>see<a href="http://stackoverflow.com/questions/19223051/grunt-js-what-does-save-dev-mean-in-npm-install-grunt-save-dev" target="_blank" rel="external">Grunt.js: What does -save-dev mean in npm install grunt &#x2013;save-dev</a></p>
+</blockquote>
+<h3 id="&#x5B89;&#x88C5;webpack&#x8C03;&#x8BD5;&#x5DE5;&#x5177;"><a href="#&#x5B89;&#x88C5;webpack&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;webpack&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF1A;"></a>&#x5B89;&#x88C5;webpack&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF1A;</h3><blockquote>
+<p>$ npm install webpack-dev-server &#x2013;save-dev</p>
+</blockquote>
+<h4 id="&#x542F;&#x52A8;webpack-dev-server"><a href="#&#x542F;&#x52A8;webpack-dev-server&#xFF1A;" class="headerlink" title="&#x542F;&#x52A8;webpack-dev-server&#xFF1A;"></a>&#x542F;&#x52A8;webpack-dev-server&#xFF1A;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack-dev-server --inline --hot</span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a>webpack-dev-server&#x662F;&#x4E00;&#x4E2A;&#x5C0F;&#x578B;&#x7684;node.js Express&#x670D;&#x52A1;&#x5668;,&#x5B83;&#x4F7F;&#x7528;webpack-dev-middleware&#x4E2D;&#x95F4;&#x4EF6;&#x6765;&#x4E3A;&#x901A;&#x8FC7;webpack&#x6253;&#x5305;&#x751F;&#x6210;&#x7684;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x63D0;&#x4F9B;Web&#x670D;&#x52A1;&#x3002;&#x5B83;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;Socket.IO&#x8FDE;&#x63A5;&#x7740;webpack-dev-server&#x670D;&#x52A1;&#x5668;&#x7684;&#x5C0F;&#x578B;&#x8FD0;&#x884C;&#x65F6;&#x7A0B;&#x5E8F;&#x3002;webpack-dev-server&#x53D1;&#x9001;&#x5173;&#x4E8E;&#x7F16;&#x8BD1;&#x72B6;&#x6001;&#x7684;&#x6D88;&#x606F;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x6839;&#x636E;&#x6D88;&#x606F;&#x4F5C;&#x51FA;&#x54CD;&#x5E94;&#x3002;</p>
+<h3 id="webpack&#x6784;&#x5EFA;&#x547D;&#x4EE4;"><a href="#webpack&#x6784;&#x5EFA;&#x547D;&#x4EE4;&#xFF1A;" class="headerlink" title="webpack&#x6784;&#x5EFA;&#x547D;&#x4EE4;&#xFF1A;"></a>webpack&#x6784;&#x5EFA;&#x547D;&#x4EE4;&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ webpack --display-modules</span><br><span class="line">$ webpack --display-modules --display-chunks</span><br></pre></td></tr></table></figure>
+<p><strong>&#x2013;display-modules &#x548C; &#x2013;display-chunks&#x7684;&#x4F5C;&#x7528;</strong></p>
+<p>by default Webpack hides modules that are not yours. To see all the modules compiled by Webpack, we can pass the &#x2013;display-modules flag.</p>
+<p>run webpack with the &#x2013;display-chunks flag to see what modules are in which chunks.</p>
+<h2 id="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;"><a href="#&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;&#xFF1A;"></a>&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;&#xFF1A;</h2><h3 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save lodash</span><br></pre></td></tr></table></figure>
+<p><a href="https://lodash.com/" target="_blank" rel="external">lodash</a>&#x662F;&#x4E00;&#x4E2A;Javascript&#x5DE5;&#x5177;&#x5E93;&#x3002;</p>
+<h3 id="&#x5B89;&#x88C5;babel"><a href="#&#x5B89;&#x88C5;babel&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;babel&#xFF1A;"></a>&#x5B89;&#x88C5;babel&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-2 --save-dev</span><br></pre></td></tr></table></figure>
+<p>&#x7136;&#x540E;&#x5728;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>.babelrc</code> &#x6587;&#x4EF6;&#x3002;&#x8BE6;&#x7EC6;&#x914D;&#x7F6E;&#x53C2;&#x8003;&#xFF1A;<a href="https://babeljs.io/" target="_blank" rel="external">babel</a></p>
+<ul>
+<li><a href="https://babeljs.io/" target="_blank" rel="external">babel</a>&#x662F;&#x4E00;&#x4E2A;Javascript&#x4EE3;&#x7801;&#x8F6C;&#x6362;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x4F60;&#x5199;&#x7684;&#x7B26;&#x5408; ECMAScript 6 &#x6807;&#x51C6;&#x7684;&#x4EE3;&#x7801;&#x5B8C;&#x7F8E;&#x5730;&#x8F6C;&#x6362;&#x4E3A; ECMAScript 5 &#x6807;&#x51C6;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x826F;&#x597D;&#x5730;&#x8FD0;&#x884C;&#x5728;&#x6240;&#x6709;&#x4E3B;&#x6D41; JavaScript &#x5F15;&#x64CE;&#x4E2D;&#x3002;</li>
+</ul>
+<h3 id="&#x5B89;&#x88C5;eslint"><a href="#&#x5B89;&#x88C5;eslint&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;eslint&#xFF1A;"></a>&#x5B89;&#x88C5;eslint&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install eslint eslint-loader babel-eslint eslint-plugin-react --save-dev</span><br></pre></td></tr></table></figure>
+<p>&#x5728;&#x56E2;&#x961F;&#x534F;&#x4F5C;&#x4E2D;&#xFF0C;&#x4E3A;&#x907F;&#x514D;&#x4F4E;&#x7EA7; Bug&#x3001;&#x4EA7;&#x51FA;&#x98CE;&#x683C;&#x7EDF;&#x4E00;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F1A;&#x9884;&#x5148;&#x5236;&#x5B9A;&#x7F16;&#x7801;&#x89C4;&#x8303;&#x3002;&#x4F7F;&#x7528; Lint &#x5DE5;&#x5177;&#x548C;&#x4EE3;&#x7801;&#x98CE;&#x683C;&#x68C0;&#x6D4B;&#x5DE5;&#x5177;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x8F85;&#x52A9;&#x7F16;&#x7801;&#x89C4;&#x8303;&#x6267;&#x884C;&#xFF0C;&#x6709;&#x6548;&#x63A7;&#x5236;&#x4EE3;&#x7801;&#x8D28;&#x91CF;&#x3002;&#x5728;&#x4EE5;&#x524D;&#x7684;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x9009;&#x62E9; JSHint &#x548C; JSCS &#x7ED3;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x4F7F;&#x7528; React JSX &#x8BED;&#x6CD5;&#x65F6;&#xFF0C;&#x5374;&#x9047;&#x5230;&#x4E86;&#x95EE;&#x9898;&#xFF1A;JSHint &#x4E0D;&#x652F;&#x6301; JSX &#x8BED;&#x6CD5;&#xFF0C;&#x4EE5;&#x6709;&#x4E86; ESLint&#x3002;<br><a href="http://eslint.org/" target="_blank" rel="external">eslint</a></p>
+<h3 id="&#x5B89;&#x88C5;react"><a href="#&#x5B89;&#x88C5;react&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;react&#xFF1A;"></a>&#x5B89;&#x88C5;react&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react react-dom react-router --save</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5B89;&#x88C5;antd"><a href="#&#x5B89;&#x88C5;antd" class="headerlink" title="&#x5B89;&#x88C5;antd"></a>&#x5B89;&#x88C5;antd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install antd --save</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack-loader"><a href="#&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack-loader&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack loader&#xFF1A;"></a>&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack loader&#xFF1A;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install css-loader postcss-loader less-loader style-loader html-loader sass-loader node-sass --save-dev</span><br><span class="line">$ npm install url-loader file-loader --save-dev</span><br><span class="line">$ npm install baggage-loader --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="loader&#x914D;&#x7F6E;&#x8BF4;&#x660E;"><a href="#loader&#x914D;&#x7F6E;&#x8BF4;&#x660E;&#xFF1A;" class="headerlink" title="loader&#x914D;&#x7F6E;&#x8BF4;&#x660E;&#xFF1A;"></a>loader&#x914D;&#x7F6E;&#x8BF4;&#x660E;&#xFF1A;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;./loader!./dir/file.txt&quot;</span>);</span><br><span class="line"><span class="comment">// =&gt; uses the file &quot;loader.js&quot; in the current directory to transform</span></span><br><span class="line"><span class="comment">//    &quot;file.txt&quot; in the folder &quot;dir&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;jade!./template.jade&quot;</span>);</span><br><span class="line"><span class="comment">// =&gt; uses the &quot;jade-loader&quot; (that is installed from npm to &quot;node_modules&quot;)</span></span><br><span class="line"><span class="comment">//    to transform the file &quot;template.jade&quot;</span></span><br><span class="line"><span class="comment">//    If configuration has some transforms bound to the file, they will still be applied.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;!style!css!less!bootstrap/less/bootstrap.less&quot;</span>);</span><br><span class="line"><span class="comment">// =&gt; the file &quot;bootstrap.less&quot; in the folder &quot;less&quot; in the &quot;bootstrap&quot;</span></span><br><span class="line"><span class="comment">//    module (that is installed from github to &quot;node_modules&quot;) is</span></span><br><span class="line"><span class="comment">//    transformed by the &quot;less-loader&quot;. The result is transformed by the</span></span><br><span class="line"><span class="comment">//    &quot;css-loader&quot; and then by the &quot;style-loader&quot;.</span></span><br><span class="line"><span class="comment">//    If configuration has some transforms bound to the file, they will not be applied.</span></span><br></pre></td></tr></table></figure>
+<h2 id="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack-plugin"><a href="#&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack-plugin&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack plugin&#xFF1A;"></a>&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack plugin&#xFF1A;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install clean-webpack-plugin --save-dev</span><br><span class="line">$ npm install extract-text-webpack-plugin --save-dev</span><br><span class="line">$ npm install html-webpack-plugin</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/johnagan/clean-webpack-plugin" target="_blank" rel="external">clean-webpack-plugin</a>: A webpack plugin to remove/clean your build folder(s) before building.</li>
+<li><a href="https://github.com/webpack/extract-text-webpack-plugin" target="_blank" rel="external">extract-text-webpack-plugin</a>: It moves every require(&#x201C;style.css&#x201D;) in entry chunks into a separate css output file. So your styles are no longer inlined into the javascript, but separate in a css bundle file (styles.css).</li>
+<li><a href="https://github.com/ampedandwired/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a>: Simplifies creation of HTML files to serve your webpack bundles</li>
+</ul>
+<h2 id="&#x53C2;&#x8003;"><a href="#&#x53C2;&#x8003;&#xFF1A;" class="headerlink" title="&#x53C2;&#x8003;&#xFF1A;"></a>&#x53C2;&#x8003;&#xFF1A;</h2><ul>
+<li><a href="http://www.cnblogs.com/vajoy/p/4650467.html" target="_blank" rel="external">webpack &#x5165;&#x95E8;&#x6307;&#x5357;</a></li>
+<li><a href="https://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a></li>
+<li><a href="http://www.jianshu.com/p/8adf4c2bfa51" target="_blank" rel="external">Webpack-dev-server&#x7ED3;&#x5408;&#x540E;&#x7AEF;&#x5206;&#x7F36;&#x7684;&#x70ED;&#x66FF;&#x6362;&#x914D;&#x7F6E;</a></li>
+<li><a href="http://www.jianshu.com/p/941bfaf13be1" target="_blank" rel="external">WEBPACK DEV SERVER</a></li>
+<li><a href="http://blog.madewithlove.be/post/webpack-your-bags/" target="_blank" rel="external">webpack your bags</a></li>
+<li><a href="https://lodash.com/" target="_blank" rel="external">lodash</a></li>
+<li><a href="https://babeljs.io/" target="_blank" rel="external">babel</a></li>
+<li><a href="http://www.cnblogs.com/whitewolf/p/4357916.html" target="_blank" rel="external">Babel-&#x73B0;&#x5728;&#x5F00;&#x59CB;&#x4F7F;&#x7528; ES6</a></li>
+<li><a href="http://eslint.org/" target="_blank" rel="external">eslint</a></li>
+<li><a href="http://www.tuicool.com/articles/7JZZJzn" target="_blank" rel="external">ESLint &#x4F7F;&#x7528;&#x5165;&#x95E8;</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/web前端/">web前端</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Webpack/">Webpack</a>, <a href="/tags/ReactJS/">ReactJS</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
     <h3 class="article-title"><a href="/javascript/Webpacket/2016-04-01 笔记/"><span>笔记</span></a></h3>
   
 
@@ -313,13 +423,13 @@
 
   
   
-    <h3 class="article-title"><a href="/javascript/ES6/2016-03-26 ES6/"><span>ES6编译器问题</span></a></h3>
+    <h3 class="article-title"><a href="/NoSQL/Redis/2016-04-19 分布式锁/"><span>分布式锁</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/javascript/ES6/2016-03-26 ES6/" rel="bookmark">
+      <a href="/NoSQL/Redis/2016-04-19 分布式锁/" rel="bookmark">
         <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
           2016-05-03
         </time>
@@ -336,20 +446,21 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h1 id="&#x901A;&#x8FC7;babel&#x7F16;&#x8BD1;es6"><a href="#&#x901A;&#x8FC7;babel&#x7F16;&#x8BD1;ES6" class="headerlink" title="&#x901A;&#x8FC7;babel&#x7F16;&#x8BD1;ES6"></a>&#x901A;&#x8FC7;babel&#x7F16;&#x8BD1;ES6</h1><p><a href="https://onsen.io/blog/trying-out-javascript-es6-using-babel/" target="_blank" rel="external">Trying out JavaScript ES6 using Babel</a></p>
-<h1 id="&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5757;&#x5F15;&#x5165;&#x95EE;&#x9898;"><a href="#&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5757;&#x5F15;&#x5165;&#x95EE;&#x9898;" class="headerlink" title="&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5757;&#x5F15;&#x5165;&#x95EE;&#x9898;"></a>&#x7F16;&#x8BD1;&#x5668;&#x6A21;&#x5757;&#x5F15;&#x5165;&#x95EE;&#x9898;</h1><p>&#x5728;&#x4F7F;&#x7528;IDEA&#x7684;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x901A;&#x8FC7;&#x7C7B;&#x4F3C;&#x8FD9;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#x5BFC;&#x51FA;&#x6A21;&#x5757;&#xFF1A;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = AlbumAction;</span><br></pre></td></tr></table></figure>
-<p>&#x800C;&#x901A;&#x8FC7;ES6&#x7684;&#x6A21;&#x5757;&#x673A;&#x5236;&#x8FDB;&#x884C;&#x5F15;&#x5165;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> AlbumAction <span class="keyword">from</span> <span class="string">&apos;../../actions/AlbumAction.js&apos;</span>;</span><br></pre></td></tr></table></figure>
-<p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;IDEA&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x9519;&#x8BEF;:</p>
-<p><img src="media/14589768655985.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Default export is not declared in imported module</span><br></pre></td></tr></table></figure>
-<p>&#x597D;&#x50CF;&#x76EE;&#x524D;&#x7684;IDEA(15.0.1)&#x5E76;&#x4E0D;&#x80FD;&#x8BC6;&#x522B;&#x517C;&#x5BB9;&#x6DF7;&#x7528;&#x4E24;&#x79CD;&#x6A21;&#x5757;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#xFF0C;&#x5C1D;&#x8BD5;&#x5C06;&#x5BFC;&#x51FA;&#x4EE3;&#x7801;&#x4E5F;&#x6362;&#x6210;ES6&#x7684;&#x6A21;&#x5757;&#x673A;&#x5236;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x4E0D;&#x518D;&#x62A5;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x4E86;&#xFF1A;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> AlbumAction;</span><br></pre></td></tr></table></figure>
-<h1 id="references"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://github.com/darul75/web-react/issues/14" target="_blank" rel="external">WebStorm says that AppActions is not declared in imported module</a></p>
-<p><a href="http://blog.csdn.net/lihongxun945/article/details/49031383" target="_blank" rel="external">ES6&#x8BE6;&#x89E3;&#x516B;&#xFF1A;&#x6A21;&#x5757;&#xFF08;Module&#xFF09;</a></p>
-<p><a href="http://zihua.li/2012/03/use-module-exports-or-exports-in-node/" target="_blank" rel="external">module.exports &#x8FD8;&#x662F; exports&#xFF1F;</a></p>
-<p><a href="http://blog.csdn.net/cike110120/article/details/12753253" target="_blank" rel="external">node.js&#x7684;module.export &#x548C; export&#x65B9;&#x6CD5;&#x7684;&#x533A;&#x522B;</a></p>
+<h1 id="&#x8BBE;&#x8BA1;&#x8981;&#x70B9;"><a href="#&#x8BBE;&#x8BA1;&#x8981;&#x70B9;&#xFF1A;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x8981;&#x70B9;&#xFF1A;"></a>&#x8BBE;&#x8BA1;&#x8981;&#x70B9;&#xFF1A;</h1><ul>
+<li>&#x9501;&#x7684;&#x5B9E;&#x6548;&#xFF0C;&#x907F;&#x514D;&#x88AB;&#x5F3A;&#x5236;&#x89E3;&#x9501;&#xFF0C;&#x6216;&#x8005;&#x5355;&#x70B9;&#x6545;&#x969C;&#x5F71;&#x54CD;&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#x83B7;&#x53D6;&#x9501;&#xFF1B;</li>
+<li>&#x53EF;&#x91CD;&#x5165;&#x9501;&#x548C;&#x541E;&#x5410;&#x91CF;&#x7684;&#x6743;&#x8861;&#xFF1B;</li>
+<li>&#x51CF;&#x5C11;redis&#x538B;&#x529B;&#xFF08;&#x51CF;&#x5C11;&#x83B7;&#x53D6;&#x9501;&#x7684;&#x64CD;&#x4F5C;&#xFF09;&#xFF1B;</li>
+<li>&#x52A0;&#x9501;&#x7684;&#x4E8B;&#x52A1;&#x5C3D;&#x91CF;&#x7EC6;&#x7C92;&#x5EA6;&#xFF1B;</li>
+<li>&#x540C;&#x6B65;&#x9501;&#x72B6;&#x6001;&#x7ED9;&#x5176;&#x4ED6;&#x5BA2;&#x6237;&#x7AEF;&#xFF08;&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;&#xFF1A;&#x7C7B;&#x4F3C;&#x7EBF;&#x7A0B;&#x7684;notifyAll&#xFF09;&#xFF1B;</li>
+<li>&#x8003;&#x8651;&#x6267;&#x884C;&#x53E5;&#x67C4;&#x4E2D;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x72B6;&#x6001;&#x7684;&#x6B63;&#x786E;&#x6D41;&#x8F6C;&#x548C;&#x72B6;&#x6001;&#x3002;</li>
+</ul>
+<h1 id="&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;"><a href="#&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;"></a>&#x8BBE;&#x8BA1;&#x7EC6;&#x8282;</h1><p>&#x65F6;&#x95F4;&#x6233;&#x7684;&#x8BBE;&#x8BA1;&#x6709;&#x5F88;&#x591A;&#x95EE;&#x9898;</p>
+<h2 id="&#x901A;&#x8FC7;&#x4E00;&#x4E9B;javautilconcurrent&#x7684;api&#x6765;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x672C;&#x5730;&#x961F;&#x5217;&#x7684;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5904;&#x7406;"><a href="#&#x901A;&#x8FC7;&#x4E00;&#x4E9B;java-util-concurrent&#x7684;API&#x6765;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x672C;&#x5730;&#x961F;&#x5217;&#x7684;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5904;&#x7406;" class="headerlink" title="&#x901A;&#x8FC7;&#x4E00;&#x4E9B;java.util.concurrent&#x7684;API&#x6765;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x672C;&#x5730;&#x961F;&#x5217;&#x7684;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5904;&#x7406;"></a>&#x901A;&#x8FC7;&#x4E00;&#x4E9B;java.util.concurrent&#x7684;API&#x6765;&#x5904;&#x7406;&#x4E00;&#x4E9B;&#x672C;&#x5730;&#x961F;&#x5217;&#x7684;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x7B49;&#x5F85;&#x4FE1;&#x53F7;&#x91CF;&#x7684;&#x5904;&#x7406;</h2><ul>
+<li><p>Semaphore</p>
+</li>
+<li><p>ConcurrentHashMap</p>
+</li>
+</ul>
 
       
     </div>
@@ -360,7 +471,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
+    <a href="/categories/Cache/">Cache</a>
   </span>
 
 
@@ -369,7 +480,7 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/Babel/">Babel</a>
+    <a href="/tags/Redis/">Redis</a>, <a href="/tags/分布式锁/">分布式锁</a>
   </span>
 
 
@@ -417,6 +528,86 @@
 <p>&#x63A7;&#x5236;&#x5668;&#x5E94;&#x8BE5;&#x5C3D;&#x53EF;&#x80FD;&#x4FDD;&#x6301;&#x77ED;&#x5C0F;&#x7CBE;&#x608D;&#xFF0C;&#x800C;&#x5728;&#x63A7;&#x5236;&#x5668;&#x4E2D;&#x8FDB;&#x884C;DOM&#x64CD;&#x4F5C;&#x548C;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x5219;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x597D;&#x7684;&#x5B9E;&#x8DF5;&#x3002;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>, [])</span><br><span class="line">	.controller(<span class="string">&apos;MyController&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope</span>) </span>{</span><br><span class="line">		$scope.shouldShowLogin = <span class="literal">true</span>;</span><br><span class="line">		$scope.showLogin = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{</span><br><span class="line">			$scope.shouldShowLogin = !$scope.shouldShowLogin;</span><br><span class="line">		};</span><br><span class="line">		$scope.clickButton = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">			$(<span class="string">&apos;#btn span&apos;</span>).html(<span class="string">&apos;Clicked&apos;</span>);</span><br><span class="line">		};</span><br><span class="line">		$scope.onLogin = <span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>{</span><br><span class="line">			$http({</span><br><span class="line">				method: <span class="string">&apos;POST&apos;</span>,</span><br><span class="line">				url: <span class="string">&apos;/login&apos;</span>,</span><br><span class="line">				data: {</span><br><span class="line">					user: user</span><br><span class="line">				}</span><br><span class="line">			}).success(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>{</span><br><span class="line">				<span class="comment">// user</span></span><br><span class="line">			});</span><br><span class="line">		};</span><br><span class="line">	});</span><br></pre></td></tr></table></figure></p>
 <p>&#x8BBE;&#x8BA1;&#x826F;&#x597D;&#x7684;&#x5E94;&#x7528;&#x4F1A;&#x5C06;&#x590D;&#x6742;&#x7684;&#x903B;&#x8F91;&#x653E;&#x5230;&#x6307;&#x4EE4;&#x548C;&#x670D;&#x52A1;&#x4E2D;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x6307;&#x4EE4;&#x548C;&#x670D;&#x52A1;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x63A7;&#x5236;&#x5668;&#x91CD;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x8F7B;&#x91CF;&#x4E14;&#x66F4;&#x6613;&#x7EF4;&#x62A4;&#x7684;&#x5F62;&#x5F0F;&#xFF1A;</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>, [])</span><br><span class="line">	.controller(<span class="string">&apos;MyController&apos;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$scope,UserSrv</span>) </span>{</span><br><span class="line">		<span class="comment">// &#x5185;&#x5BB9;&#x53EF;&#x4EE5;&#x88AB;&#x6307;&#x4EE4;&#x63A7;&#x5236;</span></span><br><span class="line">		$scope.onLogin = <span class="function"><span class="keyword">function</span>(<span class="params">user</span>) </span>{</span><br><span class="line">			UserSrv.runLogin(user);</span><br><span class="line">		};</span><br><span class="line">	});</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/AngularJS/">AngularJS</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/javascript/angularjs/chapter04_scope/README/"><span>scope</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/angularjs/chapter04_scope/README/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<ul>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x89C6;&#x56FE;&#x548C;&#x63A7;&#x5236;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x80F6;&#x6C34;&#x3002;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x5E94;&#x7528;&#x72B6;&#x6001;&#x7684;&#x57FA;&#x7840;&#x3002;</li>
+<li>AngularJS&#x5C06;$scope&#x8BBE;&#x8BA1;&#x6210;&#x548C;DOM&#x7C7B;&#x4F3C;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x56E0;&#x6B64;$scope&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5D4C;&#x5957;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F15;&#x7528;&#x7236;&#x7EA7;$scope&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x3002;</li>
+<li>&#x4F5C;&#x7528;&#x57DF;&#x63D0;&#x4F9B;&#x4E86;&#x76D1;&#x89C6;&#x6570;&#x636E;&#x6A21;&#x578B;&#x53D8;&#x5316;&#x7684;&#x80FD;&#x529B;&#x3002;&#x5B83;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x4F7F;&#x7528;&#x5176;&#x4E2D;&#x7684;apply&#x673A;&#x5236;&#xFF0C;&#x5C06;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#x5728;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#x8303;&#x56F4;&#x5185;&#x8FDB;&#x884C;&#x901A;&#x77E5;&#x3002;</li>
+</ul>
+<blockquote>
+<p>&#x5C06;&#x5E94;&#x7528;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x90FD;&#x653E;&#x5728;&#x63A7;&#x5236;&#x5668;&#x4E2D;&#xFF0C;&#x800C;&#x5C06;&#x76F8;&#x5173;&#x7684;&#x6570;&#x636E;&#x90FD;&#x653E;&#x5728;&#x63A7;&#x5236;&#x5668;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#xFF0C;&#x8FD9;&#x662F;&#x975E;&#x5E38;&#x5B8C;&#x7F8E;&#x7684;&#x67B6;&#x6784;&#x3002;</p>
+</blockquote>
+<h2 id="41-&#x89C6;&#x56FE;&#x548C;scope&#x7684;&#x4E16;&#x754C;"><a href="#4-1&#x3001;&#x89C6;&#x56FE;&#x548C;-scope&#x7684;&#x4E16;&#x754C;" class="headerlink" title="4.1&#x3001;&#x89C6;&#x56FE;&#x548C;$scope&#x7684;&#x4E16;&#x754C;"></a>4.1&#x3001;&#x89C6;&#x56FE;&#x548C;$scope&#x7684;&#x4E16;&#x754C;</h2><p>ng-app&#x5143;&#x7D20;&#x540C;$rootScope&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#xFF0C;$rootScope&#x662F;&#x6240;&#x6709;$scope&#x5BF9;&#x8C61;&#x7684;&#x6700;&#x4E0A;&#x6B21;&#x3002;</p>
+<h2 id="42-&#x5C31;&#x662F;html&#x800C;&#x5DF2;"><a href="#4-2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;" class="headerlink" title="4.2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;"></a>4.2&#x3001;&#x5C31;&#x662F;HTML&#x800C;&#x5DF2;</h2><p>&#x5728;AngularJS&#x5E94;&#x7528;&#x7684;&#x6A21;&#x677F;&#x4E2D;&#x4F7F;&#x7528;&#x591A;&#x79CD;&#x6807;&#x8BB0;&#xFF0C;&#x5305;&#x62EC;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;:</p>
+<blockquote>
+<p>&#x6307;&#x4EE4;&#xFF1A;&#x5C06;DOM&#x5143;&#x7D20;&#x589E;&#x5F3A;&#x4E3A;&#x53EF;&#x590D;&#x7528;&#x7684;DOM&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x6216;&#x5143;&#x7D20;&#x3002;<br>&#x503C;&#x7ED1;&#x5B9A;&#xFF1A;&#x6A21;&#x677F;&#x8BED;&#x6CD5;{{ }}&#x53EF;&#x4EE5;&#x5C06;&#x8868;&#x8FBE;&#x5F0F;&#x7ED1;&#x5B9A;&#x5230;&#x89C6;&#x56FE;&#x4E0A;&#x3002;<br>&#x8FC7;&#x6EE4;&#x5668;&#xFF1A;&#x53EF;&#x4EE5;&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x7528;&#x6765;&#x8FDB;&#x884C;&#x683C;&#x5F0F;&#x5316;&#x3002;<br>&#x8868;&#x5355;&#x63A7;&#x4EF6;&#xFF1A;&#x7528;&#x6765;&#x68C0;&#x9A8C;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x63A7;&#x4EF6;&#x3002;</p>
+</blockquote>
+<h2 id="43-&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;"><a href="#4-3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;" class="headerlink" title="4.3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;"></a>4.3&#x3001;&#x4F5C;&#x7528;&#x4E8E;&#x80FD;&#x505A;&#x4EC0;&#x4E48;</h2><p>&#x4F5C;&#x7528;&#x57DF;&#x6709;&#x4EE5;&#x4E0B;&#x7684;&#x57FA;&#x672C;&#x529F;&#x80FD;&#xFF1A;</p>
+<blockquote>
+<p>&#x63D0;&#x4F9B;&#x89C2;&#x5BDF;&#x8005;&#x4EE5;&#x76D1;&#x89C6;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#xFF1B;<br>&#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x636E;&#x6A21;&#x578B;&#x7684;&#x53D8;&#x5316;&#x901A;&#x77E5;&#x7ED9;&#x6574;&#x4E2A;&#x5E94;&#x7528;&#xFF0C;&#x751A;&#x81F3;&#x662F;&#x7CFB;&#x7EDF;&#x5916;&#x7684;&#x7EC4;&#x4EF6;&#xFF1B;<br>&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5D4C;&#x5957;&#xFF0C;&#x9694;&#x79BB;&#x4E1A;&#x52A1;&#x529F;&#x80FD;&#x548C;&#x6570;&#x636E;&#xFF1B;<br>&#x7ED9;&#x8868;&#x8FBE;&#x5F0F;&#x63D0;&#x4F9B;&#x8FD0;&#x7B97;&#x65F6;&#x6240;&#x9700;&#x7684;&#x6267;&#x884C;&#x73AF;&#x5883;&#x3002;</p>
+</blockquote>
+<h2 id="44-scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#4-4&#x3001;-scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="4.4&#x3001;$scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>4.4&#x3001;$scope&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h2><p>$scope&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5904;&#x7406;&#x6709;&#x56DB;&#x4E2A;&#x4E0D;&#x540C;&#x9636;&#x6BB5;&#xFF1A;</p>
+<h3 id="441-&#x521B;&#x5EFA;"><a href="#4-4-1&#x3001;&#x521B;&#x5EFA;" class="headerlink" title="4.4.1&#x3001;&#x521B;&#x5EFA;"></a>4.4.1&#x3001;&#x521B;&#x5EFA;</h3><p>&#x5728;&#x521B;&#x5EFA;&#x63A7;&#x5236;&#x5668;&#x6216;&#x6307;&#x4EE4;&#x65F6;&#xFF0C;AngularJS&#x4F1A;&#x7528;<code>$injector</code>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x5E76;&#x5728;&#x8FD9;&#x4E2A;&#x65B0;&#x5EFA;&#x7684;&#x63A7;&#x5236;&#x5668;&#x6216;&#x6307;&#x4EE4;&#x8FD0;&#x884C;&#x65F6;&#x5C06;&#x4F5C;&#x7528;&#x57DF;&#x4F20;&#x9012;&#x8FDB;&#x53BB;&#x3002;</p>
+<h3 id="442-&#x94FE;&#x63A5;"><a href="#4-4-2&#x3001;&#x94FE;&#x63A5;" class="headerlink" title="4.4.2&#x3001;&#x94FE;&#x63A5;"></a>4.4.2&#x3001;&#x94FE;&#x63A5;</h3><p>&#x5F53;Angular&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x7684;$scope&#x5BF9;&#x8C61;&#x90FD;&#x4F1A;&#x9644;&#x52A0;&#x6216;&#x8005;&#x94FE;&#x63A5;&#x5230;&#x89C6;&#x56FE;&#x4E2D;&#x3002;&#x8FD9;&#x4E9B;&#x4F5C;&#x7528;&#x57DF;&#x5C06;&#x4F1A;&#x6CE8;&#x518C;&#x5F53;Angular&#x5E94;&#x7528;&#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x9700;&#x8981;&#x8FD0;&#x884C;&#x7684;&#x51FD;&#x6570;&#x3002;(<code>$watch&#x51FD;&#x6570;</code>)</p>
+<h3 id="443-&#x66F4;&#x65B0;"><a href="#4-4-3&#x3001;&#x66F4;&#x65B0;" class="headerlink" title="4.4.3&#x3001;&#x66F4;&#x65B0;"></a>4.4.3&#x3001;&#x66F4;&#x65B0;</h3><p>&#x901A;&#x5E38;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x8FD0;&#x884C;&#x5728;$rootScope&#xFF0C;&#x6BCF;&#x4E2A;&#x5B50;&#x57DF;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x810F;&#x503C;&#x68C0;&#x67E5;&#xFF0C;&#x5982;&#x679C;&#x68C0;&#x6D4B;&#x5230;&#x53D8;&#x5316;&#xFF0C;$scope&#x5BF9;&#x8C61;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x6307;&#x5B9A;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<h3 id="444-&#x9500;&#x6BC1;"><a href="#4-4-4&#x3001;&#x9500;&#x6BC1;" class="headerlink" title="4.4.4&#x3001;&#x9500;&#x6BC1;"></a>4.4.4&#x3001;&#x9500;&#x6BC1;</h3><p>&#x5F53;&#x4E00;&#x4E2A;$scope&#x5728;&#x89C6;&#x56FE;&#x4E2D;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x5C06;&#x4F1A;&#x6E05;&#x7406;&#x548C;&#x9500;&#x6BC1;&#x81EA;&#x5DF1;&#x3002;</p>
+<h2 id="45-&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;"><a href="#4-5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;" class="headerlink" title="4.5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;"></a>4.5&#x3001;&#x6307;&#x4EE4;&#x548C;&#x4F5C;&#x7528;&#x57DF;</h2><p>&#x6307;&#x4EE4;&#x5728;AngularJS&#x4E2D;&#x88AB;&#x5E7F;&#x6CDB;&#x4F7F;&#x7528;&#xFF0C;&#x6307;&#x4EE4;<em>&#x901A;&#x5E38;&#x4E0D;&#x4F1A;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;$scope</em>&#xFF0C;&#x4F46;&#x4E5F;&#x6709;&#x4F8B;&#x5916;&#x3002;&#x6BD4;&#x5982;<code>ng-controller</code>&#x548C;<code>ng-repeat</code>&#x6307;&#x4EE4;&#x4F1A;&#x521B;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x5B50;&#x4F5C;&#x7528;&#x57DF;&#x5E76;&#x5C06;&#x5B83;&#x4EEC;&#x9644;&#x52A0;&#x5230;DOM&#x5143;&#x7D20;&#x4E0A;&#x3002;</p>
 
       
     </div>
@@ -507,13 +698,57 @@
 
   
   
-    <h3 class="article-title"><a href="/javascript/angularjs/chapter06_expression/README/"><span>expression</span></a></h3>
+    <h3 class="article-title"><a href="/MySQL/"><span></span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/javascript/angularjs/chapter06_expression/README/" rel="bookmark">
+      <a href="/MySQL/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h1 id="sql&#x8BED;&#x53E5;&#x4F18;&#x5316;"><a href="#SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;" class="headerlink" title="SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;"></a>SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;</h1><h2 id="in&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;"><a href="#IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;" class="headerlink" title="IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;"></a>IN&#x8BED;&#x53E5;&#x7684;&#x4F18;&#x5316;</h2><h3 id="demo-1"><a href="#demo-1" class="headerlink" title="demo 1"></a>demo 1</h3><p>&#x6162;&#x8BED;&#x53E5;  </p>
+<pre><code class="SQL"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t_user <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span>(<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">FROM</span> t_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> country)
+</code></pre>
+<p>&#x4F18;&#x5316;</p>
+<pre><code class="SQL"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t_user t1, (<span class="keyword">SELECT</span> <span class="keyword">MAX</span>(<span class="keyword">id</span>) <span class="keyword">AS</span> <span class="keyword">id</span> <span class="keyword">FROM</span> t_user <span class="keyword">GROUP</span> <span class="keyword">BY</span> country) t2 <span class="keyword">WHERE</span> t1.id = t2.id
+</code></pre>
+<h2 id="&#x5927;&#x8868;&#x67E5;&#x8BE2;&#x4F18;&#x5316;"><a href="#&#x5927;&#x8868;&#x67E5;&#x8BE2;&#x4F18;&#x5316;" class="headerlink" title="&#x5927;&#x8868;&#x67E5;&#x8BE2;&#x4F18;&#x5316;"></a>&#x5927;&#x8868;&#x67E5;&#x8BE2;&#x4F18;&#x5316;</h2><p>&#x968F;&#x7740;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x67E5;&#x8BE2;&#x901F;&#x5EA6;&#x4F1A;&#x8D8A;&#x6765;&#x8D8A;&#x6162;&#xFF0C;&#x53EF;&#x4EE5;&#x5F00;&#x542F;log_slow_queries&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;&#xFF0C;&#x901A;&#x8FC7;&#x67E5;&#x770B;<a href="http://www.itzhai.com/access-speed-too-slow-mysql-statement-analysis.html" title="&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;" target="_blank" rel="external">&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;</a>&#x627E;&#x5230;&#x6162;&#x8BED;&#x53E5;&#xFF0C;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#x3002;  </p>
+<h1 id="&#x95EE;&#x9898;"><a href="#&#x95EE;&#x9898;" class="headerlink" title="&#x95EE;&#x9898;"></a>&#x95EE;&#x9898;</h1><h2 id="&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E3B;&#x952E;&#x8BBE;&#x8BA1;&#x539F;&#x5219;"><a href="#&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E3B;&#x952E;&#x8BBE;&#x8BA1;&#x539F;&#x5219;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E3B;&#x952E;&#x8BBE;&#x8BA1;&#x539F;&#x5219;"></a>&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E3B;&#x952E;&#x8BBE;&#x8BA1;&#x539F;&#x5219;</h2>
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/javascript/angularjs/chapter03_module/README/"><span>module</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/angularjs/chapter03_module/README/" rel="bookmark">
         <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
           2016-05-03
         </time>
@@ -529,22 +764,9 @@
       
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+<p>AngularJS&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x4F7F;&#x7528;angular.module()&#x65B9;&#x6CD5;&#x6765;&#x58F0;&#x660E;&#x6A21;&#x5757;&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x80FD;&#x591F;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x6A21;&#x5757;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;&#x4F9D;&#x8D56;&#x5217;&#x8868;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x88AB;&#x6CE8;&#x5165;&#x5230;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x5217;&#x8868;&#x3002;</p>
 </blockquote>
-<p>&#x8868;&#x8FBE;&#x5F0F;&#x548C;eval(javascript)&#x975E;&#x5E38;&#x76F8;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x8868;&#x8FBE;&#x5F0F;&#x7531;AngularJS&#x6765;&#x5904;&#x7406;&#xFF0C;&#x5B83;&#x4EEC;&#x6709;&#x4EE5;&#x4E0B;&#x663E;&#x8457;&#x4E0D;&#x540C;&#x7684;&#x7279;&#x6027;&#xFF1A;</p>
-<ul>
-<li>&#x6240;&#x6709;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x5728;&#x5176;&#x6240;&#x5C5E;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x5185;&#x90E8;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x6709;&#x8BBF;&#x95EE;&#x672C;&#x5730;$scope&#x7684;&#x6743;&#x9650;&#xFF1B;</li>
-<li>&#x5982;&#x679C;&#x8868;&#x8FBE;&#x5F0F;&#x53D1;&#x751F;&#x4E86;TypeError&#x548C;ReferenceError&#x5E76;&#x4E0D;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF1B;</li>
-<li>&#x4E0D;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x6D41;&#x7A0B;&#x63A7;&#x5236;&#x529F;&#x80FD;&#xFF08;&#x6761;&#x4EF6;&#x63A7;&#x5236;&#xFF0C;&#x4F8B;&#x5982;if/eles&#xFF09;&#xFF1B;</li>
-<li>&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x8FC7;&#x6EE4;&#x5668;&#x548C;&#x8FC7;&#x6EE4;&#x5668;&#x94FE;&#x3002;</li>
-</ul>
-<h2 id="61-&#x89E3;&#x6790;angularjs&#x8868;&#x8FBE;&#x5F0F;"><a href="#6-1&#x3001;&#x89E3;&#x6790;AngularJS&#x8868;&#x8FBE;&#x5F0F;" class="headerlink" title="6.1&#x3001;&#x89E3;&#x6790;AngularJS&#x8868;&#x8FBE;&#x5F0F;"></a>6.1&#x3001;&#x89E3;&#x6790;AngularJS&#x8868;&#x8FBE;&#x5F0F;</h2><p><code>$parse</code>: AngularJS&#x901A;&#x8FC7;<code>$parse</code>&#x8FD9;&#x4E2A;&#x5185;&#x90E8;&#x670D;&#x52A1;&#x6765;&#x8FDB;&#x884C;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8FD0;&#x7B97;&#xFF0C;&#x8FD9;&#x4E2A;&#x670D;&#x52A1;&#x80FD;&#x591F;&#x8BBF;&#x95EE;&#x5F53;&#x524D;&#x6240;&#x5904;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x3002;</p>
-<p><a href="http://www.ngnice.com/posts/2314014da4eea8" title="$parse/$eval&#x548C;$observe/$watch&#x5982;&#x4F55;&#x533A;&#x5206;" target="_blank" rel="external">$parse/$eval&#x548C;$observe/$watch&#x5982;&#x4F55;&#x533A;&#x5206;</a></p>
-<h2 id="62-&#x63D2;&#x503C;&#x8868;&#x8FBE;&#x5F0F;"><a href="#6-2&#x3001;&#x63D2;&#x503C;&#x8868;&#x8FBE;&#x5F0F;" class="headerlink" title="6.2&#x3001;&#x63D2;&#x503C;&#x8868;&#x8FBE;&#x5F0F;"></a>6.2&#x3001;&#x63D2;&#x503C;&#x8868;&#x8FBE;&#x5F0F;</h2><p><code>$interpolate&#x670D;&#x52A1;</code>: &#x63D2;&#x503C;&#x5141;&#x8BB8;&#x57FA;&#x4E8E;&#x4F5C;&#x7528;&#x57DF;&#x4E0A;&#x7684;&#x67D0;&#x4E2A;&#x6761;&#x4EF6;&#x5B9E;&#x65F6;&#x66F4;&#x65B0;&#x6587;&#x672C;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x53EF;&#x63A5;&#x6536;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#xFF1A;</p>
-<ul>
-<li>text&#xFF08;&#x5B57;&#x7B26;&#x4E32;&#xFF09;&#xFF1A;&#x4E00;&#x4E2A;&#x5305;&#x542B;<code>&#x5B57;&#x7B26;&#x63D2;&#x503C;&#x6807;&#x8BB0;</code>&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;</li>
-<li>mustHaveExpression&#xFF08;&#x5E03;&#x5C14;&#x578B;&#xFF09;&#xFF1A;&#x5982;&#x679C;&#x5C06;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x8BBE;&#x4E3A;true&#xFF0C;&#x5F53;&#x4F20;&#x5165;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x4E0D;&#x542B;&#x6709;&#x8868;&#x8FBE;&#x5F0F;&#x65F6;&#x4F1A;&#x8FD4;&#x56DE;null&#x3002;</li>
-<li>trustedContext&#xFF08;&#x5B57;&#x7B26;&#x4E32;&#xFF09;&#xFF1A;AngularJS&#x4F1A;&#x5BF9;&#x5DF2;&#x7ECF;&#x8FDB;&#x884C;&#x8FC7;&#x5B57;&#x7B26;&#x63D2;&#x503C;&#x64CD;&#x4F5C;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x901A;&#x8FC7;$sec.getTrusted()&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x4E25;&#x683C;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x8F6C;&#x4E49;&#x3002;</li>
-</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x76F8;&#x5F53;&#x4E8E;AngularJS&#x6A21;&#x5757;&#x7684;setter&#x65B9;&#x6CD5;&#xFF0C;&#x662F;&#x7528;&#x6765;&#x5B9A;&#x4E49;&#x6A21;&#x5757;&#x7684;&#x3002;</span></span><br><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>, []);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x83B7;&#x53D6;&#x5E94;&#x7528;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;AngularJS&#x6A21;&#x5757;&#x7684;getter&#x65B9;&#x6CD5;</span></span><br><span class="line">angular.module(<span class="string">&apos;myApp&apos;</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -565,242 +787,6 @@
   <span class="post-tags">
     <i class="icon-tags"></i>
     <a href="/tags/AngularJS/">AngularJS</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/NoSQL/Redis/2016-04-19 命令/"><span>Redis命令</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/NoSQL/Redis/2016-04-19 命令/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<ol>
-<li><code>SETNX key value (SET if Not eXists)</code>:&#x5F53;&#x4E14;&#x4EC5;&#x5F53; key &#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5C06; key &#x7684;&#x503C;&#x8BBE;&#x4E3A; value &#xFF0C;&#x5E76;&#x8FD4;&#x56DE;1&#xFF1B;&#x82E5;&#x7ED9;&#x5B9A;&#x7684; key &#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#xFF0C;&#x5219; SETNX &#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x52A8;&#x4F5C;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;0&#x3002;</li>
-<li><code>GETSET key value</code>:&#x5C06;&#x7ED9;&#x5B9A; key &#x7684;&#x503C;&#x8BBE;&#x4E3A; value &#xFF0C;&#x5E76;&#x8FD4;&#x56DE; key &#x7684;&#x65E7;&#x503C; (old value)&#xFF0C;&#x5F53; key &#x5B58;&#x5728;&#x4F46;&#x4E0D;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#xFF0C;&#x5F53;key&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;nil&#x3002;</li>
-<li><code>GET key</code>:&#x8FD4;&#x56DE; key &#x6240;&#x5173;&#x8054;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#xFF0C;&#x5982;&#x679C; key &#x4E0D;&#x5B58;&#x5728;&#x90A3;&#x4E48;&#x8FD4;&#x56DE; nil &#x3002;</li>
-<li><code>DEL key [KEY &#x2026;]</code>:&#x5220;&#x9664;&#x7ED9;&#x5B9A;&#x7684;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A; key ,&#x4E0D;&#x5B58;&#x5728;&#x7684; key &#x4F1A;&#x88AB;&#x5FFD;&#x7565;,&#x8FD4;&#x56DE;&#x5B9E;&#x9645;&#x5220;&#x9664;&#x7684;key&#x7684;&#x4E2A;&#x6570;&#xFF08;integer&#xFF09;&#x3002;</li>
-<li><code>HSET key field value</code>&#xFF1A;&#x7ED9;&#x4E00;&#x4E2A;key &#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;{field=value}&#x7684;&#x7EC4;&#x5408;&#x503C;&#xFF0C;&#x5982;&#x679C;key&#x6CA1;&#x6709;&#x5C31;&#x76F4;&#x63A5;&#x8D4B;&#x503C;&#x5E76;&#x8FD4;&#x56DE;1&#xFF0C;&#x5982;&#x679C;field&#x5DF2;&#x6709;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x66F4;&#x65B0;value&#x7684;&#x503C;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;0.</li>
-<li><code>HEXISTS key field</code>:&#x5F53;key &#x4E2D;&#x5B58;&#x50A8;&#x7740;field&#x7684;&#x65F6;&#x5019;&#x8FD4;&#x56DE;1&#xFF0C;&#x5982;&#x679C;key&#x6216;&#x8005;field&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x4E2A;&#x4E0D;&#x5B58;&#x5728;&#x8FD4;&#x56DE;0&#x3002;</li>
-<li><code>HINCRBY key field increment</code>:&#x5C06;&#x5B58;&#x50A8;&#x5728; key &#x4E2D;&#x7684;&#x54C8;&#x5E0C;&#xFF08;Hash&#xFF09;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x6307;&#x5B9A;&#x5B57;&#x6BB5; field &#x7684;&#x503C;&#x52A0;&#x4E0A;&#x589E;&#x91CF; increment&#x3002;&#x5982;&#x679C;&#x952E; key &#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x4E00;&#x4E2A;&#x4FDD;&#x5B58;&#x4E86;&#x54C8;&#x5E0C;&#x5BF9;&#x8C61;&#x7684;&#x65B0;&#x5EFA;&#x5C06;&#x88AB;&#x521B;&#x5EFA;&#x3002;&#x5982;&#x679C;&#x5B57;&#x6BB5; field &#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5728;&#x8FDB;&#x884C;&#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x524D;&#xFF0C;&#x5176;&#x5C06;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x4E14;&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x88AB;&#x7F6E;&#x4E3A; 0&#x3002;&#x8FD4;&#x56DE;&#x503C;&#x662F;&#x589E;&#x91CF;&#x4E4B;&#x540E;&#x7684;&#x503C;&#x3002;</li>
-<li><code>PEXPIRE key milliseconds</code>&#xFF1A;&#x8BBE;&#x7F6E;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;&#xFF0C;&#x5355;&#x4F4D;&#x662F;&#x6BEB;&#x79D2;&#x3002;expire&#x64CD;&#x4F5C;&#x5355;&#x4F4D;&#x662F;&#x79D2;&#x3002;</li>
-<li><code>PUBLISH channel message</code>:&#x5411;channel post&#x4E00;&#x4E2A;message&#x5185;&#x5BB9;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x8FD4;&#x56DE;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x6570;&#x3002;</li>
-</ol>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Redis/">Redis</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h1 id="java&#x57FA;&#x7840;&#x77E5;&#x8BC6;"><a href="#Java&#x57FA;&#x7840;&#x77E5;&#x8BC6;" class="headerlink" title="Java&#x57FA;&#x7840;&#x77E5;&#x8BC6;"></a>Java&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h1><h2 id="hashmap-&#x4E0E;-concurrenthashmap"><a href="#HashMap-&#x4E0E;-ConcurrentHashMap" class="headerlink" title="HashMap &#x4E0E; ConcurrentHashMap"></a>HashMap &#x4E0E; ConcurrentHashMap</h2><p>HashMap&#x7684;&#x6269;&#x5BB9;&#x673A;&#x5236;&#xFF0C;ConcurrentHashMap&#x7684;&#x539F;&#x7406;&#xFF1A;</p>
-<blockquote>
-<p><a href="HashMap&#x7684;&#x8BBE;&#x8BA1;&#x539F;&#x7406;&#x548C;&#x5B9E;&#x73B0;&#x5206;&#x6790;" title="http://blog.csdn.net/luanlouis/article/details/41576373">HashMap&#x7684;&#x8BBE;&#x8BA1;&#x539F;&#x7406;&#x548C;&#x5B9E;&#x73B0;&#x5206;&#x6790;</a><br>HashMap&#x9020;&#x6210;&#x7684;&#x6B7B;&#x9501;&#x95EE;&#x9898;<br><a href="ConcurrentHashMap&#x539F;&#x7406;&#x5206;&#x6790;" title="http://pengtyao.iteye.com/blog/1074271">ConcurrentHashMap&#x539F;&#x7406;&#x5206;&#x6790;</a></p>
-</blockquote>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x5355;&#x7EBF;&#x7A0B;&#x65F6;&#x4F7F;&#x7528;HashMap&#x63D0;&#x9AD8;&#x6548;&#x7387;&#xFF0C;&#x800C;&#x591A;&#x7EBF;&#x7A0B;&#x65F6;&#x7528;Hashtable&#x6765;&#x4FDD;&#x8BC1;&#x5B89;&#x5168;&#x3002;</p>
-<p>HashMap&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;&#x5BFC;&#x81F4;&#x7684;&#x601D;&#x7D22;&#x95EE;&#x9898;&#x5206;&#x6790;</p>
-<h2 id="&#x5E8F;&#x5217;&#x5316;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5E8F;&#x5217;&#x5316;id&#x4F1A;&#x51FA;&#x73B0;&#x54EA;&#x4E9B;&#x95EE;&#x9898;"><a href="#&#x5E8F;&#x5217;&#x5316;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5E8F;&#x5217;&#x5316;id&#x4F1A;&#x51FA;&#x73B0;&#x54EA;&#x4E9B;&#x95EE;&#x9898;" class="headerlink" title="&#x5E8F;&#x5217;&#x5316;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5E8F;&#x5217;&#x5316;id&#x4F1A;&#x51FA;&#x73B0;&#x54EA;&#x4E9B;&#x95EE;&#x9898;"></a>&#x5E8F;&#x5217;&#x5316;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5E8F;&#x5217;&#x5316;id&#x4F1A;&#x51FA;&#x73B0;&#x54EA;&#x4E9B;&#x95EE;&#x9898;</h2><p><a href="http://www.itzhai.com/javascript-design-patterns-notes-combined-mode.html#2&#x3001;&#x5916;&#x89C2;&#x6A21;&#x5F0F;&#xFF1A;" title="&#x5916;&#x89C2;&#x6A21;&#x5F0F;" target="_blank" rel="external">&#x5916;&#x89C2;&#x6A21;&#x5F0F;</a>&#x7684;&#x4F8B;&#x5B50;&#xFF1A;<a href="http://www.ibm.com/developerworks/cn/java/j-lo-serial/#major3" title="Java&#x5E8F;&#x5217;&#x5316;ID&#x95EE;&#x9898;" target="_blank" rel="external">Java&#x5E8F;&#x5217;&#x5316;ID&#x95EE;&#x9898;</a><br>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x5347;&#x7EA7;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x5BF9;&#x8C61;&#x6539;&#x52A8;&#xFF0C;&#x91CD;&#x65B0;&#x751F;&#x6210;&#x4E86;id&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5BA2;&#x6237;&#x7AEF;&#x89E3;&#x6790;&#x65E7;&#x7684;&#x5BF9;&#x8C61;&#x5C31;&#x4F1A;&#x5931;&#x8D25;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5FC5;&#x987B;&#x91CD;&#x65B0;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x83B7;&#x53D6;&#x6700;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x5E8F;&#x5217;&#x5316;&#x6587;&#x4EF6;&#x3002;</p>
-<h2 id="jdk&#x5E38;&#x7528;&#x5E93;jdk&#x6E90;&#x4EE3;&#x7801;"><a href="#JDK&#x5E38;&#x7528;&#x5E93;&#xFF0C;JDK&#x6E90;&#x4EE3;&#x7801;" class="headerlink" title="JDK&#x5E38;&#x7528;&#x5E93;&#xFF0C;JDK&#x6E90;&#x4EE3;&#x7801;"></a>JDK&#x5E38;&#x7528;&#x5E93;&#xFF0C;JDK&#x6E90;&#x4EE3;&#x7801;</h2><h3 id="java-io&#x7C7B;&#x5E93;&#x7ED3;&#x6784;&#x56FE;&#x548C;&#x6240;&#x7528;&#x5230;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"><a href="#Java-IO&#x7C7B;&#x5E93;&#x7ED3;&#x6784;&#x56FE;&#xFF0C;&#x548C;&#x6240;&#x7528;&#x5230;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;" class="headerlink" title="Java IO&#x7C7B;&#x5E93;&#x7ED3;&#x6784;&#x56FE;&#xFF0C;&#x548C;&#x6240;&#x7528;&#x5230;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"></a>Java IO&#x7C7B;&#x5E93;&#x7ED3;&#x6784;&#x56FE;&#xFF0C;&#x548C;&#x6240;&#x7528;&#x5230;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</h3><h2 id="nio"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h2><h3 id="&#x963B;&#x585E;&#x540E;&#x7684;&#x901A;&#x77E5;&#x673A;&#x5236;"><a href="#&#x963B;&#x585E;&#x540E;&#x7684;&#x901A;&#x77E5;&#x673A;&#x5236;" class="headerlink" title="&#x963B;&#x585E;&#x540E;&#x7684;&#x901A;&#x77E5;&#x673A;&#x5236;"></a>&#x963B;&#x585E;&#x540E;&#x7684;&#x901A;&#x77E5;&#x673A;&#x5236;</h3><h2 id="runtimeexception&#x4E0E;checkedexception"><a href="#RuntimeException&#x4E0E;CheckedException" class="headerlink" title="RuntimeException&#x4E0E;CheckedException"></a>RuntimeException&#x4E0E;CheckedException</h2><p><strong>checked exception</strong><br>checked exception&#x662F;&#x4ECE;java.lang.Exception&#x7C7B;&#x884D;&#x751F;&#x51FA;&#x6765;&#x7684;&#xFF1B;<br>runtime exception&#x662F;&#x4ECE;java.lang.RuntimeException &#x6216;java.lang.Error&#x7C7B;&#x884D;&#x751F;&#x51FA;&#x6765;&#x7684;&#xFF0C;RuntimeException&#x53C8;&#x7EE7;&#x627F;&#x81EA;Exception&#xFF1B;<br>checked exception&#x7528;&#x6765;&#x6307;&#x793A;&#x4E00;&#x79CD;&#x8C03;&#x7528;&#x65B9;&#x80FD;&#x591F;&#x76F4;&#x63A5;&#x5904;&#x7406;&#x7684;&#x5F02;&#x5E38;&#x60C5;&#x51B5;&#xFF1B;    </p>
-<p><strong>Runtime Exception</strong><br>&#x5728;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x58F0;&#x660E;&#x4F1A;&#x629B;&#x51FA;runtime exception&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x6355;&#x83B7;runtime exception&#xFF1B;<br>&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x662F;&#x5FC5;&#x987B;&#x58F0;&#x660E;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x629B;&#x51FA;&#x7684;checked exception&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x6355;&#x83B7;&#x5B83;&#x7684;checked exception,&#x6216;&#x8005;throws&#x51FA;&#x53BB;&#xFF1B;<br>runtime exception&#x6307;&#x793A;&#x4E00;&#x79CD;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65E0;&#x6CD5;&#x5904;&#x7406;&#x8D27;&#x6062;&#x590D;&#x7684;&#x7A0B;&#x5E8F;&#x9519;&#x8BEF;&#xFF1B;    </p>
-<h1 id="&#x53CD;&#x5C04;-&#x52A8;&#x6001;&#x4EE3;&#x7406;"><a href="#&#x53CD;&#x5C04;-&#x52A8;&#x6001;&#x4EE3;&#x7406;" class="headerlink" title="&#x53CD;&#x5C04; &#x52A8;&#x6001;&#x4EE3;&#x7406;"></a>&#x53CD;&#x5C04; &#x52A8;&#x6001;&#x4EE3;&#x7406;</h1><p><a href="http://yajie.iteye.com/blog/1186522" title="&#x770B;&#x770B;java&#x7684;&#x53CD;&#x5C04;&#x6548;&#x7387;" target="_blank" rel="external">&#x770B;&#x770B;java&#x7684;&#x53CD;&#x5C04;&#x6548;&#x7387;</a></p>
-<hr>
-<h1 id="java&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><a href="#Java&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="headerlink" title="Java&#x914D;&#x7F6E;&#x6587;&#x4EF6;"></a>Java&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h1><hr>
-<h1 id="jvm&#x865A;&#x62DF;&#x673A;"><a href="#JVM&#x865A;&#x62DF;&#x673A;" class="headerlink" title="JVM&#x865A;&#x62DF;&#x673A;"></a>JVM&#x865A;&#x62DF;&#x673A;</h1><h2 id="&#x6DF1;&#x5165;&#x7406;&#x89E3;java&#x865A;&#x62DF;&#x673A;&#x7B14;&#x8BB0;"><a href="#&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x7B14;&#x8BB0;" class="headerlink" title="&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x7B14;&#x8BB0;"></a>&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x7B14;&#x8BB0;</h2><ul>
-<li><a href="http://www.itzhai.com/jvm-note-introduce-java.html" title="&#x8D70;&#x8FD1;Java" target="_blank" rel="external">&#x8D70;&#x8FD1;Java</a></li>
-<li><p><a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism.html" title="&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;Java&#x5185;&#x5B58;&#x533A;&#x57DF;&#x4E0E;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x5F02;&#x5E38;&#xFF09;" target="_blank" rel="external">&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;Java&#x5185;&#x5B58;&#x533A;&#x57DF;&#x4E0E;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x5F02;&#x5E38;&#xFF09;</a><br>  <a href="https://github.com/arthinking/java-code/blob/master/src/me/arthinking/memoryleaktest/HeapOOM.java" title="Java&#x5806;&#x6EA2;&#x51FA;" target="_blank" rel="external">Java&#x5806;&#x6EA2;&#x51FA;</a><br>  <a href="https://github.com/arthinking/java-code/tree/master/src/me/arthinking/memoryleaktest" title="more" target="_blank" rel="external">more</a><br>  &#x65B0;&#x751F;&#x4EE3;Minor GC&#x7684;&#x4F8B;&#x5B50;&#xFF1A;<a href="https://github.com/arthinking/java-code/blob/master/src/me/arthinking/code4jvmnote/C_3_5_Minor_GC.java" title="&#x70B9;&#x6211;" target="_blank" rel="external">&#x70B9;&#x6211;</a></p>
-<blockquote>
-<ol>
-<li>&#x5206;&#x914D;allocation4&#x65F6;&#xFF0C;Eden&#x5DF2;&#x7ECF;&#x88AB;&#x5360;&#x7528;6MB&#xFF0C;&#x4E0D;&#x591F;&#x4E86;&#xFF08;&#x603B;&#x5171;8MB&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x53D1;&#x751F;&#x4E86;&#x4E00;&#x6B21;Minor GC&#xFF1B;  </li>
-<li>GC&#x671F;&#x95F4;&#x53D1;&#x73B0;&#x5DF2;&#x6709;&#x7684;3X2MB&#x5927;&#x5C0F;&#x5BF9;&#x8C61;&#x65E0;&#x6CD5;&#x5168;&#x90E8;&#x653E;&#x5165;Survivor&#x7A7A;&#x95F4;,&#x6240;&#x4EE5;&#x53EA;&#x597D;&#x901A;&#x8FC7;<a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism-2-html.html#6.5&#x3001;&#x7A7A;&#x95F4;&#x5206;&#x914D;&#x62C5;&#x4FDD;" title="&#x5206;&#x914D;&#x62C5;&#x4FDD;&#x673A;&#x5236;" target="_blank" rel="external">&#x5206;&#x914D;&#x62C5;&#x4FDD;&#x673A;&#x5236;</a>&#x63D0;&#x524D;&#x8F6C;&#x79FB;&#x5230;&#x8001;&#x5E74;&#x4EE3;&#x53BB;&#x4E86;&#xFF1B;  </li>
-<li>GC&#x7ED3;&#x675F;&#x540E;&#xFF0C;4MB&#x7684;allocation4&#x5BF9;&#x8C61;&#x88AB;&#x5206;&#x914D;&#x5230;Eden&#x4E2D;&#xFF0C;Survivor&#x7A7A;&#x95F2;&#xFF0C;&#x8001;&#x5E74;&#x4EE3;&#x5360;&#x7528;6MB    </li>
-</ol>
-</blockquote>
-</li>
-<li><p><a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism-2-html.html" title="&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4E0E;&#x5185;&#x5B58;&#x5206;&#x914D;&#x7B56;&#x7565;&#xFF09;" target="_blank" rel="external">&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4E0E;&#x5185;&#x5B58;&#x5206;&#x914D;&#x7B56;&#x7565;&#xFF09;</a>    </p>
-</li>
-<li><a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism-3.html" title="&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x4E0E;&#x6545;&#x969C;&#x5904;&#x7406;&#x5DE5;&#x5177;&#xFF09;" target="_blank" rel="external">&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x4E0E;&#x6545;&#x969C;&#x5904;&#x7406;&#x5DE5;&#x5177;&#xFF09;</a>     </li>
-</ul>
-<p>&#x4E0B;&#x9762;&#x662F;Java&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x5206;&#x6790;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;<a href="http://www.itzhai.com/java-memory-leak-analyze.html" title="Java&#x4E2D;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x5206;&#x6790;" target="_blank" rel="external">Java&#x4E2D;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x5206;&#x6790;</a> </p>
-<ul>
-<li><a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism-4.html" title="&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x8C03;&#x4F18;&#x6848;&#x4F8B;&#x5206;&#x6790;&#x4E0E;&#x5B9E;&#x6218;&#xFF09;" target="_blank" rel="external">&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x8C03;&#x4F18;&#x6848;&#x4F8B;&#x5206;&#x6790;&#x4E0E;&#x5B9E;&#x6218;&#xFF09;</a> </li>
-<li><a href="http://www.itzhai.com/the-class-file-structure.html" title="&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x7C7B;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF09;" target="_blank" rel="external">&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x7C7B;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF09;</a>     </li>
-</ul>
-<p>&#x5BF9;&#x4E8E;&#x540C;&#x6B65;&#x6307;&#x4EE4;monitorenter&#x548C;monitorexit&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x58F0;&#x660E;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x6240;&#x6709;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x5B83;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x7528;&#x6765;&#x6267;&#x884C;monitorexit&#x6307;&#x4EE4;&#x3002;</p>
-<ul>
-<li><a href="http://www.itzhai.com/the-class-file-structure.html" title="&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x7C7B;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#xFF09;" target="_blank" rel="external">&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x7C7B;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#xFF09;</a>     </li>
-</ul>
-<p>&#x52A0;&#x8F7D; -&gt; (&#x9A8C;&#x8BC1; -&gt; &#x51C6;&#x5907; -&gt; <code>&#x89E3;&#x6790;</code>) -&gt; &#x521D;&#x59CB;&#x5316; -&gt; &#x4F7F;&#x7528; -&gt; &#x5378;&#x8F7D;<br>&#x5176;&#x4E2D;&#x89E3;&#x6790;&#x9636;&#x6BB5;&#x53EF;&#x4EE5;&#x5728;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#x4E4B;&#x540E;&#x518D;&#x5F00;&#x59CB;&#xFF0C;&#x4EE5;&#x4FBF;&#x652F;&#x6301;&#x8FD0;&#x884C;&#x65F6;&#x7ED1;&#x5B9A;&#xFF08;&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#x6216;&#x665A;&#x671F;&#x7ED1;&#x5B9A;&#xFF09;&#x3002;</p>
-<p>JVM&#x4E2D;&#x4E25;&#x683C;&#x89C4;&#x5B9A;&#x6709;&#x4E14;&#x53EA;&#x6709;&#x4E00;&#x4E0B;&#x4E94;&#x4E2D;&#x60C5;&#x51B5;&#x5FC5;&#x987B;&#x5BF9;&#x7C7B;&#x8FDB;&#x884C;&#x201C;&#x521D;&#x59CB;&#x5316;&#x201D;&#xFF1A;<a href="http://" target="_blank" rel="external">detail</a>(&#x52A0;&#x8F7D;&#x3001;&#x9A8C;&#x8BC1;&#x3001;&#x51C6;&#x5907;&#x81EA;&#x7136;&#x9700;&#x8981;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#x5F00;&#x59CB;)    </p>
-<p>&#x8FD9;5&#x79CD;&#x573A;&#x666F;&#x79F0;&#x4E3A;&#x5BF9;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x4E3B;&#x52A8;&#x5F15;&#x7528;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x79F0;&#x4E3A;&#x88AB;&#x52A8;&#x5F15;&#x7528;&#xFF0C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4EE5;&#x4E0B;&#x662F;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
-<blockquote>
-<p>&#x901A;&#x8FC7;&#x5B50;&#x7C7B;&#x5F15;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x5B57;&#x6BB5;&#xFF0C;&#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x5B50;&#x7C7B;&#x521D;&#x59CB;&#x5316;</p>
-<p>&#x901A;&#x8FC7;&#x6570;&#x7EC4;&#x5B9A;&#x4E49;&#x6765;&#x5F15;&#x7528;&#x7C7B;&#xFF0C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x6B64;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;    </p>
-<p>&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;&#x5E38;&#x91CF;&#xFF0C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x5E38;&#x91CF;&#x7684;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;    </p>
-</blockquote>
-<h3 id="jvm&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0E;gc&#x56DE;&#x6536;&#x673A;&#x5236;"><a href="#JVM&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0E;GC&#x56DE;&#x6536;&#x673A;&#x5236;" class="headerlink" title="JVM&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0E;GC&#x56DE;&#x6536;&#x673A;&#x5236;"></a>JVM&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0E;GC&#x56DE;&#x6536;&#x673A;&#x5236;</h3><h3 id="jvm&#x8C03;&#x4F18;&#x548C;&#x5E38;&#x7528;&#x5DE5;&#x5177;"><a href="#JVM&#x8C03;&#x4F18;&#x548C;&#x5E38;&#x7528;&#x5DE5;&#x5177;" class="headerlink" title="JVM&#x8C03;&#x4F18;&#x548C;&#x5E38;&#x7528;&#x5DE5;&#x5177;"></a>JVM&#x8C03;&#x4F18;&#x548C;&#x5E38;&#x7528;&#x5DE5;&#x5177;</h3><p><strong>&#x5982;&#x4F55;dump&#x51FA;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x72B6;&#x6001;</strong><br>&#x4F7F;&#x7528;<a href="http://www.blogjava.net/jzone/articles/303979.html" title="jstack pid" target="_blank" rel="external">jstack pid</a>&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;<a href="http://segmentfault.com/blog/yexiaobai/1190000000615690" title="Thread Dumps&#x7684;&#x5206;&#x6790;" target="_blank" rel="external">Thread Dumps&#x7684;&#x5206;&#x6790;</a>    </p>
-<p><strong><em>&#x7EBF;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#xFF1A;</em></strong><br><code>Runnable</code>&#xFF1A;<br><code>Wait oncondition</code>&#xFF1A;<br><code>Waiting for monitor entry</code>&#xFF1A;<br><code>in Object.wait()</code>&#xFF1A;        </p>
-<p><strong><em>&#x6848;&#x4F8B;</em></strong>&#xFF1A;<code>&#x6B7B;&#x9501;</code> &amp; <code>&#x70ED;&#x9501;</code><br>Java5&#x4E2D;&#x52A0;&#x5F3A;&#x4E86;&#x5806;&#x601D;&#x7D22;&#x7684;&#x76D1;&#x6D4B;&#x7EBF;&#x7A0B;Dump&#x4E2D;&#x79D1;&#x9662;&#x76F4;&#x63A5;&#x62A5;&#x544A;&#x51FA;Java&#x7EA7;&#x522B;&#x7684;&#x601D;&#x7D22;&#x3002;</p>
-<blockquote>
-<p>&#x5982;&#x679C;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x5927;&#x91CF;&#x4F7F;&#x7528; synchronized&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x9002;&#x5F53;&#x7684;&#x4F7F;&#x7528;&#x4E86;&#x5B83;&#xFF0C;&#x4F1A;&#x9020;&#x6210;&#x5927;&#x91CF;&#x7EBF;&#x7A0B;&#x5728;&#x4E34;&#x754C;&#x533A;&#x7684;&#x5165;&#x53E3;&#x7B49;&#x5F85;&#xFF0C;&#x9020;&#x6210;&#x7CFB;&#x7EDF;&#x7684;&#x6027;&#x80FD;&#x5927;&#x5E45;&#x4E0B;&#x964D;&#x3002;&#x5982;&#x679C;&#x5728;&#x7EBF;&#x7A0B; DUMP&#x4E2D;&#x53D1;&#x73B0;&#x4E86;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#xFF0C;&#x5E94;&#x8BE5;&#x5BA1;&#x67E5;&#x6E90;&#x7801;&#xFF0C;&#x6539;&#x8FDB;&#x7A0B;&#x5E8F;&#x3002;(&#x5F15;&#x7528;)</p>
-</blockquote>
-<p><strong>JVM&#x8C03;&#x4F18;&#x76F8;&#x5173;&#x7ECF;&#x9A8C;</strong></p>
-<h2 id="classloader&#x7ED3;&#x6784;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;string&#x7C7B;"><a href="#ClassLoader&#x7ED3;&#x6784;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;String&#x7C7B;" class="headerlink" title="ClassLoader&#x7ED3;&#x6784;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;String&#x7C7B;"></a>ClassLoader&#x7ED3;&#x6784;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;String&#x7C7B;</h2><p>&#x8BF4;&#x8BF4;ClassLoader&#x7684;&#x53CC;&#x4EB2;&#x4EE3;&#x7406;&#x673A;&#x5236;</p>
-<h2 id="&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;"><a href="#&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;" class="headerlink" title="&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;"></a>&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;</h2><p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-hotdeploy/index.html" title="ASM&#x4FEE;&#x6539;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;" target="_blank" rel="external">ASM&#x4FEE;&#x6539;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;</a>&#x7684;&#x6D41;&#x7A0B;&#x662F;&#x4E00;&#x4E2A;&#x804C;&#x8D23;&#x94FE;&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;ASM&#x4FEE;&#x6539;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x8BA9;&#x6BCF;&#x6B21;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x662F;&#x7528;&#x6700;&#x65B0;&#x7248;&#x672C;&#x7684;Class&#x6587;&#x4EF6;&#x751F;&#x6210;&#x5B9E;&#x4F8B;&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x70ED;&#x90E8;&#x7F72;&#xFF0C;&#x4F46;&#x662F;PermGen space&#x8FD8;&#x662F;&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4EC5;&#x4EC5;&#x662F;&#x8BA9;&#x65B0;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x5BF9;&#x8C61;&#x662F;&#x7528;&#x65B0;&#x7684;&#x903B;&#x8F91;&#xFF1B;<br><a href="http://my.oschina.net/heroShane/blog/198492" title="Tomcat" target="_blank" rel="external">Tomcat</a>&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;&#x5B9E;&#x73B0;&#x3002;</p>
-<hr>
-<h1 id="&#x6846;&#x67B6;&#x6E90;&#x7801;&#x76F8;&#x5173;"><a href="#&#x6846;&#x67B6;&#x6E90;&#x7801;&#x76F8;&#x5173;" class="headerlink" title="&#x6846;&#x67B6;&#x6E90;&#x7801;&#x76F8;&#x5173;"></a>&#x6846;&#x67B6;&#x6E90;&#x7801;&#x76F8;&#x5173;</h1><h2 id="&#x5E76;&#x53D1;&#x6846;&#x67B6;"><a href="#&#x5E76;&#x53D1;&#x6846;&#x67B6;" class="headerlink" title="&#x5E76;&#x53D1;&#x6846;&#x67B6;"></a>&#x5E76;&#x53D1;&#x6846;&#x67B6;</h2><p>&#x591A;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x7528;&#x8FC7;&#x54EA;&#x4E9B;</p>
-<h2 id="spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><h2 id="osgi&#x6846;&#x67B6;"><a href="#OSGi&#x6846;&#x67B6;" class="headerlink" title="OSGi&#x6846;&#x67B6;"></a>OSGi&#x6846;&#x67B6;</h2><h3 id="&#x5982;&#x4F55;&#x5728;&#x4E00;&#x4E2A;bundle&#x4E2D;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;bundle&#x7684;class&#x5BF9;&#x8C61;"><a href="#&#x5982;&#x4F55;&#x5728;&#x4E00;&#x4E2A;bundle&#x4E2D;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;bundle&#x7684;Class&#x5BF9;&#x8C61;" class="headerlink" title="&#x5982;&#x4F55;&#x5728;&#x4E00;&#x4E2A;bundle&#x4E2D;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;bundle&#x7684;Class&#x5BF9;&#x8C61;"></a>&#x5982;&#x4F55;&#x5728;&#x4E00;&#x4E2A;bundle&#x4E2D;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;bundle&#x7684;Class&#x5BF9;&#x8C61;</h3><hr>
-<h1 id="java-web"><a href="#Java-Web" class="headerlink" title="Java Web"></a>Java Web</h1><h2 id="servlet&#x4E0E;filter&#x7684;&#x4F5C;&#x7528;&#x539F;&#x7406;&#x914D;&#x7F6E;"><a href="#Servlet&#x4E0E;Filter&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x539F;&#x7406;&#xFF0C;&#x914D;&#x7F6E;" class="headerlink" title="Servlet&#x4E0E;Filter&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x539F;&#x7406;&#xFF0C;&#x914D;&#x7F6E;"></a>Servlet&#x4E0E;Filter&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x539F;&#x7406;&#xFF0C;&#x914D;&#x7F6E;</h2><h2 id="session&#x5171;&#x4EAB;&#x673A;&#x5236;"><a href="#Session&#x5171;&#x4EAB;&#x673A;&#x5236;" class="headerlink" title="Session&#x5171;&#x4EAB;&#x673A;&#x5236;"></a>Session&#x5171;&#x4EAB;&#x673A;&#x5236;</h2>
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/NoSQL/Memcached/Memcached配置使用与监控/"><span>Memcached配置使用与监控</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/NoSQL/Memcached/Memcached配置使用与监控/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h1 id="1-&#x914D;&#x7F6E;"><a href="#1&#x3001;&#x914D;&#x7F6E;" class="headerlink" title="1&#x3001;&#x914D;&#x7F6E;"></a>1&#x3001;&#x914D;&#x7F6E;</h1><h2 id="11-&#x5B89;&#x88C5;"><a href="#1-1&#x3001;&#x5B89;&#x88C5;" class="headerlink" title="1.1&#x3001;&#x5B89;&#x88C5;"></a>1.1&#x3001;&#x5B89;&#x88C5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install memcached</span><br></pre></td></tr></table></figure>
-<h2 id="12-&#x542F;&#x52A8;"><a href="#1-2&#x3001;&#x542F;&#x52A8;" class="headerlink" title="1.2&#x3001;&#x542F;&#x52A8;"></a>1.2&#x3001;&#x542F;&#x52A8;</h2><blockquote>
-<p>Memcached&#x7684;&#x57FA;&#x672C;&#x8BBE;&#x7F6E;&#xFF1A;</p>
-<p>-p &#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;<br>-l &#x8FDE;&#x63A5;&#x7684;IP&#x5730;&#x5740;, &#x9ED8;&#x8BA4;&#x662F;&#x672C;&#x673A;<br>-d start &#x542F;&#x52A8;memcached&#x670D;&#x52A1;<br>-d restart &#x91CD;&#x8D77;memcached&#x670D;&#x52A1;<br>-d stop|shutdown &#x5173;&#x95ED;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;memcached&#x670D;&#x52A1;<br>-d install &#x5B89;&#x88C5;memcached&#x670D;&#x52A1;<br>-d uninstall &#x5378;&#x8F7D;memcached&#x670D;&#x52A1;<br>-u &#x4EE5;&#x7684;&#x8EAB;&#x4EFD;&#x8FD0;&#x884C; (&#x4EC5;&#x5728;&#x4EE5;root&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x6709;&#x6548;)<br>-m &#x6700;&#x5927;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#xFF0C;&#x5355;&#x4F4D;MB&#x3002;&#x9ED8;&#x8BA4;64MB<br>-M &#x5185;&#x5B58;&#x8017;&#x5C3D;&#x65F6;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5220;&#x9664;&#x9879;<br>-c &#x6700;&#x5927;&#x540C;&#x65F6;&#x8FDE;&#x63A5;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1024<br>-f &#x5757;&#x5927;&#x5C0F;&#x589E;&#x957F;&#x56E0;&#x5B50;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1.25<br>-n &#x6700;&#x5C0F;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#xFF0C;key+value+flags&#x9ED8;&#x8BA4;&#x662F;48<br>-h &#x663E;&#x793A;&#x5E2E;&#x52A9;<br>mixi&#x7684;&#x8BBE;&#x7F6E;,&#x5355;&#x53F0;:    </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># &#x6BCF;&#x53F0;mc&#x670D;&#x52A1;&#x5668;&#x4EC5;&#x542F;&#x52A8;&#x4E00;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x5206;&#x914D;1G&#x5185;&#x5B58;</span><br><span class="line">/usr/bin/memcached -p 11211 -u nobody -m 1000 -c 512</span><br><span class="line"></span><br><span class="line"># &#x542F;&#x52A8;mc</span><br><span class="line">/usr/share/memcached/scripts/start-memcached</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">&#x6CE8;&#x610F;&#xFF1A;32&#x4F4D;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x591F;&#x4F7F;&#x7528;**2G**&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x66F4;&#x5927;&#x7684;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#x4E86;&#x3002;&#xFF08;&#x7528;&#x540C;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#xFF0C;TCP&#x8FDE;&#x63A5;&#x6570;&#x5C31;&#x4F1A;&#x6210;&#x500D;&#x589E;&#x52A0;&#xFF0C;x86_64&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x5206;&#x914D;&#x8D85;&#x8FC7;2G&#x7684;&#x5185;&#x5B58;&#xFF09;&#xFF1B;</span><br><span class="line"></span><br><span class="line">mc&#x8FDB;&#x7A0B;&#x7684;&#x5B9E;&#x9645;&#x5185;&#x5B58;&#x5206;&#x914D;&#x91CF;&#x8981;&#x6BD4;&#x7F6E;&#x9876;&#x7684;&#x5185;&#x5B58;&#x8981;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x7F6E;&#x9876;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x592A;&#x5927;&#x4E86;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x4EA4;&#x6362;&#xFF08;swap&#xFF09;&#x3002;</span><br><span class="line"></span><br><span class="line"># 2&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</span><br><span class="line">&#x901A;&#x8FC7;magent&#x80FD;&#x591F;&#x8BA9;&#x7F13;&#x5B58;&#x5199;&#x5165;&#x5230;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684;memcached&#x91CC;&#x9762;</span><br><span class="line"></span><br><span class="line">## 2.1&#x3001;&#x5B89;&#x88C5;&#x4F7F;&#x7528;magent</span><br><span class="line">### 2.1.1&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;libevent</span><br><span class="line">```shell</span><br><span class="line">wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz</span><br><span class="line">tar zxvf libevent-1.4.9-stable.tar.gz</span><br><span class="line">cd libevent-1.4.9-stable/</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
-<h3 id="212-&#x7F16;&#x8BD1;&#x5B89;&#x88C5;memcached"><a href="#2-1-2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;" class="headerlink" title="2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;"></a>2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz</span><br><span class="line">tar zxvf memcached-1.2.6.tar.gz</span><br><span class="line">cd memcached-1.2.6/</span><br><span class="line">./configure --with-libevent=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
-<h3 id="213-&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent"><a href="#2-1-3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;" class="headerlink" title="2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;"></a>2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir magent</span><br><span class="line">cd magent/</span><br><span class="line">wget http://memagent.googlecode.com/files/magent-0.5.tar.gz</span><br><span class="line">tar zxvf magent-0.5.tar.gz</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">sed -i &quot;s#LIBS = -levent#LIBS = -levent -lm#g&quot; Makefile</span><br><span class="line">make</span><br><span class="line">cp magent /usr/bin/magent</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
-<h3 id="214-&#x96C6;&#x7FA4;&#x914D;&#x7F6E;"><a href="#2-1-4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;" class="headerlink" title="2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;"></a>2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</h3><p>&#x96C6;&#x7FA4;&#x4E24;&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x5907;&#x4EFD;&#x3002;<br>&#x9AD8;&#x53EF;&#x7528;&#x7F51;&#x7EDC;&#x67B6;&#x6784;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png" alt=""></p>
-<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;11211,11212</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11211</span><br><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11212</span><br></pre></td></tr></table></figure></p>
-<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;magent&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;10000,10001</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10000 -s 127.0.0.1:11211 -b 127.0.0.1:11212</span><br><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
-<p>-s&#x4E3A;&#x8981;&#x5199;&#x5165;&#x7684;memcached&#xFF0C;-b&#x4E3A;&#x5907;&#x4EFD;&#x7528;&#x7684;memcached    </p>
-<h1 id="3-&#x4F7F;&#x7528;"><a href="#3&#x3001;&#x4F7F;&#x7528;" class="headerlink" title="3&#x3001;&#x4F7F;&#x7528;"></a>3&#x3001;&#x4F7F;&#x7528;</h1><h2 id="31-&#x6E05;&#x7A7A;&#x7F13;&#x5B58;"><a href="#3-1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;" class="headerlink" title="3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;"></a>3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">flush_all</span><br><span class="line">quit</span><br></pre></td></tr></table></figure>
-<h1 id="4-&#x76D1;&#x63A7;"><a href="#4&#x3001;&#x76D1;&#x63A7;" class="headerlink" title="4&#x3001;&#x76D1;&#x63A7;"></a>4&#x3001;&#x76D1;&#x63A7;</h1><h2 id="41-stats"><a href="#4-1&#x3001;stats" class="headerlink" title="4.1&#x3001;stats"></a>4.1&#x3001;stats</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">stats</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>&#x76F8;&#x5173;&#x8D44;&#x6E90;&#xFF1A;</p>
-<p><a href="http://www.cnblogs.com/happyday56/p/3461113.html" title="memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;" target="_blank" rel="external">memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;</a>     </p>
-<p><a href="http://zhumeng8337797.blog.163.com/blog/static/10076891420113431424757/" title="memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  " target="_blank" rel="external">memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  </a></p>
-<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-config-and-monitoring.html" target="_blank" rel="external">http://www.itzhai.com/mc-config-and-monitoring.html</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
   </span>
 
 
