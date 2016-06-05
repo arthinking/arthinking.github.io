@@ -1,5 +1,6 @@
 ---
 title: JDK配置与JVM监控
+date: 2015-3-10
 categories: [Java]
 tags: [JVM, JDK]
 ---

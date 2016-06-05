@@ -1,5 +1,6 @@
 ---
 title: PropertyPlaceholderConfigurer的应用
+date: 2016-03-13
 categories: [Java, Spring]
 tags: []
 ---

@@ -1,7 +1,8 @@
 ---
 title: Zookeeper introduction
+date: 2016-04-26
 categories: [Java, Spring]
-tags: []
+tags: [ZooKeeper]
 ---
 
 > Author: ChinSyun Pang

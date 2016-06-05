@@ -1,6 +1,7 @@
 ---
 title: MySQL 安装问题
 categories: [Database]
+date: 2016-05-03
 tags: [MySQL]
 ---
 

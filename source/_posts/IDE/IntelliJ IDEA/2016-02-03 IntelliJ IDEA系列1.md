@@ -1,6 +1,7 @@
 ---
 title: INtelliJ IDEA系列1
 categories: [IDE]
+date: 2016-02-03
 tags: [IntelliJ IDEA]
 ---
 

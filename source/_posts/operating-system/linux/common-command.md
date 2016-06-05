@@ -15,6 +15,16 @@ grep -i -l -r -e 'arthinking.github.io' /Users/arthinking/Dev/informal-essay-git
 
 find /Users/arthinking/Dev/arthinking.github.io/source/_posts/* -name "*.md" -print0 | xargs -0 sed -i "" "s/^\(##*\) *\(.*\)$/\1 \2/g"
 
+grep -i -l -r -e '![]()' $file | xargs sed -i "" "s/![]()/![]()/g"
+
+find /Users/arthinking/Dev/arthinking.github.io/source/_posts/* -name "*.md" -print0 | xargs -0 sed -i "" "s/\(![]()\)/\1/g"
+
+https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/20141204-java01.png
+
+
+find /Users/arthinking/Dev/test/* -name "*.md" -print0 | xargs -0 perl -pi -e "s/(\!\[\]\(.*?jpg\))/test\1/g"
+
+
 # 注意贪婪模式
 
 http://serverfault.com/questions/268368/how-can-i-handle-spaces-in-file-names-when-using-xargs-on-find-results
@@ -63,7 +73,7 @@ scp -r local_folder remote_username@remote_ip:remote_folder scp -r local_folder
 scp root@182.92.6.82:/home/guitargg.gz ~/Downloads/
 ```
 
-把本金文件传递到另一台主机上面：
+把本地文件传递到另一台主机上面：
 
 ```bash
 scp ~/Downloads/guitargg.gz root@182.92.6.82:/home/
