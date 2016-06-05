@@ -54,15 +54,15 @@
 
   
   
-    <h3 class="article-title"><a href="/NoSQL/Memcached/20141128_Memcached使用getMulti造成的性能问题/"><span>Memcached使用getMulti造成的性能问题</span></a></h3>
+    <h3 class="article-title"><a href="/server/服务器监控/"><span>服务器监控</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/NoSQL/Memcached/20141128_Memcached使用getMulti造成的性能问题/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
-          2016-05-03
+      <a href="/server/服务器监控/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-05T13:50:13.000Z">
+          2016-06-05
         </time>
       </a>
     </span>
@@ -77,96 +77,295 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>&#x6709;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x573A;&#x666F;&#xFF1A;&#x4F7F;&#x7528;<code>getMulti</code>&#x4E00;&#x6B21;&#x6027;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x6240;&#x6709;&#x624B;&#x673A;100&#x4E2A;key&#xFF0C;&#x8BF7;&#x6C42;&#x4E86;100&#x4E07;&#x6B21;&#xFF0C;&#x7CFB;&#x7EDF;&#x6700;&#x521D;&#x53EA;&#x6709;&#x4E00;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x968F;&#x7740;&#x8BBF;&#x95EE;&#x91CF;&#x7684;&#x589E;&#x52A0;&#xFF0C;&#x8D1F;&#x8F7D;&#x52A0;&#x5927;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x589E;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4F46;&#x7ED3;&#x679C;&#x8D1F;&#x8F7D;&#x53CD;&#x800C;&#x66F4;&#x52A0;&#x5927;&#x4E86;&#x3002;</p>
-<p>&#x539F;&#x56E0;&#x662F;&#x5F00;&#x59CB;&#x90A3;100&#x4E2A;key&#x5728;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x83B7;&#x53D6;&#xFF0C;&#x73B0;&#x5728;&#x5206;&#x4E0D;&#x5230;&#x4E86;&#x51E0;MC&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x589E;&#x591A;&#x4E86;&#xFF0C;&#x800C;&#x5173;&#x952E;&#x6027;&#x7684;&#x56E0;&#x7D20;&#x662F;&#x6211;&#x4EEC;&#x7528;&#x5230;&#x7684;MC&#x5BA2;&#x6237;&#x7AEF;memcached-client&#xFF0C;&#x5176;&#x4E2D;&#x7684;AscIIClient&#x5982;&#x4E0B;&#xFF1A;    </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getMulti</span><span class="params">(String[] keys, Integer[] hashCodes, <span class="keyword">boolean</span> asString)</span></span><br><span class="line">  </span>{</span><br><span class="line">    <span class="keyword">if</span> ((keys == <span class="keyword">null</span>) || (keys.length == <span class="number">0</span>)) {</span><br><span class="line">      <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">        log.error(<span class="string">&quot;missing keys for getMulti()&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map cmdMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">    String[] cleanKeys = <span class="keyword">new</span> String[keys.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++) {</span><br><span class="line">      String key = keys[i];</span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>) {</span><br><span class="line">        <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">          log.error(<span class="string">&quot;null key, so skipping&quot;</span>);</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      {</span><br><span class="line">        Integer hash = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> ((hashCodes != <span class="keyword">null</span>) &amp;&amp; (hashCodes.length &gt; i)) {</span><br><span class="line">          hash = hashCodes[i];</span><br><span class="line">        }</span><br><span class="line">        cleanKeys[i] = key;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">          cleanKeys[i] = sanitizeKey(key);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">catch</span> (UnsupportedEncodingException e) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, e, key);</span><br><span class="line">          <span class="keyword">if</span> (log.isErrorEnabled())</span><br><span class="line">            log.error(<span class="string">&quot;failed to sanitize your key!&quot;</span>, e);</span><br><span class="line">          <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        SchoonerSockIO sock = <span class="keyword">this</span>.pool.getSock(cleanKeys[i], hash);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sock == <span class="keyword">null</span>) {</span><br><span class="line">          <span class="keyword">if</span> (<span class="keyword">this</span>.errorHandler != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">this</span>.errorHandler.handleErrorOnGet(<span class="keyword">this</span>, <span class="keyword">new</span> IOException(<span class="string">&quot;no socket to server available&quot;</span>), key);</span><br><span class="line">          }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        {</span><br><span class="line">          <span class="keyword">if</span> (!cmdMap.containsKey(sock.getHost())) {</span><br><span class="line">            cmdMap.put(sock.getHost(), <span class="keyword">new</span> StringBuilder(<span class="string">&quot;get&quot;</span>));</span><br><span class="line">          }</span><br><span class="line">          ((StringBuilder)cmdMap.get(sock.getHost())).append(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot; &quot;</span>).append(cleanKeys[i]).toString());</span><br><span class="line"></span><br><span class="line">          sock.close();</span><br><span class="line">        }</span><br><span class="line">      }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled()) {</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;multi get socket count : &quot;</span>).append(cmdMap.size()).toString());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    Map ret = <span class="keyword">new</span> HashMap(keys.length);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> NIOLoader(<span class="keyword">this</span>).doMulti(asString, cmdMap, keys, ret);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; keys.length; i++)</span><br><span class="line">    {</span><br><span class="line">      <span class="keyword">if</span> ((!keys[i].equals(cleanKeys[i])) &amp;&amp; (ret.containsKey(cleanKeys[i]))) {</span><br><span class="line">        ret.put(keys[i], ret.get(cleanKeys[i]));</span><br><span class="line">        ret.remove(cleanKeys[i]);</span><br><span class="line">      }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (log.isDebugEnabled())</span><br><span class="line">      log.debug(<span class="keyword">new</span> StringBuilder().append(<span class="string">&quot;++++ memcache: got back &quot;</span>).append(ret.size()).append(<span class="string">&quot; results&quot;</span>).toString());</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure>
-<p>&#x8BF7;&#x6C42;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x662F;&#x4E32;&#x884C;&#x7684;&#xFF0C;&#x7ED3;&#x679C;&#x5BFC;&#x81F4;&#x5BA2;&#x6237;&#x7AEF;&#x64CD;&#x4F5C;&#x65F6;&#x95F4;&#x7D2F;&#x52A0;&#xFF0C;&#x8BF7;&#x6C42;&#x5806;&#x79EF;&#xFF0C;&#x6700;&#x7EC8;&#x5BFC;&#x81F4;&#x6027;&#x80FD;&#x4E0B;&#x964D;&#x3002;</p>
-<h2 id="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;"><a href="#&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;" class="headerlink" title="&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;"></a>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</h2><p>&#x4E00;&#x662F;&#x628A;&#x4E32;&#x884C;&#x8BF7;&#x6C42;&#x6539;&#x4E3A;&#x5E76;&#x884C;&#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;spymemcached&#x7684;&#x5E76;&#x884C;&#x5B9E;&#x73B0;&#xFF1A;    </p>
-<ul>
-<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x5C06;&#x672C;&#x6B21;&#x64CD;&#x4F5C;&#x6784;&#x9020;&#x6210;&#x4E00;&#x4E2A;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A; node &#x7684; Operation &#x5BF9;&#x8C61;&#xFF0C;&#x52A0;&#x5165;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF1B;    </li>
-<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF0C;&#x5728;&#x8FDE;&#x63A5;&#x5BF9;&#x8C61;&#x4E2D;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x7684; node &#x64CD;&#x4F5C;&#x653E;&#x5165; addedQueue &#x961F;&#x5217;&#xFF0C;&#x7136;&#x540E;&#x89E6;&#x53D1; Selector &#x65B9;&#x5F0F;&#x5F02;&#x6B65;&#x975E;&#x963B;&#x585E;&#x7684;&#x6267;&#x884C;&#xFF1B;</li>
+<h1 id="&#x7F13;&#x5B58;"><a href="#&#x7F13;&#x5B58;" class="headerlink" title="&#x7F13;&#x5B58;"></a>&#x7F13;&#x5B58;</h1><p><a href="https://github.com/arthinking/informal-essay/blob/master/memcached/Memcached%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%B8%8E%E7%9B%91%E6%8E%A7.md" title="memcached&#x7684;&#x914D;&#x7F6E;&#x4E0E;&#x76D1;&#x63A7;" target="_blank" rel="external">memcached&#x7684;&#x914D;&#x7F6E;&#x4E0E;&#x76D1;&#x63A7;</a><br>&#x901A;&#x8FC7;&#x67E5;&#x770B;&#x5360;&#x7528;&#x5185;&#x5B58;&#xFF0C;&#x51B3;&#x5B9A;&#x9700;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6269;&#x5BB9;</p>
+<h1 id="jdk&#x76D1;&#x63A7;"><a href="#JDK&#x76D1;&#x63A7;" class="headerlink" title="JDK&#x76D1;&#x63A7;"></a>JDK&#x76D1;&#x63A7;</h1><h1 id="&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;"><a href="#&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;" class="headerlink" title="&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;"></a>&#x5E94;&#x7528;&#x670D;&#x52A1;&#x5668;&#x76D1;&#x63A7;</h1><h1 id="&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x76D1;&#x63A7;</h1><h2 id="&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x5185;&#x5B58;&#x76D1;&#x63A7;</h2><h2 id="&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"><a href="#&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"></a>&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;</h2><h2 id="&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;"><a href="#&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;"></a>&#x6570;&#x636E;&#x5E93;&#x5E76;&#x53D1;&#x6D4B;&#x8BD5;</h2><h1 id="nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"><a href="#nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;" class="headerlink" title="nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;"></a>nginx&#x5E76;&#x53D1;&#x8BBF;&#x95EE;&#x76D1;&#x63A7;</h1><h1 id="lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;"><a href="#Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;" class="headerlink" title="Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;"></a>Lucene&#x670D;&#x52A1;&#x76D1;&#x63A7;</h1><h2 id="&#x5360;&#x7528;&#x5185;&#x5B58;"><a href="#&#x5360;&#x7528;&#x5185;&#x5B58;" class="headerlink" title="&#x5360;&#x7528;&#x5185;&#x5B58;"></a>&#x5360;&#x7528;&#x5185;&#x5B58;</h2><h2 id="&#x67E5;&#x8BE2;&#x6548;&#x7387;"><a href="#&#x67E5;&#x8BE2;&#x6548;&#x7387;" class="headerlink" title="&#x67E5;&#x8BE2;&#x6548;&#x7387;"></a>&#x67E5;&#x8BE2;&#x6548;&#x7387;</h2>
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/监控/">监控</a>
+  </span>
+
+
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/IDE/IntelliJ IDEA/从Tomcat启动报错分析IntelliJ IDEA的部署/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/IDE/IntelliJ IDEA/从Tomcat启动报错分析IntelliJ IDEA的部署/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-05T13:50:13.000Z">
+          2016-06-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x6709;&#x65F6;&#x5019;Tomcat&#x8FD0;&#x884C;&#x597D;&#x597D;&#x7684;&#xFF0C;&#x505C;&#x6389;&#x4E4B;&#x540E;&#x518D;&#x6B21;&#x8FD0;&#x884C;&#x5C31;&#x62A5;&#x9519;&#x4E86;&#xFF1A;</p>
+<blockquote>
+<p>Name jdbc is not bound in this Context in Tomcat</p>
+</blockquote>
+<p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F60;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x5728;<code>context.xml</code>&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x914D;&#x7F6E;<a href="http://tomcat.apache.org/tomcat-6.0-doc/config/context.html#Resource%20Links" target="_blank" rel="external">ResourceLink</a>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">ResourceLink</span> <span class="attr">global</span>=<span class="string">&quot;jdbc/MyDS&quot;</span> <span class="attr">name</span>=<span class="string">&quot;jdbc/MyDS&quot;</span> <span class="attr">type</span>=<span class="string">&quot;javax.sql.DataSource&quot;</span> /&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x4EE5;&#x4E0A;&#x7EAF;&#x7CB9;&#x662F;&#x4E00;&#x4E2A;&#x5DE7;&#x5408;&#xFF0C;IntelliJ IDEA&#x9879;&#x76EE;&#x901A;&#x8FC7;maven&#x7F16;&#x8BD1;&#x4E4B;&#x540E;&#xFF0C;&#x4E00;&#x822C;&#x4F1A;&#x5728;target&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7; war wxploded&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x8BFB;&#x53D6;&#x8FD9;&#x91CC;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x67E5;&#x770B;&#x4E00;&#x4E0B;META-INF&#x76EE;&#x5F55;&#x4E0B;&#x7684;context.xml&#x6587;&#x4EF6;&#x6570;&#x636E;&#x6E90;&#x914D;&#x7F6E;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
+<p>#References</p>
+<p><a href="http://stackoverflow.com/questions/8849461/name-jdbc-is-not-bound-in-this-context-in-tomcat" target="_blank" rel="external">Name jdbc is not bound in this Context in Tomcat</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/database/mybatis/2016-05-31 MyBatis相关配置/"><span>设置IDEA Mybatis xml文件错误提示</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/database/mybatis/2016-05-31 MyBatis相关配置/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-30T16:00:00.000Z">
+          2016-05-31
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>&#x4FD7;&#x8BDD;&#x8BF4;&#xFF0C;&#x5DE5;&#x6B32;&#x5584;&#x5176;&#x4E8B;&#xFF0C;&#x5FC5;&#x5148;&#x5229;&#x5176;&#x5668;&#x3002;</p>
+</blockquote>
+<h1 id="&#x8BBE;&#x7F6E;idea-mybatis-xml&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x63D0;&#x793A;"><a href="#&#x8BBE;&#x7F6E;IDEA-Mybatis-xml&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x63D0;&#x793A;" class="headerlink" title="&#x8BBE;&#x7F6E;IDEA Mybatis xml&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x63D0;&#x793A;"></a>&#x8BBE;&#x7F6E;IDEA Mybatis xml&#x6587;&#x4EF6;&#x9519;&#x8BEF;&#x63D0;&#x793A;</h1><p><strong>&#x8BBE;&#x7F6E; SQL Dialects</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/database/mybatis/media/14646755250753.jpg" alt=""></p>
+<p><strong>&#x5728;IDEA&#x91CC;&#x9762;&#x94FE;&#x63A5;&#x6570;&#x636E;&#x5E93;</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/database/mybatis/media/14646757875441.jpg" alt=""></p>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x4F7F;&#x7528;MyBatis plugin&#x4E4B;&#x540E;,xml&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x5C31;&#x53EF;&#x4EE5;&#x662F;&#x8BED;&#x6CD5;&#x9519;&#x8BEF;&#x4E86;&#xFF0C;&#x65B9;&#x4FBF;&#x6392;&#x9664;&#x95EE;&#x9898;&#x3002;</p>
+<p><strong>&#x53BB;&#x9664;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x9519;&#x8BEF;&#x63D0;&#x793A;</strong></p>
+<p>&#x5728;mybatis xml&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x6309;&#x7EC4;&#x5408;&#x952E;&#xFF1A;alt + enten  &#x5F39;&#x51FA;&#x610F;&#x56FE;&#x52A8;&#x4F5C;&#x548C;&#x5FEB;&#x901F;&#x4FEE;&#x590D;&#x83DC;&#x5355;&#xFF0C;&#x9009;&#x62E9;Language Injection Settings</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/database/mybatis/media/14646749374769.jpg" alt=""></p>
+<p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x901A;&#x8FC7;sql&#x6807;&#x7B7E;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#xFF1A;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">&quot;Base_Column_List&quot;</span>&gt;</span>id, create_time, update_time, status<span class="tag">&lt;/<span class="name">sql</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x6240;&#x4EE5;&#x4E3A;&#x4E86;&#x53BB;&#x6389;&#x8FD9;&#x79CD;&#x95EE;&#x9898;&#x7684;&#x63D0;&#x793A;&#x9519;&#x8BEF;&#xFF0C;&#x5E94;&#x8BE5;&#x5728;<code>Local name</code>&#x914D;&#x7F6E;&#x91CC;&#x9762;&#x53BB;&#x6389;sql&#xFF0C;&#x6539;&#x4E3A;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select|insert|update|delete</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/database/">database</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/MySQL/">MySQL</a>, <a href="/tags/MyBatis/">MyBatis</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/Java/zookeeper/问题/"><span>Zookeeper</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/Java/zookeeper/问题/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-15T16:00:00.000Z">
+          2016-05-16
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="&#x7B2C;&#x4E00;&#x7AE0;"><a href="#&#x7B2C;&#x4E00;&#x7AE0;" class="headerlink" title="&#x7B2C;&#x4E00;&#x7AE0;"></a>&#x7B2C;&#x4E00;&#x7AE0;</h2><h3 id="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF1F;&#x53EF;&#x5426;&#x7528;&#x94F6;&#x884C;&#x8F6C;&#x8D26;&#x6765;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;</h3><h3 id="&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;"><a href="#&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;" class="headerlink" title="&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;"></a>&#x4E8B;&#x52A1;&#x7684;&#x56DB;&#x4E2A;&#x7279;&#x5F81;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x8DDD;&#x79BB;&#x8BF4;&#x660E;&#x4E0B;&#xFF1F;</h3><h3 id="&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x4E3A;&#x4EC0;&#x4E48;"><a href="#&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;" class="headerlink" title="&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;"></a>&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x4EE3;&#x8868;&#x4EC0;&#x4E48;&#x542B;&#x4E49;&#xFF1F;&#x4F60;&#x4EEC;&#x7CFB;&#x7EDF;&#x4E2D;&#x7528;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x7EA7;&#x522B;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#xFF1F;</h3><h3 id="&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#x5E7B;&#x8BFB;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;"></a>&#x4EC0;&#x4E48;&#x662F;&#x810F;&#x8BFB;&#xFF0C;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#xFF0C;&#x5E7B;&#x8BFB;</h3><p><a href="http://www.cnblogs.com/phoebus0501/archive/2011/02/28/1966709.html" target="_blank" rel="external">http://www.cnblogs.com/phoebus0501/archive/2011/02/28/1966709.html</a></p>
+<h3 id="&#x600E;&#x4E48;&#x9632;&#x6B62;&#x5E7B;&#x8BFB;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;update-&#x770B;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x5230;&#x4E86;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5224;&#x65AD;"><a href="#&#x600E;&#x4E48;&#x9632;&#x6B62;&#x5E7B;&#x8BFB;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1F;&#xFF08;update-&#x2026;-&#x770B;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x5230;&#x4E86;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF09;" class="headerlink" title="&#x600E;&#x4E48;&#x9632;&#x6B62;&#x5E7B;&#x8BFB;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1F;&#xFF08;update &#x2026; &#x770B;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x5230;&#x4E86;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF09;"></a>&#x600E;&#x4E48;&#x9632;&#x6B62;&#x5E7B;&#x8BFB;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1F;&#xFF08;update &#x2026; &#x770B;&#x662F;&#x5426;&#x66F4;&#x65B0;&#x5230;&#x4E86;&#xFF0C;&#x4ECE;&#x800C;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF09;</h3><h3 id="&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;"><a href="#&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;" class="headerlink" title="&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;"></a>&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x5C31;&#x4F1A;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;</h3><h3 id="&#x4EC0;&#x4E48;&#x662F;cap&#x5B9A;&#x7406;&#x4EC0;&#x4E48;&#x662F;base&#x7406;&#x8BBA;"><a href="#&#x4EC0;&#x4E48;&#x662F;CAP&#x5B9A;&#x7406;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;BASE&#x7406;&#x8BBA;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;CAP&#x5B9A;&#x7406;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;BASE&#x7406;&#x8BBA;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#x662F;CAP&#x5B9A;&#x7406;&#xFF0C;&#x4EC0;&#x4E48;&#x662F;BASE&#x7406;&#x8BBA;&#xFF1F;</h3><p>CAP: Consistency, Availability, Partition tolerance</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14632367718019.jpg" alt=""></p>
+<p>BASE: Basically Availabel, Soft state, Eventually consistent.</p>
+<h3 id="&#x653E;&#x5F03;cap&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x54EA;&#x4E2A;&#x7279;&#x6027;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x5177;&#x6709;&#x7684;"><a href="#&#x653E;&#x5F03;CAP&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x54EA;&#x4E2A;&#x7279;&#x6027;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x5177;&#x6709;&#x7684;&#xFF1F;" class="headerlink" title="&#x653E;&#x5F03;CAP&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x54EA;&#x4E2A;&#x7279;&#x6027;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x5177;&#x6709;&#x7684;&#xFF1F;"></a>&#x653E;&#x5F03;CAP&#x5176;&#x4E2D;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#x4F1A;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x54EA;&#x4E2A;&#x7279;&#x6027;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x5177;&#x6709;&#x7684;&#xFF1F;</h3><h3 id="&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x6709;&#x54EA;&#x4E9B;&#x53D8;&#x79CD;-&#x4E3E;&#x4E2A;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x4F8B;&#x5B50;"><a href="#&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x6709;&#x54EA;&#x4E9B;&#x53D8;&#x79CD;-&#x4E3E;&#x4E2A;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x4F8B;&#x5B50;" class="headerlink" title="&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x6709;&#x54EA;&#x4E9B;&#x53D8;&#x79CD;? &#x4E3E;&#x4E2A;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x4F8B;&#x5B50;"></a>&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x6709;&#x54EA;&#x4E9B;&#x53D8;&#x79CD;? &#x4E3E;&#x4E2A;&#x6700;&#x7EC8;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x4F8B;&#x5B50;</h3><h3 id="base&#x4E0E;acid&#x6709;&#x54EA;&#x4E9B;&#x533A;&#x522B;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x600E;&#x4E48;&#x8003;&#x8651;&#x4E24;&#x8005;"><a href="#BASE&#x4E0E;ACID&#x6709;&#x54EA;&#x4E9B;&#x533A;&#x522B;&#xFF1F;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x600E;&#x4E48;&#x8003;&#x8651;&#x4E24;&#x8005;" class="headerlink" title="BASE&#x4E0E;ACID&#x6709;&#x54EA;&#x4E9B;&#x533A;&#x522B;&#xFF1F;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x600E;&#x4E48;&#x8003;&#x8651;&#x4E24;&#x8005;"></a>BASE&#x4E0E;ACID&#x6709;&#x54EA;&#x4E9B;&#x533A;&#x522B;&#xFF1F;&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x600E;&#x4E48;&#x8003;&#x8651;&#x4E24;&#x8005;</h3><h2 id="&#x7B2C;&#x4E8C;&#x7AE0;-&#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE;"><a href="#&#x7B2C;&#x4E8C;&#x7AE0;-&#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE;" class="headerlink" title="&#x7B2C;&#x4E8C;&#x7AE0; &#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE;"></a>&#x7B2C;&#x4E8C;&#x7AE0; &#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE;</h2><h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;2pctwo-pahse-commit&#x9610;&#x8FF0;&#x4E00;&#x4E0B;2pc&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;2PC&#xFF08;Two-Pahse-Commit&#xFF09;&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;2PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;2PC&#xFF08;Two-Pahse Commit&#xFF09;&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;2PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;2PC&#xFF08;Two-Pahse Commit&#xFF09;&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;2PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14632384430847.jpg" alt=""></p>
+<h3 id="&#x4E8C;&#x9636;&#x6BB5;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x7F3A;&#x70B9;"><a href="#&#x4E8C;&#x9636;&#x6BB5;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x7F3A;&#x70B9;&#xFF1F;" class="headerlink" title="&#x4E8C;&#x9636;&#x6BB5;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x7F3A;&#x70B9;&#xFF1F;"></a>&#x4E8C;&#x9636;&#x6BB5;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x7F3A;&#x70B9;&#xFF1F;</h3><h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;3pc&#x9610;&#x8FF0;&#x4E00;&#x4E0B;3pc&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;3PC&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;3PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;3PC&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;3PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;3PC&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;3PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14632386708213.jpg" alt=""></p>
+<h3 id="3pc&#x6BD4;&#x8D77;2pc&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x95EE;&#x9898;"><a href="#3PC&#x6BD4;&#x8D77;2PC&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#xFF1F;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;" class="headerlink" title="3PC&#x6BD4;&#x8D77;2PC&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#xFF1F;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;"></a>3PC&#x6BD4;&#x8D77;2PC&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#xFF1F;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;</h3><h3 id="paxos&#x5206;&#x5E03;&#x5F0F;&#x4E00;&#x81F4;&#x6027;&#x7B97;&#x6CD5;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x51FA;&#x73B0;&#x89E3;&#x51B3;&#x4E86;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x6267;&#x884C;&#x539F;&#x7406;&#x662F;&#x600E;&#x6837;&#x7684;"><a href="#Paxos&#x5206;&#x5E03;&#x5F0F;&#x4E00;&#x81F4;&#x6027;&#x7B97;&#x6CD5;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x51FA;&#x73B0;&#xFF0C;&#x89E3;&#x51B3;&#x4E86;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;&#x6267;&#x884C;&#x539F;&#x7406;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;" class="headerlink" title="Paxos&#x5206;&#x5E03;&#x5F0F;&#x4E00;&#x81F4;&#x6027;&#x7B97;&#x6CD5;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x51FA;&#x73B0;&#xFF0C;&#x89E3;&#x51B3;&#x4E86;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;&#x6267;&#x884C;&#x539F;&#x7406;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;"></a>Paxos&#x5206;&#x5E03;&#x5F0F;&#x4E00;&#x81F4;&#x6027;&#x7B97;&#x6CD5;&#x4E3A;&#x4EC0;&#x4E48;&#x4F1A;&#x51FA;&#x73B0;&#xFF0C;&#x89E3;&#x51B3;&#x4E86;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;&#x6267;&#x884C;&#x539F;&#x7406;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;</h3><p>&#x62DC;&#x5360;&#x5EAD;&#x5C06;&#x519B;&#x95EE;&#x9898;  &#x517C;&#x804C;&#x4F1A;&#x8BAE;</p>
+<h2 id="zookeeper&#x4E0E;paxos"><a href="#Zookeeper&#x4E0E;Paxos" class="headerlink" title="Zookeeper&#x4E0E;Paxos"></a>Zookeeper&#x4E0E;Paxos</h2><h3 id="zookeeper&#x4E0E;masterslave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;"><a href="#Zookeeper&#x4E0E;Master-Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;" class="headerlink" title="Zookeeper&#x4E0E;Master/Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;"></a>Zookeeper&#x4E0E;Master/Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;</h3><h3 id="&#x5173;&#x4E8E;zookeeper&#x7684;&#x9009;&#x4E3E;"><a href="#&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;" class="headerlink" title="&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;"></a>&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;</h3><p>&#x9009;&#x4E3E;&#x673A;&#x5236;(FastLeaderElection&#x7B97;&#x6CD5;)&#xFF1A;sid&#x6700;&#x5927;&#x4E14;&#x88AB;&#x8D85;&#x8FC7;&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x5C31;&#x4F1A;&#x6210;&#x4E3A;leader.<br>&#x6240;&#x4EE5;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x65E0;&#x6CD5;&#x9009;&#x51FA;leader&#xFF1A;</p>
+<pre><code>.    &#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x53EA;&#x6709;2&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x6CE8;&#x610F;&#x4E0D;&#x662F;&#x53EA;&#x5269;2&#x53F0;&#xFF0C;&#x800C;&#x662F;&#x96C6;&#x7FA4;&#x7684;&#x603B;&#x8282;&#x70B9;&#x6570;&#x4E3A;2&#xFF09;&#x2028;
+.    &#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x673A;&#x5668;&#x6302;&#x6389;&#x3002;&#x2028;
+</code></pre><p> &#x6240;&#x8C13;&#x7684;&#x5076;&#x6570;&#x95EE;&#x9898;&#x5176;&#x5B9E;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x4F18;&#x5316;&#x914D;&#x7F6E;&#x95EE;&#x9898;&#xFF0C;&#x5373;:&#x96C6;&#x7FA4;&#x7684;&#x5BB9;&#x707E;&#x6570;&#x91CF;=&#x96C6;&#x7FA4;&#x603B;&#x8282;&#x70B9;&#x6570;/2-1<br>&#x5047;&#x5982;&#x96C6;&#x7FA4;&#x6709;5&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x591A;&#x5141;&#x8BB8;2&#x4E2A;&#x8282;&#x70B9;&#x6302;&#x6389;&#xFF0C;&#x5982;&#x679C;&#x6709;3&#x8282;&#x70B9;&#x6302;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;&#x9009;&#x4E3E;&#x7ED3;&#x679C;&#x4E0D;&#x4F1A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#xFF1A;&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x3002;<br>&#x5047;&#x5982;&#x96C6;&#x7FA4;&#x6709;6&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x591A;&#x4E5F;&#x53EA;&#x80FD;&#x6302;&#x6389;2&#x53F0;&#xFF0C;&#x56E0;&#x4E3A;&#x6302;&#x4E86;3&#x53F0;&#x65F6;&#xFF0C;&#x9009;&#x4E3E;&#x7ED3;&#x679C;&#x4E5F;&#x4E0D;&#x4F1A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;:&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x3002;<br>&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x591A;&#x90A3;&#x4E00;&#x53F0;&#x7528;&#x5904;&#x5E76;&#x4E0D;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x96C6;&#x7FA4;&#x603B;&#x6570;&#x63A8;&#x8350;&#x4E3A;&#x5947;&#x6570;&#x3002;</p>
+<h2 id="&#x4F7F;&#x7528;zookeeper"><a href="#&#x4F7F;&#x7528;Zookeeper" class="headerlink" title="&#x4F7F;&#x7528;Zookeeper"></a>&#x4F7F;&#x7528;Zookeeper</h2><h3 id="&#x8BF4;&#x8BF4;mysql&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;"><a href="#&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;" class="headerlink" title="&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;"></a>&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14634005724898.jpg" alt=""></p>
+<h3 id="mysql&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x51B7;&#x70ED;&#x5907;&#x4EFD;&#x5BF9;&#x6BD4;"><a href="#MySQL&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x51B7;&#x70ED;&#x5907;&#x4EFD;&#x5BF9;&#x6BD4;&#xFF1F;" class="headerlink" title="MySQL&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x51B7;&#x70ED;&#x5907;&#x4EFD;&#x5BF9;&#x6BD4;&#xFF1F;"></a>MySQL&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x51B7;&#x70ED;&#x5907;&#x4EFD;&#x5BF9;&#x6BD4;&#xFF1F;</h3><p>&#x70ED;&#x5907;&#x4EFD;&#xFF1A;&#x5B9E;&#x65F6;&#xFF0C;&#x6BD4;&#x8F83;&#x8017;&#x673A;&#x5668;&#x8D44;&#x6E90;&#xFF1B;<br>&#x51B7;&#x5907;&#x4EFD;&#xFF1A;&#x7C7B;&#x5907;&#x4EFD;&#x626B;&#x63CF;&#xFF0C;&#x4E0D;&#x5B9E;&#x65F6;&#xFF0C;&#x8282;&#x7701;&#x673A;&#x5668;&#x8D44;&#x6E90;&#xFF1B;</p>
+<h3 id="&#x5355;&#x4E00;&#x53F0;mysql&#x670D;&#x52A1;&#x5668;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x9AD8;&#x53EF;&#x7528;"><a href="#&#x5355;&#x4E00;&#x53F0;MySQL&#x670D;&#x52A1;&#x5668;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x9AD8;&#x53EF;&#x7528;" class="headerlink" title="&#x5355;&#x4E00;&#x53F0;MySQL&#x670D;&#x52A1;&#x5668;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x9AD8;&#x53EF;&#x7528;"></a>&#x5355;&#x4E00;&#x53F0;MySQL&#x670D;&#x52A1;&#x5668;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x9AD8;&#x53EF;&#x7528;</h3><h3 id="&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x5728;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x4E0A;&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x6CD5;&#x53D6;&#x4EE3;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6392;&#x4ED6;&#x6027;&#x5982;&#x884C;&#x9501;&#x8868;&#x9501;&#x6216;&#x8005;&#x4E8B;&#x52A1;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5462;"><a href="#&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x5728;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x6CD5;&#x53D6;&#x4EE3;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6392;&#x4ED6;&#x6027;&#xFF08;&#x5982;&#x884C;&#x9501;&#xFF0C;&#x8868;&#x9501;&#x6216;&#x8005;&#x4E8B;&#x52A1;&#xFF09;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5462;&#xFF1F;" class="headerlink" title="&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x5728;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x6CD5;&#x53D6;&#x4EE3;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6392;&#x4ED6;&#x6027;&#xFF08;&#x5982;&#x884C;&#x9501;&#xFF0C;&#x8868;&#x9501;&#x6216;&#x8005;&#x4E8B;&#x52A1;&#xFF09;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5462;&#xFF1F;"></a>&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x5728;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x6CD5;&#x53D6;&#x4EE3;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6392;&#x4ED6;&#x6027;&#xFF08;&#x5982;&#x884C;&#x9501;&#xFF0C;&#x8868;&#x9501;&#x6216;&#x8005;&#x4E8B;&#x52A1;&#xFF09;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5462;&#xFF1F;</h3><ul>
+<li>zookeeper &#x6392;&#x5B83;&#x9501; &#x5171;&#x4EAB;&#x9501;</li>
 </ul>
-<p>&#x4E00;&#x662F;&#x628A;key&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x624B;&#x673A;&#x6563;&#x5217;&#x4E0D;&#x540C;&#x7684;MC&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x8FBE;&#x5230;&#x8BF7;&#x6C42;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x6240;&#x6709;&#x7684;&#x5185;&#x5BB9;&#x4E86;&#xFF0C;&#x4E0D;&#x8FC7;&#x6839;&#x636E;&#x5C31;&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x6563;&#x5217;&#x65B9;&#x6CD5;&#x4E5F;&#x4E0D;&#x540C;&#xFF0C;&#x6BD4;&#x8F83;&#x4E0D;&#x597D;&#x5904;&#x7406;&#x3002;</p>
-<p>&#x6216;&#x8005;&#x4E0D;&#x4F7F;&#x7528;getMulti&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E86;</p>
-<p>&#x5FC5;&#x987B;&#x4F7F;&#x7528;getMulti&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x628A;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x590D;&#x5236;&#x5230;&#x53E6;&#x4E00;&#x4E2A;memcache&#x96C6;&#x7FA4;&#x4E0A;&#xFF0C;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x8D1F;&#x8D23;&#x8BFB;&#x53D6;&#x4E00;&#x534A;&#x7684;keys&#xFF0C;&#x4F46;&#x662F;&#x53C8;&#x4F1A;&#x5F15;&#x53D1;&#x9700;&#x8981;&#x66F4;&#x591A;&#x7684;CPU&#x7684;&#x95EE;&#x9898;&#x3002;</p>
-<p><a href="http://www.cnblogs.com/zhengyun_ustc/p/multigethole.html" title="&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;" target="_blank" rel="external">&#x65C1;&#x89C2;&#x8005;&#x7684;&#x535A;&#x5BA2;</a>&#x4E5F;&#x5206;&#x6790;&#x4E86;&#x8FD9;&#x7C7B;&#x5206;&#x6790;&#xFF0C;&#x5F88;&#x900F;&#x5F7B;&#xFF0C;&#x63D0;&#x4F9B;&#x7ED9;&#x5927;&#x5BB6;&#x53C2;&#x8003;&#x4E0B;</p>
-<p>&#x8BE5;&#x535A;&#x6587;&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-use-getmulti-problem.html" target="_blank" rel="external">http://www.itzhai.com/mc-use-getmulti-problem.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/NoSQL/Memcached/Memcached配置使用与监控/"><span>Memcached配置使用与监控</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/NoSQL/Memcached/Memcached配置使用与监控/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+<p>zookeeper&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6570;&#x636E;&#x8282;&#x70B9;&#x6765;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x9501;</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14634954772788.jpg" alt=""></p>
+<p>&#x6392;&#x5B83;&#x9501;&#x7684;&#x6D41;&#x7A0B;</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14634958566141.jpg" alt=""></p>
+<p>&#x5171;&#x4EAB;&#x9501;&#x7684;&#x6D41;&#x7A0B;</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14634960179715.jpg" alt=""></p>
+<p>&#x4F18;&#x5316;&#x7F8A;&#x7FA4;&#x6548;&#x679C;&#x540E;&#x7684;&#x6D41;&#x7A0B;&#x56FE;</p>
+<p>JDK synchronized  ReentrantLock</p>
+<p>Redis  mc<br>redis&#x96C6;&#x7FA4;  &#x9AD8;&#x53EF;&#x7528;</p>
+<p>&#x901A;&#x8FC7;Future&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5148;&#x5E76;&#x53D1;&#x5411;5&#x4E2A;&#x8282;&#x70B9;&#x8BF7;&#x6C42;&#xFF0C;&#x518D;&#x4E00;&#x8D77;&#x83B7;&#x5F97;&#x54CD;&#x5E94;&#x7ED3;&#x679C;&#xFF0C;&#x80FD;&#x7F29;&#x77ED;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD8;&#x662F;&#x6BD4;&#x5355;&#x8282;&#x70B9;redis&#x9501;&#x8981;&#x8017;&#x8D39;&#x66F4;&#x591A;&#x65F6;&#x95F4;&#x3002;</p>
+<p><a href="http://weizijun.cn/2016/03/17/%E8%81%8A%E4%B8%80%E8%81%8A%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81%E7%9A%84%E8%AE%BE%E8%AE%A1/" target="_blank" rel="external">&#x804A;&#x4E00;&#x804A;&#x5206;&#x5E03;&#x5F0F;&#x9501;&#x7684;&#x8BBE;&#x8BA1;</a></p>
+<h3 id="&#x5E38;&#x89C1;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x961F;&#x5217;&#x6709;&#x54EA;&#x4E9B;&#x6709;&#x54EA;&#x4E24;&#x79CD;&#x6A21;&#x578B;"><a href="#&#x5E38;&#x89C1;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x961F;&#x5217;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x6709;&#x54EA;&#x4E24;&#x79CD;&#x6A21;&#x578B;" class="headerlink" title="&#x5E38;&#x89C1;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x961F;&#x5217;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x6709;&#x54EA;&#x4E24;&#x79CD;&#x6A21;&#x578B;"></a>&#x5E38;&#x89C1;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x961F;&#x5217;&#x6709;&#x54EA;&#x4E9B;&#xFF0C;&#x6709;&#x54EA;&#x4E24;&#x79CD;&#x6A21;&#x578B;</h3><p>ActiveMQ&#xFF0C;Kafka</p>
+<p>&#x5148;&#x5165;&#x5148;&#x51FA;&#xFF0C;Barrier&#x6A21;&#x578B;</p>
+<h3 id="zookeeper&#x5B9E;&#x73B0;&#x7684;&#x4E3B;&#x5907;&#x5207;&#x6362;&#x4E00;&#x822C;&#x6D41;&#x7A0B;&#x662F;&#x600E;&#x6837;&#x7684;"><a href="#ZooKeeper&#x5B9E;&#x73B0;&#x7684;&#x4E3B;&#x5907;&#x5207;&#x6362;&#x4E00;&#x822C;&#x6D41;&#x7A0B;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;" class="headerlink" title="ZooKeeper&#x5B9E;&#x73B0;&#x7684;&#x4E3B;&#x5907;&#x5207;&#x6362;&#x4E00;&#x822C;&#x6D41;&#x7A0B;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;"></a>ZooKeeper&#x5B9E;&#x73B0;&#x7684;&#x4E3B;&#x5907;&#x5207;&#x6362;&#x4E00;&#x822C;&#x6D41;&#x7A0B;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;</h3><ol>
+<li>&#x521B;&#x5EFA;&#x9501;&#x8282;&#x70B9;</li>
+<li>&#x6CE8;&#x518C;Watcher&#x76D1;&#x542C;</li>
+<li>&#x4E3B;&#x5907;&#x5207;&#x6362;</li>
+</ol>
+<h3 id="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x8111;&#x88C2;brain-split&#x73B0;&#x8C61;&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x8111;&#x88C2;&#xFF08;brain-Split&#xFF09;&#x73B0;&#x8C61;&#xFF0C;&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x8111;&#x88C2;&#xFF08;brain-Split&#xFF09;&#x73B0;&#x8C61;&#xFF0C;&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x8111;&#x88C2;&#xFF08;brain-Split&#xFF09;&#x73B0;&#x8C61;&#xFF0C;&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;&#xFF1F;</h3><p>&#x7F51;&#x7EDC;&#xFF0C;GC&#x7B49;&#x5BFC;&#x81F4;&#x5047;&#x6B7B;&#x95EE;&#x9898;&#x4EA7;&#x751F;&#x9009;&#x4E3E;&#x4E86;&#x53E6;&#x4E00;&#x4E2A;Master&#xFF0C;&#x540C;&#x4E8B;&#x51FA;&#x73B0;&#x4E24;&#x4E2A;Master&#x5404;&#x53F8;&#x5176;&#x804C;&#xFF1B;</p>
+<p>Fencing(&#x9694;&#x79BB;)&#xFF1A;&#x521B;&#x5EFA;&#x7684;&#x8DDF;&#x8282;&#x70B9;&#x5FC5;&#x987B;&#x643A;&#x5E26;ZooKeeper&#x7684;ACL&#x4FE1;&#x606F;</p>
+<h3 id="kafka&#x4F7F;&#x7528;&#x56DB;&#x5C42;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x548C;&#x4F7F;&#x7528;zookeeper&#x8FDB;&#x884C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7684;&#x533A;&#x522B;&#x662F;&#x4EC0;&#x4E48;"><a href="#Kafka&#x4F7F;&#x7528;&#x56DB;&#x5C42;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x548C;&#x4F7F;&#x7528;ZooKeeper&#x8FDB;&#x884C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7684;&#x533A;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;" class="headerlink" title="Kafka&#x4F7F;&#x7528;&#x56DB;&#x5C42;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x548C;&#x4F7F;&#x7528;ZooKeeper&#x8FDB;&#x884C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7684;&#x533A;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;"></a>Kafka&#x4F7F;&#x7528;&#x56DB;&#x5C42;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x548C;&#x4F7F;&#x7528;ZooKeeper&#x8FDB;&#x884C;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x7684;&#x533A;&#x522B;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</h3><h3 id="&#x4E0D;&#x80FD;&#x57FA;&#x4E8E;&#x4E34;&#x65F6;&#x8282;&#x70B9;&#x6765;&#x521B;&#x5EFA;&#x5B50;&#x8282;&#x70B9;&#x53EA;&#x80FD;&#x4F5C;&#x4E3A;&#x53F6;&#x5B50;&#x8282;&#x70B9;"><a href="#&#x4E0D;&#x80FD;&#x57FA;&#x4E8E;&#x4E34;&#x65F6;&#x8282;&#x70B9;&#x6765;&#x521B;&#x5EFA;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x53EA;&#x80FD;&#x4F5C;&#x4E3A;&#x53F6;&#x5B50;&#x8282;&#x70B9;" class="headerlink" title="&#x4E0D;&#x80FD;&#x57FA;&#x4E8E;&#x4E34;&#x65F6;&#x8282;&#x70B9;&#x6765;&#x521B;&#x5EFA;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x53EA;&#x80FD;&#x4F5C;&#x4E3A;&#x53F6;&#x5B50;&#x8282;&#x70B9;"></a>&#x4E0D;&#x80FD;&#x57FA;&#x4E8E;&#x4E34;&#x65F6;&#x8282;&#x70B9;&#x6765;&#x521B;&#x5EFA;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x53EA;&#x80FD;&#x4F5C;&#x4E3A;&#x53F6;&#x5B50;&#x8282;&#x70B9;</h3><h3 id="zookeeper&#x7684;&#x7248;&#x672C;&#x53F7;&#x662F;&#x7528;&#x6765;&#x5E72;&#x561B;&#x7684;"><a href="#ZooKeeper&#x7684;&#x7248;&#x672C;&#x53F7;&#x662F;&#x7528;&#x6765;&#x5E72;&#x561B;&#x7684;&#xFF1F;" class="headerlink" title="ZooKeeper&#x7684;&#x7248;&#x672C;&#x53F7;&#x662F;&#x7528;&#x6765;&#x5E72;&#x561B;&#x7684;&#xFF1F;"></a>ZooKeeper&#x7684;&#x7248;&#x672C;&#x53F7;&#x662F;&#x7528;&#x6765;&#x5E72;&#x561B;&#x7684;&#xFF1F;</h3><p>&#x4ECE;&#x4E50;&#x89C2;&#x9501;&#x8BF4;&#x8D77;&#xFF0C;&#x4E50;&#x89C2;&#x9501;&#x63A7;&#x5236;&#x4E8B;&#x52A1;&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x3001;&#x5199;&#x5165;&#x6821;&#x9A8C;&#x3001;&#x6570;&#x636E;&#x5199;&#x5165;&#x3002; CAS</p>
+<h3 id="&#x8BF4;&#x8BF4;zookeeper&#x7684;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x901A;&#x77E5;&#x7684;&#x6D41;&#x7A0B;"><a href="#&#x8BF4;&#x8BF4;ZooKeeper&#x7684;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x901A;&#x77E5;&#x7684;&#x6D41;&#x7A0B;" class="headerlink" title="&#x8BF4;&#x8BF4;ZooKeeper&#x7684;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x901A;&#x77E5;&#x7684;&#x6D41;&#x7A0B;"></a>&#x8BF4;&#x8BF4;ZooKeeper&#x7684;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x901A;&#x77E5;&#x7684;&#x6D41;&#x7A0B;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14637082969106.jpg" alt=""></p>
+<p>Client&#x5411;Zk&#x6CE8;&#x518C;Watcher&#xFF0C;&#x540C;&#x65F6;&#x5C06;Watcher&#x5BF9;&#x8C61;&#x5B58;&#x50A8;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7684;WatchManger&#x4E2D;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5148;&#x751F;&#x6210;WatcherEvent&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;&#xFF0C;&#x5E8F;&#x5217;&#x5316;&#x4F20;&#x8F93;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x628A;WatcherEvent&#x8FD8;&#x539F;&#x6210;WatchedEvent&#x5BF9;&#x8C61;&#xFF0C;&#x8C03;&#x7528;Watcher&#x4E2D;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1A;process(WatchedEvent event);</p>
+<p><strong>&#x4E0B;&#x9762;&#x770B;&#x770B;Watcher&#x7684;&#x6CE8;&#x518C;&#x6D41;&#x7A0B;&#xFF1A;</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14639013873032.jpg" alt=""></p>
+<p>&#x521B;&#x5EFA;ZooKeeper&#x5BA2;&#x6237;&#x7AEF;&#x5B9E;&#x4F8B;&#x7684;&#x65F6;&#x5019;&#xFF08;getData&#xFF0C;getChildren&#xFF0C;exist&#x4E5F;&#x53EF;&#x4EE5;&#xFF09;&#x4F20;&#x5165;Watcher&#xFF0C;&#x4F1A;&#x4E00;&#x76F4;&#x4FDD;&#x5B58;&#x5728;&#x5BA2;&#x6237;&#x7AEF;ZKWatchManager&#x7684;defaultWatcher&#x4E2D;&#xFF0C;&#x4F5C;&#x4E3A;&#x6574;&#x4E2A;ZooKeeper&#x4F1A;&#x8BDD;&#x671F;&#x95F4;&#x7684;&#x9ED8;&#x8BA4;Watcher&#x3002;</p>
+<p><strong>&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;Watcher</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--&gt; &#x6807;&#x8BB0;request&#x4E3A;&#x4F7F;&#x7528;Watcher&#x76D1;&#x542C; --&gt; &#x5C01;&#x88C5;WatchRegistration&#x5BF9;&#x8C61;&#xFF08;&#x4FDD;&#x5B58;&#x6570;&#x636E;&#x8282;&#x70B9;&#x548C;Watcher&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#xFF09; --&gt; &#x5728;ClientCnxn&#x628A;WatchRegistration&#x5C01;&#x88C5;&#x5230;Packet&#x4E2D; --&gt; &#x653E;&#x5165;&#x53D1;&#x9001;&#x961F;&#x5217;&#x7B49;&#x5F85;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001; --&gt; SendThread.readResponse&#x65B9;&#x6CD5;&#x8D1F;&#x8D23;&#x63A5;&#x6536;&#x6765;&#x81EA;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x54CD;&#x5E94; --&gt; finishPacket&#x65B9;&#x6CD5;&#x4ECE;Packet&#x4E2D;&#x53D6;&#x51FA;&#x5BF9;&#x5E94;&#x7684;Watcher&#x6CE8;&#x518C;&#x5230;ZKWatchManger&#x4E2D;&#x3002;&#xFF08;&#x4ECE;WatchRegistration&#x5BF9;&#x8C61;&#x4E2D;&#x63D0;&#x53D6;&#x51FA;Watcher&#xFF0C;&#x4FDD;&#x5B58;&#x5728;ZKWatchManger&#x7684;dataWatches&#x4E2D;&#xFF0C;dataWatches&#x7684;key&#x662F;&#x6570;&#x636E;&#x8282;&#x70B9;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#xFF09;</span><br></pre></td></tr></table></figure>
+<p>&#x5E95;&#x5C42;&#x5B9E;&#x9645;&#x4F20;&#x8F93;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x5C06;WatchRegistration&#x5E8F;&#x5217;&#x5316;&#x5230;&#x5E95;&#x5C42;&#x6570;&#x7EC4;&#x4E2D;&#x3002;</p>
+<p><strong>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5904;&#x7406;Watcher</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14639299467699.jpg" alt=""></p>
+<p>FinalRequestProcessor.processRequest&#x4E2D;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x8981;&#x6CE8;&#x518C;Watcher &#x2013;&gt; &#x9700;&#x8981;&#x6CE8;&#x518C;&#xFF0C;&#x5219;&#x5C06;ServerCnxn&#x5BF9;&#x8C61;&#x548C;&#x6570;&#x636E;&#x8282;&#x70B9;&#x8DEF;&#x5F84;&#x4F20;&#x5165;getData&#x65B9;&#x6CD5;&#x3002;&#xFF08;ServerCnxn&#x4EE3;&#x8868;&#x7740;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x5B9E;&#x73B0;&#xFF1A;NIOServerCnxn&#xFF0C;NettyServerCnxn&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;&#x4E86;process&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;ServerCnxn&#x770B;&#x6210;Watcher&#x5BF9;&#x8C61;&#xFF09; &#x2013;&gt; &#x6570;&#x636E;&#x8282;&#x70B9;&#x8DEF;&#x5F84;&#x548C;ServerCnxn&#x6700;&#x7EC8;&#x5B58;&#x50A8;&#x5728;WatchManger&#x7684;WatchTable&#x548C;watch2Paths&#x4E2D;&#x3002;</p>
+<p><strong>Watcher&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;</strong></p>
+<p>WatchManager&#x8D1F;&#x8D23;Watcher&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#xFF0C;&#x5E76;&#x79FB;&#x9664;&#x5DF2;&#x7ECF;&#x88AB;&#x89E6;&#x53D1;&#x7684;Watcher&#xFF1A;</p>
+<ol>
+<li>&#x5C01;&#x88C5;WatchedEvent</li>
+<li>&#x67E5;&#x8BE2;Watcher</li>
+<li>&#x8C03;&#x7528;ServerCnxn&#x7684;process&#x65B9;&#x6CD5;&#x6765;&#x89E6;&#x53D1;<blockquote>
+<p>&#x8BF7;&#x6C42;&#x5934;&#x662F;-1&#xFF0C;&#x8868;&#x660E;&#x5F53;&#x524D;&#x662F;&#x4E00;&#x4E2A;&#x901A;&#x77E5;&#xFF1B;<br>&#x5C06;WatchedEvent&#x5305;&#x88C5;&#x6210;WatcherEvent&#x5BF9;&#x8C61;&#xFF0C;&#x4EE5;&#x4FBF;&#x4E8E;&#x7F51;&#x7EDC;&#x4F20;&#x8F93;&#x5E8F;&#x5217;&#x5316;&#xFF1B;<br>&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x901A;&#x77E5;</p>
 </blockquote>
-<h1 id="1-&#x914D;&#x7F6E;"><a href="#1&#x3001;&#x914D;&#x7F6E;" class="headerlink" title="1&#x3001;&#x914D;&#x7F6E;"></a>1&#x3001;&#x914D;&#x7F6E;</h1><h2 id="11-&#x5B89;&#x88C5;"><a href="#1-1&#x3001;&#x5B89;&#x88C5;" class="headerlink" title="1.1&#x3001;&#x5B89;&#x88C5;"></a>1.1&#x3001;&#x5B89;&#x88C5;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install memcached</span><br></pre></td></tr></table></figure>
-<h2 id="12-&#x542F;&#x52A8;"><a href="#1-2&#x3001;&#x542F;&#x52A8;" class="headerlink" title="1.2&#x3001;&#x542F;&#x52A8;"></a>1.2&#x3001;&#x542F;&#x52A8;</h2><blockquote>
-<p>Memcached&#x7684;&#x57FA;&#x672C;&#x8BBE;&#x7F6E;&#xFF1A;</p>
-<p>-p &#x76D1;&#x542C;&#x7684;&#x7AEF;&#x53E3;<br>-l &#x8FDE;&#x63A5;&#x7684;IP&#x5730;&#x5740;, &#x9ED8;&#x8BA4;&#x662F;&#x672C;&#x673A;<br>-d start &#x542F;&#x52A8;memcached&#x670D;&#x52A1;<br>-d restart &#x91CD;&#x8D77;memcached&#x670D;&#x52A1;<br>-d stop|shutdown &#x5173;&#x95ED;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;memcached&#x670D;&#x52A1;<br>-d install &#x5B89;&#x88C5;memcached&#x670D;&#x52A1;<br>-d uninstall &#x5378;&#x8F7D;memcached&#x670D;&#x52A1;<br>-u &#x4EE5;&#x7684;&#x8EAB;&#x4EFD;&#x8FD0;&#x884C; (&#x4EC5;&#x5728;&#x4EE5;root&#x8FD0;&#x884C;&#x7684;&#x65F6;&#x5019;&#x6709;&#x6548;)<br>-m &#x6700;&#x5927;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#xFF0C;&#x5355;&#x4F4D;MB&#x3002;&#x9ED8;&#x8BA4;64MB<br>-M &#x5185;&#x5B58;&#x8017;&#x5C3D;&#x65F6;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5220;&#x9664;&#x9879;<br>-c &#x6700;&#x5927;&#x540C;&#x65F6;&#x8FDE;&#x63A5;&#x6570;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1024<br>-f &#x5757;&#x5927;&#x5C0F;&#x589E;&#x957F;&#x56E0;&#x5B50;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;1.25<br>-n &#x6700;&#x5C0F;&#x5206;&#x914D;&#x7A7A;&#x95F4;&#xFF0C;key+value+flags&#x9ED8;&#x8BA4;&#x662F;48<br>-h &#x663E;&#x793A;&#x5E2E;&#x52A9;<br>mixi&#x7684;&#x8BBE;&#x7F6E;,&#x5355;&#x53F0;:    </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># &#x6BCF;&#x53F0;mc&#x670D;&#x52A1;&#x5668;&#x4EC5;&#x542F;&#x52A8;&#x4E00;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x5206;&#x914D;1G&#x5185;&#x5B58;</span><br><span class="line">/usr/bin/memcached -p 11211 -u nobody -m 1000 -c 512</span><br><span class="line"></span><br><span class="line"># &#x542F;&#x52A8;mc</span><br><span class="line">/usr/share/memcached/scripts/start-memcached</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">&#x6CE8;&#x610F;&#xFF1A;32&#x4F4D;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x591F;&#x4F7F;&#x7528;**2G**&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x66F4;&#x5927;&#x7684;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#x4E86;&#x3002;&#xFF08;&#x7528;&#x540C;&#x4E00;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x96C6;&#x7FA4;&#xFF0C;TCP&#x8FDE;&#x63A5;&#x6570;&#x5C31;&#x4F1A;&#x6210;&#x500D;&#x589E;&#x52A0;&#xFF0C;x86_64&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x5206;&#x914D;&#x8D85;&#x8FC7;2G&#x7684;&#x5185;&#x5B58;&#xFF09;&#xFF1B;</span><br><span class="line"></span><br><span class="line">mc&#x8FDB;&#x7A0B;&#x7684;&#x5B9E;&#x9645;&#x5185;&#x5B58;&#x5206;&#x914D;&#x91CF;&#x8981;&#x6BD4;&#x7F6E;&#x9876;&#x7684;&#x5185;&#x5B58;&#x8981;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x7F6E;&#x9876;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#x592A;&#x5927;&#x4E86;&#xFF0C;&#x6709;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x5185;&#x5B58;&#x4EA4;&#x6362;&#xFF08;swap&#xFF09;&#x3002;</span><br><span class="line"></span><br><span class="line"># 2&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</span><br><span class="line">&#x901A;&#x8FC7;magent&#x80FD;&#x591F;&#x8BA9;&#x7F13;&#x5B58;&#x5199;&#x5165;&#x5230;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684;memcached&#x91CC;&#x9762;</span><br><span class="line"></span><br><span class="line">## 2.1&#x3001;&#x5B89;&#x88C5;&#x4F7F;&#x7528;magent</span><br><span class="line">### 2.1.1&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;libevent</span><br><span class="line">```shell</span><br><span class="line">wget http://monkey.org/~provos/libevent-1.4.9-stable.tar.gz</span><br><span class="line">tar zxvf libevent-1.4.9-stable.tar.gz</span><br><span class="line">cd libevent-1.4.9-stable/</span><br><span class="line">./configure --prefix=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
-<h3 id="212-&#x7F16;&#x8BD1;&#x5B89;&#x88C5;memcached"><a href="#2-1-2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;" class="headerlink" title="2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;"></a>2.1.2&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;Memcached&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://danga.com/memcached/dist/memcached-1.2.6.tar.gz</span><br><span class="line">tar zxvf memcached-1.2.6.tar.gz</span><br><span class="line">cd memcached-1.2.6/</span><br><span class="line">./configure --with-libevent=/usr</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
-<h3 id="213-&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent"><a href="#2-1-3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;" class="headerlink" title="2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;"></a>2.1.3&#x3001;&#x7F16;&#x8BD1;&#x5B89;&#x88C5;magent&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mkdir magent</span><br><span class="line">cd magent/</span><br><span class="line">wget http://memagent.googlecode.com/files/magent-0.5.tar.gz</span><br><span class="line">tar zxvf magent-0.5.tar.gz</span><br><span class="line">/sbin/ldconfig</span><br><span class="line">sed -i &quot;s#LIBS = -levent#LIBS = -levent -lm#g&quot; Makefile</span><br><span class="line">make</span><br><span class="line">cp magent /usr/bin/magent</span><br><span class="line">cd ../</span><br></pre></td></tr></table></figure>
-<h3 id="214-&#x96C6;&#x7FA4;&#x914D;&#x7F6E;"><a href="#2-1-4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;" class="headerlink" title="2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;"></a>2.1.4&#x3001;&#x96C6;&#x7FA4;&#x914D;&#x7F6E;</h3><p>&#x96C6;&#x7FA4;&#x4E24;&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5B9E;&#x73B0;&#x7F13;&#x5B58;&#x5907;&#x4EFD;&#x3002;<br>&#x9AD8;&#x53EF;&#x7528;&#x7F51;&#x7EDC;&#x67B6;&#x6784;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141217-mc001.png" alt=""></p>
-<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;mc&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;11211,11212</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11211</span><br><span class="line">memcached -m 1 -u root -d -l 127.0.0.1 -p 11212</span><br></pre></td></tr></table></figure></p>
-<p><strong>&#x542F;&#x52A8;&#x4E24;&#x4E2A;magent&#x8FDB;&#x7A0B;&#xFF0C;&#x7AEF;&#x53E3;&#x5206;&#x522B;&#x4E3A;10000,10001</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10000 -s 127.0.0.1:11211 -b 127.0.0.1:11212</span><br><span class="line">magent -u root -n 51200 -l 127.0.0.1 -p 10001 -s 127.0.0.1:11212 -b 127.0.0.1 11211</span><br></pre></td></tr></table></figure></p>
-<p>-s&#x4E3A;&#x8981;&#x5199;&#x5165;&#x7684;memcached&#xFF0C;-b&#x4E3A;&#x5907;&#x4EFD;&#x7528;&#x7684;memcached    </p>
-<h1 id="3-&#x4F7F;&#x7528;"><a href="#3&#x3001;&#x4F7F;&#x7528;" class="headerlink" title="3&#x3001;&#x4F7F;&#x7528;"></a>3&#x3001;&#x4F7F;&#x7528;</h1><h2 id="31-&#x6E05;&#x7A7A;&#x7F13;&#x5B58;"><a href="#3-1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;" class="headerlink" title="3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;"></a>3.1&#x3001;&#x6E05;&#x7A7A;&#x7F13;&#x5B58;</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">flush_all</span><br><span class="line">quit</span><br></pre></td></tr></table></figure>
-<h1 id="4-&#x76D1;&#x63A7;"><a href="#4&#x3001;&#x76D1;&#x63A7;" class="headerlink" title="4&#x3001;&#x76D1;&#x63A7;"></a>4&#x3001;&#x76D1;&#x63A7;</h1><h2 id="41-stats"><a href="#4-1&#x3001;stats" class="headerlink" title="4.1&#x3001;stats"></a>4.1&#x3001;stats</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 11211</span><br><span class="line">stats</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>&#x5BA2;&#x6237;&#x7AEF;&#x56DE;&#x8C03;Watcher</strong></p>
+<p>SendThread.readResponse()&#x63A5;&#x6536;&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#xFF0C;&#x5982;&#x679C;&#x54CD;&#x5E94;&#x5934;&#x6807;&#x8BC6;&#x4E86;XID&#x4E3A;-1&#xFF0C;&#x5219;&#x8868;&#x660E;&#x662F;&#x4E00;&#x4E2A;&#x901A;&#x77E5;&#x7C7B;&#x578B;&#x7684;&#x54CD;&#x5E94;&#xFF0C;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#xFF1A;</p>
 <blockquote>
-<p>&#x76F8;&#x5173;&#x8D44;&#x6E90;&#xFF1A;</p>
-<p><a href="http://www.cnblogs.com/happyday56/p/3461113.html" title="memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;" target="_blank" rel="external">memcached+magent&#x5B9E;&#x73B0;memcached&#x96C6;&#x7FA4;</a>     </p>
-<p><a href="http://zhumeng8337797.blog.163.com/blog/static/10076891420113431424757/" title="memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  " target="_blank" rel="external">memcache&#x96C6;&#x7FA4;&#x670D;&#x52A1;&#xFF1A;memagent&#x914D;&#x7F6E;&#x4F7F;&#x7528;  </a></p>
-<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mc-config-and-monitoring.html" target="_blank" rel="external">http://www.itzhai.com/mc-config-and-monitoring.html</a></p>
+<p>&#x53CD;&#x5E8F;&#x5217;&#x5316;&#xFF1B;<br>&#x5904;&#x7406;chrootPath&#xFF1B;<br>&#x8FD8;&#x539F;WatchedEvent&#xFF1B;<br>&#x56DE;&#x8C03;Watcher&#xFF1B;</p>
 </blockquote>
+<p><strong>Watcher&#x7279;&#x6027;</strong></p>
+<p>&#x4E00;&#x6B21;&#x6027;&#xFF1B;<br>&#x5BA2;&#x6237;&#x7AEF;&#x4E32;&#x884C;&#x6267;&#x884C;&#xFF1B;<br>&#x8F7B;&#x91CF;&#xFF1B;</p>
+<h3 id="zookeeper&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5B89;&#x5168;"><a href="#ZooKeeper&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5B89;&#x5168;&#xFF1F;" class="headerlink" title="ZooKeeper&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5B89;&#x5168;&#xFF1F;"></a>ZooKeeper&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x5B89;&#x5168;&#xFF1F;</h3><p>&#x901A;&#x8FC7;ACL&#x673A;&#x5236;&#xFF0C;&#x5E38;&#x7528;&#x7684;<code>&#x6743;&#x9650;&#x6A21;&#x5F0F;</code>&#xFF1A;</p>
+<ul>
+<li>IP</li>
+<li>Digest(username:passowrd SHA-1&#x52A0;&#x5BC6; BASE64&#x7F16;&#x7801;)</li>
+<li>World(&#x6700;&#x5F00;&#x653E;&#x6743;&#x9650;&#x63A7;&#x5236;&#x6A21;&#x5F0F;&#xFF0C;&#x7279;&#x6B8A;&#x7684;Digest&#x6A21;&#x5F0F;&#xFF1A;world:anyone)</li>
+<li>Super(&#x8D85;&#x7EA7;&#x7528;&#x6237;&#xFF0C;&#x7279;&#x6B8A;&#x7684;Digest&#x6A21;&#x5F0F;)</li>
+</ul>
+<p>&#x901A;&#x8FC7;ACL&#x6388;&#x6743;&#x7ED9;&#x4E00;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8282;&#x70B9;&#xFF0C;&#x4F46;&#x662F;&#x8BE5;&#x5BA2;&#x6237;&#x7AEF;&#x5DF2;&#x7ECF;&#x9000;&#x51FA;&#x4E0D;&#x7528;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EA;&#x80FD;&#x4F7F;&#x7528;Super&#x6A21;&#x5F0F;&#x6E05;&#x7406;&#x8282;&#x70B9;&#x3002;</p>
+<h3 id="&#x5E38;&#x7528;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x7EC4;&#x4EF6;&#x6709;&#x54EA;&#x4E9B;"><a href="#&#x5E38;&#x7528;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x7EC4;&#x4EF6;&#x6709;&#x54EA;&#x4E9B;&#xFF1F;" class="headerlink" title="&#x5E38;&#x7528;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x7EC4;&#x4EF6;&#x6709;&#x54EA;&#x4E9B;&#xFF1F;"></a>&#x5E38;&#x7528;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x7EC4;&#x4EF6;&#x6709;&#x54EA;&#x4E9B;&#xFF1F;</h3><p>Jute&#xFF0C;&#x662F;ZooKeeper&#x4E2D;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x7EC4;&#x4EF6;&#xFF0C;Hadoop&#x6700;&#x521D;&#x7684;&#x9ED8;&#x8BA4;&#x5E8F;&#x5217;&#x5316;&#x7EC4;&#x4EF6;&#xFF0C;&#x524D;&#x8EAB;&#x662F;Hadoop Record IO&#xFF1B;<br>Apache Avro&#xFF0C;&#x5177;&#x6709;&#x51FA;&#x4F17;&#x7684;&#x8DE8;&#x8BED;&#x8A00;&#x7279;&#x6027;&#xFF0C;&#x4E30;&#x5BCC;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x5BF9;MapReduce&#x7684;&#x5929;&#x751F;&#x652F;&#x6301;&#xFF0C;&#x53EF;&#x4EE5;&#x65B9;&#x4FBF;&#x5730;&#x7528;&#x4E8E;RPC&#xFF0C;&#x540E;&#x6765;Hadoop&#x91C7;&#x7528;&#x8BE5;&#x6846;&#x67B6;&#x8FDB;&#x884C;&#x5E8F;&#x5217;&#x5316;&#xFF1B;</p>
+<h3 id="zookeeper&#x7684;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x662F;&#x600E;&#x6837;&#x7684;"><a href="#ZooKeeper&#x7684;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;" class="headerlink" title="ZooKeeper&#x7684;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;"></a>ZooKeeper&#x7684;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;</h3><p>&#x57FA;&#x4E8E;TCP/IP&#x534F;&#x8BAE;&#xFF0C;ZooKeeper&#x5B9E;&#x73B0;&#x4E86;&#x81EA;&#x5DF1;&#x7684;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#x6765;&#x5B8C;&#x6210;&#x5BA2;&#x6237;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x3001;&#x670D;&#x52A1;&#x7AEF;&#x4E0E;&#x670D;&#x52A1;&#x7AEF;&#x4E4B;&#x95F4;&#x7684;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14640505769132.jpg" alt=""></p>
+<p><strong>&#x534F;&#x8BAE;&#x89E3;&#x6790;&#xFF1A;&#x8BF7;&#x6C42;&#x90E8;&#x5206;</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14640506659467.jpg" alt=""></p>
+<p>&#x8BF7;&#x6C42;&#x5934;&#xFF1A;RequestHeader: xid  type<br>&#x8BF7;&#x6C42;&#x4F53;&#xFF1A;ConnectRequest&#xFF0C;GetDataRequest&#xFF0C;SetDataRequest</p>
+<p><strong>&#x534F;&#x8BAE;&#x89E3;&#x6790;&#xFF1A;&#x54CD;&#x5E94;&#x90E8;&#x5206;</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14640514973292.jpg" alt=""></p>
+<p>&#x54CD;&#x5E94;&#x5934;&#xFF1A;RepayHeader: xid zxid err<br>&#x54CD;&#x5E94;&#x4F53;&#xFF1A;ConnectResponse&#xFF0C;GetDataResponse&#xFF0C;SetDataResponse</p>
+<h3 id="zookeeper&#x7684;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x4EE5;&#x53CA;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x521D;&#x59CB;&#x5316;&#x548C;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;"><a href="#ZooKeeper&#x7684;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x4EE5;&#x53CA;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x521D;&#x59CB;&#x5316;&#x548C;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;" class="headerlink" title="ZooKeeper&#x7684;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x4EE5;&#x53CA;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x521D;&#x59CB;&#x5316;&#x548C;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;"></a>ZooKeeper&#x7684;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x4EE5;&#x53CA;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x521D;&#x59CB;&#x5316;&#x548C;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;</h3><ul>
+<li>ZooKeeper&#x5B9E;&#x4F8B;</li>
+<li>ClientWatchManager</li>
+<li>HostProvider</li>
+<li>ClientCnxn<ul>
+<li>SendThread: I/O&#x7EBF;&#x7A0B;</li>
+<li>EventThread: &#x4E8B;&#x4EF6;&#x7EBF;&#x7A0B;</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14640517810331.jpg" alt=""></p>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x521D;&#x59CB;&#x5316;&#x548C;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#xFF1A;1&#x3001;&#x8BBE;&#x7F6E;&#x9ED8;&#x8BA4;Watcher&#xFF1B;2&#x3001;&#x8BBE;&#x7F6E;ZooKeeper&#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;&#x5217;&#x8868;&#xFF1B;3&#x3001;&#x521B;&#x5EFA;ClientCnxn&#xFF1B;</p>
+<h3 id="clientcnxn&#x7F51;&#x7EDC;io&#x5177;&#x4F53;&#x6D41;&#x7A0B;"><a href="#ClientCnxn&#x7F51;&#x7EDC;I-O&#x5177;&#x4F53;&#x6D41;&#x7A0B;" class="headerlink" title="ClientCnxn&#x7F51;&#x7EDC;I/O&#x5177;&#x4F53;&#x6D41;&#x7A0B;"></a>ClientCnxn&#x7F51;&#x7EDC;I/O&#x5177;&#x4F53;&#x6D41;&#x7A0B;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14640528848741.jpg" alt=""></p>
+<p>&#x5173;&#x952E;&#x6982;&#x5FF5;&#xFF1A;Packet  ClientCnxn  outgoingQueue  pengdingQueue  ClientCnxnSocket  SendThread  EventThread</p>
+<h3 id="&#x8C08;&#x8C08;zookeepersessionid&#x7684;&#x751F;&#x6210;&#x7B97;&#x6CD5;"><a href="#&#x8C08;&#x8C08;ZooKeeperSessionId&#x7684;&#x751F;&#x6210;&#x7B97;&#x6CD5;" class="headerlink" title="&#x8C08;&#x8C08;ZooKeeperSessionId&#x7684;&#x751F;&#x6210;&#x7B97;&#x6CD5;"></a>&#x8C08;&#x8C08;ZooKeeperSessionId&#x7684;&#x751F;&#x6210;&#x7B97;&#x6CD5;</h3><h3 id="zookeeper&#x4E2D;&#x7684;&#x8D85;&#x65F6;&#x68C0;&#x67E5;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#x8FD9;&#x6837;&#x7684;&#x673A;&#x5236;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;"><a href="#ZooKeeper&#x4E2D;&#x7684;&#x8D85;&#x65F6;&#x68C0;&#x67E5;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x673A;&#x5236;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF1F;" class="headerlink" title="ZooKeeper&#x4E2D;&#x7684;&#x8D85;&#x65F6;&#x68C0;&#x67E5;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x673A;&#x5236;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF1F;"></a>ZooKeeper&#x4E2D;&#x7684;&#x8D85;&#x65F6;&#x68C0;&#x67E5;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x673A;&#x5236;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF1F;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14641849761647.jpg" alt=""></p>
+<p>ExpirationInterval</p>
+<h3 id="zookeeper&#x4E2D;&#x7684;&#x6E05;&#x7406;&#x4F1A;&#x8BDD;&#x7684;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;"><a href="#ZooKeeper&#x4E2D;&#x7684;&#x6E05;&#x7406;&#x4F1A;&#x8BDD;&#x7684;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;" class="headerlink" title="ZooKeeper&#x4E2D;&#x7684;&#x6E05;&#x7406;&#x4F1A;&#x8BDD;&#x7684;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;"></a>ZooKeeper&#x4E2D;&#x7684;&#x6E05;&#x7406;&#x4F1A;&#x8BDD;&#x7684;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;</h3><h3 id="&#x91CD;&#x8FDE;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;"><a href="#&#x91CD;&#x8FDE;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;" class="headerlink" title="&#x91CD;&#x8FDE;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;"></a>&#x91CD;&#x8FDE;&#x673A;&#x5236;&#x662F;&#x600E;&#x6837;&#x7684;&#xFF1F;</h3><p>&#x957F;&#x8FDE;&#x63A5;&#x662F;&#x901A;&#x8FC7;&#x5FC3;&#x8DF3;&#x673A;&#x5236;&#x5B9E;&#x73B0;&#x7684;&#xFF1B;</p>
+<h3 id="&#x4F1A;&#x8BDD;&#x8F6C;&#x79FB;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x4EC0;&#x4E48;&#x95EE;&#x9898;"><a href="#&#x4F1A;&#x8BDD;&#x8F6C;&#x79FB;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;" class="headerlink" title="&#x4F1A;&#x8BDD;&#x8F6C;&#x79FB;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;"></a>&#x4F1A;&#x8BDD;&#x8F6C;&#x79FB;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;</h3><p>&#x7F51;&#x7EDC;&#x5EF6;&#x65F6;&#xFF0C;&#x4F1A;&#x8BDD;&#x8F6C;&#x79FB;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5BFC;&#x81F4;&#x5148;&#x53D1;&#x9001;&#x7684;&#x8BF7;&#x6C42;&#x5199;&#x5165;&#x7684;&#x8282;&#x70B9;&#x6570;&#x636E;&#x8986;&#x76D6;&#x4E86;&#x540E;&#x9762;&#x53D1;&#x9001;&#x7684;&#x8BF7;&#x6C42;&#x5199;&#x5165;&#x7684;&#x8282;&#x70B9;&#x6570;&#x636E;&#x3002;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF1A;&#x5224;&#x65AD;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;Owner&#x662F;&#x4E0D;&#x662F;&#x5F53;&#x524D;&#x670D;&#x52A1;&#x5668;</p>
+<h3 id="&#x8C08;&#x8C08;zookeeper&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;"><a href="#&#x8C08;&#x8C08;ZooKeeper&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;" class="headerlink" title="&#x8C08;&#x8C08;ZooKeeper&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;"></a>&#x8C08;&#x8C08;ZooKeeper&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14641861688358.jpg" alt=""></p>
+<h3 id="zookeeper&#x542F;&#x52A8;&#x6D41;&#x7A0B;"><a href="#ZooKeeper&#x542F;&#x52A8;&#x6D41;&#x7A0B;" class="headerlink" title="ZooKeeper&#x542F;&#x52A8;&#x6D41;&#x7A0B;"></a>ZooKeeper&#x542F;&#x52A8;&#x6D41;&#x7A0B;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14641863751012.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14641871851028.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14641874096310.jpg" alt=""></p>
+<h3 id="zookeeper&#x7684;&#x9009;&#x4E3E;&#x6D41;&#x7A0B;"><a href="#ZooKeeper&#x7684;&#x9009;&#x4E3E;&#x6D41;&#x7A0B;" class="headerlink" title="ZooKeeper&#x7684;&#x9009;&#x4E3E;&#x6D41;&#x7A0B;"></a>ZooKeeper&#x7684;&#x9009;&#x4E3E;&#x6D41;&#x7A0B;</h3><p>ZooKeeper&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E09;&#x79CD;&#x9009;&#x4E3E;&#x7B97;&#x6CD5;&#xFF1A;LeaderElection&#xFF0C;UDP&#x7248;&#x672C;&#x7684;FastLeaderElection&#xFF0C;TCP&#x7248;&#x672C;&#x7684;FastLeaderElection&#xFF08;3.4&#x5F00;&#x59CB;&#x53EA;&#x4FDD;&#x7559;&#x8FD9;&#x4E2A;&#x9009;&#x4E3E;&#x7B97;&#x6CD5;&#xFF09;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14644288504989.jpg" alt=""></p>
+<p>sendqueue&#xFF1A;&#x9009;&#x7968;&#x53D1;&#x9001;&#x961F;&#x5217;<br>recvqueue&#xFF1A;&#x9009;&#x7968;&#x63A5;&#x6536;&#x961F;&#x5217;<br>WorkerReceiver&#xFF1A;&#x9009;&#x7968;&#x63A5;&#x6536;&#x5668;</p>
+<p><strong>Leader&#x9009;&#x4E3E;&#x7B97;&#x6CD5;&#x5B9E;&#x73B0;&#x7684;&#x6D41;&#x7A0B;&#x793A;&#x610F;&#x56FE;</strong><br><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14644289644948.jpg" alt=""></p>
+<h3 id="&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x89D2;&#x8272;&#x4ECB;&#x7ECD;"><a href="#&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x89D2;&#x8272;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x89D2;&#x8272;&#x4ECB;&#x7ECD;"></a>&#x5404;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x89D2;&#x8272;&#x4ECB;&#x7ECD;</h3><p><strong>Leader</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14644298952630.jpg" alt=""></p>
+<p>PreRequestProcessor&#xFF1A;&#x9884;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x5BF9;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x4E00;&#x7CFB;&#x5217;&#x9884;&#x5904;&#x7406;&#xFF1B;<br>ProposalRequestProcessor&#xFF1A;&#x4E8B;&#x7269;&#x6295;&#x7968;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x975E;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x76F4;&#x63A5;&#x63D0;&#x4EA4;&#x5230;CommitProcessor;</p>
+<p>CommitProcessor&#xFF1A;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x975E;&#x5B9E;&#x7269;&#x8BF7;&#x6C42;&#x76F4;&#x63A5;&#x4EA4;&#x4ED8;&#x7ED9;&#x4E0B;&#x4E00;&#x7EA7;&#x5904;&#x7406;&#x5668;&#xFF1B;<br>ToBeCommitProcessor&#xFF1A;&#x5305;&#x542B;&#x4E00;&#x4E2A;toBeApplied&#x961F;&#x5217;&#xFF0C;&#x5305;&#x542B;&#x53EF;&#x88AB;&#x63D0;&#x4EA4;&#x7684;Proposal&#xFF0C;&#x5E76;&#x53EB;&#x4E00;&#x4E2A;&#x4E0B;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1B;<br>FinalRequestprocessor&#xFF1A;&#x6536;&#x5C3E;&#x5DE5;&#x4F5C;&#xFF1A;&#x521B;&#x5EFA;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#x7684;&#x54CD;&#x5E94;&#xFF0C;&#x9488;&#x5BF9;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#xFF0C;&#x5C06;&#x4E8B;&#x52A1;&#x5E94;&#x7528;&#x5230;&#x5185;&#x5B58;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x53BB;&#xFF1B;</p>
+<p>SynRequestProcessor&#xFF1A;&#x4E8B;&#x52A1;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x5904;&#x7406;&#x5668;&#xFF1B;<br>AckRequestProcessor&#xFF1A;Leader&#x7279;&#x6709;&#x7684;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x901A;&#x77E5;&#x6295;&#x7968;&#x6536;&#x96C6;&#x5668;&#x5F53;&#x524D;&#x670D;&#x52A1;&#x5668;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x5BF9;&#x8BE5;Proposal&#x7684;&#x4E8B;&#x52A1;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#xFF1B;</p>
+<p>Leader&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x4E3A;&#x6240;&#x6709;&#x7684;Follower/Observer&#x670D;&#x52A1;&#x5668;&#x5EFA;&#x7ACB;TCP&#x957F;&#x8FDE;&#x63A5;&#xFF0C;&#x540C;&#x65F6;&#x4E3A;&#x6BCF;&#x4E2A;Follower/Observer&#x670D;&#x52A1;&#x5668;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;LearnHander&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p><strong>Follower</strong></p>
+<p>&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x975E;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#xFF0C;&#x76F4;&#x63A5;&#x8F6C;&#x53D1;&#x7ED9;Leader&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1B;&#x53C2;&#x4E0E;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;Proposal&#x6295;&#x7968;&#xFF0C;&#x53C2;&#x4E0E;Leader&#x9009;&#x4E3E;&#x6295;&#x7968;&#xFF1B;</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14644340739083.jpg" alt=""></p>
+<p>FollowerRequestProcessor: &#x8F6C;&#x53D1;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x7ED9;Leader&#x8FDB;&#x884C;&#x5904;&#x7406;</p>
+<p>SendAckRequestProcessor: Follower&#x624D;&#x6709;&#x8BE5;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x4EE5;ACK&#x6D88;&#x606F;&#x7684;&#x5F62;&#x5F0F;&#x6765;&#x5411;Leader&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x53CD;&#x9988;&#x3002;</p>
+<p><strong>Observer</strong></p>
+<p>Observer&#x4E0E;Follower&#x7684;&#x533A;&#x522B;&#xFF1A;Observer&#x4E0D;&#x53C2;&#x4E0E;&#x4EFB;&#x4F55;&#x5F62;&#x5F0F;&#x7684;&#x6295;&#x7968;&#xFF08;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;Proposal&#x548C;Leader&#x9009;&#x4E3E;&#x7684;&#x6295;&#x7968;&#xFF09;&#xFF0C;&#x53EA;&#x63D0;&#x4F9B;&#x975E;&#x4E8B;&#x52A1;&#x670D;&#x52A1;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x5728;&#x4E0D;&#x5F71;&#x54CD;&#x96C6;&#x7FA4;&#x4E8B;&#x52A1;&#x5904;&#x7406;&#x80FD;&#x529B;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#x63D0;&#x5347;&#x96C6;&#x7FA4;&#x7684;&#x975E;&#x4E8B;&#x52A1;&#x5904;&#x7406;&#x80FD;&#x529B;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14647438060811.jpg" alt=""></p>
+<p>&#x6CE8;&#x610F;&#xFF1A;Leader&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x4F1A;&#x5C06;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x7684;&#x6295;&#x7968;&#x53D1;&#x9001;&#x7ED9;Observer&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<h3 id="&#x96C6;&#x7FA4;&#x95F4;&#x6D88;&#x606F;&#x901A;&#x4FE1;&#x6709;&#x54EA;&#x4E9B;&#x7C7B;&#x578B;"><a href="#&#x96C6;&#x7FA4;&#x95F4;&#x6D88;&#x606F;&#x901A;&#x4FE1;&#x6709;&#x54EA;&#x4E9B;&#x7C7B;&#x578B;" class="headerlink" title="&#x96C6;&#x7FA4;&#x95F4;&#x6D88;&#x606F;&#x901A;&#x4FE1;&#x6709;&#x54EA;&#x4E9B;&#x7C7B;&#x578B;"></a>&#x96C6;&#x7FA4;&#x95F4;&#x6D88;&#x606F;&#x901A;&#x4FE1;&#x6709;&#x54EA;&#x4E9B;&#x7C7B;&#x578B;</h3><p><strong>&#x6570;&#x636E;&#x540C;&#x6B65;&#x578B;</strong></p>
+<p><strong>&#x670D;&#x52A1;&#x5668;&#x521D;&#x59CB;&#x5316;&#x578B;</strong></p>
+<p><strong>&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x578B;</strong></p>
+<p><strong>&#x4F1A;&#x8BDD;&#x7BA1;&#x7406;&#x578B;</strong></p>
+<p><a href="http://www.cnblogs.com/esingchan/p/3917718.html" target="_blank" rel="external">&#x5206;&#x5E03;&#x5F0F;&#x7406;&#x8BBA;&#x4E4B;&#x4E00;&#xFF1A;Paxos&#x7B97;&#x6CD5;&#x7684;&#x901A;&#x4FD7;&#x7406;&#x89E3;</a></p>
+<p><a href="http://blog.csdn.net/xhh198781/article/details/10949697" target="_blank" rel="external">Paxos&#x7B97;&#x6CD5;&#x4E0E;Zookeeper&#x5206;&#x6790;</a></p>
 
       
     </div>
@@ -177,7 +376,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
+    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/分布式/">分布式</a>
   </span>
 
 
@@ -186,112 +385,10 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
+    <a href="/tags/ZooKeeper/">ZooKeeper</a>
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/NoSQL/Memcached/20141211_Memcached缓存时间比实际过期时间长的问题/"><span>Memcached缓存时间比实际过期时间长的问题</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/NoSQL/Memcached/20141211_Memcached缓存时间比实际过期时间长的问题/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T15:39:37.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>&#x67E5;&#x770B;<a href="https://github.com/memcached/memcached/blob/master/memcached.c" title="Memcached&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E90;&#x7801;" target="_blank" rel="external">Memcached&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E90;&#x7801;</a>&#xFF0C;&#x53D1;&#x73B0;MC&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5224;&#x65AD;&#x7F13;&#x5B58;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x662F;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#x7684;&#xFF1A;    </p>
-<h2 id="&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;"><a href="#&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;" class="headerlink" title="&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;"></a>&#x8BA1;&#x7B97;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x540E;&#x591A;&#x5C11;&#x79D2;&#x8BE5;key&#x4F1A;&#x5931;&#x6548;</h2><h3 id="1-&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;unix&#x65F6;&#x95F4;&#x6233;"><a href="#1&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;Unix&#x65F6;&#x95F4;&#x6233;&#xFF1A;" class="headerlink" title="1&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;Unix&#x65F6;&#x95F4;&#x6233;&#xFF1A;"></a>1&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x8D85;&#x8FC7;30&#x5929;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;Unix&#x65F6;&#x95F4;&#x6233;&#xFF1A;</h3><p>&#x5931;&#x6548;&#x65F6;&#x95F4; = &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;- &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x8DDD;&#x79BB;memcached&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x7684;&#x79D2;&#x6570;;</p>
-<h3 id="2-&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;"><a href="#2&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF1A;" class="headerlink" title="2&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF1A;"></a>2&#x3001;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;30&#x5929;&#x5185;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x662F;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x957F;&#x5EA6;&#xFF1A;</h3><p>&#x5931;&#x6548;&#x65F6;&#x95F4; = &#x8BBE;&#x7F6E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x957F;&#x5EA6; + current_time</p>
-<blockquote>
-<p>&#x5177;&#x4F53;&#x53EF;&#x4EE5;&#x53C2;&#x8003;<a href="http://my.oschina.net/u/1255608/blog/163342" title="&#x8FD9;&#x91CC;" target="_blank" rel="external">&#x8FD9;&#x91CC;</a>     </p>
-</blockquote>
-<p>&#x5982;&#x679C;MC&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x5BF9;&#x7CFB;&#x7EDF;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#xFF0C;&#x90A3;&#x4E48;&#x7B2C;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x4E0D;&#x51C6;&#x786E;&#x7684;&#x6709;&#x6548;&#x65F6;&#x95F4;&#x4E86;</p>
-<p><a href="http://www.couchbase.com/issues/browse/MB-11548" title="&#x76F8;&#x5173;bug" target="_blank" rel="external">&#x76F8;&#x5173;bug</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Cache/">Cache</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Memcached/">Memcached</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/javascript/main/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/javascript/main/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-03T01:38:35.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        console.log(&apos;This would be the main JS file.&apos;);
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
         </div>
         
     </footer>
@@ -339,14 +436,14 @@
 
   
   
-    <h3 class="article-title"><a href="/database/mysql/mysql/"><span>MySQL 安装问题</span></a></h3>
+    <h3 class="article-title"><a href="/javascript/main/"><span></span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/database/mysql/mysql/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-02T16:00:00.000Z">
+      <a href="/javascript/main/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-03T01:38:35.000Z">
           2016-05-03
         </time>
       </a>
@@ -359,145 +456,14 @@
   <div class="article-content">
     <div class="entry">
       
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>&#x6279;&#x91CF;&#x63D2;&#x5165;&#xFF1A;</p>
-<blockquote>
-<p><a href="http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html</a></p>
-</blockquote>
-<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac&#x4E0B;&#x65B0;&#x5B89;&#x88C5;&#x7684;MySQL&#x65E0;&#x6CD5;&#x767B;&#x9646;root&#x7528;&#x6237;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</a></p>
-<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac&#x4E0B;&#x5B89;&#x88C5;MySQL5.7&#x9047;&#x5230;&#x9ED8;&#x8BA4;&#x5BC6;&#x7801;&#x7684;&#x5927;&#x5751;</a></p>
+        console.log(&apos;This would be the main JS file.&apos;);
 
       
     </div>
     <footer class="article-footer">
         <div class="article-meta pull-left">
           
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Database/">Database</a>
-  </span>
-
-
           
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/MySQL/">MySQL</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/blog/HighPay Zoom博客系统搭建说明/"><span>HighPay Zoom博客系统搭建说明</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/blog/HighPay Zoom博客系统搭建说明/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-05-02T16:00:00.000Z">
-          2016-05-03
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com/highpay-zoom-blog-build-intro.html" target="_blank" rel="external">HighPay Zoom&#x535A;&#x5BA2;&#x7CFB;&#x7EDF;&#x642D;&#x5EFA;&#x8BF4;&#x660E;</a></p>
-</blockquote>
-<!-- ttoc -->
-<p>HighPay Zoom&#x535A;&#x5BA2;&#x6258;&#x7BA1;&#x4E8E;Github,&#x57FA;&#x4E8E;Hexo&#x5236;&#x4F5C;&#x6210;&#x9759;&#x6001;&#x535A;&#x5BA2;;</p>
-<h2 id="hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>&#x662F;&#x4E00;&#x6B3E;&#x57FA;&#x4E8E;Node.js&#x7684;&#x9759;&#x6001;&#x535A;&#x5BA2;&#x6846;&#x67B6;,&#x7B80;&#x5355;&#x7684;&#x8BF4;,&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Hexo,&#x628A;markdown&#x6587;&#x4EF6;&#x76F4;&#x63A5;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x7F51;&#x7AD9;&#x8F93;&#x51FA;&#x5230;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;,&#x7136;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4E0A;&#x4F20;&#x5230;&#x670D;&#x52A1;&#x5668;&#x6216;&#x8005;github,&#x5C31;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5566;~</p>
-<h3 id="&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4F7F;&#x7528;hexo&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;"><a href="#&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4F7F;&#x7528;Hexo&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;" class="headerlink" title="&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4F7F;&#x7528;Hexo&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;:"></a>&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4F7F;&#x7528;Hexo&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;:</h3><p>Hexo&#x57FA;&#x4E8E;Node.js,&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5148;&#x5B89;&#x88C5;NodeJS&#x7684;&#x73AF;&#x5883;,&#x600E;&#x4E48;&#x5B89;&#x88C5;&#x5C31;&#x4E0D;&#x8BF4;&#x5566;,&#x641C;&#x7D22;&#x4E00;&#x4E0B;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x6559;&#x7A0B;;&#x4E3B;&#x8981;&#x901A;&#x8FC7;NodeJS&#x751F;&#x6210;&#x9759;&#x6001;&#x7AD9;&#x70B9;;</p>
-<p>&#x540C;&#x65F6;&#x4F60;&#x9700;&#x8981;&#x5B89;&#x88C5;Git,&#x7528;&#x4E8E;&#x628A;&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x5230;github&#x4E0A;&#x9762;&#x53BB;;</p>
-<p>&#x5B89;&#x88C5;Hexo:</p>
-<blockquote>
-<p>sudo npm install-g hexo</p>
-</blockquote>
-<p>&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;:</p>
-<blockquote>
-<p>hexo init</p>
-</blockquote>
-<p>&#x751F;&#x6210;&#x9759;&#x6001;&#x9875;&#x9762;:</p>
-<blockquote>
-<p>hexo generate</p>
-</blockquote>
-<p>&#x672C;&#x5730;&#x542F;&#x52A8;&#x8BBF;&#x95EE;&#x9759;&#x6001;&#x7F51;&#x7AD9;:</p>
-<blockquote>
-<p>hexo server</p>
-</blockquote>
-<p>&#x542F;&#x52A8;&#x4E4B;&#x540E;&#x4F1A;&#x63D0;&#x793A;&#x672C;&#x5730;&#x8BBF;&#x95EE;&#x7684;&#x5730;&#x5740;,&#x76F4;&#x63A5;&#x8F93;&#x5165;&#x5730;&#x5740;&#x8BBF;&#x95EE;&#x5C31;&#x53EF;&#x4EE5;&#x5566;;</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x628A;&#x9759;&#x6001;&#x7F51;&#x7AD9;&#x53D1;&#x5E03;&#x5230;github&#x4E0A;&#x9762;&#x53BB;,&#x600E;&#x4E48;&#x4F7F;&#x7528;github&#x521B;&#x5EFA;&#x4E3B;&#x9875;&#x5C31;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;,&#x641C;&#x4E00;&#x4E0B;<code>github&#x642D;&#x5EFA;&#x535A;&#x5BA2;</code>&#x5373;&#x53EF;&#x627E;&#x5230;&#x7B54;&#x6848;.</p>
-<p>&#x6267;&#x884C;&#x5B8C;<code>hexo init</code>&#x4E4B;&#x540E;,&#x4F1A;&#x5728;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x751F;&#x6210;hexo&#x76F8;&#x5173;&#x7684;&#x6587;&#x4EF6;,&#x5176;&#x4E2D;<code>_config.yml</code>&#x662F;hexo&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;,&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x548C;&#x53D1;&#x5E03;&#x4FE1;&#x606F;&#x7684;,&#x6211;&#x4EEC;&#x7F16;&#x8F91;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;,&#x5728;&#x6700;&#x540E;&#x52A0;&#x4E0A;:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"></span><br><span class="line">     <span class="built_in">type</span>: git</span><br><span class="line"></span><br><span class="line">     repo:https://github.com/&#x60A8;&#x7684;github&#x9879;&#x76EE;&#x4ED3;&#x5E93;&#x5730;&#x5740;</span><br><span class="line"></span><br><span class="line">     branch:master</span><br></pre></td></tr></table></figure>
-<p>&#x6CE8;&#x610F;,&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x7684;<code>branch</code>&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E3A;master,&#x5426;&#x5219;,css,js,&#x56FE;&#x7247;&#x7B49;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x4E0D;&#x5230;.</p>
-<p>&#x597D;&#x7684;,&#x4E3A;&#x4E86;&#x901A;&#x8FC7;hexo&#x76F4;&#x63A5;&#x628A;&#x9879;&#x76EE;&#x76F4;&#x63A5;&#x53D1;&#x5E03;&#x5230;github&#x4ED3;&#x5E93;&#x7684;master&#x5206;&#x652F;,&#x9700;&#x8981;&#x518D;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x6A21;&#x5757;:</p>
-<blockquote>
-<p>npm install hexo-deployer-git&#x2013;save</p>
-</blockquote>
-<p>&#x6267;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;,&#x9759;&#x6001;&#x7AD9;&#x70B9;&#x5C31;push&#x5230;github&#x4E0A;&#x9762;&#x53BB;&#x5566;:</p>
-<blockquote>
-<p>hexo deploy</p>
-</blockquote>
-<p>&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x628A;&#x6211;&#x4EEC;&#x521A;&#x624D;&#x6267;&#x884C;<code>hexo generate</code>&#x6240;&#x751F;&#x6210;&#x7684;<code>public</code>&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x9762;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;,&#x65E2;&#x662F;&#x9759;&#x6001;&#x7AD9;&#x70B9;,push&#x5230;&#x4E86;github&#x7684;master&#x5206;&#x652F;&#x4E0A;&#x9762;;</p>
-<p>&#x6BCF;&#x6B21;&#x90E8;&#x7F72;&#x7684;&#x6B65;&#x9AA4;,&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x8FD9;&#x6837;&#x6765;:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x7ED9;&#x535A;&#x6587;&#x6DFB;&#x52A0;&#x6807;&#x7B7E;&#x6216;&#x8005;&#x5206;&#x7C7B;,&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;markdown&#x6587;&#x4EF6;&#x9876;&#x90E8;&#x8FD9;&#x6837;&#x8BBE;&#x7F6E;:</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: HighPay Zoom&#x535A;&#x5BA2;&#x7CFB;&#x7EDF;&#x642D;&#x5EFA;&#x8BF4;&#x660E;</span><br><span class="line">categories: [&#x6742;&#x8C08;]</span><br><span class="line"><span class="section">tags: [Hexo]</span><br><span class="line">---</span></span><br></pre></td></tr></table></figure>
-<p>&#x5176;&#x4E2D;title&#x662F;&#x535A;&#x6587;&#x7684;&#x6807;&#x9898;,categories&#x662F;&#x5206;&#x7C7B;,tags&#x662F;&#x6807;&#x7B7E;,&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x6807;&#x7B7E;&#x6216;&#x8005;&#x5206;&#x7C7B;,&#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x6DFB;&#x52A0;:[a,b,c]</p>
-<h2 id="hexo&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;"><a href="#Hexo&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;" class="headerlink" title="Hexo&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;"></a>Hexo&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;</h2><p>&#x6587;&#x6863;&#x4E2D;&#x7684;&#x5206;&#x9694;&#x9879;&#x4E0D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>---</code>&#xFF0C;&#x4E0E;hexo&#x7684;&#x6587;&#x4EF6;&#x9876;&#x90E8;&#x5B9A;&#x4E49;&#x7684;&#x5B57;&#x7B26;&#x51B2;&#x7A81;&#x4E86;&#xFF0C;&#x62A5;&#x5982;&#x4E0B;&#x9519;&#xFF1A;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YAMLException: end of the stream or a document separator is expected at</span><br></pre></td></tr></table></figure>
-<p>&#x60A8;&#x5E94;&#x8BE5;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;<code>***</code>&#x66FF;&#x4EE3;&#x3002;</p>
-<p>&#x4EE5;&#x4E0A;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x642D;&#x5EFA;&#x8FC7;&#x7A0B;&#x5566;, Bon Voyage!</p>
-<h2 id="references"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
-<li><a href="https://hexo.io/" target="_blank" rel="external">Hexo&#x5B98;&#x7F51;</a></li>
-<li><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">HEXO+Github,&#x642D;&#x5EFA;&#x5C5E;&#x4E8E;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;</a></li>
-<li><a href="http://www.jianshu.com/collection/7fafdc0abb5b" target="_blank" rel="external">Hexo@&#x7B80;&#x4E66;</a></li>
-<li><a href="http://ijiaober.github.io/categories/hexo/" target="_blank" rel="external">Hexo&#x4F7F;&#x7528;&#x653B;&#x7565;</a></li>
-<li><a href="http://www.imys.net/20150514/hexo-toc.html" target="_blank" rel="external">Hexo&#x6DFB;&#x52A0;Toc&#x652F;&#x6301;&#xFF0C;&#x751F;&#x6210;&#x6587;&#x7AE0;&#x76EE;&#x5F55;</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/杂谈/">杂谈</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/Hexo/">Hexo</a>
-  </span>
-
-
         </div>
         
     </footer>
@@ -623,6 +589,113 @@
   <span class="post-tags">
     <i class="icon-tags"></i>
     <a href="/tags/MySQL/">MySQL</a>, <a href="/tags/高并发/">高并发</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/blog/HighPay Zoom博客系统搭建说明/"><span>HighPay Zoom博客系统搭建说明</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/blog/HighPay Zoom博客系统搭建说明/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-05-02T16:00:00.000Z">
+          2016-05-03
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com/highpay-zoom-blog-build-intro.html" target="_blank" rel="external">HighPay Zoom&#x535A;&#x5BA2;&#x7CFB;&#x7EDF;&#x642D;&#x5EFA;&#x8BF4;&#x660E;</a></p>
+</blockquote>
+<!-- ttoc -->
+<p>HighPay Zoom&#x535A;&#x5BA2;&#x6258;&#x7BA1;&#x4E8E;Github,&#x57FA;&#x4E8E;Hexo&#x5236;&#x4F5C;&#x6210;&#x9759;&#x6001;&#x535A;&#x5BA2;;</p>
+<h2 id="hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h2><p><a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>&#x662F;&#x4E00;&#x6B3E;&#x57FA;&#x4E8E;Node.js&#x7684;&#x9759;&#x6001;&#x535A;&#x5BA2;&#x6846;&#x67B6;,&#x7B80;&#x5355;&#x7684;&#x8BF4;,&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Hexo,&#x628A;markdown&#x6587;&#x4EF6;&#x76F4;&#x63A5;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;&#x9759;&#x6001;&#x7684;&#x7F51;&#x7AD9;&#x8F93;&#x51FA;&#x5230;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5939;,&#x7136;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4E0A;&#x4F20;&#x5230;&#x670D;&#x52A1;&#x5668;&#x6216;&#x8005;github,&#x5C31;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5566;~</p>
+<h3 id="&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4F7F;&#x7528;hexo&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;"><a href="#&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4F7F;&#x7528;Hexo&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;" class="headerlink" title="&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4F7F;&#x7528;Hexo&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;:"></a>&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x4F7F;&#x7528;Hexo&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;:</h3><p>Hexo&#x57FA;&#x4E8E;Node.js,&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5148;&#x5B89;&#x88C5;NodeJS&#x7684;&#x73AF;&#x5883;,&#x600E;&#x4E48;&#x5B89;&#x88C5;&#x5C31;&#x4E0D;&#x8BF4;&#x5566;,&#x641C;&#x7D22;&#x4E00;&#x4E0B;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x76F8;&#x5E94;&#x7684;&#x6559;&#x7A0B;;&#x4E3B;&#x8981;&#x901A;&#x8FC7;NodeJS&#x751F;&#x6210;&#x9759;&#x6001;&#x7AD9;&#x70B9;;</p>
+<p>&#x540C;&#x65F6;&#x4F60;&#x9700;&#x8981;&#x5B89;&#x88C5;Git,&#x7528;&#x4E8E;&#x628A;&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x5230;github&#x4E0A;&#x9762;&#x53BB;;</p>
+<p>&#x5B89;&#x88C5;Hexo:</p>
+<blockquote>
+<p>sudo npm install-g hexo</p>
+</blockquote>
+<p>&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;:</p>
+<blockquote>
+<p>hexo init</p>
+</blockquote>
+<p>&#x751F;&#x6210;&#x9759;&#x6001;&#x9875;&#x9762;:</p>
+<blockquote>
+<p>hexo generate</p>
+</blockquote>
+<p>&#x672C;&#x5730;&#x542F;&#x52A8;&#x8BBF;&#x95EE;&#x9759;&#x6001;&#x7F51;&#x7AD9;:</p>
+<blockquote>
+<p>hexo server</p>
+</blockquote>
+<p>&#x542F;&#x52A8;&#x4E4B;&#x540E;&#x4F1A;&#x63D0;&#x793A;&#x672C;&#x5730;&#x8BBF;&#x95EE;&#x7684;&#x5730;&#x5740;,&#x76F4;&#x63A5;&#x8F93;&#x5165;&#x5730;&#x5740;&#x8BBF;&#x95EE;&#x5C31;&#x53EF;&#x4EE5;&#x5566;;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x662F;&#x628A;&#x9759;&#x6001;&#x7F51;&#x7AD9;&#x53D1;&#x5E03;&#x5230;github&#x4E0A;&#x9762;&#x53BB;,&#x600E;&#x4E48;&#x4F7F;&#x7528;github&#x521B;&#x5EFA;&#x4E3B;&#x9875;&#x5C31;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;,&#x641C;&#x4E00;&#x4E0B;<code>github&#x642D;&#x5EFA;&#x535A;&#x5BA2;</code>&#x5373;&#x53EF;&#x627E;&#x5230;&#x7B54;&#x6848;.</p>
+<p>&#x6267;&#x884C;&#x5B8C;<code>hexo init</code>&#x4E4B;&#x540E;,&#x4F1A;&#x5728;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x751F;&#x6210;hexo&#x76F8;&#x5173;&#x7684;&#x6587;&#x4EF6;,&#x5176;&#x4E2D;<code>_config.yml</code>&#x662F;hexo&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;,&#x7528;&#x4E8E;&#x914D;&#x7F6E;&#x7AD9;&#x70B9;&#x4FE1;&#x606F;&#x548C;&#x53D1;&#x5E03;&#x4FE1;&#x606F;&#x7684;,&#x6211;&#x4EEC;&#x7F16;&#x8F91;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;,&#x5728;&#x6700;&#x540E;&#x52A0;&#x4E0A;:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"></span><br><span class="line">     <span class="built_in">type</span>: git</span><br><span class="line"></span><br><span class="line">     repo:https://github.com/&#x60A8;&#x7684;github&#x9879;&#x76EE;&#x4ED3;&#x5E93;&#x5730;&#x5740;</span><br><span class="line"></span><br><span class="line">     branch:master</span><br></pre></td></tr></table></figure>
+<p>&#x6CE8;&#x610F;,&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x7684;<code>branch</code>&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E3A;master,&#x5426;&#x5219;,css,js,&#x56FE;&#x7247;&#x7B49;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x52A0;&#x8F7D;&#x4E0D;&#x5230;.</p>
+<p>&#x597D;&#x7684;,&#x4E3A;&#x4E86;&#x901A;&#x8FC7;hexo&#x76F4;&#x63A5;&#x628A;&#x9879;&#x76EE;&#x76F4;&#x63A5;&#x53D1;&#x5E03;&#x5230;github&#x4ED3;&#x5E93;&#x7684;master&#x5206;&#x652F;,&#x9700;&#x8981;&#x518D;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x6A21;&#x5757;:</p>
+<blockquote>
+<p>npm install hexo-deployer-git&#x2013;save</p>
+</blockquote>
+<p>&#x6267;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;,&#x9759;&#x6001;&#x7AD9;&#x70B9;&#x5C31;push&#x5230;github&#x4E0A;&#x9762;&#x53BB;&#x5566;:</p>
+<blockquote>
+<p>hexo deploy</p>
+</blockquote>
+<p>&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x628A;&#x6211;&#x4EEC;&#x521A;&#x624D;&#x6267;&#x884C;<code>hexo generate</code>&#x6240;&#x751F;&#x6210;&#x7684;<code>public</code>&#x6587;&#x4EF6;&#x5939;&#x91CC;&#x9762;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;,&#x65E2;&#x662F;&#x9759;&#x6001;&#x7AD9;&#x70B9;,push&#x5230;&#x4E86;github&#x7684;master&#x5206;&#x652F;&#x4E0A;&#x9762;;</p>
+<p>&#x6BCF;&#x6B21;&#x90E8;&#x7F72;&#x7684;&#x6B65;&#x9AA4;,&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x8FD9;&#x6837;&#x6765;:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x7ED9;&#x535A;&#x6587;&#x6DFB;&#x52A0;&#x6807;&#x7B7E;&#x6216;&#x8005;&#x5206;&#x7C7B;,&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;markdown&#x6587;&#x4EF6;&#x9876;&#x90E8;&#x8FD9;&#x6837;&#x8BBE;&#x7F6E;:</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: HighPay Zoom&#x535A;&#x5BA2;&#x7CFB;&#x7EDF;&#x642D;&#x5EFA;&#x8BF4;&#x660E;</span><br><span class="line">categories: [&#x6742;&#x8C08;]</span><br><span class="line"><span class="section">tags: [Hexo]</span><br><span class="line">---</span></span><br></pre></td></tr></table></figure>
+<p>&#x5176;&#x4E2D;title&#x662F;&#x535A;&#x6587;&#x7684;&#x6807;&#x9898;,categories&#x662F;&#x5206;&#x7C7B;,tags&#x662F;&#x6807;&#x7B7E;,&#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;&#x6807;&#x7B7E;&#x6216;&#x8005;&#x5206;&#x7C7B;,&#x6309;&#x7167;&#x8FD9;&#x4E2A;&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x6DFB;&#x52A0;:[a,b,c]</p>
+<h2 id="hexo&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;"><a href="#Hexo&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;" class="headerlink" title="Hexo&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;"></a>Hexo&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;</h2><p>&#x6587;&#x6863;&#x4E2D;&#x7684;&#x5206;&#x9694;&#x9879;&#x4E0D;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>---</code>&#xFF0C;&#x4E0E;hexo&#x7684;&#x6587;&#x4EF6;&#x9876;&#x90E8;&#x5B9A;&#x4E49;&#x7684;&#x5B57;&#x7B26;&#x51B2;&#x7A81;&#x4E86;&#xFF0C;&#x62A5;&#x5982;&#x4E0B;&#x9519;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YAMLException: end of the stream or a document separator is expected at</span><br></pre></td></tr></table></figure>
+<p>&#x60A8;&#x5E94;&#x8BE5;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;<code>***</code>&#x66FF;&#x4EE3;&#x3002;</p>
+<p>&#x4EE5;&#x4E0A;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x642D;&#x5EFA;&#x8FC7;&#x7A0B;&#x5566;, Bon Voyage!</p>
+<h2 id="references"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://hexo.io/" target="_blank" rel="external">Hexo&#x5B98;&#x7F51;</a></li>
+<li><a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">HEXO+Github,&#x642D;&#x5EFA;&#x5C5E;&#x4E8E;&#x81EA;&#x5DF1;&#x7684;&#x535A;&#x5BA2;</a></li>
+<li><a href="http://www.jianshu.com/collection/7fafdc0abb5b" target="_blank" rel="external">Hexo@&#x7B80;&#x4E66;</a></li>
+<li><a href="http://ijiaober.github.io/categories/hexo/" target="_blank" rel="external">Hexo&#x4F7F;&#x7528;&#x653B;&#x7565;</a></li>
+<li><a href="http://www.imys.net/20150514/hexo-toc.html" target="_blank" rel="external">Hexo&#x6DFB;&#x52A0;Toc&#x652F;&#x6301;&#xFF0C;&#x751F;&#x6210;&#x6587;&#x7AE0;&#x76EE;&#x5F55;</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/杂谈/">杂谈</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/Hexo/">Hexo</a>
   </span>
 
 

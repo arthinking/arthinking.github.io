@@ -54,6 +54,65 @@
 
   
   
+    <h3 class="article-title"><a href="/IDE/IntelliJ IDEA/2016-03-10-1 插件安装/"><span>IntelliJ IDEA插件安装</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/IDE/IntelliJ IDEA/2016-03-10-1 插件安装/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-03-09T16:00:00.000Z">
+          2016-03-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="mybatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><p><a href="http://blog.csdn.net/pk490525/article/details/16978879" target="_blank" rel="external">IntelliJ idea mybatis&#x63D2;&#x4EF6;&#x5B89;&#x88C5;</a></p>
+<h1 id="jrebel"><a href="#JRebel" class="headerlink" title="JRebel"></a>JRebel</h1><p><a href="http://www.cnblogs.com/challengeof/p/4794282.html" target="_blank" rel="external">Mac + IDEA + JRebel&#x7834;&#x89E3;&#x65B9;&#x6CD5;</a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/jrebel-setup.html" target="_blank" rel="external">IntelliJ IDEA &#x7684; Java &#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6; JRebel &#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/IDE/">IDE</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/IntelliJ-IDEA/">IntelliJ IDEA</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
     <h3 class="article-title"><a href="/IDE/IntelliJ IDEA/2016-02-03 IntelliJ IDEA系列1/"><span>INtelliJ IDEA系列1</span></a></h3>
   
 
@@ -382,59 +441,6 @@
 
   
   
-    <h3 class="article-title"><a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/"><span>给一个多处使用到的类中的某些方法添加额外的处理动作</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/" rel="bookmark">
-        <time class="entry-date published" datetime="2015-02-09T16:00:00.000Z">
-          2015-02-10
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>&#x73B0;&#x6709;&#x5982;&#x4E0B;&#x7A0B;&#x5E8F;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Searcher</span> </span>{</span><br><span class="line">	<span class="function">List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		result.add(<span class="string">&quot;Wings you are the hero&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>LuceneSearcher&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x90FD;&#x7528;&#x5230;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x60F3;&#x5728;LuceneSearcher&#x7684;searchSong()&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x4E3A;&#x4E86;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x7684;&#x6539;&#x52A8;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x591A;&#x5904;&#x5730;&#x65B9;&#x5206;&#x522B;&#x6539;&#x52A8;&#xFF0C;&#x73B0;&#x5728;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Searcher&#x7684;&#x4EE3;&#x7406;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Searcher searcher;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CustomSearcher</span><span class="params">(Searcher searcher)</span></span>{</span><br><span class="line">		<span class="keyword">this</span>.searcher = searcher;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = searcher.searchSong(songType);</span><br><span class="line">		result.add(<span class="string">&quot;big blue ocean&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x53EA;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x58F0;&#x660E;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x6539;&#x52A8;&#x4E0B;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x539F;&#x6837;&#x4E86;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);  <span class="comment">// &#x8C03;&#x7528;&#x7684;&#x8BED;&#x53E5;&#x4FDD;&#x6301;&#x539F;&#x6837;</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
-<p>&#x5982;&#x679C;Searcher&#x63A5;&#x53E3;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x6539;&#x5199;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x786E;&#x5B9A;&#x9700;&#x8981;&#x4E3A;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x90FD;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x8FDB;&#x884C;&#x6539;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E14;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF08;<a href="http://www.itzhai.com/java-notes-reflection-dynamic-proxies.html#&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF1A;" title="JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;invoke&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x662F;&#x5426;&#x60F3;&#x8981;&#x6539;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;<a href="http://www.itzhai.com/java-dong-tai-dai-li-zhi-jdk-dong-tai-dai-li-he-cglib-dong-tai-dai-li-mian-xiang-qie-mian-bian-cheng-aop-yuan-li.html#CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" title="CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>]&#x5BF9;&#x5E94;&#x4E3A;intercept&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5199;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5904;&#x7406;&#x7C7B;&#xFF0C;&#x5C31;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x4EE3;&#x7406;&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x66F4;&#x7075;&#x6D3B;&#x3002;</p>
-<p>&#x5982;&#x679C;LuceneSearcher&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x5F0F;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;LuceneSearcher&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x8986;&#x76D6;searchSong&#x65B9;&#x6CD5;&#x52A0;&#x5165;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x901A;&#x8FC7;&#x6539;&#x52A8;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#x3002;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/设计模式/">设计模式</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
     <h3 class="article-title"><a href="/document/20150210_API文档编辑工具/"><span>API文档编辑工具</span></a></h3>
   
 
@@ -483,6 +489,59 @@
   </span>
 
 
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/"><span>给一个多处使用到的类中的某些方法添加额外的处理动作</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/design-pattern/给一个多处使用到的类中的某些方法添加额外的处理动作/" rel="bookmark">
+        <time class="entry-date published" datetime="2015-02-09T16:00:00.000Z">
+          2015-02-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>&#x73B0;&#x6709;&#x5982;&#x4E0B;&#x7A0B;&#x5E8F;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Searcher</span> </span>{</span><br><span class="line">	<span class="function">List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span></span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LuceneSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">		result.add(<span class="string">&quot;Wings you are the hero&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>LuceneSearcher&#x5728;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x5730;&#x65B9;&#x90FD;&#x7528;&#x5230;&#x4E86;&#xFF0C;&#x73B0;&#x5728;&#x60F3;&#x5728;LuceneSearcher&#x7684;searchSong()&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x4E3A;&#x4E86;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x7684;&#x6539;&#x52A8;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x591A;&#x5904;&#x5730;&#x65B9;&#x5206;&#x522B;&#x6539;&#x52A8;&#xFF0C;&#x73B0;&#x5728;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Searcher&#x7684;&#x4EE3;&#x7406;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomSearcher</span> <span class="keyword">implements</span> <span class="title">Searcher</span></span>{</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Searcher searcher;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CustomSearcher</span><span class="params">(Searcher searcher)</span></span>{</span><br><span class="line">		<span class="keyword">this</span>.searcher = searcher;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">searchSong</span><span class="params">(<span class="keyword">int</span> songType)</span> </span>{</span><br><span class="line">		List&lt;String&gt; result = searcher.searchSong(songType);</span><br><span class="line">		result.add(<span class="string">&quot;big blue ocean&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x53EA;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x58F0;&#x660E;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x6539;&#x52A8;&#x4E0B;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x539F;&#x6837;&#x4E86;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);  <span class="comment">// &#x8C03;&#x7528;&#x7684;&#x8BED;&#x53E5;&#x4FDD;&#x6301;&#x539F;&#x6837;</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>&#x5982;&#x679C;Searcher&#x63A5;&#x53E3;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x6539;&#x5199;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x786E;&#x5B9A;&#x9700;&#x8981;&#x4E3A;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x90FD;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x8FDB;&#x884C;&#x6539;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E14;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF08;<a href="http://www.itzhai.com/java-notes-reflection-dynamic-proxies.html#&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF1A;" title="JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;invoke&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x662F;&#x5426;&#x60F3;&#x8981;&#x6539;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;<a href="http://www.itzhai.com/java-dong-tai-dai-li-zhi-jdk-dong-tai-dai-li-he-cglib-dong-tai-dai-li-mian-xiang-qie-mian-bian-cheng-aop-yuan-li.html#CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" title="CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>]&#x5BF9;&#x5E94;&#x4E3A;intercept&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5199;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5904;&#x7406;&#x7C7B;&#xFF0C;&#x5C31;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x4EE3;&#x7406;&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x66F4;&#x7075;&#x6D3B;&#x3002;</p>
+<p>&#x5982;&#x679C;LuceneSearcher&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x5F0F;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;LuceneSearcher&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x8986;&#x76D6;searchSong&#x65B9;&#x6CD5;&#x52A0;&#x5165;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x901A;&#x8FC7;&#x6539;&#x52A8;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#x3002;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/设计模式/">设计模式</a>
+  </span>
+
+
+          
         </div>
         
     </footer>
@@ -717,73 +776,6 @@
   <span class="post-categories">
     <i class="icon-categories"></i>
     <a href="/categories/设计模式/">设计模式</a>
-  </span>
-
-
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/Java/spring/2014122403-spring-context/"><span>Spring context</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/Java/spring/2014122403-spring-context/" rel="bookmark">
-        <time class="entry-date published" datetime="2014-12-23T16:00:00.000Z">
-          2014-12-24
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>Context &#x5728; Spring &#x7684; org.springframework.context &#x5305;&#x4E0B;&#xFF0C;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x8BB2;&#x89E3;&#x4E86; Context &#x7EC4;&#x4EF6;&#x5728; Spring &#x4E2D;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x4ED6;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x7ED9; Spring &#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x73AF;&#x5883;&#xFF0C;&#x7528;&#x4EE5;&#x4FDD;&#x5B58;&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x3002;&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x73AF;&#x5883;&#x662F;&#x5982;&#x4F55;&#x6784;&#x5EFA;&#x7684;&#x3002;</p>
-<p>ApplicationContext &#x662F; Context &#x7684;&#x9876;&#x7EA7;&#x7236;&#x7C7B;&#xFF0C;&#x4ED6;&#x9664;&#x4E86;&#x80FD;&#x6807;&#x8BC6;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x73AF;&#x5883;&#x7684;&#x57FA;&#x672C;&#x4FE1;&#x606F;&#x5916;&#xFF0C;&#x4ED6;&#x8FD8;&#x7EE7;&#x627F;&#x4E86;&#x4E94;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x4E94;&#x4E2A;&#x63A5;&#x53E3;&#x4E3B;&#x8981;&#x662F;&#x6269;&#x5C55;&#x4E86; Context &#x7684;&#x529F;&#x80FD;&#x3002;&#x4E0B;&#x9762;&#x662F; Context &#x7684;&#x7C7B;&#x7ED3;&#x6784;&#x56FE;&#xFF1A;</p>
-<p><strong>Context&#x76F8;&#x5173;&#x7684;&#x7C7B;&#x7ED3;&#x6784;&#x56FE;</strong></p>
-<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring005.png" alt="">    </p>
-<p>&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA; ApplicationContext &#x7EE7;&#x627F;&#x4E86; BeanFactory&#xFF0C;&#x8FD9;&#x4E5F;&#x8BF4;&#x660E;&#x4E86; Spring &#x5BB9;&#x5668;&#x4E2D;&#x8FD0;&#x884C;&#x7684;&#x4E3B;&#x4F53;&#x5BF9;&#x8C61;&#x662F; Bean&#xFF0C;&#x53E6;&#x5916; ApplicationContext &#x7EE7;&#x627F;&#x4E86; ResourceLoader &#x63A5;&#x53E3;&#xFF0C;&#x4F7F;&#x5F97; ApplicationContext &#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5230;&#x4EFB;&#x4F55;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#xFF0C;&#x8FD9;&#x5C06;&#x5728; Core &#x4E2D;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x3002;</p>
-<h3 id="applicationcontext-&#x7684;&#x5B50;&#x7C7B;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x65B9;&#x9762;"><a href="#ApplicationContext-&#x7684;&#x5B50;&#x7C7B;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;" class="headerlink" title="ApplicationContext &#x7684;&#x5B50;&#x7C7B;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;"></a>ApplicationContext &#x7684;&#x5B50;&#x7C7B;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</h3><ul>
-<li>ConfigurableApplicationContext &#x8868;&#x793A;&#x8BE5; Context &#x662F;&#x53EF;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5728;&#x6784;&#x5EFA; Context &#x4E2D;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x6DFB;&#x52A0;&#x6216;&#x4FEE;&#x6539;&#x5DF2;&#x6709;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5B83;&#x4E0B;&#x9762;&#x53C8;&#x6709;&#x591A;&#x4E2A;&#x5B50;&#x7C7B;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x53EF;&#x66F4;&#x65B0;&#x7684; Context&#xFF0C;&#x5373; AbstractRefreshableApplicationContext &#x7C7B;&#x3002;</li>
-<li>WebApplicationContext &#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5C31;&#x662F;&#x4E3A; web &#x51C6;&#x5907;&#x7684; Context &#x4ED6;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5230; ServletContext&#xFF0C;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x4F7F;&#x7528;&#x7684;&#x5C11;&#x3002;<br>&#x518D;&#x5F80;&#x4E0B;&#x5206;&#x5C31;&#x662F;&#x6309;&#x7167;&#x6784;&#x5EFA; Context &#x7684;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x662F;&#x8BBF;&#x95EE; Context &#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x7EA7;&#x4E00;&#x7EA7;&#x6784;&#x6210;&#x4E86;&#x5B8C;&#x6574;&#x7684; Context &#x7B49;&#x7EA7;&#x5C42;&#x6B21;&#x3002;</li>
-</ul>
-<h3 id="&#x603B;&#x4F53;&#x6765;&#x8BF4;-applicationcontext-&#x5FC5;&#x987B;&#x8981;&#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;"><a href="#&#x603B;&#x4F53;&#x6765;&#x8BF4;-ApplicationContext-&#x5FC5;&#x987B;&#x8981;&#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;" class="headerlink" title="&#x603B;&#x4F53;&#x6765;&#x8BF4; ApplicationContext &#x5FC5;&#x987B;&#x8981;&#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;"></a>&#x603B;&#x4F53;&#x6765;&#x8BF4; ApplicationContext &#x5FC5;&#x987B;&#x8981;&#x5B8C;&#x6210;&#x4EE5;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</h3><ul>
-<li>&#x6807;&#x8BC6;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x73AF;&#x5883;</li>
-<li>&#x5229;&#x7528; BeanFactory &#x521B;&#x5EFA; Bean &#x5BF9;&#x8C61;</li>
-<li>&#x4FDD;&#x5B58;&#x5BF9;&#x8C61;&#x5173;&#x7CFB;&#x8868;</li>
-<li>&#x80FD;&#x591F;&#x6355;&#x83B7;&#x5404;&#x79CD;&#x4E8B;&#x4EF6;</li>
-<li>Context &#x4F5C;&#x4E3A; Spring &#x7684; Ioc &#x5BB9;&#x5668;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x6574;&#x5408;&#x4E86; Spring &#x7684;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x5927;&#x90E8;&#x5206;&#x529F;&#x80FD;&#x7684;&#x57FA;&#x7840;&#x3002;</li>
-</ul>
-<blockquote>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;" target="_blank" rel="external">Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;</a></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/Java/">Java</a>, <a href="/categories/Java/Spring/">Spring</a>
   </span>
 
 
