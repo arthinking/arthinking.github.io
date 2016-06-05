@@ -1,0 +1,595 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Spring,Spring源码," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Author: arthinkingWeibo: arthinking_plusPosted in: 
+
+Spring-coreorg/springframework/core/io/&amp;#x76F8;&amp;#x5173;&amp;#x5185;&amp;#x5BB9;UrlResource.getInputStream()  #1661ResourceUtils.useCachesIfNecessary(con);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring源码解读笔记">
+<meta property="og:url" content="http://arthinking.github.io/2014/12/24/Java/spring/Spring源码解读笔记/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="Author: arthinkingWeibo: arthinking_plusPosted in: 
+
+Spring-coreorg/springframework/core/io/&amp;#x76F8;&amp;#x5173;&amp;#x5185;&amp;#x5BB9;UrlResource.getInputStream()  #1661ResourceUtils.useCachesIfNecessary(con);">
+<meta property="og:updated_time" content="2016-06-05T14:04:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring源码解读笔记">
+<meta name="twitter:description" content="Author: arthinkingWeibo: arthinking_plusPosted in: 
+
+Spring-coreorg/springframework/core/io/&amp;#x76F8;&amp;#x5173;&amp;#x5185;&amp;#x5BB9;UrlResource.getInputStream()  #1661ResourceUtils.useCachesIfNecessary(con);">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Spring源码解读笔记 | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="Java, JavaScript, Go etc.">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spring源码解读笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2014-12-24T00:00:00+08:00" content="2014-12-24">
+              2014-12-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Author: arthinking<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
+</blockquote>
+<h1 id="spring-core"><a href="#Spring-core" class="headerlink" title="Spring-core"></a>Spring-core</h1><h2 id="orgspringframeworkcoreio&#x76F8;&#x5173;&#x5185;&#x5BB9;"><a href="#org-springframework-core-io-&#x76F8;&#x5173;&#x5185;&#x5BB9;" class="headerlink" title="org/springframework/core/io/&#x76F8;&#x5173;&#x5185;&#x5BB9;"></a>org/springframework/core/io/&#x76F8;&#x5173;&#x5185;&#x5BB9;</h2><h3 id="urlresourcegetinputstream-166"><a href="#UrlResource-getInputStream-166" class="headerlink" title="UrlResource.getInputStream()  #166"></a>UrlResource.getInputStream()  #166</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResourceUtils.useCachesIfNecessary(con);</span><br></pre></td></tr></table></figure>
+<p>&#x8BBE;&#x7F6E;<code>URLConnection</code>&#x7684;<code>UseCaches</code>&#x4E3A;false&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5728;Windows&#x4E0B;jar&#x5305;&#x88AB;&#x9501;&#x4F4F;&#x3002;</p>
+<h3 id="abstractfileresolvingresource"><a href="#AbstractFileResolvingResource" class="headerlink" title="AbstractFileResolvingResource"></a>AbstractFileResolvingResource</h3><p>&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;JBoss vfs&#x534F;&#x8BAE;URL&#x6587;&#x4EF6;&#x7684;&#x83B7;&#x53D6;&#x3002;&#x901A;&#x8FC7;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B; VfsResourceDelegate &#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;</p>
+<h3 id="resourceloader"><a href="#ResourceLoader" class="headerlink" title="ResourceLoader"></a>ResourceLoader</h3><p>&#x662F;&#x4E00;&#x4E2A;&#x7B56;&#x7565;&#x63A5;&#x53E3;&#xFF0C;&#x5176; getResource(String location)&#x65B9;&#x6CD5;&#x6839;&#x636E;&#x4F20;&#x5165;&#x4E0D;&#x540C;&#x7684;location&#xFF0C;&#x8FD4;&#x56DE;&#x4E0D;&#x540C;&#x7684;Resource&#x3002;&#x5176;&#x5B9E;&#x73B0;&#x7C7B;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#x7684;ResourceLoader&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;ResourceEditor&#x4E5F;&#x4F7F;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x7C7B;</p>
+<h3 id="defaultresourceloader"><a href="#DefaultResourceLoader" class="headerlink" title="DefaultResourceLoader"></a>DefaultResourceLoader</h3><p>ResourceLoader&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#xFF0C;ResourceEditor&#x4F7F;&#x7528;&#x4E86;&#x8BE5;&#x7C7B;&#xFF0C;&#x662F;AbstractApplicationContext&#x7684;&#x57FA;&#x7C7B;&#x3002;</p>
+<h2 id="&#x8BF4;&#x8BF4;spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"><a href="#&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"></a>&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</h2><p>XmlBeanFactory&#x901A;&#x8FC7;Resource&#x88C5;&#x8F7D;Spring&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x5E76;&#x542F;&#x52A8;IoC&#x5BB9;&#x5668;&#xFF1B;<br>&#x7136;&#x540E;&#x901A;&#x8FC7;BeanFactory#getBean(beanName)&#x65B9;&#x6CD5;&#x4ECE;IoC&#x5BB9;&#x5668;&#x83B7;&#x53D6;Bean&#xFF1B;<br>&#x901A;&#x8FC7;BeanFactory&#x542F;&#x52A8;IoC&#x5BB9;&#x5668;&#x65F6;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;Bean&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x52A8;&#x4F5C;&#x53D1;&#x751F;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x65F6;&#xFF1B;<br>&#x5BF9;&#x4E8E;&#x5355;&#x5B9E;&#x4F8B;&#x7684;Bean&#x6765;&#x8BF4;&#xFF0C;BeanFactory&#x4F1A;&#x7F13;&#x5B58;Bean&#x5B9E;&#x4F8B;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E8C;&#x6B21;&#x4F7F;&#x7528;getBean()&#x83B7;&#x53D6;Bean&#x7684;&#x65F6;&#x5019;&#x5C06;&#x76F4;&#x63A5;&#x4ECE;IoC&#x5BB9;&#x5668;&#x7684;&#x7F13;&#x5B58;&#x4E2D;&#x83B7;&#x53D6;Bean&#x5B9E;&#x4F8B;&#x3002;</p>
+<h2 id="spring-mvc&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;"><a href="#Spring-MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;" class="headerlink" title="Spring MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;"></a>Spring MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;</h2><h2 id="&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;sql&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;"><a href="#&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;" class="headerlink" title="&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;"></a>&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;</h2><h2 id="&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;"><a href="#&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;"></a>&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;</h2><h2 id="&#x733F;&#x9898;&#x5E93;"><a href="#&#x733F;&#x9898;&#x5E93;" class="headerlink" title="&#x733F;&#x9898;&#x5E93;"></a>&#x733F;&#x9898;&#x5E93;</h2><p>&#x95EE;&#x9898;<br>&#x63CF;&#x8FF0;<br>&#x56DE;&#x7B54;<br>&#x53C2;&#x8003;&#x7F51;&#x5740;<br>&#x4E3E;&#x62A5;test</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag">#Spring</a>
+          
+            <a href="/tags/Spring源码/" rel="tag">#Spring源码</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/12/24/Java/spring/2014122404-spring-core/" rel="next" title="Spring core">
+                <i class="fa fa-chevron-left"></i> Spring core
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/01/06/Java/spring/2015010601-接口设计原则/" rel="prev" title="接口设计原则">
+                接口设计原则 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">98</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-core"><span class="nav-number">1.</span> <span class="nav-text">Spring-core</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#orgspringframeworkcoreio相关内容"><span class="nav-number">1.1.</span> <span class="nav-text">org/springframework/core/io/相关内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#urlresourcegetinputstream-166"><span class="nav-number">1.1.1.</span> <span class="nav-text">UrlResource.getInputStream()  #166</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#abstractfileresolvingresource"><span class="nav-number">1.1.2.</span> <span class="nav-text">AbstractFileResolvingResource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resourceloader"><span class="nav-number">1.1.3.</span> <span class="nav-text">ResourceLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#defaultresourceloader"><span class="nav-number">1.1.4.</span> <span class="nav-text">DefaultResourceLoader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说说spring容器的加载过程"><span class="nav-number">1.2.</span> <span class="nav-text">说说Spring容器的加载过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring-mvc一次执行的原理"><span class="nav-number">1.3.</span> <span class="nav-text">Spring MVC一次执行的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列举出5种常用的sql语句优化方式"><span class="nav-number">1.4.</span> <span class="nav-text">列举出5种常用的SQL语句优化方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#说说两种数据库引擎的区别"><span class="nav-number">1.5.</span> <span class="nav-text">说说两种数据库引擎的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#猿题库"><span class="nav-number">1.6.</span> <span class="nav-text">猿题库</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
