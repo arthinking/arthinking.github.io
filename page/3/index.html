@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Page 3 | arthinking | ChinSyun Pang&#39;s blog</title>
+  <title>第 3 页 | arthinking | ChinSyun Pang&#39;s blog</title>
   <meta name="author" content="arthinking">
   
   <meta name="description" content="Struggle for HighPay zoom.">
@@ -40,9 +40,9 @@
 <nav id="site-navigation" class="main-navigation" role="navigation">
   <ul>
     
-      <li><a href="/">Home</a></li>
+      <li><a href="/">主页</a></li>
     
-      <li><a href="/archives">Archives</a></li>
+      <li><a href="/archives">归档</a></li>
     
   </ul>
 </nav></header>
@@ -54,13 +54,13 @@
 
   
   
-    <h3 class="article-title"><a href="/javascript/reactjs/2016-03-20 插件 React.addons/"><span>ReactJS插件</span></a></h3>
+    <h3 class="article-title"><a href="/javascript/reactjs/2016-03-20 参考/"><span>ReactJS 参考</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/javascript/reactjs/2016-03-20 插件 React.addons/" rel="bookmark">
+      <a href="/javascript/reactjs/2016-03-20 参考/" rel="bookmark">
         <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
           2016-06-05
         </time>
@@ -77,80 +77,149 @@
         <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h1 id="&#x63D2;&#x4EF6;"><a href="#&#x63D2;&#x4EF6;" class="headerlink" title="&#x63D2;&#x4EF6;"></a>&#x63D2;&#x4EF6;</h1><p><code>React.addons</code>&#x662F;&#x4E3A;&#x4E86;&#x6784;&#x5EFA; React &#x5E94;&#x7528;&#x800C;&#x653E;&#x7F6E;&#x7684;&#x4E00;&#x4E9B;&#x6709;&#x7528;&#x5DE5;&#x5177;&#x7684;&#x5730;&#x65B9;&#x3002;&#x6B64;&#x529F;&#x80FD;&#x5E94;&#x5F53;&#x88AB;&#x89C6;&#x4E3A;&#x5B9E;&#x9A8C;&#x6027;&#x7684;&#xFF0C;&#x4F46;&#x6700;&#x7EC8;&#x5C06;&#x4F1A;&#x88AB;&#x6DFB;&#x52A0;&#x8FDB;&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x4E2D;&#x6216;&#x8005;&#x6709;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x5E93;&#x4E2D;&#xFF1A;</p>
-<ul>
-<li><code>TransitionGroup</code>&#x548C;<code>CSSTransitionGroup</code>&#xFF0C;&#x7528;&#x4E8E;&#x5904;&#x7406;&#x52A8;&#x753B;&#x548C;&#x8FC7;&#x6E21;&#xFF0C;&#x8FD9;&#x4E9B;&#x901A;&#x5E38;&#x5B9E;&#x73B0;&#x8D77;&#x6765;&#x90FD;&#x4E0D;&#x7B80;&#x5355;&#xFF0C;&#x4F8B;&#x5982;&#x5728;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x79FB;&#x9664;&#x4E4B;&#x524D;&#x6267;&#x884C;&#x4E00;&#x6BB5;&#x52A8;&#x753B;&#x3002;</li>
-<li><code>LinkedStateMixin</code>&#xFF0C;&#x7528;&#x4E8E;&#x7B80;&#x5316;&#x7528;&#x6237;&#x8868;&#x5355;&#x8F93;&#x5165;&#x6570;&#x636E;&#x548C;&#x7EC4;&#x4EF6; state &#x4E4B;&#x95F4;&#x7684;&#x53CC;&#x5411;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#x3002;</li>
-<li><code>classSet</code>&#xFF0C;&#x7528;&#x4E8E;&#x66F4;&#x52A0;&#x5E72;&#x51C0;&#x7B80;&#x6D01;&#x5730;&#x64CD;&#x4F5C; DOM &#x4E2D;&#x7684; class &#x5B57;&#x7B26;&#x4E32;&#x3002;</li>
-<li><code>cloneWithProps</code>&#xFF0C;&#x7528;&#x4E8E;&#x5B9E;&#x73B0; React &#x7EC4;&#x4EF6;&#x6D45;&#x590D;&#x5236;&#xFF0C;&#x540C;&#x65F6;&#x6539;&#x53D8;&#x5B83;&#x4EEC;&#x7684; props &#x3002;</li>
-<li><code>update</code>&#xFF0C;&#x4E00;&#x4E2A;&#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5F97;&#x5728; JavaScript &#x4E2D;&#x5904;&#x7406;&#x4E0D;&#x53EF;&#x53D8;&#x6570;&#x636E;&#x66F4;&#x52A0;&#x5BB9;&#x6613;&#x3002;</li>
-<li><code>PureRenderMixin</code>&#xFF0C;&#x5728;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x7684;&#x6027;&#x80FD;&#x68C0;&#x6D4B;&#x5668;&#x3002;</li>
-</ul>
-<p>&#x4EE5;&#x4E0B;&#x63D2;&#x4EF6;&#x53EA;&#x5B58;&#x5728;&#x4E8E; React &#x5F00;&#x53D1;&#x7248;&#xFF08;&#x672A;&#x538B;&#x7F29;&#xFF09;&#xFF1A;</p>
-<ul>
-<li><code>TestUtils</code>&#xFF0C; &#x7B80;&#x5355;&#x7684;&#x8F85;&#x52A9;&#x5DE5;&#x5177;&#xFF0C;&#x7528;&#x4E8E;&#x7F16;&#x5199;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF08;&#x4EC5;&#x5B58;&#x5728;&#x4E8E;&#x672A;&#x538B;&#x7F29;&#x7248;&#xFF09;.</li>
-<li><code>Perf</code>&#xFF0C;&#x7528;&#x4E8E;&#x6027;&#x80FD;&#x6D4B;&#x8BC4;&#xFF0C;&#x5E76;&#x5E2E;&#x52A9;&#x4F60;&#x68C0;&#x67E5;&#x51FA;&#x53EF;&#x4F18;&#x5316;&#x7684;&#x529F;&#x80FD;&#x70B9;&#x3002;</li>
-</ul>
-<p>&#x8981;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x63D2;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x7528;<code>react-with-addons.js</code>&#xFF08;&#x548C;&#x5B83;&#x7684;&#x6700;&#x5C0F;&#x5316;&#x526F;&#x672C;&#xFF09;&#x66FF;&#x6362;&#x5E38;&#x89C4;&#x7684;React.js&#x3002;</p>
-<p>&#x5F53;&#x901A;&#x8FC7;npm&#x4F7F;&#x7528;react&#x5305;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EA;&#x8981;&#x7B80;&#x5355;&#x5730;&#x7528;<code>require(&apos;react/addons&apos;)</code>&#x66FF;&#x6362; require(&#x2018;react&#x2019;) &#x6765;&#x5F97;&#x5230;&#x5E26;&#x6709;&#x6240;&#x6709;&#x63D2;&#x4EF6;&#x7684;React&#x3002;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-  
-
-  <span class="post-categories">
-    <i class="icon-categories"></i>
-    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
-  </span>
-
-
-          
-  
-
-  <span class="post-tags">
-    <i class="icon-tags"></i>
-    <a href="/tags/ReactJS/">ReactJS</a>
-  </span>
-
-
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/javascript/reactjs/2016-03-20 Redux/"><span>Redux</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/javascript/reactjs/2016-03-20 Redux/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
-          2016-06-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+<h1 id="1-&#x9876;&#x5C42;api"><a href="#1&#x3001;&#x9876;&#x5C42;API" class="headerlink" title="1&#x3001;&#x9876;&#x5C42;API"></a>1&#x3001;&#x9876;&#x5C42;API</h1><h2 id="11-react"><a href="#1-1&#x3001;React" class="headerlink" title="1.1&#x3001;React"></a>1.1&#x3001;React</h2><p>React &#x662F; React &#x5E93;&#x7684;&#x5165;&#x53E3;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x7684;&#x662F;&#x9884;&#x7F16;&#x8BD1;&#x5305;&#xFF0C;&#x5219; React &#x662F;&#x5168;&#x5C40;&#x7684;&#xFF1B;&#x5982;&#x679C;&#x4F7F;&#x7528; CommonJS &#x6A21;&#x5757;&#x7CFB;&#x7EDF;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x7528; require() &#x51FD;&#x6570;&#x5F15;&#x5165; React&#x3002;</p>
+<h3 id="reactcreateclass"><a href="#React-createClass" class="headerlink" title="React.createClass"></a>React.createClass</h3><p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x7C7B;&#xFF0C;&#x5E76;&#x4F5C;&#x51FA;&#x5B9A;&#x4E49;&#x3002;&#x7EC4;&#x4EF6;&#x5B9E;&#x73B0;&#x4E86; render() &#x65B9;&#x6CD5;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5B50;&#x7EA7;&#x3002;&#x8BE5;&#x5B50;&#x7EA7;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x5F88;&#x6DF1;&#x7684;&#x5B50;&#x7EA7;&#x7ED3;&#x6784;&#x3002;</p>
+<h3 id="reactcreateelement"><a href="#React-createElement" class="headerlink" title="React.createElement"></a>React.createElement</h3><p>&#x521B;&#x5EFA;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6307;&#x5B9A;&#x7C7B;&#x578B;&#x7684; ReactElement&#x3002;</p>
+<h3 id="reactcreatefactory"><a href="#React-createFactory" class="headerlink" title="React.createFactory"></a>React.createFactory</h3><p>&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x751F;&#x6210;&#x6307;&#x5B9A;&#x7C7B;&#x578B; ReactElements &#x7684;&#x51FD;&#x6570;&#x3002;</p>
+<h3 id="reactrender"><a href="#React-render" class="headerlink" title="React.render"></a>React.render</h3><p>&#x6E32;&#x67D3;&#x4E00;&#x4E2A; ReactElement &#x5230; DOM &#x4E2D;&#x3002;</p>
+<h3 id="reactunmountcomponentatnode"><a href="#React-unmountComponentAtNode" class="headerlink" title="React.unmountComponentAtNode"></a>React.unmountComponentAtNode</h3><p>&#x4ECE; DOM &#x4E2D;&#x79FB;&#x9664;&#x5DF2;&#x7ECF;&#x6302;&#x8F7D;&#x7684; React &#x7EC4;&#x4EF6;&#xFF0C;&#x6E05;&#x9664;&#x76F8;&#x5E94;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x548C; state&#x3002;</p>
+<h3 id="reactrendertostring"><a href="#React-renderToString" class="headerlink" title="React.renderToString"></a>React.renderToString</h3><p>&#x628A;&#x7EC4;&#x4EF6;&#x6E32;&#x67D3;&#x6210;&#x539F;&#x59CB;&#x7684; HTML &#x5B57;&#x7B26;&#x4E32;&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x5E94;&#x8BE5;&#x4EC5;&#x5728;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x4F7F;&#x7528;&#x3002;</p>
+<h3 id="reactrendertostaticmarkup"><a href="#React-renderToStaticMarkup" class="headerlink" title="React.renderToStaticMarkup"></a>React.renderToStaticMarkup</h3><p>&#x548C; renderToString &#x7C7B;&#x4F3C;&#xFF0C;&#x9664;&#x4E86;&#x4E0D;&#x521B;&#x5EFA;&#x989D;&#x5916;&#x7684; DOM &#x5C5E;&#x6027;&#xFF0C;&#x4F8B;&#x5982; data-react-id&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x4EC5;&#x5728; React &#x5185;&#x90E8;&#x4F7F;&#x7528;&#x3002;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7528; React &#x505A;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x9759;&#x6001;&#x9875;&#x9762;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x8FD9;&#x662F;&#x5F88;&#x6709;&#x7528;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4E22;&#x6389;&#x989D;&#x5916;&#x7684;&#x5C5E;&#x6027;&#x80FD;&#x591F;&#x8282;&#x7701;&#x5F88;&#x591A;&#x5B57;&#x8282;&#x3002;</p>
+<h3 id="reactisvalidelement"><a href="#React-isValidElement" class="headerlink" title="React.isValidElement"></a>React.isValidElement</h3><p>&#x5224;&#x65AD;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x662F;&#x4E00;&#x4E2A; ReactElement&#x3002;</p>
+<h3 id="reactdom"><a href="#React-DOM" class="headerlink" title="React.DOM"></a>React.DOM</h3><p>React.DOM &#x8FD0;&#x7528; React.createElement &#x4E3A; DOM &#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x4FBF;&#x7684;&#x5305;&#x88C5;&#x3002;&#x8BE5;&#x65B9;&#x5F0F;&#x4EC5;&#x5728;&#x672A;&#x4F7F;&#x7528; JSX &#x7684;&#x65F6;&#x5019;&#x9002;&#x7528;&#x3002;&#x4F8B;&#x5982;&#xFF0C;React.DOM.div(null, &#x2018;Hello World!&#x2019;)&#x3002;</p>
+<h3 id="reactproptypes"><a href="#React-PropTypes" class="headerlink" title="React.PropTypes"></a>React.PropTypes</h3><p>React.PropTypes &#x5305;&#x542B;&#x4E86;&#x80FD;&#x4E0E;&#x7EC4;&#x4EF6; propTypes &#x5BF9;&#x8C61;&#x5171;&#x7528;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x7528;&#x4E8E;&#x9A8C;&#x8BC1;&#x4F20;&#x5165;&#x7EC4;&#x4EF6;&#x7684; props&#x3002;</p>
+<h3 id="reactinitializetouchevents"><a href="#React-initializeTouchEvents" class="headerlink" title="React.initializeTouchEvents"></a>React.initializeTouchEvents</h3><p>&#x914D;&#x7F6E; React &#x7684;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x4F7F; React &#x80FD;&#x5904;&#x7406;&#x79FB;&#x52A8;&#x8BBE;&#x5907;&#x7684;&#x89E6;&#x6478;&#xFF08; touch &#xFF09;&#x4E8B;&#x4EF6;&#x3002;</p>
+<h3 id="reactchildren"><a href="#React-Children" class="headerlink" title="React.Children"></a>React.Children</h3><p>React.Children &#x4E3A;&#x5904;&#x7406; this.props.children &#x8FD9;&#x4E2A;&#x5C01;&#x95ED;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x63D0;&#x4F9B;&#x4E86;&#x6709;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+<h4 id="reactchildrenmap"><a href="#React-Children-map" class="headerlink" title="React.Children.map"></a>React.Children.map</h4><p>&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x76F4;&#x63A5;&#x5B50;&#x7EA7;&#xFF08;&#x5305;&#x542B;&#x5728; children &#x53C2;&#x6570;&#x4E2D;&#x7684;&#xFF09;&#x4E0A;&#x8C03;&#x7528; fn &#x51FD;&#x6570;&#xFF0C;&#x6B64;&#x51FD;&#x6570;&#x4E2D;&#x7684; this &#x6307;&#x5411; &#x4E0A;&#x4E0B;&#x6587;&#x3002;&#x5982;&#x679C; children &#x662F;&#x4E00;&#x4E2A;&#x5185;&#x5D4C;&#x7684;&#x5BF9;&#x8C61;&#x6216;&#x8005;&#x6570;&#x7EC4;&#xFF0C;&#x5B83;&#x5C06;&#x88AB;&#x904D;&#x5386;&#xFF1A;&#x4E0D;&#x4F1A;&#x4F20;&#x5165;&#x5BB9;&#x5668;&#x5BF9;&#x8C61;&#x5230; fn &#x4E2D;&#x3002;</p>
+<h4 id="reactchildrenforeach"><a href="#React-Children-forEach" class="headerlink" title="React.Children.forEach"></a>React.Children.forEach</h4><p>&#x7C7B;&#x4F3C;&#x4E8E; React.Children.map()&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x3002;</p>
+<h4 id="reactchildrencount"><a href="#React-Children-count" class="headerlink" title="React.Children.count"></a>React.Children.count</h4><p>&#x8FD4;&#x56DE; children &#x5F53;&#x4E2D;&#x7684;&#x7EC4;&#x4EF6;&#x603B;&#x6570;&#xFF0C;&#x548C;&#x4F20;&#x9012;&#x7ED9; map &#x6216;&#x8005; forEach &#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#x6B21;&#x6570;&#x4E00;&#x81F4;&#x3002;</p>
+<h4 id="reactchildrenonly"><a href="#React-Children-only" class="headerlink" title="React.Children.only"></a>React.Children.only</h4><p>&#x8FD4;&#x56DE; children &#x4E2D;&#x4EC5;&#x6709;&#x7684;&#x5B50;&#x7EA7;&#x3002;&#x5426;&#x5219;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</p>
+<h1 id="2-&#x7EC4;&#x4EF6;api"><a href="#2&#x3001;&#x7EC4;&#x4EF6;API" class="headerlink" title="2&#x3001;&#x7EC4;&#x4EF6;API"></a>2&#x3001;&#x7EC4;&#x4EF6;API</h1><p>ReactComponent&#x3002;&#x552F;&#x4E00;&#x4E00;&#x79CD;&#x5728; React &#x4E4B;&#x5916;&#x83B7;&#x53D6; React &#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x53E5;&#x67C4;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x4FDD;&#x5B58; React.render &#x7684;&#x8FD4;&#x56DE;&#x503C;&#x3002;&#x5728;&#x5176;&#x5B83;&#x7EC4;&#x4EF6;&#x5185;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; refs &#x5F97;&#x5230;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<h2 id="21-setstate"><a href="#2-1&#x3001;setState" class="headerlink" title="2.1&#x3001;setState"></a>2.1&#x3001;setState</h2><p>&#x5408;&#x5E76; nextState &#x548C;&#x5F53;&#x524D; state&#x3002;&#x8FD9;&#x662F;&#x5728;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#x548C;&#x8BF7;&#x6C42;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x89E6;&#x53D1; UI &#x66F4;&#x65B0;&#x7684;&#x4E3B;&#x8981;&#x65B9;&#x6CD5;&#x3002;</p>
+<blockquote>
+<p>&#x7EDD;&#x5BF9;&#x4E0D;&#x8981;&#x76F4;&#x63A5;&#x6539;&#x53D8; this.state&#xFF1B;<br>setState() &#x4E0D;&#x4F1A;&#x7ACB;&#x523B;&#x6539;&#x53D8; this.state&#xFF0C;&#x800C;&#x662F;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5373;&#x5C06;&#x5904;&#x7406;&#x7684; state &#x8F6C;&#x53D8;&#xFF1B;<br>&#x4E0D;&#x4FDD;&#x8BC1; setState() &#x8C03;&#x7528;&#x7684;&#x540C;&#x6B65;&#x6027;&#xFF1B;<br>setState() &#x5C06;&#x603B;&#x662F;&#x89E6;&#x53D1;&#x4E00;&#x6B21;&#x91CD;&#x7ED8;&#xFF0C;&#x9664;&#x975E;&#x5728; shouldComponentUpdate() &#x4E2D;&#x5B9E;&#x73B0;&#x4E86;&#x6761;&#x4EF6;&#x6E32;&#x67D3;&#x903B;&#x8F91;&#x3002;</p>
 </blockquote>
-<h1 id="redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><p><a href="http://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">http://camsong.github.io/redux-in-chinese/</a></p>
-
+<h2 id="22-replacestate"><a href="#2-2&#x3001;replaceState" class="headerlink" title="2.2&#x3001;replaceState"></a>2.2&#x3001;replaceState</h2><p>&#x7C7B;&#x4F3C;&#x4E8E; setState()&#xFF0C;&#x4F46;&#x662F;&#x5220;&#x9664;&#x4E4B;&#x524D;&#x6240;&#x6709;&#x5DF2;&#x5B58;&#x5728;&#x7684; state &#x952E;&#xFF0C;&#x8FD9;&#x4E9B;&#x952E;&#x90FD;&#x4E0D;&#x5728; nextState &#x4E2D;&#x3002;</p>
+<h2 id="23-forceupdate"><a href="#2-3&#x3001;forceUpdate" class="headerlink" title="2.3&#x3001;forceUpdate()"></a>2.3&#x3001;forceUpdate()</h2><p>&#x5982;&#x679C; render() &#x65B9;&#x6CD5;&#x4ECE; this.props &#x6216;&#x8005; this.state &#x4E4B;&#x5916;&#x7684;&#x5730;&#x65B9;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x8C03;&#x7528; forceUpdate() &#x544A;&#x8BC9; React &#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9700;&#x8981;&#x518D;&#x6B21;&#x8FD0;&#x884C; render()&#x3002;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x6539;&#x53D8;&#x4E86; this.state&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x8C03;&#x7528; forceUpdate()&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5E94;&#x8BE5;&#x5C3D;&#x91CF;&#x907F;&#x514D;&#x6240;&#x6709;&#x4F7F;&#x7528;forceUpdate()&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<h2 id="24-getdomnode"><a href="#2-4&#x3001;getDOMNode" class="headerlink" title="2.4&#x3001;getDOMNode"></a>2.4&#x3001;getDOMNode</h2><p>&#x5982;&#x679C;&#x7EC4;&#x4EF6;&#x5DF2;&#x7ECF;&#x6302;&#x8F7D;&#x5230;&#x4E86; DOM &#x4E0A;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x76F8;&#x5E94;&#x7684;&#x672C;&#x5730;&#x6D4F;&#x89C8;&#x5668; DOM &#x5143;&#x7D20;&#x3002;</p>
+<h2 id="25-ismounted"><a href="#2-5&#x3001;iSMounted" class="headerlink" title="2.5&#x3001;iSMounted()"></a>2.5&#x3001;iSMounted()</h2><p>&#x5982;&#x679C;&#x7EC4;&#x4EF6;&#x6E32;&#x67D3;&#x5230;&#x4E86; DOM &#x4E2D;&#xFF0C;isMounted() &#x8FD4;&#x56DE; true&#x3002;</p>
+<h2 id="26-setprops"><a href="#2-6&#x3001;setProps" class="headerlink" title="2.6&#x3001;setProps()"></a>2.6&#x3001;setProps()</h2><p>&#x53EF;&#x4EE5;&#x8C03;&#x7528; setProps() &#x6765;&#x6539;&#x53D8;&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x89E6;&#x53D1;&#x4E00;&#x6B21;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x3002;</p>
+<blockquote>
+<p>&#x521A;&#x65B9;&#x6CD5;&#x4EC5;&#x5728;&#x6839;&#x7EC4;&#x4EF6;&#x4E0A;&#x9762;&#x8C03;&#x7528;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x4EC5;&#x5728;&#x76F4;&#x63A5;&#x4F20;&#x7ED9; React.render() &#x7684;&#x7EC4;&#x4EF6;&#x4E0A;&#x53EF;&#x7528;&#xFF0C;&#x5728;&#x5B83;&#x7684;&#x5B50;&#x7EA7;&#x7EC4;&#x4EF6;&#x4E0A;&#x4E0D;&#x53EF;&#x7528;&#x3002;&#x5982;&#x679C;&#x4F60;&#x503E;&#x5411;&#x4E8E;&#x5728;&#x5B50;&#x7EC4;&#x4EF6;&#x4E0A;&#x4F7F;&#x7528; setProps()&#xFF0C;&#x4E0D;&#x8981;&#x5229;&#x7528;&#x54CD;&#x5E94;&#x5F0F;&#x66F4;&#x65B0;&#xFF0C;&#x800C;&#x662F;&#x5F53;&#x5B50;&#x7EC4;&#x4EF6;&#x5728; render() &#x4E2D;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x4F20;&#x5165;&#x65B0;&#x7684; prop &#x5230;&#x5B50;&#x7EC4;&#x4EF6;&#x4E2D;&#x3002;</p>
+</blockquote>
+<h2 id="27-replaceprops"><a href="#2-7&#x3001;replaceProps" class="headerlink" title="2.7&#x3001;replaceProps"></a>2.7&#x3001;replaceProps</h2><p>&#x7C7B;&#x4F3C;&#x4E8E; setProps()&#xFF0C;&#x4F46;&#x662F;&#x5220;&#x9664;&#x6240;&#x6709;&#x5DF2;&#x5B58;&#x5728;&#x7684; props&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5408;&#x5E76;&#x65B0;&#x65E7;&#x4E24;&#x4E2A; props &#x5BF9;&#x8C61;&#x3002;</p>
+<h1 id="3-&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x548C;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#3&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x548C;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="3&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x548C;&#x751F;&#x547D;&#x5468;&#x671F;"></a>3&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x548C;&#x751F;&#x547D;&#x5468;&#x671F;</h1><h2 id="31-&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;"><a href="#3-1&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;" class="headerlink" title="3.1&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;"></a>3.1&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;</h2><h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><p>&#x5F53;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x68C0;&#x6D4B; this.props &#x548C; this.state&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5355;&#x5B50;&#x7EA7;&#x7EC4;&#x4EF6;&#x3002;</p>
+<p>render() &#x51FD;&#x6570;&#x5E94;&#x8BE5;&#x662F;&#x7EAF;&#x7CB9;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x8BE5;&#x51FD;&#x6570;&#x4E0D;&#x4FEE;&#x6539;&#x7EC4;&#x4EF6; state&#xFF0C;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x90FD;&#x8FD4;&#x56DE;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4E0D;&#x8BFB;&#x5199; DOM &#x4FE1;&#x606F;&#xFF0C;&#x4E5F;&#x4E0D;&#x548C;&#x6D4F;&#x89C8;&#x5668;&#x4EA4;&#x4E92;&#xFF08;&#x4F8B;&#x5982;&#x901A;&#x8FC7;&#x4F7F;&#x7528; setTimeout&#xFF09;&#x3002;</p>
+<h3 id="getinitialstate"><a href="#getInitialState" class="headerlink" title="getInitialState"></a>getInitialState</h3><p>&#x5728;&#x7EC4;&#x4EF6;&#x6302;&#x8F7D;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x3002;&#x8FD4;&#x56DE;&#x503C;&#x5C06;&#x4F1A;&#x4F5C;&#x4E3A; this.state &#x7684;&#x521D;&#x59CB;&#x503C;&#x3002;</p>
+<h3 id="getdefaultprops"><a href="#getDefaultProps" class="headerlink" title="getDefaultProps"></a>getDefaultProps</h3><p>&#x5728;&#x7EC4;&#x4EF6;&#x7C7B;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x503C;&#x88AB;&#x7F13;&#x5B58;&#x4E0B;&#x6765;&#x3002;&#x5982;&#x679C;&#x7236;&#x7EC4;&#x4EF6;&#x6CA1;&#x6709;&#x6307;&#x5B9A; props &#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x952E;&#xFF0C;&#x5219;&#x6B64;&#x5904;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x76F8;&#x5E94;&#x5C5E;&#x6027;&#x5C06;&#x4F1A;&#x5408;&#x5E76;&#x5230; this.props &#xFF08;&#x4F7F;&#x7528; in &#x68C0;&#x6D4B;&#x5C5E;&#x6027;&#xFF09;&#x3002;</p>
+<h3 id="proptypes"><a href="#propTypes" class="headerlink" title="propTypes"></a>propTypes</h3><p>propTypes &#x5BF9;&#x8C61;&#x5141;&#x8BB8;&#x9A8C;&#x8BC1;&#x4F20;&#x5165;&#x5230;&#x7EC4;&#x4EF6;&#x7684; props&#x3002;</p>
+<h3 id="mixins"><a href="#mixins" class="headerlink" title="mixins"></a>mixins</h3><p>mixin &#x6570;&#x7EC4;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x6DF7;&#x5408;&#x6765;&#x5728;&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x4E4B;&#x95F4;&#x5171;&#x4EAB;&#x884C;&#x4E3A;&#x3002;</p>
+<h3 id="statics"><a href="#statics" class="headerlink" title="statics"></a>statics</h3><p>statics &#x5BF9;&#x8C61;&#x5141;&#x8BB8;&#x4F60;&#x5B9A;&#x4E49;&#x9759;&#x6001;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E9B;&#x9759;&#x6001;&#x7684;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x7EC4;&#x4EF6;&#x7C7B;&#x4E0A;&#x8C03;&#x7528;&#x3002;</p>
+<h3 id="displayname"><a href="#displayName" class="headerlink" title="displayName"></a>displayName</h3><p>displayName &#x5B57;&#x7B26;&#x4E32;&#x7528;&#x4E8E;&#x8F93;&#x51FA;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x3002;</p>
+<h2 id="32-&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#3-2&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="3.2&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;"></a>3.2&#x3001;&#x7EC4;&#x4EF6;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h2><h3 id="&#x6302;&#x8F7D;componentwillmount"><a href="#&#x6302;&#x8F7D;&#xFF1A;componentWillMount" class="headerlink" title="&#x6302;&#x8F7D;&#xFF1A;componentWillMount"></a>&#x6302;&#x8F7D;&#xFF1A;componentWillMount</h3><p>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x90FD;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x5728;&#x521D;&#x59CB;&#x5316;&#x6E32;&#x67D3;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x7ACB;&#x523B;&#x8C03;&#x7528;&#x3002;&#x5982;&#x679C;&#x5728;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5185;&#x8C03;&#x7528; setState&#xFF0C;render() &#x5C06;&#x4F1A;&#x611F;&#x77E5;&#x5230;&#x66F4;&#x65B0;&#x540E;&#x7684; state&#xFF0C;&#x5C06;&#x4F1A;&#x6267;&#x884C;&#x4EC5;&#x4E00;&#x6B21;&#xFF0C;&#x5C3D;&#x7BA1; state &#x6539;&#x53D8;&#x4E86;&#x3002;</p>
+<h3 id="&#x6302;&#x8F7D;componentdidmount"><a href="#&#x6302;&#x8F7D;&#xFF1A;componentDidMount" class="headerlink" title="&#x6302;&#x8F7D;&#xFF1A;componentDidMount"></a>&#x6302;&#x8F7D;&#xFF1A;componentDidMount</h3><p>&#x5728;&#x521D;&#x59CB;&#x5316;&#x6E32;&#x67D3;&#x6267;&#x884C;&#x4E4B;&#x540E;&#x7ACB;&#x523B;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x4EC5;&#x5BA2;&#x6237;&#x7AEF;&#x6709;&#x6548;&#xFF08;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;&#xFF09;&#x3002;&#x5728;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x7684;&#x8FD9;&#x4E2A;&#x65F6;&#x95F4;&#x70B9;&#xFF0C;&#x7EC4;&#x4EF6;&#x62E5;&#x6709;&#x4E00;&#x4E2A; DOM &#x5C55;&#x73B0;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; this.getDOMNode() &#x6765;&#x83B7;&#x53D6;&#x76F8;&#x5E94; DOM &#x8282;&#x70B9;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x60F3;&#x548C;&#x5176;&#x5B83; JavaScript &#x6846;&#x67B6;&#x96C6;&#x6210;&#xFF0C;&#x4F7F;&#x7528; setTimeout &#x6216;&#x8005; setInterval &#x6765;&#x8BBE;&#x7F6E;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x6216;&#x8005;&#x53D1;&#x9001; AJAX &#x8BF7;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8BE5;&#x65B9;&#x6CD5;&#x4E2D;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x66F4;&#x65B0;componentwillreceiveprops"><a href="#&#x66F4;&#x65B0;&#xFF1A;componentWillReceiveProps" class="headerlink" title="&#x66F4;&#x65B0;&#xFF1A;componentWillReceiveProps"></a>&#x66F4;&#x65B0;&#xFF1A;componentWillReceiveProps</h3><p>&#x5728;&#x7EC4;&#x4EF6;&#x63A5;&#x6536;&#x5230;&#x65B0;&#x7684; props &#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#x3002;&#x5728;&#x521D;&#x59CB;&#x5316;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x7528;&#x6B64;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A; react &#x5728; prop &#x4F20;&#x5165;&#x4E4B;&#x540E;&#xFF0C; render() &#x6E32;&#x67D3;&#x4E4B;&#x524D;&#x66F4;&#x65B0; state &#x7684;&#x673A;&#x4F1A;&#x3002;&#x8001;&#x7684; props &#x53EF;&#x4EE5;&#x901A;&#x8FC7; this.props &#x83B7;&#x53D6;&#x5230;&#x3002;&#x5728;&#x8BE5;&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528; this.setState() &#x5C06;&#x4E0D;&#x4F1A;&#x5F15;&#x8D77;&#x7B2C;&#x4E8C;&#x6B21;&#x6E32;&#x67D3;&#x3002;</p>
+<h3 id="&#x66F4;&#x65B0;shouldcomponentupdate"><a href="#&#x66F4;&#x65B0;&#xFF1A;shouldComponentUpdate" class="headerlink" title="&#x66F4;&#x65B0;&#xFF1A;shouldComponentUpdate"></a>&#x66F4;&#x65B0;&#xFF1A;shouldComponentUpdate</h3><p>&#x5728;&#x63A5;&#x6536;&#x5230;&#x65B0;&#x7684; props &#x6216;&#x8005; state&#xFF0C;&#x5C06;&#x8981;&#x6E32;&#x67D3;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x5728;&#x521D;&#x59CB;&#x5316;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x4F1A;&#x8C03;&#x7528;&#xFF0C;&#x5728;&#x4F7F;&#x7528; forceUpdate &#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#x4E5F;&#x4E0D;&#x4F1A;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x786E;&#x5B9A;&#x65B0;&#x7684; props &#x548C; state &#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x7EC4;&#x4EF6;&#x66F4;&#x65B0;&#xFF0C;&#x5219;&#x6B64;&#x5904;&#x5E94;&#x8BE5; &#x8FD4;&#x56DE; false&#x3002;</p>
+<h3 id="&#x66F4;&#x65B0;componentwillupdate"><a href="#&#x66F4;&#x65B0;&#xFF1A;componentWillUpdate" class="headerlink" title="&#x66F4;&#x65B0;&#xFF1A;componentWillUpdate"></a>&#x66F4;&#x65B0;&#xFF1A;componentWillUpdate</h3><p>&#x5728;&#x63A5;&#x6536;&#x5230;&#x65B0;&#x7684; props &#x6216;&#x8005; state &#x4E4B;&#x524D;&#x7ACB;&#x523B;&#x8C03;&#x7528;&#x3002;&#x5728;&#x521D;&#x59CB;&#x5316;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#x8BE5;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x505A;&#x4E00;&#x4E9B;&#x66F4;&#x65B0;&#x4E4B;&#x524D;&#x7684;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;&#x3002;</p>
+<blockquote>
+<p>&#x4F60;&#x4E0D;&#x80FD;&#x5728;&#x521A;&#x65B9;&#x6CD5;&#x4E2D;&#x4F7F;&#x7528; this.setState()&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x66F4;&#x65B0; state &#x6765;&#x54CD;&#x5E94;&#x67D0;&#x4E2A; prop &#x7684;&#x6539;&#x53D8;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528; componentWillReceiveProps&#x3002;</p>
+</blockquote>
+<h3 id="&#x66F4;&#x65B0;componentdidupdate"><a href="#&#x66F4;&#x65B0;&#xFF1A;componentDidUpdate" class="headerlink" title="&#x66F4;&#x65B0;&#xFF1A;componentDidUpdate"></a>&#x66F4;&#x65B0;&#xFF1A;componentDidUpdate</h3><p>&#x5728;&#x7EC4;&#x4EF6;&#x7684;&#x66F4;&#x65B0;&#x5DF2;&#x7ECF;&#x540C;&#x6B65;&#x5230; DOM &#x4E2D;&#x4E4B;&#x540E;&#x7ACB;&#x523B;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x4E0D;&#x4F1A;&#x5728;&#x521D;&#x59CB;&#x5316;&#x6E32;&#x67D3;&#x7684;&#x65F6;&#x5019;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x7EC4;&#x4EF6;&#x66F4;&#x65B0;&#x4E4B;&#x540E;&#x64CD;&#x4F5C; DOM &#x5143;&#x7D20;&#x3002;</p>
+<h3 id="&#x79FB;&#x9664;componentwillunmount"><a href="#&#x79FB;&#x9664;&#xFF1A;componentWillUnmount" class="headerlink" title="&#x79FB;&#x9664;&#xFF1A;componentWillUnmount"></a>&#x79FB;&#x9664;&#xFF1A;componentWillUnmount</h3><p>&#x5728;&#x7EC4;&#x4EF6;&#x4ECE; DOM &#x4E2D;&#x79FB;&#x9664;&#x7684;&#x65F6;&#x5019;&#x7ACB;&#x523B;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x5728;&#x8BE5;&#x65B9;&#x6CD5;&#x4E2D;&#x6267;&#x884C;&#x4EFB;&#x4F55;&#x5FC5;&#x8981;&#x7684;&#x6E05;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x65E0;&#x6548;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x6216;&#x8005;&#x6E05;&#x9664;&#x5728; componentDidMount &#x4E2D;&#x521B;&#x5EFA;&#x7684; DOM &#x5143;&#x7D20;&#x3002;</p>
+<h1 id="3-&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;&#x652F;&#x6301;"><a href="#3&#x3001;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;&#x652F;&#x6301;" class="headerlink" title="3&#x3001;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;&#x652F;&#x6301;"></a>3&#x3001;&#x6807;&#x7B7E;&#x548C;&#x5C5E;&#x6027;&#x652F;&#x6301;</h1><h2 id="31-&#x652F;&#x6301;&#x7684;&#x6807;&#x7B7E;"><a href="#3-1&#x3001;&#x652F;&#x6301;&#x7684;&#x6807;&#x7B7E;" class="headerlink" title="3.1&#x3001;&#x652F;&#x6301;&#x7684;&#x6807;&#x7B7E;"></a>3.1&#x3001;&#x652F;&#x6301;&#x7684;&#x6807;&#x7B7E;</h2><p>React &#x5C1D;&#x8BD5;&#x652F;&#x6301;&#x6240;&#x7528;&#x5E38;&#x7528;&#x7684;&#x5143;&#x7D20;&#x3002;&#x5982;&#x679C;&#x4F60;&#x9700;&#x8981;&#x7684;&#x5143;&#x7D20;&#x6CA1;&#x6709;&#x5728;&#x4E0B;&#x9762;&#x5217;&#x51FA;&#x6765;&#xFF0C;&#x8BF7;&#x63D0;&#x4EA4;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF08;issue&#xFF09;&#x3002;</p>
+<h3 id="html&#x5143;&#x7D20;"><a href="#HTML&#x5143;&#x7D20;" class="headerlink" title="HTML&#x5143;&#x7D20;"></a>HTML&#x5143;&#x7D20;</h3><h3 id="svg&#x5143;&#x7D20;"><a href="#SVG&#x5143;&#x7D20;" class="headerlink" title="SVG&#x5143;&#x7D20;"></a>SVG&#x5143;&#x7D20;</h3><h2 id="32-&#x652F;&#x6301;&#x5EA6;-&#x5C5E;&#x6027;"><a href="#3-2&#x3001;&#x652F;&#x6301;&#x5EA6;-&#x5C5E;&#x6027;" class="headerlink" title="3.2&#x3001;&#x652F;&#x6301;&#x5EA6; &#x5C5E;&#x6027;"></a>3.2&#x3001;&#x652F;&#x6301;&#x5EA6; &#x5C5E;&#x6027;</h2><p>React &#x652F;&#x6301;&#x6240;&#x6709; data-<em> &#x548C; aria-</em> &#x5C5E;&#x6027;&#xFF0C;&#x4E5F;&#x652F;&#x6301;&#x4E0B;&#x9762;&#x5217;&#x51FA;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<blockquote>
+<p>&#x6240;&#x6709;&#x7684;&#x5C5E;&#x6027;&#x90FD;&#x662F;&#x9A7C;&#x5CF0;&#x547D;&#x540D;&#x7684;&#xFF0C;class &#x5C5E;&#x6027;&#x548C; for &#x5C5E;&#x6027;&#x5206;&#x522B;&#x6539;&#x4E3A; className &#x548C; htmlFor&#xFF0C;&#x6765;&#x7B26;&#x5408; DOM API &#x89C4;&#x8303;&#x3002;</p>
+</blockquote>
+<h3 id="html&#x5C5E;&#x6027;"><a href="#HTML&#x5C5E;&#x6027;" class="headerlink" title="HTML&#x5C5E;&#x6027;"></a>HTML&#x5C5E;&#x6027;</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">accept acceptCharset accessKey action allowFullScreen allowTransparency altasync autoComplete autoPlay cellPadding cellSpacing charSet checked classIDclassName cols colSpan content contentEditable contextMenu controls coordscrossOrigin data dateTime defer dir disabled download draggable encType formformAction formEncType formMethod formNoValidate formTarget frameBorder heighthidden href hrefLang htmlFor httpEquiv icon id label lang list loop manifestmarginHeight marginWidth max maxLength media mediaGroup method min multiplemuted name noValidate open pattern placeholder poster preload radioGroupreadOnly rel required role rows rowSpan sandbox scope scrolling seamlessselected shape size sizes span spellCheck src srcDoc srcSet start step styletabIndex target title type useMap value width wmode</span><br></pre></td></tr></table></figure>
+<h3 id="svg&#x5C5E;&#x6027;"><a href="#SVG&#x5C5E;&#x6027;" class="headerlink" title="SVG&#x5C5E;&#x6027;"></a>SVG&#x5C5E;&#x6027;</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cx cy d dx dy fill fillOpacity fontFamily fontSize fx fy gradientTransformgradientUnits markerEnd markerMid markerStart offset opacitypatternContentUnits patternUnits points preserveAspectRatio r rx ryspreadMethod stopColor stopOpacity stroke strokeDasharray strokeLinecapstrokeOpacity strokeWidth textAnchor transform version viewBox x1 x2 x y1 y2 y</span><br></pre></td></tr></table></figure>
+<h1 id="4-&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;"><a href="#4&#x3001;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;" class="headerlink" title="4&#x3001;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;"></a>4&#x3001;&#x4E8B;&#x4EF6;&#x7CFB;&#x7EDF;</h1><h2 id="41-&#x865A;&#x62DF;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;"><a href="#4-1&#x3001;&#x865A;&#x62DF;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;" class="headerlink" title="4.1&#x3001;&#x865A;&#x62DF;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;"></a>4.1&#x3001;&#x865A;&#x62DF;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;</h2><p>&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x5C06;&#x4F1A;&#x4F20;&#x5165;&#x865A;&#x62DF;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x4E00;&#x4E2A;&#x5BF9;&#x6D4F;&#x89C8;&#x5668;&#x672C;&#x5730;&#x4E8B;&#x4EF6;&#x7684;&#x8DE8;&#x6D4F;&#x89C8;&#x5668;&#x5C01;&#x88C5;&#x3002;&#x5B83;&#x6709;&#x548C;&#x6D4F;&#x89C8;&#x5668;&#x672C;&#x5730;&#x4E8B;&#x4EF6;&#x76F8;&#x540C;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#xFF0C;&#x5305;&#x62EC; stopPropagation() &#x548C; preventDefault()&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x6D4F;&#x89C8;&#x5668;&#x517C;&#x5BB9;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x56E0;&#x4E3A;&#x4E00;&#x4E9B;&#x56E0;&#x7D20;&#xFF0C;&#x9700;&#x8981;&#x5E95;&#x5C42;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;&#xFF0C;&#x53EA;&#x8981;&#x4F7F;&#x7528;<code>nativeEvent</code>&#x5C5E;&#x6027;&#x5C31;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x5B83;&#x4E86;&#x3002;&#x6BCF;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;&#x90FD;&#x6709;&#x4E0B;&#x5217;&#x7684;&#x5C5E;&#x6027;&#xFF1A;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boolean bubblesboolean cancelableDOMEventTarget currentTargetboolean defaultPreventednumber eventPhaseboolean isTrustedDOMEvent nativeEvent<span class="keyword">void</span> preventDefault()<span class="keyword">void</span> stopPropagation()DOMEventTarget targetnumber timeStampstring type</span><br></pre></td></tr></table></figure>
+<h2 id="42-&#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;"><a href="#4-2&#x3001;&#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;" class="headerlink" title="4.2&#x3001;&#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;"></a>4.2&#x3001;&#x652F;&#x6301;&#x7684;&#x4E8B;&#x4EF6;</h2><p>React &#x6807;&#x51C6;&#x5316;&#x4E86;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x90FD;&#x4F1A;&#x6709;&#x76F8;&#x540C;&#x7684;&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x5982;&#x4E0B;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x5728;&#x4E8B;&#x4EF6;&#x5192;&#x6CE1;&#x9636;&#x6BB5;&#x89E6;&#x53D1;&#x3002;&#x8981;&#x5728;&#x6355;&#x83B7;&#x9636;&#x6BB5;&#x89E6;&#x53D1;&#x67D0;&#x4E2A;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x5728;&#x4E8B;&#x4EF6;&#x540D;&#x5B57;&#x540E;&#x9762;&#x8FFD;&#x52A0; <code>Capture</code>&#x5B57;&#x7B26;&#x4E32;&#xFF1B;&#x4F8B;&#x5982;&#xFF0C;&#x4F7F;&#x7528; onClickCapture </p>
+<h3 id="&#x526A;&#x8D34;&#x677F;&#x4E8B;&#x4EF6;"><a href="#&#x526A;&#x8D34;&#x677F;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x526A;&#x8D34;&#x677F;&#x4E8B;&#x4EF6;"></a>&#x526A;&#x8D34;&#x677F;&#x4E8B;&#x4EF6;</h3><blockquote>
+<p>onCopy onCut onPaste</p>
+</blockquote>
+<h3 id="&#x952E;&#x76D8;&#x4E8B;&#x4EF6;"><a href="#&#x952E;&#x76D8;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x952E;&#x76D8;&#x4E8B;&#x4EF6;"></a>&#x952E;&#x76D8;&#x4E8B;&#x4EF6;</h3><blockquote>
+<p>onKeyDown onKeyPress onKeyUp</p>
+</blockquote>
+<h3 id="&#x7126;&#x70B9;&#x4E8B;&#x4EF6;"><a href="#&#x7126;&#x70B9;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x7126;&#x70B9;&#x4E8B;&#x4EF6;"></a>&#x7126;&#x70B9;&#x4E8B;&#x4EF6;</h3><blockquote>
+<p>onFocus onBlur</p>
+</blockquote>
+<h3 id="&#x8868;&#x5355;&#x4E8B;&#x4EF6;"><a href="#&#x8868;&#x5355;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x8868;&#x5355;&#x4E8B;&#x4EF6;"></a>&#x8868;&#x5355;&#x4E8B;&#x4EF6;</h3><blockquote>
+<p>onChange onInput onSubmit</p>
+</blockquote>
+<h3 id="&#x9F20;&#x6807;&#x4E8B;&#x4EF6;"><a href="#&#x9F20;&#x6807;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x9F20;&#x6807;&#x4E8B;&#x4EF6;"></a>&#x9F20;&#x6807;&#x4E8B;&#x4EF6;</h3><blockquote>
+<p>onClick onDoubleClick onDrag onDragEnd onDragEnter onDragExit onDragLeave<br>onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave<br>onMouseMove onMouseOut onMouseOver onMouseUp</p>
+</blockquote>
+<h3 id="&#x89E6;&#x6478;&#x4E8B;&#x4EF6;"><a href="#&#x89E6;&#x6478;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x89E6;&#x6478;&#x4E8B;&#x4EF6;"></a>&#x89E6;&#x6478;&#x4E8B;&#x4EF6;</h3><blockquote>
+<p>onTouchCancel onTouchEnd onTouchMove onTouchStart</p>
+</blockquote>
+<h3 id="ui&#x4E8B;&#x4EF6;"><a href="#UI&#x4E8B;&#x4EF6;" class="headerlink" title="UI&#x4E8B;&#x4EF6;"></a>UI&#x4E8B;&#x4EF6;</h3><blockquote>
+<p>onScroll</p>
+</blockquote>
+<h3 id="&#x9F20;&#x6807;&#x6EDA;&#x8F6E;&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;"><a href="#&#x9F20;&#x6807;&#x6EDA;&#x8F6E;&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;" class="headerlink" title="&#x9F20;&#x6807;&#x6EDA;&#x8F6E;&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;"></a>&#x9F20;&#x6807;&#x6EDA;&#x8F6E;&#x6EDA;&#x52A8;&#x4E8B;&#x4EF6;</h3><blockquote>
+<p>onWheel</p>
+</blockquote>
+<h1 id="5-&#x4E0E;dom&#x7684;&#x5DEE;&#x5F02;"><a href="#5&#x3001;&#x4E0E;DOM&#x7684;&#x5DEE;&#x5F02;" class="headerlink" title="5&#x3001;&#x4E0E;DOM&#x7684;&#x5DEE;&#x5F02;"></a>5&#x3001;&#x4E0E;DOM&#x7684;&#x5DEE;&#x5F02;</h1><p>React &#x4E3A;&#x4E86;&#x6027;&#x80FD;&#x548C;&#x8DE8;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x4E8B;&#x4EF6;&#x548C; DOM &#x7CFB;&#x7EDF;&#x3002;&#x5229;&#x7528;&#x6B64;&#x529F;&#x80FD;&#xFF0C;&#x53EF;&#x4EE5;&#x5C4F;&#x853D;&#x6389;&#x4E00;&#x4E9B;&#x6D4F;&#x89C8;&#x5668;&#x7684; DOM &#x7684;&#x7C97;&#x7CD9;&#x5B9E;&#x73B0;&#x3002;</p>
+<h1 id="6-&#x7279;&#x6B8A;&#x7684;&#x975E;dom&#x5C5E;&#x6027;"><a href="#6&#x3001;&#x7279;&#x6B8A;&#x7684;&#x975E;DOM&#x5C5E;&#x6027;" class="headerlink" title="6&#x3001;&#x7279;&#x6B8A;&#x7684;&#x975E;DOM&#x5C5E;&#x6027;"></a>6&#x3001;&#x7279;&#x6B8A;&#x7684;&#x975E;DOM&#x5C5E;&#x6027;</h1><p>&#x9664;&#x4E86;&#x4E0E; DOM &#x7684;&#x5DEE;&#x5F02;&#x4E4B;&#x5916;&#xFF0C;React &#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B; DOM &#x91CC;&#x9762;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x5C5E;&#x6027;&#xFF1A;</p>
+<ul>
+<li>key</li>
+<li>ref</li>
+<li>dangerouslySetInnerHTML</li>
+</ul>
+<h1 id="7-reconciliation"><a href="#7&#x3001;Reconciliation" class="headerlink" title="7&#x3001;Reconciliation"></a>7&#x3001;Reconciliation</h1><p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x89E3;&#x91CA;&#x4E86;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x5F3A;&#x5927;&#x7684;&#x8BD5;&#x63A2;&#x6CD5;&#x6765;&#x5C06; O(n3) &#x590D;&#x6742;&#x5EA6;&#x7684;&#x95EE;&#x9898;&#x8F6C;&#x6362;&#x6210; O(n) &#x590D;&#x6742;&#x5EA6;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="71-&#x52A8;&#x673A;"><a href="#7-1&#x3001;&#x52A8;&#x673A;" class="headerlink" title="7.1&#x3001;&#x52A8;&#x673A;"></a>7.1&#x3001;&#x52A8;&#x673A;</h2><p>&#x751F;&#x6210;&#x6700;&#x5C11;&#x7684;&#x5C06;&#x4E00;&#x9897;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#x8F6C;&#x6362;&#x6210;&#x53E6;&#x4E00;&#x9897;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x590D;&#x6742;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x503C;&#x5F97;&#x7814;&#x7A76;&#x7684;&#x95EE;&#x9898;&#x3002;&#x6700;&#x4F18;&#x7B97;&#x6CD5;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x662F; O(n3)&#xFF0C;n &#x662F;&#x6811;&#x4E2D;&#x8282;&#x70B9;&#x7684;&#x603B;&#x6570;&#x3002;</p>
+<h2 id="72-&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5DEE;&#x5F02;&#x68C0;&#x67E5;"><a href="#7-2&#x3001;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5DEE;&#x5F02;&#x68C0;&#x67E5;" class="headerlink" title="7.2&#x3001;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5DEE;&#x5F02;&#x68C0;&#x67E5;"></a>7.2&#x3001;&#x4E24;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x5DEE;&#x5F02;&#x68C0;&#x67E5;</h2><h3 id="&#x4E0D;&#x540C;&#x7684;&#x8282;&#x70B9;&#x7C7B;&#x578B;"><a href="#&#x4E0D;&#x540C;&#x7684;&#x8282;&#x70B9;&#x7C7B;&#x578B;" class="headerlink" title="&#x4E0D;&#x540C;&#x7684;&#x8282;&#x70B9;&#x7C7B;&#x578B;"></a>&#x4E0D;&#x540C;&#x7684;&#x8282;&#x70B9;&#x7C7B;&#x578B;</h3><p>&#x5982;&#x679C;&#x8282;&#x70B9;&#x7684;&#x7C7B;&#x578B;&#x4E0D;&#x540C;&#xFF0C;React &#x5C06;&#x4F1A;&#x628A;&#x5B83;&#x4EEC;&#x5F53;&#x505A;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x5B50;&#x6811;&#xFF0C;&#x79FB;&#x9664;&#x4E4B;&#x524D;&#x7684;&#x90A3;&#x68F5;&#x5B50;&#x6811;&#xFF0C;&#x7136;&#x540E;&#x521B;&#x5EFA;&#x5E76;&#x63D2;&#x5165;&#x7B2C;&#x4E8C;&#x68F5;&#x5B50;&#x6811;&#x3002;</p>
+<h3 id="dom&#x8282;&#x70B9;"><a href="#DOM&#x8282;&#x70B9;" class="headerlink" title="DOM&#x8282;&#x70B9;"></a>DOM&#x8282;&#x70B9;</h3><p>&#x5F53;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A; DOM &#x8282;&#x70B9;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x4E24;&#x8005;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x7136;&#x540E;&#x80FD;&#x591F;&#x627E;&#x51FA;&#x54EA;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x4EA7;&#x751F;&#x4E86;&#x53D8;&#x5316;&#x3002;</p>
+<h3 id="&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;"><a href="#&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;"></a>&#x81EA;&#x5B9A;&#x4E49;&#x7EC4;&#x4EF6;</h3><p>&#x56E0;&#x4E3A;&#x7EC4;&#x4EF6;&#x662F;&#x72B6;&#x6001;&#x5316;&#x7684;&#xFF0C;&#x4E0D;&#x53EF;&#x80FD;&#x6BCF;&#x6B21;&#x72B6;&#x6001;&#x6539;&#x53D8;&#x90FD;&#x8981;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x3002;React &#x5229;&#x7528;&#x65B0;&#x7EC4;&#x4EF6;&#x4E0A;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x4E4B;&#x524D;&#x7684;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x4E0A;&#x8C03;&#x7528; component[Will/Did]ReceiveProps()&#x3002;</p>
+<h2 id="72-&#x5B50;&#x7EA7;&#x4F18;&#x5316;&#x5DEE;&#x5F02;&#x7B97;&#x6CD5;list-wise-diff"><a href="#7-2&#x3001;&#x5B50;&#x7EA7;&#x4F18;&#x5316;&#x5DEE;&#x5F02;&#x7B97;&#x6CD5;&#xFF08;List-wise-diff&#xFF09;" class="headerlink" title="7.2&#x3001;&#x5B50;&#x7EA7;&#x4F18;&#x5316;&#x5DEE;&#x5F02;&#x7B97;&#x6CD5;&#xFF08;List-wise diff&#xFF09;"></a>7.2&#x3001;&#x5B50;&#x7EA7;&#x4F18;&#x5316;&#x5DEE;&#x5F02;&#x7B97;&#x6CD5;&#xFF08;List-wise diff&#xFF09;</h2><h3 id="&#x95EE;&#x9898;&#x70B9;problematic-case"><a href="#&#x95EE;&#x9898;&#x70B9;&#xFF08;Problematic-Case&#xFF09;" class="headerlink" title="&#x95EE;&#x9898;&#x70B9;&#xFF08;Problematic Case&#xFF09;"></a>&#x95EE;&#x9898;&#x70B9;&#xFF08;Problematic Case&#xFF09;</h3><p>&#x4E3A;&#x4E86;&#x5B8C;&#x6210;&#x5B50;&#x7EA7;&#x66F4;&#x65B0;&#xFF0C;React &#x9009;&#x7528;&#x4E86;&#x4E00;&#x79CD;&#x5F88;&#x539F;&#x59CB;&#x7684;&#x65B9;&#x6CD5;&#x3002;React &#x540C;&#x65F6;&#x904D;&#x5386;&#x4E24;&#x4E2A;&#x5B50;&#x7EA7;&#x5217;&#x8868;&#xFF0C;&#x5F53;&#x53D1;&#x73B0;&#x5DEE;&#x5F02;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x4EA7;&#x751F;&#x4E00;&#x6B21; DOM &#x4FEE;&#x6539;&#x3002;</p>
+<h3 id="&#x952E;keys"><a href="#&#x952E;&#xFF08;Keys&#xFF09;" class="headerlink" title="&#x952E;&#xFF08;Keys&#xFF09;"></a>&#x952E;&#xFF08;Keys&#xFF09;</h3><p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x770B;&#x8D77;&#x6765;&#x5F88;&#x68D8;&#x624B;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x9009;&#x7684;&#x5C5E;&#x6027;&#x3002;&#x53EF;&#x4EE5;&#x7ED9;&#x6BCF;&#x4E2A;&#x5B50;&#x7EA7;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#xFF0C;&#x7528;&#x4E8E;&#x5C06;&#x6765;&#x7684;&#x5339;&#x914D;&#x6BD4;&#x8F83;&#x3002;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#xFF0C;React &#x5C31;&#x80FD;&#x591F;&#x68C0;&#x6D4B;&#x51FA;&#x8282;&#x70B9;&#x63D2;&#x5165;&#x3001;&#x79FB;&#x9664;&#x548C;&#x66FF;&#x6362;&#xFF0C;&#x5E76;&#x4E14;&#x501F;&#x52A9;&#x54C8;&#x5E0C;&#x8868;&#x4F7F;&#x8282;&#x70B9;&#x79FB;&#x52A8;&#x590D;&#x6742;&#x5EA6;&#x4E3A; O(n)&#x3002;</p>
+<h2 id="73-&#x6743;&#x8861;trade-offs"><a href="#7-3&#x3001;&#x6743;&#x8861;&#xFF08;Trade-offs&#xFF09;" class="headerlink" title="7.3&#x3001;&#x6743;&#x8861;&#xFF08;Trade-offs&#xFF09;"></a>7.3&#x3001;&#x6743;&#x8861;&#xFF08;Trade-offs&#xFF09;</h2><p>&#x4E3A;&#x4E86;&#x5B8C;&#x6210;&#x5B50;&#x7EA7;&#x66F4;&#x65B0;&#xFF0C;React &#x9009;&#x7528;&#x4E86;&#x4E00;&#x79CD;&#x5F88;&#x539F;&#x59CB;&#x7684;&#x65B9;&#x6CD5;&#x3002;React &#x540C;&#x65F6;&#x904D;&#x5386;&#x4E24;&#x4E2A;&#x5B50;&#x7EA7;&#x5217;&#x8868;&#xFF0C;&#x5F53;&#x53D1;&#x73B0;&#x5DEE;&#x5F02;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x4EA7;&#x751F;&#x4E00;&#x6B21; DOM &#x4FEE;&#x6539;&#x3002;</p>
+<h1 id="8-react&#x865A;&#x62DF;dom&#x672F;&#x8BED;"><a href="#8&#x3001;React&#xFF08;&#x865A;&#x62DF;&#xFF09;DOM&#x672F;&#x8BED;" class="headerlink" title="8&#x3001;React&#xFF08;&#x865A;&#x62DF;&#xFF09;DOM&#x672F;&#x8BED;"></a>8&#x3001;React&#xFF08;&#x865A;&#x62DF;&#xFF09;DOM&#x672F;&#x8BED;</h1><p>&#x4E94;&#x4E2A;&#x6838;&#x5FC3;&#x7C7B;&#x578B;&#xFF1A;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ReactElement / ReactElement &#x5DE5;&#x5382;</span><br><span class="line">ReactNode</span><br><span class="line">ReactComponent / ReactComponent &#x7C7B;</span><br></pre></td></tr></table></figure>
+<h2 id="81-react&#x5143;&#x7D20;"><a href="#8-1&#x3001;React&#x5143;&#x7D20;" class="headerlink" title="8.1&#x3001;React&#x5143;&#x7D20;"></a>8.1&#x3001;React&#x5143;&#x7D20;</h2><p>React &#x4E2D;&#x6700;&#x4E3B;&#x8981;&#x7684;&#x7C7B;&#x578B;&#x5C31;&#x662F; ReactElement&#x3002;&#x5B83;&#x6709;&#x56DB;&#x4E2A;&#x5C5E;&#x6027;&#xFF1A;type&#xFF0C;props&#xFF0C;key &#x548C; ref&#x3002;&#x5B83;&#x6CA1;&#x6709;&#x65B9;&#x6CD5;&#xFF0C;&#x5E76;&#x4E14;&#x539F;&#x578B;&#x4E0A;&#x4EC0;&#x4E48;&#x90FD;&#x6CA1;&#x6709;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7; React.createElement &#x521B;&#x5EFA;&#x8BE5;&#x7C7B;&#x578B;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> root = React.createElement(<span class="string">&apos;div&apos;</span>);</span><br></pre></td></tr></table></figure>
+<p>&#x8981;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x5230; DOM &#x5143;&#x7D20;&#xFF0C;&#x628A;&#x5C5E;&#x6027;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x5165; React.render&#xFF0C;&#x628A;&#x5B50;&#x7EA7;&#x4F5C;&#x4E3A;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x4F20;&#x7ED9; React.render&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> child = React.createElement(<span class="string">&apos;li&apos;</span>, <span class="literal">null</span>, <span class="string">&apos;Text Content&apos;</span>);</span><br><span class="line"><span class="keyword">var</span> root = React.createElement(<span class="string">&apos;ul&apos;</span>, { className: <span class="string">&apos;my-list&apos;</span> }, child);</span><br><span class="line">React.render(root, <span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528; React JSX &#x8BED;&#x6CD5;&#xFF0C;&#x8FD9;&#x4E9B; ReactElement &#x5B9E;&#x4F8B;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x3002;</p>
+<h3 id="&#x5DE5;&#x5382;"><a href="#&#x5DE5;&#x5382;" class="headerlink" title="&#x5DE5;&#x5382;"></a>&#x5DE5;&#x5382;</h3><p>&#x4E00;&#x4E2A; ReactElement &#x5DE5;&#x5382;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x7279;&#x6B8A; type &#x5C5E;&#x6027;&#x7684; ReactElement:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFactory</span>(<span class="params">type</span>)</span>{</span><br><span class="line">  <span class="keyword">return</span> React.createElement.bind(<span class="literal">null</span>, type);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x8BE5;&#x51FD;&#x6570;&#x80FD;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B9;&#x4FBF;&#x7684;&#x77ED;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x603B;&#x8C03;&#x7528; React.createElement(&#x2018;div&#x2019;):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = React.createFactory(<span class="string">&apos;div&apos;</span>);</span><br><span class="line"><span class="keyword">var</span> root = div({ className: <span class="string">&apos;my-div&apos;</span> });</span><br><span class="line">React.render(root, <span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
+<p>React &#x5DF2;&#x7ECF;&#x5185;&#x7F6E;&#x4E86;&#x5E38;&#x7528; HTML &#x6807;&#x7B7E;&#x7684;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#xFF1A;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> root = React.DOM.ul({ className: <span class="string">&apos;my-list&apos;</span> },</span><br><span class="line">             React.DOM.li(<span class="literal">null</span>, <span class="string">&apos;Text Content&apos;</span>)</span><br><span class="line">           );</span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528; JSX &#x8BED;&#x6CD5;&#xFF0C;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x5DE5;&#x5382;&#x51FD;&#x6570;&#x4E86;&#x3002;JSX &#x5DF2;&#x7ECF;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x65B9;&#x4FBF;&#x7684;&#x77ED;&#x51FD;&#x6570;&#x6765;&#x521B;&#x5EFA; ReactElement &#x5B9E;&#x4F8B;&#x3002;</p>
+<h2 id="82-react&#x8282;&#x70B9;"><a href="#8-2&#x3001;React&#x8282;&#x70B9;" class="headerlink" title="8.2&#x3001;React&#x8282;&#x70B9;"></a>8.2&#x3001;React&#x8282;&#x70B9;</h2><p>&#x4E00;&#x4E2A; ReactNode &#x53EF;&#x4EE5;&#x662F;&#xFF1A;</p>
+<ul>
+<li>ReactElement</li>
+<li>string &#xFF08;&#x53C8;&#x540D; ReactText&#xFF09;</li>
+<li>number &#xFF08;&#x53C8;&#x540D; ReactText&#xFF09;</li>
+<li>ReactNode &#x5B9E;&#x4F8B;&#x6570;&#x7EC4; &#xFF08;&#x53C8;&#x540D; ReactFragment&#xFF09;</li>
+</ul>
+<h2 id="83-react&#x7EC4;&#x4EF6;"><a href="#8-3&#x3001;React&#x7EC4;&#x4EF6;" class="headerlink" title="8.3&#x3001;React&#x7EC4;&#x4EF6;"></a>8.3&#x3001;React&#x7EC4;&#x4EF6;</h2><p>&#x5728;&#x4F7F;&#x7528; React &#x5F00;&#x53D1;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4EC5;&#x4F7F;&#x7528; ReactElement &#x5B9E;&#x4F8B;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x8981;&#x5145;&#x5206;&#x5229;&#x7528; React&#xFF0C;&#x5C31;&#x8981;&#x4F7F;&#x7528; ReactComponent &#x6765;&#x5C01;&#x88C5;&#x72B6;&#x6001;&#x5316;&#x7684;&#x7EC4;&#x4EF6;&#x3002;</p>
+<p>&#x4E00;&#x4E2A; ReactComponent &#x7C7B;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684; JavaScript &#x7C7B;&#xFF08;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x201C;&#x6784;&#x9020;&#x51FD;&#x6570;&#x201D;&#xFF09;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent = React.createClass({</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    ...</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></table></figure>
+<p>&#x5F53;&#x8BE5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5E94;&#x8BE5;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x81F3;&#x5C11;&#x5E26;&#x6709;&#x4E00;&#x4E2A; render &#x65B9;&#x6CD5;&#x3002;&#x8BE5;&#x5BF9;&#x8C61;&#x6307;&#x5411;&#x4E00;&#x4E2A; ReactComponent &#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x9664;&#x975E;&#x4E3A;&#x4E86;&#x6D4B;&#x8BD5;&#xFF0C;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x4E0D;&#x8981;&#x81EA;&#x5DF1;&#x8C03;&#x7528;&#x8BE5;&#x6784;&#x9020;&#x51FD;&#x6570;&#x3002;React &#x5E2E;&#x4F60;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x628A; ReactComponent &#x7C7B;&#x4F20;&#x7ED9; createElement&#xFF0C;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A; ReactElement &#x5B9E;&#x4F8B;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = React.createElement(MyComponent);</span><br></pre></td></tr></table></figure>
+<p>&#x6216;&#x8005;&#x4F7F;&#x7528; JSX&#xFF1A;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="xml"><span class="tag">&lt;<span class="name">MyComponent</span> /&gt;</span>;</span></span><br></pre></td></tr></table></figure>
+<p>&#x5F53;&#x8BE5;&#x5B9E;&#x4F8B;&#x4F20;&#x7ED9; React.render &#x7684;&#x65F6;&#x5019;&#xFF0C;React &#x5C06;&#x4F1A;&#x8C03;&#x7528;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x521B;&#x5EFA;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; ReactComponent&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> component = React.render(element, <span class="built_in">document</span>.body);</span><br></pre></td></tr></table></figure>
+<p>&#x5982;&#x679C;&#x4E00;&#x76F4;&#x7528;&#x76F8;&#x540C;&#x7684; ReactElement &#x7C7B;&#x578B;&#x548C;&#x76F8;&#x540C;&#x7684; DOM &#x5143;&#x7D20;&#x5BB9;&#x5668;&#x8C03;&#x7528; React.render&#xFF0C;&#x5C06;&#x4F1A;&#x603B;&#x662F;&#x8FD4;&#x56DE;&#x76F8;&#x540C;&#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x8BE5;&#x5B9E;&#x4F8B;&#x662F;&#x72B6;&#x6001;&#x5316;&#x7684;&#x3002;&#x5982;&#x679C;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x521B;&#x5EFA;Componnet&#x5B9E;&#x529B;&#xFF0C;&#x5219;&#x4E0D;&#x4F1A;&#x53C8;&#x8FD9;&#x6837;&#x7684;&#x4F18;&#x5316;&#x3002;</p>
+<p>ReactComponent &#x7684; render &#x65B9;&#x6CD5;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x53E6;&#x4E00;&#x4E2A; ReactElement&#xFF0C;&#x8FD9;&#x5C31;&#x5141;&#x8BB8;&#x7EC4;&#x4EF6;&#x88AB;&#x7EC4;&#x88C5;&#x3002;</p>
+<h2 id="84-&#x6B63;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;"><a href="#8-4&#x3001;&#x6B63;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;" class="headerlink" title="8.4&#x3001;&#x6B63;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;"></a>8.4&#x3001;&#x6B63;&#x5F0F;&#x7684;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;</h2><h3 id="&#x5165;&#x53E3;&#x70B9;"><a href="#&#x5165;&#x53E3;&#x70B9;" class="headerlink" title="&#x5165;&#x53E3;&#x70B9;"></a>&#x5165;&#x53E3;&#x70B9;</h3><h3 id="&#x8282;&#x70B9;&#x548C;&#x5143;&#x7D20;"><a href="#&#x8282;&#x70B9;&#x548C;&#x5143;&#x7D20;" class="headerlink" title="&#x8282;&#x70B9;&#x548C;&#x5143;&#x7D20;"></a>&#x8282;&#x70B9;&#x548C;&#x5143;&#x7D20;</h3><h3 id="&#x7C7B;&#x548C;&#x7EC4;&#x4EF6;"><a href="#&#x7C7B;&#x548C;&#x7EC4;&#x4EF6;" class="headerlink" title="&#x7C7B;&#x548C;&#x7EC4;&#x4EF6;"></a>&#x7C7B;&#x548C;&#x7EC4;&#x4EF6;</h3>
       
     </div>
     <footer class="article-footer">
@@ -481,87 +550,13 @@
 
   
   
-    <h3 class="article-title"><a href="/javascript/seajs/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/javascript/reactjs/2016-03-20 Redux/"><span>Redux</span></a></h3>
   
 
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/javascript/seajs/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
-          2016-06-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>&#x5728;&#x4F7F;&#x7528;spm&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x5F97;&#x5B89;&#x88C5;nodejs&#xFF0C;&#x56E0;&#x4E3A;spm&#x662F;nodejs&#x7684;&#x4E00;&#x4E2A;package&#x3002;<a href="http://qianduanblog.com/post/js-learning-42-using-spm-3-build-seajs-project.html" title="&#x4F7F;&#x7528;spm@3&#x6784;&#x5EFA;seajs&#x9879;&#x76EE;" target="_blank" rel="external">&#x4F7F;&#x7528;spm@3&#x6784;&#x5EFA;seajs&#x9879;&#x76EE;</a></p>
-<p><a href="http://spmjs.io/documentation" title="spm 3&#x5B98;&#x65B9;&#x6559;&#x7A0B;" target="_blank" rel="external">spm 3&#x5B98;&#x65B9;&#x6559;&#x7A0B;</a></p>
-<p>&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dist  &#x6784;&#x5EFA;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5939;</span><br><span class="line">examples  &#x76F8;&#x5173;&#x4F7F;&#x7528;&#x6587;&#x6863;</span><br><span class="line">spm_modules   &#x4F9D;&#x8D56;&#x7684;js&#x6587;&#x4EF6;&#x4ED3;&#x5E93;&#xFF0C;spm install&#x7684;&#x65F6;&#x5019;&#x4E0B;&#x8F7D;&#x5230;&#x91CC;&#x9762;</span><br><span class="line">tests  &#x6D4B;&#x8BD5;&#x6848;&#x4F8B;</span><br><span class="line">xx.js  </span><br><span class="line">package.json  spm&#x7EF4;&#x62A4;&#x7684;&#x4F9D;&#x8D56;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x751F;&#x4EA7;dist&#x76EE;&#x5F55;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://spmjs.io/package/expect.js" title="expectjs" target="_blank" rel="external">expectjs</a></p>
-<p><a href="http://chaoskeh.com/blog/why-its-hard-to-combo-seajs-modules.html" title="&#x4E3A;&#x4EC0;&#x4E48; SeaJS &#x6A21;&#x5757;&#x7684;&#x5408;&#x5E76;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;" target="_blank" rel="external">&#x4E3A;&#x4EC0;&#x4E48; SeaJS &#x6A21;&#x5757;&#x7684;&#x5408;&#x5E76;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;</a></p>
-<h3 id="&#x5B89;&#x88C5;nodejs"><a href="#&#x5B89;&#x88C5;nodejs" class="headerlink" title="&#x5B89;&#x88C5;nodejs"></a>&#x5B89;&#x88C5;nodejs</h3><p><a href="http://seajs.org/docs/#docs" title="seajs" target="_blank" rel="external">seajs</a></p>
-<p>&#x914D;&#x7F6E;NODE_PATH</p>
-<p><a href="http://segmentfault.com/blog/yinchangsheng/1190000002478924" title="nodejs &#x4E2D;&#x7684; NODE_PATH" target="_blank" rel="external">nodejs &#x4E2D;&#x7684; NODE_PATH</a></p>
-<p>windows&#x4E0B;&#x9700;&#x8981;&#x5B89;&#x88C5;<a href="http://gnuwin32.sourceforge.net/packages/make.htm" title="make" target="_blank" rel="external">make</a></p>
-<p>&#x4E0B;&#x8F7D;<a href="https://github.com/seajs/examples" title="demo" target="_blank" rel="external">demo</a>&#x7F16;&#x8BD1;&#x6267;&#x884C;</p>
-<p>SeaJS&#x9075;&#x5FAA;<a href="https://github.com/cmdjs/specification/blob/master/draft/module.md" title="CMD" target="_blank" rel="external">CMD</a>&#x89C4;&#x8303;&#xFF0C;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;<code>require</code> &#x5173;&#x952E;&#x8BCD;&#x5F15;&#x5165;&#x5916;&#x90E8;&#x6A21;&#x5757;&#xFF0C;&#x6BCF;&#x6B21;&#x52A0;&#x8F7D;&#x9700;&#x8981;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6A21;&#x5757;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6A21;&#x5757;&#x5185;&#x90E8; <code>require</code> &#x8FDB;&#x6765;&#x7684;js&#x4E5F;&#x4F1A;&#x4E00;&#x5E76;&#x52A0;&#x8F7D;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;SeaJS&#x5728;&#x52A0;&#x8F7D;&#x4E4B;&#x524D;&#x628A;&#x6240;&#x6709;&#x76F8;&#x5173;&#x8054;&#x7684;JS&#x90FD;&#x80FD;&#x591F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;JS&#x6587;&#x4EF6;&#x4E00;&#x6B21;&#x6027;&#x52A0;&#x8F7D;&#x8FDB;&#x6765;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x7528;&#x5230;SeaJS&#x7684;<a href="http://www.zhihu.com/question/20789867/answer/16187950" title="Transport" target="_blank" rel="external">Transport</a>&#x683C;&#x5F0F;<br>&#x6CA1;&#x8F6C;&#x6362;&#x524D;Modules/Wrappingsgui&#x89C4;&#x8303;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, exports, module) {</span><br><span class="line">   var a = require(&quot;a&quot;)</span><br><span class="line">   exports.foo = ...</span><br><span class="line">})</span><br></pre></td></tr></table></figure></p>
-<p>CMD&#x6A21;&#x5757;&#x5728;&#x6B63;&#x5F0F;&#x4E0A;&#x7EBF;&#x524D;&#xFF0C;&#x901A;&#x8FC7;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF08;&#x5982;SPM&#xFF09;&#x5148;&#x8F6C;&#x6362;&#x4E3A;Modules/Transport&#x683C;&#x5F0F;&#xFF1A;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define(&quot;id&quot;, [&quot;dep-1&quot;, &quot;dep-2&quot;], function(require, exports, module) {</span><br><span class="line">   // source code</span><br><span class="line">})</span><br></pre></td></tr></table></figure>
-<p>&#x8FDB;&#x4E00;&#x6B65;&#x901A;&#x8FC7;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4E00;&#x5E76;&#x5427; <code>require</code> &#x5F15;&#x5165;&#x8FDB;&#x6765;&#x7684;&#x6A21;&#x5757;&#x4E00;&#x8D77;&#x538B;&#x7F29;&#x5408;&#x5E76;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x4E86;&#x3002;</p>
-<h2 id="&#x8BF4;&#x660E;"><a href="#&#x8BF4;&#x660E;" class="headerlink" title="&#x8BF4;&#x660E;"></a>&#x8BF4;&#x660E;</h2><p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;SeaJS&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;JS&#x4EE3;&#x7801;&#x6A21;&#x5757;&#x5316;&#xFF0C;&#x5728;&#x4E0A;&#x7EBF;&#x4E4B;&#x524D;&#xFF0C;&#x901A;&#x8FC7;spm&#x8FD9;&#x6837;&#x7684;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF0C;&#x628A;&#x81EA;&#x5DF1;&#x5F00;&#x53D1;&#x7684;&#x6A21;&#x5757;&#x538B;&#x7F29;&#x5408;&#x5E76;&#xFF0C;&#x5F53;&#x6210;SeaJS&#x7684;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
-<h2 id="step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h2><p>&#x4E0B;&#x9762;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x6765;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF1A;</p>
-<h2 id="&#x6B63;&#x9762;&#x9879;&#x76EE;&#x63A5;&#x53E3;"><a href="#&#x6B63;&#x9762;&#x9879;&#x76EE;&#x63A5;&#x53E3;" class="headerlink" title="&#x6B63;&#x9762;&#x9879;&#x76EE;&#x63A5;&#x53E3;"></a>&#x6B63;&#x9762;&#x9879;&#x76EE;&#x63A5;&#x53E3;</h2><p>&#x6574;&#x4F53;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">project   // &#x9879;&#x76EE;&#x8DDF;&#x76EE;&#x5F55; </span><br><span class="line">|</span><br><span class="line">|-assets  // web&#x8D44;&#x6E90;&#x6587;&#x4EF6;</span><br><span class="line">  |</span><br><span class="line">  |- sea-modules  // SeaJS&#x76F8;&#x5173;&#x6A21;&#x5757;</span><br><span class="line">  |  </span><br><span class="line">  |- static  // &#x6A21;&#x5757;&#x5F00;&#x53D1;&#x8DEF;&#x5F84;</span><br><span class="line">  |   |</span><br><span class="line">  |   |- first-module</span><br><span class="line">  |       |- dist  // &#x6211;&#x7684;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5939;</span><br><span class="line">  |       |- src  // &#x6211;&#x7684;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x6587;&#x4EF6;&#x5939;</span><br><span class="line">  |       |- package.json  // spm&#x7F16;&#x8BD1;&#x914D;&#x7F6E;</span><br><span class="line">  |</span><br><span class="line">  |- app  // &#x6211;&#x7684;&#x6A21;&#x5757;&#x4F7F;&#x7528;&#x4F8B;&#x5B50;</span><br><span class="line">  |</span><br></pre></td></tr></table></figure></p>
-<h2 id="&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"><a href="#&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;" class="headerlink" title="&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"></a>&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</h2><h3 id="step1-&#x521B;&#x5EFA;&#x9879;&#x76EE;-project"><a href="#step1&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE;-project" class="headerlink" title="step1&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE; project"></a>step1&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE; project</h3><h3 id="step2-&#x521B;&#x5EFA;web&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;"><a href="#step2&#x3001;&#x521B;&#x5EFA;web&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step2&#x3001;&#x521B;&#x5EFA;web&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;"></a>step2&#x3001;&#x521B;&#x5EFA;web&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;</h3><p>&#x5728;project&#x91CC;&#x9762;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;assetsweb&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x4E13;&#x95E8;&#x7528;&#x6765;&#x5B58;&#x653E;JS&#xFF0C;CSS&#x7B49;&#x8D44;&#x6E90;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x5C31;&#x5728;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x8FDB;&#x884C;</p>
-<h3 id="step3-&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;sea-modules&#x6587;&#x4EF6;&#x5939;"><a href="#step3&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;sea-modules&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step3&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;sea-modules&#x6587;&#x4EF6;&#x5939;"></a>step3&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;sea-modules&#x6587;&#x4EF6;&#x5939;</h3><p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x662F;&#x7528;&#x6765;&#x5B58;&#x653E;SeaJS&#x6A21;&#x5757;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5305;&#x62EC;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x6A21;&#x5757;&#x6700;&#x7EC8;&#x90FD;&#x8981;&#x5B58;&#x653E;&#x5230;&#x8FD9;&#x91CC;</p>
-<h3 id="step4-&#x5728;assets&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-static-&#x6587;&#x4EF6;&#x5939;"><a href="#step4&#x3001;&#x5728;assets&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-static-&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step4&#x3001;&#x5728;assets&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; static &#x6587;&#x4EF6;&#x5939;"></a>step4&#x3001;&#x5728;assets&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; static &#x6587;&#x4EF6;&#x5939;</h3><p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x7528;&#x4E8E;&#x6A21;&#x5757;&#x5F00;&#x53D1;</p>
-<h3 id="step5-&#x5728;-static-&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-first-module-&#x6587;&#x4EF6;&#x5939;"><a href="#step5&#x3001;&#x5728;-static-&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-first-module-&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step5&#x3001;&#x5728; static &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; first-module &#x6587;&#x4EF6;&#x5939;"></a>step5&#x3001;&#x5728; static &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; first-module &#x6587;&#x4EF6;&#x5939;</h3><p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6211;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x7684;&#x5F00;&#x53D1;&#x4EE3;&#x7801;</p>
-<h3 id="step6-&#x5728;-first-module-&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-src-&#x76EE;&#x5F55;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x7684;&#x4EE3;&#x7801;"><a href="#step6&#x3001;&#x5728;-first-module-&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-src-&#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x7684;&#x4EE3;&#x7801;" class="headerlink" title="step6&#x3001;&#x5728; first-module &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; src &#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x7684;&#x4EE3;&#x7801;"></a>step6&#x3001;&#x5728; first-module &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; src &#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x7684;&#x4EE3;&#x7801;</h3><h3 id="step7-&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;-app-&#x6587;&#x4EF6;&#x5939;"><a href="#step7&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;-app-&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step7&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA; app &#x6587;&#x4EF6;&#x5939;"></a>step7&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA; app &#x6587;&#x4EF6;&#x5939;</h3><p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6F14;&#x793A;&#x8C03;&#x7528;&#x6A21;&#x5757;&#x4EE3;&#x7801;&#x7684;HTML&#x6587;&#x4EF6;</p>
-<h2 id="&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x6784;&#x5EFA;"><a href="#&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x6784;&#x5EFA;" class="headerlink" title="&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x6784;&#x5EFA;"></a>&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x6784;&#x5EFA;</h2><h3 id="&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;npm&#x5B89;&#x88C5;spm&#x800C;npm&#x662F;nodejs&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8FD9;&#x6837;&#x642D;&#x5EFA;&#x73AF;&#x5883;"><a href="#&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;npm&#x5B89;&#x88C5;spm&#xFF0C;&#x800C;npm&#x662F;Node-js&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8FD9;&#x6837;&#x642D;&#x5EFA;&#x73AF;&#x5883;&#xFF1A;" class="headerlink" title="&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;npm&#x5B89;&#x88C5;spm&#xFF0C;&#x800C;npm&#x662F;Node.js&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8FD9;&#x6837;&#x642D;&#x5EFA;&#x73AF;&#x5883;&#xFF1A;"></a>&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;npm&#x5B89;&#x88C5;spm&#xFF0C;&#x800C;npm&#x662F;Node.js&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8FD9;&#x6837;&#x642D;&#x5EFA;&#x73AF;&#x5883;&#xFF1A;</h3><ul>
-<li>&#x5B89;&#x88C5;<a href="http://nodejs.org/" title="Node.js" target="_blank" rel="external">Node.js</a></li>
-<li>&#x5B89;&#x88C5;spm<br>&#x76EE;&#x524D;&#x6700;&#x65B0;&#x7684;&#x662F;3&#x7248;&#x672C;&#x7684;&#xFF0C;&#x5EFA;&#x8BAE;&#x5B89;&#x88C5;&#x6700;&#x65B0;&#x7684;&#xFF0C;&#x8BE6;&#x7EC6;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<br><a href="http://spmjs.io/documentation/getting-started" title="spmjs.io" target="_blank" rel="external">http://spmjs.io/</a><br>&#x8FD9;&#x91CC;&#x53EA;&#x8981;&#x5728;cmd&#x91CC;&#x9762;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x4E00;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install spm -g</span><br></pre></td></tr></table></figure>
-<ul>
-<li>&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;&#x76EE;&#x5F55;</li>
-</ul>
-<p>&#x5728;first-module&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spm init</span><br></pre></td></tr></table></figure>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x6309;&#x7167;&#x63D0;&#x793A;&#x5206;&#x8868;&#x586B;&#x5199; Package name, Version, Description, Author&#x5373;&#x53EF;&#x3002;</p>
-<p>&#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E;&#x751F;&#x6210;&#x5982;&#x4E0B;&#x76EE;&#x5F55;&#xFF1A;<br><img src="" alt=""></p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x5F00;&#x53D1;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4E86;&#x3002;</p>
-<h2 id="&#x6A21;&#x5757;&#x5F00;&#x53D1;"><a href="#&#x6A21;&#x5757;&#x5F00;&#x53D1;" class="headerlink" title="&#x6A21;&#x5757;&#x5F00;&#x53D1;"></a>&#x6A21;&#x5757;&#x5F00;&#x53D1;</h2><h3 id="&#x7F16;&#x8F91;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801;"><a href="#&#x7F16;&#x8F91;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801;" class="headerlink" title="&#x7F16;&#x8F91;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801;"></a>&#x7F16;&#x8F91;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801;</h3><p>&#x5728;src&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801; index.js</p>
-<p><a href="http://blog.csdn.net/huyoo/article/details/21703701" target="_blank" rel="external">http://blog.csdn.net/huyoo/article/details/21703701</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/others/产品销售市场的各个阶段/"><span>产品销售市场的各个阶段</span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/others/产品销售市场的各个阶段/" rel="bookmark">
+      <a href="/javascript/reactjs/2016-03-20 Redux/" rel="bookmark">
         <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
           2016-06-05
         </time>
@@ -576,15 +571,9 @@
     <div class="entry">
       
         <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h1 id="&#x4ECE;&#x4EA7;&#x54C1;&#x9500;&#x552E;&#x5E02;&#x573A;&#x5206;&#x6790;&#x81EA;&#x5DF1;&#x7684;&#x804C;&#x4E1A;&#x53D1;&#x5C55;"><a href="#&#x4ECE;&#x4EA7;&#x54C1;&#x9500;&#x552E;&#x5E02;&#x573A;&#x5206;&#x6790;&#x81EA;&#x5DF1;&#x7684;&#x804C;&#x4E1A;&#x53D1;&#x5C55;" class="headerlink" title="&#x4ECE;&#x4EA7;&#x54C1;&#x9500;&#x552E;&#x5E02;&#x573A;&#x5206;&#x6790;&#x81EA;&#x5DF1;&#x7684;&#x804C;&#x4E1A;&#x53D1;&#x5C55;"></a>&#x4ECE;&#x4EA7;&#x54C1;&#x9500;&#x552E;&#x5E02;&#x573A;&#x5206;&#x6790;&#x81EA;&#x5DF1;&#x7684;&#x804C;&#x4E1A;&#x53D1;&#x5C55;</h1><p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2016/02/20160216-product-market-01.png" alt=""></p>
-<p>&#x4E00;&#x4E2A;&#x4EA7;&#x54C1;&#x4ECE;&#x88AB;&#x53D1;&#x660E;&#xFF0C;&#x5230;&#x6253;&#x5F00;&#x5E02;&#x573A;&#xFF0C;&#x5230;&#x9700;&#x6C42;&#x65FA;&#x76DB;&#xFF0C;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6280;&#x672F;&#x9769;&#x65B0;&#x53D6;&#x4EE3;&#x65E7;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#x90FD;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x8425;&#x9500;&#x7B56;&#x7565;&#xFF0C;&#x7528;&#x5BF9;&#x4E86;&#x8425;&#x9500;&#x7B56;&#x7565;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5728;&#x5E02;&#x573A;&#x4E2D;&#x5360;&#x636E;&#x6709;&#x5229;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
-<p>&#x6BCF;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x9700;&#x8981;&#x4E0D;&#x540C;&#x7684;&#x9500;&#x552E;&#x4EBA;&#x5458;&#x7C7B;&#x578B;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x9500;&#x552E;&#x4EBA;&#x5458;&#x7C7B;&#x578B;&#x540C;&#x6837;&#x7684;&#x53EF;&#x4EE5;&#x7C7B;&#x6BD4;&#x5230;&#x5176;&#x4ED6;&#x804C;&#x4E1A;&#x4E2D;&#x3002;</p>
-<p>&#x5C31;&#x7A0B;&#x5E8F;&#x5458;&#x6765;&#x8BF4;</p>
-<p>&#x5982;&#x679C;&#x4F60;&#x662F;&#x4E00;&#x4E2A;&#x7F14;&#x7ED3;&#x8005;&#xFF0C;&#x90A3;&#x4E48;&#x9002;&#x5408;&#x521B;&#x5EFA;&#x4E00;&#x4E9B;&#x9769;&#x65B0;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x59CB;&#x7EC8;&#x8D70;&#x5728;&#x6280;&#x672F;&#x524D;&#x6CBF;&#xFF0C;&#x6210;&#x4E3A;&#x6280;&#x672F;&#x7684;&#x5E03;&#x9053;&#x8005;&#xFF0C;&#x7528;&#x6280;&#x672F;&#x8BA9;&#x4E16;&#x754C;&#x66F4;&#x52A0;&#x7F8E;&#x597D;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x5E95;&#x5C42;&#x6846;&#x67B6;&#xFF0C;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x7684;&#x7F16;&#x5199;&#x8005;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x65B0;&#x6280;&#x672F;&#x7684;&#x521B;&#x9020;&#x8005;&#xFF1B;</p>
-<p>&#x5982;&#x679C;&#x4F60;&#x662F;&#x4E00;&#x4E2A;&#x5EFA;&#x8BBE;&#x8005;&#xFF0C;&#x90A3;&#x4E48;&#x9002;&#x5408;&#x5728;&#x4E00;&#x4E2A;&#x56E2;&#x961F;&#x4E2D;&#x5FAA;&#x5E8F;&#x6E10;&#x8FDB;&#x7684;&#x6210;&#x957F;&#xFF0C;&#x5728;&#x5FC5;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x5FC5;&#x987B;&#x8FDB;&#x884C;&#x5F15;&#x5165;&#x4E00;&#x4E9B;&#x65B0;&#x6280;&#x672F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x628A;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6210;&#x719F;&#x7684;&#x65B0;&#x6280;&#x672F;&#x63A8;&#x7ED9;&#x4E00;&#x4E2A;&#x56E2;&#x961F;&#xFF0C;&#x4ECE;&#x800C;&#x63A8;&#x52A8;&#x56E2;&#x961F;&#x6280;&#x672F;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x4EE5;&#x8BA9;&#x4E1A;&#x52A1;&#x5F97;&#x4EE5;&#x7EE7;&#x7EED;&#x6B63;&#x5E38;&#x7684;&#x53D1;&#x5C55;&#xFF1B;</p>
-<h2 id="references"><a href="#References" class="headerlink" title="References"></a>References</h2><p>&#x300A;&#x5356;&#x8F6E;&#x5B50;&#xFF0D;&#x9009;&#x62E9;&#x6700;&#x4F73;&#x8425;&#x9500;&#x65B9;&#x5F0F;&#x300B;</p>
+<h1 id="redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><p><a href="http://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">http://camsong.github.io/redux-in-chinese/</a></p>
 
       
     </div>
@@ -595,7 +584,7 @@
 
   <span class="post-categories">
     <i class="icon-categories"></i>
-    <a href="/categories/杂谈/">杂谈</a>
+    <a href="/categories/web前端/">web前端</a>, <a href="/categories/web前端/Javascript/">Javascript</a>
   </span>
 
 
@@ -604,94 +593,10 @@
 
   <span class="post-tags">
     <i class="icon-tags"></i>
-    <a href="/tags/销售/">销售</a>
+    <a href="/tags/ReactJS/">ReactJS</a>
   </span>
 
 
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/question/说明/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/question/说明/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
-          2016-06-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <ul>
-<li><p>&#x5BA2;&#x6237;&#x7AEF;&#x7531;&#x4E8E;&#x53D7;&#x5230;&#x7AEF;&#x53E3;&#x53F7;&#x7684;&#x9650;&#x5236; &#x7406;&#x8BBA;&#x4E0A;&#x6700;&#x5927;&#x53D1;&#x51FA;tcp&#x94FE;&#x63A5;&#x662F;6&#x4E07;&#x591A;&#xFF0C;&#x600E;&#x4E48;&#x63D0;&#x9AD8;</p>
-</li>
-<li><p>IO&#x590D;&#x7528;</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
-        </div>
-        
-    </footer>
-  </div>
-</article>
-
-  <article class="post article">
-
-  
-  
-    <h3 class="article-title"><a href="/question/错误汇总/"><span></span></a></h3>
-  
-
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/question/错误汇总/" rel="bookmark">
-        <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
-          2016-06-05
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <blockquote>
-<p>but failed to remove it when the web application was stopped. This is very likely to create a memory leak.</p>
-</blockquote>
-<p>ThreadLocal &#x5185;&#x5B58;&#x6CA1;&#x6709;&#x624B;&#x52A8;&#x56DE;&#x6536;&#x5BFC;&#x81F4;&#x6CC4;&#x9732;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-        <div class="article-meta pull-left">
-          
-          
         </div>
         
     </footer>
@@ -806,13 +711,234 @@
   </div>
 </article>
 
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/javascript/seajs/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/javascript/seajs/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
+          2016-06-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>&#x5728;&#x4F7F;&#x7528;spm&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x5F97;&#x5B89;&#x88C5;nodejs&#xFF0C;&#x56E0;&#x4E3A;spm&#x662F;nodejs&#x7684;&#x4E00;&#x4E2A;package&#x3002;<a href="http://qianduanblog.com/post/js-learning-42-using-spm-3-build-seajs-project.html" title="&#x4F7F;&#x7528;spm@3&#x6784;&#x5EFA;seajs&#x9879;&#x76EE;" target="_blank" rel="external">&#x4F7F;&#x7528;spm@3&#x6784;&#x5EFA;seajs&#x9879;&#x76EE;</a></p>
+<p><a href="http://spmjs.io/documentation" title="spm 3&#x5B98;&#x65B9;&#x6559;&#x7A0B;" target="_blank" rel="external">spm 3&#x5B98;&#x65B9;&#x6559;&#x7A0B;</a></p>
+<p>&#x6784;&#x5EFA;&#x76EE;&#x5F55;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dist  &#x6784;&#x5EFA;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5939;</span><br><span class="line">examples  &#x76F8;&#x5173;&#x4F7F;&#x7528;&#x6587;&#x6863;</span><br><span class="line">spm_modules   &#x4F9D;&#x8D56;&#x7684;js&#x6587;&#x4EF6;&#x4ED3;&#x5E93;&#xFF0C;spm install&#x7684;&#x65F6;&#x5019;&#x4E0B;&#x8F7D;&#x5230;&#x91CC;&#x9762;</span><br><span class="line">tests  &#x6D4B;&#x8BD5;&#x6848;&#x4F8B;</span><br><span class="line">xx.js  </span><br><span class="line">package.json  spm&#x7EF4;&#x62A4;&#x7684;&#x4F9D;&#x8D56;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x751F;&#x4EA7;dist&#x76EE;&#x5F55;&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://spmjs.io/package/expect.js" title="expectjs" target="_blank" rel="external">expectjs</a></p>
+<p><a href="http://chaoskeh.com/blog/why-its-hard-to-combo-seajs-modules.html" title="&#x4E3A;&#x4EC0;&#x4E48; SeaJS &#x6A21;&#x5757;&#x7684;&#x5408;&#x5E76;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;" target="_blank" rel="external">&#x4E3A;&#x4EC0;&#x4E48; SeaJS &#x6A21;&#x5757;&#x7684;&#x5408;&#x5E76;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;</a></p>
+<h3 id="&#x5B89;&#x88C5;nodejs"><a href="#&#x5B89;&#x88C5;nodejs" class="headerlink" title="&#x5B89;&#x88C5;nodejs"></a>&#x5B89;&#x88C5;nodejs</h3><p><a href="http://seajs.org/docs/#docs" title="seajs" target="_blank" rel="external">seajs</a></p>
+<p>&#x914D;&#x7F6E;NODE_PATH</p>
+<p><a href="http://segmentfault.com/blog/yinchangsheng/1190000002478924" title="nodejs &#x4E2D;&#x7684; NODE_PATH" target="_blank" rel="external">nodejs &#x4E2D;&#x7684; NODE_PATH</a></p>
+<p>windows&#x4E0B;&#x9700;&#x8981;&#x5B89;&#x88C5;<a href="http://gnuwin32.sourceforge.net/packages/make.htm" title="make" target="_blank" rel="external">make</a></p>
+<p>&#x4E0B;&#x8F7D;<a href="https://github.com/seajs/examples" title="demo" target="_blank" rel="external">demo</a>&#x7F16;&#x8BD1;&#x6267;&#x884C;</p>
+<p>SeaJS&#x9075;&#x5FAA;<a href="https://github.com/cmdjs/specification/blob/master/draft/module.md" title="CMD" target="_blank" rel="external">CMD</a>&#x89C4;&#x8303;&#xFF0C;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;<code>require</code> &#x5173;&#x952E;&#x8BCD;&#x5F15;&#x5165;&#x5916;&#x90E8;&#x6A21;&#x5757;&#xFF0C;&#x6BCF;&#x6B21;&#x52A0;&#x8F7D;&#x9700;&#x8981;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5230;&#x7684;&#x6A21;&#x5757;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6A21;&#x5757;&#x5185;&#x90E8; <code>require</code> &#x8FDB;&#x6765;&#x7684;js&#x4E5F;&#x4F1A;&#x4E00;&#x5E76;&#x52A0;&#x8F7D;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;SeaJS&#x5728;&#x52A0;&#x8F7D;&#x4E4B;&#x524D;&#x628A;&#x6240;&#x6709;&#x76F8;&#x5173;&#x8054;&#x7684;JS&#x90FD;&#x80FD;&#x591F;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;JS&#x6587;&#x4EF6;&#x4E00;&#x6B21;&#x6027;&#x52A0;&#x8F7D;&#x8FDB;&#x6765;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x7528;&#x5230;SeaJS&#x7684;<a href="http://www.zhihu.com/question/20789867/answer/16187950" title="Transport" target="_blank" rel="external">Transport</a>&#x683C;&#x5F0F;<br>&#x6CA1;&#x8F6C;&#x6362;&#x524D;Modules/Wrappingsgui&#x89C4;&#x8303;&#x683C;&#x5F0F;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">define(function(require, exports, module) {</span><br><span class="line">   var a = require(&quot;a&quot;)</span><br><span class="line">   exports.foo = ...</span><br><span class="line">})</span><br></pre></td></tr></table></figure></p>
+<p>CMD&#x6A21;&#x5757;&#x5728;&#x6B63;&#x5F0F;&#x4E0A;&#x7EBF;&#x524D;&#xFF0C;&#x901A;&#x8FC7;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF08;&#x5982;SPM&#xFF09;&#x5148;&#x8F6C;&#x6362;&#x4E3A;Modules/Transport&#x683C;&#x5F0F;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">define(&quot;id&quot;, [&quot;dep-1&quot;, &quot;dep-2&quot;], function(require, exports, module) {</span><br><span class="line">   // source code</span><br><span class="line">})</span><br></pre></td></tr></table></figure>
+<p>&#x8FDB;&#x4E00;&#x6B65;&#x901A;&#x8FC7;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4E00;&#x5E76;&#x5427; <code>require</code> &#x5F15;&#x5165;&#x8FDB;&#x6765;&#x7684;&#x6A21;&#x5757;&#x4E00;&#x8D77;&#x538B;&#x7F29;&#x5408;&#x5E76;&#x5230;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x4E86;&#x3002;</p>
+<h2 id="&#x8BF4;&#x660E;"><a href="#&#x8BF4;&#x660E;" class="headerlink" title="&#x8BF4;&#x660E;"></a>&#x8BF4;&#x660E;</h2><p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x901A;&#x8FC7;&#x4F7F;&#x7528;SeaJS&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;JS&#x4EE3;&#x7801;&#x6A21;&#x5757;&#x5316;&#xFF0C;&#x5728;&#x4E0A;&#x7EBF;&#x4E4B;&#x524D;&#xFF0C;&#x901A;&#x8FC7;spm&#x8FD9;&#x6837;&#x7684;&#x6784;&#x5EFA;&#x5DE5;&#x5177;&#xFF0C;&#x628A;&#x81EA;&#x5DF1;&#x5F00;&#x53D1;&#x7684;&#x6A21;&#x5757;&#x538B;&#x7F29;&#x5408;&#x5E76;&#xFF0C;&#x5F53;&#x6210;SeaJS&#x7684;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x6765;&#x4F7F;&#x7528;&#x3002;</p>
+<h2 id="step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h2><p>&#x4E0B;&#x9762;&#x4E00;&#x6B65;&#x4E00;&#x6B65;&#x6765;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<h2 id="&#x6B63;&#x9762;&#x9879;&#x76EE;&#x63A5;&#x53E3;"><a href="#&#x6B63;&#x9762;&#x9879;&#x76EE;&#x63A5;&#x53E3;" class="headerlink" title="&#x6B63;&#x9762;&#x9879;&#x76EE;&#x63A5;&#x53E3;"></a>&#x6B63;&#x9762;&#x9879;&#x76EE;&#x63A5;&#x53E3;</h2><p>&#x6574;&#x4F53;&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">project   // &#x9879;&#x76EE;&#x8DDF;&#x76EE;&#x5F55; </span><br><span class="line">|</span><br><span class="line">|-assets  // web&#x8D44;&#x6E90;&#x6587;&#x4EF6;</span><br><span class="line">  |</span><br><span class="line">  |- sea-modules  // SeaJS&#x76F8;&#x5173;&#x6A21;&#x5757;</span><br><span class="line">  |  </span><br><span class="line">  |- static  // &#x6A21;&#x5757;&#x5F00;&#x53D1;&#x8DEF;&#x5F84;</span><br><span class="line">  |   |</span><br><span class="line">  |   |- first-module</span><br><span class="line">  |       |- dist  // &#x6211;&#x7684;&#x6A21;&#x5757;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5939;</span><br><span class="line">  |       |- src  // &#x6211;&#x7684;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x6587;&#x4EF6;&#x5939;</span><br><span class="line">  |       |- package.json  // spm&#x7F16;&#x8BD1;&#x914D;&#x7F6E;</span><br><span class="line">  |</span><br><span class="line">  |- app  // &#x6211;&#x7684;&#x6A21;&#x5757;&#x4F7F;&#x7528;&#x4F8B;&#x5B50;</span><br><span class="line">  |</span><br></pre></td></tr></table></figure></p>
+<h2 id="&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"><a href="#&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;" class="headerlink" title="&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;"></a>&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x7ED3;&#x6784;</h2><h3 id="step1-&#x521B;&#x5EFA;&#x9879;&#x76EE;-project"><a href="#step1&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE;-project" class="headerlink" title="step1&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE; project"></a>step1&#x3001;&#x521B;&#x5EFA;&#x9879;&#x76EE; project</h3><h3 id="step2-&#x521B;&#x5EFA;web&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;"><a href="#step2&#x3001;&#x521B;&#x5EFA;web&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step2&#x3001;&#x521B;&#x5EFA;web&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;"></a>step2&#x3001;&#x521B;&#x5EFA;web&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;</h3><p>&#x5728;project&#x91CC;&#x9762;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;assetsweb&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x4E13;&#x95E8;&#x7528;&#x6765;&#x5B58;&#x653E;JS&#xFF0C;CSS&#x7B49;&#x8D44;&#x6E90;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x5C31;&#x5728;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x8FDB;&#x884C;</p>
+<h3 id="step3-&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;sea-modules&#x6587;&#x4EF6;&#x5939;"><a href="#step3&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;sea-modules&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step3&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;sea-modules&#x6587;&#x4EF6;&#x5939;"></a>step3&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;sea-modules&#x6587;&#x4EF6;&#x5939;</h3><p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x662F;&#x7528;&#x6765;&#x5B58;&#x653E;SeaJS&#x6A21;&#x5757;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5305;&#x62EC;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x7684;&#x6A21;&#x5757;&#x6700;&#x7EC8;&#x90FD;&#x8981;&#x5B58;&#x653E;&#x5230;&#x8FD9;&#x91CC;</p>
+<h3 id="step4-&#x5728;assets&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-static-&#x6587;&#x4EF6;&#x5939;"><a href="#step4&#x3001;&#x5728;assets&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-static-&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step4&#x3001;&#x5728;assets&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; static &#x6587;&#x4EF6;&#x5939;"></a>step4&#x3001;&#x5728;assets&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; static &#x6587;&#x4EF6;&#x5939;</h3><p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x7528;&#x4E8E;&#x6A21;&#x5757;&#x5F00;&#x53D1;</p>
+<h3 id="step5-&#x5728;-static-&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-first-module-&#x6587;&#x4EF6;&#x5939;"><a href="#step5&#x3001;&#x5728;-static-&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-first-module-&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step5&#x3001;&#x5728; static &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; first-module &#x6587;&#x4EF6;&#x5939;"></a>step5&#x3001;&#x5728; static &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; first-module &#x6587;&#x4EF6;&#x5939;</h3><p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x6211;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x7684;&#x5F00;&#x53D1;&#x4EE3;&#x7801;</p>
+<h3 id="step6-&#x5728;-first-module-&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-src-&#x76EE;&#x5F55;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x7684;&#x4EE3;&#x7801;"><a href="#step6&#x3001;&#x5728;-first-module-&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;-src-&#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x7684;&#x4EE3;&#x7801;" class="headerlink" title="step6&#x3001;&#x5728; first-module &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; src &#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x7684;&#x4EE3;&#x7801;"></a>step6&#x3001;&#x5728; first-module &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; src &#x76EE;&#x5F55;&#xFF0C;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6A21;&#x5757;&#x5F00;&#x53D1;&#x7684;&#x4EE3;&#x7801;</h3><h3 id="step7-&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;-app-&#x6587;&#x4EF6;&#x5939;"><a href="#step7&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA;-app-&#x6587;&#x4EF6;&#x5939;" class="headerlink" title="step7&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA; app &#x6587;&#x4EF6;&#x5939;"></a>step7&#x3001;&#x5728;assets&#x4E0B;&#x9762;&#x521B;&#x5EFA; app &#x6587;&#x4EF6;&#x5939;</h3><p>&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5939;&#x5B58;&#x653E;&#x6211;&#x4EEC;&#x6F14;&#x793A;&#x8C03;&#x7528;&#x6A21;&#x5757;&#x4EE3;&#x7801;&#x7684;HTML&#x6587;&#x4EF6;</p>
+<h2 id="&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x6784;&#x5EFA;"><a href="#&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x6784;&#x5EFA;" class="headerlink" title="&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x6784;&#x5EFA;"></a>&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x6784;&#x5EFA;</h2><h3 id="&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;npm&#x5B89;&#x88C5;spm&#x800C;npm&#x662F;nodejs&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8FD9;&#x6837;&#x642D;&#x5EFA;&#x73AF;&#x5883;"><a href="#&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;npm&#x5B89;&#x88C5;spm&#xFF0C;&#x800C;npm&#x662F;Node-js&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8FD9;&#x6837;&#x642D;&#x5EFA;&#x73AF;&#x5883;&#xFF1A;" class="headerlink" title="&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;npm&#x5B89;&#x88C5;spm&#xFF0C;&#x800C;npm&#x662F;Node.js&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8FD9;&#x6837;&#x642D;&#x5EFA;&#x73AF;&#x5883;&#xFF1A;"></a>&#x9996;&#x5148;&#x4F60;&#x9700;&#x8981;&#x901A;&#x8FC7;npm&#x5B89;&#x88C5;spm&#xFF0C;&#x800C;npm&#x662F;Node.js&#x91CC;&#x9762;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#xFF0C;&#x6240;&#x4EE5;&#x4F60;&#x9700;&#x8981;&#x5148;&#x8FD9;&#x6837;&#x642D;&#x5EFA;&#x73AF;&#x5883;&#xFF1A;</h3><ul>
+<li>&#x5B89;&#x88C5;<a href="http://nodejs.org/" title="Node.js" target="_blank" rel="external">Node.js</a></li>
+<li>&#x5B89;&#x88C5;spm<br>&#x76EE;&#x524D;&#x6700;&#x65B0;&#x7684;&#x662F;3&#x7248;&#x672C;&#x7684;&#xFF0C;&#x5EFA;&#x8BAE;&#x5B89;&#x88C5;&#x6700;&#x65B0;&#x7684;&#xFF0C;&#x8BE6;&#x7EC6;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x5B98;&#x65B9;&#x6587;&#x6863;&#xFF1A;<br><a href="http://spmjs.io/documentation/getting-started" title="spmjs.io" target="_blank" rel="external">http://spmjs.io/</a><br>&#x8FD9;&#x91CC;&#x53EA;&#x8981;&#x5728;cmd&#x91CC;&#x9762;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x4E00;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install spm -g</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x4F7F;&#x7528;spm&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;&#x76EE;&#x5F55;</li>
+</ul>
+<p>&#x5728;first-module&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spm init</span><br></pre></td></tr></table></figure>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6309;&#x7167;&#x63D0;&#x793A;&#x5206;&#x8868;&#x586B;&#x5199; Package name, Version, Description, Author&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E;&#x751F;&#x6210;&#x5982;&#x4E0B;&#x76EE;&#x5F55;&#xFF1A;<br><img src="" alt=""></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x5F00;&#x53D1;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4E86;&#x3002;</p>
+<h2 id="&#x6A21;&#x5757;&#x5F00;&#x53D1;"><a href="#&#x6A21;&#x5757;&#x5F00;&#x53D1;" class="headerlink" title="&#x6A21;&#x5757;&#x5F00;&#x53D1;"></a>&#x6A21;&#x5757;&#x5F00;&#x53D1;</h2><h3 id="&#x7F16;&#x8F91;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801;"><a href="#&#x7F16;&#x8F91;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801;" class="headerlink" title="&#x7F16;&#x8F91;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801;"></a>&#x7F16;&#x8F91;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801;</h3><p>&#x5728;src&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x6211;&#x4EEC;&#x7684;&#x6A21;&#x5757;&#x4EE3;&#x7801; index.js</p>
+<p><a href="http://blog.csdn.net/huyoo/article/details/21703701" target="_blank" rel="external">http://blog.csdn.net/huyoo/article/details/21703701</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/question/说明/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/question/说明/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
+          2016-06-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <ul>
+<li><p>&#x5BA2;&#x6237;&#x7AEF;&#x7531;&#x4E8E;&#x53D7;&#x5230;&#x7AEF;&#x53E3;&#x53F7;&#x7684;&#x9650;&#x5236; &#x7406;&#x8BBA;&#x4E0A;&#x6700;&#x5927;&#x53D1;&#x51FA;tcp&#x94FE;&#x63A5;&#x662F;6&#x4E07;&#x591A;&#xFF0C;&#x600E;&#x4E48;&#x63D0;&#x9AD8;</p>
+</li>
+<li><p>IO&#x590D;&#x7528;</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/others/产品销售市场的各个阶段/"><span>产品销售市场的各个阶段</span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/others/产品销售市场的各个阶段/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
+          2016-06-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
+</blockquote>
+<h1 id="&#x4ECE;&#x4EA7;&#x54C1;&#x9500;&#x552E;&#x5E02;&#x573A;&#x5206;&#x6790;&#x81EA;&#x5DF1;&#x7684;&#x804C;&#x4E1A;&#x53D1;&#x5C55;"><a href="#&#x4ECE;&#x4EA7;&#x54C1;&#x9500;&#x552E;&#x5E02;&#x573A;&#x5206;&#x6790;&#x81EA;&#x5DF1;&#x7684;&#x804C;&#x4E1A;&#x53D1;&#x5C55;" class="headerlink" title="&#x4ECE;&#x4EA7;&#x54C1;&#x9500;&#x552E;&#x5E02;&#x573A;&#x5206;&#x6790;&#x81EA;&#x5DF1;&#x7684;&#x804C;&#x4E1A;&#x53D1;&#x5C55;"></a>&#x4ECE;&#x4EA7;&#x54C1;&#x9500;&#x552E;&#x5E02;&#x573A;&#x5206;&#x6790;&#x81EA;&#x5DF1;&#x7684;&#x804C;&#x4E1A;&#x53D1;&#x5C55;</h1><p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2016/02/20160216-product-market-01.png" alt=""></p>
+<p>&#x4E00;&#x4E2A;&#x4EA7;&#x54C1;&#x4ECE;&#x88AB;&#x53D1;&#x660E;&#xFF0C;&#x5230;&#x6253;&#x5F00;&#x5E02;&#x573A;&#xFF0C;&#x5230;&#x9700;&#x6C42;&#x65FA;&#x76DB;&#xFF0C;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6280;&#x672F;&#x9769;&#x65B0;&#x53D6;&#x4EE3;&#x65E7;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#x90FD;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x8425;&#x9500;&#x7B56;&#x7565;&#xFF0C;&#x7528;&#x5BF9;&#x4E86;&#x8425;&#x9500;&#x7B56;&#x7565;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5728;&#x5E02;&#x573A;&#x4E2D;&#x5360;&#x636E;&#x6709;&#x5229;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x6BCF;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x9700;&#x8981;&#x4E0D;&#x540C;&#x7684;&#x9500;&#x552E;&#x4EBA;&#x5458;&#x7C7B;&#x578B;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x9500;&#x552E;&#x4EBA;&#x5458;&#x7C7B;&#x578B;&#x540C;&#x6837;&#x7684;&#x53EF;&#x4EE5;&#x7C7B;&#x6BD4;&#x5230;&#x5176;&#x4ED6;&#x804C;&#x4E1A;&#x4E2D;&#x3002;</p>
+<p>&#x5C31;&#x7A0B;&#x5E8F;&#x5458;&#x6765;&#x8BF4;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x662F;&#x4E00;&#x4E2A;&#x7F14;&#x7ED3;&#x8005;&#xFF0C;&#x90A3;&#x4E48;&#x9002;&#x5408;&#x521B;&#x5EFA;&#x4E00;&#x4E9B;&#x9769;&#x65B0;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x59CB;&#x7EC8;&#x8D70;&#x5728;&#x6280;&#x672F;&#x524D;&#x6CBF;&#xFF0C;&#x6210;&#x4E3A;&#x6280;&#x672F;&#x7684;&#x5E03;&#x9053;&#x8005;&#xFF0C;&#x7528;&#x6280;&#x672F;&#x8BA9;&#x4E16;&#x754C;&#x66F4;&#x52A0;&#x7F8E;&#x597D;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x5E95;&#x5C42;&#x6846;&#x67B6;&#xFF0C;&#x57FA;&#x7840;&#x8BBE;&#x65BD;&#x7684;&#x7F16;&#x5199;&#x8005;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x65B0;&#x6280;&#x672F;&#x7684;&#x521B;&#x9020;&#x8005;&#xFF1B;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x662F;&#x4E00;&#x4E2A;&#x5EFA;&#x8BBE;&#x8005;&#xFF0C;&#x90A3;&#x4E48;&#x9002;&#x5408;&#x5728;&#x4E00;&#x4E2A;&#x56E2;&#x961F;&#x4E2D;&#x5FAA;&#x5E8F;&#x6E10;&#x8FDB;&#x7684;&#x6210;&#x957F;&#xFF0C;&#x5728;&#x5FC5;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x5FC5;&#x987B;&#x8FDB;&#x884C;&#x5F15;&#x5165;&#x4E00;&#x4E9B;&#x65B0;&#x6280;&#x672F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x628A;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6210;&#x719F;&#x7684;&#x65B0;&#x6280;&#x672F;&#x63A8;&#x7ED9;&#x4E00;&#x4E2A;&#x56E2;&#x961F;&#xFF0C;&#x4ECE;&#x800C;&#x63A8;&#x52A8;&#x56E2;&#x961F;&#x6280;&#x672F;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x4EE5;&#x8BA9;&#x4E1A;&#x52A1;&#x5F97;&#x4EE5;&#x7EE7;&#x7EED;&#x6B63;&#x5E38;&#x7684;&#x53D1;&#x5C55;&#xFF1B;</p>
+<h2 id="references"><a href="#References" class="headerlink" title="References"></a>References</h2><p>&#x300A;&#x5356;&#x8F6E;&#x5B50;&#xFF0D;&#x9009;&#x62E9;&#x6700;&#x4F73;&#x8425;&#x9500;&#x65B9;&#x5F0F;&#x300B;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+  
+
+  <span class="post-categories">
+    <i class="icon-categories"></i>
+    <a href="/categories/杂谈/">杂谈</a>
+  </span>
+
+
+          
+  
+
+  <span class="post-tags">
+    <i class="icon-tags"></i>
+    <a href="/tags/销售/">销售</a>
+  </span>
+
+
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
+  <article class="post article">
+
+  
+  
+    <h3 class="article-title"><a href="/question/错误汇总/"><span></span></a></h3>
+  
+
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/question/错误汇总/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-06-05T14:04:29.000Z">
+          2016-06-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <blockquote>
+<p>but failed to remove it when the web application was stopped. This is very likely to create a memory leak.</p>
+</blockquote>
+<p>ThreadLocal &#x5185;&#x5B58;&#x6CA1;&#x6709;&#x624B;&#x52A8;&#x56DE;&#x6536;&#x5BFC;&#x81F4;&#x6CC4;&#x9732;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+        <div class="article-meta pull-left">
+          
+          
+        </div>
+        
+    </footer>
+  </div>
+</article>
+
 
 <nav class="pagination">
   
-  <a href="/page/2/" class="pagination-prev">Prev</a>
+  <a href="/page/2/" class="pagination-prev">上一页</a>
   
   
-  <a href="/page/4/" class="pagination-next">Next</a>
+  <a href="/page/4/" class="pagination-next">下一页</a>
   
 </nav>
       </main>
