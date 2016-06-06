@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Redis,分布式锁," />
 
 
 
@@ -86,13 +86,13 @@
 
 <meta name="description" content="Bash Shell &amp;#x89E3;&amp;#x6790;&amp;#x8DEF;&amp;#x5F84;&amp;#x83B7;&amp;#x53D6;&amp;#x6587;&amp;#x4EF6;&amp;#x540D;&amp;#x548C;&amp;#x76EE;&amp;#x5F55;&amp;#x540D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="arthinking">
+<meta property="og:title" content="Bash常用脚本">
 <meta property="og:url" content="http://arthinking.github.io/2016/06/05/operating-system/linux/shell/2016-06-05_bash常用命令/index.html">
 <meta property="og:site_name" content="arthinking">
 <meta property="og:description" content="Bash Shell &amp;#x89E3;&amp;#x6790;&amp;#x8DEF;&amp;#x5F84;&amp;#x83B7;&amp;#x53D6;&amp;#x6587;&amp;#x4EF6;&amp;#x540D;&amp;#x548C;&amp;#x76EE;&amp;#x5F55;&amp;#x540D;">
-<meta property="og:updated_time" content="2016-06-05T14:04:29.000Z">
+<meta property="og:updated_time" content="2016-06-06T02:39:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="arthinking">
+<meta name="twitter:title" content="Bash常用脚本">
 <meta name="twitter:description" content="Bash Shell &amp;#x89E3;&amp;#x6790;&amp;#x8DEF;&amp;#x5F84;&amp;#x83B7;&amp;#x53D6;&amp;#x6587;&amp;#x4EF6;&amp;#x540D;&amp;#x548C;&amp;#x76EE;&amp;#x5F55;&amp;#x540D;">
 
 
@@ -111,7 +111,7 @@
   };
 </script>
 
-  <title>  | arthinking </title>
+  <title> Bash常用脚本 | arthinking </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="Java, JavaScript, Go etc.">
@@ -169,7 +169,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -179,7 +179,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -231,7 +231,7 @@
             
             
               
-                
+                Bash常用脚本
               
             
           </h1>
@@ -242,12 +242,31 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-06-05T22:04:29+08:00" content="2016-06-05">
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-06-05T00:00:00+08:00" content="2016-06-05">
               2016-06-05
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Cache/" itemprop="url" rel="index">
+                    <span itemprop="name">Cache</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -291,21 +310,29 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag">#Redis</a>
+          
+            <a href="/tags/分布式锁/" rel="tag">#分布式锁</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/05/Java/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/05/31/设置IDEA Mybatis xml文件错误提示/" rel="next" title="设置IDEA Mybatis xml文件错误提示 ">
+                <i class="fa fa-chevron-left"></i> 设置IDEA Mybatis xml文件错误提示 
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/05/javascript/nodejs/2016-03-26 实用NodeJS插件/" rel="prev" title="使用NodeJS模块">
-                使用NodeJS模块 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/05/architecture/2016-05-20 项目规范/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -355,10 +382,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -374,16 +401,16 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">98</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">95</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">25</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -391,8 +418,8 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">40</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -420,7 +447,7 @@
               
             
             
-              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
             
           </div>
         </section>
@@ -447,7 +474,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

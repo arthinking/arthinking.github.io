@@ -1,0 +1,639 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Java&amp;#x57FA;&amp;#x7840;&amp;#x77E5;&amp;#x8BC6;HashMap &amp;#x4E0E; ConcurrentHashMapHashMap&amp;#x7684;&amp;#x6269;&amp;#x5BB9;&amp;#x673A;&amp;#x5236;&amp;#xFF0C;ConcurrentHashMap&amp;#x7684;&amp;#x539F;&amp;#x7406;&amp;#xFF1A;
+
+HashMap&amp;#x7684;&amp;#x8BBE;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java基础">
+<meta property="og:url" content="http://arthinking.github.io/2015/09/01/Java/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="Java&amp;#x57FA;&amp;#x7840;&amp;#x77E5;&amp;#x8BC6;HashMap &amp;#x4E0E; ConcurrentHashMapHashMap&amp;#x7684;&amp;#x6269;&amp;#x5BB9;&amp;#x673A;&amp;#x5236;&amp;#xFF0C;ConcurrentHashMap&amp;#x7684;&amp;#x539F;&amp;#x7406;&amp;#xFF1A;
+
+HashMap&amp;#x7684;&amp;#x8BBE;&amp;">
+<meta property="og:updated_time" content="2016-06-06T02:46:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java基础">
+<meta name="twitter:description" content="Java&amp;#x57FA;&amp;#x7840;&amp;#x77E5;&amp;#x8BC6;HashMap &amp;#x4E0E; ConcurrentHashMapHashMap&amp;#x7684;&amp;#x6269;&amp;#x5BB9;&amp;#x673A;&amp;#x5236;&amp;#xFF0C;ConcurrentHashMap&amp;#x7684;&amp;#x539F;&amp;#x7406;&amp;#xFF1A;
+
+HashMap&amp;#x7684;&amp;#x8BBE;&amp;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+  <title> Java基础 | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="Java, JavaScript, Go etc.">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2015-09-01T00:00:00+08:00" content="2015-09-01">
+              2015-09-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="java&#x57FA;&#x7840;&#x77E5;&#x8BC6;"><a href="#Java&#x57FA;&#x7840;&#x77E5;&#x8BC6;" class="headerlink" title="Java&#x57FA;&#x7840;&#x77E5;&#x8BC6;"></a>Java&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h1><h2 id="hashmap-&#x4E0E;-concurrenthashmap"><a href="#HashMap-&#x4E0E;-ConcurrentHashMap" class="headerlink" title="HashMap &#x4E0E; ConcurrentHashMap"></a>HashMap &#x4E0E; ConcurrentHashMap</h2><p>HashMap&#x7684;&#x6269;&#x5BB9;&#x673A;&#x5236;&#xFF0C;ConcurrentHashMap&#x7684;&#x539F;&#x7406;&#xFF1A;</p>
+<blockquote>
+<p><a href="HashMap&#x7684;&#x8BBE;&#x8BA1;&#x539F;&#x7406;&#x548C;&#x5B9E;&#x73B0;&#x5206;&#x6790;" title="http://blog.csdn.net/luanlouis/article/details/41576373">HashMap&#x7684;&#x8BBE;&#x8BA1;&#x539F;&#x7406;&#x548C;&#x5B9E;&#x73B0;&#x5206;&#x6790;</a><br>HashMap&#x9020;&#x6210;&#x7684;&#x6B7B;&#x9501;&#x95EE;&#x9898;<br><a href="ConcurrentHashMap&#x539F;&#x7406;&#x5206;&#x6790;" title="http://pengtyao.iteye.com/blog/1074271">ConcurrentHashMap&#x539F;&#x7406;&#x5206;&#x6790;</a></p>
+</blockquote>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x5355;&#x7EBF;&#x7A0B;&#x65F6;&#x4F7F;&#x7528;HashMap&#x63D0;&#x9AD8;&#x6548;&#x7387;&#xFF0C;&#x800C;&#x591A;&#x7EBF;&#x7A0B;&#x65F6;&#x7528;Hashtable&#x6765;&#x4FDD;&#x8BC1;&#x5B89;&#x5168;&#x3002;</p>
+<p>HashMap&#x4F5C;&#x4E3A;&#x7F13;&#x5B58;&#x5BFC;&#x81F4;&#x7684;&#x601D;&#x7D22;&#x95EE;&#x9898;&#x5206;&#x6790;</p>
+<h2 id="&#x5E8F;&#x5217;&#x5316;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5E8F;&#x5217;&#x5316;id&#x4F1A;&#x51FA;&#x73B0;&#x54EA;&#x4E9B;&#x95EE;&#x9898;"><a href="#&#x5E8F;&#x5217;&#x5316;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5E8F;&#x5217;&#x5316;id&#x4F1A;&#x51FA;&#x73B0;&#x54EA;&#x4E9B;&#x95EE;&#x9898;" class="headerlink" title="&#x5E8F;&#x5217;&#x5316;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5E8F;&#x5217;&#x5316;id&#x4F1A;&#x51FA;&#x73B0;&#x54EA;&#x4E9B;&#x95EE;&#x9898;"></a>&#x5E8F;&#x5217;&#x5316;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5E8F;&#x5217;&#x5316;id&#x4F1A;&#x51FA;&#x73B0;&#x54EA;&#x4E9B;&#x95EE;&#x9898;</h2><p><a href="http://www.itzhai.com/javascript-design-patterns-notes-combined-mode.html#2&#x3001;&#x5916;&#x89C2;&#x6A21;&#x5F0F;&#xFF1A;" title="&#x5916;&#x89C2;&#x6A21;&#x5F0F;" target="_blank" rel="external">&#x5916;&#x89C2;&#x6A21;&#x5F0F;</a>&#x7684;&#x4F8B;&#x5B50;&#xFF1A;<a href="http://www.ibm.com/developerworks/cn/java/j-lo-serial/#major3" title="Java&#x5E8F;&#x5217;&#x5316;ID&#x95EE;&#x9898;" target="_blank" rel="external">Java&#x5E8F;&#x5217;&#x5316;ID&#x95EE;&#x9898;</a><br>&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5173;&#x4E8E;&#x5BA2;&#x6237;&#x7AEF;&#x7A0B;&#x5E8F;&#x7248;&#x672C;&#x5347;&#x7EA7;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5F53;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x5BF9;&#x8C61;&#x6539;&#x52A8;&#xFF0C;&#x91CD;&#x65B0;&#x751F;&#x6210;&#x4E86;id&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5BA2;&#x6237;&#x7AEF;&#x89E3;&#x6790;&#x65E7;&#x7684;&#x5BF9;&#x8C61;&#x5C31;&#x4F1A;&#x5931;&#x8D25;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x5FC5;&#x987B;&#x91CD;&#x65B0;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x83B7;&#x53D6;&#x6700;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x5E8F;&#x5217;&#x5316;&#x6587;&#x4EF6;&#x3002;</p>
+<h2 id="jdk&#x5E38;&#x7528;&#x5E93;jdk&#x6E90;&#x4EE3;&#x7801;"><a href="#JDK&#x5E38;&#x7528;&#x5E93;&#xFF0C;JDK&#x6E90;&#x4EE3;&#x7801;" class="headerlink" title="JDK&#x5E38;&#x7528;&#x5E93;&#xFF0C;JDK&#x6E90;&#x4EE3;&#x7801;"></a>JDK&#x5E38;&#x7528;&#x5E93;&#xFF0C;JDK&#x6E90;&#x4EE3;&#x7801;</h2><h3 id="java-io&#x7C7B;&#x5E93;&#x7ED3;&#x6784;&#x56FE;&#x548C;&#x6240;&#x7528;&#x5230;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"><a href="#Java-IO&#x7C7B;&#x5E93;&#x7ED3;&#x6784;&#x56FE;&#xFF0C;&#x548C;&#x6240;&#x7528;&#x5230;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;" class="headerlink" title="Java IO&#x7C7B;&#x5E93;&#x7ED3;&#x6784;&#x56FE;&#xFF0C;&#x548C;&#x6240;&#x7528;&#x5230;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;"></a>Java IO&#x7C7B;&#x5E93;&#x7ED3;&#x6784;&#x56FE;&#xFF0C;&#x548C;&#x6240;&#x7528;&#x5230;&#x7684;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;</h3><h2 id="nio"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h2><h3 id="&#x963B;&#x585E;&#x540E;&#x7684;&#x901A;&#x77E5;&#x673A;&#x5236;"><a href="#&#x963B;&#x585E;&#x540E;&#x7684;&#x901A;&#x77E5;&#x673A;&#x5236;" class="headerlink" title="&#x963B;&#x585E;&#x540E;&#x7684;&#x901A;&#x77E5;&#x673A;&#x5236;"></a>&#x963B;&#x585E;&#x540E;&#x7684;&#x901A;&#x77E5;&#x673A;&#x5236;</h3><h2 id="runtimeexception&#x4E0E;checkedexception"><a href="#RuntimeException&#x4E0E;CheckedException" class="headerlink" title="RuntimeException&#x4E0E;CheckedException"></a>RuntimeException&#x4E0E;CheckedException</h2><p><strong>checked exception</strong><br>checked exception&#x662F;&#x4ECE;java.lang.Exception&#x7C7B;&#x884D;&#x751F;&#x51FA;&#x6765;&#x7684;&#xFF1B;<br>runtime exception&#x662F;&#x4ECE;java.lang.RuntimeException &#x6216;java.lang.Error&#x7C7B;&#x884D;&#x751F;&#x51FA;&#x6765;&#x7684;&#xFF0C;RuntimeException&#x53C8;&#x7EE7;&#x627F;&#x81EA;Exception&#xFF1B;<br>checked exception&#x7528;&#x6765;&#x6307;&#x793A;&#x4E00;&#x79CD;&#x8C03;&#x7528;&#x65B9;&#x80FD;&#x591F;&#x76F4;&#x63A5;&#x5904;&#x7406;&#x7684;&#x5F02;&#x5E38;&#x60C5;&#x51B5;&#xFF1B;    </p>
+<p><strong>Runtime Exception</strong><br>&#x5728;&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x58F0;&#x660E;&#x4F1A;&#x629B;&#x51FA;runtime exception&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x6355;&#x83B7;runtime exception&#xFF1B;<br>&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x662F;&#x5FC5;&#x987B;&#x58F0;&#x660E;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x629B;&#x51FA;&#x7684;checked exception&#xFF0C;&#x5728;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x6355;&#x83B7;&#x5B83;&#x7684;checked exception,&#x6216;&#x8005;throws&#x51FA;&#x53BB;&#xFF1B;<br>runtime exception&#x6307;&#x793A;&#x4E00;&#x79CD;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65E0;&#x6CD5;&#x5904;&#x7406;&#x8D27;&#x6062;&#x590D;&#x7684;&#x7A0B;&#x5E8F;&#x9519;&#x8BEF;&#xFF1B;    </p>
+<h1 id="&#x53CD;&#x5C04;-&#x52A8;&#x6001;&#x4EE3;&#x7406;"><a href="#&#x53CD;&#x5C04;-&#x52A8;&#x6001;&#x4EE3;&#x7406;" class="headerlink" title="&#x53CD;&#x5C04; &#x52A8;&#x6001;&#x4EE3;&#x7406;"></a>&#x53CD;&#x5C04; &#x52A8;&#x6001;&#x4EE3;&#x7406;</h1><p><a href="http://yajie.iteye.com/blog/1186522" title="&#x770B;&#x770B;java&#x7684;&#x53CD;&#x5C04;&#x6548;&#x7387;" target="_blank" rel="external">&#x770B;&#x770B;java&#x7684;&#x53CD;&#x5C04;&#x6548;&#x7387;</a></p>
+<hr>
+<h1 id="java&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><a href="#Java&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="headerlink" title="Java&#x914D;&#x7F6E;&#x6587;&#x4EF6;"></a>Java&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h1><hr>
+<h1 id="jvm&#x865A;&#x62DF;&#x673A;"><a href="#JVM&#x865A;&#x62DF;&#x673A;" class="headerlink" title="JVM&#x865A;&#x62DF;&#x673A;"></a>JVM&#x865A;&#x62DF;&#x673A;</h1><h2 id="&#x6DF1;&#x5165;&#x7406;&#x89E3;java&#x865A;&#x62DF;&#x673A;&#x7B14;&#x8BB0;"><a href="#&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x7B14;&#x8BB0;" class="headerlink" title="&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x7B14;&#x8BB0;"></a>&#x6DF1;&#x5165;&#x7406;&#x89E3;Java&#x865A;&#x62DF;&#x673A;&#x7B14;&#x8BB0;</h2><ul>
+<li><a href="http://www.itzhai.com/jvm-note-introduce-java.html" title="&#x8D70;&#x8FD1;Java" target="_blank" rel="external">&#x8D70;&#x8FD1;Java</a></li>
+<li><p><a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism.html" title="&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;Java&#x5185;&#x5B58;&#x533A;&#x57DF;&#x4E0E;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x5F02;&#x5E38;&#xFF09;" target="_blank" rel="external">&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;Java&#x5185;&#x5B58;&#x533A;&#x57DF;&#x4E0E;&#x5185;&#x5B58;&#x6EA2;&#x51FA;&#x5F02;&#x5E38;&#xFF09;</a><br>  <a href="https://github.com/arthinking/java-code/blob/master/src/me/arthinking/memoryleaktest/HeapOOM.java" title="Java&#x5806;&#x6EA2;&#x51FA;" target="_blank" rel="external">Java&#x5806;&#x6EA2;&#x51FA;</a><br>  <a href="https://github.com/arthinking/java-code/tree/master/src/me/arthinking/memoryleaktest" title="more" target="_blank" rel="external">more</a><br>  &#x65B0;&#x751F;&#x4EE3;Minor GC&#x7684;&#x4F8B;&#x5B50;&#xFF1A;<a href="https://github.com/arthinking/java-code/blob/master/src/me/arthinking/code4jvmnote/C_3_5_Minor_GC.java" title="&#x70B9;&#x6211;" target="_blank" rel="external">&#x70B9;&#x6211;</a></p>
+<blockquote>
+<ol>
+<li>&#x5206;&#x914D;allocation4&#x65F6;&#xFF0C;Eden&#x5DF2;&#x7ECF;&#x88AB;&#x5360;&#x7528;6MB&#xFF0C;&#x4E0D;&#x591F;&#x4E86;&#xFF08;&#x603B;&#x5171;8MB&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x53D1;&#x751F;&#x4E86;&#x4E00;&#x6B21;Minor GC&#xFF1B;  </li>
+<li>GC&#x671F;&#x95F4;&#x53D1;&#x73B0;&#x5DF2;&#x6709;&#x7684;3X2MB&#x5927;&#x5C0F;&#x5BF9;&#x8C61;&#x65E0;&#x6CD5;&#x5168;&#x90E8;&#x653E;&#x5165;Survivor&#x7A7A;&#x95F4;,&#x6240;&#x4EE5;&#x53EA;&#x597D;&#x901A;&#x8FC7;<a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism-2-html.html#6.5&#x3001;&#x7A7A;&#x95F4;&#x5206;&#x914D;&#x62C5;&#x4FDD;" title="&#x5206;&#x914D;&#x62C5;&#x4FDD;&#x673A;&#x5236;" target="_blank" rel="external">&#x5206;&#x914D;&#x62C5;&#x4FDD;&#x673A;&#x5236;</a>&#x63D0;&#x524D;&#x8F6C;&#x79FB;&#x5230;&#x8001;&#x5E74;&#x4EE3;&#x53BB;&#x4E86;&#xFF1B;  </li>
+<li>GC&#x7ED3;&#x675F;&#x540E;&#xFF0C;4MB&#x7684;allocation4&#x5BF9;&#x8C61;&#x88AB;&#x5206;&#x914D;&#x5230;Eden&#x4E2D;&#xFF0C;Survivor&#x7A7A;&#x95F2;&#xFF0C;&#x8001;&#x5E74;&#x4EE3;&#x5360;&#x7528;6MB    </li>
+</ol>
+</blockquote>
+</li>
+<li><p><a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism-2-html.html" title="&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4E0E;&#x5185;&#x5B58;&#x5206;&#x914D;&#x7B56;&#x7565;&#xFF09;" target="_blank" rel="external">&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x5783;&#x573E;&#x6536;&#x96C6;&#x5668;&#x4E0E;&#x5185;&#x5B58;&#x5206;&#x914D;&#x7B56;&#x7565;&#xFF09;</a>    </p>
+</li>
+<li><a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism-3.html" title="&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x4E0E;&#x6545;&#x969C;&#x5904;&#x7406;&#x5DE5;&#x5177;&#xFF09;" target="_blank" rel="external">&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x6027;&#x80FD;&#x76D1;&#x63A7;&#x4E0E;&#x6545;&#x969C;&#x5904;&#x7406;&#x5DE5;&#x5177;&#xFF09;</a>     </li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x662F;Java&#x4E2D;&#x7684;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x5206;&#x6790;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;<a href="http://www.itzhai.com/java-memory-leak-analyze.html" title="Java&#x4E2D;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x5206;&#x6790;" target="_blank" rel="external">Java&#x4E2D;&#x5185;&#x5B58;&#x6CC4;&#x9732;&#x7684;&#x5206;&#x6790;</a> </p>
+<ul>
+<li><a href="http://www.itzhai.com/jvm-note-automatic-memory-management-mechanism-4.html" title="&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x8C03;&#x4F18;&#x6848;&#x4F8B;&#x5206;&#x6790;&#x4E0E;&#x5B9E;&#x6218;&#xFF09;" target="_blank" rel="external">&#x81EA;&#x52A8;&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF08;&#x8C03;&#x4F18;&#x6848;&#x4F8B;&#x5206;&#x6790;&#x4E0E;&#x5B9E;&#x6218;&#xFF09;</a> </li>
+<li><a href="http://www.itzhai.com/the-class-file-structure.html" title="&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x7C7B;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF09;" target="_blank" rel="external">&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x7C7B;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF09;</a>     </li>
+</ul>
+<p>&#x5BF9;&#x4E8E;&#x540C;&#x6B65;&#x6307;&#x4EE4;monitorenter&#x548C;monitorexit&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x81EA;&#x52A8;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x8FD9;&#x4E2A;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x5668;&#x58F0;&#x660E;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x6240;&#x6709;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x5B83;&#x7684;&#x76EE;&#x7684;&#x5C31;&#x662F;&#x7528;&#x6765;&#x6267;&#x884C;monitorexit&#x6307;&#x4EE4;&#x3002;</p>
+<ul>
+<li><a href="http://www.itzhai.com/the-class-file-structure.html" title="&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x7C7B;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#xFF09;" target="_blank" rel="external">&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x5B50;&#x7CFB;&#x7EDF;&#xFF08;&#x865A;&#x62DF;&#x673A;&#x7C7B;&#x52A0;&#x8F7D;&#x673A;&#x5236;&#xFF09;</a>     </li>
+</ul>
+<p>&#x52A0;&#x8F7D; -&gt; (&#x9A8C;&#x8BC1; -&gt; &#x51C6;&#x5907; -&gt; <code>&#x89E3;&#x6790;</code>) -&gt; &#x521D;&#x59CB;&#x5316; -&gt; &#x4F7F;&#x7528; -&gt; &#x5378;&#x8F7D;<br>&#x5176;&#x4E2D;&#x89E3;&#x6790;&#x9636;&#x6BB5;&#x53EF;&#x4EE5;&#x5728;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#x4E4B;&#x540E;&#x518D;&#x5F00;&#x59CB;&#xFF0C;&#x4EE5;&#x4FBF;&#x652F;&#x6301;&#x8FD0;&#x884C;&#x65F6;&#x7ED1;&#x5B9A;&#xFF08;&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#x6216;&#x665A;&#x671F;&#x7ED1;&#x5B9A;&#xFF09;&#x3002;</p>
+<p>JVM&#x4E2D;&#x4E25;&#x683C;&#x89C4;&#x5B9A;&#x6709;&#x4E14;&#x53EA;&#x6709;&#x4E00;&#x4E0B;&#x4E94;&#x4E2D;&#x60C5;&#x51B5;&#x5FC5;&#x987B;&#x5BF9;&#x7C7B;&#x8FDB;&#x884C;&#x201C;&#x521D;&#x59CB;&#x5316;&#x201D;&#xFF1A;<a href="http://" target="_blank" rel="external">detail</a>(&#x52A0;&#x8F7D;&#x3001;&#x9A8C;&#x8BC1;&#x3001;&#x51C6;&#x5907;&#x81EA;&#x7136;&#x9700;&#x8981;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#x5F00;&#x59CB;)    </p>
+<p>&#x8FD9;5&#x79CD;&#x573A;&#x666F;&#x79F0;&#x4E3A;&#x5BF9;&#x4E00;&#x4E2A;&#x7C7B;&#x7684;&#x4E3B;&#x52A8;&#x5F15;&#x7528;&#xFF0C;&#x5176;&#x4F59;&#x7684;&#x79F0;&#x4E3A;&#x88AB;&#x52A8;&#x5F15;&#x7528;&#xFF0C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4EE5;&#x4E0B;&#x662F;&#x51E0;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<blockquote>
+<p>&#x901A;&#x8FC7;&#x5B50;&#x7C7B;&#x5F15;&#x7528;&#x7236;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x5B57;&#x6BB5;&#xFF0C;&#x4E0D;&#x4F1A;&#x5BFC;&#x81F4;&#x5B50;&#x7C7B;&#x521D;&#x59CB;&#x5316;</p>
+<p>&#x901A;&#x8FC7;&#x6570;&#x7EC4;&#x5B9A;&#x4E49;&#x6765;&#x5F15;&#x7528;&#x7C7B;&#xFF0C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x6B64;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;    </p>
+<p>&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x7C7B;&#x4E2D;&#x7684;&#x5E38;&#x91CF;&#xFF0C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x5E38;&#x91CF;&#x7684;&#x7C7B;&#x7684;&#x521D;&#x59CB;&#x5316;    </p>
+</blockquote>
+<h3 id="jvm&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0E;gc&#x56DE;&#x6536;&#x673A;&#x5236;"><a href="#JVM&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0E;GC&#x56DE;&#x6536;&#x673A;&#x5236;" class="headerlink" title="JVM&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0E;GC&#x56DE;&#x6536;&#x673A;&#x5236;"></a>JVM&#x5185;&#x5B58;&#x6A21;&#x578B;&#x4E0E;GC&#x56DE;&#x6536;&#x673A;&#x5236;</h3><h3 id="jvm&#x8C03;&#x4F18;&#x548C;&#x5E38;&#x7528;&#x5DE5;&#x5177;"><a href="#JVM&#x8C03;&#x4F18;&#x548C;&#x5E38;&#x7528;&#x5DE5;&#x5177;" class="headerlink" title="JVM&#x8C03;&#x4F18;&#x548C;&#x5E38;&#x7528;&#x5DE5;&#x5177;"></a>JVM&#x8C03;&#x4F18;&#x548C;&#x5E38;&#x7528;&#x5DE5;&#x5177;</h3><p><strong>&#x5982;&#x4F55;dump&#x51FA;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x72B6;&#x6001;</strong><br>&#x4F7F;&#x7528;<a href="http://www.blogjava.net/jzone/articles/303979.html" title="jstack pid" target="_blank" rel="external">jstack pid</a>&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;<a href="http://segmentfault.com/blog/yexiaobai/1190000000615690" title="Thread Dumps&#x7684;&#x5206;&#x6790;" target="_blank" rel="external">Thread Dumps&#x7684;&#x5206;&#x6790;</a>    </p>
+<p><strong><em>&#x7EBF;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#xFF1A;</em></strong><br><code>Runnable</code>&#xFF1A;<br><code>Wait oncondition</code>&#xFF1A;<br><code>Waiting for monitor entry</code>&#xFF1A;<br><code>in Object.wait()</code>&#xFF1A;        </p>
+<p><strong><em>&#x6848;&#x4F8B;</em></strong>&#xFF1A;<code>&#x6B7B;&#x9501;</code> &amp; <code>&#x70ED;&#x9501;</code><br>Java5&#x4E2D;&#x52A0;&#x5F3A;&#x4E86;&#x5806;&#x601D;&#x7D22;&#x7684;&#x76D1;&#x6D4B;&#x7EBF;&#x7A0B;Dump&#x4E2D;&#x79D1;&#x9662;&#x76F4;&#x63A5;&#x62A5;&#x544A;&#x51FA;Java&#x7EA7;&#x522B;&#x7684;&#x601D;&#x7D22;&#x3002;</p>
+<blockquote>
+<p>&#x5982;&#x679C;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x5927;&#x91CF;&#x4F7F;&#x7528; synchronized&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x9002;&#x5F53;&#x7684;&#x4F7F;&#x7528;&#x4E86;&#x5B83;&#xFF0C;&#x4F1A;&#x9020;&#x6210;&#x5927;&#x91CF;&#x7EBF;&#x7A0B;&#x5728;&#x4E34;&#x754C;&#x533A;&#x7684;&#x5165;&#x53E3;&#x7B49;&#x5F85;&#xFF0C;&#x9020;&#x6210;&#x7CFB;&#x7EDF;&#x7684;&#x6027;&#x80FD;&#x5927;&#x5E45;&#x4E0B;&#x964D;&#x3002;&#x5982;&#x679C;&#x5728;&#x7EBF;&#x7A0B; DUMP&#x4E2D;&#x53D1;&#x73B0;&#x4E86;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#xFF0C;&#x5E94;&#x8BE5;&#x5BA1;&#x67E5;&#x6E90;&#x7801;&#xFF0C;&#x6539;&#x8FDB;&#x7A0B;&#x5E8F;&#x3002;(&#x5F15;&#x7528;)</p>
+</blockquote>
+<p><strong>JVM&#x8C03;&#x4F18;&#x76F8;&#x5173;&#x7ECF;&#x9A8C;</strong></p>
+<h2 id="classloader&#x7ED3;&#x6784;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;string&#x7C7B;"><a href="#ClassLoader&#x7ED3;&#x6784;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;String&#x7C7B;" class="headerlink" title="ClassLoader&#x7ED3;&#x6784;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;String&#x7C7B;"></a>ClassLoader&#x7ED3;&#x6784;&#xFF0C;&#x662F;&#x5426;&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;String&#x7C7B;</h2><p>&#x8BF4;&#x8BF4;ClassLoader&#x7684;&#x53CC;&#x4EB2;&#x4EE3;&#x7406;&#x673A;&#x5236;</p>
+<h2 id="&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;"><a href="#&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;" class="headerlink" title="&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;"></a>&#x4FEE;&#x6539;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;</h2><p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-hotdeploy/index.html" title="ASM&#x4FEE;&#x6539;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;" target="_blank" rel="external">ASM&#x4FEE;&#x6539;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;</a>&#x7684;&#x6D41;&#x7A0B;&#x662F;&#x4E00;&#x4E2A;&#x804C;&#x8D23;&#x94FE;&#x6A21;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;ASM&#x4FEE;&#x6539;&#x5B57;&#x8282;&#x7801;&#x6587;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x8BA9;&#x6BCF;&#x6B21;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x662F;&#x7528;&#x6700;&#x65B0;&#x7248;&#x672C;&#x7684;Class&#x6587;&#x4EF6;&#x751F;&#x6210;&#x5B9E;&#x4F8B;&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x70ED;&#x90E8;&#x7F72;&#xFF0C;&#x4F46;&#x662F;PermGen space&#x8FD8;&#x662F;&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x4EC5;&#x4EC5;&#x662F;&#x8BA9;&#x65B0;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x5BF9;&#x8C61;&#x662F;&#x7528;&#x65B0;&#x7684;&#x903B;&#x8F91;&#xFF1B;<br><a href="http://my.oschina.net/heroShane/blog/198492" title="Tomcat" target="_blank" rel="external">Tomcat</a>&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;&#x5B9E;&#x73B0;&#x3002;</p>
+<hr>
+<h1 id="&#x6846;&#x67B6;&#x6E90;&#x7801;&#x76F8;&#x5173;"><a href="#&#x6846;&#x67B6;&#x6E90;&#x7801;&#x76F8;&#x5173;" class="headerlink" title="&#x6846;&#x67B6;&#x6E90;&#x7801;&#x76F8;&#x5173;"></a>&#x6846;&#x67B6;&#x6E90;&#x7801;&#x76F8;&#x5173;</h1><h2 id="&#x5E76;&#x53D1;&#x6846;&#x67B6;"><a href="#&#x5E76;&#x53D1;&#x6846;&#x67B6;" class="headerlink" title="&#x5E76;&#x53D1;&#x6846;&#x67B6;"></a>&#x5E76;&#x53D1;&#x6846;&#x67B6;</h2><p>&#x591A;&#x7EBF;&#x7A0B;&#x5E76;&#x53D1;&#x7528;&#x8FC7;&#x54EA;&#x4E9B;</p>
+<h2 id="spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><h2 id="osgi&#x6846;&#x67B6;"><a href="#OSGi&#x6846;&#x67B6;" class="headerlink" title="OSGi&#x6846;&#x67B6;"></a>OSGi&#x6846;&#x67B6;</h2><h3 id="&#x5982;&#x4F55;&#x5728;&#x4E00;&#x4E2A;bundle&#x4E2D;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;bundle&#x7684;class&#x5BF9;&#x8C61;"><a href="#&#x5982;&#x4F55;&#x5728;&#x4E00;&#x4E2A;bundle&#x4E2D;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;bundle&#x7684;Class&#x5BF9;&#x8C61;" class="headerlink" title="&#x5982;&#x4F55;&#x5728;&#x4E00;&#x4E2A;bundle&#x4E2D;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;bundle&#x7684;Class&#x5BF9;&#x8C61;"></a>&#x5982;&#x4F55;&#x5728;&#x4E00;&#x4E2A;bundle&#x4E2D;&#x52A0;&#x8F7D;&#x53E6;&#x4E00;&#x4E2A;bundle&#x7684;Class&#x5BF9;&#x8C61;</h3><hr>
+<h1 id="java-web"><a href="#Java-Web" class="headerlink" title="Java Web"></a>Java Web</h1><h2 id="servlet&#x4E0E;filter&#x7684;&#x4F5C;&#x7528;&#x539F;&#x7406;&#x914D;&#x7F6E;"><a href="#Servlet&#x4E0E;Filter&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x539F;&#x7406;&#xFF0C;&#x914D;&#x7F6E;" class="headerlink" title="Servlet&#x4E0E;Filter&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x539F;&#x7406;&#xFF0C;&#x914D;&#x7F6E;"></a>Servlet&#x4E0E;Filter&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x539F;&#x7406;&#xFF0C;&#x914D;&#x7F6E;</h2><h2 id="session&#x5171;&#x4EAB;&#x673A;&#x5236;"><a href="#Session&#x5171;&#x4EAB;&#x673A;&#x5236;" class="headerlink" title="Session&#x5171;&#x4EAB;&#x673A;&#x5236;"></a>Session&#x5171;&#x4EAB;&#x673A;&#x5236;</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/基础/" rel="tag">#基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/03/10/Java/JDK配置与JVM监控/" rel="next" title="JDK配置与JVM监控">
+                <i class="fa fa-chevron-left"></i> JDK配置与JVM监控
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/01/HTTP协议/" rel="prev" title="HTTP协议">
+                HTTP协议 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">95</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">categories</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java基础知识"><span class="nav-number">1.</span> <span class="nav-text">Java基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hashmap-与-concurrenthashmap"><span class="nav-number">1.1.</span> <span class="nav-text">HashMap 与 ConcurrentHashMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化的作用是序列化id会出现哪些问题"><span class="nav-number">1.2.</span> <span class="nav-text">序列化的作用是，序列化id会出现哪些问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jdk常用库jdk源代码"><span class="nav-number">1.3.</span> <span class="nav-text">JDK常用库，JDK源代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java-io类库结构图和所用到的设计模式"><span class="nav-number">1.3.1.</span> <span class="nav-text">Java IO类库结构图，和所用到的设计模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nio"><span class="nav-number">1.4.</span> <span class="nav-text">NIO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻塞后的通知机制"><span class="nav-number">1.4.1.</span> <span class="nav-text">阻塞后的通知机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#runtimeexception与checkedexception"><span class="nav-number">1.5.</span> <span class="nav-text">RuntimeException与CheckedException</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反射-动态代理"><span class="nav-number">2.</span> <span class="nav-text">反射 动态代理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java配置文件"><span class="nav-number">3.</span> <span class="nav-text">Java配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jvm虚拟机"><span class="nav-number">4.</span> <span class="nav-text">JVM虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#深入理解java虚拟机笔记"><span class="nav-number">4.1.</span> <span class="nav-text">深入理解Java虚拟机笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jvm内存模型与gc回收机制"><span class="nav-number">4.1.1.</span> <span class="nav-text">JVM内存模型与GC回收机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jvm调优和常用工具"><span class="nav-number">4.1.2.</span> <span class="nav-text">JVM调优和常用工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#classloader结构是否可以自定义一个string类"><span class="nav-number">4.2.</span> <span class="nav-text">ClassLoader结构，是否可以自定义一个String类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改类加载器实现热部署"><span class="nav-number">4.3.</span> <span class="nav-text">修改类加载器实现热部署</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#框架源码相关"><span class="nav-number">5.</span> <span class="nav-text">框架源码相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并发框架"><span class="nav-number">5.1.</span> <span class="nav-text">并发框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spring"><span class="nav-number">5.2.</span> <span class="nav-text">Spring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#osgi框架"><span class="nav-number">5.3.</span> <span class="nav-text">OSGi框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何在一个bundle中加载另一个bundle的class对象"><span class="nav-number">5.3.1.</span> <span class="nav-text">如何在一个bundle中加载另一个bundle的Class对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-web"><span class="nav-number">6.</span> <span class="nav-text">Java Web</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet与filter的作用原理配置"><span class="nav-number">6.1.</span> <span class="nav-text">Servlet与Filter的作用，原理，配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session共享机制"><span class="nav-number">6.2.</span> <span class="nav-text">Session共享机制</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
