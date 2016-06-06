@@ -108,6 +108,7 @@ YAMLException: end of the stream or a document separator is expected at
 * [Hexo@简书](http://www.jianshu.com/collection/7fafdc0abb5b)
 * [Hexo使用攻略](http://ijiaober.github.io/categories/hexo/)
 * [Hexo添加Toc支持，生成文章目录](http://www.imys.net/20150514/hexo-toc.html)
+* [hexo next主题配置](https://github.com/iissnan/hexo-theme-next/wiki)
 
 
 

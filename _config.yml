@@ -18,6 +18,11 @@ root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
+# Creative commons协议
+creative_commons: by-nc-sa
+
+since: 2016
+
 # Directory
 source_dir: source
 public_dir: public
