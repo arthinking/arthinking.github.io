@@ -170,7 +170,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -180,7 +180,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -246,7 +246,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-19T00:00:00+08:00" content="2016-03-19">
               2016-03-19
             </time>
@@ -258,7 +258,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/IDE/" itemprop="url" rel="index">
@@ -371,6 +371,304 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/19/javascript/reactjs/2016-03-19 ReactJS入门/" itemprop="url">
+                  ReactJS入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-03-19T00:00:00+08:00" content="2016-03-19">
+              2016-03-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  . 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web前端/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="1-&#x6570;&#x636E;&#x5448;&#x73B0;"><a href="#1&#x3001;&#x6570;&#x636E;&#x5448;&#x73B0;" class="headerlink" title="1&#x3001;&#x6570;&#x636E;&#x5448;&#x73B0;"></a>1&#x3001;&#x6570;&#x636E;&#x5448;&#x73B0;</h1><h3 id="&#x54CD;&#x5E94;&#x5F0F;&#x66F4;&#x65B0;reactive-updates"><a href="#&#x54CD;&#x5E94;&#x5F0F;&#x66F4;&#x65B0;&#xFF08;Reactive-Updates&#xFF09;" class="headerlink" title="&#x54CD;&#x5E94;&#x5F0F;&#x66F4;&#x65B0;&#xFF08;Reactive Updates&#xFF09;"></a>&#x54CD;&#x5E94;&#x5F0F;&#x66F4;&#x65B0;&#xFF08;Reactive Updates&#xFF09;</h3><p><code>this.props</code>&#x662F;&#x53EA;&#x8BFB;&#x7684;&#x3002;</p>
+<h3 id="&#x7EC4;&#x4EF6;&#x5C31;&#x50CF;&#x662F;&#x51FD;&#x6570;"><a href="#&#x7EC4;&#x4EF6;&#x5C31;&#x50CF;&#x662F;&#x51FD;&#x6570;" class="headerlink" title="&#x7EC4;&#x4EF6;&#x5C31;&#x50CF;&#x662F;&#x51FD;&#x6570;"></a>&#x7EC4;&#x4EF6;&#x5C31;&#x50CF;&#x662F;&#x51FD;&#x6570;</h3><p>React&#x7EC4;&#x4EF6;&#x975E;&#x5E38;&#x50CF;&#x51FD;&#x6570;&#xFF0C;&#x63A5;&#x6536;<code>props</code>&#x548C;<code>status</code>&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x6E32;&#x67D3;&#x51FA;HTML&#x3002;</p>
+<h3 id="jsx&#x8BED;&#x6CD5;"><a href="#JSX&#x8BED;&#x6CD5;" class="headerlink" title="JSX&#x8BED;&#x6CD5;"></a>JSX&#x8BED;&#x6CD5;</h3><p>ReactJS&#x4E2D;&#x76F8;&#x4FE1;&#xFF1A;&#x6807;&#x7B7E;&#x4E0E;&#x751F;&#x6210;&#x5B83;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x7D27;&#x5BC6;&#x76F8;&#x8FDE;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x505A;<code>&#x6A21;&#x677F;&#x5F15;&#x64CE;</code>&#x548C;<code>&#x5C55;&#x793A;&#x903B;&#x8F91;</code>&#x7684;&#x5206;&#x79BB;&#x3002;&#x6700;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x901A;&#x8FC7;Javascript&#x76F4;&#x63A5;&#x751F;&#x6210;&#x6A21;&#x677F;&#xFF0C;&#x4E3A;&#x6B64;JSX&#x6D3E;&#x4E0A;&#x7528;&#x573A;&#x4E86;&#xFF1A;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x3001;&#x53EF;&#x9009;&#x7C7B;&#x4F3C; HTML &#x8BED;&#x6CD5; &#xFF0C;&#x901A;&#x8FC7;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5373;&#x53EF;&#x751F;&#x6210;&#x6A21;&#x677F;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x3002;</p>
+<blockquote>
+<p>JSX &#x8BA9;&#x4F60;&#x53EF;&#x4EE5;&#x7528; HTML &#x8BED;&#x6CD5;&#x53BB;&#x5199; JavaScript &#x51FD;&#x6570;&#x8C03;&#x7528;&#x3002;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(<span class="string">&apos;a&apos;</span>, {href: <span class="string">&apos;http://facebook.github.io/react/&apos;</span>}, <span class="string">&apos;Hello React!&apos;</span>)&#x3002;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>JSX&#x8BED;&#x6CD5;&#xFF1A;<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;http://facebook.github.io/react/&quot;</span>&gt;Hello React!<span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="11-&#x6DF1;&#x5165;&#x7406;&#x89E3;jsx"><a href="#1-1&#x3001;&#x6DF1;&#x5165;&#x7406;&#x89E3;JSX" class="headerlink" title="1.1&#x3001;&#x6DF1;&#x5165;&#x7406;&#x89E3;JSX"></a>1.1&#x3001;&#x6DF1;&#x5165;&#x7406;&#x89E3;JSX</h2><p>JSX&#x662F;&#x4E00;&#x4E2A;&#x770B;&#x8D77;&#x6765;&#x50CF;XML&#x7684;JavaScript&#x8BED;&#x6CD5;&#x6269;&#x5C55;&#x3002;React&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x505A;&#x7B80;&#x5355;&#x7684;JSX&#x53E5;&#x6CD5;&#x8F6C;&#x6362;&#x3002;</p>
+<h3 id="111-&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;jsx"><a href="#1-1-1&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;JSX" class="headerlink" title="1.1.1&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;JSX"></a>1.1.1&#x3001;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;JSX</h3><p>&#x80FD;&#x591F;&#x5B9A;&#x4E49;&#x7B80;&#x6D01;&#x4E14;&#x6211;&#x4EEC;&#x719F;&#x77E5;&#x7684;&#x5305;&#x542B;&#x5C5E;&#x6027;&#x7684;&#x6811;&#x72B6;&#x7ED3;&#x6784;&#x8BED;&#x6CD5;&#x3002;</p>
+<h3 id="112-html&#x6807;&#x7B7E;&#x4E0E;react&#x7EC4;&#x4EF6;&#x5BF9;&#x6BD4;"><a href="#1-1-2&#x3001;HTML&#x6807;&#x7B7E;&#x4E0E;React&#x7EC4;&#x4EF6;&#x5BF9;&#x6BD4;" class="headerlink" title="1.1.2&#x3001;HTML&#x6807;&#x7B7E;&#x4E0E;React&#x7EC4;&#x4EF6;&#x5BF9;&#x6BD4;"></a>1.1.2&#x3001;HTML&#x6807;&#x7B7E;&#x4E0E;React&#x7EC4;&#x4EF6;&#x5BF9;&#x6BD4;</h3><p>React &#x7684; JSX &#x91CC;&#x7EA6;&#x5B9A;&#x5206;&#x522B;&#x4F7F;&#x7528;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x3001;&#x5C0F;&#x5199;&#x6765;&#x533A;&#x5206;&#x672C;&#x5730;&#x7EC4;&#x4EF6;&#x7684;&#x7C7B;&#x548C; HTML &#x6807;&#x7B7E;&#x3002;</p>
+<h3 id="113-&#x8F6C;&#x6362;"><a href="#1-1-3&#x3001;&#x8F6C;&#x6362;" class="headerlink" title="1.1.3&#x3001;&#x8F6C;&#x6362;"></a>1.1.3&#x3001;&#x8F6C;&#x6362;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="xml"><span class="tag">&lt;<span class="name">Nav</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span> /&gt;</span>;</span><br><span class="line">// &#x7B49;&#x4EF7;&#x4E8E;</span><br><span class="line">var app = React.createElement(Nav, {color:&quot;blue&quot;});</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Nav, Profile;</span><br><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="xml"><span class="tag">&lt;<span class="name">Nav</span> <span class="attr">color</span>=<span class="string">&quot;blue&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">Profile</span>&gt;</span>click<span class="tag">&lt;/<span class="name">Profile</span>&gt;</span><span class="tag">&lt;/<span class="name">Nav</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// &#x7B49;&#x4EF7;&#x4E8E;</span></span><br><span class="line"><span class="keyword">var</span> app = React.createElement(</span><br><span class="line">  Nav,</span><br><span class="line">  {color:<span class="string">&quot;blue&quot;</span>},</span><br><span class="line">  React.createElement(Profile, <span class="literal">null</span>, <span class="string">&quot;click&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="114-javascript&#x8868;&#x8FBE;&#x5F0F;"><a href="#1-1-4&#x3001;JavaScript&#x8868;&#x8FBE;&#x5F0F;" class="headerlink" title="1.1.4&#x3001;JavaScript&#x8868;&#x8FBE;&#x5F0F;"></a>1.1.4&#x3001;JavaScript&#x8868;&#x8FBE;&#x5F0F;</h3><h4 id="&#x5C5E;&#x6027;&#x8868;&#x8FBE;&#x5F0F;"><a href="#&#x5C5E;&#x6027;&#x8868;&#x8FBE;&#x5F0F;" class="headerlink" title="&#x5C5E;&#x6027;&#x8868;&#x8FBE;&#x5F0F;"></a>&#x5C5E;&#x6027;&#x8868;&#x8FBE;&#x5F0F;</h4><p>&#x4F7F;&#x7528;JavaScript&#x8868;&#x8FBE;&#x5F0F;&#x4F5C;&#x4E3A;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x4F7F;&#x7528;{}<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="xml"><span class="tag">&lt;<span class="name">Person</span> <span class="attr">name</span>=<span class="string">{window.isLoggedIn</span> ? <span class="attr">window.name</span> <span class="attr">:</span> &apos;&apos;} /&gt;</span>;</span><br><span class="line">// &#x7B49;&#x4EF7;&#x4E8E;</span><br><span class="line">var person = React.createElement(</span><br><span class="line">  Person,</span><br><span class="line">  {name: window.isLoggedIn ? window.name : &apos;&apos;}</span><br><span class="line">);</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="&#x5B50;&#x8282;&#x70B9;&#x8868;&#x8FBE;&#x5F0F;"><a href="#&#x5B50;&#x8282;&#x70B9;&#x8868;&#x8FBE;&#x5F0F;" class="headerlink" title="&#x5B50;&#x8282;&#x70B9;&#x8868;&#x8FBE;&#x5F0F;"></a>&#x5B50;&#x8282;&#x70B9;&#x8868;&#x8FBE;&#x5F0F;</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSX</span></span><br><span class="line"><span class="keyword">var</span> content = <span class="xml"><span class="tag">&lt;<span class="name">Container</span>&gt;</span>{window.isLoggedIn ? <span class="tag">&lt;<span class="name">Nav</span> /&gt;</span> : <span class="tag">&lt;<span class="name">Login</span> /&gt;</span>}<span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span>;</span><br><span class="line"><span class="comment">// &#x7B49;&#x4EF7;&#x4E8E;</span></span><br><span class="line"><span class="keyword">var</span> content = React.createElement(</span><br><span class="line">  Container,</span><br><span class="line">  <span class="literal">null</span>,</span><br><span class="line">  <span class="built_in">window</span>.isLoggedIn ? React.createElement(Nav) : React.createElement(Login)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="&#x6CE8;&#x91CA;"><a href="#&#x6CE8;&#x91CA;" class="headerlink" title="&#x6CE8;&#x91CA;"></a>&#x6CE8;&#x91CA;</h4><p>JSX &#x91CC;&#x6DFB;&#x52A0;&#x6CE8;&#x91CA;&#x5F88;&#x5BB9;&#x6613;&#xFF1B;&#x5B83;&#x4EEC;&#x53EA;&#x662F; JS &#x8868;&#x8FBE;&#x5F0F;&#x800C;&#x5DF2;&#x3002;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x5728;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#x7684;&#x5B50;&#x8282;&#x70B9;&#x5185;(&#x975E;&#x6700;&#x5916;&#x5C42;)&#x5C0F;&#x5FC3;&#x5730;&#x7528; {} &#x5305;&#x56F4;&#x8981;&#x6CE8;&#x91CA;&#x7684;&#x90E8;&#x5206;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> content = (</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">Nav</span>&gt;</span></span><br><span class="line">    {/* &#x4E00;&#x822C;&#x6CE8;&#x91CA;, &#x7528; {} &#x5305;&#x56F4; */}</span><br><span class="line">    <span class="tag">&lt;<span class="name">Person</span></span><br><span class="line">      /* &#x591A;</span><br><span class="line">         &#x884C;</span><br><span class="line">         &#x6CE8;&#x91CA; */</span><br><span class="line">      <span class="attr">name</span>=<span class="string">{window.isLoggedIn</span> ? <span class="attr">window.name</span> <span class="attr">:</span> &apos;&apos;} // &#x884C;&#x5C3E;&#x6CE8;&#x91CA;</span><br><span class="line">    /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">Nav</span>&gt;</span></span><br><span class="line">);</span></span><br></pre></td></tr></table></figure>
+<h2 id="12-jsx&#x7684;&#x5EF6;&#x5C55;&#x5C5E;&#x6027;"><a href="#1-2&#x3001;JSX&#x7684;&#x5EF6;&#x5C55;&#x5C5E;&#x6027;" class="headerlink" title="1.2&#x3001;JSX&#x7684;&#x5EF6;&#x5C55;&#x5C5E;&#x6027;"></a>1.2&#x3001;JSX&#x7684;&#x5EF6;&#x5C55;&#x5C5E;&#x6027;</h2><p>Props &#x5E94;&#x8BE5;&#x88AB;&#x5F53;&#x4F5C;&#x7981;&#x6B62;&#x4FEE;&#x6539;&#x7684;&#x3002;&#x4FEE;&#x6539; props &#x5BF9;&#x8C61;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x9884;&#x6599;&#x4E4B;&#x5916;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x597D;&#x4E0D;&#x8981;&#x53BB;&#x4FEE;&#x6539; props &#x5BF9;&#x8C61;&#x3002;</p>
+<h3 id="&#x5EF6;&#x5C55;&#x5C5E;&#x6027;spread-attributes"><a href="#&#x5EF6;&#x5C55;&#x5C5E;&#x6027;&#xFF08;Spread-Attributes&#xFF09;" class="headerlink" title="&#x5EF6;&#x5C55;&#x5C5E;&#x6027;&#xFF08;Spread Attributes&#xFF09;"></a>&#x5EF6;&#x5C55;&#x5C5E;&#x6027;&#xFF08;Spread Attributes&#xFF09;</h3><p>&#x8FD9;&#x4E2A;<code>...</code>&#x64CD;&#x4F5C;&#x7B26;&#xFF08;&#x4E5F;&#x88AB;&#x53EB;&#x505A;&#x5EF6;&#x5C55;&#x64CD;&#x4F5C;&#x7B26; &#xFF0D; spread operator&#xFF09;&#x5DF2;&#x7ECF;&#x88AB; ES6 &#x6570;&#x7EC4; &#x652F;&#x6301;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> props = { foo: <span class="string">&apos;default&apos;</span> };</span><br><span class="line"><span class="keyword">var</span> component = <span class="xml"><span class="tag">&lt;<span class="name">Component</span> {<span class="attr">...props</span>} <span class="attr">foo</span>=<span class="string">{</span>&apos;<span class="attr">override</span>&apos;} /&gt;</span>;</span><br><span class="line">console.log(component.props.foo); // &apos;override&apos;</span></span><br></pre></td></tr></table></figure>
+<h2 id="13-jsx&#x7684;&#x9677;&#x9631;"><a href="#1-3&#x3001;JSX&#x7684;&#x9677;&#x9631;" class="headerlink" title="1.3&#x3001;JSX&#x7684;&#x9677;&#x9631;"></a>1.3&#x3001;JSX&#x7684;&#x9677;&#x9631;</h2><h3 id="html&#x5B9E;&#x4F53;"><a href="#HTML&#x5B9E;&#x4F53;" class="headerlink" title="HTML&#x5B9E;&#x4F53;"></a>HTML&#x5B9E;&#x4F53;</h3><p>&#x5982;&#x679C;&#x60F3;&#x5728; JSX &#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x663E;&#x793A; HTML &#x5B9E;&#x4F53;&#xFF0C;&#x53EF;&#x4EE5;&#x4F1A;&#x9047;&#x5230;&#x4E8C;&#x6B21;&#x8F6C;&#x4E49;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x56E0;&#x4E3A; React &#x9ED8;&#x8BA4;&#x4F1A;&#x8F6C;&#x4E49;&#x6240;&#x6709;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5404;&#x79CD; XSS &#x653B;&#x51FB;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &#x9519;&#x8BEF;: &#x4F1A;&#x663E;&#x793A; &#x201C;First &amp;middot; Second&#x201D;</span></span><br><span class="line">&lt;div&gt;{<span class="string">&apos;First &amp;middot; Second&apos;</span>}&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x76F4;&#x63A5;&#x4F7F;&#x7528;Unicode&#x5B57;&#x7B26;&#x4E32;</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;{<span class="string">&apos;First &#xB7; Second&apos;</span>}&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x4F7F;&#x7528;Unicode&#x7F16;&#x53F7;</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;{&apos;First \u00b7 Second&apos;}&lt;/div&gt;</span><br><span class="line">&lt;div&gt;{&apos;First &apos; + String.fromCharCode(183) + &apos; Second&apos;}&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x5728;&#x6570;&#x7EC4;&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x548C;JSX&#x5143;&#x7D20;</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;{[<span class="string">&apos;First &apos;</span>, <span class="xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>&amp;middot;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>, <span class="string">&apos; Second&apos;</span>]}&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x4F7F;&#x7528;&#x539F;&#x59CB;HTML</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div dangerouslySetInnerHTML={{__html: <span class="string">&apos;First &amp;middot; Second&apos;</span>}} /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="&#x81EA;&#x5B9A;&#x4E49;html&#x5C5E;&#x6027;"><a href="#&#x81EA;&#x5B9A;&#x4E49;HTML&#x5C5E;&#x6027;" class="headerlink" title="&#x81EA;&#x5B9A;&#x4E49;HTML&#x5C5E;&#x6027;"></a>&#x81EA;&#x5B9A;&#x4E49;HTML&#x5C5E;&#x6027;</h3><p>React&#x91CC;&#x9762;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x81EA;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;&#xFF0C;&#x8981;&#x52A0; data- &#x524D;&#x7F00;&#x3002;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-custom-attribute</span>=<span class="string">&quot;foo&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="2-&#x5BCC;&#x4EA4;&#x4E92;&#x6027;&#x7684;&#x52A8;&#x6001;&#x7528;&#x6237;&#x754C;&#x9762;"><a href="#2&#x3001;&#x5BCC;&#x4EA4;&#x4E92;&#x6027;&#x7684;&#x52A8;&#x6001;&#x7528;&#x6237;&#x754C;&#x9762;" class="headerlink" title="2&#x3001;&#x5BCC;&#x4EA4;&#x4E92;&#x6027;&#x7684;&#x52A8;&#x6001;&#x7528;&#x6237;&#x754C;&#x9762;"></a>2&#x3001;&#x5BCC;&#x4EA4;&#x4E92;&#x6027;&#x7684;&#x52A8;&#x6001;&#x7528;&#x6237;&#x754C;&#x9762;</h1><h2 id="21-&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x4E0E;&#x5408;&#x6210;&#x4E8B;&#x4EF6;synthetic-events"><a href="#2-1&#x3001;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x4E0E;&#x5408;&#x6210;&#x4E8B;&#x4EF6;&#xFF08;Synthetic-Events&#xFF09;" class="headerlink" title="2.1&#x3001;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x4E0E;&#x5408;&#x6210;&#x4E8B;&#x4EF6;&#xFF08;Synthetic Events&#xFF09;"></a>2.1&#x3001;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x4E0E;&#x5408;&#x6210;&#x4E8B;&#x4EF6;&#xFF08;Synthetic Events&#xFF09;</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">React.initializeTouchEvents(<span class="literal">true</span>); &#x542F;&#x7528;&#x89E6;&#x6478;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x3002;</span><br></pre></td></tr></table></figure>
+<h2 id="22-&#x5E55;&#x540E;&#x539F;&#x7406;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x548C;&#x4E8B;&#x4EF6;&#x4EE3;&#x7406;"><a href="#2-2&#x3001;&#x5E55;&#x540E;&#x539F;&#x7406;&#xFF1A;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x548C;&#x4E8B;&#x4EF6;&#x4EE3;&#x7406;" class="headerlink" title="2.2&#x3001;&#x5E55;&#x540E;&#x539F;&#x7406;&#xFF1A;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x548C;&#x4E8B;&#x4EF6;&#x4EE3;&#x7406;"></a>2.2&#x3001;&#x5E55;&#x540E;&#x539F;&#x7406;&#xFF1A;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x548C;&#x4E8B;&#x4EF6;&#x4EE3;&#x7406;</h2><p>&#x5728;&#x5E55;&#x540E;&#xFF0C;React &#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x6765;&#x8BA9;&#x4EE3;&#x7801;&#x9AD8;&#x6548;&#x8FD0;&#x884C;&#x4E14;&#x6613;&#x4E8E;&#x7406;&#x89E3;&#x3002;</p>
+<p><code>Autobinding</code>: &#x5728; JavaScript &#x91CC;&#x521B;&#x5EFA;&#x56DE;&#x8C03;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1; this &#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x7ED1;&#x5B9A;&#x65B9;&#x6CD5;&#x5230;&#x5B83;&#x7684;&#x5B9E;&#x4F8B;&#x4E0A;&#x3002;&#x6709;&#x4E86; React&#xFF0C;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x88AB;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x5230;&#x4E86;&#x5B83;&#x7684;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x4E0A;&#x3002;</p>
+<p><code>&#x4E8B;&#x4EF6;&#x4EE3;&#x7406;</code>: React &#x5B9E;&#x9645;&#x5E76;&#x6CA1;&#x6709;&#x628A;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x7ED1;&#x5B9A;&#x5230;&#x8282;&#x70B9;&#x672C;&#x8EAB;&#x3002;</p>
+<h2 id="23-&#x7EC4;&#x4EF6;&#x5176;&#x5B9E;&#x662F;&#x72B6;&#x6001;&#x673A;state-machines"><a href="#2-3&#x3001;&#x7EC4;&#x4EF6;&#x5176;&#x5B9E;&#x662F;&#x72B6;&#x6001;&#x673A;&#xFF08;State-Machines&#xFF09;" class="headerlink" title="2.3&#x3001;&#x7EC4;&#x4EF6;&#x5176;&#x5B9E;&#x662F;&#x72B6;&#x6001;&#x673A;&#xFF08;State Machines&#xFF09;"></a>2.3&#x3001;&#x7EC4;&#x4EF6;&#x5176;&#x5B9E;&#x662F;&#x72B6;&#x6001;&#x673A;&#xFF08;State Machines&#xFF09;</h2><p>React &#x628A;&#x7528;&#x6237;&#x754C;&#x9762;&#x5F53;&#x4F5C;&#x7B80;&#x5355;&#x72B6;&#x6001;&#x673A;&#x3002;&#x628A;&#x7528;&#x6237;&#x754C;&#x9762;&#x60F3;&#x50CF;&#x6210;&#x62E5;&#x6709;&#x4E0D;&#x540C;&#x72B6;&#x6001;&#x7136;&#x540E;&#x6E32;&#x67D3;&#x8FD9;&#x4E9B;&#x72B6;&#x6001;&#xFF0C;&#x53EF;&#x4EE5;&#x8F7B;&#x677E;&#x8BA9;&#x7528;&#x6237;&#x754C;&#x9762;&#x548C;&#x6570;&#x636E;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x3002;</p>
+<p>React &#x91CC;&#xFF0C;&#x53EA;&#x9700;&#x66F4;&#x65B0;&#x7EC4;&#x4EF6;&#x7684; state&#xFF0C;&#x7136;&#x540E;&#x6839;&#x636E;&#x65B0;&#x7684; state &#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x7528;&#x6237;&#x754C;&#x9762;&#xFF08;&#x4E0D;&#x8981;&#x64CD;&#x4F5C; DOM&#xFF09;&#x3002;React &#x6765;&#x51B3;&#x5B9A;&#x5982;&#x4F55;&#x6700;&#x9AD8;&#x6548;&#x5730;&#x66F4;&#x65B0; DOM&#x3002;</p>
+<h2 id="24-state-&#x5DE5;&#x4F5C;&#x539F;&#x7406;"><a href="#2-4&#x3001;State-&#x5DE5;&#x4F5C;&#x539F;&#x7406;" class="headerlink" title="2.4&#x3001;State &#x5DE5;&#x4F5C;&#x539F;&#x7406;"></a>2.4&#x3001;State &#x5DE5;&#x4F5C;&#x539F;&#x7406;</h2><p>&#x5E38;&#x7528;&#x7684;&#x901A;&#x77E5; React &#x6570;&#x636E;&#x53D8;&#x5316;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x8C03;&#x7528; setState(data, callback)&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x5408;&#x5E76;&#xFF08;merge&#xFF09; data &#x5230; this.state&#xFF0C;&#x5E76;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x7EC4;&#x4EF6;&#x3002;&#x6E32;&#x67D3;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x8C03;&#x7528;&#x53EF;&#x9009;&#x7684; callback &#x56DE;&#x8C03;&#x3002;</p>
+<h2 id="25-&#x54EA;&#x4E9B;&#x7EC4;&#x4EF6;&#x5E94;&#x8BE5;&#x6709;-state"><a href="#2-5&#x3001;&#x54EA;&#x4E9B;&#x7EC4;&#x4EF6;&#x5E94;&#x8BE5;&#x6709;-State&#xFF1F;" class="headerlink" title="2.5&#x3001;&#x54EA;&#x4E9B;&#x7EC4;&#x4EF6;&#x5E94;&#x8BE5;&#x6709; State&#xFF1F;"></a>2.5&#x3001;&#x54EA;&#x4E9B;&#x7EC4;&#x4EF6;&#x5E94;&#x8BE5;&#x6709; State&#xFF1F;</h2><p>&#x6709;&#x65F6;&#x9700;&#x8981;&#x5BF9;&#x7528;&#x6237;&#x8F93;&#x5165;&#x3001;&#x670D;&#x52A1;&#x5668;&#x8BF7;&#x6C42;&#x6216;&#x8005;&#x65F6;&#x95F4;&#x53D8;&#x5316;&#x7B49;&#x4F5C;&#x51FA;&#x54CD;&#x5E94;&#xFF0C;&#x8FD9;&#x65F6;&#x624D;&#x9700;&#x8981;&#x4F7F;&#x7528; State&#x3002;</p>
+<h2 id="26-&#x54EA;&#x4E9B;-&#x5E94;&#x8BE5;-&#x4F5C;&#x4E3A;-state"><a href="#2-6&#x3001;&#x54EA;&#x4E9B;-&#x5E94;&#x8BE5;-&#x4F5C;&#x4E3A;-State&#xFF1F;" class="headerlink" title="2.6&#x3001;&#x54EA;&#x4E9B; &#x5E94;&#x8BE5; &#x4F5C;&#x4E3A; State&#xFF1F;"></a>2.6&#x3001;&#x54EA;&#x4E9B; &#x5E94;&#x8BE5; &#x4F5C;&#x4E3A; State&#xFF1F;</h2><p>State &#x5E94;&#x8BE5;&#x5305;&#x62EC;&#x90A3;&#x4E9B;&#x53EF;&#x80FD;&#x88AB;&#x7EC4;&#x4EF6;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x5668;&#x6539;&#x53D8;&#x5E76;&#x89E6;&#x53D1;&#x7528;&#x6237;&#x754C;&#x9762;&#x66F4;&#x65B0;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<h2 id="27-&#x54EA;&#x4E9B;-&#x4E0D;&#x5E94;&#x8BE5;-&#x4F5C;&#x4E3A;-state"><a href="#2-7&#x3001;&#x54EA;&#x4E9B;-&#x4E0D;&#x5E94;&#x8BE5;-&#x4F5C;&#x4E3A;-State&#xFF1F;" class="headerlink" title="2.7&#x3001;&#x54EA;&#x4E9B; &#x4E0D;&#x5E94;&#x8BE5; &#x4F5C;&#x4E3A; State&#xFF1F;"></a>2.7&#x3001;&#x54EA;&#x4E9B; &#x4E0D;&#x5E94;&#x8BE5; &#x4F5C;&#x4E3A; State&#xFF1F;</h2><p>this.state &#x5E94;&#x8BE5;&#x4EC5;&#x5305;&#x62EC;&#x80FD;&#x8868;&#x793A;&#x7528;&#x6237;&#x754C;&#x9762;&#x72B6;&#x6001;&#x6240;&#x9700;&#x7684;&#x6700;&#x5C11;&#x6570;&#x636E;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5B83;&#x4E0D;&#x5E94;&#x8BE5;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>&#x8BA1;&#x7B97;&#x6240;&#x5F97;&#x6570;&#x636E;</li>
+<li>React&#x7EC4;&#x4EF6;</li>
+<li>&#x57FA;&#x4E8E;props&#x7684;&#x91CD;&#x590D;&#x6570;&#x636E;</li>
+</ul>
+<h1 id="3-&#x590D;&#x5408;&#x7EC4;&#x4EF6;"><a href="#3&#x3001;&#x590D;&#x5408;&#x7EC4;&#x4EF6;" class="headerlink" title="3&#x3001;&#x590D;&#x5408;&#x7EC4;&#x4EF6;"></a>3&#x3001;&#x590D;&#x5408;&#x7EC4;&#x4EF6;</h1><h2 id="31-&#x52A8;&#x673A;&#x5173;&#x6CE8;&#x5206;&#x79BB;"><a href="#3-1&#x3001;&#x52A8;&#x673A;&#xFF1A;&#x5173;&#x6CE8;&#x5206;&#x79BB;" class="headerlink" title="3.1&#x3001;&#x52A8;&#x673A;&#xFF1A;&#x5173;&#x6CE8;&#x5206;&#x79BB;"></a>3.1&#x3001;&#x52A8;&#x673A;&#xFF1A;&#x5173;&#x6CE8;&#x5206;&#x79BB;</h2><p>&#x901A;&#x8FC7;&#x590D;&#x7528;&#x90A3;&#x4E9B;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x826F;&#x597D;&#x7684;&#x7EC4;&#x4EF6;&#x6765;&#x5F00;&#x53D1;&#x65B0;&#x7684;&#x6A21;&#x5757;&#x5316;&#x7EC4;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x4E86;&#x4E0E;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x548C;&#x7C7B;&#x76F8;&#x4F3C;&#x7684;&#x597D;&#x5904;&#x3002;</p>
+<h2 id="32-&#x7EC4;&#x5408;&#x5B9E;&#x4F8B;"><a href="#3-2&#x3001;&#x7EC4;&#x5408;&#x5B9E;&#x4F8B;" class="headerlink" title="3.2&#x3001;&#x7EC4;&#x5408;&#x5B9E;&#x4F8B;"></a>3.2&#x3001;&#x7EC4;&#x5408;&#x5B9E;&#x4F8B;</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Avatar = React.createClass({</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;ProfilePic username={this.props.username} /&gt;</span><br><span class="line">        &lt;ProfileLink username={this.props.username} /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">var ProfilePic = React.createClass({</span><br><span class="line">  render: function() {</span><br><span class="line">    return (</span><br><span class="line">      &lt;img src={&apos;http://graph.facebook.com/&apos; + this.props.username + &apos;/picture&apos;} /&gt;</span><br><span class="line">    );</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">var ProfileLink = React.createClass({</span><br><span class="line">  render: function() {</span><br><span class="line">    return (</span><br><span class="line">      &lt;a href={&apos;http://www.facebook.com/&apos; + this.props.username}&gt;</span><br><span class="line">        {this.props.username}</span><br><span class="line">      &lt;/a&gt;</span><br><span class="line">    );</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">React.render(</span><br><span class="line">  &lt;Avatar username=&quot;pwh&quot; /&gt;,</span><br><span class="line">  document.getElementById(&apos;example&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="33-&#x4ECE;&#x5C5E;&#x5173;&#x7CFB;"><a href="#3-3&#x3001;&#x4ECE;&#x5C5E;&#x5173;&#x7CFB;" class="headerlink" title="3.3&#x3001;&#x4ECE;&#x5C5E;&#x5173;&#x7CFB;"></a>3.3&#x3001;&#x4ECE;&#x5C5E;&#x5173;&#x7CFB;</h2><p>&#x7EC4;&#x4EF6;&#x4E0D;&#x80FD;&#x4FEE;&#x6539;&#x81EA;&#x8EAB;&#x7684; props - &#x5B83;&#x4EEC;&#x603B;&#x662F;&#x4E0E;&#x5B83;&#x4EEC;&#x62E5;&#x6709;&#x8005;&#x8BBE;&#x7F6E;&#x7684;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#x3002;&#x8FD9;&#x662F;&#x4FDD;&#x6301;&#x7528;&#x6237;&#x754C;&#x9762;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x5173;&#x952E;&#x6027;&#x539F;&#x5219;&#x3002;</p>
+<h2 id="34-&#x5B50;&#x7EA7;"><a href="#3-4&#x3001;&#x5B50;&#x7EA7;" class="headerlink" title="3.4&#x3001;&#x5B50;&#x7EA7;"></a>3.4&#x3001;&#x5B50;&#x7EA7;</h2><p>&#x5B9E;&#x4F8B;&#x5316; React &#x7EC4;&#x4EF6;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x5F00;&#x59CB;&#x6807;&#x7B7E;&#x548C;&#x7ED3;&#x675F;&#x6807;&#x7B7E;&#x4E4B;&#x95F4;&#x5F15;&#x7528;&#x5728;React &#x7EC4;&#x4EF6;&#x6216;&#x8005;Javascript &#x8868;&#x8FBE;&#x5F0F;:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Parent&gt;<span class="xml"><span class="tag">&lt;<span class="name">Child</span> /&gt;</span><span class="tag">&lt;/<span class="name">Parent</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><code>Parent</code>&#x80FD;&#x901A;&#x8FC7;&#x4E13;&#x95E8;&#x7684;<code>this.props.children props</code>&#x8BFB;&#x53D6;&#x5B50;&#x7EA7;&#x3002;<code>this.props.children</code>&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x900F;&#x660E;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF1A; &#x901A;&#x8FC7;<code>React.Children</code>&#x5DE5;&#x5177;&#x7C7B; &#x6765;&#x64CD;&#x4F5C;&#x3002;</p>
+<h2 id="35-&#x5B50;&#x7EA7;&#x6821;&#x6B63;reconciliation"><a href="#3-5&#x3001;&#x5B50;&#x7EA7;&#x6821;&#x6B63;&#xFF08;Reconciliation&#xFF09;" class="headerlink" title="3.5&#x3001;&#x5B50;&#x7EA7;&#x6821;&#x6B63;&#xFF08;Reconciliation&#xFF09;"></a>3.5&#x3001;&#x5B50;&#x7EA7;&#x6821;&#x6B63;&#xFF08;Reconciliation&#xFF09;</h2><p>&#x6821;&#x6B63;&#x5C31;&#x662F;&#x6BCF;&#x6B21; render &#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x540E; React &#x66F4;&#x65B0; DOM &#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// &#x7B2C;&#x4E00;&#x6B21;&#x6E32;&#x67D3;</span><br><span class="line">&lt;Card&gt;</span><br><span class="line">  &lt;p&gt;Paragraph 1&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;Paragraph 2&lt;/p&gt;</span><br><span class="line">&lt;/Card&gt;</span><br><span class="line">// &#x7B2C;&#x4E8C;&#x6B21;&#x6E32;&#x67D3;</span><br><span class="line">&lt;Card&gt;</span><br><span class="line">  &lt;p&gt;Paragraph 2&lt;/p&gt;</span><br><span class="line">&lt;/Card&gt;</span><br></pre></td></tr></table></figure>
+<p>React &#x662F;&#x6839;&#x636E;&#x5B50;&#x7EA7;&#x7684;&#x987A;&#x5E8F;&#x6765;&#x6821;&#x6B63;&#x7684;&#x3002;</p>
+<h2 id="36-&#x5B50;&#x7EC4;&#x4EF6;&#x72B6;&#x6001;&#x7BA1;&#x7406;"><a href="#3-6&#x3001;&#x5B50;&#x7EC4;&#x4EF6;&#x72B6;&#x6001;&#x7BA1;&#x7406;" class="headerlink" title="3.6&#x3001;&#x5B50;&#x7EC4;&#x4EF6;&#x72B6;&#x6001;&#x7BA1;&#x7406;"></a>3.6&#x3001;&#x5B50;&#x7EC4;&#x4EF6;&#x72B6;&#x6001;&#x7BA1;&#x7406;</h2><p>&#x5BF9;&#x4E8E;&#x4F7F;&#x7528; this.state &#x6765;&#x5728;&#x591A;&#x6B21;&#x6E32;&#x67D3;&#x8FC7;&#x7A0B;&#x4E2D;&#x91CC;&#x7EF4;&#x6301;&#x6570;&#x636E;&#x7684;&#x72B6;&#x6001;&#x5316;&#x7EC4;&#x4EF6;&#xFF0C;&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x8FD9;&#x6837;&#x505A;&#x6F5C;&#x5728;&#x5F88;&#x591A;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x9690;&#x85CF;&#x7EC4;&#x4EF6;&#x800C;&#x4E0D;&#x662F;&#x5220;&#x9664;&#x5B83;&#x4EEC;&#x6765;&#x7ED5;&#x8FC7;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x3002;</p>
+<h2 id="37-&#x52A8;&#x6001;&#x5B50;&#x7EA7;"><a href="#3-7&#x3001;&#x52A8;&#x6001;&#x5B50;&#x7EA7;" class="headerlink" title="3.7&#x3001;&#x52A8;&#x6001;&#x5B50;&#x7EA7;"></a>3.7&#x3001;&#x52A8;&#x6001;&#x5B50;&#x7EA7;</h2><p>&#x5982;&#x679C;&#x5B50;&#x7EC4;&#x4EF6;&#x4F4D;&#x7F6E;&#x4F1A;&#x6539;&#x53D8;&#xFF08;&#x5982;&#x5728;&#x641C;&#x7D22;&#x7ED3;&#x679C;&#x4E2D;&#xFF09;&#x6216;&#x8005;&#x6709;&#x65B0;&#x7EC4;&#x4EF6;&#x6DFB;&#x52A0;&#x5230;&#x5217;&#x8868;&#x5F00;&#x5934;&#xFF08;&#x5982;&#x5728;&#x6D41;&#x4E2D;&#xFF09;&#x60C5;&#x51B5;&#x4F1A;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x590D;&#x6742;&#x3002;</p>
+<p>&#x679C;&#x5B50;&#x7EA7;&#x8981;&#x5728;&#x591A;&#x4E2A;&#x6E32;&#x67D3;&#x9636;&#x6BB5;&#x4FDD;&#x6301;&#x81EA;&#x5DF1;&#x7684;&#x7279;&#x5F81;&#x548C;&#x72B6;&#x6001;&#xFF0C;&#x5728;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7ED9;&#x5B50;&#x7EA7;&#x8BBE;&#x7F6E;&#x60DF;&#x4E00;&#x6807;&#x8BC6;&#x7684; key &#x6765;&#x533A;&#x5206;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">var</span> results = <span class="keyword">this</span>.props.results;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">      {results.map(function(result) {</span><br><span class="line">        return <span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">{result.id}</span>&gt;</span>{result.text}<span class="tag">&lt;/<span class="name">li</span>&gt;</span>;</span><br><span class="line">      })}</span><br><span class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x52A1;&#x5FC5; &#x628A; key &#x6DFB;&#x52A0;&#x5230;&#x5B50;&#x7EA7;&#x6570;&#x7EC4;&#x91CC;&#x7EC4;&#x4EF6;&#x672C;&#x8EAB;&#x4E0A;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6BCF;&#x4E2A;&#x5B50;&#x7EA7;&#x5185;&#x90E8;&#x6700;&#x5916;&#x5C42; HTML &#x4E0A;&#x3002;</p>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x9012; object &#x6765;&#x505A;&#x6709; key &#x7684;&#x5B50;&#x7EA7;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">var</span> items = {};</span><br><span class="line"></span><br><span class="line">  <span class="keyword">this</span>.props.results.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>{</span><br><span class="line">    <span class="comment">// &#x5982;&#x679C; result.id &#x770B;&#x8D77;&#x6765;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x5B57;&#xFF08;&#x6BD4;&#x5982;&#x77ED;&#x54C8;&#x5E0C;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;</span></span><br><span class="line">    <span class="comment">// &#x5BF9;&#x8C61;&#x5B57;&#x9762;&#x91CF;&#x7684;&#x987A;&#x5E8F;&#x5C31;&#x5F97;&#x4E0D;&#x5230;&#x4FDD;&#x8BC1;&#x3002;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x524D;&#x7F00;</span></span><br><span class="line">    <span class="comment">// &#x6765;&#x786E;&#x4FDD; key &#x662F;&#x5B57;&#x7B26;&#x4E32;&#x3002;</span></span><br><span class="line">    items[<span class="string">&apos;result-&apos;</span> + result.id] = <span class="xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>{result.text}<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>;</span><br><span class="line">  });</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">      {items}</span><br><span class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h2 id="38-&#x6570;&#x636E;&#x6D41;"><a href="#3-8&#x3001;&#x6570;&#x636E;&#x6D41;" class="headerlink" title="3.8&#x3001;&#x6570;&#x636E;&#x6D41;"></a>3.8&#x3001;&#x6570;&#x636E;&#x6D41;</h2><p>&#x6570;&#x636E;&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x4ECB;&#x7ECD;&#x8FC7;&#x7684; props &#x4ECE;&#x62E5;&#x6709;&#x8005;&#x6D41;&#x5411;&#x5F52;&#x5C5E;&#x8005;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x9AD8;&#x6548;&#x7684;&#x5355;&#x5411;&#x6570;&#x636E;&#x7ED1;&#x5B9A;(one-way data binding)</p>
+<h2 id="39-&#x6027;&#x80FD;&#x63D0;&#x9192;"><a href="#3-9&#x3001;&#x6027;&#x80FD;&#x63D0;&#x9192;" class="headerlink" title="3.9&#x3001;&#x6027;&#x80FD;&#x63D0;&#x9192;"></a>3.9&#x3001;&#x6027;&#x80FD;&#x63D0;&#x9192;</h2><p>&#x80FD;&#x7684;&#x74F6;&#x9888;&#x5927;&#x591A;&#x662F;&#x56E0;&#x4E3A; DOM &#x66F4;&#x65B0;&#xFF0C;&#x800C;&#x975E; JS &#x6267;&#x884C;&#xFF0C;&#x800C;&#x4E14; React &#x4F1A;&#x901A;&#x8FC7;&#x6279;&#x91CF;&#x66F4;&#x65B0;&#x548C;&#x53D8;&#x5316;&#x68C0;&#x6D4B;&#x6765;&#x4F18;&#x5316;&#x6027;&#x80FD;&#x3002;</p>
+<p>&#x6709;&#x65F6;&#x5019;&#x9700;&#x8981;&#x505A;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x6027;&#x80FD;&#x63A7;&#x5236;&#x3002;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x91CD;&#x5199; shouldComponentUpdate() &#x65B9;&#x6CD5;&#x8FD4;&#x56DE; false &#x6765;&#x8BA9; React &#x8DF3;&#x8FC7;&#x5BF9;&#x5B50;&#x6811;&#x7684;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x4E0D;&#x8981;&#x4F4E;&#x4F30; JavaScript &#x7684;&#x901F;&#x5EA6;&#xFF0C;DOM &#x64CD;&#x4F5C;&#x901A;&#x5E38;&#x624D;&#x662F;&#x6162;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<p>&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x5355;&#x5411;&#x6570;&#x636E;&#x7ED1;&#x5B9A;&#xFF1F;</p>
+<h1 id="4-&#x53EF;&#x590D;&#x7528;&#x7EC4;&#x4EF6;"><a href="#4&#x3001;&#x53EF;&#x590D;&#x7528;&#x7EC4;&#x4EF6;" class="headerlink" title="4&#x3001;&#x53EF;&#x590D;&#x7528;&#x7EC4;&#x4EF6;"></a>4&#x3001;&#x53EF;&#x590D;&#x7528;&#x7EC4;&#x4EF6;</h1><p>&#x628A;&#x901A;&#x7528;&#x7684;&#x8BBE;&#x8BA1;&#x5143;&#x7D20;&#xFF08;&#x6309;&#x94AE;&#xFF0C;&#x8868;&#x5355;&#x6846;&#xFF0C;&#x5E03;&#x5C40;&#x7EC4;&#x4EF6;&#x7B49;&#xFF09;&#x62C6;&#x6210;&#x63A5;&#x53E3;&#x826F;&#x597D;&#x5B9A;&#x4E49;&#x7684;&#x53EF;&#x590D;&#x7528;&#x7684;&#x7EC4;&#x4EF6;&#x3002;</p>
+<h2 id="41-prop-&#x9A8C;&#x8BC1;"><a href="#4-1&#x3001;Prop-&#x9A8C;&#x8BC1;" class="headerlink" title="4.1&#x3001;Prop &#x9A8C;&#x8BC1;"></a>4.1&#x3001;Prop &#x9A8C;&#x8BC1;</h2><p>React.PropTypes &#x63D0;&#x4F9B;&#x5F88;&#x591A;&#x9A8C;&#x8BC1;&#x5668; (validator) &#x6765;&#x9A8C;&#x8BC1;&#x4F20;&#x5165;&#x6570;&#x636E;&#x7684;&#x6709;&#x6548;&#x6027;&#x3002;&#x5F53;&#x5411; props &#x4F20;&#x5165;&#x65E0;&#x6548;&#x6570;&#x636E;&#x65F6;&#xFF0C;JavaScript &#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x629B;&#x51FA;&#x8B66;&#x544A;&#x3002;&#x6CE8;&#x610F;&#x4E3A;&#x4E86;&#x6027;&#x80FD;&#x8003;&#x8651;&#xFF0C;&#x53EA;&#x5728;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x9A8C;&#x8BC1; propTypes&#x3002;</p>
+<h2 id="42-&#x9ED8;&#x8BA4;-prop-&#x503C;"><a href="#4-2&#x3001;&#x9ED8;&#x8BA4;-Prop-&#x503C;" class="headerlink" title="4.2&#x3001;&#x9ED8;&#x8BA4; Prop &#x503C;"></a>4.2&#x3001;&#x9ED8;&#x8BA4; Prop &#x503C;</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ComponentWithDefaultProps = React.createClass({</span><br><span class="line">  getDefaultProps: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">      value: <span class="string">&apos;default value&apos;</span></span><br><span class="line">    };</span><br><span class="line">  }</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">});</span><br></pre></td></tr></table></figure>
+<p>&#x5F53;&#x7236;&#x7EA7;&#x6CA1;&#x6709;&#x4F20;&#x5165; props &#x65F6;&#xFF0C;getDefaultProps() &#x53EF;&#x4EE5;&#x4FDD;&#x8BC1; this.props.value &#x6709;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x6CE8;&#x610F; getDefaultProps &#x7684;&#x7ED3;&#x679C;&#x4F1A;&#x88AB; &#x7F13;&#x5B58;&#x3002;&#x5F97;&#x76CA;&#x4E8E;&#x6B64;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528; props&#xFF0C;&#x800C;&#x4E0D;&#x5FC5;&#x5199;&#x624B;&#x52A8;&#x7F16;&#x5199;&#x4E00;&#x4E9B;&#x91CD;&#x590D;&#x6216;&#x65E0;&#x610F;&#x4E49;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<h2 id="43-&#x4F20;&#x9012;-props&#x5C0F;&#x6280;&#x5DE7;"><a href="#4-3&#x3001;&#x4F20;&#x9012;-Props&#xFF1A;&#x5C0F;&#x6280;&#x5DE7;" class="headerlink" title="4.3&#x3001;&#x4F20;&#x9012; Props&#xFF1A;&#x5C0F;&#x6280;&#x5DE7;"></a>4.3&#x3001;&#x4F20;&#x9012; Props&#xFF1A;&#x5C0F;&#x6280;&#x5DE7;</h2><p>JSX &#x7684; spread &#x8BED;&#x6CD5;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> CheckLink = React.createClass({</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="comment">// &#x8FD9;&#x6837;&#x4F1A;&#x628A; CheckList &#x6240;&#x6709;&#x7684; props &#x590D;&#x5236;&#x5230; &lt;a&gt;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">a</span> {<span class="attr">...this.props</span>}&gt;</span>{&apos;&#x221A; &apos;}{this.props.children}<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>;</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">React.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">CheckLink</span> <span class="attr">href</span>=<span class="string">&quot;/checked.html&quot;</span>&gt;</span></span><br><span class="line">    Click here!</span><br><span class="line">  <span class="tag">&lt;/<span class="name">CheckLink</span>&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&apos;example&apos;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="44-&#x5355;&#x4E2A;&#x5B50;&#x7EA7;"><a href="#4-4&#x3001;&#x5355;&#x4E2A;&#x5B50;&#x7EA7;" class="headerlink" title="4.4&#x3001;&#x5355;&#x4E2A;&#x5B50;&#x7EA7;"></a>4.4&#x3001;&#x5355;&#x4E2A;&#x5B50;&#x7EA7;</h2><p>React.PropTypes.element &#x53EF;&#x4EE5;&#x9650;&#x5B9A;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;&#x5B50;&#x7EA7;&#x4F20;&#x5165;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyComponent = React.createClass({</span><br><span class="line">  propTypes: {</span><br><span class="line">    children: React.PropTypes.element.isRequired</span><br><span class="line">  },</span><br><span class="line"></span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        {this.props.children} // &#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x629B;&#x5F02;&#x5E38;&#x3002;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">});</span><br></pre></td></tr></table></figure>
+<h2 id="45-mixins"><a href="#4-5&#x3001;Mixins" class="headerlink" title="4.5&#x3001;Mixins"></a>4.5&#x3001;Mixins</h2><p>&#x6709;&#x65F6;&#x4E00;&#x4E9B;&#x590D;&#x6742;&#x7684;&#x7EC4;&#x4EF6;&#x95F4;&#x4E5F;&#x9700;&#x8981;&#x5171;&#x7528;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x3002;&#x6709;&#x65F6;&#x4F1A;&#x88AB;&#x79F0;&#x4E3A;<code>&#x8DE8;&#x5207;&#x9762;&#x5173;&#x6CE8;&#x70B9;</code>&#x3002;React &#x4F7F;&#x7528;<code>mixins</code>&#x6765;&#x89E3;&#x51B3;&#x8FD9;&#x7C7B;&#x95EE;&#x9898;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> SetIntervalMixin = {</span><br><span class="line">  componentWillMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">this</span>.intervals = [];</span><br><span class="line">  },</span><br><span class="line">  setInterval: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">this</span>.intervals.push(setInterval.apply(<span class="literal">null</span>, <span class="built_in">arguments</span>));</span><br><span class="line">  },</span><br><span class="line">  componentWillUnmount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">this</span>.intervals.map(clearInterval);</span><br><span class="line">  }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> TickTock = React.createClass({</span><br><span class="line">  mixins: [SetIntervalMixin], <span class="comment">// &#x5F15;&#x7528; mixin</span></span><br><span class="line">  getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> {seconds: <span class="number">0</span>};</span><br><span class="line">  },</span><br><span class="line">  componentDidMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">this</span>.setInterval(<span class="keyword">this</span>.tick, <span class="number">1000</span>); <span class="comment">// &#x8C03;&#x7528; mixin &#x7684;&#x65B9;&#x6CD5;</span></span><br><span class="line">  },</span><br><span class="line">  tick: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">this</span>.setState({seconds: <span class="keyword">this</span>.state.seconds + <span class="number">1</span>});</span><br><span class="line">  },</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        React has been running for {this.state.seconds} seconds.</span><br><span class="line">      <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">React.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">TickTock</span> /&gt;</span>,</span><br><span class="line">  document.getElementById(&apos;example&apos;)</span><br><span class="line">);</span></span><br></pre></td></tr></table></figure>
+<h1 id="5-&#x4F20;&#x9012;props"><a href="#5&#x3001;&#x4F20;&#x9012;Props" class="headerlink" title="5&#x3001;&#x4F20;&#x9012;Props"></a>5&#x3001;&#x4F20;&#x9012;Props</h1><p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; JSX &#x5C55;&#x5F00;&#x5C5E;&#x6027; &#x6765;&#x5408;&#x5E76;&#x73B0;&#x6709;&#x7684; props &#x548C;&#x5176;&#x5B83;&#x503C;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return &lt;Component {...this.props} more=&quot;values&quot; /&gt;;</span><br></pre></td></tr></table></figure>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x5BF9;&#x8C61;&#x8F85;&#x52A9;&#x65B9;&#x6CD5;&#x5982; ES6 &#x7684; Object.assign &#x6216; Underscore _.extend&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> Component(<span class="built_in">Object</span>.assign({}, <span class="keyword">this</span>.props, { more: <span class="string">&apos;values&apos;</span> }));</span><br></pre></td></tr></table></figure>
+<h2 id="51-&#x624B;&#x52A8;&#x4F20;&#x9012;"><a href="#5-1&#x3001;&#x624B;&#x52A8;&#x4F20;&#x9012;" class="headerlink" title="5.1&#x3001;&#x624B;&#x52A8;&#x4F20;&#x9012;"></a>5.1&#x3001;&#x624B;&#x52A8;&#x4F20;&#x9012;</h2><p>&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x4E0B;&#x4F60;&#x5E94;&#x8BE5;&#x663E;&#x5F0F;&#x5730;&#x5411;&#x4E0B;&#x4F20;&#x9012; props&#x3002;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x53EA;&#x516C;&#x5F00;&#x4F60;&#x8BA4;&#x4E3A;&#x662F;&#x5B89;&#x5168;&#x7684;&#x5185;&#x90E8; API &#x7684;&#x5B50;&#x96C6;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> FancyCheckbox = React.createClass({</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">var</span> fancyClass = <span class="keyword">this</span>.props.checked ? <span class="string">&apos;FancyChecked&apos;</span> : <span class="string">&apos;FancyUnchecked&apos;</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">{fancyClass}</span> <span class="attr">onClick</span>=<span class="string">{this.props.onClick}</span>&gt;</span></span><br><span class="line">        {this.props.children}</span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line">React.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="name">FancyCheckbox</span> <span class="attr">checked</span>=<span class="string">{true}</span> <span class="attr">onClick</span>=<span class="string">{console.log.bind(console)}</span>&gt;</span></span><br><span class="line">    Hello world!</span><br><span class="line">  <span class="tag">&lt;/<span class="name">FancyCheckbox</span>&gt;</span></span>,</span><br><span class="line">  <span class="built_in">document</span>.body</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="52-&#x5728;-jsx-&#x91CC;&#x4F7F;&#x7528;-&#x4F20;&#x9012;"><a href="#5-2&#x3001;&#x5728;-JSX-&#x91CC;&#x4F7F;&#x7528;-&#x2026;-&#x4F20;&#x9012;" class="headerlink" title="5.2&#x3001;&#x5728; JSX &#x91CC;&#x4F7F;&#x7528; &#x2026; &#x4F20;&#x9012;"></a>5.2&#x3001;&#x5728; JSX &#x91CC;&#x4F7F;&#x7528; &#x2026; &#x4F20;&#x9012;</h2><p>&#x6709;&#x65F6;&#x628A;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x90FD;&#x4F20;&#x4E0B;&#x53BB;&#x662F;&#x4E0D;&#x5B89;&#x5168;&#x6216;&#x5570;&#x55E6;&#x7684;&#x3002;&#x8FD9;&#x65F6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>&#x89E3;&#x6784;&#x8D4B;&#x503C;</code>&#x4E2D;&#x7684;&#x5269;&#x4F59;&#x5C5E;&#x6027;&#x7279;&#x6027;&#x6765;&#x628A;&#x672A;&#x77E5;&#x5C5E;&#x6027;&#x6279;&#x91CF;&#x63D0;&#x53D6;&#x51FA;&#x6765;&#x3002;</p>
+<p>&#x5217;&#x51FA;&#x6240;&#x6709;&#x8981;&#x5F53;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x540E;&#x9762;&#x8DDF;&#x7740;<code>...other</code>&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> { checked, ...other } = <span class="keyword">this</span>.props;</span><br></pre></td></tr></table></figure>
+<p>&#x8FD9;&#x6837;&#x80FD;&#x786E;&#x4FDD;&#x628A;&#x6240;&#x6709; props &#x4F20;&#x4E0B;&#x53BB;&#xFF0C;&#x9664;&#x4E86; &#x90A3;&#x4E9B;&#x5DF2;&#x7ECF;&#x88AB;&#x4F7F;&#x7528;&#x4E86;&#x7684;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> FancyCheckbox = React.createClass({</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">var</span> { checked, ...other } = <span class="keyword">this</span>.props;</span><br><span class="line">    <span class="keyword">var</span> fancyClass = checked ? <span class="string">&apos;FancyChecked&apos;</span> : <span class="string">&apos;FancyUnchecked&apos;</span>;</span><br><span class="line">    <span class="comment">// `other` &#x5305;&#x542B; { onClick: console.log } &#x4F46; checked &#x5C5E;&#x6027;&#x9664;&#x5916;</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span> {<span class="attr">...other</span>} <span class="attr">className</span>=<span class="string">{fancyClass}</span> /&gt;</span>  // &#x7EE7;&#x7EED;&#x5F80;&#x4E0B;&#x4F20;&#x9012;&#x5176;&#x4ED6;&#x7684;&#x5C5E;&#x6027;</span><br><span class="line">    );</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line">React.render(</span><br><span class="line">  <span class="tag">&lt;<span class="name">FancyCheckbox</span> <span class="attr">checked</span>=<span class="string">{true}</span> <span class="attr">onClick</span>=<span class="string">{console.log.bind(console)}</span>&gt;</span></span><br><span class="line">    Hello world!</span><br><span class="line">  <span class="tag">&lt;/<span class="name">FancyCheckbox</span>&gt;</span>,</span><br><span class="line">  document.body</span><br><span class="line">);</span></span><br></pre></td></tr></table></figure>
+<p>&#x5728;&#x4F20;&#x9012;&#x8FD9;&#x4E9B;&#x672A;&#x77E5;&#x7684;<code>other</code>&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x8981;&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x89E3;&#x6784;&#x8D4B;&#x503C;&#x6A21;&#x5F0F;&#x3002;</p>
+<h2 id="53-&#x4F7F;&#x7528;&#x548C;&#x4F20;&#x9012;&#x540C;&#x4E00;&#x4E2A;-prop"><a href="#5-3&#x3001;&#x4F7F;&#x7528;&#x548C;&#x4F20;&#x9012;&#x540C;&#x4E00;&#x4E2A;-Prop" class="headerlink" title="5.3&#x3001;&#x4F7F;&#x7528;&#x548C;&#x4F20;&#x9012;&#x540C;&#x4E00;&#x4E2A; Prop"></a>5.3&#x3001;&#x4F7F;&#x7528;&#x548C;&#x4F20;&#x9012;&#x540C;&#x4E00;&#x4E2A; Prop</h2><p>&#x5982;&#x679C;&#x7EC4;&#x4EF6;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x53C8;&#x8981;&#x5F80;&#x4E0B;&#x4F20;&#x9012;&#xFF0C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;<code>checked={checked}</code>&#x518D;&#x4F20;&#x4E00;&#x6B21;&#x3002;&#x8FD9;&#x6837;&#x505A;&#x6BD4;&#x4F20;&#x6574;&#x4E2A;<code>this.props</code>&#x5BF9;&#x8C61;&#x8981;&#x597D;&#xFF0C;&#x56E0;&#x4E3A;&#x66F4;&#x5229;&#x4E8E;&#x91CD;&#x6784;&#x548C;&#x8BED;&#x6CD5;&#x68C0;&#x67E5;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> FancyCheckbox = React.createClass({</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">    <span class="keyword">var</span> { checked, title, ...other } = <span class="keyword">this</span>.props;</span><br><span class="line">    <span class="keyword">var</span> fancyClass = checked ? <span class="string">&apos;FancyChecked&apos;</span> : <span class="string">&apos;FancyUnchecked&apos;</span>;</span><br><span class="line">    <span class="keyword">var</span> fancyTitle = checked ? <span class="string">&apos;X &apos;</span> + title : <span class="string">&apos;O &apos;</span> + title;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> {<span class="attr">...other</span>}  // &#x987A;&#x5E8F;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x628A; {<span class="attr">...other</span>} &#x653E;&#x5230; <span class="attr">JSX</span> <span class="attr">props</span> &#x524D;&#x9762;&#x4F1A;&#x4F7F;&#x5B83;&#x4E0D;&#x88AB;&#x8986;&#x76D6;&#x3002;</span><br><span class="line">          <span class="attr">checked</span>=<span class="string">{checked}</span></span><br><span class="line">          <span class="attr">className</span>=<span class="string">{fancyClass}</span></span><br><span class="line">          <span class="attr">type</span>=<span class="string">&quot;checkbox&quot;</span></span><br><span class="line">        /&gt;</span></span><br><span class="line">        {fancyTitle}</span><br><span class="line">      <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    );</span><br><span class="line">  }</span><br><span class="line">});</span></span><br></pre></td></tr></table></figure>
+<h2 id="54-&#x5269;&#x4F59;&#x5C5E;&#x6027;&#x548C;&#x5C55;&#x5F00;&#x5C5E;&#x6027;"><a href="#5-4&#x3001;&#x5269;&#x4F59;&#x5C5E;&#x6027;&#x548C;&#x5C55;&#x5F00;&#x5C5E;&#x6027;-&#x2026;" class="headerlink" title="5.4&#x3001;&#x5269;&#x4F59;&#x5C5E;&#x6027;&#x548C;&#x5C55;&#x5F00;&#x5C5E;&#x6027; &#x2026;"></a>5.4&#x3001;&#x5269;&#x4F59;&#x5C5E;&#x6027;&#x548C;&#x5C55;&#x5F00;&#x5C5E;&#x6027; &#x2026;</h2><p>&#x5269;&#x4F59;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x628A;&#x5BF9;&#x8C61;&#x5269;&#x4E0B;&#x7684;&#x5C5E;&#x6027;&#x63D0;&#x53D6;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x4F1A;&#x628A;&#x6240;&#x6709;&#x5728;&#x89E3;&#x6784;&#x8D4B;&#x503C;&#x4E2D;&#x5217;&#x51FA;&#x7684;&#x5C5E;&#x6027;&#x5254;&#x9664;&#x3002;</p>
+<p>&#x8FD9;&#x662F; ES7 &#x8349;&#x6848; &#x4E2D;&#x7684;&#x8BD5;&#x9A8C;&#x7279;&#x6027;&#x3002;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> { x, y, ...z } = { x: <span class="number">1</span>, y: <span class="number">2</span>, a: <span class="number">3</span>, b: <span class="number">4</span> };</span><br><span class="line">x; <span class="comment">// 1</span></span><br><span class="line">y; <span class="comment">// 2</span></span><br><span class="line">z; <span class="comment">// { a: 3, b: 4 }</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x4F7F;&#x7528; JSX &#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177; &#x914D;&#x5408; &#x2013;harmony &#x6807;&#x8BB0;&#x6765;&#x542F;&#x7528; ES7 &#x8BED;&#x6CD5;&#x3002;</p>
+</blockquote>
+<h2 id="55-&#x4F7F;&#x7528;-underscore-&#x6765;&#x4F20;&#x9012;"><a href="#5-5&#x3001;&#x4F7F;&#x7528;-Underscore-&#x6765;&#x4F20;&#x9012;" class="headerlink" title="5.5&#x3001;&#x4F7F;&#x7528; Underscore &#x6765;&#x4F20;&#x9012;"></a>5.5&#x3001;&#x4F7F;&#x7528; Underscore &#x6765;&#x4F20;&#x9012;</h2><p>&#x5728;&#x4E0D;&#x9002;&#x7528;JSX&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x5E93;&#x6765;&#x5B9E;&#x73B0;&#x76F8;&#x540C;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x5982;<code>Undersocre</code>&#x3002;</p>
+<h1 id="6-&#x8868;&#x5355;&#x7EC4;&#x4EF6;"><a href="#6&#x3001;&#x8868;&#x5355;&#x7EC4;&#x4EF6;" class="headerlink" title="6&#x3001;&#x8868;&#x5355;&#x7EC4;&#x4EF6;"></a>6&#x3001;&#x8868;&#x5355;&#x7EC4;&#x4EF6;</h1><blockquote>
+<p>&#x8868;&#x5355;&#x4E8B;&#x4EF6;&#xFF1A;onChange onInput onSubmit</p>
+</blockquote>
+<h2 id="61-&#x4EA4;&#x4E92;&#x5C5E;&#x6027;"><a href="#6-1&#x3001;&#x4EA4;&#x4E92;&#x5C5E;&#x6027;" class="headerlink" title="6.1&#x3001;&#x4EA4;&#x4E92;&#x5C5E;&#x6027;"></a>6.1&#x3001;&#x4EA4;&#x4E92;&#x5C5E;&#x6027;</h2><p>&#x8868;&#x5355;&#x7EC4;&#x4EF6;&#x652F;&#x6301;&#x51E0;&#x4E2A;&#x53D7;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x5F71;&#x54CD;&#x7684;&#x5C5E;&#x6027;&#xFF1A;</p>
+<ul>
+<li>value&#xFF0C;&#x7528;&#x4E8E; <input>&#x3001;<textarea> &#x7EC4;&#x4EF6;&#x3002;</textarea></li>
+<li>checked&#xFF0C;&#x7528;&#x4E8E;&#x7C7B;&#x578B;&#x4E3A; checkbox &#x6216;&#x8005; radio &#x7684; <input> &#x7EC4;&#x4EF6;&#x3002;</li>
+<li>selected&#xFF0C;&#x7528;&#x4E8E; <option> &#x7EC4;&#x4EF6;&#x3002;</option></li>
+</ul>
+<h2 id="62-&#x53D7;&#x9650;&#x7EC4;&#x4EF6;"><a href="#6-2&#x3001;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;" class="headerlink" title="6.2&#x3001;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;"></a>6.2&#x3001;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;</h2><p>&#x8BBE;&#x7F6E;&#x4E86; value &#x7684; <input> &#x662F;&#x4E00;&#x4E2A;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;&#x3002;&#x76F8;&#x5F53;&#x4E8E;&#x8BBE;&#x7F6E;&#x4E86;&#x53EA;&#x8BFB;&#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x60F3;&#x54CD;&#x5E94;&#x66F4;&#x65B0;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x503C;&#xFF0C;&#x5C31;&#x5F97;&#x4F7F;&#x7528; onChange &#x4E8B;&#x4EF6;&#xFF1A;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> {value: <span class="string">&apos;Hello!&apos;</span>};</span><br><span class="line">},</span><br><span class="line">handleChange: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>{</span><br><span class="line">  <span class="keyword">this</span>.setState({value: event.target.value});</span><br><span class="line">},</span><br><span class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">var</span> value = <span class="keyword">this</span>.state.value;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">{value}</span> <span class="attr">onChange</span>=<span class="string">{this.handleChange}</span> /&gt;</span>;</span><br><span class="line">}</span></span><br></pre></td></tr></table></figure>
+<h2 id="63-&#x4E0D;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;"><a href="#6-3&#x3001;&#x4E0D;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;" class="headerlink" title="6.3&#x3001;&#x4E0D;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;"></a>6.3&#x3001;&#x4E0D;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;</h2><p>&#x6CA1;&#x6709;&#x8BBE;&#x7F6E; value(&#x6216;&#x8005;&#x8BBE;&#x4E3A; null) &#x7684; <input> &#x7EC4;&#x4EF6;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x60F3;&#x7ED9;&#x7EC4;&#x4EF6;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x7684;&#x521D;&#x59CB;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; defaultValue &#x5C5E;&#x6027;&#x3002;</p>
+<h2 id="64-&#x9AD8;&#x7EA7;&#x4E3B;&#x9898;"><a href="#6-4&#x3001;&#x9AD8;&#x7EA7;&#x4E3B;&#x9898;" class="headerlink" title="6.4&#x3001;&#x9AD8;&#x7EA7;&#x4E3B;&#x9898;"></a>6.4&#x3001;&#x9AD8;&#x7EA7;&#x4E3B;&#x9898;</h2><h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x4F7F;&#x7528;&#x53D7;&#x9650;&#x7EC4;&#x4EF6;&#xFF1F;</h3><p>&#x5728; HTML &#x4E2D;&#x5C06;&#x6E32;&#x67D3;&#x521D;&#x59CB;&#x503C;&#x4E3A; Untitled &#x7684;&#x8F93;&#x5165;&#x6846;&#x3002;&#x7528;&#x6237;&#x6539;&#x53D8;&#x8F93;&#x5165;&#x6846;&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x8282;&#x70B9;&#x7684; value &#x5C5E;&#x6027;&#xFF08;property&#xFF09;&#x5C06;&#x968F;&#x4E4B;&#x53D8;&#x5316;&#xFF0C;&#x4F46;&#x662F; node.getAttribute(&#x2018;value&#x2019;) &#x8FD8;&#x662F;&#x4F1A;&#x8FD4;&#x56DE;&#x521D;&#x59CB;&#x8BBE;&#x7F6E;&#x7684;&#x503C; Untitled.</p>
+<p>&#x4E0E; HTML &#x4E0D;&#x540C;&#xFF0C;<code>React &#x7EC4;&#x4EF6;&#x5FC5;&#x987B;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x95F4;&#x70B9;&#x63CF;&#x7ED8;&#x89C6;&#x56FE;&#x7684;&#x72B6;&#x6001;</code>&#xFF0C;&#x800C;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x3002;&#x6BD4;&#x5982;&#x5728; React &#x4E2D;&#xFF1A;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;title&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Untitled&quot;</span> /&gt;</span>;</span><br><span class="line">}</span></span><br></pre></td></tr></table></figure>
+<p>&#x8BE5;&#x65B9;&#x6CD5;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x95F4;&#x70B9;&#x6E32;&#x67D3;&#x7EC4;&#x4EF6;&#x4EE5;&#x540E;&#xFF0C;&#x8F93;&#x5165;&#x6846;&#x7684;&#x503C;&#x5C31;&#x5E94;&#x8BE5;&#x59CB;&#x7EC8;&#x4E3A; Untitled&#x3002;</p>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;-&#x4F7F;&#x7528;-value-&#x5C5E;&#x6027;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;-&#x4F7F;&#x7528;-value-&#x5C5E;&#x6027;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;  &#x4F7F;&#x7528; value &#x5C5E;&#x6027;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48; <textarea> &#x4F7F;&#x7528; value &#x5C5E;&#x6027;&#xFF1F;</textarea></h3><p>React &#x662F; JavaScript&#xFF0C;&#x6CA1;&#x6709;&#x5B57;&#x7B26;&#x9650;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; \n &#x5B9E;&#x73B0;&#x6362;&#x884C;&#x3002;&#x7B80;&#x8A00;&#x4E4B;&#xFF0C;React &#x5DF2;&#x7ECF;&#x6709; value&#x3001;defaultValue &#x5C5E;&#x6027;&#xFF0C; &#x7EC4;&#x4EF6;&#x7684;&#x5B50;</p>
+<p>&#x5982;&#x679C;&#x975E;&#x8981;*&#x4F7F;&#x7528;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x6548;&#x679C;&#x548C;&#x4F7F;&#x7528; defaultValue &#x4E00;&#x6837;&#x3002;</p>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;-&#x4F7F;&#x7528;-value-&#x5C5E;&#x6027;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;-&#x4F7F;&#x7528;-value-&#x5C5E;&#x6027;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;  &#x4F7F;&#x7528; value &#x5C5E;&#x6027;"></a>&#x4E3A;&#x4EC0;&#x4E48; <select> &#x4F7F;&#x7528; value &#x5C5E;&#x6027;</select></h3><p>React &#x4E3A;&#x4E86;&#x66F4;&#x65B9;&#x9762;&#x7684;&#x63A7;&#x5236;&#x7EC4;&#x4EF6;&#x3002;</p>
+<blockquote>
+<p>&#x7ED9; value &#x5C5E;&#x6027;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x53EF;&#x4EE5;&#x9009;&#x4E2D;&#x591A;&#x4E2A;&#x9009;&#x9879;&#xFF1A;<select multiple="{true}" value="{[&apos;B&apos;," 'c']}="">&#x3002;</select></p>
+</blockquote>
+<h1 id="7-&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;"><a href="#7&#x3001;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;" class="headerlink" title="7&#x3001;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;"></a>7&#x3001;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;</h1><p>React&#x63D0;&#x4F9B;&#x4E86;&#x5F3A;&#x5927;&#x7684;&#x62BD;&#x8C61;&#xFF0C;&#x8BA9;&#x4F60;&#x5728;&#x5927;&#x591A;&#x6570;&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E2D;&#x4E0D;&#x518D;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;DOM&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x65F6;&#x4F60;&#x9700;&#x8981;&#x7B80;&#x5355;&#x5730;&#x8C03;&#x7528;&#x5E95;&#x5C42;&#x7684;API&#xFF0C;&#x6216;&#x8005;&#x501F;&#x52A9;&#x4E8E;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x6216;&#x5DF2;&#x6709;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<h2 id="71-&#x865A;&#x62DF;dom"><a href="#7-1&#x3001;&#x865A;&#x62DF;DOM" class="headerlink" title="7.1&#x3001;&#x865A;&#x62DF;DOM"></a>7.1&#x3001;&#x865A;&#x62DF;DOM</h2><p>React&#x662F;&#x5F88;&#x5FEB;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4ECE;&#x4E0D;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;DOM&#x3002;React&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x5FEB;&#x901F;&#x54CD;&#x5E94;&#x7684;DOM&#x63CF;&#x8FF0;&#x3002;render()&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;DOM&#x7684;&#x63CF;&#x8FF0;&#xFF0C;React&#x80FD;&#x591F;&#x5229;&#x7528;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x63CF;&#x8FF0;&#x6765;&#x5FEB;&#x901F;&#x5730;&#x8BA1;&#x7B97;&#x51FA;&#x5DEE;&#x5F02;&#xFF0C;&#x7136;&#x540E;&#x66F4;&#x65B0;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x7684;DOM&#x3002;</p>
+<p>&#x6709;&#x65F6;&#x4F60;&#x7B80;&#x5355;&#x5730;&#x9700;&#x8981;&#x8C03;&#x7528;&#x5E95;&#x5C42;&#x7684;API&#xFF0C;&#x6216;&#x8BB8;&#x501F;&#x52A9;&#x4E8E;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x7C7B;&#x4F3C;&#x4E8E;jQuery&#x63D2;&#x4EF6;&#x8FD9;&#x79CD;&#x5E93;&#x3002;React&#x4E3A;&#x4F60;&#x63D0;&#x4F9B;&#x4E86;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x5E95;&#x5C42;DOM API&#x7684;&#x9014;&#x5F84;&#x3002;</p>
+<h2 id="72-refs&#x548C;getdomnode"><a href="#7-2&#x3001;Refs&#x548C;getDOMNode" class="headerlink" title="7.2&#x3001;Refs&#x548C;getDOMNode()"></a>7.2&#x3001;Refs&#x548C;getDOMNode()</h2><p>&#x6BCF;&#x4E00;&#x4E2A;&#x6302;&#x8F7D;&#x7684;React&#x7EC4;&#x4EF6;&#x6709;&#x4E00;&#x4E2A;getDOMNode()&#x65B9;&#x6CD5;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x83B7;&#x53D6;&#x5BF9;&#x8BE5;&#x8282;&#x70B9;&#x7684;&#x5F15;&#x7528;&#x3002;</p>
+<p>getDOMNode()&#x4EC5;&#x5728;&#x6302;&#x8F7D;&#x7684;&#x7EC4;&#x4EF6;&#x4E0A;&#x6709;&#x6548;&#x3002;&#x5728;&#x521B;&#x5EFA;&#x7EC4;&#x4EF6;&#x7684;render()&#x51FD;&#x6570;&#x4E2D;&#x8C03;&#x7528;getDOMNode()&#xFF0C;&#x5C06;&#x4F1A;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x5230;React&#x7EC4;&#x4EF6;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;this&#x6765;&#x5F97;&#x5230;&#x5F53;&#x524D;&#x7684;React&#x7EC4;&#x4EF6;&#xFF0C;&#x6216;&#x8005;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;refs&#x6765;&#x6307;&#x5411;&#x4E00;&#x4E2A;&#x4F60;&#x62E5;&#x6709;&#x7684;&#x7EC4;&#x4EF6;&#x3002;</p>
+<h2 id="73-&#x7EC4;&#x4EF6;&#x751F;&#x547D;&#x5468;&#x671F;"><a href="#7-3&#x3001;&#x7EC4;&#x4EF6;&#x751F;&#x547D;&#x5468;&#x671F;" class="headerlink" title="7.3&#x3001;&#x7EC4;&#x4EF6;&#x751F;&#x547D;&#x5468;&#x671F;"></a>7.3&#x3001;&#x7EC4;&#x4EF6;&#x751F;&#x547D;&#x5468;&#x671F;</h2><ul>
+<li>&#x6302;&#x8F7D;&#xFF1A; &#x7EC4;&#x4EF6;&#x88AB;&#x63D2;&#x5165;&#x5230;DOM&#x4E2D;&#x3002;</li>
+<li>&#x66F4;&#x65B0;&#xFF1A; &#x7EC4;&#x4EF6;&#x88AB;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#xFF0C;&#x67E5;&#x660E;DOM&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x5237;&#x65B0;&#x3002;</li>
+<li>&#x79FB;&#x9664;&#xFF1A; &#x7EC4;&#x4EF6;&#x4ECE;DOM&#x4E2D;&#x79FB;&#x9664;&#x3002;</li>
+</ul>
+<h3 id="&#x6302;&#x8F7D;"><a href="#&#x6302;&#x8F7D;" class="headerlink" title="&#x6302;&#x8F7D;"></a>&#x6302;&#x8F7D;</h3><blockquote>
+<p><code>getInitialState()</code> object&#x5728;&#x7EC4;&#x4EF6;&#x88AB;&#x6302;&#x8F7D;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x3002;&#x72B6;&#x6001;&#x5316;&#x7684;&#x7EC4;&#x4EF6;&#x5E94;&#x8BE5;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD4;&#x56DE;&#x521D;&#x59CB;&#x7684;state&#x6570;&#x636E;&#x3002;<br><code>componentWillMount()</code> &#x5728;&#x6302;&#x8F7D;&#x53D1;&#x751F;&#x4E4B;&#x524D;&#x7ACB;&#x5373;&#x88AB;&#x8C03;&#x7528;&#x3002;<br><code>componentDidMount()</code> &#x5728;&#x6302;&#x8F7D;&#x7ED3;&#x675F;&#x4E4B;&#x540E;&#x9A6C;&#x4E0A;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x9700;&#x8981;DOM&#x8282;&#x70B9;&#x7684;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#x5E94;&#x8BE5;&#x653E;&#x5728;&#x8FD9;&#x91CC;&#x3002;</p>
+</blockquote>
+<h3 id="&#x66F4;&#x65B0;"><a href="#&#x66F4;&#x65B0;" class="headerlink" title="&#x66F4;&#x65B0;"></a>&#x66F4;&#x65B0;</h3><blockquote>
+<p><code>componentWillReceiveProps(object nextProps)</code>&#x5F53;&#x4E00;&#x4E2A;&#x6302;&#x8F7D;&#x7684;&#x7EC4;&#x4EF6;&#x63A5;&#x6536;&#x5230;&#x65B0;&#x7684;props&#x7684;&#x65F6;&#x5019;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x5E94;&#x8BE5;&#x7528;&#x4E8E;&#x6BD4;&#x8F83;this.props&#x548C;nextProps&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;this.setState()&#x6765;&#x6539;&#x53D8;state&#x3002;<br><code>shouldComponentUpdate(object nextProps, object nextState)</code> boolean&#x5F53;&#x7EC4;&#x4EF6;&#x505A;&#x51FA;&#x662F;&#x5426;&#x8981;&#x66F4;&#x65B0;DOM&#x7684;&#x51B3;&#x5B9A;&#x7684;&#x65F6;&#x5019;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x5B9E;&#x73B0;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x4F18;&#x5316;this.props&#x548C;nextProps&#xFF0C;&#x4EE5;&#x53CA;this.state&#x548C;nextState&#x7684;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x9700;&#x8981;React&#x66F4;&#x65B0;DOM&#xFF0C;&#x5219;&#x8FD4;&#x56DE;false&#x3002;<br><code>componentWillUpdate(object nextProps, object nextState)</code> &#x5728;&#x66F4;&#x65B0;&#x53D1;&#x751F;&#x4E4B;&#x524D;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x8C03;&#x7528;this.setState()&#x3002;<br><code>componentDidUpdate(object prevProps, object prevState)</code> &#x5728;&#x66F4;&#x65B0;&#x53D1;&#x751F;&#x4E4B;&#x540E;&#x8C03;&#x7528;&#x3002;</p>
+</blockquote>
+<h3 id="&#x79FB;&#x9664;"><a href="#&#x79FB;&#x9664;" class="headerlink" title="&#x79FB;&#x9664;"></a>&#x79FB;&#x9664;</h3><p><code>componentWillUnmount()</code>&#x5728;&#x7EC4;&#x4EF6;&#x79FB;&#x9664;&#x548C;&#x9500;&#x6BC1;&#x4E4B;&#x524D;&#x88AB;&#x8C03;&#x7528;&#x3002;&#x6E05;&#x7406;&#x5DE5;&#x4F5C;&#x5E94;&#x8BE5;&#x653E;&#x5728;&#x8FD9;&#x91CC;&#x3002;</p>
+<h3 id="&#x6302;&#x8F7D;&#x7684;&#x65B9;&#x6CD5;mounted-methods"><a href="#&#x6302;&#x8F7D;&#x7684;&#x65B9;&#x6CD5;&#xFF08;Mounted-Methods&#xFF09;" class="headerlink" title="&#x6302;&#x8F7D;&#x7684;&#x65B9;&#x6CD5;&#xFF08;Mounted Methods&#xFF09;"></a>&#x6302;&#x8F7D;&#x7684;&#x65B9;&#x6CD5;&#xFF08;Mounted Methods&#xFF09;</h3><p>&#x6302;&#x8F7D;&#x7684;&#x590D;&#x5408;&#x7EC4;&#x4EF6;&#x4E5F;&#x652F;&#x6301;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li><code>getDOMNode()</code>: DOMElement&#x53EF;&#x4EE5;&#x5728;&#x4EFB;&#x4F55;&#x6302;&#x8F7D;&#x7684;&#x7EC4;&#x4EF6;&#x4E0A;&#x9762;&#x8C03;&#x7528;&#xFF0C;&#x7528;&#x4E8E;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x5B83;&#x7684;&#x6E32;&#x67D3;DOM&#x8282;&#x70B9;&#x7684;&#x5F15;&#x7528;&#x3002;</li>
+<li><code>forceUpdate()</code>: &#x5F53;&#x4F60;&#x77E5;&#x9053;&#x4E00;&#x4E9B;&#x5F88;&#x6DF1;&#x7684;&#x7EC4;&#x4EF6;state&#x5DF2;&#x7ECF;&#x6539;&#x53D8;&#x4E86;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8BE5;&#x7EC4;&#x4EF6;&#x4E0A;&#x9762;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4F7F;&#x7528;this.setState()&#x3002;</li>
+</ul>
+<h2 id="74-&#x8DE8;&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;&#x548C;&#x517C;&#x5BB9;&#x4EE3;&#x7801;"><a href="#7-4&#x3001;&#x8DE8;&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;&#x548C;&#x517C;&#x5BB9;&#x4EE3;&#x7801;" class="headerlink" title="7.4&#x3001;&#x8DE8;&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;&#x548C;&#x517C;&#x5BB9;&#x4EE3;&#x7801;"></a>7.4&#x3001;&#x8DE8;&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;&#x548C;&#x517C;&#x5BB9;&#x4EE3;&#x7801;</h2><p>&#x5728;Facebook&#xFF0C;&#x6211;&#x4EEC;&#x652F;&#x6301;&#x4F4E;&#x7248;&#x672C;&#x7684;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x5305;&#x62EC;IE8&#x3002;</p>
+<h1 id="8-&#x5173;&#x4E8E;refs&#x7684;&#x66F4;&#x591A;&#x5185;&#x5BB9;"><a href="#8&#x3001;&#x5173;&#x4E8E;Refs&#x7684;&#x66F4;&#x591A;&#x5185;&#x5BB9;" class="headerlink" title="8&#x3001;&#x5173;&#x4E8E;Refs&#x7684;&#x66F4;&#x591A;&#x5185;&#x5BB9;"></a>8&#x3001;&#x5173;&#x4E8E;Refs&#x7684;&#x66F4;&#x591A;&#x5185;&#x5BB9;</h1><p>input &#x5143;&#x7D20;&#x4E00;&#x4E9B;&#x4E1C;&#x897F; - &#x8FD9;&#x4E9B;&#x4E1C;&#x897F;&#x8FC7;&#x4F1A;&#x513F;&#xFF08;onClick&#xFF0C;onChange&#x4E8B;&#x4EF6;&#x540E;&#xFF09;&#x4E4B;&#x540E;&#x5DF2;&#x65E0;&#x6CD5;&#x4ECE;&#x5B83;&#x7684; props &#x4E2D;&#x63A8;&#x7B97;&#x51FA;&#x6765;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x573A;&#x666F;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x201C;&#x901A;&#x77E5;&#x201D; input &#x5143;&#x7D20;&#xFF0C;&#x73B0;&#x5728;&#x5E94;&#x8BE5;&#x5904;&#x4E8E;&#x83B7;&#x53D6;&#x7126;&#x70B9;&#x72B6;&#x6001;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x6B64;&#x5904;&#x6709;&#x4E00;&#x4E9B;&#x969C;&#x788D;&#x3002;&#x4ECE; render() &#x4E2D;&#x8FD4;&#x56DE;&#x7684;&#x5185;&#x5BB9;&#x5E76;&#x4E0D;&#x662F;&#x4F60;&#x5B9E;&#x9645;&#x521B;&#x5EFA;&#x7684;&#x5B50;&#x7EC4;&#x4EF6;&#x7684;&#x7EC4;&#x5408;&#xFF0C;&#x4EC5;&#x4EC5;&#x662F;&#x4E00;&#x4E2A;&#x67D0;&#x4E00;&#x523B;&#x67D0;&#x4E2A;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x7684; &#x63CF;&#x8FF0; - &#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x3002;</p>
+<blockquote>
+<p>&#x8BB0;&#x4F4F;&#xFF0C;&#x4ECE; render() &#x4E2D;&#x8FD4;&#x56DE;&#x7684;&#x5185;&#x5BB9;&#x5E76;&#x4E0D;&#x662F;&#x5B9E;&#x9645;&#x6E32;&#x67D3;&#x51FA;&#x6765;&#x7684;&#x5B50;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x3002;&#x4ECE; render() &#x8FD4;&#x56DE;&#x7684;&#x4EC5;&#x4EC5;&#x662F;&#x5B50;&#x7EC4;&#x4EF6;&#x5C42;&#x7EA7;&#x6811;&#x5B9E;&#x4F8B;&#x5728;&#x7279;&#x5B9A;&#x65F6;&#x95F4;&#x7684;&#x4E00;&#x4E2A;&#x63CF;&#x8FF0;&#x3002;</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// counterexample: DO NOT DO THIS!</span></span><br><span class="line">render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{</span><br><span class="line">  <span class="keyword">var</span> myInput = <span class="xml"><span class="tag">&lt;<span class="name">input</span> /&gt;</span>;          // I&apos;m going to try to call methods on this</span><br><span class="line">  this.rememberThisInput = myInput; // input at some point in the future! YAY!</span><br><span class="line">  return (</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      {myInput}</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  );</span><br><span class="line">}</span></span><br></pre></td></tr></table></figure>
+<p>&#x5728;&#x8FD9;&#x4E2A;&#x53CD;&#x4F8B;&#x4E2D;&#xFF0C;<input> &#x4EC5;&#x4EC5;&#x662F;&#x4E00;&#x4E2A; <input> &#x7EC4;&#x4EF6;&#x7684;&#x63CF;&#x8FF0;&#x3002;&#x8BE5;&#x63CF;&#x8FF0;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684; <input> &#x7684;<code>&#x652F;&#x6491;&#x5B9E;&#x4F8B;</code>&#xFF08; backing instance &#xFF09;&#x3002;&#x4E3A;&#x4E86;&#x83B7;&#x53D6;&#x771F;&#x6B63;&#x7684;Input&#x7684;&#x652F;&#x6491;&#x5B9E;&#x529B;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5230;ref&#x5C5E;&#x6027;</p>
+<h2 id="81-ref-&#x5C5E;&#x6027;"><a href="#8-1&#x3001;ref-&#x5C5E;&#x6027;" class="headerlink" title="8.1&#x3001;ref &#x5C5E;&#x6027;"></a>8.1&#x3001;ref &#x5C5E;&#x6027;</h2><p>React &#x652F;&#x6301;&#x4E00;&#x79CD;&#x975E;&#x5E38;&#x7279;&#x6B8A;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x7ED1;&#x5B9A;&#x5230; render() &#x8F93;&#x51FA;&#x7684;&#x4EFB;&#x4F55;&#x7EC4;&#x4EF6;&#x4E0A;&#x53BB;&#x3002;&#x8FD9;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x5C5E;&#x6027;&#x5141;&#x8BB8;&#x4F60;&#x5F15;&#x7528; render() &#x8FD4;&#x56DE;&#x7684;&#x76F8;&#x5E94;&#x7684;<code>&#x652F;&#x6491;&#x5B9E;&#x4F8B;</code>&#xFF08; backing instance &#xFF09;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x95F4;&#x603B;&#x662F;&#x62FF;&#x5230;&#x6B63;&#x786E;&#x7684;&#x5B9E;&#x4F8B;&#x3002;</p>
+<ul>
+<li>1&#x3001;&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A; ref &#x5C5E;&#x6027;&#x5230; render &#x8FD4;&#x56DE;&#x7684;&#x4E1C;&#x897F;&#x4E0A;&#x9762;&#x53BB;</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input ref=<span class="string">&quot;myInput&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2&#x3001;&#x5728;&#x5176;&#x5B83;&#x4EE3;&#x7801;&#x4E2D;&#xFF08;&#x5178;&#x578B;&#x5730;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x4EE3;&#x7801;&#xFF09;&#xFF0C;&#x901A;&#x8FC7; this.refs &#x83B7;&#x53D6;&#x652F;&#x6491;&#x5B9E;&#x4F8B;</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.refs.myInput</span><br></pre></td></tr></table></figure>
+<h1 id="9-&#x5DE5;&#x5177;&#x96C6;&#x6210;"><a href="#9&#x3001;&#x5DE5;&#x5177;&#x96C6;&#x6210;" class="headerlink" title="9&#x3001;&#x5DE5;&#x5177;&#x96C6;&#x6210;"></a>9&#x3001;&#x5DE5;&#x5177;&#x96C6;&#x6210;</h1><h2 id="91-react"><a href="#9-1&#x3001;React" class="headerlink" title="9.1&#x3001;React"></a>9.1&#x3001;React</h2><h2 id="92-jsx"><a href="#9-2&#x3001;JSX" class="headerlink" title="9.2&#x3001;JSX"></a>9.2&#x3001;JSX</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/13/Java/spring/2016-03-13 PropertyPlaceholderConfigurer的应用/" itemprop="url">
                   PropertyPlaceholderConfigurer的应用
                 </a>
@@ -384,7 +682,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-13T00:00:00+08:00" content="2016-03-13">
               2016-03-13
             </time>
@@ -396,7 +694,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index">
@@ -406,7 +704,7 @@
 
                 
                 
-                  , 
+                  . 
                 
 
               
@@ -511,7 +809,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-12T00:00:00+08:00" content="2016-03-12">
               2016-03-12
             </time>
@@ -523,7 +821,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index">
@@ -533,7 +831,7 @@
 
                 
                 
-                  , 
+                  . 
                 
 
               
@@ -636,7 +934,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-11T00:00:00+08:00" content="2016-03-11">
               2016-03-11
             </time>
@@ -648,7 +946,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/版本控制/" itemprop="url" rel="index">
@@ -756,6 +1054,124 @@ undefined
             
               
                 
+                <a class="post-title-link" href="/2016/03/10/IntelliJ IDEA插件安装/" itemprop="url">
+                  IntelliJ IDEA插件安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-03-10T00:00:00+08:00" content="2016-03-10">
+              2016-03-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/IDE/" itemprop="url" rel="index">
+                    <span itemprop="name">IDE</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="mybatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><p><a href="http://blog.csdn.net/pk490525/article/details/16978879" target="_blank" rel="external">IntelliJ idea mybatis&#x63D2;&#x4EF6;&#x5B89;&#x88C5;</a></p>
+<h1 id="jrebel"><a href="#JRebel" class="headerlink" title="JRebel"></a>JRebel</h1><p><a href="http://www.cnblogs.com/challengeof/p/4794282.html" target="_blank" rel="external">Mac + IDEA + JRebel&#x7834;&#x89E3;&#x65B9;&#x6CD5;</a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/jrebel-setup.html" target="_blank" rel="external">IntelliJ IDEA &#x7684; Java &#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6; JRebel &#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/10/IntelliJ IDEA Mac常用 快捷键/" itemprop="url">
                   IntellJ IDEA Mac常用快捷键
                 </a>
@@ -769,7 +1185,7 @@ undefined
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-03-10T00:00:00+08:00" content="2016-03-10">
               2016-03-10
             </time>
@@ -781,7 +1197,7 @@ undefined
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/IDE/" itemprop="url" rel="index">
@@ -897,124 +1313,6 @@ undefined
             
               
                 
-                <a class="post-title-link" href="/2016/03/10/IntelliJ IDEA插件安装/" itemprop="url">
-                  IntelliJ IDEA插件安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-03-10T00:00:00+08:00" content="2016-03-10">
-              2016-03-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IDE/" itemprop="url" rel="index">
-                    <span itemprop="name">IDE</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h1 id="mybatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><p><a href="http://blog.csdn.net/pk490525/article/details/16978879" target="_blank" rel="external">IntelliJ idea mybatis&#x63D2;&#x4EF6;&#x5B89;&#x88C5;</a></p>
-<h1 id="jrebel"><a href="#JRebel" class="headerlink" title="JRebel"></a>JRebel</h1><p><a href="http://www.cnblogs.com/challengeof/p/4794282.html" target="_blank" rel="external">Mac + IDEA + JRebel&#x7834;&#x89E3;&#x65B9;&#x6CD5;</a></p>
-<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/jrebel-setup.html" target="_blank" rel="external">IntelliJ IDEA &#x7684; Java &#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6; JRebel &#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/02/25/others/产品销售市场的各个阶段/" itemprop="url">
                   产品销售市场的各个阶段
                 </a>
@@ -1028,7 +1326,7 @@ undefined
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-02-25T00:00:00+08:00" content="2016-02-25">
               2016-02-25
             </time>
@@ -1040,7 +1338,7 @@ undefined
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/杂谈/" itemprop="url" rel="index">
@@ -1150,7 +1448,7 @@ undefined
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-02-18T00:00:00+08:00" content="2016-02-18">
               2016-02-18
             </time>
@@ -1162,7 +1460,7 @@ undefined
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/版本控制/" itemprop="url" rel="index">
@@ -1266,7 +1564,7 @@ undefined
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-02-11T00:00:00+08:00" content="2016-02-11">
               2016-02-11
             </time>
@@ -1278,7 +1576,7 @@ undefined
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Mac/" itemprop="url" rel="index">
@@ -1365,151 +1663,6 @@ undefined
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/03/IntelliJ IDEA系列1/" itemprop="url">
-                  IntelliJ IDEA系列1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-02-03T00:00:00+08:00" content="2016-02-03">
-              2016-02-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IDE/" itemprop="url" rel="index">
-                    <span itemprop="name">IDE</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h2 id="&#x4FEE;&#x6539;&#x4E3B;&#x9898;"><a href="#&#x4FEE;&#x6539;&#x4E3B;&#x9898;" class="headerlink" title="&#x4FEE;&#x6539;&#x4E3B;&#x9898;"></a>&#x4FEE;&#x6539;&#x4E3B;&#x9898;</h2><p>IntelliJ IDEA&#x5BF9;&#x76EE;&#x5F55;&#x505A;&#x4E86;&#x8C03;&#x6574;&#xFF0C;&#x628A;&#x504F;&#x597D;&#x8BBE;&#x7F6E;&#x8C03;&#x6574;&#x5230;&#x4E86;&#x5982;&#x4E0B;&#x76EE;&#x5F55;&#xFF1A;</p>
-<p>IntelliJ IDEA &#x2013;&gt; preferences(&#x5FEB;&#x6377;&#x952E;&#xFF1A;&#x2318;,) &#x2013;&gt; Appearance &amp; Behavior &#x2013;&gt; Appearance &#x2013;&gt; UI Options &#x2013;&gt; Theme</p>
-<p>&#x65E7;&#x7248;&#x672C;&#x7684;&#x53EF;&#x4EE5;&#x5728;<code>file --&gt; Settings&#x4E2D;&#x627E;&#x5230;</code>&#x3002;</p>
-<h2 id="&#x7F16;&#x8BD1;"><a href="#&#x7F16;&#x8BD1;" class="headerlink" title="&#x7F16;&#x8BD1;"></a>&#x7F16;&#x8BD1;</h2><p>&#x6709;&#x5982;&#x4E0B;&#x4E09;&#x79CD;&#x7F16;&#x8BD1;&#xFF1A;</p>
-<ul>
-<li>Compile</li>
-</ul>
-<p>&#x5BF9;&#x7279;&#x5B9A;&#x7684;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x5F3A;&#x5236;&#x7F16;&#x8BD1;&#xFF1B;</p>
-<ul>
-<li>Rebuild</li>
-</ul>
-<p>&#x5BF9;&#x9009;&#x62E9;&#x7684;project&#x8FDB;&#x884C;&#x5F3A;&#x5236;&#x7F16;&#x8BD1;&#xFF1B;</p>
-<ul>
-<li>Make</li>
-</ul>
-<p>&#x5BF9;&#x9009;&#x5B9A;&#x7684;Project&#x6216;&#x8005;Module&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#xFF0C;&#x53EA;&#x7F16;&#x8BD1;&#x6539;&#x52A8;&#x8FC7;&#x7684;&#x6587;&#x4EF6;&#xFF1B;</p>
-<p><code>shift + command + F9</code>  compile one class.</p>
-<h3 id="run&#x914D;&#x7F6E;"><a href="#Run&#x914D;&#x7F6E;" class="headerlink" title="Run&#x914D;&#x7F6E;"></a>Run&#x914D;&#x7F6E;</h3><p>Run &#x2013;&gt; Edit Configurations</p>
-<h2 id="&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x8BBE;&#x7F6E;"><a href="#&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x8BBE;&#x7F6E;" class="headerlink" title="&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x8BBE;&#x7F6E;"></a>&#x9879;&#x76EE;&#x7ED3;&#x6784;&#x8BBE;&#x7F6E;</h2><p>file &#x2013;&gt; project structrue(&#x5FEB;&#x6377;&#x952E;&#xFF1A;&#x2318;;)<br>&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x7BA1;&#x7406;SDK&#x7248;&#x672C;(Platform Settings &#x2013;&gt; SDKs)&#xFF0C;&#x8BBE;&#x7F6E;&#x9879;&#x76EE;SDK(Project Settings &#x2013;&gt; Project)&#x3002;</p>
-<h3 id="language-level"><a href="#language-level" class="headerlink" title="language level"></a>language level</h3><p>&#x5BF9;&#x4E8E;&#x5927;&#x578B;&#x9879;&#x76EE;&#xFF0C;&#x5404;&#x4E2A; Module &#x7528;&#x5230;&#x7684; SDK &#x548C; language level &#x5F88;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x5404;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#xFF0C;IntelliJ IDEA &#x5BF9;&#x6B64;&#x4E5F;&#x8FDB;&#x884C;&#x4E86;&#x652F;&#x6301;&#x3002;(Project Settings &#x2013;&gt; Modules &#x2013;&gt; Sources &#x2013;&gt; Lauguage Level&#x2026;)</p>
-<h2 id="&#x7F16;&#x8F91;"><a href="#&#x7F16;&#x8F91;" class="headerlink" title="&#x7F16;&#x8F91;"></a>&#x7F16;&#x8F91;</h2><h3 id="&#x5B9E;&#x65F6;&#x4EE3;&#x7801;&#x6A21;&#x677F;"><a href="#&#x5B9E;&#x65F6;&#x4EE3;&#x7801;&#x6A21;&#x677F;" class="headerlink" title="&#x5B9E;&#x65F6;&#x4EE3;&#x7801;&#x6A21;&#x677F;"></a>&#x5B9E;&#x65F6;&#x4EE3;&#x7801;&#x6A21;&#x677F;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IntelliJ IDEA --&gt; Editor --&gt; Live Template</span><br></pre></td></tr></table></figure>
-<p>&#x63D0;&#x793A;&#x5FEB;&#x6377;&#x952E;&#xFF1A;<code>Tab</code> &#x548C; <code>Ctrl + J</code></p>
-<h3 id="&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;"><a href="#&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;" class="headerlink" title="&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;"></a>&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Prefrences --&gt; Editor --&gt; File and code Template</span><br></pre></td></tr></table></figure>
-<p>IntelliJ IDEA &#x7684;&#x6587;&#x4EF6;&#x4EE3;&#x7801;&#x6A21;&#x677F;&#x662F;&#x53EF;&#x4EE5;&#x7528;Velocity Template Language&#x8FDB;&#x884C;&#x4E66;&#x5199;&#x7684;&#xFF1B;</p>
-<h3 id="emmet&#x7684;&#x4F7F;&#x7528;"><a href="#Emmet&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="Emmet&#x7684;&#x4F7F;&#x7528;"></a>Emmet&#x7684;&#x4F7F;&#x7528;</h3><p>&#x8BE5;&#x5DE5;&#x5177;&#x5E38;&#x7528;&#x4E8E;&#x524D;&#x7AEF;&#x4EE3;&#x7801;&#x7684;&#x81EA;&#x52A8;&#x751F;&#x6210;&#xFF1B;</p>
-<h3 id="postfix-completion&#x7684;&#x4F7F;&#x7528;"><a href="#Postfix-Completion&#x7684;&#x4F7F;&#x7528;" class="headerlink" title="Postfix Completion&#x7684;&#x4F7F;&#x7528;"></a>Postfix Completion&#x7684;&#x4F7F;&#x7528;</h3><p>&#x4EE3;&#x7801;&#x6A21;&#x677F;&#x7684;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x529F;&#x80FD;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences --&gt; Editor --&gt; General --&gt; Postfix Completion</span><br></pre></td></tr></table></figure>
-<h2 id="&#x63D2;&#x4EF6;&#x8BB2;&#x89E3;"><a href="#&#x63D2;&#x4EF6;&#x8BB2;&#x89E3;" class="headerlink" title="&#x63D2;&#x4EF6;&#x8BB2;&#x89E3;"></a>&#x63D2;&#x4EF6;&#x8BB2;&#x89E3;</h2><p><a href="https://plugins.jetbrains.com/" target="_blank" rel="external">&#x5B98;&#x65B9;&#x63D2;&#x4EF6;&#x5E93;</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preferences --&gt; Plugins</span><br></pre></td></tr></table></figure></p>
-<h2 id="eclipse&#x7684;java-web&#x9879;&#x76EE;&#x73AF;&#x5883;&#x642D;&#x5EFA;"><a href="#Eclipse&#x7684;Java-Web&#x9879;&#x76EE;&#x73AF;&#x5883;&#x642D;&#x5EFA;" class="headerlink" title="Eclipse&#x7684;Java Web&#x9879;&#x76EE;&#x73AF;&#x5883;&#x642D;&#x5EFA;"></a>Eclipse&#x7684;Java Web&#x9879;&#x76EE;&#x73AF;&#x5883;&#x642D;&#x5EFA;</h2><h2 id="maven&#x9879;&#x76EE;&#x4ECB;&#x7ECD;"><a href="#Maven&#x9879;&#x76EE;&#x4ECB;&#x7ECD;" class="headerlink" title="Maven&#x9879;&#x76EE;&#x4ECB;&#x7ECD;"></a>Maven&#x9879;&#x76EE;&#x4ECB;&#x7ECD;</h2><h2 id="debug&#x8BB2;&#x89E3;"><a href="#Debug&#x8BB2;&#x89E3;" class="headerlink" title="Debug&#x8BB2;&#x89E3;"></a>Debug&#x8BB2;&#x89E3;</h2><h2 id="&#x91CD;&#x6784;&#x8BB2;&#x89E3;"><a href="#&#x91CD;&#x6784;&#x8BB2;&#x89E3;" class="headerlink" title="&#x91CD;&#x6784;&#x8BB2;&#x89E3;"></a>&#x91CD;&#x6784;&#x8BB2;&#x89E3;</h2><h2 id="&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;"><a href="#&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;"></a>&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5DE5;&#x5177;</h2><h2 id="intellij-idea&#x5E38;&#x7528;&#x8BBE;&#x7F6E;"><a href="#IntelliJ-IDEA&#x5E38;&#x7528;&#x8BBE;&#x7F6E;" class="headerlink" title="IntelliJ IDEA&#x5E38;&#x7528;&#x8BBE;&#x7F6E;"></a>IntelliJ IDEA&#x5E38;&#x7528;&#x8BBE;&#x7F6E;</h2><h2 id="intellij-idea&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;win-linux"><a href="#IntelliJ-IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Win-Linux&#xFF09;" class="headerlink" title="IntelliJ IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Win + Linux&#xFF09;"></a>IntelliJ IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Win + Linux&#xFF09;</h2><h2 id="intellij-idea&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;mac"><a href="#IntelliJ-IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Mac&#xFF09;" class="headerlink" title="IntelliJ IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Mac&#xFF09;"></a>IntelliJ IDEA&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#x8BB2;&#x89E3;&#xFF08;Mac&#xFF09;</h2><h2 id="intellij-idea&#x7684;java&#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6;jrebel&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;"><a href="#IntelliJ-IDEA&#x7684;Java&#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6;JRebel&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;" class="headerlink" title="IntelliJ IDEA&#x7684;Java&#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6;JRebel&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;"></a>IntelliJ IDEA&#x7684;Java&#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6;JRebel&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;</h2><h2 id="references"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://github.com/judasn/IntelliJ-IDEA-Tutorial" target="_blank" rel="external">https://github.com/judasn/IntelliJ-IDEA-Tutorial</a></p>
-<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/" target="_blank" rel="external">IntelliJ IDEA&#x4F7F;&#x7528;&#x6559;&#x7A0B;</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1555,8 +1708,8 @@ undefined
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">95</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">96</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1564,7 +1717,7 @@ undefined
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -1573,7 +1726,7 @@ undefined
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">44</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1617,7 +1770,7 @@ undefined
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
