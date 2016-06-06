@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next pisces use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -99,8 +99,8 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -137,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container one-collumn sidebar-position-right 
    page-home 
  ">
     <div class="headband"></div>
@@ -519,6 +519,127 @@
             
               
                 
+                <a class="post-title-link" href="/2015/03/10/Java/热部署/" itemprop="url">
+                  Resin中的热部署
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-03-10T00:00:00+08:00" content="2015-03-10">
+              2015-03-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h3 id="resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"><a href="#Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;" class="headerlink" title="Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"></a>Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;</h3><p>&#x5728;resin.conf&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;JVM&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF1A;</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x8868;&#x793A;&#x542F;&#x52A8;debug&#x6A21;&#x5F0F;&#xFF0C;&#x5F53;&#x66F4;&#x65B0;&#x4E86;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;reloading class&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7;JVM&#x7684;HotSwap&#x529F;&#x80FD;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x7684;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">&#x7531;&#x4E8E;JVM&#x7684;HotSwap&#x4E0D;&#x652F;&#x6301;&#x65B0;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x7684;&#xFF0C;Resin&#x4F1A;&#x81EA;&#x52A8;&#x6539;&#x7528;Hot deploy&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x3002;</span><br><span class="line"></span><br><span class="line">&#x5F53;&#x53BB;&#x6389;&#x8BE5;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</span><br></pre></td></tr></table></figure>
+<p>&#x2026; WebApp[&#x2026;] stopping<br>&#x2026; WebApp[&#x2026;] active<br>```</p>
+<h3 id="&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;"><a href="#&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;" class="headerlink" title="&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;"></a>&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;</h3><p><a href="http://itindex.net/detail/46971-java-%E8%B0%83%E8%AF%95" title="Xdebug" target="_blank" rel="external">-Xdebug</a> -Xrunjdwp,transport=dt_socket,server=y,address=5432,suspend=n,onthrow=java.io.IOException,launch=/sbin/echo</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/03/10/Java/JDK配置与JVM监控/" itemprop="url">
                   JDK配置与JVM监控
                 </a>
@@ -607,127 +728,6 @@
 </blockquote>
 <h2 id="&#x76F4;&#x63A5;&#x4F7F;&#x7528;jdk"><a href="#&#x76F4;&#x63A5;&#x4F7F;&#x7528;JDK" class="headerlink" title="&#x76F4;&#x63A5;&#x4F7F;&#x7528;JDK"></a>&#x76F4;&#x63A5;&#x4F7F;&#x7528;JDK</h2><p>&#x5982;&#x679C;&#x662F;&#x76F4;&#x63A5;&#x76D1;&#x63A7;JVM&#xFF0C;&#x5219;&#x5728; <code>/etc/profile</code> &#x6587;&#x4EF6;&#x91CC;&#x9762;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_OPTS=&quot;-Dcom.sun.management.jmxremote.port=<span class="tag">&lt;<span class="name">port</span>&gt;</span> -Dcom.sun.management.jmxremote.ssl=false</span><br><span class="line">-Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=<span class="tag">&lt;<span class="name">hostname</span>&gt;</span>  </span><br><span class="line">-Dcom.sun.management.jmxremote.ssl=false&quot;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">&#x8BE6;&#x7EC6;&#x53C2;&#x8003;&#xFF1A;</span><br><span class="line">&gt; [&#x4F7F;&#x7528;Java&#x81EA;&#x5E26;&#x7684;VisualVM&#x76D1;&#x63A7;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;JVM&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;](http://www.cnblogs.com/chenying99/archive/2012/06/21/2557208.html &quot;&#x4F7F;&#x7528;Java&#x81EA;&#x5E26;&#x7684;VisualVM&#x76D1;&#x63A7;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;JVM&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&quot;)</span><br><span class="line"></span><br><span class="line">## &#x4F7F;&#x7528;resin</span><br><span class="line">&#x5728;resin.conf&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;</span><br><span class="line">```xml</span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Djava.rmi.server.hostname=192.168.75.34<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.port=9934<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.ssl=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Dcom.sun.management.jmxremote.authenticate=false<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;JMX&#x8FDE;&#x63A5;&#x5373;&#x53EF;</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/03/10/Java/热部署/" itemprop="url">
-                  Resin中的热部署
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-10T00:00:00+08:00" content="2015-03-10">
-              2015-03-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h3 id="resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"><a href="#Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;" class="headerlink" title="Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;"></a>Resin&#x4E2D;&#x7684;&#x70ED;&#x90E8;&#x7F72;</h3><p>&#x5728;resin.conf&#x4E2D;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x7684;JVM&#x542F;&#x52A8;&#x53C2;&#x6570;&#xFF1A;</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jvm-arg</span>&gt;</span>-Xdebug<span class="tag">&lt;/<span class="name">jvm-arg</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&#x8868;&#x793A;&#x542F;&#x52A8;debug&#x6A21;&#x5F0F;&#xFF0C;&#x5F53;&#x66F4;&#x65B0;&#x4E86;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;reloading class&#xFF0C;&#x8FD9;&#x662F;&#x901A;&#x8FC7;JVM&#x7684;HotSwap&#x529F;&#x80FD;&#x52A8;&#x6001;&#x66F4;&#x65B0;&#x7684;&#x3002;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">... Reloading ...</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">&#x7531;&#x4E8E;JVM&#x7684;HotSwap&#x4E0D;&#x652F;&#x6301;&#x65B0;&#x589E;&#x5C5E;&#x6027;&#xFF0C;&#x65B9;&#x6CD5;&#x548C;&#x7C7B;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x4E4B;&#x540E;&#xFF0C;&#x662F;&#x65E0;&#x6CD5;&#x5B9E;&#x73B0;&#x70ED;&#x90E8;&#x7F72;&#x7684;&#xFF0C;Resin&#x4F1A;&#x81EA;&#x52A8;&#x6539;&#x7528;Hot deploy&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x66F4;&#x65B0;&#x3002;</span><br><span class="line"></span><br><span class="line">&#x5F53;&#x53BB;&#x6389;&#x8BE5;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7C7B;&#xFF0C;&#x63A7;&#x5236;&#x53F0;&#x4F1A;&#x63D0;&#x793A;&#x5982;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</span><br></pre></td></tr></table></figure>
-<p>&#x2026; WebApp[&#x2026;] stopping<br>&#x2026; WebApp[&#x2026;] active<br>```</p>
-<h3 id="&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;"><a href="#&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;" class="headerlink" title="&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;"></a>&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x76F8;&#x5173;&#x53C2;&#x6570;</h3><p><a href="http://itindex.net/detail/46971-java-%E8%B0%83%E8%AF%95" title="Xdebug" target="_blank" rel="external">-Xdebug</a> -Xrunjdwp,transport=dt_socket,server=y,address=5432,suspend=n,onthrow=java.io.IOException,launch=/sbin/echo</p>
 
           
         
@@ -938,6 +938,123 @@
             
               
                 
+                <a class="post-title-link" href="/2015/02/10/API文档编辑工具/" itemprop="url">
+                  API文档编辑工具
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-02-10T00:00:00+08:00" content="2015-02-10">
+              2015-02-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+<p><a href="http://turnapi.com/" target="_blank" rel="external">http://turnapi.com/</a><br>&#x8FD9;&#x662F;&#x57FA;&#x4E8E;&#x4E00;&#x6B3E;markdown&#x8BED;&#x6CD5;&#x7684;&#x6587;&#x6863;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x5B9E;&#x4F53;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#x3002;</p>
+<p><a href="http://symfony.com/doc/current/components/yaml/yaml_format.html" target="_blank" rel="external">http://symfony.com/doc/current/components/yaml/yaml_format.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/02/10/给一个多处使用到的类中的某些方法添加额外的处理动作/" itemprop="url">
                   给一个多处使用到的类中的某些方法添加额外的处理动作
                 </a>
@@ -1009,123 +1126,6 @@
 <p>&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x53EA;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x58F0;&#x660E;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x6539;&#x52A8;&#x4E0B;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;&#x7684;&#x5730;&#x65B9;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x6301;&#x539F;&#x6837;&#x4E86;&#xFF1A;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProxyMain</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>{</span><br><span class="line">		LuceneSearcher searcher = <span class="keyword">new</span> LuceneSearcher();</span><br><span class="line">		searcher.searchSong(<span class="number">1</span>);  <span class="comment">// &#x8C03;&#x7528;&#x7684;&#x8BED;&#x53E5;&#x4FDD;&#x6301;&#x539F;&#x6837;</span></span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
 <p>&#x5982;&#x679C;Searcher&#x63A5;&#x53E3;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x6539;&#x5199;&#x65B9;&#x6CD5;&#x4E86;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x786E;&#x5B9A;&#x9700;&#x8981;&#x4E3A;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x90FD;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#x8FDB;&#x884C;&#x6539;&#x5199;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E14;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF08;<a href="http://www.itzhai.com/java-notes-reflection-dynamic-proxies.html#&#x52A8;&#x6001;&#x4EE3;&#x7406;&#xFF1A;" title="JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">JDK&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;invoke&#x65B9;&#x6CD5;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x662F;&#x5426;&#x60F3;&#x8981;&#x6539;&#x5199;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;<a href="http://www.itzhai.com/java-dong-tai-dai-li-zhi-jdk-dong-tai-dai-li-he-cglib-dong-tai-dai-li-mian-xiang-qie-mian-bian-cheng-aop-yuan-li.html#CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" title="CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;" target="_blank" rel="external">CGLib&#x52A8;&#x6001;&#x4EE3;&#x7406;</a>]&#x5BF9;&#x5E94;&#x4E3A;intercept&#x65B9;&#x6CD5;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5199;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x5904;&#x7406;&#x7C7B;&#xFF0C;&#x5C31;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x4EE3;&#x7406;&#x5176;&#x4ED6;&#x7684;&#x7C7B;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x66F4;&#x7075;&#x6D3B;&#x3002;</p>
 <p>&#x5982;&#x679C;LuceneSearcher&#x5E76;&#x4E0D;&#x662F;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;&#x7684;&#x65B9;&#x5F0F;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x8FD9;&#x4E2A;LuceneSearcher&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x8986;&#x76D6;searchSong&#x65B9;&#x6CD5;&#x52A0;&#x5165;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x901A;&#x8FC7;&#x6539;&#x52A8;&#x521B;&#x5EFA;&#x8BED;&#x53E5;&#x5C31;&#x53EF;&#x4EE5;&#x5F88;&#x65B9;&#x4FBF;&#x7684;&#x5BF9;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#x3002;</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/02/10/API文档编辑工具/" itemprop="url">
-                  API文档编辑工具
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-02-10T00:00:00+08:00" content="2015-02-10">
-              2015-02-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/工具/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-<p><a href="http://turnapi.com/" target="_blank" rel="external">http://turnapi.com/</a><br>&#x8FD9;&#x662F;&#x57FA;&#x4E8E;&#x4E00;&#x6B3E;markdown&#x8BED;&#x6CD5;&#x7684;&#x6587;&#x6863;&#x751F;&#x6210;&#x5668;&#xFF0C;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x5B9E;&#x4F53;&#x548C;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#x3002;</p>
-<p><a href="http://symfony.com/doc/current/components/yaml/yaml_format.html" target="_blank" rel="external">http://symfony.com/doc/current/components/yaml/yaml_format.html</a></p>
-</blockquote>
 
           
         
@@ -1598,146 +1598,6 @@
             
               
                 
-                <a class="post-title-link" href="/2014/12/24/Java/spring/2014122402-spring-beans/" itemprop="url">
-                  Spring beans
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-12-24T00:00:00+08:00" content="2014-12-24">
-              2014-12-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>Bean &#x7EC4;&#x4EF6;&#x5728; Spring &#x7684; org.springframework.beans &#x5305;&#x4E0B;&#x3002;&#x8FD9;&#x4E2A;&#x5305;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7C7B;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x4E86;&#x4E09;&#x4EF6;&#x4E8B;&#xFF1A;Bean &#x7684;&#x5B9A;&#x4E49;&#x3001;Bean &#x7684;&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x5BF9; Bean &#x7684;&#x89E3;&#x6790;&#x3002;&#x5BF9; Spring &#x7684;&#x4F7F;&#x7528;&#x8005;&#x6765;&#x8BF4;&#x552F;&#x4E00;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x7684;&#x5C31;&#x662F; Bean &#x7684;&#x521B;&#x5EFA;&#xFF0C;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x7531; Spring &#x5728;&#x5185;&#x90E8;&#x5E2E;&#x4F60;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x5BF9;&#x4F60;&#x6765;&#x8BF4;&#x662F;&#x900F;&#x660E;&#x7684;&#x3002;</p>
-<p>Spring Bean &#x7684;&#x521B;&#x5EFA;&#x662F;&#x5178;&#x578B;&#x7684;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF0C;&#x4ED6;&#x7684;&#x9876;&#x7EA7;&#x63A5;&#x53E3;&#x662F; BeanFactory&#xFF0C;&#x4E0B;&#x56FE;&#x662F;&#x8FD9;&#x4E2A;&#x5DE5;&#x5382;&#x7684;&#x7EE7;&#x627F;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#xFF1A;    </p>
-<p><strong>Bean&#x5DE5;&#x5382;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring002.png" alt=""></p>
-<p>BeanFactory &#x6709;&#x4E09;&#x4E2A;&#x5B50;&#x7C7B;&#xFF1A;ListableBeanFactory&#x3001;HierarchicalBeanFactory &#x548C; AutowireCapableBeanFactory&#x3002;&#x4F46;&#x662F;&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6700;&#x7EC8;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x7C7B;&#x662F; DefaultListableBeanFactory&#xFF0C;&#x4ED6;&#x5B9E;&#x73B0;&#x4E86;&#x6240;&#x6709;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x90A3;&#x4E3A;&#x4F55;&#x8981;&#x5B9A;&#x4E49;&#x8FD9;&#x4E48;&#x591A;&#x5C42;&#x6B21;&#x7684;&#x63A5;&#x53E3;&#x5462;&#xFF1F;&#x67E5;&#x9605;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x7684;&#x6E90;&#x7801;&#x548C;&#x8BF4;&#x660E;&#x53D1;&#x73B0;&#xFF0C;&#x6BCF;&#x4E2A;&#x63A5;&#x53E3;&#x90FD;&#x6709;&#x4ED6;&#x4F7F;&#x7528;&#x7684;&#x573A;&#x5408;&#xFF0C;&#x5B83;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x533A;&#x5206;&#x5728; Spring &#x5185;&#x90E8;&#x5728;&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x4F20;&#x9012;&#x548C;&#x8F6C;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5BF9;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x6240;&#x505A;&#x7684;&#x9650;&#x5236;&#x3002;&#x4F8B;&#x5982; ListableBeanFactory &#x63A5;&#x53E3;&#x8868;&#x793A;&#x8FD9;&#x4E9B; Bean &#x662F;&#x53EF;&#x5217;&#x8868;&#x7684;&#xFF0C;&#x800C; HierarchicalBeanFactory &#x8868;&#x793A;&#x7684;&#x662F;&#x8FD9;&#x4E9B; Bean &#x662F;&#x6709;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6BCF;&#x4E2A; Bean &#x6709;&#x53EF;&#x80FD;&#x6709;&#x7236; Bean&#x3002;AutowireCapableBeanFactory &#x63A5;&#x53E3;&#x5B9A;&#x4E49; Bean &#x7684;&#x81EA;&#x52A8;&#x88C5;&#x914D;&#x89C4;&#x5219;&#x3002;&#x8FD9;&#x56DB;&#x4E2A;&#x63A5;&#x53E3;&#x5171;&#x540C;&#x5B9A;&#x4E49;&#x4E86; Bean &#x7684;&#x96C6;&#x5408;&#x3001;Bean &#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x3001;&#x4EE5;&#x53CA; Bean &#x884C;&#x4E3A;&#x3002;    </p>
-<p><strong>Bean&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#x56FE;</strong>    </p>
-<p>Bean &#x7684;&#x5B9A;&#x4E49;&#x4E3B;&#x8981;&#x7531; BeanDefinition &#x63CF;&#x8FF0;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x8BF4;&#x660E;&#x4E86;&#x8FD9;&#x4E9B;&#x7C7B;&#x7684;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring003.png" alt=""><br>Bean &#x7684;&#x5B9A;&#x4E49;&#x5C31;&#x662F;&#x5B8C;&#x6574;&#x7684;&#x63CF;&#x8FF0;&#x4E86;&#x5728; Spring &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x4F60;&#x5B9A;&#x4E49;&#x7684; <bean> &#x8282;&#x70B9;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x5404;&#x79CD;&#x5B50;&#x8282;&#x70B9;&#x3002;&#x5F53; Spring &#x6210;&#x529F;&#x89E3;&#x6790;&#x4F60;&#x5B9A;&#x4E49;&#x7684;&#x4E00;&#x4E2A; <bean> &#x8282;&#x70B9;&#x540E;&#xFF0C;&#x5728; Spring &#x7684;&#x5185;&#x90E8;&#x4ED6;&#x5C31;&#x88AB;&#x8F6C;&#x5316;&#x6210; BeanDefinition &#x5BF9;&#x8C61;&#x3002;&#x4EE5;&#x540E;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x5B8C;&#x6210;&#x7684;&#x3002;</bean></bean></p>
-<p>Bean &#x7684;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x529F;&#x80FD;&#x88AB;&#x5206;&#x7684;&#x5F88;&#x7EC6;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x88AB;&#x6269;&#x5C55;&#x7684;&#x5730;&#x65B9;&#x5F88;&#x591A;&#xFF0C;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x4EE5;&#x5E94;&#x5BF9;&#x53EF;&#x80FD;&#x7684;&#x53D8;&#x5316;&#x3002;Bean &#x7684;&#x89E3;&#x6790;&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x5BF9; Spring &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x89E3;&#x6790;&#x3002;&#x8FD9;&#x4E2A;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x4E3B;&#x8981;&#x901A;&#x8FC7;&#x4E0B;&#x56FE;&#x4E2D;&#x7684;&#x7C7B;&#x5B8C;&#x6210;&#xFF1A;    </p>
-<p><strong>Bean&#x7684;&#x89E3;&#x6790;&#x7C7B;</strong></p>
-<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring004.png" alt=""></p>
-<p><a href="https://github.com/arthinking/java-code/blob/master/src/main/java/me/arthinking/spring/ioc/BeanFactoryTest.java" title="&#x901A;&#x8FC7;XmlBeanFactory&#x5B9E;&#x73B0;&#x542F;&#x52A8;Spring IoC&#x5BB9;&#x5668;" target="_blank" rel="external">&#x901A;&#x8FC7;XmlBeanFactory&#x5B9E;&#x73B0;&#x542F;&#x52A8;Spring IoC&#x5BB9;&#x5668;</a></p>
-<blockquote>
-<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;" target="_blank" rel="external">Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;</a></p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2014/12/24/Java/spring/2014122403-spring-context/" itemprop="url">
                   Spring context
                 </a>
@@ -1835,128 +1695,6 @@
 <blockquote>
 <p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;" target="_blank" rel="external">Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;</a></p>
 </blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2014/12/24/Java/spring/Spring源码解读笔记/" itemprop="url">
-                  Spring源码解读笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2014-12-24T00:00:00+08:00" content="2014-12-24">
-              2014-12-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: arthinking<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
-</blockquote>
-<h1 id="spring-core"><a href="#Spring-core" class="headerlink" title="Spring-core"></a>Spring-core</h1><h2 id="orgspringframeworkcoreio&#x76F8;&#x5173;&#x5185;&#x5BB9;"><a href="#org-springframework-core-io-&#x76F8;&#x5173;&#x5185;&#x5BB9;" class="headerlink" title="org/springframework/core/io/&#x76F8;&#x5173;&#x5185;&#x5BB9;"></a>org/springframework/core/io/&#x76F8;&#x5173;&#x5185;&#x5BB9;</h2><h3 id="urlresourcegetinputstream-166"><a href="#UrlResource-getInputStream-166" class="headerlink" title="UrlResource.getInputStream()  #166"></a>UrlResource.getInputStream()  #166</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResourceUtils.useCachesIfNecessary(con);</span><br></pre></td></tr></table></figure>
-<p>&#x8BBE;&#x7F6E;<code>URLConnection</code>&#x7684;<code>UseCaches</code>&#x4E3A;false&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5728;Windows&#x4E0B;jar&#x5305;&#x88AB;&#x9501;&#x4F4F;&#x3002;</p>
-<h3 id="abstractfileresolvingresource"><a href="#AbstractFileResolvingResource" class="headerlink" title="AbstractFileResolvingResource"></a>AbstractFileResolvingResource</h3><p>&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;JBoss vfs&#x534F;&#x8BAE;URL&#x6587;&#x4EF6;&#x7684;&#x83B7;&#x53D6;&#x3002;&#x901A;&#x8FC7;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B; VfsResourceDelegate &#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;</p>
-<h3 id="resourceloader"><a href="#ResourceLoader" class="headerlink" title="ResourceLoader"></a>ResourceLoader</h3><p>&#x662F;&#x4E00;&#x4E2A;&#x7B56;&#x7565;&#x63A5;&#x53E3;&#xFF0C;&#x5176; getResource(String location)&#x65B9;&#x6CD5;&#x6839;&#x636E;&#x4F20;&#x5165;&#x4E0D;&#x540C;&#x7684;location&#xFF0C;&#x8FD4;&#x56DE;&#x4E0D;&#x540C;&#x7684;Resource&#x3002;&#x5176;&#x5B9E;&#x73B0;&#x7C7B;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#x7684;ResourceLoader&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;ResourceEditor&#x4E5F;&#x4F7F;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x7C7B;</p>
-<h3 id="defaultresourceloader"><a href="#DefaultResourceLoader" class="headerlink" title="DefaultResourceLoader"></a>DefaultResourceLoader</h3><p>ResourceLoader&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#xFF0C;ResourceEditor&#x4F7F;&#x7528;&#x4E86;&#x8BE5;&#x7C7B;&#xFF0C;&#x662F;AbstractApplicationContext&#x7684;&#x57FA;&#x7C7B;&#x3002;</p>
-<h2 id="&#x8BF4;&#x8BF4;spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"><a href="#&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"></a>&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</h2><p>XmlBeanFactory&#x901A;&#x8FC7;Resource&#x88C5;&#x8F7D;Spring&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x5E76;&#x542F;&#x52A8;IoC&#x5BB9;&#x5668;&#xFF1B;<br>&#x7136;&#x540E;&#x901A;&#x8FC7;BeanFactory#getBean(beanName)&#x65B9;&#x6CD5;&#x4ECE;IoC&#x5BB9;&#x5668;&#x83B7;&#x53D6;Bean&#xFF1B;<br>&#x901A;&#x8FC7;BeanFactory&#x542F;&#x52A8;IoC&#x5BB9;&#x5668;&#x65F6;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;Bean&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x52A8;&#x4F5C;&#x53D1;&#x751F;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x65F6;&#xFF1B;<br>&#x5BF9;&#x4E8E;&#x5355;&#x5B9E;&#x4F8B;&#x7684;Bean&#x6765;&#x8BF4;&#xFF0C;BeanFactory&#x4F1A;&#x7F13;&#x5B58;Bean&#x5B9E;&#x4F8B;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E8C;&#x6B21;&#x4F7F;&#x7528;getBean()&#x83B7;&#x53D6;Bean&#x7684;&#x65F6;&#x5019;&#x5C06;&#x76F4;&#x63A5;&#x4ECE;IoC&#x5BB9;&#x5668;&#x7684;&#x7F13;&#x5B58;&#x4E2D;&#x83B7;&#x53D6;Bean&#x5B9E;&#x4F8B;&#x3002;</p>
-<h2 id="spring-mvc&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;"><a href="#Spring-MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;" class="headerlink" title="Spring MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;"></a>Spring MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;</h2><h2 id="&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;sql&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;"><a href="#&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;" class="headerlink" title="&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;"></a>&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;</h2><h2 id="&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;"><a href="#&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;"></a>&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;</h2><h2 id="&#x733F;&#x9898;&#x5E93;"><a href="#&#x733F;&#x9898;&#x5E93;" class="headerlink" title="&#x733F;&#x9898;&#x5E93;"></a>&#x733F;&#x9898;&#x5E93;</h2><p>&#x95EE;&#x9898;<br>&#x63CF;&#x8FF0;<br>&#x56DE;&#x7B54;<br>&#x53C2;&#x8003;&#x7F51;&#x5740;<br>&#x4E3E;&#x62A5;test</p>
 
           
         
@@ -2240,6 +1978,268 @@
 <blockquote>
 <p><a href="http://blog.javachen.com/2014/09/29/spring-source-codes/" title="Spring&#x6E90;&#x7801;&#x6574;&#x4F53;&#x67B6;&#x6784;" target="_blank" rel="external">Spring&#x6E90;&#x7801;&#x6574;&#x4F53;&#x67B6;&#x6784;</a></p>
 </blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/24/Java/spring/2014122402-spring-beans/" itemprop="url">
+                  Spring beans
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-24T00:00:00+08:00" content="2014-12-24">
+              2014-12-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>Bean &#x7EC4;&#x4EF6;&#x5728; Spring &#x7684; org.springframework.beans &#x5305;&#x4E0B;&#x3002;&#x8FD9;&#x4E2A;&#x5305;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7C7B;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x4E86;&#x4E09;&#x4EF6;&#x4E8B;&#xFF1A;Bean &#x7684;&#x5B9A;&#x4E49;&#x3001;Bean &#x7684;&#x521B;&#x5EFA;&#x4EE5;&#x53CA;&#x5BF9; Bean &#x7684;&#x89E3;&#x6790;&#x3002;&#x5BF9; Spring &#x7684;&#x4F7F;&#x7528;&#x8005;&#x6765;&#x8BF4;&#x552F;&#x4E00;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x7684;&#x5C31;&#x662F; Bean &#x7684;&#x521B;&#x5EFA;&#xFF0C;&#x5176;&#x4ED6;&#x4E24;&#x4E2A;&#x7531; Spring &#x5728;&#x5185;&#x90E8;&#x5E2E;&#x4F60;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x5BF9;&#x4F60;&#x6765;&#x8BF4;&#x662F;&#x900F;&#x660E;&#x7684;&#x3002;</p>
+<p>Spring Bean &#x7684;&#x521B;&#x5EFA;&#x662F;&#x5178;&#x578B;&#x7684;&#x5DE5;&#x5382;&#x6A21;&#x5F0F;&#xFF0C;&#x4ED6;&#x7684;&#x9876;&#x7EA7;&#x63A5;&#x53E3;&#x662F; BeanFactory&#xFF0C;&#x4E0B;&#x56FE;&#x662F;&#x8FD9;&#x4E2A;&#x5DE5;&#x5382;&#x7684;&#x7EE7;&#x627F;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#xFF1A;    </p>
+<p><strong>Bean&#x5DE5;&#x5382;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;</strong><br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring002.png" alt=""></p>
+<p>BeanFactory &#x6709;&#x4E09;&#x4E2A;&#x5B50;&#x7C7B;&#xFF1A;ListableBeanFactory&#x3001;HierarchicalBeanFactory &#x548C; AutowireCapableBeanFactory&#x3002;&#x4F46;&#x662F;&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x6700;&#x7EC8;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#x7C7B;&#x662F; DefaultListableBeanFactory&#xFF0C;&#x4ED6;&#x5B9E;&#x73B0;&#x4E86;&#x6240;&#x6709;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x90A3;&#x4E3A;&#x4F55;&#x8981;&#x5B9A;&#x4E49;&#x8FD9;&#x4E48;&#x591A;&#x5C42;&#x6B21;&#x7684;&#x63A5;&#x53E3;&#x5462;&#xFF1F;&#x67E5;&#x9605;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x7684;&#x6E90;&#x7801;&#x548C;&#x8BF4;&#x660E;&#x53D1;&#x73B0;&#xFF0C;&#x6BCF;&#x4E2A;&#x63A5;&#x53E3;&#x90FD;&#x6709;&#x4ED6;&#x4F7F;&#x7528;&#x7684;&#x573A;&#x5408;&#xFF0C;&#x5B83;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x533A;&#x5206;&#x5728; Spring &#x5185;&#x90E8;&#x5728;&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x8C61;&#x7684;&#x4F20;&#x9012;&#x548C;&#x8F6C;&#x5316;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5BF9;&#x5BF9;&#x8C61;&#x7684;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x6240;&#x505A;&#x7684;&#x9650;&#x5236;&#x3002;&#x4F8B;&#x5982; ListableBeanFactory &#x63A5;&#x53E3;&#x8868;&#x793A;&#x8FD9;&#x4E9B; Bean &#x662F;&#x53EF;&#x5217;&#x8868;&#x7684;&#xFF0C;&#x800C; HierarchicalBeanFactory &#x8868;&#x793A;&#x7684;&#x662F;&#x8FD9;&#x4E9B; Bean &#x662F;&#x6709;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6BCF;&#x4E2A; Bean &#x6709;&#x53EF;&#x80FD;&#x6709;&#x7236; Bean&#x3002;AutowireCapableBeanFactory &#x63A5;&#x53E3;&#x5B9A;&#x4E49; Bean &#x7684;&#x81EA;&#x52A8;&#x88C5;&#x914D;&#x89C4;&#x5219;&#x3002;&#x8FD9;&#x56DB;&#x4E2A;&#x63A5;&#x53E3;&#x5171;&#x540C;&#x5B9A;&#x4E49;&#x4E86; Bean &#x7684;&#x96C6;&#x5408;&#x3001;Bean &#x4E4B;&#x95F4;&#x7684;&#x5173;&#x7CFB;&#x3001;&#x4EE5;&#x53CA; Bean &#x884C;&#x4E3A;&#x3002;    </p>
+<p><strong>Bean&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#x56FE;</strong>    </p>
+<p>Bean &#x7684;&#x5B9A;&#x4E49;&#x4E3B;&#x8981;&#x7531; BeanDefinition &#x63CF;&#x8FF0;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x8BF4;&#x660E;&#x4E86;&#x8FD9;&#x4E9B;&#x7C7B;&#x7684;&#x5C42;&#x6B21;&#x5173;&#x7CFB;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring003.png" alt=""><br>Bean &#x7684;&#x5B9A;&#x4E49;&#x5C31;&#x662F;&#x5B8C;&#x6574;&#x7684;&#x63CF;&#x8FF0;&#x4E86;&#x5728; Spring &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x4F60;&#x5B9A;&#x4E49;&#x7684; <bean> &#x8282;&#x70B9;&#x4E2D;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;&#x5404;&#x79CD;&#x5B50;&#x8282;&#x70B9;&#x3002;&#x5F53; Spring &#x6210;&#x529F;&#x89E3;&#x6790;&#x4F60;&#x5B9A;&#x4E49;&#x7684;&#x4E00;&#x4E2A; <bean> &#x8282;&#x70B9;&#x540E;&#xFF0C;&#x5728; Spring &#x7684;&#x5185;&#x90E8;&#x4ED6;&#x5C31;&#x88AB;&#x8F6C;&#x5316;&#x6210; BeanDefinition &#x5BF9;&#x8C61;&#x3002;&#x4EE5;&#x540E;&#x6240;&#x6709;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x5BF9;&#x8FD9;&#x4E2A;&#x5BF9;&#x8C61;&#x5B8C;&#x6210;&#x7684;&#x3002;</bean></bean></p>
+<p>Bean &#x7684;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x529F;&#x80FD;&#x88AB;&#x5206;&#x7684;&#x5F88;&#x7EC6;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x88AB;&#x6269;&#x5C55;&#x7684;&#x5730;&#x65B9;&#x5F88;&#x591A;&#xFF0C;&#x5FC5;&#x987B;&#x4FDD;&#x8BC1;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x4EE5;&#x5E94;&#x5BF9;&#x53EF;&#x80FD;&#x7684;&#x53D8;&#x5316;&#x3002;Bean &#x7684;&#x89E3;&#x6790;&#x4E3B;&#x8981;&#x5C31;&#x662F;&#x5BF9; Spring &#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x89E3;&#x6790;&#x3002;&#x8FD9;&#x4E2A;&#x89E3;&#x6790;&#x8FC7;&#x7A0B;&#x4E3B;&#x8981;&#x901A;&#x8FC7;&#x4E0B;&#x56FE;&#x4E2D;&#x7684;&#x7C7B;&#x5B8C;&#x6210;&#xFF1A;    </p>
+<p><strong>Bean&#x7684;&#x89E3;&#x6790;&#x7C7B;</strong></p>
+<p><img src="https://raw.githubusercontent.com/arthinking/informal-essay/master/images/2014/12/20141224-spring004.png" alt=""></p>
+<p><a href="https://github.com/arthinking/java-code/blob/master/src/main/java/me/arthinking/spring/ioc/BeanFactoryTest.java" title="&#x901A;&#x8FC7;XmlBeanFactory&#x5B9E;&#x73B0;&#x542F;&#x52A8;Spring IoC&#x5BB9;&#x5668;" target="_blank" rel="external">&#x901A;&#x8FC7;XmlBeanFactory&#x5B9E;&#x73B0;&#x542F;&#x52A8;Spring IoC&#x5BB9;&#x5668;</a></p>
+<blockquote>
+<p><a href="http://www.ibm.com/developerworks/cn/java/j-lo-spring-principle/" title="Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;" target="_blank" rel="external">Spring &#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x4E0E;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x5206;&#x6790;</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/12/24/Java/spring/Spring源码解读笔记/" itemprop="url">
+                  Spring源码解读笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2014-12-24T00:00:00+08:00" content="2014-12-24">
+              2014-12-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: arthinking<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: </p>
+</blockquote>
+<h1 id="spring-core"><a href="#Spring-core" class="headerlink" title="Spring-core"></a>Spring-core</h1><h2 id="orgspringframeworkcoreio&#x76F8;&#x5173;&#x5185;&#x5BB9;"><a href="#org-springframework-core-io-&#x76F8;&#x5173;&#x5185;&#x5BB9;" class="headerlink" title="org/springframework/core/io/&#x76F8;&#x5173;&#x5185;&#x5BB9;"></a>org/springframework/core/io/&#x76F8;&#x5173;&#x5185;&#x5BB9;</h2><h3 id="urlresourcegetinputstream-166"><a href="#UrlResource-getInputStream-166" class="headerlink" title="UrlResource.getInputStream()  #166"></a>UrlResource.getInputStream()  #166</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResourceUtils.useCachesIfNecessary(con);</span><br></pre></td></tr></table></figure>
+<p>&#x8BBE;&#x7F6E;<code>URLConnection</code>&#x7684;<code>UseCaches</code>&#x4E3A;false&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5728;Windows&#x4E0B;jar&#x5305;&#x88AB;&#x9501;&#x4F4F;&#x3002;</p>
+<h3 id="abstractfileresolvingresource"><a href="#AbstractFileResolvingResource" class="headerlink" title="AbstractFileResolvingResource"></a>AbstractFileResolvingResource</h3><p>&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;JBoss vfs&#x534F;&#x8BAE;URL&#x6587;&#x4EF6;&#x7684;&#x83B7;&#x53D6;&#x3002;&#x901A;&#x8FC7;&#x9759;&#x6001;&#x5185;&#x90E8;&#x7C7B; VfsResourceDelegate &#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;</p>
+<h3 id="resourceloader"><a href="#ResourceLoader" class="headerlink" title="ResourceLoader"></a>ResourceLoader</h3><p>&#x662F;&#x4E00;&#x4E2A;&#x7B56;&#x7565;&#x63A5;&#x53E3;&#xFF0C;&#x5176; getResource(String location)&#x65B9;&#x6CD5;&#x6839;&#x636E;&#x4F20;&#x5165;&#x4E0D;&#x540C;&#x7684;location&#xFF0C;&#x8FD4;&#x56DE;&#x4E0D;&#x540C;&#x7684;Resource&#x3002;&#x5176;&#x5B9E;&#x73B0;&#x7C7B;&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#x7684;ResourceLoader&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;ResourceEditor&#x4E5F;&#x4F7F;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x7C7B;</p>
+<h3 id="defaultresourceloader"><a href="#DefaultResourceLoader" class="headerlink" title="DefaultResourceLoader"></a>DefaultResourceLoader</h3><p>ResourceLoader&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x4F7F;&#x7528;&#xFF0C;ResourceEditor&#x4F7F;&#x7528;&#x4E86;&#x8BE5;&#x7C7B;&#xFF0C;&#x662F;AbstractApplicationContext&#x7684;&#x57FA;&#x7C7B;&#x3002;</p>
+<h2 id="&#x8BF4;&#x8BF4;spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"><a href="#&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;"></a>&#x8BF4;&#x8BF4;Spring&#x5BB9;&#x5668;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</h2><p>XmlBeanFactory&#x901A;&#x8FC7;Resource&#x88C5;&#x8F7D;Spring&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x5E76;&#x542F;&#x52A8;IoC&#x5BB9;&#x5668;&#xFF1B;<br>&#x7136;&#x540E;&#x901A;&#x8FC7;BeanFactory#getBean(beanName)&#x65B9;&#x6CD5;&#x4ECE;IoC&#x5BB9;&#x5668;&#x83B7;&#x53D6;Bean&#xFF1B;<br>&#x901A;&#x8FC7;BeanFactory&#x542F;&#x52A8;IoC&#x5BB9;&#x5668;&#x65F6;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x521D;&#x59CB;&#x5316;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;Bean&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x52A8;&#x4F5C;&#x53D1;&#x751F;&#x5728;&#x7B2C;&#x4E00;&#x4E2A;&#x8C03;&#x7528;&#x65F6;&#xFF1B;<br>&#x5BF9;&#x4E8E;&#x5355;&#x5B9E;&#x4F8B;&#x7684;Bean&#x6765;&#x8BF4;&#xFF0C;BeanFactory&#x4F1A;&#x7F13;&#x5B58;Bean&#x5B9E;&#x4F8B;&#xFF0C;&#x6240;&#x4EE5;&#x7B2C;&#x4E8C;&#x6B21;&#x4F7F;&#x7528;getBean()&#x83B7;&#x53D6;Bean&#x7684;&#x65F6;&#x5019;&#x5C06;&#x76F4;&#x63A5;&#x4ECE;IoC&#x5BB9;&#x5668;&#x7684;&#x7F13;&#x5B58;&#x4E2D;&#x83B7;&#x53D6;Bean&#x5B9E;&#x4F8B;&#x3002;</p>
+<h2 id="spring-mvc&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;"><a href="#Spring-MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;" class="headerlink" title="Spring MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;"></a>Spring MVC&#x4E00;&#x6B21;&#x6267;&#x884C;&#x7684;&#x539F;&#x7406;</h2><h2 id="&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;sql&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;"><a href="#&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;" class="headerlink" title="&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;"></a>&#x5217;&#x4E3E;&#x51FA;5&#x79CD;&#x5E38;&#x7528;&#x7684;SQL&#x8BED;&#x53E5;&#x4F18;&#x5316;&#x65B9;&#x5F0F;</h2><h2 id="&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;"><a href="#&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;" class="headerlink" title="&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;"></a>&#x8BF4;&#x8BF4;&#x4E24;&#x79CD;&#x6570;&#x636E;&#x5E93;&#x5F15;&#x64CE;&#x7684;&#x533A;&#x522B;</h2><h2 id="&#x733F;&#x9898;&#x5E93;"><a href="#&#x733F;&#x9898;&#x5E93;" class="headerlink" title="&#x733F;&#x9898;&#x5E93;"></a>&#x733F;&#x9898;&#x5E93;</h2><p>&#x95EE;&#x9898;<br>&#x63CF;&#x8FF0;<br>&#x56DE;&#x7B54;<br>&#x53C2;&#x8003;&#x7F51;&#x5740;<br>&#x4E3E;&#x62A5;test</p>
 
           
         
@@ -3103,6 +3103,15 @@
           
             
               <span class="links-of-author-item">
+                <a href="http://www.itzhai.com" target="_blank" title="itzhai">
+                  
+                    <i class="fa fa-fw fa-home"></i>
+                  
+                  itzhai
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
                 <a href="https://github.com/arthinking" target="_blank" title="GitHub">
                   
                     <i class="fa fa-fw fa-github"></i>
@@ -3169,7 +3178,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -3234,6 +3243,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
 
   
 
