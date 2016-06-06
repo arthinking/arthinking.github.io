@@ -1,5 +1,6 @@
 ---
 title: Memcached使用getMulti造成的性能问题
+date: 2014-11-28
 categories: [Cache]
 tags: [Memcached]
 ---

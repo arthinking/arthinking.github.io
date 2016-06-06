@@ -1,5 +1,6 @@
 ---
 title: ReactJS和AngularJS相关
+date: 2016-04-04
 categories: [web前端]
 tags: [ReactJS,AngularJS]
 ---

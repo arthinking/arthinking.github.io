@@ -1,5 +1,6 @@
 ---
-title: controller
+title: AngularJS之controller
+date: 2015-12-01
 categories: [web前端, Javascript]
 tags: [AngularJS]
 ---

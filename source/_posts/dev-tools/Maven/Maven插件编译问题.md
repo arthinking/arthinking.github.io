@@ -1,5 +1,6 @@
 ---
 title: Maven插件编译问题
+permalink: Maven插件编译问题
 categories: [Java,Maven]
 date: 2016-05-03
 tags: [Maven]
@@ -18,7 +19,10 @@ TestService testService = serviceFactory.getService(ServiceType.testServiceClazz
 maven compile 报如下错误：
 
 ```
-[ERROR] /xxx.java:[100，20] xxx.java:106: 不兼容的类型找到： java.lang.Object需要： TestService[INFO] 1 error
+[ERROR] /xxx.java:[100，20] xxx.java:106: 不兼容的类型
+找到： java.lang.Object
+需要： TestService
+[INFO] 1 error
 ```
 
 而以下代码则不会报错：
@@ -40,7 +44,9 @@ public<T> T getService(Class<T> class){
 查看下项目的maven-compiler-plugin插件配置：
 
 ```xml
-<plugin>  <groupId>org.apache.maven.plugins</groupId>  <artifactId>maven-compiler-plugin</artifactId>
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
   <version>2.3.2</version>
   <configuration>
     <source>1.6</source>

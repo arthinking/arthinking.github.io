@@ -1,5 +1,6 @@
 ---
-title: filter
+title: AngularJS之filter
+date: 2015-12-01
 categories: [web前端, Javascript]
 tags: [AngularJS]
 ---

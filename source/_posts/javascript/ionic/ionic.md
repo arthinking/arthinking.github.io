@@ -1,5 +1,6 @@
 ---
 title: ionic视频
+date: 2015-12-02
 categories: [web前端]
 tags: [ionic]
 ---

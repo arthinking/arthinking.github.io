@@ -1,5 +1,6 @@
 ---
 title: Linux common command
+date: 2016-05-26
 categories: [Linux]
 tags: []
 ---
@@ -11,17 +12,16 @@ tags: []
 # common linux command
 
 ```bash
+# 替换字符串
 grep -i -l -r -e 'arthinking.github.io' /Users/arthinking/Dev/informal-essay-github/* | xargs sed -i "" "s/arthinking.github.io/informal-essay/g"
 
+
+# 去除空格
 find /Users/arthinking/Dev/arthinking.github.io/source/_posts/* -name "*.md" -print0 | xargs -0 sed -i "" "s/^\(##*\) *\(.*\)$/\1 \2/g"
-
-grep -i -l -r -e '![]()' $file | xargs sed -i "" "s/![]()/![]()/g"
-
-find /Users/arthinking/Dev/arthinking.github.io/source/_posts/* -name "*.md" -print0 | xargs -0 sed -i "" "s/\(![]()\)/\1/g"
 
 https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/20141204-java01.png
 
-
+# 替换url
 find /Users/arthinking/Dev/test/* -name "*.md" -print0 | xargs -0 perl -pi -e "s/(\!\[\]\(.*?jpg\))/test\1/g"
 
 
@@ -43,21 +43,30 @@ Linux的scp命令可以在Linux之间复制文件和目录：
 
 可选参数：
 
-* `-v`和大多数 linux 命令中的 -v 意思一样 , 用来显示进度 . 可以用来查看连接 , 认证 , 或是配置错误；* `-C`使能压缩选项；* `-P`选择端口 . 注意 -p 已经被 rcp 使用；* `-4`强行使用`IPV4`地址；* `-6`强行使用`IPV6`地址。
+* `-v`和大多数 linux 命令中的 -v 意思一样 , 用来显示进度 . 可以用来查看连接 , 认证 , 或是配置错误；
+* `-C`使能压缩选项；
+* `-P`选择端口 . 注意 -p 已经被 rcp 使用；
+* `-4`强行使用`IPV4`地址；
+* `-6`强行使用`IPV6`地址。
 
 ## 从本地复制到远程
 
 ### 复制文件：
 ```bash
 # 指定上传文件夹
-scp local_file remote_username@remote_ip:remote_folder # 指定上传后的文件名scp local_file remote_username@remote_ip:remote_file 
-# 以下两个不指定远程服务器的登录名scp local_file remote_ip:remote_folder scp local_file remote_ip:remote_file 
+scp local_file remote_username@remote_ip:remote_folder 
+# 指定上传后的文件名
+scp local_file remote_username@remote_ip:remote_file 
+# 以下两个不指定远程服务器的登录名
+scp local_file remote_ip:remote_folder 
+scp local_file remote_ip:remote_file 
 ```
 
 ### 复制目录
 
 ```bash
-scp -r local_folder remote_username@remote_ip:remote_folder scp -r local_folder remote_ip:remote_folder 
+scp -r local_folder remote_username@remote_ip:remote_folder 
+scp -r local_folder remote_ip:remote_folder 
 ```
 
 会在`remote_folder`下面创建`local_folder`文件夹

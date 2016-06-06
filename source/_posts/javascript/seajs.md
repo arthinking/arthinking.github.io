@@ -1,3 +1,10 @@
+---
+title: SeaJS使用简介
+date: 2016-05-20
+categories: [web前端]
+tags: [SeaJS]
+---
+
 在使用spm之前，首先得安装nodejs，因为spm是nodejs的一个package。[使用spm@3构建seajs项目](http://qianduanblog.com/post/js-learning-42-using-spm-3-build-seajs-project.html "使用spm@3构建seajs项目")
 
 [spm 3官方教程](http://spmjs.io/documentation "spm 3官方教程")

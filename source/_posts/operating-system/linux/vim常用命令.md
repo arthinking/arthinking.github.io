@@ -1,5 +1,6 @@
 ---
 title: VIM常用命令
+date: 2016-05-18
 categories: [IDE]
 tags: [VIM]
 ---

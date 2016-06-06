@@ -1,3 +1,10 @@
+---
+title: IntelliJ IDEA项目部署问题
+categories: [IDE]
+date: 2016-04-22
+tags: [IntelliJ IDEA,MAC]
+---
+
 有时候Tomcat运行好好的，停掉之后再次运行就报错了：
 
 > Name jdbc is not bound in this Context in Tomcat

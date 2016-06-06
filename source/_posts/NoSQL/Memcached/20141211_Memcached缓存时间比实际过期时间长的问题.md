@@ -1,5 +1,6 @@
 ---
 title: Memcached缓存时间比实际过期时间长的问题
+date: 2014-12-11
 categories: [Cache]
 tags: [Memcached]
 ---

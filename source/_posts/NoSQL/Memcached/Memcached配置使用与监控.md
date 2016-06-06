@@ -1,5 +1,6 @@
 ---
 title: Memcached配置使用与监控
+date: 2014-12-19
 categories: [Cache]
 tags: [Memcached]
 ---

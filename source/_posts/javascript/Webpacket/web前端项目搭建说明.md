@@ -1,5 +1,6 @@
 ---
 title: web前端项目搭建说明
+date: 2016-05-20
 categories: [web前端]
 tags: [Webpack, ReactJS]
 ---

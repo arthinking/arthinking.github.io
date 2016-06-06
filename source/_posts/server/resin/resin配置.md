@@ -1,5 +1,6 @@
 ---
 title: Resin配置
+date: 2014-10-21
 categories: [应用服务器,Resin]
 tags: [Resin]
 ---

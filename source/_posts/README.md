@@ -1,5 +1,9 @@
-arthinking的技术总结
-----------
+---
+title: arthinking的技术总结
+date: 2014-01-01
+categories: [未分类]
+tags: [技术总结]
+---
 
 > Author: arthinking  
 > E-mail: 1225538383@qq.com

@@ -1,3 +1,10 @@
+---
+title: Java基础
+date: 2015-09-01
+categories: [Java]
+tags: [基础]
+---
+
 # Java基础知识
 ## HashMap 与 ConcurrentHashMap
 HashMap的扩容机制，ConcurrentHashMap的原理：
