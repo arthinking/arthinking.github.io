@@ -361,8 +361,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/22/IDE/IntelliJ IDEA/从Tomcat启动报错分析IntelliJ IDEA的部署/" itemprop="url">
-                  IntelliJ IDEA项目部署问题
+                <a class="post-title-link" href="/2016/04/22/Java/nio/2016-04-22 intro/" itemprop="url">
+                  NIO intro
                 </a>
               
             
@@ -389,8 +389,8 @@
               <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IDE/" itemprop="url" rel="index">
-                    <span itemprop="name">IDE</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -424,16 +424,14 @@
       
         
           
-            <p>&#x6709;&#x65F6;&#x5019;Tomcat&#x8FD0;&#x884C;&#x597D;&#x597D;&#x7684;&#xFF0C;&#x505C;&#x6389;&#x4E4B;&#x540E;&#x518D;&#x6B21;&#x8FD0;&#x884C;&#x5C31;&#x62A5;&#x9519;&#x4E86;&#xFF1A;</p>
-<blockquote>
-<p>Name jdbc is not bound in this Context in Tomcat</p>
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F60;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x5728;<code>context.xml</code>&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x914D;&#x7F6E;<a href="http://tomcat.apache.org/tomcat-6.0-doc/config/context.html#Resource%20Links" target="_blank" rel="external">ResourceLink</a>:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">ResourceLink</span> <span class="attr">global</span>=<span class="string">&quot;jdbc/MyDS&quot;</span> <span class="attr">name</span>=<span class="string">&quot;jdbc/MyDS&quot;</span> <span class="attr">type</span>=<span class="string">&quot;javax.sql.DataSource&quot;</span> /&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>&#x4EE5;&#x4E0A;&#x7EAF;&#x7CB9;&#x662F;&#x4E00;&#x4E2A;&#x5DE7;&#x5408;&#xFF0C;IntelliJ IDEA&#x9879;&#x76EE;&#x901A;&#x8FC7;maven&#x7F16;&#x8BD1;&#x4E4B;&#x540E;&#xFF0C;&#x4E00;&#x822C;&#x4F1A;&#x5728;target&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7; war wxploded&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x8BFB;&#x53D6;&#x8FD9;&#x91CC;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x67E5;&#x770B;&#x4E00;&#x4E0B;META-INF&#x76EE;&#x5F55;&#x4E0B;&#x7684;context.xml&#x6587;&#x4EF6;&#x6570;&#x636E;&#x6E90;&#x914D;&#x7F6E;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
-<p>#References</p>
-<p><a href="http://stackoverflow.com/questions/8849461/name-jdbc-is-not-bound-in-this-context-in-tomcat" target="_blank" rel="external">Name jdbc is not bound in this Context in Tomcat</a></p>
-
+<h2 id="&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;"><a href="#&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;" class="headerlink" title="&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;"></a>&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;</h2><h3 id="&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;&#x7B80;&#x56FE;"><a href="#&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;&#x7B80;&#x56FE;" class="headerlink" title="&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;&#x7B80;&#x56FE;"></a>&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;&#x7B80;&#x56FE;</h3><p><img src="" alt=""><br> &#x7528;&#x6237;&#x7A7A;&#x95F4;&#xFF1A;&#x5E38;&#x89C4;&#x8FDB;&#x7A0B;&#x6240;&#x5728;&#x533A;&#x57DF;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x3002;</p>
+<p> &#x5185;&#x6838;&#x7A7A;&#x95F4;&#xFF1A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6240;&#x5728;&#x533A;&#x57DF;&#xFF0C;&#x6240;&#x6709;I/O&#x90FD;&#x76F4;&#x63A5;&#x6216;&#x95F4;&#x63A5;&#x901A;&#x8FC7;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x3002;</p>
+<p> &#x8BF7;&#x6C42;I/O&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#xFF1A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; &#x2013;&gt; &#x5185;&#x6838; &#x2013;&gt; &#x4F20;&#x9001;&#x6570;&#x636E;&#x5230;&#x7528;&#x6237;&#x7A7A;&#x95F4; &#x2013;&gt; &#x5982;&#x679C;&#x6570;&#x636E;&#x4E0D;&#x5728;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#xFF0C;&#x5219;&#x8FDB;&#x7A0B;&#x88AB;&#x6302;&#x8D77;&#xFF0C;&#x5185;&#x6838;&#x7740;&#x624B;&#x628A;&#x6570;&#x636E;&#x8BFB;&#x8FDB;&#x5185;&#x5B58;&#x3002;</p>
+<p> &#x6CE8;&#x610F;&#xFF1A;&#x786C;&#x4EF6;&#x901A;&#x5E38;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#xFF0C;&#x5185;&#x6838;&#x8D1F;&#x8D23;&#x6570;&#x636E;&#x7684;&#x5206;&#x89E3;&#xFF0C;&#x518D;&#x7EC4;&#x5408;&#x5DE5;&#x4F5C;&#xFF0C;&#x5145;&#x5F53;&#x7740;&#x4E2D;&#x95F4;&#x4EBA;&#x7684;&#x89D2;&#x8272;&#x3002;</p>
+<h3 id="&#x53D1;&#x6563;&#x6C47;&#x805A;"><a href="#&#x53D1;&#x6563;-&#x6C47;&#x805A;" class="headerlink" title="&#x53D1;&#x6563;/&#x6C47;&#x805A;"></a>&#x53D1;&#x6563;/&#x6C47;&#x805A;</h3>
           
         
       
@@ -598,8 +596,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/22/Java/nio/2016-04-22 intro/" itemprop="url">
-                  NIO intro
+                <a class="post-title-link" href="/2016/04/22/IDE/IntelliJ IDEA/从Tomcat启动报错分析IntelliJ IDEA的部署/" itemprop="url">
+                  IntelliJ IDEA项目部署问题
                 </a>
               
             
@@ -626,8 +624,8 @@
               <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/IDE/" itemprop="url" rel="index">
+                    <span itemprop="name">IDE</span>
                   </a>
                 </span>
 
@@ -661,14 +659,16 @@
       
         
           
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+            <p>&#x6709;&#x65F6;&#x5019;Tomcat&#x8FD0;&#x884C;&#x597D;&#x597D;&#x7684;&#xFF0C;&#x505C;&#x6389;&#x4E4B;&#x540E;&#x518D;&#x6B21;&#x8FD0;&#x884C;&#x5C31;&#x62A5;&#x9519;&#x4E86;&#xFF1A;</p>
+<blockquote>
+<p>Name jdbc is not bound in this Context in Tomcat</p>
 </blockquote>
-<h2 id="&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;"><a href="#&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;" class="headerlink" title="&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;"></a>&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;</h2><h3 id="&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;&#x7B80;&#x56FE;"><a href="#&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;&#x7B80;&#x56FE;" class="headerlink" title="&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;&#x7B80;&#x56FE;"></a>&#x7F13;&#x51B2;&#x533A;&#x64CD;&#x4F5C;&#x7B80;&#x56FE;</h3><p><img src="" alt=""><br> &#x7528;&#x6237;&#x7A7A;&#x95F4;&#xFF1A;&#x5E38;&#x89C4;&#x8FDB;&#x7A0B;&#x6240;&#x5728;&#x533A;&#x57DF;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x786C;&#x4EF6;&#x8BBE;&#x5907;&#x3002;</p>
-<p> &#x5185;&#x6838;&#x7A7A;&#x95F4;&#xFF1A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6240;&#x5728;&#x533A;&#x57DF;&#xFF0C;&#x6240;&#x6709;I/O&#x90FD;&#x76F4;&#x63A5;&#x6216;&#x95F4;&#x63A5;&#x901A;&#x8FC7;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#x3002;</p>
-<p> &#x8BF7;&#x6C42;I/O&#x64CD;&#x4F5C;&#x8FC7;&#x7A0B;&#xFF1A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; &#x2013;&gt; &#x5185;&#x6838; &#x2013;&gt; &#x4F20;&#x9001;&#x6570;&#x636E;&#x5230;&#x7528;&#x6237;&#x7A7A;&#x95F4; &#x2013;&gt; &#x5982;&#x679C;&#x6570;&#x636E;&#x4E0D;&#x5728;&#x5185;&#x6838;&#x7A7A;&#x95F4;&#xFF0C;&#x5219;&#x8FDB;&#x7A0B;&#x88AB;&#x6302;&#x8D77;&#xFF0C;&#x5185;&#x6838;&#x7740;&#x624B;&#x628A;&#x6570;&#x636E;&#x8BFB;&#x8FDB;&#x5185;&#x5B58;&#x3002;</p>
-<p> &#x6CE8;&#x610F;&#xFF1A;&#x786C;&#x4EF6;&#x901A;&#x5E38;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#xFF0C;&#x5185;&#x6838;&#x8D1F;&#x8D23;&#x6570;&#x636E;&#x7684;&#x5206;&#x89E3;&#xFF0C;&#x518D;&#x7EC4;&#x5408;&#x5DE5;&#x4F5C;&#xFF0C;&#x5145;&#x5F53;&#x7740;&#x4E2D;&#x95F4;&#x4EBA;&#x7684;&#x89D2;&#x8272;&#x3002;</p>
-<h3 id="&#x53D1;&#x6563;&#x6C47;&#x805A;"><a href="#&#x53D1;&#x6563;-&#x6C47;&#x805A;" class="headerlink" title="&#x53D1;&#x6563;/&#x6C47;&#x805A;"></a>&#x53D1;&#x6563;/&#x6C47;&#x805A;</h3>
+<p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F60;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x5728;<code>context.xml</code>&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x914D;&#x7F6E;<a href="http://tomcat.apache.org/tomcat-6.0-doc/config/context.html#Resource%20Links" target="_blank" rel="external">ResourceLink</a>:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">ResourceLink</span> <span class="attr">global</span>=<span class="string">&quot;jdbc/MyDS&quot;</span> <span class="attr">name</span>=<span class="string">&quot;jdbc/MyDS&quot;</span> <span class="attr">type</span>=<span class="string">&quot;javax.sql.DataSource&quot;</span> /&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>&#x4EE5;&#x4E0A;&#x7EAF;&#x7CB9;&#x662F;&#x4E00;&#x4E2A;&#x5DE7;&#x5408;&#xFF0C;IntelliJ IDEA&#x9879;&#x76EE;&#x901A;&#x8FC7;maven&#x7F16;&#x8BD1;&#x4E4B;&#x540E;&#xFF0C;&#x4E00;&#x822C;&#x4F1A;&#x5728;target&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7; war wxploded&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x8BFB;&#x53D6;&#x8FD9;&#x91CC;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x67E5;&#x770B;&#x4E00;&#x4E0B;META-INF&#x76EE;&#x5F55;&#x4E0B;&#x7684;context.xml&#x6587;&#x4EF6;&#x6570;&#x636E;&#x6E90;&#x914D;&#x7F6E;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</p>
+<p>#References</p>
+<p><a href="http://stackoverflow.com/questions/8849461/name-jdbc-is-not-bound-in-this-context-in-tomcat" target="_blank" rel="external">Name jdbc is not bound in this Context in Tomcat</a></p>
+
           
         
       
@@ -1090,124 +1090,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/17/operating-system/mac/2016-04-17 解决Mac外接显示器字体模糊的问题/" itemprop="url">
-                  解决Mac外接显示器字体模糊的问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T00:00:00+08:00" content="2016-04-17">
-              2016-04-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Mac/" itemprop="url" rel="index">
-                    <span itemprop="name">Mac</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h1 id="&#x89E3;&#x51B3;&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x6A21;&#x7CCA;&#x7684;&#x95EE;&#x9898;"><a href="#&#x89E3;&#x51B3;&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x6A21;&#x7CCA;&#x7684;&#x95EE;&#x9898;&#xFF1A;" class="headerlink" title="&#x89E3;&#x51B3;&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x6A21;&#x7CCA;&#x7684;&#x95EE;&#x9898;&#xFF1A;"></a>&#x89E3;&#x51B3;&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x6A21;&#x7CCA;&#x7684;&#x95EE;&#x9898;&#xFF1A;</h1><p><a href="http://bbs.feng.com/read-htm-tid-7742433.html" target="_blank" rel="external">&#x89E3;&#x51B3;Mac&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x53D1;&#x865A;&#x7684;&#x7EC8;&#x6781;&#x65B9;&#x6CD5;</a></p>
-<p><a href="http://bbs.feng.com/read-htm-tid-7247712.html" target="_blank" rel="external">Mac&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x90A3;&#x8BA9;&#x4EBA;&#x7EA0;&#x7ED3;&#x7684;&#x5B57;&#x4F53;&#x6E32;&#x67D3;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x5B57;&#x4F53;&#x5E73;&#x6ED1;&#x7B49;&#x7EA7;&#x80FD;&#x5426;&#x89E3;&#x51B3;&#xFF1F;&#x63ED;&#x79D8;&#xFF01;</a></p>
-<p><a href="http://superuser.com/questions/290956/1080p-macos-x-screen-font-rendering-very-bad" target="_blank" rel="external">1080p - MacOS X - Screen / Font rendering very bad</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/04/17/operating-system/mac/2016-06-06_Mac终端介绍和配置/" itemprop="url">
                   Mac终端介绍和配置
                 </a>
@@ -1278,6 +1160,124 @@
 <h3 id="2-&#x8BBE;&#x7F6E;vim&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;"><a href="#2-&#x8BBE;&#x7F6E;vim&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;" class="headerlink" title="2 &#x8BBE;&#x7F6E;vim&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;"></a>2 &#x8BBE;&#x7F6E;vim&#x8BED;&#x6CD5;&#x9AD8;&#x4EAE;</h3><p>&#x4FEE;&#x6539;<code>~/.vimrc</code>&#x6587;&#x4EF6;,&#x52A0;&#x5165;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">syntax on</span><br></pre></td></tr></table></figure>
 <p>&#x4FDD;&#x5B58;&#x9000;&#x51FA;&#x540E;&#x518D;&#x6B21;&#x4F7F;&#x7528;vim&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#x9AD8;&#x4EAE;&#x8BED;&#x6CD5;&#x4E86;.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/17/operating-system/mac/2016-04-17 解决Mac外接显示器字体模糊的问题/" itemprop="url">
+                  解决Mac外接显示器字体模糊的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-04-17T00:00:00+08:00" content="2016-04-17">
+              2016-04-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Mac/" itemprop="url" rel="index">
+                    <span itemprop="name">Mac</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="&#x89E3;&#x51B3;&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x6A21;&#x7CCA;&#x7684;&#x95EE;&#x9898;"><a href="#&#x89E3;&#x51B3;&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x6A21;&#x7CCA;&#x7684;&#x95EE;&#x9898;&#xFF1A;" class="headerlink" title="&#x89E3;&#x51B3;&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x6A21;&#x7CCA;&#x7684;&#x95EE;&#x9898;&#xFF1A;"></a>&#x89E3;&#x51B3;&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x6A21;&#x7CCA;&#x7684;&#x95EE;&#x9898;&#xFF1A;</h1><p><a href="http://bbs.feng.com/read-htm-tid-7742433.html" target="_blank" rel="external">&#x89E3;&#x51B3;Mac&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x5B57;&#x4F53;&#x53D1;&#x865A;&#x7684;&#x7EC8;&#x6781;&#x65B9;&#x6CD5;</a></p>
+<p><a href="http://bbs.feng.com/read-htm-tid-7247712.html" target="_blank" rel="external">Mac&#x5916;&#x63A5;&#x663E;&#x793A;&#x5668;&#x90A3;&#x8BA9;&#x4EBA;&#x7EA0;&#x7ED3;&#x7684;&#x5B57;&#x4F53;&#x6E32;&#x67D3;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x5B57;&#x4F53;&#x5E73;&#x6ED1;&#x7B49;&#x7EA7;&#x80FD;&#x5426;&#x89E3;&#x51B3;&#xFF1F;&#x63ED;&#x79D8;&#xFF01;</a></p>
+<p><a href="http://superuser.com/questions/290956/1080p-macos-x-screen-font-rendering-very-bad" target="_blank" rel="external">1080p - MacOS X - Screen / Font rendering very bad</a></p>
 
           
         
@@ -1496,7 +1496,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
