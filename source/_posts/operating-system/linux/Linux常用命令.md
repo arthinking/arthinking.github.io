@@ -163,9 +163,11 @@ cp -r -f /webapp/* /dist/
 
 lsof -i tcp:port
 
+# curl
 
-
-
+```bash
+curl -H "Content-Type: application/json" -X POST  --data '{"head": {"clientId": "02"},"body": {}}'  http://127.0.0.1/app-mis/api/market/getPosition/
+```
 
 
 

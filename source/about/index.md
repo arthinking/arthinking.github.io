@@ -7,7 +7,6 @@ date: 2016-06-06 20:04:52
 Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.
 {% endblockquote %}
 
-![](https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/2016/06/milky-way-01.png)
 
 宇宙的年齡和大小都寫在光里
 
@@ -15,15 +14,11 @@ Do not just seek happiness for yourself. Seek happiness for all. Through kindnes
 
 構成恆星的物質
 
-![](https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/2016/06/milky-way-02.png)
-
 以及時空的法則
 
 一直都存在與光之中
 
 但我們人類以前一直看不到
-
-![](https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/2016/06/milky-way-03.png)
 
 直到我們發現了更強大的觀察方法
 
@@ -31,15 +26,10 @@ Do not just seek happiness for yourself. Seek happiness for all. Through kindnes
 
 故事有許多開頭
 
-![](https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/2016/06/milky-way-04.png)
-
 但卻沒有結束
 
-宇宙時空之旅
+-- <<宇宙時空之旅>>
 
+![](https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/2016/06/milky-way-04.png)
 
-```bash
-echo "浩瀚的宇宙,渺小的人類,科學的長河,探索大自然的勇氣."
-```
-
-images from google
+> images from google
