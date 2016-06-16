@@ -1018,7 +1018,10 @@
       
         
           
-            <p>&#x4E00;&#x822C;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x5199;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x4F1A;&#x5206;&#x4E3A;&#x6301;&#x4E45;&#x5C42;&#xFF0C;&#x670D;&#x52A1;&#x5C42;&#xFF0C;&#x548C;&#x63A7;&#x5236;&#x5C42;&#xFF0C;&#x5404;&#x5C42;&#x4E4B;&#x95F4;&#x804C;&#x8D23;&#x5206;&#x660E;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;Entity&#xFF0C;DTO&#xFF0C;VO&#x4E5F;&#x662F;&#x5F88;&#x660E;&#x786E;&#x77E5;&#x9053;&#x7528;&#x5728;&#x54EA;&#x91CC;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x65F6;&#x5019;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x7528;MyBatis&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F4;&#x63A5;&#x4ECE;&#x6301;&#x4E45;&#x5C42;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;vo&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A;vo&#x53C8;&#x4F5C;&#x4E3A;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x5728;&#x7CFB;&#x7EDF;&#x4E4B;&#x95F4;&#x6765;&#x56DE;&#x8C03;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5F15;&#x53D1;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x95EE;&#x9898;&#x5462;&#xFF1F;</p>
+            <blockquote>
+<p>&#x53D1;&#x8868;&#x4E8E;&#xFF1A;<a href="http://www.itzhai.com/mybatis-first-level-cache-repeatable-read-problem.html" target="_blank" rel="external">MyBatis&#x4E00;&#x7EA7;&#x7F13;&#x5B58;&#x5F15;&#x53D1;&#x7684;&#x95EE;&#x9898;</a></p>
+</blockquote>
+<p>&#x4E00;&#x822C;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x5199;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x4F1A;&#x5206;&#x4E3A;&#x6301;&#x4E45;&#x5C42;&#xFF0C;&#x670D;&#x52A1;&#x5C42;&#xFF0C;&#x548C;&#x63A7;&#x5236;&#x5C42;&#xFF0C;&#x5404;&#x5C42;&#x4E4B;&#x95F4;&#x804C;&#x8D23;&#x5206;&#x660E;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;Entity&#xFF0C;DTO&#xFF0C;VO&#x4E5F;&#x662F;&#x5F88;&#x660E;&#x786E;&#x77E5;&#x9053;&#x7528;&#x5728;&#x54EA;&#x91CC;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x65F6;&#x5019;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x7528;MyBatis&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x76F4;&#x63A5;&#x4ECE;&#x6301;&#x4E45;&#x5C42;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;vo&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A;vo&#x53C8;&#x4F5C;&#x4E3A;&#x65B9;&#x6CD5;&#x7684;&#x53C2;&#x6570;&#x5728;&#x7CFB;&#x7EDF;&#x4E4B;&#x95F4;&#x6765;&#x56DE;&#x8C03;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5F15;&#x53D1;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x95EE;&#x9898;&#x5462;&#xFF1F;</p>
 <p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709;&#x5982;&#x4E0B;&#x4EE3;&#x7801;&#xFF1A;</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * &#x786E;&#x8BA4;&#x8BA2;&#x5355;</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">confirmOrder</span><span class="params">(String orderId)</span></span>{</span><br><span class="line">    OrderVo orderVo = orderDao.findByOrderId(orderId);</span><br><span class="line">    <span class="comment">// &#x5047;&#x8BBE;&#x8BA1;&#x7B97;&#x8BA2;&#x5355;&#x53F7;&#x9700;&#x8981;&#x7528;&#x5230;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x5229;&#x7387;</span></span><br><span class="line">    BigDecimal annualRate = <span class="keyword">new</span> BigDecimal(<span class="number">0.12</span>);</span><br><span class="line">    <span class="comment">// &#x6839;&#x636E;&#x8BA2;&#x5355;&#x53F7;&#x548C;&#x5229;&#x7387;&#x8BA1;&#x7B97;&#x5B9E;&#x9645;&#x7684;&#x4EF7;&#x683C;</span></span><br><span class="line">    String realAmount = calculateRealAmount(orderId, annualRate);</span><br><span class="line">    System.out.println(orderVo.getAnnualRate.longValue());</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * &#x8BA1;&#x7B97;&#x8BA2;&#x5355;&#x5B9E;&#x9645;&#x4EF7;&#x683C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x5165;orderVo&#x548C;&#x5B9E;&#x9645;&#x7684;&#x5229;&#x7387;&#xFF0C;&#x7528;&#x4E8E;&#x8BA1;&#x7B97;&#x8BA2;&#x5355;&#x4EF7;&#x683C;</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> BigDecimal <span class="title">calculateRealAmount</span><span class="params">(OrderVo orderVo, BigDecimal annualRate)</span></span>{</span><br><span class="line">    OrderVo orderVo = orderDao.findByOrderId(orderId);</span><br><span class="line">    orderVo.setAnnualRate(annualRate);  <span class="comment">// &#x8BBE;&#x7F6E;&#x65B0;&#x7684;&#x8BA1;&#x7B97;&#x5229;&#x7387;</span></span><br><span class="line">    calculateRealAmount(orderVo);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * &#x8BA1;&#x7B97;&#x8BA2;&#x5355;&#x5B9E;&#x9645;&#x4EF7;&#x683C;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F20;&#x5165;orderVo&#x7528;&#x4E8E;&#x8BA1;&#x7B97;</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> BigDecimal <span class="title">calculateRealAmount</span><span class="params">(OrderVo orderVo)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> NumberUtils.mulBigDecimal(orderVo.getAmount, orderVo.getAnnualRate);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>&#x5047;&#x8BBE;<code>confirmOrder()</code>&#x662F;&#x5904;&#x4E8E;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x91CC;&#x9762;&#xFF0C;<code>confirmOrder()</code>&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x901A;&#x8FC7;<code>calculateRealAmount()</code>&#x65B9;&#x6CD5;&#x8BA1;&#x7B97;&#x4E86;&#x5B9E;&#x9645;&#x7684;&#x8BA2;&#x5355;&#x91D1;&#x989D;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x901A;&#x8FC7;<code>orderDao.findByOrderId(orderId);</code>&#x67E5;&#x627E;&#x5230;&#x4E86;OrderVo&#xFF0C;&#x7531;&#x4E8E;MyBatis&#x9ED8;&#x8BA4;&#x5F00;&#x542F;&#x4E86;&#x4EE5;&#x53CA;&#x7F13;&#x5B58;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x8FD9;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#x67E5;&#x627E;&#x51FA;&#x6765;&#x7684;&#x662F;&#x540C;&#x4E00;&#x4E2A;OrderVo&#x5BF9;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;<code>calculateRealAmount()</code>&#x91CC;&#x9762;&#x5BF9;orderVo&#x7684;&#x6539;&#x52A8;&#xFF0C;&#x4E5F;&#x4F1A;&#x5F71;&#x54CD;&#x5230;<code>confirmOrder()</code>&#x91CC;&#x9762;&#x7684;vo&#xFF0C;&#x6240;&#x4EE5;<code>confirmOrder(String orderId)</code>&#x6700;&#x540E;&#x4E00;&#x884C;&#x8F93;&#x51FA;&#x7684;&#x503C;&#x4E5F;&#x4E0D;&#x662F;&#x521A;&#x67E5;&#x627E;&#x51FA;&#x6765;&#x7684;&#x4E86;&#xFF0C;&#x4F7F;&#x7528;&#x4E0D;&#x5F53;&#xFF0C;&#x4F1A;&#x9020;&#x6210;&#x6F5C;&#x5728;&#x7684;bug&#x3002;</p>
@@ -1205,6 +1208,121 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/26/operating-system/linux/2016-05-26 线上排错常用命令/" itemprop="url">
+                  线上排错常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-26T00:00:00+08:00" content="2016-05-26">
+              2016-05-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Cache/" itemprop="url" rel="index">
+                    <span itemprop="name">Cache</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#x67E5;&#x770B;cpu&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#xFF1A;<br>top</p>
+<p>&#x67E5;&#x770B;&#x786C;&#x76D8;&#xFF1A;<br>ls -lh</p>
+<p>&#x8FDB;&#x7A0B;&#x76F8;&#x5173;&#xFF1A;<br>ps aux | grep &#x201C;&#x201D;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/26/operating-system/linux/Linux常用命令/" itemprop="url">
                   Linux common command
                 </a>
@@ -1313,121 +1431,6 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
 <h1 id="lsof"><a href="#lsof" class="headerlink" title="lsof"></a>lsof</h1><p>&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#x5360;&#x7528;</p>
 <p>lsof -i tcp:port</p>
 <h1 id="curl"><a href="#curl" class="headerlink" title="curl"></a>curl</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -H <span class="string">&quot;Content-Type: application/json&quot;</span> -X POST  --data <span class="string">&apos;{&quot;head&quot;: {&quot;clientId&quot;: &quot;02&quot;},&quot;body&quot;: {}}&apos;</span>  http://127.0.0.1/app-mis/api/market/getPosition/</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/26/operating-system/linux/2016-05-26 线上排错常用命令/" itemprop="url">
-                  线上排错常用命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-26T00:00:00+08:00" content="2016-05-26">
-              2016-05-26
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Cache/" itemprop="url" rel="index">
-                    <span itemprop="name">Cache</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&#x67E5;&#x770B;cpu&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#xFF1A;<br>top</p>
-<p>&#x67E5;&#x770B;&#x786C;&#x76D8;&#xFF1A;<br>ls -lh</p>
-<p>&#x8FDB;&#x7A0B;&#x76F8;&#x5173;&#xFF1A;<br>ps aux | grep &#x201C;&#x201D;</p>
 
           
         
@@ -2007,7 +2010,7 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
 <p>&#x539F;&#x7406;&#x7B80;&#x5355;,&#x5B9E;&#x73B0;&#x65B9;&#x4FBF;</p>
 <p>&#x540C;&#x6B65;&#x963B;&#x585E;,&#x5355;&#x70B9;&#x95EE;&#x9898;,&#x8111;&#x88C2;(&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;),&#x592A;&#x8FC7;&#x4FDD;&#x5B88;.</p>
 <h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;3pc&#x9610;&#x8FF0;&#x4E00;&#x4E0B;3pc&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;3PC&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;3PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;3PC&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;3PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x5F15;&#x5165;3PC&#xFF0C;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;3PC&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14632386708213.jpg" alt=""></p>
-<p>2PCd &#x63D0;&#x4EA4;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x5206;&#x4E3A;&#x4E24;&#x6B65;.</p>
+<p>2PC &#x63D0;&#x4EA4;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x5206;&#x4E3A;&#x4E24;&#x6B65;.</p>
 <p>CanCommit,PreCommit,DoCommit.</p>
 <h3 id="3pc&#x6BD4;&#x8D77;2pc&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x95EE;&#x9898;"><a href="#3PC&#x6BD4;&#x8D77;2PC&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#xFF1F;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;" class="headerlink" title="3PC&#x6BD4;&#x8D77;2PC&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#xFF1F;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;"></a>3PC&#x6BD4;&#x8D77;2PC&#x6709;&#x4EC0;&#x4E48;&#x4F18;&#x70B9;&#xFF1F;&#x4ECD;&#x7136;&#x5B58;&#x5728;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1F;</h3><p>&#x4E00;&#x5206;&#x4E3A;&#x4E8C;&#x540E;&#x964D;&#x4F4E;&#x4E86;&#x963B;&#x585E;&#x8303;&#x56F4;,&#x63D0;&#x524D;&#x68C0;&#x6D4B;&#x5355;&#x70B9;&#x6545;&#x969C;,&#x4F7F;&#x6570;&#x636E;&#x8FBE;&#x6210;&#x4E00;&#x81F4;&#x6027;.</p>
 <p>&#x5982;&#x679C;&#x8FDB;&#x5165;&#x9636;&#x6BB5;&#x4E09;&#x4E4B;&#x540E;&#x51FA;&#x73B0;&#x4E86;&#x6545;&#x969C;,&#x6700;&#x7EC8;&#x8D85;&#x65F6;&#x4E4B;&#x540E;,&#x53C2;&#x4E0E;&#x8005;&#x7684;&#x4E8B;&#x52A1;&#x8FD8;&#x662F;&#x4F1A;&#x81EA;&#x52A8;&#x63D0;&#x4EA4;,&#x8FD8;&#x662F;&#x4F1A;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x95EE;&#x9898;.</p>
@@ -2043,14 +2046,81 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
 <h3 id="zookeeper&#x7684;&#x8BBE;&#x8BA1;&#x76EE;&#x6807;"><a href="#ZooKeeper&#x7684;&#x8BBE;&#x8BA1;&#x76EE;&#x6807;" class="headerlink" title="ZooKeeper&#x7684;&#x8BBE;&#x8BA1;&#x76EE;&#x6807;"></a>ZooKeeper&#x7684;&#x8BBE;&#x8BA1;&#x76EE;&#x6807;</h3><ul>
 <li>&#x7B80;&#x5355;&#x6570;&#x636E;&#x6A21;&#x578B;&#xFF1A;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#xFF0C;&#x5168;&#x91CF;&#x5B58;&#x4E8E;&#x5185;&#x5B58;&#xFF1B;</li>
 <li>&#x53EF;&#x4EE5;&#x6784;&#x5EFA;&#x96C6;&#x7FA4;&#xFF1A;&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;TCP&#x548C;ZooKeeper&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x884C;&#x8FDE;&#x63A5;</li>
-<li>&#x987A;&#x5E8F;&#x8BBF;&#x95EE;&#xFF1A;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x552F;&#x4E00;&#x7684;&#x9012;&#x589E;&#x7F16;&#x53F7;&#x5B9E;&#x73B0;&#xFF1B;</li>
+<li>&#x987A;&#x5E8F;&#x8BBF;&#x95EE;&#xFF1A;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E00;&#x6B21;&#x8BF7;&#x6C42;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x552F;&#x4E00;&#x7684;&#x9012;&#x589E;&#x7F16;&#x53F7;&#xFF08;&#x4E8B;&#x52A1;ID&#xFF1A;ZXID&#xFF09;&#x5B9E;&#x73B0;&#xFF1B;</li>
 <li>&#x9AD8;&#x6027;&#x80FD;&#xFF1A;&#x7531;&#x4E8E;&#x6570;&#x636E;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x5C24;&#x5176;&#x9002;&#x5408;&#x7528;&#x4E8E;&#x4EE5;&#x8BFB;&#x64CD;&#x4F5C;&#x4E3A;&#x4E3B;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF0C;&#x9AD8;QPS&#x3002;</li>
 </ul>
-<h3 id="zookeeper&#x4E0E;masterslave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;"><a href="#Zookeeper&#x4E0E;Master-Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;" class="headerlink" title="Zookeeper&#x4E0E;Master/Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;"></a>Zookeeper&#x4E0E;Master/Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;</h3><h3 id="&#x5173;&#x4E8E;zookeeper&#x7684;&#x9009;&#x4E3E;"><a href="#&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;" class="headerlink" title="&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;"></a>&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;</h3><p>&#x9009;&#x4E3E;&#x673A;&#x5236;(FastLeaderElection&#x7B97;&#x6CD5;)&#xFF1A;sid&#x6700;&#x5927;&#x4E14;&#x88AB;&#x8D85;&#x8FC7;&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x5C31;&#x4F1A;&#x6210;&#x4E3A;leader.<br>&#x6240;&#x4EE5;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x65E0;&#x6CD5;&#x9009;&#x51FA;leader&#xFF1A;</p>
+<h3 id="zookeeper&#x4E0E;masterslave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;"><a href="#Zookeeper&#x4E0E;Master-Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;" class="headerlink" title="Zookeeper&#x4E0E;Master/Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;"></a>Zookeeper&#x4E0E;Master/Slave&#x7684;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;</h3><p>&#x4E3B;&#x5907;&#x6A21;&#x5F0F;&#x4E2D;&#xFF0C;&#x80FD;&#x591F;&#x5904;&#x7406;&#x6240;&#x6709;&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x662F;Master&#x673A;&#x5668;&#xFF0C;&#x5F02;&#x6B65;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#x6700;&#x65B0;&#x6570;&#x636E;&#x5E76;&#x63D0;&#x4F9B;&#x8BFB;&#x670D;&#x52A1;&#x7684;&#x673A;&#x5668;&#x662F;Slave&#x673A;&#x5668;&#xFF1B;<br>ZooKeeper&#x4E2D;&#xFF0C;Leader&#x670D;&#x52A1;&#x5668;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x63D0;&#x4F9B;&#x8BFB;&#x548C;&#x5199;&#x670D;&#x52A1;&#xFF1B;&#x5176;&#x4ED6;&#x7684;Follower&#x548C;Observer&#x63D0;&#x4F9B;&#x8BFB;&#x670D;&#x52A1;&#xFF1B;Observer&#x4E0D;&#x53C2;&#x4E0E;Leader&#x9009;&#x4E3E;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E5F;&#x4E0D;&#x53C2;&#x4E0E;&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x8FC7;&#x534A;&#x5199;&#x6210;&#x529F;&#x7B56;&#x7565;&#xFF0C;&#x56E0;&#x6B64;Observer&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x5F71;&#x54CD;&#x5199;&#x6027;&#x80FD;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x63D0;&#x5347;&#x96C6;&#x7FA4;&#x7684;&#x8BFB;&#x6027;&#x80FD;</p>
+<h3 id="zookeeper&#x7684;&#x4F1A;&#x8BDD;&#x662F;&#x4EC0;&#x4E48;&#x6982;&#x5FF5;"><a href="#ZooKeeper&#x7684;&#x4F1A;&#x8BDD;&#x662F;&#x4EC0;&#x4E48;&#x6982;&#x5FF5;" class="headerlink" title="ZooKeeper&#x7684;&#x4F1A;&#x8BDD;&#x662F;&#x4EC0;&#x4E48;&#x6982;&#x5FF5;?"></a>ZooKeeper&#x7684;&#x4F1A;&#x8BDD;&#x662F;&#x4EC0;&#x4E48;&#x6982;&#x5FF5;?</h3><p>Sessioin&#x662F;&#x6307;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x8BDD;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x662F;TCP&#x957F;&#x8FDE;&#x63A5;&#xFF0C;&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;2181&#xFF0C;&#x901A;&#x8FC7;&#x8BE5;&#x8FDE;&#x63A5;&#x5B9E;&#x73B0;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x901A;&#x4FE1;&#xFF0C;Watch&#x4E8B;&#x4EF6;&#x901A;&#x77E5;&#x673A;&#x5236;sessionTimeout&#x65F6;&#x95F4;&#x5185;&#x5B9E;&#x73B0;&#x4F1A;&#x8BDD;&#x91CD;&#x8FDE;&#xFF1B;</p>
+<h3 id="zookeeper&#x7684;&#x7B97;&#x6CD5;"><a href="#ZooKeeper&#x7684;&#x7B97;&#x6CD5;" class="headerlink" title="ZooKeeper&#x7684;&#x7B97;&#x6CD5;?"></a>ZooKeeper&#x7684;&#x7B97;&#x6CD5;?</h3><p>ZAB&#xFF08;ZooKeeper Atmoic Broadcast&#xFF0C;&#x539F;&#x5B50;&#x6D88;&#x606F;&#x5E7F;&#x64AD;&#x534F;&#x8BAE;&#xFF09;</p>
+<p>ZooKeeper&#x4E3B;&#x8981;&#x4F9D;&#x8D56;ZAB&#x534F;&#x8BAE;&#x5B9E;&#x73B0;&#x5206;&#x5E03;&#x5F0F;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x4E3B;&#x8FDB;&#x7A0B;&#x63A5;&#x6536;&#x5E76;&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x91C7;&#x7528;ZAB&#x539F;&#x5B50;&#x5E7F;&#x64AD;&#x534F;&#x8BAE;&#xFF0C;&#x5C06;&#x670D;&#x52A1;&#x5668;&#x72B6;&#x6001;&#x53D8;&#x66F4;&#x4EE5;Proposal&#x7684;&#x5F62;&#x5F0F;&#x5E7F;&#x64AD;&#x5230;&#x6240;&#x6709;&#x7684;&#x526F;&#x672C;&#x4E0A;&#x53BB;&#xFF1B;&#x53E6;&#x5916;&#x8FD8;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x5168;&#x5C40;&#x7684;&#x53D8;&#x66F4;&#x5E8F;&#x5217;&#x88AB;&#x987A;&#x5E8F;&#x5E94;&#x7528;&#xFF1B;ZAB&#x534F;&#x8BAE;&#x8FD8;&#x8981;&#x4FDD;&#x8BC1;&#x5F53;&#x524D;&#x4E3B;&#x8FDB;&#x7A0B;&#x5F02;&#x5E38;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x96C6;&#x7FA4;&#x4F9D;&#x65E7;&#x80FD;&#x591F;&#x6B63;&#x5E38;&#x5DE5;&#x4F5C;&#x3002;&#xFF08;Leader&#x670D;&#x52A1;&#x5668;&#x8D1F;&#x8D23;&#x5C06;&#x5BA2;&#x6237;&#x7AEF;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x8F6C;&#x6362;&#x6210;&#x4E00;&#x4E2A;Proposal&#xFF0C;&#x5E76;&#x5206;&#x53D1;&#x7ED9;&#x96C6;&#x7FA4;&#x4E2D;&#x6240;&#x6709;Follower&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x7B49;&#x5F85;&#x53CD;&#x9988;&#xFF0C;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x6B63;&#x786E;&#x53CD;&#x9988;&#xFF0C;&#x5219;Leader&#x670D;&#x52A1;&#x5668;&#x5411;&#x6240;&#x6709;Follower&#x670D;&#x52A1;&#x5668;&#x5206;&#x53D1;Commit&#x6D88;&#x606F;&#xFF0C;&#x8981;&#x6C42;&#x5C06;Proposal&#x8FDB;&#x884C;&#x63D0;&#x4EA4;&#xFF09;</p>
+<p>Leader&#x670D;&#x52A1;&#x5668;&#x63A5;&#x6536;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684;&#x4E8B;&#x52A1;&#x63D0;&#x6848;&#x5E76;&#x53D1;&#x8D77;&#x4E00;&#x8F6E;<code>&#x5E7F;&#x64AD;&#x534F;&#x8BAE;</code>&#x3002;</p>
+<p>Leader&#x670D;&#x52A1;&#x5668;&#x51FA;&#x73B0;&#x5D29;&#x6E83;&#x9000;&#x51FA;&#x6216;&#x673A;&#x5668;&#x91CD;&#x542F;&#xFF0C;&#x6216;&#x8005;&#x96C6;&#x7FA4;&#x4E2D;&#x5DF2;&#x7ECF;&#x4E0D;&#x5B58;&#x5728;&#x8FC7;&#x534A;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0E;&#x8BE5;Leader&#x4FDD;&#x6301;&#x901A;&#x4FE1;&#xFF0C;&#x91CD;&#x65B0;&#x5F00;&#x59CB;&#x65B0;&#x7684;&#x4E00;&#x8F6E;&#x539F;&#x5B50;&#x5E7F;&#x64AD;&#x4E8B;&#x52A1;&#x64CD;&#x4F5C;&#x4E4B;&#x524D;&#xFF0C;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x4F1A;&#x8FDB;&#x5165;<code>&#x5D29;&#x6E83;&#x6062;&#x590D;&#x534F;&#x8BAE;</code>&#x6765;&#x4F7F;&#x7B14;&#x8BB0;&#x8FBE;&#x5230;&#x4E00;&#x4E2A;&#x4E00;&#x76F4;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<p><strong>ZAB&#x7684;&#x6D88;&#x606F;&#x5E7F;&#x64AD;&#x673A;&#x5236;</strong></p>
+<p><img src="media/14659159947564.jpg" alt=""></p>
+<p>&#x7C7B;&#x4F3C;&#x4E8E;&#x4E8C;&#x9636;&#x6BB5;&#x63D0;&#x4EA4;&#x8FC7;&#x7A0B;&#xFF0C;&#x4E0E;&#x4E8C;&#x9636;&#x6BB5;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x7A0D;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF1A;&#x79FB;&#x9664;&#x4E86;&#x4E2D;&#x65AD;&#x903B;&#x8F91;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x8FC7;&#x534A;&#x7684;Follower&#x670D;&#x52A1;&#x5668;&#x53CD;&#x9988;Ack&#x4E4B;&#x540E;&#x5C31;&#x5F00;&#x59CB;&#x63D0;&#x4EA4;&#x4E8B;&#x52A1;Proposal&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x65E0;&#x6CD5;&#x5904;&#x7406;Leader&#x670D;&#x52A1;&#x5668;&#x5D29;&#x6E83;&#x9000;&#x51FA;&#x5E26;&#x6765;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x95EE;&#x9898;&#xFF0C;&#x9700;&#x8981;&#x5F15;&#x5165;&#x5D29;&#x6E83;&#x6062;&#x590D;&#x6A21;&#x5F0F;&#x3002;</p>
+<p>&#x6574;&#x4E2A;&#x6D88;&#x606F;&#x534F;&#x8BAE;&#x662F;&#x57FA;&#x4E8E;&#x5177;&#x6709;<code>FIFO</code>&#x7279;&#x6027;&#x7684;TCP&#x534F;&#x8BAE;&#x6765;&#x8FDB;&#x884C;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x80FD;&#x591F;&#x4FDD;&#x8BC1;&#x6D88;&#x606F;&#x5E7F;&#x64AD;&#x8FC7;&#x7A0B;&#x4E2D;&#x6D88;&#x606F;&#x63A5;&#x6536;&#x4E0E;&#x53D1;&#x9001;&#x7684;&#x987A;&#x5E8F;&#x6027;&#x3002;</p>
+<p>Leader&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x4E3A;&#x6BCF;&#x4E2A;Follower&#x90FD;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x961F;&#x5217;&#xFF0C;&#x5C06;Proposal&#x901A;&#x8FC7;&#x961F;&#x5217;&#x6839;&#x636E;FIFO&#x7B56;&#x7565;&#x53D1;&#x9001;&#x51FA;&#x53BB;&#xFF0C;Follower&#x63A5;&#x6536;&#x5230;&#x4E8B;&#x52A1;&#x7684;Proposal&#x4F1A;&#x4EE5;&#x4E8B;&#x52A1;&#x65E5;&#x5FD7;&#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#x672C;&#x5730;&#x78C1;&#x76D8;&#xFF0C;&#x63A5;&#x6536;&#x5230;Leader&#x7684;Commit&#x6D88;&#x606F;&#x4E4B;&#x540E;&#x5B8C;&#x6210;&#x5BF9;&#x4E8B;&#x52A1;&#x7684;&#x63D0;&#x4EA4;&#x3002;</p>
+<p><strong>&#x5D29;&#x6E83;&#x6062;&#x590D;</strong></p>
+<p>&#x6574;&#x4E2A;&#x6062;&#x590D;&#x8FC7;&#x7A0B;&#x7ED3;&#x675F;&#x540E;&#x9700;&#x8981;&#x9009;&#x4E3E;&#x51FA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;Leader&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x56E0;&#x6B64;ZAB&#x534F;&#x8BAE;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x9AD8;&#x6548;&#x4E14;&#x53EF;&#x9760;&#x7684;Leader&#x9009;&#x4E3E;&#x7B97;&#x6CD5;&#x3002;</p>
+<p><em>&#x5D29;&#x6E83;&#x51FA;&#x73B0;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x573A;&#x666F;&#xFF1A;</em></p>
+<ul>
+<li>ZAB&#x9700;&#x8981;&#x786E;&#x4FDD;&#x90A3;&#x4E9B;&#x5DF2;&#x7ECF;&#x5728;Leader&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x63D0;&#x4EA4;&#x7684;&#x4E8B;&#x52A1;&#x6700;&#x7EC8;&#x88AB;&#x6240;&#x6709;&#x670D;&#x52A1;&#x5668;&#x63D0;&#x4EA4;<br>  &#x4F8B;&#x5982;LeaderCommit&#x4E86;&#x4E8B;&#x52A1;&#xFF0C;&#x5411;Follower&#x53D1;&#x51FA;Commit&#x8BF7;&#x6C42;&#x4E4B;&#x524D;&#xFF0C;Leader&#x670D;&#x52A1;&#x5668;&#x6302;&#x4E86;</li>
+<li>ZAb&#x9700;&#x8981;&#x786E;&#x4FDD;&#x4E22;&#x5F03;&#x90A3;&#x4E9B;&#x53EA;&#x5728;Leader&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x88AB;&#x63D0;&#x51FA;&#x7684;&#x4E8B;&#x52A1;</li>
+</ul>
+<p>&#x9009;&#x4E3E;&#x51FA;&#x6765;&#x7684;Leader&#x62E5;&#x6709;&#x96C6;&#x7FA4;&#x4E2D;&#x6240;&#x6709;&#x673A;&#x5668;&#x6700;&#x9AD8;&#x7F16;&#x53F7;ZXID&#x7684;&#x4E8B;&#x52A1;Proposal&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x65B0;&#x9009;&#x4E3E;&#x51FA;&#x6765;&#x7684;Leader&#x4E00;&#x5B9A;&#x5177;&#x6709;&#x6240;&#x6B32;&#x5DF2;&#x63D0;&#x4EA4;&#x7684;&#x63D0;&#x6848;&#x3002;</p>
+<p><strong>&#x6570;&#x636E;&#x540C;&#x6B65;</strong></p>
+<p>&#x5BF9;&#x4E8E;&#x672A;&#x540C;&#x6B65;&#x7684;&#x4E8B;&#x52A1;&#xFF1A;Leader&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x4E3A;&#x6BCF;&#x4E2A;Follower&#x90FD;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x961F;&#x5217;&#xFF0C;&#x5C06;&#x6CA1;&#x6709;&#x88AB;&#x5404;Follower&#x670D;&#x52A1;&#x5668;&#x540C;&#x6B65;&#x7684;&#x4E8B;&#x52A1;&#x4EE5;Proposal&#x6D88;&#x606F;&#x7684;&#x5F62;&#x5F0F;&#x9010;&#x4E2A;&#x53D1;&#x7ED9;Follower&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5E76;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;Proposal&#x6D88;&#x606F;&#x540E;&#x9762;&#x7D27;&#x63A5;&#x7740;&#x53D1;&#x9001;&#x4E00;&#x4E2A;Commit&#x6D88;&#x606F;&#x3002;&#x540C;&#x6B65;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;Leader&#x4F1A;&#x5C06;Follower&#x670D;&#x52A1;&#x5668;&#x52A0;&#x5165;&#x771F;&#x6B63;&#x53EF;&#x7528;Follower&#x5217;&#x8868;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x88AB;&#x4E22;&#x5F03;&#x7684;&#x4E8B;&#x52A1;&#xFF1A;&#x901A;&#x8FC7;ZAB&#x534F;&#x8BAE;&#x7684;&#x4E8B;&#x52A1;&#x7F16;&#x53F7;&#x8BBE;&#x8BA1;&#xFF1A;Leader&#x5468;&#x671F;&#x7F16;&#x53F7; + &#x4F4E;32&#x4F4D;&#x9012;&#x589E;&#xFF0C;&#x9700;&#x8981;&#x786E;&#x4FDD;&#x65B0;&#x9009;&#x4E3E;&#x51FA;&#x6765;&#x7684;Leader&#x6700;&#x5927;&#x4E8B;&#x52A1;Proposal&#x7684;ZXID&#x662F;&#x6700;&#x9AD8;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x80AF;&#x5B9A;&#x5B58;&#x5728;&#x4E00;&#x4E2A;Quorum&#x96C6;&#x5408;&#xFF0C;&#x662F;&#x5305;&#x542B;&#x6700;&#x9AD8;ZXID&#x7684;&#xFF0C;&#x5982;&#x679C;&#x6700;&#x9AD8;ZXID&#x662F;&#x539F;&#x6765;&#x7684;Leader&#xFF0C;&#x90A3;&#x4E48;&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x539F;&#x6765;Leader&#x670D;&#x52A1;&#x5668;&#x7684;&#x6700;&#x5927;&#x4E8B;&#x52A1;Proposal&#x5E94;&#x8BE5;&#x88AB;&#x4E22;&#x5F03;&#x3002;</p>
+<p>&#xFF08;&#x4ECE;ZooKeeper&#x7684;&#x5B9E;&#x73B0;&#x5206;&#x6790;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x6D88;&#x606F;&#x5904;&#x7406;&#x7684;&#x65B9;&#x5F0F;&#x4E4B;&#x4E00;&#xFF09;</p>
+<h3 id="&#x5173;&#x4E8E;zookeeper&#x7684;&#x9009;&#x4E3E;"><a href="#&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;" class="headerlink" title="&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;"></a>&#x5173;&#x4E8E;Zookeeper&#x7684;&#x9009;&#x4E3E;</h3><p>&#x9009;&#x4E3E;&#x673A;&#x5236;(FastLeaderElection&#x7B97;&#x6CD5;)&#xFF1A;sid&#x6700;&#x5927;&#x4E14;&#x88AB;&#x8D85;&#x8FC7;&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x5C31;&#x4F1A;&#x6210;&#x4E3A;leader.<br>&#x6240;&#x4EE5;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x65E0;&#x6CD5;&#x9009;&#x51FA;leader&#xFF1A;</p>
 <pre><code>.    &#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x53EA;&#x6709;2&#x53F0;&#x670D;&#x52A1;&#x5668;&#xFF08;&#x6CE8;&#x610F;&#x4E0D;&#x662F;&#x53EA;&#x5269;2&#x53F0;&#xFF0C;&#x800C;&#x662F;&#x96C6;&#x7FA4;&#x7684;&#x603B;&#x8282;&#x70B9;&#x6570;&#x4E3A;2&#xFF09;&#x2028;
 .    &#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x673A;&#x5668;&#x6302;&#x6389;&#x3002;&#x2028;
-</code></pre><p> &#x6240;&#x8C13;&#x7684;&#x5076;&#x6570;&#x95EE;&#x9898;&#x5176;&#x5B9E;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x4F18;&#x5316;&#x914D;&#x7F6E;&#x95EE;&#x9898;&#xFF0C;&#x5373;:&#x96C6;&#x7FA4;&#x7684;&#x5BB9;&#x707E;&#x6570;&#x91CF;=&#x96C6;&#x7FA4;&#x603B;&#x8282;&#x70B9;&#x6570;/2-1<br>&#x5047;&#x5982;&#x96C6;&#x7FA4;&#x6709;5&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x591A;&#x5141;&#x8BB8;2&#x4E2A;&#x8282;&#x70B9;&#x6302;&#x6389;&#xFF0C;&#x5982;&#x679C;&#x6709;3&#x8282;&#x70B9;&#x6302;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;&#x9009;&#x4E3E;&#x7ED3;&#x679C;&#x4E0D;&#x4F1A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#xFF1A;&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x3002;<br>&#x5047;&#x5982;&#x96C6;&#x7FA4;&#x6709;6&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x591A;&#x4E5F;&#x53EA;&#x80FD;&#x6302;&#x6389;2&#x53F0;&#xFF0C;&#x56E0;&#x4E3A;&#x6302;&#x4E86;3&#x53F0;&#x65F6;&#xFF0C;&#x9009;&#x4E3E;&#x7ED3;&#x679C;&#x4E5F;&#x4E0D;&#x4F1A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;:&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x3002;<br>&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x591A;&#x90A3;&#x4E00;&#x53F0;&#x7528;&#x5904;&#x5E76;&#x4E0D;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x96C6;&#x7FA4;&#x603B;&#x6570;&#x63A8;&#x8350;&#x4E3A;&#x5947;&#x6570;&#x3002;</p>
-<h2 id="&#x7B2C;&#x4E94;&#x7AE0;-&#x4F7F;&#x7528;zookeeper"><a href="#&#x7B2C;&#x4E94;&#x7AE0;-&#x4F7F;&#x7528;Zookeeper" class="headerlink" title="&#x7B2C;&#x4E94;&#x7AE0; &#x4F7F;&#x7528;Zookeeper"></a>&#x7B2C;&#x4E94;&#x7AE0; &#x4F7F;&#x7528;Zookeeper</h2><h2 id="&#x7B2C;&#x516D;&#x7AE0;-zookeeper&#x7684;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;"><a href="#&#x7B2C;&#x516D;&#x7AE0;-ZooKeeper&#x7684;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x7B2C;&#x516D;&#x7AE0; ZooKeeper&#x7684;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;"></a>&#x7B2C;&#x516D;&#x7AE0; ZooKeeper&#x7684;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;</h2><h3 id="&#x8BF4;&#x8BF4;mysql&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;"><a href="#&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;" class="headerlink" title="&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;"></a>&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14634005724898.jpg" alt=""></p>
+</code></pre><p>&#x6240;&#x8C13;&#x7684;&#x5076;&#x6570;&#x95EE;&#x9898;&#x5176;&#x5B9E;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#x4F18;&#x5316;&#x914D;&#x7F6E;&#x95EE;&#x9898;&#xFF0C;&#x5373;:&#x96C6;&#x7FA4;&#x7684;&#x5BB9;&#x707E;&#x6570;&#x91CF;=&#x96C6;&#x7FA4;&#x603B;&#x8282;&#x70B9;&#x6570;/2-1<br>&#x5047;&#x5982;&#x96C6;&#x7FA4;&#x6709;5&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x591A;&#x5141;&#x8BB8;2&#x4E2A;&#x8282;&#x70B9;&#x6302;&#x6389;&#xFF0C;&#x5982;&#x679C;&#x6709;3&#x8282;&#x70B9;&#x6302;&#x4E86;&#xFF0C;&#x90A3;&#x4E48;&#x6574;&#x4E2A;&#x96C6;&#x7FA4;&#x7684;&#x9009;&#x4E3E;&#x7ED3;&#x679C;&#x4E0D;&#x4F1A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#xFF1A;&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x3002;<br>&#x5047;&#x5982;&#x96C6;&#x7FA4;&#x6709;6&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x591A;&#x4E5F;&#x53EA;&#x80FD;&#x6302;&#x6389;2&#x53F0;&#xFF0C;&#x56E0;&#x4E3A;&#x6302;&#x4E86;3&#x53F0;&#x65F6;&#xFF0C;&#x9009;&#x4E3E;&#x7ED3;&#x679C;&#x4E5F;&#x4E0D;&#x4F1A;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;:&#x96C6;&#x7FA4;&#x4E2D;&#x8D85;&#x8FC7;&#x534A;&#x6570;&#x7684;&#x673A;&#x5668;&#x62E5;&#x62A4;&#x3002;<br>&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x591A;&#x90A3;&#x4E00;&#x53F0;&#x7528;&#x5904;&#x5E76;&#x4E0D;&#x5927;&#x3002;&#x6240;&#x4EE5;&#x96C6;&#x7FA4;&#x603B;&#x6570;&#x63A8;&#x8350;&#x4E3A;&#x5947;&#x6570;&#x3002;</p>
+<h3 id="zab&#x534F;&#x8BAE;&#x4E0E;paxos&#x7684;&#x533A;&#x522B;"><a href="#ZAB&#x534F;&#x8BAE;&#x4E0E;Paxos&#x7684;&#x533A;&#x522B;" class="headerlink" title="ZAB&#x534F;&#x8BAE;&#x4E0E;Paxos&#x7684;&#x533A;&#x522B;"></a>ZAB&#x534F;&#x8BAE;&#x4E0E;Paxos&#x7684;&#x533A;&#x522B;</h3><p>ZAB&#x534F;&#x8BAE;&#x989D;&#x5916;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x540C;&#x6B65;&#x9636;&#x6BB5;&#xFF0C;&#x65B0;&#x7684;Leader&#x4F1A;&#x786E;&#x4FDD;&#x5B58;&#x5728;&#x8FC7;&#x534A;&#x7684;Follower&#x5DF2;&#x7ECF;&#x63D0;&#x4EA4;&#x4E86;&#x4E4B;&#x524D;Leader&#x5468;&#x671F;&#x4E2D;&#x6240;&#x6709;&#x4E8B;&#x52A1;Proposal&#xFF0C;&#x8FD9;&#x9636;&#x6BB5;&#x7684;&#x5F15;&#x5165;&#x80FD;&#x591F;&#x4FDD;&#x8BC1;Leader&#x5728;&#x65B0;&#x7684;&#x5468;&#x671F;&#x4E2D;&#x63D0;&#x51FA;&#x4E8B;&#x52A1;Proposal&#x4E4B;&#x524D;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x5BF9;&#x4E4B;&#x524D;&#x4E8B;&#x52A1;Proposal&#x7684;&#x63D0;&#x4EA4;&#x3002;</p>
+<p>ZAB&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x9AD8;&#x53EF;&#x7528;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x6570;&#x636E;&#x4E3B;&#x5907;&#x7CFB;&#x7EDF;&#xFF1B;Paxos&#x7B97;&#x6CD5;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x5206;&#x5E03;&#x5F0F;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x72B6;&#x6001;&#x673A;&#x7CFB;&#x7EDF;&#x3002;</p>
+<h2 id="&#x7B2C;&#x4E94;&#x7AE0;-&#x4F7F;&#x7528;zookeeper"><a href="#&#x7B2C;&#x4E94;&#x7AE0;-&#x4F7F;&#x7528;Zookeeper" class="headerlink" title="&#x7B2C;&#x4E94;&#x7AE0; &#x4F7F;&#x7528;Zookeeper"></a>&#x7B2C;&#x4E94;&#x7AE0; &#x4F7F;&#x7528;Zookeeper</h2><h3 id="&#x96C6;&#x7FA4;&#x4E0E;&#x5355;&#x673A;&#x6A21;&#x5F0F;"><a href="#&#x96C6;&#x7FA4;&#x4E0E;&#x5355;&#x673A;&#x6A21;&#x5F0F;" class="headerlink" title="&#x96C6;&#x7FA4;&#x4E0E;&#x5355;&#x673A;&#x6A21;&#x5F0F;"></a>&#x96C6;&#x7FA4;&#x4E0E;&#x5355;&#x673A;&#x6A21;&#x5F0F;</h3><h4 id="&#x96C6;&#x7FA4;"><a href="#&#x96C6;&#x7FA4;" class="headerlink" title="&#x96C6;&#x7FA4;"></a>&#x96C6;&#x7FA4;</h4><p>1&#x3001;&#x914D;&#x7F6E;zoo.cfg&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;git&#x7BA1;&#x7406;<code>zoo.cfg</code>&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<p>2&#x3001;&#x5728;dataDir&#x6240;&#x914D;&#x7F6E;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;myid&#x6587;&#x4EF6;&#xFF0C;&#x91CC;&#x9762;&#x8BB0;&#x5F55;&#x4E0A;&#x5F53;&#x524D;&#x673A;&#x5668;&#x7F16;&#x53F7;</p>
+<p>3&#x3001;&#x542F;&#x52A8;zk&#xFF1A;</p>
+<blockquote>
+<p>%ZK_HOME%/bin/zkServer.sh start</p>
+</blockquote>
+<p>4&#x3001;&#x9A8C;&#x8BC1;&#x670D;&#x52A1;&#x5668;&#xFF1A;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">telnet 127.0.0.1 2181</span><br><span class="line">stat</span><br></pre></td></tr></table></figure>
+<h4 id="&#x5355;&#x673A;"><a href="#&#x5355;&#x673A;" class="headerlink" title="&#x5355;&#x673A;"></a>&#x5355;&#x673A;</h4><p>&#x7279;&#x6B8A;&#x7684;&#x96C6;&#x7FA4;&#xFF1A;&#x53EA;&#x6709;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x7684;&#x96C6;&#x7FA4;&#x3002;</p>
+<p>stat&#x8F93;&#x51FA;&#x533A;&#x522B;&#xFF1A;<br>Mode: standalone/leader</p>
+<h4 id="&#x4F2A;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;"><a href="#&#x4F2A;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;" class="headerlink" title="&#x4F2A;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;"></a>&#x4F2A;&#x96C6;&#x7FA4;&#x6A21;&#x5F0F;</h4><p>&#x96C6;&#x7FA4;&#x6240;&#x6709;&#x7684;&#x673A;&#x5668;&#x90FD;&#x5728;&#x4E00;&#x53F0;&#x673A;&#x5668;&#x4E0A;&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x662F;&#x4EE5;&#x96C6;&#x7FA4;&#x7684;&#x7279;&#x6027;&#x6765;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x3002;&#x914D;&#x7F6E;&#x57FA;&#x672C;&#x4E00;&#x6837;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x670D;&#x52A1;&#x5668;&#x7684;IP&#x90FD;&#x662F;&#x540C;&#x4E00;&#x4E2A;IP&#xFF0C;&#x4F46;&#x662F;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x7AEF;&#x53E3;&#x53F7;&#x3002;</p>
+<h3 id="&#x8FD0;&#x884C;&#x670D;&#x52A1;"><a href="#&#x8FD0;&#x884C;&#x670D;&#x52A1;" class="headerlink" title="&#x8FD0;&#x884C;&#x670D;&#x52A1;"></a>&#x8FD0;&#x884C;&#x670D;&#x52A1;</h3><p><strong>&#x901A;&#x8FC7;Java&#x547D;&#x4EE4;&#x884C;&#x542F;&#x52A8;</strong></p>
+<blockquote>
+<p>java -cp zookeeper-3.4.8.jar:lib/slf4j-api-1.6.1.jar:lib/slf4j-log4j12-1.6.1.jar:log4j-1.2.16.jar:conf org.apache.zookeeper.server.quorum.QuorumPeerMain conf/zoo.cfg</p>
+</blockquote>
+<p><strong>&#x4F7F;&#x7528;ZooKeeper&#x81EA;&#x5E26;&#x7684;&#x542F;&#x52A8;&#x811A;&#x672C;&#x6765;&#x542F;&#x52A8;ZooKeeper</strong></p>
+<blockquote>
+<p>sh zkServer.sh start<br>sh zkServer.sh stop</p>
+</blockquote>
+<p>ZooKeeper&#x9ED8;&#x8BA4;&#x4F7F;&#x7528;3888&#x7AEF;&#x53E3;&#x8FDB;&#x884C;Leader&#x9009;&#x4E3E;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x6295;&#x7968;&#x901A;&#x4FE1;&#x3002;</p>
+<h2 id="&#x5BA2;&#x6237;&#x7AEF;&#x811A;&#x672C;"><a href="#&#x5BA2;&#x6237;&#x7AEF;&#x811A;&#x672C;" class="headerlink" title="&#x5BA2;&#x6237;&#x7AEF;&#x811A;&#x672C;"></a>&#x5BA2;&#x6237;&#x7AEF;&#x811A;&#x672C;</h2><blockquote>
+<p>sh zkCli.sh   # &#x8FDE;&#x63A5;&#x672C;&#x5730;zk<br>sh zkCli.sh -server ip:port</p>
+</blockquote>
+<h3 id="&#x521B;&#x5EFA;"><a href="#&#x521B;&#x5EFA;" class="headerlink" title="&#x521B;&#x5EFA;"></a>&#x521B;&#x5EFA;</h3><blockquote>
+<p>create [-s] [-e] path data acl</p>
+</blockquote>
+<p>-s &#x987A;&#x5E8F;&#x8282;&#x70B9;  -e &#x4E34;&#x65F6;&#x8282;&#x70B9;</p>
+<blockquote>
+<p>create /zk-book 123</p>
+</blockquote>
+<h3 id="&#x8BFB;&#x53D6;"><a href="#&#x8BFB;&#x53D6;" class="headerlink" title="&#x8BFB;&#x53D6;"></a>&#x8BFB;&#x53D6;</h3><blockquote>
+<p>ls path [watch]</p>
+<p>get path [watch]</p>
+</blockquote>
+<h3 id="&#x66F4;&#x65B0;"><a href="#&#x66F4;&#x65B0;" class="headerlink" title="&#x66F4;&#x65B0;"></a>&#x66F4;&#x65B0;</h3><blockquote>
+<p>set path data [version]</p>
+</blockquote>
+<h3 id="&#x5220;&#x9664;"><a href="#&#x5220;&#x9664;" class="headerlink" title="&#x5220;&#x9664;"></a>&#x5220;&#x9664;</h3><blockquote>
+<p>delete path [version]</p>
+</blockquote>
+<p>&#x65E0;&#x6CD5;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x8282;&#x70B9;</p>
+<h2 id="java&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;"><a href="#Java&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;" class="headerlink" title="Java&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;"></a>Java&#x5BA2;&#x6237;&#x7AEF;&#x4F7F;&#x7528;</h2><h2 id="&#x7B2C;&#x516D;&#x7AE0;-zookeeper&#x7684;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;"><a href="#&#x7B2C;&#x516D;&#x7AE0;-ZooKeeper&#x7684;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;" class="headerlink" title="&#x7B2C;&#x516D;&#x7AE0; ZooKeeper&#x7684;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;"></a>&#x7B2C;&#x516D;&#x7AE0; ZooKeeper&#x7684;&#x5178;&#x578B;&#x5E94;&#x7528;&#x573A;&#x666F;</h2><h3 id="&#x8BF4;&#x8BF4;mysql&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;"><a href="#&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;" class="headerlink" title="&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;"></a>&#x8BF4;&#x8BF4;MySQL&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x548C;&#x67B6;&#x6784;&#xFF1F;</h3><p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/Java/zookeeper/media/14634005724898.jpg" alt=""></p>
 <h3 id="mysql&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x51B7;&#x70ED;&#x5907;&#x4EFD;&#x5BF9;&#x6BD4;"><a href="#MySQL&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x51B7;&#x70ED;&#x5907;&#x4EFD;&#x5BF9;&#x6BD4;&#xFF1F;" class="headerlink" title="MySQL&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x51B7;&#x70ED;&#x5907;&#x4EFD;&#x5BF9;&#x6BD4;&#xFF1F;"></a>MySQL&#x6570;&#x636E;&#x590D;&#x5236;&#x7EC4;&#x4EF6;&#x51B7;&#x70ED;&#x5907;&#x4EFD;&#x5BF9;&#x6BD4;&#xFF1F;</h3><p>&#x70ED;&#x5907;&#x4EFD;&#xFF1A;&#x5B9E;&#x65F6;&#xFF0C;&#x6BD4;&#x8F83;&#x8017;&#x673A;&#x5668;&#x8D44;&#x6E90;&#xFF1B;<br>&#x51B7;&#x5907;&#x4EFD;&#xFF1A;&#x7C7B;&#x5907;&#x4EFD;&#x626B;&#x63CF;&#xFF0C;&#x4E0D;&#x5B9E;&#x65F6;&#xFF0C;&#x8282;&#x7701;&#x673A;&#x5668;&#x8D44;&#x6E90;&#xFF1B;</p>
 <h3 id="&#x5355;&#x4E00;&#x53F0;mysql&#x670D;&#x52A1;&#x5668;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x9AD8;&#x53EF;&#x7528;"><a href="#&#x5355;&#x4E00;&#x53F0;MySQL&#x670D;&#x52A1;&#x5668;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x9AD8;&#x53EF;&#x7528;" class="headerlink" title="&#x5355;&#x4E00;&#x53F0;MySQL&#x670D;&#x52A1;&#x5668;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x9AD8;&#x53EF;&#x7528;"></a>&#x5355;&#x4E00;&#x53F0;MySQL&#x670D;&#x52A1;&#x5668;&#x65E0;&#x6CD5;&#x4FDD;&#x8BC1;&#x9AD8;&#x53EF;&#x7528;</h3><h3 id="&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x5728;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x4E0A;&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x6CD5;&#x53D6;&#x4EE3;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6392;&#x4ED6;&#x6027;&#x5982;&#x884C;&#x9501;&#x8868;&#x9501;&#x6216;&#x8005;&#x4E8B;&#x52A1;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5462;"><a href="#&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x5728;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x6CD5;&#x53D6;&#x4EE3;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6392;&#x4ED6;&#x6027;&#xFF08;&#x5982;&#x884C;&#x9501;&#xFF0C;&#x8868;&#x9501;&#x6216;&#x8005;&#x4E8B;&#x52A1;&#xFF09;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5462;&#xFF1F;" class="headerlink" title="&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x5728;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x6CD5;&#x53D6;&#x4EE3;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6392;&#x4ED6;&#x6027;&#xFF08;&#x5982;&#x884C;&#x9501;&#xFF0C;&#x8868;&#x9501;&#x6216;&#x8005;&#x4E8B;&#x52A1;&#xFF09;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5462;&#xFF1F;"></a>&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5927;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x74F6;&#x9888;&#x5728;&#x6570;&#x636E;&#x5E93;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x6709;&#x4EC0;&#x4E48;&#x65B9;&#x6CD5;&#x53D6;&#x4EE3;&#x4F7F;&#x7528;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6392;&#x4ED6;&#x6027;&#xFF08;&#x5982;&#x884C;&#x9501;&#xFF0C;&#x8868;&#x9501;&#x6216;&#x8005;&#x4E8B;&#x52A1;&#xFF09;&#x9020;&#x6210;&#x7684;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x5462;&#xFF1F;</h3><ul>
 <li>zookeeper &#x6392;&#x5B83;&#x9501; &#x5171;&#x4EAB;&#x9501;</li>
@@ -2554,8 +2624,8 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
             
               
                 
-                <a class="post-title-link" href="/2016/05/03/MySQL emoji表情支持/" itemprop="url">
-                  MySQL emoji表情支持
+                <a class="post-title-link" href="/2016/05/03/MySQL海量数据架构/" itemprop="url">
+                  MySQL 海量数据架构
                 </a>
               
             
@@ -2620,14 +2690,14 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
             <blockquote>
 <p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
 </blockquote>
-<h3 id="1-&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;553&#x7684;&#x652F;&#x6301;"><a href="#1&#x3001;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;5-5-3-&#x7684;&#x652F;&#x6301;" class="headerlink" title="1&#x3001;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;5.5.3+&#x7684;&#x652F;&#x6301;"></a>1&#x3001;&#x6570;&#x636E;&#x5E93;&#x9700;&#x8981;5.5.3+&#x7684;&#x652F;&#x6301;</h3><h3 id="2-&#x4FEE;&#x6539;database-table&#x548C;column&#x5B57;&#x7B26;&#x96C6;"><a href="#2&#x3001;&#x4FEE;&#x6539;database&#x3001;table&#x548C;column&#x5B57;&#x7B26;&#x96C6;" class="headerlink" title="2&#x3001;&#x4FEE;&#x6539;database&#x3001;table&#x548C;column&#x5B57;&#x7B26;&#x96C6;"></a>2&#x3001;&#x4FEE;&#x6539;database&#x3001;table&#x548C;column&#x5B57;&#x7B26;&#x96C6;</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> guitargg <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> gt_comment_content <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">2000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">VARIABLES</span> <span class="keyword">LIKE</span> <span class="string">&apos;%char%&apos;</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="3-&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"><a href="#3&#x3001;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;" class="headerlink" title="3&#x3001;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;"></a>3&#x3001;&#x4FEE;&#x6539;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3><p>etc/mysql/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-set = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">character-set-client-handshake = FALSE character-set-server = utf8mb4</span><br><span class="line">collation-server = utf8mb4_unicode_ci init_connect=&apos;SET NAMES utf8mb4&apos;</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-&#x91CD;&#x542F;mysql-server"><a href="#4&#x3001;&#x91CD;&#x542F;MySQL-Server" class="headerlink" title="4&#x3001;&#x91CD;&#x542F;MySQL Server"></a>4&#x3001;&#x91CD;&#x542F;MySQL Server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysql restart</span><br></pre></td></tr></table></figure>
-<h3 id="5-&#x5347;&#x7EA7;jdbc&#x9A71;&#x52A8;"><a href="#5&#x3001;&#x5347;&#x7EA7;JDBC&#x9A71;&#x52A8;" class="headerlink" title="5&#x3001;&#x5347;&#x7EA7;JDBC&#x9A71;&#x52A8;"></a>5&#x3001;&#x5347;&#x7EA7;JDBC&#x9A71;&#x52A8;</h3><p>&#x786E;&#x4FDD;mysql connector&#x7248;&#x672C;&#x9AD8;&#x4E8E;5.1.13</p>
-<h3 id="6-&#x68C0;&#x67E5;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;"><a href="#6&#x3001;&#x68C0;&#x67E5;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;&#xFF1A;" class="headerlink" title="6&#x3001;&#x68C0;&#x67E5;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;&#xFF1A;"></a>6&#x3001;&#x68C0;&#x67E5;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x914D;&#x7F6E;&#xFF1A;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jdbc.driverClassName=com.mysql.jdbc.Driver</span><br><span class="line">jdbc.url=jdbc:mysql://localhost:3306/database?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE jdbc.username=root</span><br><span class="line">jdbc.password=password</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><a href="http://segmentfault.com/blog/ilikewhite/1190000000616820" title="mysql/Java&#x670D;&#x52A1;&#x7AEF;&#x5BF9;emoji&#x7684;&#x652F;&#x6301;" target="_blank" rel="external">mysql/Java&#x670D;&#x52A1;&#x7AEF;&#x5BF9;emoji&#x7684;&#x652F;&#x6301;</a></p>
-</blockquote>
+<p>MySQL&#x8981;&#x5B58;&#x50A8;&#x5927;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x662F;&#x6309;&#x7167;&#x5206;&#x5E93;&#x5206;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x7C7B;&#x4F3C;&#x7684;<a href="http://www.lanceyan.com/category/tech/mongodb" title="MongoDB" target="_blank" rel="external">MongoDB</a>&#x4E5F;&#x662F;&#x4E00;&#x6837;&#x7684;&#x3002;    </p>
+<p>&#x800C;&#x6DD8;&#x5B9D;&#x7248;&#x5F00;&#x6E90;&#x4E86;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;<a href="http://www.open-open.com/lib/view/open1393247567490.html" title="TDDL" target="_blank" rel="external">TDDL</a>&#xFF0C;&#x4E3B;&#x8981;&#x89E3;&#x51B3;&#x4E86;&#x5206;&#x5E93;&#x5206;&#x8868;&#x5BF9;&#x5E94;&#x7528;&#x7684;&#x900F;&#x660E;&#x5316;&#x4EE5;&#x53CA;&#x5F02;&#x6784;&#x6570;&#x636E;&#x5E93;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x590D;&#x5236;&#xFF0C;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;&#x96C6;&#x4E2D;&#x5F0F;&#x914D;&#x7F6E;&#x7684;JDBC datasource&#x5B9E;&#x73B0;&#xFF0C;&#x5177;&#x6709;&#x4E3B;&#x5907;&#x4EFD;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF0C;&#x52A8;&#x6001;&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
+<p>Cobar</p>
+<p>MyCat</p>
+<p><a href="http://my.oschina.net/tinyframework/blog/186583" title="&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;" target="_blank" rel="external">&#x6570;&#x636E;&#x5E93;&#x5206;&#x533A;&#x5206;&#x7247;&#x6846;&#x67B6;</a></p>
+<p>Github&#x4E0A;&#x770B;&#x5230;&#x4E86;<a href="https://github.com/arthinking/kamike.divide" title="&#x8FD9;&#x4E2A;" target="_blank" rel="external">&#x8FD9;&#x4E2A;</a>&#x5F00;&#x6E90;&#x7684;&#x4E5F;&#x4E0D;&#x9519;&#x3002;</p>
+<p>Cobar</p>
+<p>MyCat</p>
 
           
         
@@ -2844,6 +2914,127 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
             
               
                 
+                <a class="post-title-link" href="/2016/05/03/MySQL安装问题/" itemprop="url">
+                  MySQL 安装问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-03T00:00:00+08:00" content="2016-05-03">
+              2016-05-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<p>&#x6279;&#x91CF;&#x63D2;&#x5165;&#xFF1A;</p>
+<blockquote>
+<p><a href="http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html</a></p>
+</blockquote>
+<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac&#x4E0B;&#x65B0;&#x5B89;&#x88C5;&#x7684;MySQL&#x65E0;&#x6CD5;&#x767B;&#x9646;root&#x7528;&#x6237;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</a></p>
+<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac&#x4E0B;&#x5B89;&#x88C5;MySQL5.7&#x9047;&#x5230;&#x9ED8;&#x8BA4;&#x5BC6;&#x7801;&#x7684;&#x5927;&#x5751;</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/03/Maven插件编译问题/" itemprop="url">
                   Maven插件编译问题
                 </a>
@@ -2938,127 +3129,6 @@ http://blog.csdn.net/ybygjy/article/details/42305313" target="_blank" rel="exter
 <p><a href="http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.isv%2Fguide%2Fjdt_api_compile.htm" target="_blank" rel="external">Compiling Java code</a></p>
 <p><a href="http://blog.csdn.net/feng2007110221053/article/details/7311056" target="_blank" rel="external">&#x5173;&#x4E8E;Eclipse&#x548C;Javac&#x7F16;&#x8BD1;&#x7ED3;&#x679C;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x95EE;&#x9898;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x51B3;</a></p>
 <p><a href="http://stackoverflow.com/questions/3061654/what-is-the-difference-between-javac-and-the-eclipse-compiler" target="_blank" rel="external">What is the difference between javac and the Eclipse compiler?</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/03/MySQL安装问题/" itemprop="url">
-                  MySQL 安装问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-03T00:00:00+08:00" content="2016-05-03">
-              2016-05-03
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Database/" itemprop="url" rel="index">
-                    <span itemprop="name">Database</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<p>&#x6279;&#x91CF;&#x63D2;&#x5165;&#xFF1A;</p>
-<blockquote>
-<p><a href="http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_662e56ec0100jtg5.html</a></p>
-</blockquote>
-<p><a href="http://www.euryugasaki.com/archives/853" target="_blank" rel="external">Mac&#x4E0B;&#x65B0;&#x5B89;&#x88C5;&#x7684;MySQL&#x65E0;&#x6CD5;&#x767B;&#x9646;root&#x7528;&#x6237;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;</a></p>
-<p><a href="http://xiaorui.cc/2016/01/20/mac%E4%B8%8B%E5%AE%89%E8%A3%85mysql5-7%E9%81%87%E5%88%B0%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81%E7%9A%84%E5%A4%A7%E5%9D%91/" target="_blank" rel="external">mac&#x4E0B;&#x5B89;&#x88C5;MySQL5.7&#x9047;&#x5230;&#x9ED8;&#x8BA4;&#x5BC6;&#x7801;&#x7684;&#x5927;&#x5751;</a></p>
 
           
         
