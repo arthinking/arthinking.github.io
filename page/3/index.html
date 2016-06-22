@@ -259,6 +259,187 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/30/javascript/Webpacket/2016-03-30 web前端项目搭建说明/" itemprop="url">
+                  web前端项目搭建说明
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-30T00:00:00+08:00" content="2016-03-30">
+              2016-03-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web前端/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com/web-project-setup-introduction-html.html" target="_blank" rel="external">web&#x524D;&#x7AEF;&#x9879;&#x76EE;&#x642D;&#x5EFA;&#x8BF4;&#x660E;</a><br>&#x9879;&#x76EE;&#x5730;&#x5740;&#xFF1A;<a href="https://github.com/highpay-zoom/app-mis" target="_blank" rel="external">app-mis</a></p>
+</blockquote>
+<h2 id="&#x5B89;&#x88C5;webpack"><a href="#&#x5B89;&#x88C5;webpack&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;webpack&#xFF1A;"></a>&#x5B89;&#x88C5;webpack&#xFF1A;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack -g</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>&#x5173;&#x4E8E;<a href="https://docs.npmjs.com/" target="_blank" rel="external">npm install</a></p>
+</blockquote>
+<h3 id="&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;"><a href="#&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;&#xFF1A;" class="headerlink" title="&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;&#xFF1A;"></a>&#x521D;&#x59CB;&#x5316;&#x9879;&#x76EE;&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br></pre></td></tr></table></figure>
+<p>&#x6267;&#x884C;&#x5B8C;&#x8FD9;&#x6B65;&#x4F1A;&#x5728;&#x76EE;&#x5F55;&#x4E0B;&#x751F;&#x6210;<code>package.json</code>&#x6587;&#x4EF6;</p>
+<h3 id="&#x4E3A;&#x9879;&#x76EE;&#x5B89;&#x88C5;webpack"><a href="#&#x4E3A;&#x9879;&#x76EE;&#x5B89;&#x88C5;webpack&#xFF1A;" class="headerlink" title="&#x4E3A;&#x9879;&#x76EE;&#x5B89;&#x88C5;webpack&#xFF1A;"></a>&#x4E3A;&#x9879;&#x76EE;&#x5B89;&#x88C5;webpack&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack --save-dev</span><br></pre></td></tr></table></figure>
+<p>&#x6216;&#x8005;&#x5B89;&#x88C5;&#x7279;&#x5B9A;&#x7684;&#x7248;&#x672C;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack@1.2.x --save-dev</span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.github.io/" target="_blank" rel="external">webpack</a>&#x662F;&#x4E00;&#x6B3E;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5668;&#x517C;&#x6253;&#x5305;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x80FD;&#x628A;&#x5404;&#x79CD;&#x8D44;&#x6E90;&#xFF0C;&#x4F8B;&#x5982;JS&#xFF08;&#x542B;JSX&#xFF09;&#x3001;coffee&#x3001;&#x6837;&#x5F0F;&#xFF08;&#x542B;less/sass&#xFF09;&#x3001;&#x56FE;&#x7247;&#x7B49;&#x90FD;&#x4F5C;&#x4E3A;&#x6A21;&#x5757;&#x6765;&#x4F7F;&#x7528;&#x548C;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>&#x2013;save-dev &#x4E0E; &#x2013;save&#x7684;&#x533A;&#x522B;</strong></p>
+<blockquote>
+<p>&#x2013;save-dev: Package will appear in your devDependencies.<br>see<a href="http://stackoverflow.com/questions/19223051/grunt-js-what-does-save-dev-mean-in-npm-install-grunt-save-dev" target="_blank" rel="external">Grunt.js: What does -save-dev mean in npm install grunt &#x2013;save-dev</a></p>
+</blockquote>
+<h3 id="&#x5B89;&#x88C5;webpack&#x8C03;&#x8BD5;&#x5DE5;&#x5177;"><a href="#&#x5B89;&#x88C5;webpack&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;webpack&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF1A;"></a>&#x5B89;&#x88C5;webpack&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF1A;</h3><blockquote>
+<p>$ npm install webpack-dev-server &#x2013;save-dev</p>
+</blockquote>
+<h4 id="&#x542F;&#x52A8;webpack-dev-server"><a href="#&#x542F;&#x52A8;webpack-dev-server&#xFF1A;" class="headerlink" title="&#x542F;&#x52A8;webpack-dev-server&#xFF1A;"></a>&#x542F;&#x52A8;webpack-dev-server&#xFF1A;</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack-dev-server --inline --hot</span><br></pre></td></tr></table></figure>
+<p><a href="https://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a>webpack-dev-server&#x662F;&#x4E00;&#x4E2A;&#x5C0F;&#x578B;&#x7684;node.js Express&#x670D;&#x52A1;&#x5668;,&#x5B83;&#x4F7F;&#x7528;webpack-dev-middleware&#x4E2D;&#x95F4;&#x4EF6;&#x6765;&#x4E3A;&#x901A;&#x8FC7;webpack&#x6253;&#x5305;&#x751F;&#x6210;&#x7684;&#x8D44;&#x6E90;&#x6587;&#x4EF6;&#x63D0;&#x4F9B;Web&#x670D;&#x52A1;&#x3002;&#x5B83;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x901A;&#x8FC7;Socket.IO&#x8FDE;&#x63A5;&#x7740;webpack-dev-server&#x670D;&#x52A1;&#x5668;&#x7684;&#x5C0F;&#x578B;&#x8FD0;&#x884C;&#x65F6;&#x7A0B;&#x5E8F;&#x3002;webpack-dev-server&#x53D1;&#x9001;&#x5173;&#x4E8E;&#x7F16;&#x8BD1;&#x72B6;&#x6001;&#x7684;&#x6D88;&#x606F;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x6839;&#x636E;&#x6D88;&#x606F;&#x4F5C;&#x51FA;&#x54CD;&#x5E94;&#x3002;</p>
+<h3 id="webpack&#x6784;&#x5EFA;&#x547D;&#x4EE4;"><a href="#webpack&#x6784;&#x5EFA;&#x547D;&#x4EE4;&#xFF1A;" class="headerlink" title="webpack&#x6784;&#x5EFA;&#x547D;&#x4EE4;&#xFF1A;"></a>webpack&#x6784;&#x5EFA;&#x547D;&#x4EE4;&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ webpack --display-modules</span><br><span class="line">$ webpack --display-modules --display-chunks</span><br></pre></td></tr></table></figure>
+<p><strong>&#x2013;display-modules &#x548C; &#x2013;display-chunks&#x7684;&#x4F5C;&#x7528;</strong></p>
+<p>by default Webpack hides modules that are not yours. To see all the modules compiled by Webpack, we can pass the &#x2013;display-modules flag.</p>
+<p>run webpack with the &#x2013;display-chunks flag to see what modules are in which chunks.</p>
+<h2 id="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;"><a href="#&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;&#xFF1A;"></a>&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;&#x6A21;&#x5757;&#xFF1A;</h2><h3 id="lodash"><a href="#lodash" class="headerlink" title="lodash"></a>lodash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save lodash</span><br></pre></td></tr></table></figure>
+<p><a href="https://lodash.com/" target="_blank" rel="external">lodash</a>&#x662F;&#x4E00;&#x4E2A;Javascript&#x5DE5;&#x5177;&#x5E93;&#x3002;</p>
+<h3 id="&#x5B89;&#x88C5;babel"><a href="#&#x5B89;&#x88C5;babel&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;babel&#xFF1A;"></a>&#x5B89;&#x88C5;babel&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-2 --save-dev</span><br></pre></td></tr></table></figure>
+<p>&#x7136;&#x540E;&#x5728;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; <code>.babelrc</code> &#x6587;&#x4EF6;&#x3002;&#x8BE6;&#x7EC6;&#x914D;&#x7F6E;&#x53C2;&#x8003;&#xFF1A;<a href="https://babeljs.io/" target="_blank" rel="external">babel</a></p>
+<ul>
+<li><a href="https://babeljs.io/" target="_blank" rel="external">babel</a>&#x662F;&#x4E00;&#x4E2A;Javascript&#x4EE3;&#x7801;&#x8F6C;&#x6362;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x628A;&#x4F60;&#x5199;&#x7684;&#x7B26;&#x5408; ECMAScript 6 &#x6807;&#x51C6;&#x7684;&#x4EE3;&#x7801;&#x5B8C;&#x7F8E;&#x5730;&#x8F6C;&#x6362;&#x4E3A; ECMAScript 5 &#x6807;&#x51C6;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;&#x826F;&#x597D;&#x5730;&#x8FD0;&#x884C;&#x5728;&#x6240;&#x6709;&#x4E3B;&#x6D41; JavaScript &#x5F15;&#x64CE;&#x4E2D;&#x3002;</li>
+</ul>
+<h3 id="&#x5B89;&#x88C5;eslint"><a href="#&#x5B89;&#x88C5;eslint&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;eslint&#xFF1A;"></a>&#x5B89;&#x88C5;eslint&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install eslint eslint-loader babel-eslint eslint-plugin-react --save-dev</span><br></pre></td></tr></table></figure>
+<p>&#x5728;&#x56E2;&#x961F;&#x534F;&#x4F5C;&#x4E2D;&#xFF0C;&#x4E3A;&#x907F;&#x514D;&#x4F4E;&#x7EA7; Bug&#x3001;&#x4EA7;&#x51FA;&#x98CE;&#x683C;&#x7EDF;&#x4E00;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F1A;&#x9884;&#x5148;&#x5236;&#x5B9A;&#x7F16;&#x7801;&#x89C4;&#x8303;&#x3002;&#x4F7F;&#x7528; Lint &#x5DE5;&#x5177;&#x548C;&#x4EE3;&#x7801;&#x98CE;&#x683C;&#x68C0;&#x6D4B;&#x5DE5;&#x5177;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x8F85;&#x52A9;&#x7F16;&#x7801;&#x89C4;&#x8303;&#x6267;&#x884C;&#xFF0C;&#x6709;&#x6548;&#x63A7;&#x5236;&#x4EE3;&#x7801;&#x8D28;&#x91CF;&#x3002;&#x5728;&#x4EE5;&#x524D;&#x7684;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x9009;&#x62E9; JSHint &#x548C; JSCS &#x7ED3;&#x5408;&#x4F7F;&#x7528;&#xFF0C;&#x4F7F;&#x7528; React JSX &#x8BED;&#x6CD5;&#x65F6;&#xFF0C;&#x5374;&#x9047;&#x5230;&#x4E86;&#x95EE;&#x9898;&#xFF1A;JSHint &#x4E0D;&#x652F;&#x6301; JSX &#x8BED;&#x6CD5;&#xFF0C;&#x4EE5;&#x6709;&#x4E86; ESLint&#x3002;<br><a href="http://eslint.org/" target="_blank" rel="external">eslint</a></p>
+<h3 id="&#x5B89;&#x88C5;react"><a href="#&#x5B89;&#x88C5;react&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;react&#xFF1A;"></a>&#x5B89;&#x88C5;react&#xFF1A;</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react react-dom react-router --save</span><br></pre></td></tr></table></figure>
+<h3 id="&#x5B89;&#x88C5;antd"><a href="#&#x5B89;&#x88C5;antd" class="headerlink" title="&#x5B89;&#x88C5;antd"></a>&#x5B89;&#x88C5;antd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install antd --save</span><br></pre></td></tr></table></figure>
+<h2 id="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack-loader"><a href="#&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack-loader&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack loader&#xFF1A;"></a>&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack loader&#xFF1A;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install css-loader postcss-loader less-loader style-loader html-loader sass-loader node-sass --save-dev</span><br><span class="line">$ npm install url-loader file-loader --save-dev</span><br><span class="line">$ npm install baggage-loader --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="loader&#x914D;&#x7F6E;&#x8BF4;&#x660E;"><a href="#loader&#x914D;&#x7F6E;&#x8BF4;&#x660E;&#xFF1A;" class="headerlink" title="loader&#x914D;&#x7F6E;&#x8BF4;&#x660E;&#xFF1A;"></a>loader&#x914D;&#x7F6E;&#x8BF4;&#x660E;&#xFF1A;</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;./loader!./dir/file.txt&quot;</span>);</span><br><span class="line"><span class="comment">// =&gt; uses the file &quot;loader.js&quot; in the current directory to transform</span></span><br><span class="line"><span class="comment">//    &quot;file.txt&quot; in the folder &quot;dir&quot;.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;jade!./template.jade&quot;</span>);</span><br><span class="line"><span class="comment">// =&gt; uses the &quot;jade-loader&quot; (that is installed from npm to &quot;node_modules&quot;)</span></span><br><span class="line"><span class="comment">//    to transform the file &quot;template.jade&quot;</span></span><br><span class="line"><span class="comment">//    If configuration has some transforms bound to the file, they will still be applied.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;!style!css!less!bootstrap/less/bootstrap.less&quot;</span>);</span><br><span class="line"><span class="comment">// =&gt; the file &quot;bootstrap.less&quot; in the folder &quot;less&quot; in the &quot;bootstrap&quot;</span></span><br><span class="line"><span class="comment">//    module (that is installed from github to &quot;node_modules&quot;) is</span></span><br><span class="line"><span class="comment">//    transformed by the &quot;less-loader&quot;. The result is transformed by the</span></span><br><span class="line"><span class="comment">//    &quot;css-loader&quot; and then by the &quot;style-loader&quot;.</span></span><br><span class="line"><span class="comment">//    If configuration has some transforms bound to the file, they will not be applied.</span></span><br></pre></td></tr></table></figure>
+<h2 id="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack-plugin"><a href="#&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack-plugin&#xFF1A;" class="headerlink" title="&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack plugin&#xFF1A;"></a>&#x5B89;&#x88C5;&#x9700;&#x8981;&#x7684;webpack plugin&#xFF1A;</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install clean-webpack-plugin --save-dev</span><br><span class="line">$ npm install extract-text-webpack-plugin --save-dev</span><br><span class="line">$ npm install html-webpack-plugin</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://github.com/johnagan/clean-webpack-plugin" target="_blank" rel="external">clean-webpack-plugin</a>: A webpack plugin to remove/clean your build folder(s) before building.</li>
+<li><a href="https://github.com/webpack/extract-text-webpack-plugin" target="_blank" rel="external">extract-text-webpack-plugin</a>: It moves every require(&#x201C;style.css&#x201D;) in entry chunks into a separate css output file. So your styles are no longer inlined into the javascript, but separate in a css bundle file (styles.css).</li>
+<li><a href="https://github.com/ampedandwired/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a>: Simplifies creation of HTML files to serve your webpack bundles</li>
+</ul>
+<h2 id="&#x53C2;&#x8003;"><a href="#&#x53C2;&#x8003;&#xFF1A;" class="headerlink" title="&#x53C2;&#x8003;&#xFF1A;"></a>&#x53C2;&#x8003;&#xFF1A;</h2><ul>
+<li><a href="http://www.cnblogs.com/vajoy/p/4650467.html" target="_blank" rel="external">webpack &#x5165;&#x95E8;&#x6307;&#x5357;</a></li>
+<li><a href="https://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a></li>
+<li><a href="http://www.jianshu.com/p/8adf4c2bfa51" target="_blank" rel="external">Webpack-dev-server&#x7ED3;&#x5408;&#x540E;&#x7AEF;&#x5206;&#x7F36;&#x7684;&#x70ED;&#x66FF;&#x6362;&#x914D;&#x7F6E;</a></li>
+<li><a href="http://www.jianshu.com/p/941bfaf13be1" target="_blank" rel="external">WEBPACK DEV SERVER</a></li>
+<li><a href="http://blog.madewithlove.be/post/webpack-your-bags/" target="_blank" rel="external">webpack your bags</a></li>
+<li><a href="https://lodash.com/" target="_blank" rel="external">lodash</a></li>
+<li><a href="https://babeljs.io/" target="_blank" rel="external">babel</a></li>
+<li><a href="http://www.cnblogs.com/whitewolf/p/4357916.html" target="_blank" rel="external">Babel-&#x73B0;&#x5728;&#x5F00;&#x59CB;&#x4F7F;&#x7528; ES6</a></li>
+<li><a href="http://eslint.org/" target="_blank" rel="external">eslint</a></li>
+<li><a href="http://www.tuicool.com/articles/7JZZJzn" target="_blank" rel="external">ESLint &#x4F7F;&#x7528;&#x5165;&#x95E8;</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/28/IDE/IntelliJ IDEA/2016-03-28-1开发环境搭建/" itemprop="url">
                   IntelliJ IDEA热部署
                 </a>
@@ -808,148 +989,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/03/20/javascript/reactjs/2016-03-20 FLUX/" itemprop="url">
-                  Flux
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-20T00:00:00+08:00" content="2016-03-20">
-              2016-03-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web前端/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h1 id="flux&#x6982;&#x8FF0;"><a href="#Flux&#x6982;&#x8FF0;" class="headerlink" title="Flux&#x6982;&#x8FF0;"></a>Flux&#x6982;&#x8FF0;</h1><p>Flux&#x662F;Facebook&#x7528;&#x6765;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x7AEF;&#x7684;web&#x5E94;&#x7528;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F53;&#x7CFB;&#x67B6;&#x6784;&#x3002;&#x5B83;&#x901A;&#x8FC7;&#x5229;&#x7528;&#x6570;&#x636E;&#x7684;&#x5355;&#x5411;&#x6D41;&#x52A8;&#x4E3A;React&#x7684;&#x53EF;&#x590D;&#x7528;&#x7684;&#x89C6;&#x56FE;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x4E86;&#x8865;&#x5145;&#x3002;&#x76F8;&#x6BD4;&#x4E8E;&#x5F62;&#x5F0F;&#x5316;&#x7684;&#x6846;&#x67B6;&#x5B83;&#x66F4;&#x50CF;&#x662F;&#x4E00;&#x4E2A;&#x67B6;&#x6784;&#x601D;&#x60F3;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x591A;&#x65B0;&#x7684;&#x4EE3;&#x7801;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x9A6C;&#x4E0A;&#x4F7F;&#x7528;Flux&#x6784;&#x5EFA;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x3002;</p>
-<p>Flux&#x5E94;&#x7528;&#x4E3B;&#x8981;&#x5305;&#x62EC;&#x4E09;&#x90E8;&#x5206;&#xFF1A;dispatcher&#x3001;store&#x548C;views&#xFF08;React components&#xFF09;&#xFF0C;&#x5343;&#x4E07;&#x4E0D;&#x8981;&#x548C;MVC(model-View-Controller)&#x641E;&#x6DF7;&#x3002;Controller&#x5728;Flux&#x5E94;&#x7528;&#x4E2D;&#x4E5F;&#x786E;&#x5B9E;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x662F;&#x662F;&#x4EE5;controller-view&#x7684;&#x5F62;&#x5F0F;&#x3002;view&#x901A;&#x5E38;&#x5904;&#x4E8E;&#x5E94;&#x7528;&#x7684;&#x9876;&#x5C42;&#xFF0C;&#x5B83;&#x4ECE;stores&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x540C;&#x65F6;&#x5C06;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x5B83;&#x7684;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x3002;&#x53E6;&#x5916;&#xFF0C;action creators - dispatcher&#x8F85;&#x52A9;&#x65B9;&#x6CD5; - &#x4E00;&#x4E2A;&#x88AB;&#x7528;&#x6765;&#x63D0;&#x4F9B;&#x63CF;&#x8FF0;&#x5E94;&#x7528;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x7684;&#x6539;&#x53D8;&#x7684;&#x8BED;&#x4E49;&#x5316;&#x7684;API&#x3002;&#x628A;&#x5B83;&#x7406;&#x89E3;&#x4E3A;Flux&#x66F4;&#x65B0;&#x95ED;&#x73AF;&#x7684;&#x7B2C;&#x56DB;&#x4E2A;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x4F60;&#x66F4;&#x597D;&#x7684;&#x7406;&#x89E3;&#x5B83;&#x3002;</p>
-<p>Flux&#x4F7F;&#x7528;&#x5355;&#x5411;&#x7684;&#x6570;&#x636E;&#x6D41;&#x52A8;&#x6765;&#x907F;&#x5F00;MVC. &#x5F53;&#x7528;&#x6237;&#x4E0E;React&#x89C6;&#x56FE;&#x4EA4;&#x4E92;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x89C6;&#x56FE;&#x4F1A;&#x901A;&#x8FC7;&#x4E2D;&#x67A2;dispatcher&#x4EA7;&#x751F;&#x4E00;&#x4E2A;action&#x3002;&#x7136;&#x540E;&#x5927;&#x91CF;&#x7684;&#x4FDD;&#x5B58;&#x7740;&#x5E94;&#x7528;&#x6570;&#x636E;&#x548C;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x7684;&#x89C6;&#x56FE;&#x63A5;&#x6536;&#x5230;&#x5192;&#x6CE1;&#x7684;action&#xFF0C;&#x66F4;&#x65B0;&#x6240;&#x6709;&#x53D7;&#x5F71;&#x54CD;&#x7684;view&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5F88;&#x9002;&#x5408;React&#x8FD9;&#x79CD;&#x58F0;&#x660E;&#x5F0F;&#x7684;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x7684;store&#x66F4;&#x65B0;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x7279;&#x522B;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x5728;view&#x548C;state&#x4E2D;&#x8FC7;&#x6E21;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x72EC;&#x521B;&#x6027;&#x7684;&#x89E3;&#x51B3;&#x4E86;&#x6570;&#x636E;&#x7684;&#x83B7;&#x53D6;&#xFF1A;&#x4E3E;&#x4E2A;&#x6817;&#x5B50;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C55;&#x793A;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#x5217;&#x8868;&#xFF0C;&#x9AD8;&#x4EAE;&#x5176;&#x4E2D;&#x672A;&#x8BFB;&#x7684;&#x4F1A;&#x8BDD;&#xFF0C;&#x540C;&#x65F6;&#x5C55;&#x793A;&#x672A;&#x8BFB;&#x4F1A;&#x8BDD;&#x7684;&#x6570;&#x91CF;&#x3002;&#x5982;&#x679C;&#x7528;MVC&#x67B6;&#x6784;&#x7684;&#x8BDD;&#x5C06;&#x5F88;&#x96BE;&#x5904;&#x7406;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x56E0;&#x4E3A;&#x66F4;&#x65B0;&#x4E00;&#x4E2A;&#x5BF9;&#x8BDD;&#x4E3A;&#x5DF2;&#x8BFB;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x66F4;&#x65B0;&#x5BF9;&#x8BDD;model&#xFF0C;&#x7136;&#x540E;&#x540C;&#x6837;&#x4E5F;&#x9700;&#x8981;&#x66F4;&#x65B0;&#x672A;&#x8BFB;&#x5BF9;&#x8BDD;&#x6570;&#x91CF;model&#xFF08;&#x6570;&#x91CF;-1&#xFF09;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x4F9D;&#x8D56;&#x548C;&#x7011;&#x5E03;&#x5F0F;&#x7684;&#x66F4;&#x65B0;&#x5728;&#x5927;&#x578B;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x975E;&#x5E38;&#x5E38;&#x89C1;&#xFF0C;&#x5BFC;&#x81F4;&#x9519;&#x7EFC;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x6D41;&#x52A8;&#x548C;&#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x7ED3;&#x679C;&#x3002;&#xFF08;&#x8FD9;&#x5176;&#x5B9E;&#x662F;Facebook&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x4E2A;&#x7EBF;&#x4E0A;bug&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x7528;&#x6237;&#x770B;&#x5230;&#x63D0;&#x793A;&#x8BF4;&#x6709;&#x4E00;&#x6761;&#x672A;&#x8BFB;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x70B9;&#x8FDB;&#x53BB;&#x5374;&#x53D1;&#x73B0;&#x6CA1;&#x6709;&#xFF09;&#x3002;</p>
-<p>&#x53CD;&#x8FC7;&#x6765;&#x8BA9; Store &#x6765;&#x63A7;&#x5236;&#xFF1A;store&#x63A5;&#x53D7;&#x66F4;&#x65B0;&#xFF0C;&#x5E76;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x673A;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x66F4;&#x65B0;&#x3002;&#x800C;&#x4E0D;&#x662F;&#x91C7;&#x7528;&#x4E00;&#x8D2F;&#x4F9D;&#x8D56;&#x5916;&#x90E8;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x66F4;&#x65B0;&#x6570;&#x636E;&#x3002;&#x5728;store&#x5916;&#x90E8;&#xFF0C;&#x5E76;&#x6CA1;&#x529E;&#x6CD5;&#x770B;&#x5230;store&#x5185;&#x90E8;&#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;&#x5B83;&#x5185;&#x90E8;&#x7684;&#x6570;&#x636E;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#x4FDD;&#x8BC1;&#x4E86;&#x4E00;&#x4E2A;&#x6E05;&#x6670;&#x7684;&#x5173;&#x6CE8;&#x70B9;&#x5206;&#x79BB;&#x3002;Store&#x5E76;&#x6CA1;&#x6709;&#x7C7B;&#x4F3C;setAsRead()&#x8FD9;&#x6837;&#x76F4;&#x63A5;&#x7684;setter&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x5176;&#x81EA;&#x6210;&#x4E00;&#x4F53;&#x7684;&#x4E16;&#x754C;&#x4E2D;&#x62E5;&#x6709;&#x552F;&#x4E00;&#x4E2A;&#x83B7;&#x53D6;&#x65B0;&#x6570;&#x636E;&#x7684;&#x65B9;&#x6CD5; - store&#x901A;&#x8FC7;dispatcher&#x6CE8;&#x518C;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
-<h2 id="structure-and-data-flow"><a href="#Structure-and-Data-Flow" class="headerlink" title="Structure and Data Flow"></a>Structure and Data Flow</h2><p>Flux&#x4E2D;&#x6570;&#x636E;&#x662F;&#x5355;&#x9879;&#x6D41;&#x52A8;&#x7684;&#xFF1A;</p>
-<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/javascript/reactjs/media/14584657887641.jpg" alt=""></p>
-<p>&#x7528;&#x6237;&#x7684;&#x4EA4;&#x4E92;&#x53EF;&#x80FD;&#x4F1A;&#x4F7F;views&#x4EA7;&#x751F;&#x65B0;&#x7684;action&#x3002;</p>
-<h2 id="a-single-dispatcher"><a href="#A-Single-Dispatcher" class="headerlink" title="A Single Dispatcher"></a>A Single Dispatcher</h2><p>dispatcher &#x5C31;&#x50CF;&#x662F;&#x4E00;&#x4E2A;&#x4E2D;&#x592E;&#x7684;&#x96C6;&#x7EBF;&#x5668;&#xFF0C;&#x7BA1;&#x7406;&#x7740;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x6D41;&#x3002;&#x672C;&#x8D28;&#x4E0A;&#x5B83;&#x5C31;&#x662F; store callback &#x7684;&#x6CE8;&#x518C;&#x8868;&#xFF0C;&#x672C;&#x8EAB;&#x5E76;&#x6CA1;&#x6709;&#x5B9E;&#x9645;&#x7684;&#x9AD8;&#x5EA6;&#x529F;&#x80FD;&#x3002;&#x5B83;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x5411;stores&#x5206;&#x53D1;actions&#x7684;&#x673A;&#x5668;&#x3002; &#x6BCF;&#x4E00;&#x4E2A; store &#x5404;&#x81EA;&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x7684; callback &#x4EE5;&#x63D0;&#x4F9B;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x52A8;&#x4F5C;&#x3002;&#x5F53; dispatcher &#x53D1;&#x51FA;&#x4E00;&#x4E2A; action &#x65F6;&#xFF0C;&#x5E94;&#x7528;&#x4E2D;&#x6240;&#x6709;&#x7684;store&#x90FD;&#x4F1A;&#x901A;&#x8FC7;&#x6CE8;&#x518C;&#x7684;callback&#x6536;&#x5230;&#x8FD9;&#x4E2A;action&#x3002;</p>
-<h2 id="stores"><a href="#Stores" class="headerlink" title="Stores"></a>Stores</h2><p>Stores &#x5305;&#x542B;&#x4E86;&#x5E94;&#x7528;&#x7684;&#x72B6;&#x6001;&#x548C;&#x903B;&#x8F91;&#x3002;</p>
-<p>store&#x5728;dispatcher&#x4E2D;&#x6CE8;&#x518C;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x76F8;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x3002;</p>
-<p>store&#x66F4;&#x65B0;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x5411;&#x5E94;&#x7528;&#x4E2D;&#x5E7F;&#x64AD;&#x4E00;&#x4E2A;change&#x4E8B;&#x4EF6;&#xFF0C;views&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;&#x6765;&#x91CD;&#x65B0;&#x83B7;&#x53D6;&#x65B0;&#x7684;&#x6570;&#x636E;&#x5E76;&#x66F4;&#x65B0;&#x3002;</p>
-<h2 id="views-and-controller-views"><a href="#Views-and-Controller-Views" class="headerlink" title="Views and Controller-Views"></a>Views and Controller-Views</h2><p>React&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x53EF;&#x7EC4;&#x5408;&#x5F0F;&#x7684;view&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x7EC4;&#x5408;&#x5C55;&#x793A;&#x5C42;&#x3002;&#x5728;&#x63A5;&#x8FD1;&#x9876;&#x5C42;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6709;&#x4E9B;view&#x9700;&#x8981;&#x76D1;&#x542C;&#x6240;&#x4F9D;&#x8D56;&#x7684;store&#x7684;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;&#x3002;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;controller-view&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x80F6;&#x6C34;&#x4EE3;&#x7801;&#x6765;&#x4ECE;store&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x5411;&#x4E0B;&#x5C42;&#x5C42;&#x4F20;&#x9012;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x3002;&#x6211;&#x4EEC;&#x4F1A;&#x5229;&#x7528;&#x8FD9;&#x4E9B;controller-views&#x6765;&#x5904;&#x7406;&#x9875;&#x9762;&#x4E0A;&#x67D0;&#x4E9B;&#x91CD;&#x8981;&#x90E8;&#x5206;&#x3002;</p>
-<h2 id="actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h2><p>dispatcher&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5411;store&#x4E2D;&#x89E6;&#x53D1;&#x5206;&#x53D1;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;action&#x3002;</p>
-<h2 id="what-about-that-dispatcher"><a href="#What-About-that-Dispatcher" class="headerlink" title="What About that Dispatcher?"></a>What About that Dispatcher?</h2><p>dispatcher&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x7BA1;&#x7406;store&#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x3002;</p>
-<h1 id="flux-todomvc-tutorial"><a href="#Flux-TodoMVC-Tutorial" class="headerlink" title="Flux TodoMVC Tutorial"></a>Flux TodoMVC Tutorial</h1>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/03/20/javascript/reactjs/2016-03-20 参考/" itemprop="url">
                   ReactJS 参考
                 </a>
@@ -1314,6 +1353,148 @@
 <p>&#x8981;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x63D2;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x7528;<code>react-with-addons.js</code>&#xFF08;&#x548C;&#x5B83;&#x7684;&#x6700;&#x5C0F;&#x5316;&#x526F;&#x672C;&#xFF09;&#x66FF;&#x6362;&#x5E38;&#x89C4;&#x7684;React.js&#x3002;</p>
 <p>&#x5F53;&#x901A;&#x8FC7;npm&#x4F7F;&#x7528;react&#x5305;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EA;&#x8981;&#x7B80;&#x5355;&#x5730;&#x7528;<code>require(&apos;react/addons&apos;)</code>&#x66FF;&#x6362; require(&#x2018;react&#x2019;) &#x6765;&#x5F97;&#x5230;&#x5E26;&#x6709;&#x6240;&#x6709;&#x63D2;&#x4EF6;&#x7684;React&#x3002;</p>
 
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/20/javascript/reactjs/2016-03-20 FLUX/" itemprop="url">
+                  Flux
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-20T00:00:00+08:00" content="2016-03-20">
+              2016-03-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web前端/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web前端/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="flux&#x6982;&#x8FF0;"><a href="#Flux&#x6982;&#x8FF0;" class="headerlink" title="Flux&#x6982;&#x8FF0;"></a>Flux&#x6982;&#x8FF0;</h1><p>Flux&#x662F;Facebook&#x7528;&#x6765;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x7AEF;&#x7684;web&#x5E94;&#x7528;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F53;&#x7CFB;&#x67B6;&#x6784;&#x3002;&#x5B83;&#x901A;&#x8FC7;&#x5229;&#x7528;&#x6570;&#x636E;&#x7684;&#x5355;&#x5411;&#x6D41;&#x52A8;&#x4E3A;React&#x7684;&#x53EF;&#x590D;&#x7528;&#x7684;&#x89C6;&#x56FE;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B;&#x4E86;&#x8865;&#x5145;&#x3002;&#x76F8;&#x6BD4;&#x4E8E;&#x5F62;&#x5F0F;&#x5316;&#x7684;&#x6846;&#x67B6;&#x5B83;&#x66F4;&#x50CF;&#x662F;&#x4E00;&#x4E2A;&#x67B6;&#x6784;&#x601D;&#x60F3;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x592A;&#x591A;&#x65B0;&#x7684;&#x4EE3;&#x7801;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x9A6C;&#x4E0A;&#x4F7F;&#x7528;Flux&#x6784;&#x5EFA;&#x4F60;&#x7684;&#x5E94;&#x7528;&#x3002;</p>
+<p>Flux&#x5E94;&#x7528;&#x4E3B;&#x8981;&#x5305;&#x62EC;&#x4E09;&#x90E8;&#x5206;&#xFF1A;dispatcher&#x3001;store&#x548C;views&#xFF08;React components&#xFF09;&#xFF0C;&#x5343;&#x4E07;&#x4E0D;&#x8981;&#x548C;MVC(model-View-Controller)&#x641E;&#x6DF7;&#x3002;Controller&#x5728;Flux&#x5E94;&#x7528;&#x4E2D;&#x4E5F;&#x786E;&#x5B9E;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x662F;&#x662F;&#x4EE5;controller-view&#x7684;&#x5F62;&#x5F0F;&#x3002;view&#x901A;&#x5E38;&#x5904;&#x4E8E;&#x5E94;&#x7528;&#x7684;&#x9876;&#x5C42;&#xFF0C;&#x5B83;&#x4ECE;stores&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x540C;&#x65F6;&#x5C06;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x5B83;&#x7684;&#x540E;&#x4EE3;&#x8282;&#x70B9;&#x3002;&#x53E6;&#x5916;&#xFF0C;action creators - dispatcher&#x8F85;&#x52A9;&#x65B9;&#x6CD5; - &#x4E00;&#x4E2A;&#x88AB;&#x7528;&#x6765;&#x63D0;&#x4F9B;&#x63CF;&#x8FF0;&#x5E94;&#x7528;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x7684;&#x6539;&#x53D8;&#x7684;&#x8BED;&#x4E49;&#x5316;&#x7684;API&#x3002;&#x628A;&#x5B83;&#x7406;&#x89E3;&#x4E3A;Flux&#x66F4;&#x65B0;&#x95ED;&#x73AF;&#x7684;&#x7B2C;&#x56DB;&#x4E2A;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x4F60;&#x66F4;&#x597D;&#x7684;&#x7406;&#x89E3;&#x5B83;&#x3002;</p>
+<p>Flux&#x4F7F;&#x7528;&#x5355;&#x5411;&#x7684;&#x6570;&#x636E;&#x6D41;&#x52A8;&#x6765;&#x907F;&#x5F00;MVC. &#x5F53;&#x7528;&#x6237;&#x4E0E;React&#x89C6;&#x56FE;&#x4EA4;&#x4E92;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x89C6;&#x56FE;&#x4F1A;&#x901A;&#x8FC7;&#x4E2D;&#x67A2;dispatcher&#x4EA7;&#x751F;&#x4E00;&#x4E2A;action&#x3002;&#x7136;&#x540E;&#x5927;&#x91CF;&#x7684;&#x4FDD;&#x5B58;&#x7740;&#x5E94;&#x7528;&#x6570;&#x636E;&#x548C;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x7684;&#x89C6;&#x56FE;&#x63A5;&#x6536;&#x5230;&#x5192;&#x6CE1;&#x7684;action&#xFF0C;&#x66F4;&#x65B0;&#x6240;&#x6709;&#x53D7;&#x5F71;&#x54CD;&#x7684;view&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5F88;&#x9002;&#x5408;React&#x8FD9;&#x79CD;&#x58F0;&#x660E;&#x5F0F;&#x7684;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x7684;store&#x66F4;&#x65B0;&#xFF0C;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x7279;&#x522B;&#x6307;&#x5B9A;&#x5982;&#x4F55;&#x5728;view&#x548C;state&#x4E2D;&#x8FC7;&#x6E21;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x72EC;&#x521B;&#x6027;&#x7684;&#x89E3;&#x51B3;&#x4E86;&#x6570;&#x636E;&#x7684;&#x83B7;&#x53D6;&#xFF1A;&#x4E3E;&#x4E2A;&#x6817;&#x5B50;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C55;&#x793A;&#x4E00;&#x4E2A;&#x4F1A;&#x8BDD;&#x5217;&#x8868;&#xFF0C;&#x9AD8;&#x4EAE;&#x5176;&#x4E2D;&#x672A;&#x8BFB;&#x7684;&#x4F1A;&#x8BDD;&#xFF0C;&#x540C;&#x65F6;&#x5C55;&#x793A;&#x672A;&#x8BFB;&#x4F1A;&#x8BDD;&#x7684;&#x6570;&#x91CF;&#x3002;&#x5982;&#x679C;&#x7528;MVC&#x67B6;&#x6784;&#x7684;&#x8BDD;&#x5C06;&#x5F88;&#x96BE;&#x5904;&#x7406;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x56E0;&#x4E3A;&#x66F4;&#x65B0;&#x4E00;&#x4E2A;&#x5BF9;&#x8BDD;&#x4E3A;&#x5DF2;&#x8BFB;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x66F4;&#x65B0;&#x5BF9;&#x8BDD;model&#xFF0C;&#x7136;&#x540E;&#x540C;&#x6837;&#x4E5F;&#x9700;&#x8981;&#x66F4;&#x65B0;&#x672A;&#x8BFB;&#x5BF9;&#x8BDD;&#x6570;&#x91CF;model&#xFF08;&#x6570;&#x91CF;-1&#xFF09;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x4F9D;&#x8D56;&#x548C;&#x7011;&#x5E03;&#x5F0F;&#x7684;&#x66F4;&#x65B0;&#x5728;&#x5927;&#x578B;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#x975E;&#x5E38;&#x5E38;&#x89C1;&#xFF0C;&#x5BFC;&#x81F4;&#x9519;&#x7EFC;&#x590D;&#x6742;&#x7684;&#x6570;&#x636E;&#x6D41;&#x52A8;&#x548C;&#x4E0D;&#x53EF;&#x9884;&#x6D4B;&#x7684;&#x7ED3;&#x679C;&#x3002;&#xFF08;&#x8FD9;&#x5176;&#x5B9E;&#x662F;Facebook&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x4E2A;&#x7EBF;&#x4E0A;bug&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x7528;&#x6237;&#x770B;&#x5230;&#x63D0;&#x793A;&#x8BF4;&#x6709;&#x4E00;&#x6761;&#x672A;&#x8BFB;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x70B9;&#x8FDB;&#x53BB;&#x5374;&#x53D1;&#x73B0;&#x6CA1;&#x6709;&#xFF09;&#x3002;</p>
+<p>&#x53CD;&#x8FC7;&#x6765;&#x8BA9; Store &#x6765;&#x63A7;&#x5236;&#xFF1A;store&#x63A5;&#x53D7;&#x66F4;&#x65B0;&#xFF0C;&#x5E76;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x673A;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x66F4;&#x65B0;&#x3002;&#x800C;&#x4E0D;&#x662F;&#x91C7;&#x7528;&#x4E00;&#x8D2F;&#x4F9D;&#x8D56;&#x5916;&#x90E8;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x66F4;&#x65B0;&#x6570;&#x636E;&#x3002;&#x5728;store&#x5916;&#x90E8;&#xFF0C;&#x5E76;&#x6CA1;&#x529E;&#x6CD5;&#x770B;&#x5230;store&#x5185;&#x90E8;&#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;&#x5B83;&#x5185;&#x90E8;&#x7684;&#x6570;&#x636E;&#x7684;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x65B9;&#x5F0F;&#x4FDD;&#x8BC1;&#x4E86;&#x4E00;&#x4E2A;&#x6E05;&#x6670;&#x7684;&#x5173;&#x6CE8;&#x70B9;&#x5206;&#x79BB;&#x3002;Store&#x5E76;&#x6CA1;&#x6709;&#x7C7B;&#x4F3C;setAsRead()&#x8FD9;&#x6837;&#x76F4;&#x63A5;&#x7684;setter&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x5176;&#x81EA;&#x6210;&#x4E00;&#x4F53;&#x7684;&#x4E16;&#x754C;&#x4E2D;&#x62E5;&#x6709;&#x552F;&#x4E00;&#x4E2A;&#x83B7;&#x53D6;&#x65B0;&#x6570;&#x636E;&#x7684;&#x65B9;&#x6CD5; - store&#x901A;&#x8FC7;dispatcher&#x6CE8;&#x518C;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<h2 id="structure-and-data-flow"><a href="#Structure-and-Data-Flow" class="headerlink" title="Structure and Data Flow"></a>Structure and Data Flow</h2><p>Flux&#x4E2D;&#x6570;&#x636E;&#x662F;&#x5355;&#x9879;&#x6D41;&#x52A8;&#x7684;&#xFF1A;</p>
+<p><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/javascript/reactjs/media/14584657887641.jpg" alt=""></p>
+<p>&#x7528;&#x6237;&#x7684;&#x4EA4;&#x4E92;&#x53EF;&#x80FD;&#x4F1A;&#x4F7F;views&#x4EA7;&#x751F;&#x65B0;&#x7684;action&#x3002;</p>
+<h2 id="a-single-dispatcher"><a href="#A-Single-Dispatcher" class="headerlink" title="A Single Dispatcher"></a>A Single Dispatcher</h2><p>dispatcher &#x5C31;&#x50CF;&#x662F;&#x4E00;&#x4E2A;&#x4E2D;&#x592E;&#x7684;&#x96C6;&#x7EBF;&#x5668;&#xFF0C;&#x7BA1;&#x7406;&#x7740;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x6D41;&#x3002;&#x672C;&#x8D28;&#x4E0A;&#x5B83;&#x5C31;&#x662F; store callback &#x7684;&#x6CE8;&#x518C;&#x8868;&#xFF0C;&#x672C;&#x8EAB;&#x5E76;&#x6CA1;&#x6709;&#x5B9E;&#x9645;&#x7684;&#x9AD8;&#x5EA6;&#x529F;&#x80FD;&#x3002;&#x5B83;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x5411;stores&#x5206;&#x53D1;actions&#x7684;&#x673A;&#x5668;&#x3002; &#x6BCF;&#x4E00;&#x4E2A; store &#x5404;&#x81EA;&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x7684; callback &#x4EE5;&#x63D0;&#x4F9B;&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x52A8;&#x4F5C;&#x3002;&#x5F53; dispatcher &#x53D1;&#x51FA;&#x4E00;&#x4E2A; action &#x65F6;&#xFF0C;&#x5E94;&#x7528;&#x4E2D;&#x6240;&#x6709;&#x7684;store&#x90FD;&#x4F1A;&#x901A;&#x8FC7;&#x6CE8;&#x518C;&#x7684;callback&#x6536;&#x5230;&#x8FD9;&#x4E2A;action&#x3002;</p>
+<h2 id="stores"><a href="#Stores" class="headerlink" title="Stores"></a>Stores</h2><p>Stores &#x5305;&#x542B;&#x4E86;&#x5E94;&#x7528;&#x7684;&#x72B6;&#x6001;&#x548C;&#x903B;&#x8F91;&#x3002;</p>
+<p>store&#x5728;dispatcher&#x4E2D;&#x6CE8;&#x518C;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x76F8;&#x5E94;&#x7684;&#x56DE;&#x8C03;&#x3002;</p>
+<p>store&#x66F4;&#x65B0;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x5411;&#x5E94;&#x7528;&#x4E2D;&#x5E7F;&#x64AD;&#x4E00;&#x4E2A;change&#x4E8B;&#x4EF6;&#xFF0C;views&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x54CD;&#x5E94;&#x4E8B;&#x4EF6;&#x6765;&#x91CD;&#x65B0;&#x83B7;&#x53D6;&#x65B0;&#x7684;&#x6570;&#x636E;&#x5E76;&#x66F4;&#x65B0;&#x3002;</p>
+<h2 id="views-and-controller-views"><a href="#Views-and-Controller-Views" class="headerlink" title="Views and Controller-Views"></a>Views and Controller-Views</h2><p>React&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x53EF;&#x7EC4;&#x5408;&#x5F0F;&#x7684;view&#x8BA9;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x7EC4;&#x5408;&#x5C55;&#x793A;&#x5C42;&#x3002;&#x5728;&#x63A5;&#x8FD1;&#x9876;&#x5C42;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6709;&#x4E9B;view&#x9700;&#x8981;&#x76D1;&#x542C;&#x6240;&#x4F9D;&#x8D56;&#x7684;store&#x7684;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;&#x3002;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;controller-view&#xFF0C;&#x56E0;&#x4E3A;&#x4ED6;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x80F6;&#x6C34;&#x4EE3;&#x7801;&#x6765;&#x4ECE;store&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x5411;&#x4E0B;&#x5C42;&#x5C42;&#x4F20;&#x9012;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x3002;&#x6211;&#x4EEC;&#x4F1A;&#x5229;&#x7528;&#x8FD9;&#x4E9B;controller-views&#x6765;&#x5904;&#x7406;&#x9875;&#x9762;&#x4E0A;&#x67D0;&#x4E9B;&#x91CD;&#x8981;&#x90E8;&#x5206;&#x3002;</p>
+<h2 id="actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h2><p>dispatcher&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5411;store&#x4E2D;&#x89E6;&#x53D1;&#x5206;&#x53D1;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;action&#x3002;</p>
+<h2 id="what-about-that-dispatcher"><a href="#What-About-that-Dispatcher" class="headerlink" title="What About that Dispatcher?"></a>What About that Dispatcher?</h2><p>dispatcher&#x4E5F;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x7BA1;&#x7406;store&#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x3002;</p>
+<h1 id="flux-todomvc-tutorial"><a href="#Flux-TodoMVC-Tutorial" class="headerlink" title="Flux TodoMVC Tutorial"></a>Flux TodoMVC Tutorial</h1>
           
         
       
@@ -2183,124 +2364,6 @@ undefined
             
               
                 
-                <a class="post-title-link" href="/2016/03/10/IntelliJ IDEA插件安装/" itemprop="url">
-                  IntelliJ IDEA插件安装
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-10T00:00:00+08:00" content="2016-03-10">
-              2016-03-10
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/IDE/" itemprop="url" rel="index">
-                    <span itemprop="name">IDE</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h1 id="mybatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><p><a href="http://blog.csdn.net/pk490525/article/details/16978879" target="_blank" rel="external">IntelliJ idea mybatis&#x63D2;&#x4EF6;&#x5B89;&#x88C5;</a></p>
-<h1 id="jrebel"><a href="#JRebel" class="headerlink" title="JRebel"></a>JRebel</h1><p><a href="http://www.cnblogs.com/challengeof/p/4794282.html" target="_blank" rel="external">Mac + IDEA + JRebel&#x7834;&#x89E3;&#x65B9;&#x6CD5;</a></p>
-<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/jrebel-setup.html" target="_blank" rel="external">IntelliJ IDEA &#x7684; Java &#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6; JRebel &#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/03/10/IntelliJ IDEA Mac常用 快捷键/" itemprop="url">
                   IntellJ IDEA Mac常用快捷键
                 </a>
@@ -2393,6 +2456,124 @@ undefined
 <p>&#x2325;F1 &#x663E;&#x793A;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x9009;&#x62E9;&#x76EE;&#x6807;&#x5F39;&#x51FA;&#x5C42;&#xFF0C;&#x5F39;&#x51FA;&#x5C42;&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x76EE;&#x6807;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x9009;&#x62E9;(&#x5982;&#x5728;&#x4EE3;&#x7801;&#x7F16;&#x8F91;&#x7A97;&#x53E3;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x663E;&#x793A;&#x8BE5;&#x6587;&#x4EF6;&#x7684;Finder)</p>
 <p>&#x2318;F12 &#x5F39;&#x51FA;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x5C42;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5F39;&#x51FA;&#x7684;&#x5C42;&#x4E0A;&#x76F4;&#x63A5;&#x8F93;&#x5165;&#x8FDB;&#x884C;&#x7B5B;&#x9009;&#xFF08;&#x53EF;&#x7528;&#x4E8E;&#x641C;&#x7D22;&#x7C7B;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#xFF09;</p>
 <h1 id="&#x901A;&#x7528;"><a href="#&#x901A;&#x7528;" class="headerlink" title="&#x901A;&#x7528;"></a>&#x901A;&#x7528;</h1><p>&#x2303;&#x2318;F &#x5207;&#x6362;&#x5168;&#x5C4F;&#x6A21;&#x5F0F;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/10/IntelliJ IDEA插件安装/" itemprop="url">
+                  IntelliJ IDEA插件安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-10T00:00:00+08:00" content="2016-03-10">
+              2016-03-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/IDE/" itemprop="url" rel="index">
+                    <span itemprop="name">IDE</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
+</blockquote>
+<h1 id="mybatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h1><p><a href="http://blog.csdn.net/pk490525/article/details/16978879" target="_blank" rel="external">IntelliJ idea mybatis&#x63D2;&#x4EF6;&#x5B89;&#x88C5;</a></p>
+<h1 id="jrebel"><a href="#JRebel" class="headerlink" title="JRebel"></a>JRebel</h1><p><a href="http://www.cnblogs.com/challengeof/p/4794282.html" target="_blank" rel="external">Mac + IDEA + JRebel&#x7834;&#x89E3;&#x65B9;&#x6CD5;</a></p>
+<p><a href="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/jrebel-setup.html" target="_blank" rel="external">IntelliJ IDEA &#x7684; Java &#x70ED;&#x90E8;&#x7F72;&#x63D2;&#x4EF6; JRebel &#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;</a></p>
 
           
         
@@ -3092,147 +3273,6 @@ undefined
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/12/04/javascript/nodejs/2016-03-26 实用NodeJS插件/" itemprop="url">
-                  使用NodeJS模块
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-04T00:00:00+08:00" content="2015-12-04">
-              2015-12-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web前端/" itemprop="url" rel="index">
-                    <span itemprop="name">web前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web前端/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Author: ChinSyun Pang<br>Weibo: <a href="http://weibo.com/arthinkingplus" target="_blank" rel="external">arthinking_plus</a><br>Posted in: <a href="http://www.itzhai.com" target="_blank" rel="external">http://www.itzhai.com</a></p>
-</blockquote>
-<h2 id="&#x6DD8;&#x5B9D;npm&#x955C;&#x50CF;"><a href="#&#x6DD8;&#x5B9D;npm&#x955C;&#x50CF;" class="headerlink" title="&#x6DD8;&#x5B9D;npm&#x955C;&#x50CF;"></a>&#x6DD8;&#x5B9D;npm&#x955C;&#x50CF;</h2><blockquote>
-<p><a href="http://npm.taobao.org/" target="_blank" rel="external">http://npm.taobao.org/</a></p>
-</blockquote>
-<h2 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h2><p><a href="https://docs.npmjs.com/json" target="_blank" rel="external">https://docs.npmjs.com/json</a></p>
-<p><a href="https://docs.npmjs.com/cli/install" target="_blank" rel="external">https://docs.npmjs.com/cli/install</a></p>
-<p><a href="https://docs.npmjs.com/misc/config" target="_blank" rel="external">https://docs.npmjs.com/misc/config</a></p>
-<h2 id="autoprefixer"><a href="#Autoprefixer" class="headerlink" title="Autoprefixer"></a>Autoprefixer</h2><p><a href="http://blog.jobbole.com/75964/" target="_blank" rel="external">&#x4E00;&#x4E2A;&#x4EE5;&#x6700;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x5904;&#x7406;&#x6D4F;&#x89C8;&#x5668;&#x524D;&#x7F00;&#x7684;&#x540E;&#x5904;&#x7406;&#x7A0B;&#x5E8F;</a></p>
-<h2 id="babel"><a href="#Babel" class="headerlink" title="Babel"></a>Babel</h2><p>Babel&#x662F;&#x4E00;&#x4E2A;&#x5E7F;&#x6CDB;&#x4F7F;&#x7528;&#x7684;&#x8F6C;&#x7801;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;ES6&#x4EE3;&#x7801;&#x8F6C;&#x4E3A;ES5&#x4EE3;&#x7801;&#xFF0C;&#x4ECE;&#x800C;&#x5728;&#x73B0;&#x6709;&#x73AF;&#x5883;&#x6267;&#x884C;&#x3002;</p>
-<p><a href="http://www.csdn.net/article/2015-11-17/2826233" target="_blank" rel="external">&#x8D70;&#x8FDB;Babel 6.0 &#x5168;&#x65B0;&#x7279;&#x6027;&#x89E3;&#x6790;</a></p>
-<p><a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" target="_blank" rel="external">Babel&#x5165;&#x95E8;&#x6559;&#x7A0B;</a></p>
-<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x8981;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4F7F;&#x7528;Babel&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5B89;&#x88C5;<code>babel-cli</code>&#xFF0C;&#x6216;&#x8005;&#x4F60;&#x9700;&#x8981;&#x5728;&#x4E00;&#x4E2A;Node&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;Babel&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>babel-core</code>&#x3002;</p>
-<h3 id="&#x63D2;&#x4EF6;&#x9884;&#x8BBE;"><a href="#&#x63D2;&#x4EF6;&#x9884;&#x8BBE;" class="headerlink" title="&#x63D2;&#x4EF6;&#x9884;&#x8BBE;"></a>&#x63D2;&#x4EF6;&#x9884;&#x8BBE;</h3><p>&#x5B98;&#x65B9;&#x7684;&#x9884;&#x8BBE;&#x5305;&#x62EC;<code>babel-preset-es2015</code>&#x548C;<code>babel-preset-react</code></p>
-<h2 id="lodash"><a href="#Lodash" class="headerlink" title="Lodash"></a>Lodash</h2><p><a href="http://www.cnblogs.com/whitewolf/p/4417873.html" target="_blank" rel="external">JavaScript&#x5DE5;&#x5177;&#x5E93;&#x4E4B;Lodash</a></p>
-<h2 id="extract-text-webpack-plugin"><a href="#extract-text-webpack-plugin" class="headerlink" title="extract-text-webpack-plugin"></a>extract-text-webpack-plugin</h2><p><a href="http://www.cnblogs.com/YikaJ/p/4586703.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">webpack&#x524D;&#x7AEF;&#x6A21;&#x5757;&#x52A0;&#x8F7D;&#x5DE5;&#x5177;</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -3278,7 +3318,7 @@ undefined
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">103</span>
+              <span class="site-state-item-count">104</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -3286,7 +3326,7 @@ undefined
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -3295,7 +3335,7 @@ undefined
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
