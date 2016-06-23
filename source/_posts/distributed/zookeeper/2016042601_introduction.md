@@ -1,5 +1,6 @@
 ---
 title: Zookeeper introduction
+permalink: Zookeeper introduction
 date: 2016-04-26
 categories: [Java, Spring]
 tags: [ZooKeeper]
@@ -12,9 +13,3 @@ tags: [ZooKeeper]
 # introduction
 
 [Zookeeper安装配置](http://www.yiibai.com/zookeeper/zookeeper_installation.html)
-
-
-
-
-
-
