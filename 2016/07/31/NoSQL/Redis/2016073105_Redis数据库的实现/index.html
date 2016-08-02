@@ -1,0 +1,724 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Redis," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1&amp;#x3001;&amp;#x6570;&amp;#x636E;&amp;#x5E93;1.1&amp;#x3001;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4E2D;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x5E93;12345678910struct redisServer {    // ...    // &amp;#x4E00;&amp;#x4E2A;&amp;#x6570;&amp;#x7EC4;&amp;#xFF0C;&amp;#x4">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis数据库的实现">
+<meta property="og:url" content="http://arthinking.github.io/2016/07/31/NoSQL/Redis/2016073105_Redis数据库的实现/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="1&amp;#x3001;&amp;#x6570;&amp;#x636E;&amp;#x5E93;1.1&amp;#x3001;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4E2D;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x5E93;12345678910struct redisServer {    // ...    // &amp;#x4E00;&amp;#x4E2A;&amp;#x6570;&amp;#x7EC4;&amp;#xFF0C;&amp;#x4">
+<meta property="og:image" content="http://arthinking.github.io/media/14701057057710.jpg">
+<meta property="og:updated_time" content="2016-08-02T05:08:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redis数据库的实现">
+<meta name="twitter:description" content="1&amp;#x3001;&amp;#x6570;&amp;#x636E;&amp;#x5E93;1.1&amp;#x3001;&amp;#x670D;&amp;#x52A1;&amp;#x5668;&amp;#x4E2D;&amp;#x7684;&amp;#x6570;&amp;#x636E;&amp;#x5E93;12345678910struct redisServer {    // ...    // &amp;#x4E00;&amp;#x4E2A;&amp;#x6570;&amp;#x7EC4;&amp;#xFF0C;&amp;#x4">
+<meta name="twitter:image" content="http://arthinking.github.io/media/14701057057710.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Redis数据库的实现 | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1259452595&web_id=1259452595" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Redis数据库的实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-31T00:00:00+08:00" content="2016-07-31">
+              2016-07-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NoSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">NoSQL</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-&#x6570;&#x636E;&#x5E93;"><a href="#1&#x3001;&#x6570;&#x636E;&#x5E93;" class="headerlink" title="1&#x3001;&#x6570;&#x636E;&#x5E93;"></a>1&#x3001;&#x6570;&#x636E;&#x5E93;</h2><h3 id="11-&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5E93;"><a href="#1-1&#x3001;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5E93;" class="headerlink" title="1.1&#x3001;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5E93;"></a>1.1&#x3001;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5E93;</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> redisServer {</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="comment">// &#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x4FDD;&#x5B58;&#x7740;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;</span></span><br><span class="line">    redisDb *db;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// &#x670D;&#x52A1;&#x5668;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6570;&#x91CF;</span></span><br><span class="line">    <span class="keyword">int</span> dbnum;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>&#x6570;&#x636E;&#x5E93;&#x7684;&#x6570;&#x91CF;&#x7531;dbnum&#x5C5E;&#x6027;&#x51B3;&#x5B9A;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Redis&#x4F1A;&#x521B;&#x5EFA;16&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<h3 id="12-&#x5207;&#x6362;&#x6570;&#x636E;&#x5E93;"><a href="#1-2&#x3001;&#x5207;&#x6362;&#x6570;&#x636E;&#x5E93;" class="headerlink" title="1.2&#x3001;&#x5207;&#x6362;&#x6570;&#x636E;&#x5E93;"></a>1.2&#x3001;&#x5207;&#x6362;&#x6570;&#x636E;&#x5E93;</h3><p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;redis&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x76EE;&#x6807;&#x6570;&#x636E;&#x5E93;&#x4E3A;0&#x53F7;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>SELECT</code>&#x547D;&#x4EE4;&#x6765;&#x5207;&#x6362;&#x76EE;&#x6807;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typde <span class="keyword">struct</span> redisClient {</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="comment">// &#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x5BA2;&#x6237;&#x7AEF;&#x6B63;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;</span></span><br><span class="line">    redisDb *db</span><br><span class="line">} redisClient;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>redis-cli&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x5728;&#x8F93;&#x5165;&#x7B26;&#x65C1;&#x8FB9;&#x63D0;&#x793A;&#x5F53;&#x524D;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x5E93;&#xFF1A;<br>redis[1] &gt; SELECT 2<br>&#x4F46;&#x662F;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x5BA2;&#x6237;&#x7AEF;&#x5374;&#x6CA1;&#x6709;&#xFF0C;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x64CD;&#x4F5C;&#x9519;&#x8BEF;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x6267;&#x884C;Redis&#x547D;&#x4EE4;&#xFF08;&#x5982;FLUSHDB&#xFF09;&#x4E4B;&#x524D;&#xFF0C;&#x6700;&#x597D;&#x5148;&#x6267;&#x884C;&#x4EE5;&#x4E0B;<code>SELECT</code>&#x547D;&#x4EE4;&#x3002;</p>
+</blockquote>
+<h3 id="13-&#x6570;&#x636E;&#x5E93;&#x952E;&#x7A7A;&#x95F4;"><a href="#1-3&#x3001;&#x6570;&#x636E;&#x5E93;&#x952E;&#x7A7A;&#x95F4;" class="headerlink" title="1.3&#x3001;&#x6570;&#x636E;&#x5E93;&#x952E;&#x7A7A;&#x95F4;"></a>1.3&#x3001;&#x6570;&#x636E;&#x5E93;&#x952E;&#x7A7A;&#x95F4;</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> redisDb {</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="comment">// &#x6570;&#x636E;&#x5E93;&#x952E;&#x7A7A;&#x95F4;&#xFF0C;&#x4FDD;&#x5B58;&#x7740;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x952E;&#x503C;&#x5BF9;</span></span><br><span class="line">    dict *dict;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ..</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h4 id="&#x6570;&#x636E;&#x5E93;&#x952E;&#x64CD;&#x4F5C;"><a href="#&#x6570;&#x636E;&#x5E93;&#x952E;&#x64CD;&#x4F5C;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;&#x952E;&#x64CD;&#x4F5C;"></a>&#x6570;&#x636E;&#x5E93;&#x952E;&#x64CD;&#x4F5C;</h4><blockquote>
+<p>&#x6DFB;&#x52A0;&#x65B0;&#x952E;<br>redis&gt; SET data &#x201C;2016.07.31&#x201D;<br>redis&gt; RPUSH list &#x201C;a&#x201D; &#x201C;b&#x201D; &#x201C;c&#x201D;<br>redis&gt; HSET hashTable name &#x201C;test&#x201D;</p>
+<p>&#x5220;&#x9664;&#x952E;<br>redis&gt; DEL book</p>
+<p>&#x66F4;&#x65B0;&#x952E;<br>redis&gt; SET data &#x201C;2016.08.01&#x201D;</p>
+<p>&#x5BF9;&#x952E;&#x53D6;&#x503C;<br>redis&gt; GET str<br>redis&gt; LRANGE list 0 -1</p>
+</blockquote>
+<h4 id="&#x8BFB;&#x5199;&#x952E;&#x7A7A;&#x95F4;&#x65F6;&#x7684;&#x7EF4;&#x62A4;&#x64CD;&#x4F5C;"><a href="#&#x8BFB;&#x5199;&#x952E;&#x7A7A;&#x95F4;&#x65F6;&#x7684;&#x7EF4;&#x62A4;&#x64CD;&#x4F5C;" class="headerlink" title="&#x8BFB;&#x5199;&#x952E;&#x7A7A;&#x95F4;&#x65F6;&#x7684;&#x7EF4;&#x62A4;&#x64CD;&#x4F5C;"></a>&#x8BFB;&#x5199;&#x952E;&#x7A7A;&#x95F4;&#x65F6;&#x7684;&#x7EF4;&#x62A4;&#x64CD;&#x4F5C;</h4><ul>
+<li>&#x8BB0;&#x5F55;&#x547D;&#x4E2D;&#x548C;&#x6CA1;&#x547D;&#x4E2D;&#x6B21;&#x6570;&#xFF08;INFO stat&#x7684;keyspace_hits&#x548C;keyspace_missess&#x5C5E;&#x6027;&#xFF09;&#xFF1B;</li>
+<li>&#x66F4;&#x65B0;&#x952E;&#x7684;LRU&#x65F6;&#x95F4;&#xFF08;OBJECT idletime <key> &#x67E5;&#x770B;&#x95F2;&#x7F6E;&#x65F6;&#x95F4;&#xFF09;&#xFF1B;</key></li>
+<li>WATCH&#x76D1;&#x89C6;&#x7684;&#x952E;&#x6709;&#x6539;&#x52A8;&#xFF0C;&#x952E;&#x4F1A;&#x88AB;&#x6807;&#x4E3A;&#x810F;&#xFF0C;&#x8BA9;&#x4E8B;&#x52A1;&#x7A0B;&#x5E8F;&#x6CE8;&#x610F;&#x5230;&#x8FD9;&#x4E2A;&#x952E;&#x5DF2;&#x7ECF;&#x88AB;&#x4FEE;&#x6539;&#x4E86;&#xFF1B;</li>
+<li>&#x670D;&#x52A1;&#x5668;&#x6BCF;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x952E;&#x4E4B;&#x540E;&#xFF0C;&#x90FD;&#x4F1A;&#x5BF9;&#x810F;&#x952E;&#x8BA1;&#x6570;&#x503C;&#x52A0;1&#xFF0C;&#x8FD9;&#x4E2A;&#x8BA1;&#x6570;&#x5668;&#x4F1A;&#x89E6;&#x53D1;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6301;&#x4E45;&#x5316;&#x548C;&#x590D;&#x5236;&#x64CD;&#x4F5C;&#xFF1B;</li>
+<li>&#x6570;&#x636E;&#x5E93;&#x901A;&#x77E5;&#x529F;&#x80FD;&#x76F8;&#x5173;&#x5904;&#x7406;&#x3002;</li>
+</ul>
+<h3 id="14-&#x8BBE;&#x7F6E;&#x952E;&#x7684;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x6216;&#x8FC7;&#x671F;&#x65F6;&#x95F4;"><a href="#1-4&#x3001;&#x8BBE;&#x7F6E;&#x952E;&#x7684;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x6216;&#x8FC7;&#x671F;&#x65F6;&#x95F4;" class="headerlink" title="1.4&#x3001;&#x8BBE;&#x7F6E;&#x952E;&#x7684;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x6216;&#x8FC7;&#x671F;&#x65F6;&#x95F4;"></a>1.4&#x3001;&#x8BBE;&#x7F6E;&#x952E;&#x7684;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x6216;&#x8FC7;&#x671F;&#x65F6;&#x95F4;</h3><h4 id="expire&#x548C;pexpire&#x547D;&#x4EE4;"><a href="#EXPIRE&#x548C;PEXPIRE&#x547D;&#x4EE4;" class="headerlink" title="EXPIRE&#x548C;PEXPIRE&#x547D;&#x4EE4;"></a>EXPIRE&#x548C;PEXPIRE&#x547D;&#x4EE4;</h4><blockquote>
+<p>redis&gt; EXPIRE KEY 5  // &#x7F13;&#x5B58;5&#x79D2;<br>redis&gt; EXPIREAT key 1377252100</p>
+</blockquote>
+<h4 id="ttl&#x548C;pttl&#x547D;&#x4EE4;"><a href="#TTL&#x548C;PTTL&#x547D;&#x4EE4;" class="headerlink" title="TTL&#x548C;PTTL&#x547D;&#x4EE4;"></a>TTL&#x548C;PTTL&#x547D;&#x4EE4;</h4><p>&#x8FD4;&#x56DE;&#x8DDD;&#x79BB;&#x8FD9;&#x4E2A;&#x952E;&#x88AB;&#x670D;&#x52A1;&#x5668;&#x81EA;&#x52A8;&#x5220;&#x9664;&#x8FD8;&#x6709;&#x591A;&#x957F;&#x65F6;&#x95F4;&#x3002;</p>
+<p>redisDb&#x4E2D;&#x7684;expires&#x5B57;&#x5178;&#x4FDD;&#x5B58;&#x4E86;&#x6240;&#x6709;&#x952E;&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3002;</p>
+<h4 id="persist"><a href="#PERSIST" class="headerlink" title="PERSIST"></a>PERSIST</h4><p>&#x5728;&#x8FC7;&#x671F;&#x5B57;&#x5178;&#x4E2D;&#x67E5;&#x627E;&#x7ED9;&#x5B9A;&#x7684;&#x952E;&#xFF0C;&#x5E76;&#x89E3;&#x9664;&#x952E;&#x548C;&#x503C;&#x5728;&#x8FC7;&#x671F;&#x5B57;&#x5178;&#x7684;&#x5173;&#x8054;&#x3002;</p>
+<h3 id="15-&#x8FC7;&#x671F;&#x952E;&#x5220;&#x9664;&#x7B56;&#x7565;"><a href="#1-5&#x3001;&#x8FC7;&#x671F;&#x952E;&#x5220;&#x9664;&#x7B56;&#x7565;" class="headerlink" title="1.5&#x3001;&#x8FC7;&#x671F;&#x952E;&#x5220;&#x9664;&#x7B56;&#x7565;"></a>1.5&#x3001;&#x8FC7;&#x671F;&#x952E;&#x5220;&#x9664;&#x7B56;&#x7565;</h3><p><strong>&#x5B9A;&#x65F6;&#x5220;&#x9664;</strong></p>
+<p>&#x4F1A;&#x5BF9;&#x670D;&#x52A1;&#x5668;&#x7684;&#x54CD;&#x5E94;&#x65F6;&#x95F4;&#x548C;&#x541E;&#x5410;&#x91CF;&#x9020;&#x6210;&#x5F71;&#x54CD;&#x3002;</p>
+<p><strong>&#x60F0;&#x6027;&#x5220;&#x9664;</strong></p>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x8FC7;&#x671F;&#x7684;&#x952E;&#x4E00;&#x76F4;&#x6CA1;&#x88AB;&#x8BBF;&#x95EE;&#x5230;&#xFF0C;&#x90A3;&#x4E48;&#x6C38;&#x8FDC;&#x4E5F;&#x4E0D;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#x3002;</p>
+<p><strong>&#x5B9A;&#x671F;&#x5220;&#x9664;</strong></p>
+<p>&#x6BCF;&#x4E2A;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#xFF0C;&#x9650;&#x5236;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x7684;&#x65F6;&#x957F;&#x548C;&#x9891;&#x7387;&#x51CF;&#x5C11;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x5BF9;CPU&#x65F6;&#x95F4;&#x7684;&#x5F71;&#x54CD;&#x3002;</p>
+<h3 id="16-redis&#x7684;&#x8FC7;&#x671F;&#x952E;&#x5220;&#x9664;&#x7B56;&#x7565;"><a href="#1-6&#x3001;Redis&#x7684;&#x8FC7;&#x671F;&#x952E;&#x5220;&#x9664;&#x7B56;&#x7565;" class="headerlink" title="1.6&#x3001;Redis&#x7684;&#x8FC7;&#x671F;&#x952E;&#x5220;&#x9664;&#x7B56;&#x7565;"></a>1.6&#x3001;Redis&#x7684;&#x8FC7;&#x671F;&#x952E;&#x5220;&#x9664;&#x7B56;&#x7565;</h3><p>Redis&#x4F7F;&#x7528;&#x60F0;&#x6027;&#x548C;&#x5B9A;&#x671F;&#x5220;&#x9664;&#x4E24;&#x79CD;&#x7B56;&#x7565;&#x3002;</p>
+<h3 id="17-aof-rdb&#x548C;&#x590D;&#x5236;&#x529F;&#x80FD;&#x5BF9;&#x8FC7;&#x671F;&#x952E;&#x7684;&#x5904;&#x7406;"><a href="#1-7&#x3001;AOF&#x3001;RDB&#x548C;&#x590D;&#x5236;&#x529F;&#x80FD;&#x5BF9;&#x8FC7;&#x671F;&#x952E;&#x7684;&#x5904;&#x7406;" class="headerlink" title="1.7&#x3001;AOF&#x3001;RDB&#x548C;&#x590D;&#x5236;&#x529F;&#x80FD;&#x5BF9;&#x8FC7;&#x671F;&#x952E;&#x7684;&#x5904;&#x7406;"></a>1.7&#x3001;AOF&#x3001;RDB&#x548C;&#x590D;&#x5236;&#x529F;&#x80FD;&#x5BF9;&#x8FC7;&#x671F;&#x952E;&#x7684;&#x5904;&#x7406;</h3><p>&#x6267;&#x884C;SAVE&#x6216;&#x8005;BGSAVE&#x547D;&#x4EE4;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;RDB&#x6587;&#x4EF6;&#x65F6;&#xFF0C;&#x7A0B;&#x5E8F;&#x4F1A;&#x5BF9;&#x952E;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#xFF0C;&#x5DF2;&#x8FC7;&#x671F;&#x7684;&#x952E;&#x4E0D;&#x4F1A;&#x88AB;&#x4FDD;&#x5B58;&#x5230;&#x65B0;&#x521B;&#x5EFA;&#x7684;RDB&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x8F7D;&#x5165;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x53EA;&#x4F1A;&#x8F7D;&#x5165;&#x672A;&#x8FC7;&#x671F;&#x7684;&#x952E;&#xFF1B;&#x5982;&#x679C;&#x662F;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6A21;&#x5F0F;&#xFF0C;&#x6240;&#x6709;&#x952E;&#x90FD;&#x4F1A;&#x88AB;&#x8F7D;&#x5165;&#xFF0C;&#x4E0D;&#x8FC7;&#x5728;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x540C;&#x6B65;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6570;&#x636E;&#x5E93;&#x5C31;&#x4F1A;&#x88AB;&#x6E05;&#x7A7A;&#xFF0C;&#x6240;&#x4EE5;&#x8FC7;&#x671F;&#x952E;&#x5BF9;RDB&#x6587;&#x4EF6;&#x7684;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x4F1A;&#x9020;&#x6210;&#x5F71;&#x54CD;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4EE5;AOF&#x6A21;&#x5F0F;&#x6301;&#x4E45;&#x5316;&#x6570;&#x636E;&#xFF0C;&#x5F53;&#x8FC7;&#x671F;&#x952E;&#x88AB;&#x60F0;&#x6027;&#x6216;&#x8005;&#x5B9A;&#x671F;&#x5220;&#x9664;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5411;AOF&#x6587;&#x4EF6;&#x8FFD;&#x52A0;&#x4E00;&#x6761;DEL&#x547D;&#x4EE4;&#x3002;</p>
+<h4 id="&#x590D;&#x5236;"><a href="#&#x590D;&#x5236;" class="headerlink" title="&#x590D;&#x5236;"></a>&#x590D;&#x5236;</h4><p>&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x5220;&#x9664;&#x4E00;&#x4E2A;&#x8FC7;&#x671F;&#x952E;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x663E;&#x793A;&#x5730;&#x5411;&#x6240;&#x6709;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;&#x4E00;&#x4E2A;DEL&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x5B58;&#x5728;&#x8FC7;&#x671F;&#x7684;&#x952E;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x4ECE;&#x8BE5;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x7EE7;&#x7EED;&#x83B7;&#x53D6;&#x8BE5;&#x952E;&#xFF0C;&#x4ECD;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#xFF1B;&#x4F46;&#x662F;&#x4ECE;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#xFF0C;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x73B0;&#x8BE5;&#x952E;&#x5DF2;&#x8FC7;&#x671F;&#xFF0C;&#x5411;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;&#x7A7A;&#x56DE;&#x590D;&#xFF0C;&#x5E76;&#x5411;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x9001;<code>DEL message</code>&#x547D;&#x4EE4;&#x3002;</p>
+<h3 id="18-&#x6570;&#x636E;&#x901A;&#x77E5;"><a href="#1-8&#x3001;&#x6570;&#x636E;&#x901A;&#x77E5;" class="headerlink" title="1.8&#x3001;&#x6570;&#x636E;&#x901A;&#x77E5;"></a>1.8&#x3001;&#x6570;&#x636E;&#x901A;&#x77E5;</h3><h4 id="&#x952E;&#x7A7A;&#x95F4;&#x901A;&#x77E5;"><a href="#&#x952E;&#x7A7A;&#x95F4;&#x901A;&#x77E5;" class="headerlink" title="&#x952E;&#x7A7A;&#x95F4;&#x901A;&#x77E5;"></a>&#x952E;&#x7A7A;&#x95F4;&#x901A;&#x77E5;</h4><blockquote>
+<p>&#x83B7;&#x53D6;0&#x53F7;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x9488;&#x5BF9;message&#x952E;&#x6267;&#x884C;&#x7684;&#x6240;&#x6709;&#x547D;&#x4EE4;&#xFF1A;<br>redis&gt; SUBSCRIBE _ <em>keyspace@0</em> <em>:message<br>&#x83B7;&#x53D6;0&#x53F7;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x6240;&#x6709;&#x6267;&#x884C;DEL&#x547D;&#x4EE4;&#x7684;&#x952E;&#xFF1A;<br>redis&gt; SUBSCRIBE </em> <em>keyevent@0</em> _:del</p>
+</blockquote>
+<p>&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;&#x7684;notify&#xFF0D;keyspace&#xFF0D;events&#x9009;&#x9879;&#x51B3;&#x5B9A;&#x4E86;&#x670D;&#x52A1;&#x5668;&#x6240;&#x53D1;&#x9001;&#x901A;&#x77E5;&#x7684;&#x7C7B;&#x578B;</p>
+<h4 id="&#x53D1;&#x9001;&#x901A;&#x77E5;"><a href="#&#x53D1;&#x9001;&#x901A;&#x77E5;" class="headerlink" title="&#x53D1;&#x9001;&#x901A;&#x77E5;"></a>&#x53D1;&#x9001;&#x901A;&#x77E5;</h4><blockquote>
+<p>void notifyKeyspaceEvent(int type, char <em>event robj </em>key, int dbid)</p>
+</blockquote>
+<p>&#x7A0B;&#x5E8F;&#x4F1A;&#x6839;&#x636E;type&#x8FD9;&#x4E2A;&#x503C;&#x6765;&#x5224;&#x65AD;&#x901A;&#x77E5;&#x662F;&#x5426;&#x5C31;&#x662F;&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;notify-keyspace-events&#x9009;&#x9879;&#x6240;&#x9009;&#x5B9A;&#x7684;&#x901A;&#x77E5;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;notifyKeyspaceEvent(REDIS_NOTIFY_SET, &#x201C;sadd&#x201D;, c-&gt;argv[1], c-&gt;db-&gt;id);</p>
+<p>&#x5F53;SADD&#x547D;&#x4EE4;&#x5411;&#x96C6;&#x5408;&#x6210;&#x529F;&#x7684;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#xFF0C;&#x547D;&#x4EE4;&#x5C31;&#x4F1A;&#x53D1;&#x9001;&#x3002;</p>
+<p><strong>&#x53D1;&#x9001;&#x901A;&#x77E5;&#x7684;&#x5B9E;&#x73B0;</strong></p>
+<p><img src="media/14701057057710.jpg" alt=""></p>
+<h2 id="2-rdb&#x6301;&#x4E45;&#x5316;"><a href="#2&#x3001;RDB&#x6301;&#x4E45;&#x5316;" class="headerlink" title="2&#x3001;RDB&#x6301;&#x4E45;&#x5316;"></a>2&#x3001;RDB&#x6301;&#x4E45;&#x5316;</h2><h3 id="21-rdb&#x6587;&#x4EF6;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x8F7D;&#x5165;"><a href="#2-1&#x3001;RDB&#x6587;&#x4EF6;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x8F7D;&#x5165;" class="headerlink" title="2.1&#x3001;RDB&#x6587;&#x4EF6;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x8F7D;&#x5165;"></a>2.1&#x3001;RDB&#x6587;&#x4EF6;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x8F7D;&#x5165;</h3><p>&#x751F;&#x6210;RDB&#x6587;&#x4EF6;&#x7684;&#x547D;&#x4EE4;&#xFF1A;</p>
+<ul>
+<li>SAVE&#xFF1A;&#x4F1A;&#x963B;&#x585E;&#x670D;&#x52A1;&#x5668;&#x8FDB;&#x7A0B;&#xFF0C;&#x76F4;&#x5230;RDB&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x5B8C;&#x4E3A;&#x6B62;&#xFF0C;&#x963B;&#x585E;&#x671F;&#x95F4;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x80FD;&#x5904;&#x7406;&#x4EFB;&#x4F55;&#x8BF7;&#x6C42;&#x547D;&#x4EE4;&#xFF1B;</li>
+<li>BGSAVE&#xFF1A;&#x4F1A;&#x6D3E;&#x751F;&#x5B50;&#x8FDB;&#x7A0B;&#x8D1F;&#x8D23;&#x521B;&#x5EFA;RDB&#x6587;&#x4EF6;</li>
+</ul>
+<p>&#x5B9E;&#x9645;&#x7531;<code>rdb.c/rdbSave</code>&#x51FD;&#x6570;&#x5B8C;&#x6210;</p>
+<p>RDB&#x6587;&#x4EF6;&#x7684;&#x8F7D;&#x5165;&#x662F;&#x5728;&#x670D;&#x52A1;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x671F;&#x95F4;&#x670D;&#x52A1;&#x5668;&#x4E00;&#x76F4;&#x4F1A;&#x5904;&#x4E8E;<code>&#x963B;&#x585E;</code>&#x72B6;&#x6001;&#x3002;Redis&#x6CA1;&#x6709;&#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x8F7D;&#x5165;RDB&#x6587;&#x4EF6;&#x7684;&#x547D;&#x4EE4;&#x3002;</p>
+<h4 id="&#x5982;&#x4F55;&#x9009;&#x62E9;&#x8F7D;&#x5165;&#x65B9;&#x5F0F;"><a href="#&#x5982;&#x4F55;&#x9009;&#x62E9;&#x8F7D;&#x5165;&#x65B9;&#x5F0F;&#xFF1F;" class="headerlink" title="&#x5982;&#x4F55;&#x9009;&#x62E9;&#x8F7D;&#x5165;&#x65B9;&#x5F0F;&#xFF1F;"></a>&#x5982;&#x4F55;&#x9009;&#x62E9;&#x8F7D;&#x5165;&#x65B9;&#x5F0F;&#xFF1F;</h4><p>&#x5982;&#x679C;&#x5F00;&#x542F;&#x4E86;AOF&#x6301;&#x4E45;&#x5316;&#x529F;&#x80FD;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x4F18;&#x5148;&#x4F7F;&#x7528;AOF&#x6587;&#x4EF6;&#x8FD8;&#x539F;&#x6570;&#x636E;&#xFF1B;<br>AOF&#x6301;&#x4E45;&#x5316;&#x529F;&#x80FD;&#x5904;&#x4E8E;&#x5173;&#x95ED;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4F7F;&#x7528;RDB&#x6587;&#x4EF6;&#x6765;&#x8FD8;&#x539F;&#x6570;&#x636E;&#x5E93;&#x72B6;&#x6001;&#xFF1B;<br>&#x76F8;&#x5173;&#x51FD;&#x6570;&#xFF1A;<code>rdb.c/rdbLoad</code>&#xFF1B;</p>
+<h4 id="savebgsave&#x548C;bgrewriteaof&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;"><a href="#SAVE&#xFF0C;BGSAVE&#x548C;BGREWRITEAOF&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;" class="headerlink" title="SAVE&#xFF0C;BGSAVE&#x548C;BGREWRITEAOF&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;"></a>SAVE&#xFF0C;BGSAVE&#x548C;BGREWRITEAOF&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</h4><ul>
+<li><code>SAVE</code>&#x547D;&#x4EE4;&#x6267;&#x884C;&#x4F1A;&#x963B;&#x585E;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x6240;&#x6709;&#x547D;&#x4EE4;&#x90FD;&#x4F1A;&#x88AB;&#x62D2;&#x7EDD;&#xFF1B;</li>
+<li><code>BGSAVE</code>&#x547D;&#x4EE4;&#x6709;&#x5B50;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#xFF0C;&#x521B;&#x5EFA;RDB&#x6587;&#x4EF6;&#x8FC7;&#x7A0B;&#x4E2D;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x5904;&#x7406;&#x5BA2;&#x6237;&#x7AEF;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#xFF0C;&#x4F46;&#x662F;&#x6B64;&#x65F6;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x7684;SAVE&#x547D;&#x4EE4;&#x4F1A;&#x88AB;&#x670D;&#x52A1;&#x5668;&#x62D2;&#x7EDD;&#xFF0C;&#x907F;&#x514D;&#x7236;&#x8FDB;&#x7A0B;&#x548C;&#x5B50;&#x8FDB;&#x7A0B;&#x540C;&#x4E8B;&#x6267;&#x884C;&#x4E24;&#x4E2A;rdbSave&#x8C03;&#x7528;&#xFF0C;&#x9632;&#x6B62;&#x4EA7;&#x751F;&#x7ADE;&#x4E89;&#x6761;&#x4EF6;&#x3002;&#x540C;&#x4E8B;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x518D;&#x53D1;&#x9001;BGSAVE&#x547D;&#x4EE4;&#x4E5F;&#x4F1A;&#x88AB;&#x62D2;&#x7EDD;&#x3002;</li>
+<li><code>BGREWRITEAOF</code>he BGSAVE&#x547D;&#x4EE4;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x6267;&#x884C;&#xFF0C;&#x6267;&#x884C;BGSAVE&#x671F;&#x95F4;&#x53D1;&#x9001;&#x7684;BGREWRITEAOF&#x547D;&#x4EE4;&#x4F1A;&#x88AB;&#x5EF6;&#x8FDF;&#x5230;BGSAVE&#x547D;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x3002;&#x6267;&#x884C;BGREWRITEAOF&#x671F;&#x95F4;&#xFF0C;BGSAVE&#x547D;&#x4EE4;&#x4F1A;&#x88AB;&#x670D;&#x52A1;&#x5668;&#x62D2;&#x7EDD;&#x3002;&#xFF08;BGSAVE&#x548C;BGREWRITEAOF&#x867D;&#x7136;&#x90FD;&#x662F;&#x5728;&#x5B50;&#x8FDB;&#x7A0B;&#x91CC;&#x9762;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x6267;&#x884C;&#x662F;&#x51FA;&#x4E8E;&#x670D;&#x52A1;&#x5668;&#x6027;&#x80FD;&#x8003;&#x8651;&#x7684;&#xFF09;</li>
+</ul>
+<h3 id="22-&#x81EA;&#x52A8;&#x95F4;&#x9694;&#x6027;&#x4FDD;&#x5B58;"><a href="#2-2&#x3001;&#x81EA;&#x52A8;&#x95F4;&#x9694;&#x6027;&#x4FDD;&#x5B58;" class="headerlink" title="2.2&#x3001;&#x81EA;&#x52A8;&#x95F4;&#x9694;&#x6027;&#x4FDD;&#x5B58;"></a>2.2&#x3001;&#x81EA;&#x52A8;&#x95F4;&#x9694;&#x6027;&#x4FDD;&#x5B58;</h3><p>Redis&#x8FD0;&#x884C;&#x7528;&#x6237;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;&#x7684;save&#x9009;&#x9879;&#xFF0C;&#x8BA9;&#x670D;&#x52A1;&#x5668;&#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x4E00;&#x6B21;BGSAVE&#x547D;&#x4EE4;&#xFF1A;</p>
+<blockquote>
+<p>save 900 1<br>save 300 10<br>save 60 10000 # &#x670D;&#x52A1;&#x5668;&#x5728;60&#x79D2;&#x5185;&#xFF0C;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x8FDB;&#x884C;&#x4E86;&#x81F3;&#x5C11;10000&#x6B21;&#x4FEE;&#x6539;&#xFF0C;&#x5219;&#x6267;&#x884C;BGSAVE&#x547D;&#x4EE4;</p>
+</blockquote>
+<h3 id="23-rdb&#x6587;&#x4EF6;&#x7ED3;&#x6784;"><a href="#2-3&#x3001;RDB&#x6587;&#x4EF6;&#x7ED3;&#x6784;" class="headerlink" title="2.3&#x3001;RDB&#x6587;&#x4EF6;&#x7ED3;&#x6784;"></a>2.3&#x3001;RDB&#x6587;&#x4EF6;&#x7ED3;&#x6784;</h3><h3 id="24-&#x5206;&#x6790;rdb&#x6587;&#x4EF6;"><a href="#2-4&#x3001;&#x5206;&#x6790;RDB&#x6587;&#x4EF6;" class="headerlink" title="2.4&#x3001;&#x5206;&#x6790;RDB&#x6587;&#x4EF6;"></a>2.4&#x3001;&#x5206;&#x6790;RDB&#x6587;&#x4EF6;</h3><h2 id="3-aof&#x6301;&#x4E45;&#x5316;"><a href="#3&#x3001;AOF&#x6301;&#x4E45;&#x5316;" class="headerlink" title="3&#x3001;AOF&#x6301;&#x4E45;&#x5316;"></a>3&#x3001;AOF&#x6301;&#x4E45;&#x5316;</h2><h3 id="31-&#x5B9E;&#x73B0;"><a href="#3-1&#x3001;&#x5B9E;&#x73B0;" class="headerlink" title="3.1&#x3001;&#x5B9E;&#x73B0;"></a>3.1&#x3001;&#x5B9E;&#x73B0;</h3><h3 id="32-aof&#x6587;&#x4EF6;&#x7684;&#x8F7D;&#x5165;&#x4E0E;&#x6570;&#x636E;&#x8FD8;&#x539F;"><a href="#3-2&#x3001;AOF&#x6587;&#x4EF6;&#x7684;&#x8F7D;&#x5165;&#x4E0E;&#x6570;&#x636E;&#x8FD8;&#x539F;" class="headerlink" title="3.2&#x3001;AOF&#x6587;&#x4EF6;&#x7684;&#x8F7D;&#x5165;&#x4E0E;&#x6570;&#x636E;&#x8FD8;&#x539F;"></a>3.2&#x3001;AOF&#x6587;&#x4EF6;&#x7684;&#x8F7D;&#x5165;&#x4E0E;&#x6570;&#x636E;&#x8FD8;&#x539F;</h3><h3 id="33-aof&#x91CD;&#x5199;"><a href="#3-3&#x3001;AOF&#x91CD;&#x5199;" class="headerlink" title="3.3&#x3001;AOF&#x91CD;&#x5199;"></a>3.3&#x3001;AOF&#x91CD;&#x5199;</h3><h2 id="4-&#x4E8B;&#x4EF6;"><a href="#4&#x3001;&#x4E8B;&#x4EF6;" class="headerlink" title="4&#x3001;&#x4E8B;&#x4EF6;"></a>4&#x3001;&#x4E8B;&#x4EF6;</h2><h3 id="41-&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;"><a href="#4-1&#x3001;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;" class="headerlink" title="4.1&#x3001;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;"></a>4.1&#x3001;&#x6587;&#x4EF6;&#x4E8B;&#x4EF6;</h3><h3 id="42-&#x65F6;&#x95F4;&#x4E8B;&#x4EF6;"><a href="#4-2&#x3001;&#x65F6;&#x95F4;&#x4E8B;&#x4EF6;" class="headerlink" title="4.2&#x3001;&#x65F6;&#x95F4;&#x4E8B;&#x4EF6;"></a>4.2&#x3001;&#x65F6;&#x95F4;&#x4E8B;&#x4EF6;</h3><h3 id="43-&#x4E8B;&#x4EF6;&#x7684;&#x8C03;&#x5EA6;&#x4E0E;&#x6267;&#x884C;"><a href="#4-3&#x3001;&#x4E8B;&#x4EF6;&#x7684;&#x8C03;&#x5EA6;&#x4E0E;&#x6267;&#x884C;" class="headerlink" title="4.3&#x3001;&#x4E8B;&#x4EF6;&#x7684;&#x8C03;&#x5EA6;&#x4E0E;&#x6267;&#x884C;"></a>4.3&#x3001;&#x4E8B;&#x4EF6;&#x7684;&#x8C03;&#x5EA6;&#x4E0E;&#x6267;&#x884C;</h3><h2 id="5-&#x5BA2;&#x6237;&#x7AEF;"><a href="#5&#x3001;&#x5BA2;&#x6237;&#x7AEF;" class="headerlink" title="5&#x3001;&#x5BA2;&#x6237;&#x7AEF;"></a>5&#x3001;&#x5BA2;&#x6237;&#x7AEF;</h2><h3 id="51-&#x5BA2;&#x6237;&#x7AEF;&#x5C5E;&#x6027;"><a href="#5-1&#x3001;&#x5BA2;&#x6237;&#x7AEF;&#x5C5E;&#x6027;" class="headerlink" title="5.1&#x3001;&#x5BA2;&#x6237;&#x7AEF;&#x5C5E;&#x6027;"></a>5.1&#x3001;&#x5BA2;&#x6237;&#x7AEF;&#x5C5E;&#x6027;</h3><h3 id="52-&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x5173;&#x95ED;"><a href="#5-2&#x3001;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x5173;&#x95ED;" class="headerlink" title="5.2&#x3001;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x5173;&#x95ED;"></a>5.2&#x3001;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x521B;&#x5EFA;&#x4E0E;&#x5173;&#x95ED;</h3><h2 id="6-&#x670D;&#x52A1;&#x5668;"><a href="#6&#x3001;&#x670D;&#x52A1;&#x5668;" class="headerlink" title="6&#x3001;&#x670D;&#x52A1;&#x5668;"></a>6&#x3001;&#x670D;&#x52A1;&#x5668;</h2><h3 id="61-&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;"><a href="#6-1&#x3001;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;" class="headerlink" title="6.1&#x3001;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;"></a>6.1&#x3001;&#x547D;&#x4EE4;&#x8BF7;&#x6C42;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;</h3><h3 id="62-servercron&#x51FD;&#x6570;"><a href="#6-2&#x3001;serverCron&#x51FD;&#x6570;" class="headerlink" title="6.2&#x3001;serverCron&#x51FD;&#x6570;"></a>6.2&#x3001;serverCron&#x51FD;&#x6570;</h3><h3 id="63-&#x521D;&#x59CB;&#x5316;&#x670D;&#x52A1;&#x5668;"><a href="#6-3&#x3001;&#x521D;&#x59CB;&#x5316;&#x670D;&#x52A1;&#x5668;" class="headerlink" title="6.3&#x3001;&#x521D;&#x59CB;&#x5316;&#x670D;&#x52A1;&#x5668;"></a>6.3&#x3001;&#x521D;&#x59CB;&#x5316;&#x670D;&#x52A1;&#x5668;</h3>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Redis/" rel="tag">#Redis</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/31/NoSQL/Redis/2016073103_Redis备份恢复与集群/" rel="next" title="Redis备份恢复与集群">
+                <i class="fa fa-chevron-left"></i> Redis备份恢复与集群
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/31/NoSQL/Redis/2016073104_高并发下的缓存与持久化选择/" rel="prev" title="高并发下的缓存与持久化选择">
+                高并发下的缓存与持久化选择 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/arthinking.jpg"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.<br/>主站 http://www.itzhai.com/</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">114</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://www.itzhai.com" target="_blank" title="itzhai">
+                  
+                    <i class="fa fa-fw fa-home"></i>
+                  
+                  itzhai
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/arthinking" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/arthinking" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/arthinkingplus" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数据库"><span class="nav-number">1.</span> <span class="nav-text">1、数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#11-服务器中的数据库"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、服务器中的数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-切换数据库"><span class="nav-number">1.2.</span> <span class="nav-text">1.2、切换数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-数据库键空间"><span class="nav-number">1.3.</span> <span class="nav-text">1.3、数据库键空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库键操作"><span class="nav-number">1.3.1.</span> <span class="nav-text">数据库键操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读写键空间时的维护操作"><span class="nav-number">1.3.2.</span> <span class="nav-text">读写键空间时的维护操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-设置键的生存时间或过期时间"><span class="nav-number">1.4.</span> <span class="nav-text">1.4、设置键的生存时间或过期时间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#expire和pexpire命令"><span class="nav-number">1.4.1.</span> <span class="nav-text">EXPIRE和PEXPIRE命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ttl和pttl命令"><span class="nav-number">1.4.2.</span> <span class="nav-text">TTL和PTTL命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#persist"><span class="nav-number">1.4.3.</span> <span class="nav-text">PERSIST</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-过期键删除策略"><span class="nav-number">1.5.</span> <span class="nav-text">1.5、过期键删除策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-redis的过期键删除策略"><span class="nav-number">1.6.</span> <span class="nav-text">1.6、Redis的过期键删除策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-aof-rdb和复制功能对过期键的处理"><span class="nav-number">1.7.</span> <span class="nav-text">1.7、AOF、RDB和复制功能对过期键的处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#复制"><span class="nav-number">1.7.1.</span> <span class="nav-text">复制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-数据通知"><span class="nav-number">1.8.</span> <span class="nav-text">1.8、数据通知</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#键空间通知"><span class="nav-number">1.8.1.</span> <span class="nav-text">键空间通知</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送通知"><span class="nav-number">1.8.2.</span> <span class="nav-text">发送通知</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-rdb持久化"><span class="nav-number">2.</span> <span class="nav-text">2、RDB持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#21-rdb文件的创建与载入"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、RDB文件的创建与载入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何选择载入方式"><span class="nav-number">2.1.1.</span> <span class="nav-text">如何选择载入方式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#savebgsave和bgrewriteaof有什么区别"><span class="nav-number">2.1.2.</span> <span class="nav-text">SAVE，BGSAVE和BGREWRITEAOF有什么区别？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-自动间隔性保存"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、自动间隔性保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-rdb文件结构"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、RDB文件结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-分析rdb文件"><span class="nav-number">2.4.</span> <span class="nav-text">2.4、分析RDB文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-aof持久化"><span class="nav-number">3.</span> <span class="nav-text">3、AOF持久化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#31-实现"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-aof文件的载入与数据还原"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、AOF文件的载入与数据还原</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-aof重写"><span class="nav-number">3.3.</span> <span class="nav-text">3.3、AOF重写</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-事件"><span class="nav-number">4.</span> <span class="nav-text">4、事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#41-文件事件"><span class="nav-number">4.1.</span> <span class="nav-text">4.1、文件事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#42-时间事件"><span class="nav-number">4.2.</span> <span class="nav-text">4.2、时间事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#43-事件的调度与执行"><span class="nav-number">4.3.</span> <span class="nav-text">4.3、事件的调度与执行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-客户端"><span class="nav-number">5.</span> <span class="nav-text">5、客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#51-客户端属性"><span class="nav-number">5.1.</span> <span class="nav-text">5.1、客户端属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#52-客户端的创建与关闭"><span class="nav-number">5.2.</span> <span class="nav-text">5.2、客户端的创建与关闭</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-服务器"><span class="nav-number">6.</span> <span class="nav-text">6、服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#61-命令请求的执行过程"><span class="nav-number">6.1.</span> <span class="nav-text">6.1、命令请求的执行过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#62-servercron函数"><span class="nav-number">6.2.</span> <span class="nav-text">6.2、serverCron函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#63-初始化服务器"><span class="nav-number">6.3.</span> <span class="nav-text">6.3、初始化服务器</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

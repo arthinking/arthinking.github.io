@@ -1,0 +1,667 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JDK," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="handshake alert:  unrecognized_name1234javax.net.ssl.SSLProtocolException: handshake alert:  unrecognized_name    at sun.security.ssl.ClientHandshaker.handshakeAlert(ClientHandshaker.java:1288)    at">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDK从1.6升级到1.7引发的问题">
+<meta property="og:url" content="http://arthinking.github.io/2016/08/02/java/2016080201_JDK从1.6升级到1.7引发的问题/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="handshake alert:  unrecognized_name1234javax.net.ssl.SSLProtocolException: handshake alert:  unrecognized_name    at sun.security.ssl.ClientHandshaker.handshakeAlert(ClientHandshaker.java:1288)    at">
+<meta property="og:updated_time" content="2016-08-02T08:51:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JDK从1.6升级到1.7引发的问题">
+<meta name="twitter:description" content="handshake alert:  unrecognized_name1234javax.net.ssl.SSLProtocolException: handshake alert:  unrecognized_name    at sun.security.ssl.ClientHandshaker.handshakeAlert(ClientHandshaker.java:1288)    at">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JDK从1.6升级到1.7引发的问题 | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1259452595&web_id=1259452595" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JDK从1.6升级到1.7引发的问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-02T00:00:00+08:00" content="2016-08-02">
+              2016-08-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="handshake-alert-unrecognized_name"><a href="#handshake-alert-unrecognized-name" class="headerlink" title="handshake alert:  unrecognized_name"></a>handshake alert:  unrecognized_name</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">javax.net.ssl.SSLProtocolException: handshake alert:  unrecognized_name</span><br><span class="line">    at sun.security.ssl.ClientHandshaker.handshakeAlert(ClientHandshaker.java:1288)</span><br><span class="line">    at sun.security.ssl.SSLSocketImpl.recvAlert(SSLSocketImpl.java:1904)</span><br><span class="line">    at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1027)</span><br></pre></td></tr></table></figure>
+<p>Java 7&#x5F15;&#x8FDB;&#x4E86;SNI(Server Name Indication &#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x4F7F;&#x7528;&#x591A;&#x4E2A;&#x57DF;&#x540D;&#x548C;&#x8BC1;&#x4E66;&#x7684;SSL/TLS&#x6269;&#x5C55;&#x3002;&#x65E2;&#x662F;&#xFF0C;&#x5728;&#x8FDE;&#x63A5;&#x5230;&#x670D;&#x52A1;&#x5668;&#x5EFA;&#x7ACB;SSL&#x8FDE;&#x63A5;&#x4E4B;&#x524D;&#x5148;&#x53D1;&#x9001;&#x8981;&#x8BBF;&#x95EE;&#x7AD9;&#x70B9;&#x7684;&#x57DF;&#x540D;&#xFF08;Hostname&#xFF09;&#xFF0C;&#x8FD9;&#x6837;&#x670D;&#x52A1;&#x5668;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x57DF;&#x540D;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5408;&#x9002;&#x7684;&#x8BC1;&#x4E66;&#x3002;)&#x7684;&#x652F;&#x6301;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x5F00;&#x542F;&#x72B6;&#x6001;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F1A;&#x5BFC;&#x81F4;&#x5728;&#x5EFA;&#x7ACB;SSL&#x8FDE;&#x63A5;&#x63E1;&#x624B;&#x7684;&#x65F6;&#x5019;&#x9700;&#x8981;&#x83B7;&#x53D6;&#x5230;&#x8BBF;&#x95EE;&#x8FDE;&#x63A5;&#x7684;&#x6B63;&#x786E;&#x7684;&#x865A;&#x62DF;&#x57DF;&#x3002;&#x8981;&#x4F7F;&#x7528;SNI&#xFF0C;&#x9700;&#x8981;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#xFF08;&#x5BA2;&#x6237;&#x7AEF;&#x548C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x90FD;&#x652F;&#x6301;SNI&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x53D1;&#x9001;&#x4E86;&#x6B63;&#x786E;&#x7684;&#x57DF;&#x540D;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x4E5F;&#x505A;&#x4E86;&#x76F8;&#x5E94;&#x7684;SNI&#x914D;&#x7F6E;&#xFF09;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x7684;&#x8BBE;&#x7F6E;&#x4E00;&#x4E0B;<code>jsse.enableSNIExtension</code>&#x5C5E;&#x6027;&#xFF0C;&#x8BBE;&#x7F6E;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x4E2D;&#x6DFB;&#x52A0;&#xFF1A;-Djsse.enableSNIExtension=false</li>
+<li>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;System.setProperty(&#x201C;jsse.enableSNIExtension&#x201D;, &#x201C;false&#x201D;);</li>
+</ul>
+<h2 id="xstream-no-args-constructor-error"><a href="#Xstream-no-args-constructor-error" class="headerlink" title="Xstream no-args constructor error"></a>Xstream no-args constructor error</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.thoughtworks.xstream.converters.ConversionException: Cannot construct ClassXXX as it does not have a no-args constructor : Cannot construct java.util.RandomAccessSubList as it does not have a no-args constructor</span><br></pre></td></tr></table></figure>
+<p>&#x5347;&#x7EA7;JDK&#x7248;&#x672C;&#xFF0C;&#x5BFC;&#x81F4;<code>xstream</code>&#x4E0D;&#x517C;&#x5BB9;&#xFF0C;&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5348;&#x9910;&#x6784;&#x9020;&#x51FD;&#x6570;</li>
+<li>xstream&#x7248;&#x672C;&#x5347;&#x7EA7;&#x5230;1.4.4&#x4EE5;&#x4E0A;</li>
+<li>ClassXXX&#x5B9E;&#x73B0;&#x5E8F;&#x5217;&#x5316;&#x63A5;&#x53E3;</li>
+</ul>
+<h2 id="references"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="http://stackoverflow.com/questions/7615645/ssl-handshake-alert-unrecognized-name-error-since-upgrade-to-java-1-7-0" target="_blank" rel="external">SSL handshake alert: unrecognized_name error since upgrade to Java 1.7.0</a></p>
+<p><a href="http://www.ttlsa.com/web/sni-multi-domain-virtual-host-ssl-tls-authentication/" target="_blank" rel="external">nginx &#x540C;&#x4E00;&#x4E2A;IP&#x4E0A;&#x914D;&#x7F6E;&#x591A;&#x4E2A;HTTPS&#x4E3B;&#x673A;</a></p>
+<p><a href="http://stackoverflow.com/questions/9621372/xstream-no-args-constructor-error" target="_blank" rel="external">Xstream no-args constructor error</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JDK/" rel="tag">#JDK</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/31/database/mysql/2016073101_关于MySQL的sharding/" rel="next" title="关于MySQL的sharding">
+                <i class="fa fa-chevron-left"></i> 关于MySQL的sharding
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/arthinking.jpg"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.<br/>主站 http://www.itzhai.com/</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">114</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://www.itzhai.com" target="_blank" title="itzhai">
+                  
+                    <i class="fa fa-fw fa-home"></i>
+                  
+                  itzhai
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/arthinking" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/arthinking" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/arthinkingplus" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#handshake-alert-unrecognized_name"><span class="nav-number">1.</span> <span class="nav-text">handshake alert:  unrecognized_name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xstream-no-args-constructor-error"><span class="nav-number">2.</span> <span class="nav-text">Xstream no-args constructor error</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

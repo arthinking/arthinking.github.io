@@ -1,0 +1,660 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="18 &amp;#x53D1;&amp;#x5E03;&amp;#x4E0E;&amp;#x8BA2;&amp;#x9605;&amp;#x9891;&amp;#x9053;&amp;#x7684;&amp;#x8BA2;&amp;#x9605;&amp;#x4E0E;&amp;#x9000;&amp;#x8BA2;SUBSCRIBE123struct redisServce {    dict *pubsub_channels;  // key &amp;#x9891;&amp;#x9053;&amp;#xFF0C;va">
+<meta property="og:type" content="article">
+<meta property="og:title" content="arthinking">
+<meta property="og:url" content="http://arthinking.github.io/2016/07/18/NoSQL/Redis/2016071801_Redis常见问题/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="18 &amp;#x53D1;&amp;#x5E03;&amp;#x4E0E;&amp;#x8BA2;&amp;#x9605;&amp;#x9891;&amp;#x9053;&amp;#x7684;&amp;#x8BA2;&amp;#x9605;&amp;#x4E0E;&amp;#x9000;&amp;#x8BA2;SUBSCRIBE123struct redisServce {    dict *pubsub_channels;  // key &amp;#x9891;&amp;#x9053;&amp;#xFF0C;va">
+<meta property="og:image" content="http://arthinking.github.io/media/14688531872005.jpg">
+<meta property="og:image" content="http://arthinking.github.io/media/14688534614742.jpg">
+<meta property="og:image" content="http://arthinking.github.io/media/14688538891462.jpg">
+<meta property="og:updated_time" content="2016-07-31T09:11:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="arthinking">
+<meta name="twitter:description" content="18 &amp;#x53D1;&amp;#x5E03;&amp;#x4E0E;&amp;#x8BA2;&amp;#x9605;&amp;#x9891;&amp;#x9053;&amp;#x7684;&amp;#x8BA2;&amp;#x9605;&amp;#x4E0E;&amp;#x9000;&amp;#x8BA2;SUBSCRIBE123struct redisServce {    dict *pubsub_channels;  // key &amp;#x9891;&amp;#x9053;&amp;#xFF0C;va">
+<meta name="twitter:image" content="http://arthinking.github.io/media/14688531872005.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>  | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1259452595&web_id=1259452595" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-18T22:39:15+08:00" content="2016-07-18">
+              2016-07-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="18-&#x53D1;&#x5E03;&#x4E0E;&#x8BA2;&#x9605;"><a href="#18-&#x53D1;&#x5E03;&#x4E0E;&#x8BA2;&#x9605;" class="headerlink" title="18 &#x53D1;&#x5E03;&#x4E0E;&#x8BA2;&#x9605;"></a>18 &#x53D1;&#x5E03;&#x4E0E;&#x8BA2;&#x9605;</h2><h3 id="&#x9891;&#x9053;&#x7684;&#x8BA2;&#x9605;&#x4E0E;&#x9000;&#x8BA2;"><a href="#&#x9891;&#x9053;&#x7684;&#x8BA2;&#x9605;&#x4E0E;&#x9000;&#x8BA2;" class="headerlink" title="&#x9891;&#x9053;&#x7684;&#x8BA2;&#x9605;&#x4E0E;&#x9000;&#x8BA2;"></a>&#x9891;&#x9053;&#x7684;&#x8BA2;&#x9605;&#x4E0E;&#x9000;&#x8BA2;</h3><h4 id="subscribe"><a href="#SUBSCRIBE" class="headerlink" title="SUBSCRIBE"></a>SUBSCRIBE</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct redisServce {</span><br><span class="line">    dict *pubsub_channels;  // key &#x9891;&#x9053;&#xFF0C;values &#x5BA2;&#x6237;&#x7AEF;&#x94FE;&#x8868;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>client-10086: SUBSCRIBE &#x201C;news.sport&#x201D; &#x201C;news.movie&#x201D;</p>
+</blockquote>
+<p><img src="media/14688531872005.jpg" alt=""></p>
+<h4 id="unsubscribe"><a href="#UNSUBSCRIBE" class="headerlink" title="UNSUBSCRIBE"></a>UNSUBSCRIBE</h4><blockquote>
+<p>client-10086: UNSUBSCRIBE &#x201C;news.sport&#x201D; &#x201C;news.movie&#x201D;</p>
+</blockquote>
+<p><img src="media/14688534614742.jpg" alt=""></p>
+<h3 id="&#x6A21;&#x5F0F;&#x7684;&#x8BA2;&#x9605;&#x4E0E;&#x9000;&#x8BA2;"><a href="#&#x6A21;&#x5F0F;&#x7684;&#x8BA2;&#x9605;&#x4E0E;&#x9000;&#x8BA2;" class="headerlink" title="&#x6A21;&#x5F0F;&#x7684;&#x8BA2;&#x9605;&#x4E0E;&#x9000;&#x8BA2;"></a>&#x6A21;&#x5F0F;&#x7684;&#x8BA2;&#x9605;&#x4E0E;&#x9000;&#x8BA2;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct redisServer{</span><br><span class="line">    list *pubsub_patterns;  // pattern: &#x88AB;&#x8BA2;&#x9605;&#x7684;&#x6A21;&#x5F0F;  client: &#x8BA2;&#x9605;&#x6A21;&#x5F0F;&#x7684;&#x5BA2;&#x6237;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<h4 id="psubscribe"><a href="#PSUBSCRIBE" class="headerlink" title="PSUBSCRIBE"></a>PSUBSCRIBE</h4><blockquote>
+<p>client-9: PSUBSCRIBE &#x201C;news.*&#x201D;</p>
+</blockquote>
+<p><img src="media/14688538891462.jpg" alt=""></p>
+<h4 id="punsubscribe"><a href="#PUNSUBSCRIBE" class="headerlink" title="PUNSUBSCRIBE"></a>PUNSUBSCRIBE</h4><h3 id="&#x53D1;&#x9001;&#x6D88;&#x606F;"><a href="#&#x53D1;&#x9001;&#x6D88;&#x606F;" class="headerlink" title="&#x53D1;&#x9001;&#x6D88;&#x606F;"></a>&#x53D1;&#x9001;&#x6D88;&#x606F;</h3><h4 id="&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x9891;&#x9053;&#x8BA2;&#x9605;&#x8005;"><a href="#&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x9891;&#x9053;&#x8BA2;&#x9605;&#x8005;" class="headerlink" title="&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x9891;&#x9053;&#x8BA2;&#x9605;&#x8005;"></a>&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x9891;&#x9053;&#x8BA2;&#x9605;&#x8005;</h4><h4 id="&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x6A21;&#x5F0F;&#x8BA2;&#x9605;&#x8005;"><a href="#&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x6A21;&#x5F0F;&#x8BA2;&#x9605;&#x8005;" class="headerlink" title="&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x6A21;&#x5F0F;&#x8BA2;&#x9605;&#x8005;"></a>&#x5C06;&#x6D88;&#x606F;&#x53D1;&#x9001;&#x7ED9;&#x6A21;&#x5F0F;&#x8BA2;&#x9605;&#x8005;</h4><h3 id="&#x67E5;&#x770B;&#x8BA2;&#x9605;&#x4FE1;&#x606F;"><a href="#&#x67E5;&#x770B;&#x8BA2;&#x9605;&#x4FE1;&#x606F;" class="headerlink" title="&#x67E5;&#x770B;&#x8BA2;&#x9605;&#x4FE1;&#x606F;"></a>&#x67E5;&#x770B;&#x8BA2;&#x9605;&#x4FE1;&#x606F;</h3><ul>
+<li>PUBSUB CHANNELS [pattern]</li>
+<li>PUBSUB NUMSUM [channel-1 channel-2 &#x2026; channel-n]</li>
+<li><p>PUBSUB NUMPAT</p>
+</li>
+<li><p>Redis&#x8BA2;&#x9605;&#x4FE1;&#x606F;&#x4E22;&#x5931;&#x95EE;&#x9898;</p>
+</li>
+</ul>
+<p><a href="http://www.jianshu.com/p/9c04890615ba" target="_blank" rel="external">Redis&#x5B9E;&#x73B0;&#x7B80;&#x5355;&#x6D88;&#x606F;&#x961F;&#x5217;</a></p>
+<p><a href="http://yychao.iteye.com/blog/1751583" target="_blank" rel="external">Jedis &#x4E0E; ShardedJedis &#x8BBE;&#x8BA1;</a></p>
+<p><a href="http://snowolf.iteye.com/blog/1824868/" target="_blank" rel="external">&#x5F81;&#x670D; Redis + Jedis + Spring &#xFF08;&#x4E09;&#xFF09;&#x2014;&#x2014; &#x5217;&#x8868;&#x64CD;&#x4F5C;</a></p>
+<p><a href="http://aiilive.blog.51cto.com/1925756/1627455?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">&#x4F7F;&#x7528;Spring Data Redis&#x64CD;&#x4F5C;Redis&#xFF08;&#x4E00;&#xFF09;</a></p>
+<h2 id="19-&#x4E8B;&#x52A1;"><a href="#19-&#x4E8B;&#x52A1;" class="headerlink" title="19 &#x4E8B;&#x52A1;"></a>19 &#x4E8B;&#x52A1;</h2><p>&#x901A;&#x8FC7;MULTI&#x3001;EXEC&#x3001;WATCH&#x7B49;&#x547D;&#x4EE4;&#x6765;&#x5B9E;&#x73B0;&#x4E8B;&#x52A1;&#x529F;&#x80FD;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;"><a href="#&#x5B9E;&#x73B0;" class="headerlink" title="&#x5B9E;&#x73B0;"></a>&#x5B9E;&#x73B0;</h3><h3 id="watch&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;"><a href="#WATCH&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;" class="headerlink" title="WATCH&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;"></a>WATCH&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;</h3><h3 id="&#x4E8B;&#x52A1;&#x7684;acid&#x6027;&#x8D28;"><a href="#&#x4E8B;&#x52A1;&#x7684;ACID&#x6027;&#x8D28;" class="headerlink" title="&#x4E8B;&#x52A1;&#x7684;ACID&#x6027;&#x8D28;"></a>&#x4E8B;&#x52A1;&#x7684;ACID&#x6027;&#x8D28;</h3>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/18/dev-tools/Maven/2016071801_deploy不上maven私服/" rel="next" title="deploy不上maven私服">
+                <i class="fa fa-chevron-left"></i> deploy不上maven私服
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/database/mysql/2016072001_MySQL查询条件与业务逻辑设计/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/arthinking.jpg"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.<br/>主站 http://www.itzhai.com/</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">114</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://www.itzhai.com" target="_blank" title="itzhai">
+                  
+                    <i class="fa fa-fw fa-home"></i>
+                  
+                  itzhai
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/arthinking" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/arthinking" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/arthinkingplus" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#18-发布与订阅"><span class="nav-number">1.</span> <span class="nav-text">18 发布与订阅</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#频道的订阅与退订"><span class="nav-number">1.1.</span> <span class="nav-text">频道的订阅与退订</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#subscribe"><span class="nav-number">1.1.1.</span> <span class="nav-text">SUBSCRIBE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unsubscribe"><span class="nav-number">1.1.2.</span> <span class="nav-text">UNSUBSCRIBE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模式的订阅与退订"><span class="nav-number">1.2.</span> <span class="nav-text">模式的订阅与退订</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#psubscribe"><span class="nav-number">1.2.1.</span> <span class="nav-text">PSUBSCRIBE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#punsubscribe"><span class="nav-number">1.2.2.</span> <span class="nav-text">PUNSUBSCRIBE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送消息"><span class="nav-number">1.3.</span> <span class="nav-text">发送消息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#将消息发送给频道订阅者"><span class="nav-number">1.3.1.</span> <span class="nav-text">将消息发送给频道订阅者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将消息发送给模式订阅者"><span class="nav-number">1.3.2.</span> <span class="nav-text">将消息发送给模式订阅者</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看订阅信息"><span class="nav-number">1.4.</span> <span class="nav-text">查看订阅信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-事务"><span class="nav-number">2.</span> <span class="nav-text">19 事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">2.1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#watch命令的实现"><span class="nav-number">2.2.</span> <span class="nav-text">WATCH命令的实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的acid性质"><span class="nav-number">2.3.</span> <span class="nav-text">事务的ACID性质</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
