@@ -1,0 +1,673 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="并发," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1&amp;#x3001;&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x7EBF;&amp;#x7A0B;&amp;#x5B89;&amp;#x5168;&amp;#x6027;&amp;#x4ECE;&amp;#x4E00;&amp;#x5F00;&amp;#x59CB;&amp;#x5C31;&amp;#x8BBE;&amp;#x8BA1;&amp;#x4E00;&amp;#x4E2A;&amp;#x7EBF;&amp;#x7A0B;&amp;#x5B89;&amp;#x5168;&amp;#x7684;&amp;#x7C7B;&amp;#xFF0C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线程安全性">
+<meta property="og:url" content="http://arthinking.github.io/2016/09/10/java/concurrency/2016082401_线程安全性/index.html">
+<meta property="og:site_name" content="arthinking">
+<meta property="og:description" content="1&amp;#x3001;&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x7EBF;&amp;#x7A0B;&amp;#x5B89;&amp;#x5168;&amp;#x6027;&amp;#x4ECE;&amp;#x4E00;&amp;#x5F00;&amp;#x59CB;&amp;#x5C31;&amp;#x8BBE;&amp;#x8BA1;&amp;#x4E00;&amp;#x4E2A;&amp;#x7EBF;&amp;#x7A0B;&amp;#x5B89;&amp;#x5168;&amp;#x7684;&amp;#x7C7B;&amp;#xFF0C">
+<meta property="og:image" content="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/java/concurrency/media/14723707779593.jpg">
+<meta property="og:updated_time" content="2016-10-15T07:27:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线程安全性">
+<meta name="twitter:description" content="1&amp;#x3001;&amp;#x4EC0;&amp;#x4E48;&amp;#x662F;&amp;#x7EBF;&amp;#x7A0B;&amp;#x5B89;&amp;#x5168;&amp;#x6027;&amp;#x4ECE;&amp;#x4E00;&amp;#x5F00;&amp;#x59CB;&amp;#x5C31;&amp;#x8BBE;&amp;#x8BA1;&amp;#x4E00;&amp;#x4E2A;&amp;#x7EBF;&amp;#x7A0B;&amp;#x5B89;&amp;#x5168;&amp;#x7684;&amp;#x7C7B;&amp;#xFF0C">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/java/concurrency/media/14723707779593.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 线程安全性 | arthinking </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1259452595&web_id=1259452595" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">arthinking</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">ChinSyun Pang's blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                线程安全性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-10T00:00:00+08:00" content="2016-09-10">
+              2016-09-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-&#x4EC0;&#x4E48;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x6027;"><a href="#1&#x3001;&#x4EC0;&#x4E48;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x6027;" class="headerlink" title="1&#x3001;&#x4EC0;&#x4E48;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x6027;"></a>1&#x3001;&#x4EC0;&#x4E48;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x6027;</h2><p>&#x4ECE;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x7C7B;&#xFF0C;&#x6BD4;&#x5728;&#x4EE5;&#x540E;&#x518D;&#x5C06;&#x8FD9;&#x4E2A;&#x7C7B;&#x4FEE;&#x6539;&#x4E3A;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x7C7B;&#x8981;&#x5BB9;&#x6613;&#x7684;&#x591A;&#x3002;</p>
+<p>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#x7C7B;&#x4E2D;&#x5C01;&#x88C5;&#x4E86;&#x5FC5;&#x8981;&#x7684;&#x540C;&#x6B65;&#x673A;&#x5236;&#xFF0C;&#x56E0;&#x6B64;&#x5BA2;&#x6237;&#x7AEF;&#x65E0;&#x9700;&#x8FDB;&#x4E00;&#x6B65;&#x91C7;&#x53D6;&#x540C;&#x6B65;&#x63AA;&#x65BD;&#x3002;</p>
+<blockquote>
+<p>&#x65E0;&#x72B6;&#x6001;&#x5BF9;&#x8C61;&#x4E00;&#x5B9A;&#x662F;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x7684;&#xFF08;&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x57DF;&#x548C;&#x5176;&#x4ED6;&#x7C7B;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x53EA;&#x6709;&#x7EBF;&#x7A0B;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF09;</p>
+</blockquote>
+<h2 id="2-&#x539F;&#x5B50;&#x6027;"><a href="#2&#x3001;&#x539F;&#x5B50;&#x6027;" class="headerlink" title="2&#x3001;&#x539F;&#x5B50;&#x6027;"></a>2&#x3001;&#x539F;&#x5B50;&#x6027;</h2><p>int&#x7C7B;&#x578B;&#x4E5F;&#x975E;&#x539F;&#x5B50;&#xFF0C;++count&#x5305;&#x542B;&#x4E86;&#x8BFB;&#x53D6;&#xFF0C;&#x4FEE;&#x6539;&#xFF0C;&#x5199;&#x5165;&#x7684;&#x64CD;&#x4F5C;&#x5E8F;&#x5217;&#x3002;</p>
+<h3 id="21-&#x7ADE;&#x6001;&#x6761;&#x4EF6;"><a href="#2-1&#x3001;&#x7ADE;&#x6001;&#x6761;&#x4EF6;" class="headerlink" title="2.1&#x3001;&#x7ADE;&#x6001;&#x6761;&#x4EF6;"></a>2.1&#x3001;&#x7ADE;&#x6001;&#x6761;&#x4EF6;</h3><p>UnsafeCountingFactorizer</p>
+<p>&#x6700;&#x5E38;&#x89C1;&#x7684;&#x7ADE;&#x6001;&#x6761;&#x4EF6;&#x7C7B;&#x578B;&#x662F;&#xFF1A;&#x5148;&#x68C0;&#x67E5;&#x540E;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5373;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#x5931;&#x6548;&#x7684;&#x89C2;&#x6D4B;&#x7ED3;&#x679C;&#x6765;&#x51B3;&#x5B9A;&#x4E0B;&#x4E00;&#x6B65;&#x7684;&#x52A8;&#x4F5C;&#x3002;</p>
+<h3 id="22-&#x793A;&#x4F8B;&#x60F0;&#x6027;&#x521D;&#x59CB;&#x5316;&#x4E2D;&#x7684;&#x7ADE;&#x6001;&#x6761;&#x4EF6;"><a href="#2-2&#x3001;&#x793A;&#x4F8B;&#xFF1A;&#x60F0;&#x6027;&#x521D;&#x59CB;&#x5316;&#x4E2D;&#x7684;&#x7ADE;&#x6001;&#x6761;&#x4EF6;" class="headerlink" title="2.2&#x3001;&#x793A;&#x4F8B;&#xFF1A;&#x60F0;&#x6027;&#x521D;&#x59CB;&#x5316;&#x4E2D;&#x7684;&#x7ADE;&#x6001;&#x6761;&#x4EF6;"></a>2.2&#x3001;&#x793A;&#x4F8B;&#xFF1A;&#x60F0;&#x6027;&#x521D;&#x59CB;&#x5316;&#x4E2D;&#x7684;&#x7ADE;&#x6001;&#x6761;&#x4EF6;</h3><p>LazyInitRace</p>
+<p>&#x5355;&#x5229;&#x6A21;&#x5F0F;&#x7684;&#x61D2;&#x60F0;&#x6A21;&#x5F0F;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x52A0;&#x540C;&#x6B65;&#xFF0C;&#x591A;&#x7EBF;&#x7A0B;&#x53EF;&#x80FD;&#x4EA7;&#x751F;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;</p>
+<h3 id="23-&#x590D;&#x5408;&#x64CD;&#x4F5C;"><a href="#2-3&#x3001;&#x590D;&#x5408;&#x64CD;&#x4F5C;" class="headerlink" title="2.3&#x3001;&#x590D;&#x5408;&#x64CD;&#x4F5C;"></a>2.3&#x3001;&#x590D;&#x5408;&#x64CD;&#x4F5C;</h3><p>&#x8981;&#x907F;&#x514D;&#x7ADE;&#x6001;&#x6761;&#x4EF6;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x5728;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x4FEE;&#x6539;&#x8BE5;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x67D0;&#x79CD;&#x65B9;&#x5F0F;&#x9632;&#x6B62;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BA9;&#x5176;&#x53D8;&#x6210;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#xFF08;&#x4E24;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E92;&#x65A5;&#xFF09;</p>
+<p>&#x5728;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x4E2D;&#xFF0C;&#x5E94;&#x8BE5;&#x5C3D;&#x53EF;&#x80FD;&#x4F7F;&#x7528;<code>&#x73B0;&#x6709;&#x7EBF;&#x7A0B;&#x5B89;&#x5168;&#x5BF9;&#x8C61;</code>&#x5982;AtomicLong&#x6765;&#x7BA1;&#x7406;&#x7C7B;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<h2 id="3-&#x52A0;&#x9501;&#x673A;&#x5236;"><a href="#3&#x3001;&#x52A0;&#x9501;&#x673A;&#x5236;" class="headerlink" title="3&#x3001;&#x52A0;&#x9501;&#x673A;&#x5236;"></a>3&#x3001;&#x52A0;&#x9501;&#x673A;&#x5236;</h2><p>&#x4E3A;&#x4E86;&#x4FDD;&#x62A4;&#x72B6;&#x6001;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x8981;&#x5728;&#x5355;&#x4E00;&#x7684;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x4E2D;&#x66F4;&#x65B0;&#x76F8;&#x4E92;&#x5173;&#x8054;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x91CF;&#x3002;</p>
+<h3 id="31-&#x5185;&#x7F6E;&#x9501;"><a href="#3-1&#x3001;&#x5185;&#x7F6E;&#x9501;" class="headerlink" title="3.1&#x3001;&#x5185;&#x7F6E;&#x9501;"></a>3.1&#x3001;&#x5185;&#x7F6E;&#x9501;</h3><p>synchronized&#x5757;&#xFF0C;&#x662F;&#x4E92;&#x65A5;&#x9501;&#xFF08;mutual exclusion lock&#xFF0C;&#x4E5F;&#x79F0;&#x4F5C;mutex&#xFF09;&#x3002;</p>
+<h3 id="32-&#x91CD;&#x5165;reentrancy"><a href="#3-2&#x3001;&#x91CD;&#x5165;&#xFF08;Reentrancy&#xFF09;" class="headerlink" title="3.2&#x3001;&#x91CD;&#x5165;&#xFF08;Reentrancy&#xFF09;"></a>3.2&#x3001;&#x91CD;&#x5165;&#xFF08;Reentrancy&#xFF09;</h3><p>&#x5185;&#x7F6E;&#x9501;&#x662F;&#x53EF;&#x91CD;&#x5165;&#x7684;&#xFF0C;&#x9632;&#x6B62;&#x4E00;&#x4E0B;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5BFC;&#x81F4;&#x7684;&#x6B7B;&#x9501;&#xFF1A;<br><img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/java/concurrency/media/14723707779593.jpg" alt=""></p>
+<p>&#x91CD;&#x5165;&#x9501;&#x7684;&#x8BF7;&#x6C42;&#x662F;&#x57FA;&#x4E8E;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6BCF;&#x4E2A;&#x8C03;&#x7528;&#xFF1B;&#x901A;&#x8FC7;&#x4E3A;&#x6BCF;&#x4E2A;&#x9501;&#x5173;&#x8054;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x8BA1;&#x6570;&#x548C;&#x4E00;&#x4E2A;&#x5360;&#x6709;&#x5B83;&#x7684;&#x7EBF;&#x7A0B;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<h2 id="4-&#x7528;&#x9501;&#x6765;&#x4FDD;&#x62A4;&#x72B6;&#x6001;"><a href="#4&#x3001;&#x7528;&#x9501;&#x6765;&#x4FDD;&#x62A4;&#x72B6;&#x6001;" class="headerlink" title="4&#x3001;&#x7528;&#x9501;&#x6765;&#x4FDD;&#x62A4;&#x72B6;&#x6001;"></a>4&#x3001;&#x7528;&#x9501;&#x6765;&#x4FDD;&#x62A4;&#x72B6;&#x6001;</h2><p>&#x5982;&#x679C;&#x7528;&#x540C;&#x6B65;&#x6765;&#x534F;&#x8C03;&#x8BBF;&#x95EE;&#x53D8;&#x91CF;&#xFF0C;&#x6BCF;&#x6B21;&#x8BBF;&#x95EE;&#x53D8;&#x91CF;&#x65F6;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x540C;&#x6B65;&#xFF0C;&#x6BCF;&#x6B21;&#x8BBF;&#x95EE;&#x53D8;&#x91CF;&#x90FD;&#x9700;&#x8981;&#x540C;&#x4E00;&#x4E2A;&#x9501;&#x3002;</p>
+<h2 id="5-&#x6D3B;&#x8DC3;&#x6027;&#x4E0E;&#x6027;&#x80FD;"><a href="#5&#x3001;&#x6D3B;&#x8DC3;&#x6027;&#x4E0E;&#x6027;&#x80FD;" class="headerlink" title="5&#x3001;&#x6D3B;&#x8DC3;&#x6027;&#x4E0E;&#x6027;&#x80FD;"></a>5&#x3001;&#x6D3B;&#x8DC3;&#x6027;&#x4E0E;&#x6027;&#x80FD;</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/并发/" rel="tag">#并发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/17/java/2016081701_序列化的相关问题/" rel="next" title="序列化的相关问题">
+                <i class="fa fa-chevron-left"></i> 序列化的相关问题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/10/java/concurrency/2016082801_共享对象/" rel="prev" title="共享对象">
+                共享对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/images/arthinking.jpg"
+               alt="arthinking" />
+          <p class="site-author-name" itemprop="name">arthinking</p>
+          <p class="site-description motion-element" itemprop="description">Struggle for HighPay zoom.<br/>主站 http://www.itzhai.com/</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">120</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://www.itzhai.com" target="_blank" title="itzhai">
+                  
+                    <i class="fa fa-fw fa-home"></i>
+                  
+                  itzhai
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/arthinking" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/arthinking" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/arthinkingplus" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是线程安全性"><span class="nav-number">1.</span> <span class="nav-text">1、什么是线程安全性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-原子性"><span class="nav-number">2.</span> <span class="nav-text">2、原子性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#21-竞态条件"><span class="nav-number">2.1.</span> <span class="nav-text">2.1、竞态条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-示例惰性初始化中的竞态条件"><span class="nav-number">2.2.</span> <span class="nav-text">2.2、示例：惰性初始化中的竞态条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-复合操作"><span class="nav-number">2.3.</span> <span class="nav-text">2.3、复合操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-加锁机制"><span class="nav-number">3.</span> <span class="nav-text">3、加锁机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#31-内置锁"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、内置锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-重入reentrancy"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、重入（Reentrancy）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-用锁来保护状态"><span class="nav-number">4.</span> <span class="nav-text">4、用锁来保护状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-活跃性与性能"><span class="nav-number">5.</span> <span class="nav-text">5、活跃性与性能</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">arthinking</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
