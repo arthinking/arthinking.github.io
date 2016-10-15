@@ -90,10 +90,12 @@
 <meta property="og:url" content="http://arthinking.github.io/2016/08/02/java/2016080201_JDK从1.6升级到1.7引发的问题/index.html">
 <meta property="og:site_name" content="arthinking">
 <meta property="og:description" content="handshake alert:  unrecognized_name1234javax.net.ssl.SSLProtocolException: handshake alert:  unrecognized_name    at sun.security.ssl.ClientHandshaker.handshakeAlert(ClientHandshaker.java:1288)    at">
-<meta property="og:updated_time" content="2016-08-02T08:59:48.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/java/media/14701921131351.jpg">
+<meta property="og:updated_time" content="2016-10-15T07:24:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDK从1.6升级到1.7引发的问题">
 <meta name="twitter:description" content="handshake alert:  unrecognized_name1234javax.net.ssl.SSLProtocolException: handshake alert:  unrecognized_name    at sun.security.ssl.ClientHandshaker.handshakeAlert(ClientHandshaker.java:1288)    at">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/java/media/14701921131351.jpg">
 
 
 
@@ -330,9 +332,14 @@
 <li>xstream&#x7248;&#x672C;&#x5347;&#x7EA7;&#x5230;1.4.4&#x4EE5;&#x4E0A;</li>
 <li>ClassXXX&#x5B9E;&#x73B0;&#x5E8F;&#x5217;&#x5316;&#x63A5;&#x53E3;</li>
 </ul>
+<p>2016-08-03 10:21:39.972 [schedulerFactoryBean_Worker-2] WARN  com.yeepay.common.utils.CallbackUtils - connection error : java.lang.RuntimeException: Could not generate DH keypair<br>javax.net.ssl.SSLException: java.lang.RuntimeException: Could not generate DH keypair<br>    at sun.security.ssl.Alerts.getSSLException(Alerts.java:208)<br>    at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1904)<br>    at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1862)</p>
+<p>&#x628A;&#x4F4E;&#x7248;&#x672C;&#x7684;<code>bcprov</code>exclude&#x6389;:<br>    <img src="https://raw.githubusercontent.com/arthinking/arthinking.github.io/blog/source/_posts/java/media/14701921131351.jpg" alt=""></p>
+<p>&#x5F15;&#x5165;&#x65B0;&#x7684;&#x7248;&#x672C;&#xFF1A;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.bouncycastle&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;bcprov-jdk15&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.46&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="references"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="http://stackoverflow.com/questions/7615645/ssl-handshake-alert-unrecognized-name-error-since-upgrade-to-java-1-7-0" target="_blank" rel="external">SSL handshake alert: unrecognized_name error since upgrade to Java 1.7.0</a></p>
 <p><a href="http://www.ttlsa.com/web/sni-multi-domain-virtual-host-ssl-tls-authentication/" target="_blank" rel="external">nginx &#x540C;&#x4E00;&#x4E2A;IP&#x4E0A;&#x914D;&#x7F6E;&#x591A;&#x4E2A;HTTPS&#x4E3B;&#x673A;</a></p>
 <p><a href="http://stackoverflow.com/questions/9621372/xstream-no-args-constructor-error" target="_blank" rel="external">Xstream no-args constructor error</a></p>
+<p><a href="http://www.cnblogs.com/simpledev/p/5426677.html" target="_blank" rel="external">&#x5FEB;&#x94B1;&#x62A5;&#x9519;&#xFF1A;javax.net.ssl.SSLProtocolException: handshake alert: unrecognized_name&#x89E3;&#x51B3;</a></p>
 
       
     </div>
@@ -363,16 +370,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/31/database/mysql/2016073101_关于MySQL的sharding/" rel="next" title="关于MySQL的sharding">
-                <i class="fa fa-chevron-left"></i> 关于MySQL的sharding
+              <a href="/2016/07/31/NoSQL/Redis/2016073102_Redis应用场景/" rel="next" title="Redis的应用场景">
+                <i class="fa fa-chevron-left"></i> Redis的应用场景
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/02/database/mysql/2016072001_MySQL查询条件与业务逻辑设计/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/17/java/2016081701_序列化的相关问题/" rel="prev" title="序列化的相关问题">
+                序列化的相关问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -441,7 +448,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">114</span>
+              <span class="site-state-item-count">120</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -449,7 +456,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -458,7 +465,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
