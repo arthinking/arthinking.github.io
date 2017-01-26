@@ -25,7 +25,7 @@ cd /usr/local/resin
 
 
 > 相关资源：    
-> 
+>
 > [ubuntu 编译并安装resin3.1.12+nginx1.2.6](http://blog.csdn.net/tegwy/article/details/8870873 "ubuntu 编译并安装resin3.1.12+nginx1.2.6")
 
 ## 1.2、安装
@@ -116,5 +116,3 @@ Resin 及 jvm 优化，是一项基于提供服务的应用上进行一段相对
 然后观察任务管理器中的java线程变化情况，看看到底是线程达到多大的时候，java进程当掉的。我的是在379左右当掉。
 
 然后将thread-min，thread-max，thread-keepalive分别写为150，400，300；也就是将当掉的时候的最大值稍微放大点，作为thread-max的值，因为该系统一般不会超过这个值。然后其他两个参数根据情况设置一下。
-
-
